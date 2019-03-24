@@ -5,7 +5,8 @@ module.exports = {
   },
   extends: ['plugin:vue/recommended', '@vue/prettier', '@vue/typescript'],
   rules: {
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    'vue/this-in-template': false
   },
   parserOptions: {
     parser: '@typescript-eslint/parser'

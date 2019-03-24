@@ -1,0 +1,6 @@
+:root {
+  --white-color: hsl(0, 0%, 100%);
+  --black-color: hsl(0, 1%, 15%);
+  --blue-color: hsl(229, 87%, 44%);
+  --teal-color: hsl(184, 97%, 37%);
+}

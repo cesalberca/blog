@@ -1,11 +1,5 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import './registerServiceWorker'
+import { App, Application, router } from './ui'
+import { ServiceWorkerRegisterer } from './ui/ServiceWorkerRegisterer'
 
-Vue.config.productionTip = false
-
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app')
+new Application(Vue, router, new ServiceWorkerRegisterer(window.console.log)).bootstrap(App)

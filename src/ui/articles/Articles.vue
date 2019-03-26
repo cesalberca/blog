@@ -1,35 +1,44 @@
 <template>
-  <div>
+  <Page>
     <h1>{{ title }}</h1>
-    <p>{{ this.article }}</p>
-  </div>
+    <ArticleExcerpt
+      v-for="article in articles"
+      :key="article.id.value"
+      :excerpt="article.getExcerpt()"
+    />
+  </Page>
 </template>
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { GetArticleCommand } from '../../application/GetArticleCommand'
-import { TranslationService } from '../../application/TranslationService'
+import { GetArticles, TranslationService } from '../../application'
+import { ArticleExcerpt, Page } from '../commons'
+import { Article } from '../../domain/articles/Article'
+import { State } from '../state/State'
 
-@Component
+@Component<Articles>({
+  async beforeRouteEnter(_to, _options, next) {
+    const articles = await new GetArticles().execute()
+    next(vm => {
+      vm.articles = articles
+    })
+  },
+  components: {
+    Page,
+    ArticleExcerpt
+  }
+})
 export default class Articles extends Vue {
-  @Inject()
-  readonly getArticle!: GetArticleCommand
-
   @Inject()
   readonly translationService!: TranslationService
 
-  article: string = ''
+  @Inject()
+  readonly state!: State
 
-  mounted() {
-    this.getArticle.execute().then(article => {
-      this.article = article
-    })
-  }
+  articles: Article[] = []
 
   get title() {
-    return this.translationService.translate('article_title')
+    return this.translationService.translate(this.state.locale, 'article_title')
   }
 }
 </script>
-
-<style scoped></style>

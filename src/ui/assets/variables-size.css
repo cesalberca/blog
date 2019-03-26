@@ -1,3 +1,4 @@
 :root {
-  --base: 8px;
+  --base: 0.25rem;
+  --body-width: 40rem;
 }

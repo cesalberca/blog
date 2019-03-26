@@ -1,12 +1,10 @@
-import { Locale, Translator, TranslationError, TranslationIdentifiers } from '../domain/language'
+import { Locale, TranslationError, TranslationIdentifiers, Translator } from '../ui/language'
 
 export class TranslationService {
   private readonly translator = new Translator()
 
-  public constructor(private locale: Locale) {}
-
-  public translate(key: keyof TranslationIdentifiers): string {
-    const language = this.translator.translations.get(this.locale)
+  public translate(locale: Locale, key: keyof TranslationIdentifiers): string {
+    const language = this.translator.translations.get(locale)
 
     if (language !== undefined) {
       const translation = language.get(key)
@@ -18,10 +16,6 @@ export class TranslationService {
       }
     }
 
-    return this.translator.getDefaultLocale().get(key)!
-  }
-
-  public changeLanguage(language: Locale) {
-    this.locale = language
+    return this.translator.getDefaultLocaleTranslation().get(key)!
   }
 }

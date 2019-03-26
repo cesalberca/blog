@@ -2,17 +2,19 @@
   <main>
     <Injector>
       <Navbar />
+      <Options />
       <router-view />
     </Injector>
   </main>
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { Navbar } from './commons'
-import Injector from './Injector.vue'
+import { Navbar, Options } from './commons'
+import { Injector } from './'
 
 @Component({
   components: {
+    Options,
     Injector,
     Navbar
   }

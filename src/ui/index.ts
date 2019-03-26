@@ -3,4 +3,4 @@ export { Injector }
 import App from './App.vue'
 export { App }
 export * from './Application'
-export * from './router'
+export { Router } from './Router'

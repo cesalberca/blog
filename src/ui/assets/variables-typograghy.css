@@ -1,6 +1,6 @@
 :root {
-  --title-font: serif;
-  --body-font: sans-serif;
+  --title-font: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  --body-font: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   --title-size: 18px;
   --body-size: 15px;
 }

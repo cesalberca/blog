@@ -1,17 +1,21 @@
 html {
   box-sizing: border-box;
-  font-family: 'Markazi Text', serif;
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding: 0;
-  font-size: var(--body-font);
-  line-height: 1.8;
-  color: var(--foreground-color);
 }
 
 body {
+  font-family: var(--body-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: var(--body-font);
+  line-height: 1.8;
+  color: var(--foreground-color);
   background-color: var(--background-color);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 *,
@@ -33,7 +37,7 @@ h5,
 h6 {
   margin: 2.75rem 0 1rem;
   color: #3a3a3a;
-  font-family: sans-serif;
+  font-family: var(--title-font);
   font-weight: 400;
   line-height: 1.15;
 }
@@ -60,6 +64,6 @@ h5 {
 }
 
 strong {
-  letter-spacing: 1.3px;
+  letter-spacing: 1px;
   color: #3a3a3a;
 }

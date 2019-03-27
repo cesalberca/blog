@@ -1,10 +1,10 @@
 import { VueRouter } from 'vue-router/types/router'
 
 export class Router {
-  public constructor(private readonly vueRouter: typeof VueRouter) {}
+  private readonly _value: VueRouter
 
-  public create() {
-    return new this.vueRouter({
+  private constructor(private readonly vueRouter: typeof VueRouter) {
+    this._value = new this.vueRouter({
       mode: 'history',
       base: process.env.BASE_URL,
       routes: [
@@ -19,6 +19,11 @@ export class Router {
           component: () => import(/* webpackChunkName: "articles" */ './articles/Articles.vue')
         },
         {
+          path: '/article/:id',
+          name: 'article',
+          component: () => import(/* webpackChunkName: "articles" */ './articles/Article.vue')
+        },
+        {
           path: '/about',
           name: 'about',
           component: () => import(/* webpackChunkName: "about" */ './about/About.vue')
@@ -30,5 +35,13 @@ export class Router {
         }
       ]
     })
+  }
+
+  get value(): VueRouter {
+    return this._value
+  }
+
+  public static create(vueRouter: typeof VueRouter) {
+    return new Router(vueRouter)
   }
 }

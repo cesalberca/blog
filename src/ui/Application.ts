@@ -22,7 +22,7 @@ export class Application {
     this.serviceWorker.register()
 
     new this.vue({
-      router: this.router.create(),
+      router: this.router.value,
       render: h => h(app)
     }).$mount('#app')
   }

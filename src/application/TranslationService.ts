@@ -12,7 +12,9 @@ export class TranslationService {
       if (translation !== undefined) {
         return translation
       } else {
-        throw new TranslationError('Translation could not be found')
+        throw new TranslationError(
+          `Translation for key "${key}" in locale "${locale}" could not be found`
+        )
       }
     }
 

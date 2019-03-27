@@ -5,6 +5,6 @@ import VueRouter from 'vue-router'
 
 new Application(
   Vue,
-  new Router(VueRouter),
+  Router.create(VueRouter),
   new ServiceWorkerRegisterer(window.console.log)
 ).bootstrap(App)

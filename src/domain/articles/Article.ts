@@ -1,5 +1,5 @@
-import { Id } from './Id'
-import { Markdown } from './Markdown'
+import { Id } from '../Id'
+import { Markdown } from '../Markdown'
 
 export class Article {
   public constructor(

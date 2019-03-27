@@ -1,20 +1,22 @@
 <template>
-  <Page>
+  <div>
     <h1>{{ recentArticlesTitle }}</h1>
     <ArticleExcerpt
       v-for="article in recentArticles"
-      :key="article.id.value"
+      :key="article.id.slug"
       :excerpt="article.getExcerpt()"
+      @on-click="navigateToArticle"
     />
-  </Page>
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
 import { GetRecentArticles, TranslationService } from '../../application'
-import { Article } from '../../domain/articles/Article'
-import { ArticleExcerpt, Page } from '../commons'
-import { State } from '../state/State'
+import { Article, Id } from '../../domain/articles'
+import { ArticleExcerpt } from '../commons'
+import { State } from '../state'
+import { NavigateToArticle } from '../NavigateToArticle'
 
 @Component<Home>({
   async beforeRouteEnter(_to, _options, next) {
@@ -24,7 +26,6 @@ import { State } from '../state/State'
     })
   },
   components: {
-    Page,
     ArticleExcerpt
   }
 })
@@ -36,6 +37,10 @@ export default class Home extends Vue {
   readonly state!: State
 
   recentArticles: Article[] = []
+
+  navigateToArticle(id: Id) {
+    new NavigateToArticle(this.$router, id).execute()
+  }
 
   get recentArticlesTitle() {
     return this.translationService.translate(this.state.locale, 'home_recentArticles')

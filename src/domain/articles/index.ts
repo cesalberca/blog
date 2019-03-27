@@ -1,3 +1,3 @@
-export { Id } from './Id'
-export { Markdown } from './Markdown'
+export { Id } from '../Id'
+export { Markdown } from '../Markdown'
 export { Article } from './Article'

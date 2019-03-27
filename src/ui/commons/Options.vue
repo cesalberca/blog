@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { State } from '../state/State'
+import { State } from '../state'
 
 @Component
 export default class Options extends Vue {

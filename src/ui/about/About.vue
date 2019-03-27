@@ -1,10 +1,8 @@
 <template>
-  <Injector>
-    <Page>
-      <h1>{{ title }}</h1>
-      <p>{{ description }}</p>
-    </Page>
-  </Injector>
+  <div>
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+  </div>
 </template>
 
 <script lang="ts">

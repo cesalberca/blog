@@ -11,7 +11,7 @@ import { TranslationService } from '../../application'
 import { State } from '../state'
 import { Talk } from '../../domain/talks'
 import TalkComponent from './Talk.vue'
-import { GetTalksGiven } from '../../application/GetTalksGiven'
+import { GetTalksGiven } from '../../application/useCases/GetTalksGiven'
 import { TalkDetail } from './TalkDetail'
 
 @Component<Talks>({

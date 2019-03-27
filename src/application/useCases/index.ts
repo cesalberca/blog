@@ -1,0 +1,5 @@
+export { GetTalksGiven } from './GetTalksGiven'
+export { GetArticle } from './GetArticle'
+export { GetArticles } from './GetArticles'
+export { GetRecentArticles } from './GetRecentArticles'
+export { UseCaseFactory } from './UseCaseFactory'

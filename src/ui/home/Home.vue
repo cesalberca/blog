@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { GetRecentArticles, TranslationService } from '../../application'
+import { TranslationService, UseCaseFactory } from '../../application'
 import { Article, Id } from '../../domain/articles'
 import { ArticleExcerpt } from '../commons'
 import { State } from '../state'
@@ -20,7 +20,7 @@ import { NavigateToArticle } from '../NavigateToArticle'
 
 @Component<Home>({
   async beforeRouteEnter(_to, _options, next) {
-    const recentArticles = await new GetRecentArticles().execute()
+    const recentArticles = await UseCaseFactory.get<Article[]>('GetRecentArticles').execute()
     next(vm => {
       vm.recentArticles = recentArticles
     })

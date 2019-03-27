@@ -6,19 +6,17 @@
 
 <script lang="ts">
 import { Component, Provide, Vue } from 'vue-property-decorator'
-import { GetArticle, GetArticles, GetRecentArticles, TranslationService } from '../application'
-import { VueStateManager } from './state/VueStateManager'
+import { VueStateManager } from './state'
+import { TranslationService, UseCaseFactory } from '../application'
+import { Article } from '../domain/articles'
 
 @Component
 export default class Injector extends Vue {
   @Provide()
-  getArticle = new GetArticle()
+  getArticles = UseCaseFactory.get('GetArticles')
 
   @Provide()
-  getArticles = new GetArticles()
-
-  @Provide()
-  getRecentArticles = new GetRecentArticles()
+  getRecentArticles = UseCaseFactory.get<Article[]>('GetRecentArticles')
 
   @Provide()
   translationService = new TranslationService()

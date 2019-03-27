@@ -2,12 +2,16 @@ import { Id } from '../Id'
 import { Markdown } from '../Markdown'
 
 export class Article {
-  public constructor(
-    private readonly id: Id,
-    private readonly title: string,
-    private readonly date: Date,
-    private readonly body: Markdown
+  private constructor(
+    public readonly id: Id,
+    public readonly title: string,
+    public readonly date: Date,
+    public readonly body: Markdown
   ) {}
+
+  public static create(article: { id: Id; title: string; date: Date; body: Markdown }) {
+    return new Article(article.id, article.title, article.date, article.body)
+  }
 
   public getExcerpt() {
     return {

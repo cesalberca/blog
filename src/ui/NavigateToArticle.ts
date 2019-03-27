@@ -1,4 +1,4 @@
-import { Command } from '../application/Command'
+import { Command } from '../infraestructure/Command'
 import { Id } from '../domain'
 import { VueRouter } from 'vue-router/types/router'
 

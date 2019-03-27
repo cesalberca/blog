@@ -39,7 +39,7 @@ export default class Home extends Vue {
   recentArticles: Article[] = []
 
   navigateToArticle(id: Id) {
-    new NavigateToArticle(this.$router, id).execute()
+    new NavigateToArticle(this.$router, id, this.state.locale).execute()
   }
 
   get recentArticlesTitle() {

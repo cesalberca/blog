@@ -1,8 +1,9 @@
 import { Article, ArticlesRepository, Id, Markdown } from '../../domain/articles'
+import { Locale } from '../language'
 
 export class ArticlesFileRepository implements ArticlesRepository {
-  async findOne(id: Id): Promise<Article> {
-    const contents = await import(`./../../domain/articles/en/test-article.md`)
+  async findOneByLocale(id: Id, locale: Locale): Promise<Article> {
+    const contents = await import(`./../../domain/articles/${locale}/${id.value}.md`)
 
     const body = contents.default
 

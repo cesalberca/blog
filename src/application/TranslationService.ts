@@ -1,4 +1,9 @@
-import { Locale, TranslationError, TranslationIdentifiers, Translator } from '../ui/language'
+import {
+  Locale,
+  TranslationError,
+  TranslationIdentifiers,
+  Translator
+} from '../infraestructure/language'
 
 export class TranslationService {
   private readonly translator = new Translator()

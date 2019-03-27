@@ -6,7 +6,7 @@ export class ArticlesMother {
   static getFakeArticles() {
     return [
       Article.create({
-        id: Id.fromValue('Haciendo (Vue)n frontend'),
+        id: Id.fromValue('haciendo-vuen-frontend'),
         title: 'Haciendo (Vue)n frontend',
         date: new Date(),
         body: Markdown.fromValue(
@@ -14,7 +14,7 @@ export class ArticlesMother {
         )
       }),
       Article.create({
-        id: Id.fromValue('Patrones de Diseño'),
+        id: Id.fromValue('patrones-de-diseno'),
         title: 'Patrones de Diseño',
         date: new Date(),
         body: Markdown.fromValue(

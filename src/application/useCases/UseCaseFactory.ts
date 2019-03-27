@@ -13,7 +13,11 @@ export class UseCaseFactory {
       case 'GetTalksGiven':
         return (new GetTalksGiven() as unknown) as Command<T>
       case 'GetArticle':
-        return (new GetArticle(new ArticlesFileRepository(), context.id) as unknown) as Command<T>
+        return (new GetArticle(
+          new ArticlesFileRepository(),
+          context.id,
+          context.locale
+        ) as unknown) as Command<T>
       default:
         throw new Error(`Use case "${useCase}" not found`)
     }

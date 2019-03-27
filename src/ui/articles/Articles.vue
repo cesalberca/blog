@@ -5,7 +5,7 @@
       v-for="article in articles"
       :key="article.id.slug"
       :excerpt="article.getExcerpt()"
-      @on-click="navigateToArticle"
+      @on-click="navigateToArticle(article.id)"
     />
   </div>
 </template>
@@ -40,7 +40,7 @@ export default class Articles extends Vue {
   articles: Article[] = []
 
   navigateToArticle(id: Id) {
-    new NavigateToArticle(this.$router, id).execute()
+    new NavigateToArticle(this.$router, id, this.state.locale).execute()
   }
 
   get title() {

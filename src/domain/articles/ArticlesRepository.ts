@@ -1,6 +1,7 @@
 import { Id } from '../Id'
 import { Article } from './Article'
+import { Locale } from '../../infraestructure/language'
 
 export interface ArticlesRepository {
-  findOne(id: Id): Promise<Article>
+  findOneByLocale(id: Id, locale: Locale): Promise<Article>
 }

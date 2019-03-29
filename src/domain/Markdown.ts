@@ -1,3 +1,5 @@
+import marked from 'marked'
+
 export class Markdown {
   private constructor(private readonly _value: string) {}
 
@@ -9,7 +11,7 @@ export class Markdown {
     return this._value
   }
 
-  public toHtml() {
-    return this._value.toString()
+  public toHtml(): string {
+    return marked(this._value)
   }
 }

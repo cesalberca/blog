@@ -4,31 +4,29 @@ import { Datetime } from '../Datetime'
 
 export class ArticlesFileRepository implements ArticlesRepository {
   public async findOneByLocale(id: Id, locale: Locale): Promise<Article> {
-    const contents = await import(`./../../domain/articles/${locale}/${id.value}.md`)
-
-    const body = contents.default
+    const article = await import(`./../../domain/articles/${locale}/${id.value}.md`)
 
     return Article.create({
       id,
-      body: Markdown.fromValue(body),
-      date: Datetime.fromNow(),
-      title: 'foo'
+      body: Markdown.fromValue(article.body),
+      date: Datetime.fromValue(article.attributes.date),
+      title: article.attributes.title
     })
   }
 
   public async findAllByLocale(locale: Locale): Promise<Article[]> {
-    const articles = ['haciendo-vuen-frontend']
+    const articlesIds = ['haciendo-vuen-frontend']
 
-    const bodies = await Promise.all(
-      articles.map(article => import(`./../../domain/articles/${locale}/${article}.md`))
+    const articles = await Promise.all(
+      articlesIds.map(article => import(`./../../domain/articles/${locale}/${article}.md`))
     )
 
-    return bodies.map(body => {
+    return articles.map(article => {
       return Article.create({
-        id: Id.fromValue('foo'),
-        body: Markdown.fromValue(body.default),
+        id: Id.fromValue(article),
+        body: Markdown.fromValue(article.body),
         date: Datetime.fromNow(),
-        title: 'foo'
+        title: article.attributes.title
       })
     })
   }

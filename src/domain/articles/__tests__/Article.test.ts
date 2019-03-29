@@ -9,13 +9,13 @@ describe('Article', () => {
       id: Id.fromValue('foo'),
       title: 'foo',
       body: Markdown.fromValue('foo'),
-      date: Datetime.fromNow()
+      date: Datetime.fromValue(new Date(2019, 2, 27))
     })
 
     const excerpt = article.getExcerpt()
 
     expect(excerpt).toEqual({
-      body: 'foo',
+      body: '<p>foo</p>\n',
       date: 'March 27, 2019',
       id: Id.fromValue('foo'),
       title: 'foo'

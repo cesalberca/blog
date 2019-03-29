@@ -1,16 +1,23 @@
+---
+title: Haciendo (Vue)n frontend
+date: 2019-03-29
+---
+
 ¿SOLID, testing, separación por capas y patrones de diseño en el frontend con Vue y TypeScript? ¿Estamos locos? No, se puede hacer y además te lo enseño en este tutorial.
+
 <!--more-->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Índice
 
-- [1. Usa TypeScript](#1-usa-typescript)
-- [2. Usa Inject/Provide](#2-usa-injectprovide)
-- [3. Usa componentes y contenedores](#3-usa-componentes-y-contenedores)
-- [4. Haz testing](#4-haz-testing)
-- [5. Mueve lógica de negocio fuera de los componentes](#5-mueve-l%C3%B3gica-de-negocio-fuera-de-los-componentes)
-- [Conclusión](#conclusi%C3%B3n)
+-   [1. Usa TypeScript](#1-usa-typescript)
+-   [2. Usa Inject/Provide](#2-usa-injectprovide)
+-   [3. Usa componentes y contenedores](#3-usa-componentes-y-contenedores)
+-   [4. Haz testing](#4-haz-testing)
+-   [5. Mueve lógica de negocio fuera de los componentes](#5-mueve-l%C3%B3gica-de-negocio-fuera-de-los-componentes)
+-   [Conclusión](#conclusi%C3%B3n)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -40,70 +47,70 @@ Comenzamos imaginando que nuestro componente llama a un [repositorio](https://de
 
 ```vue
 <template>
-  <section class="viewer">
-    <header>
-      <h1>Gravatar Viewer</h1>
-      <label for="email">Email</label>
-      <input name="email" type="email" v-model="email" class="email" />
-    </header>
+    <section class="viewer">
+        <header>
+            <h1>Gravatar Viewer</h1>
+            <label for="email">Email</label>
+            <input name="email" type="email" v-model="email" class="email" />
+        </header>
 
-    <main v-if="showUser">
-      <h3>User</h3>
-      <img :src="user.photo" alt="User image" />
-    </main>
-  </section>
+        <main v-if="showUser">
+            <h3>User</h3>
+            <img :src="user.photo" alt="User image" />
+        </main>
+    </section>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch } from "vue-property-decorator";
-import { GravatarRepository } from "../domains/gravatar/repositories/GravatarRepository";
-import { GravatarRepositoryFactory } from "../domains/gravatar/repositories/GravatarRepositoryFactory";
-import { User } from "../domains/users/User";
-import md5 from "md5";
-import { debounce } from "../utils/debounce";
+import { Component, Vue, Watch } from 'vue-property-decorator'
+import { GravatarRepository } from '../domains/gravatar/repositories/GravatarRepository'
+import { GravatarRepositoryFactory } from '../domains/gravatar/repositories/GravatarRepositoryFactory'
+import { User } from '../domains/users/User'
+import md5 from 'md5'
+import { debounce } from '../utils/debounce'
 
 @Component
 export default class UserComponent extends Vue {
-  email: string = "";
-  user: User = User.empty();
-  gravatarRepository: GravatarRepository = GravatarRepositoryFactory.photo();
-  debouncedQueryEmail!: () => void;
+    email: string = ''
+    user: User = User.empty()
+    gravatarRepository: GravatarRepository = GravatarRepositoryFactory.photo()
+    debouncedQueryEmail!: () => void
 
-  created() {
-    this.debouncedQueryEmail = debounce(this.queryEmail, 1000);
-  }
+    created() {
+        this.debouncedQueryEmail = debounce(this.queryEmail, 1000)
+    }
 
-  get showUser() {
-    return this.user.exists();
-  }
+    get showUser() {
+        return this.user.exists()
+    }
 
-  @Watch("email")
-  onEmailChange() {
-    this.debouncedQueryEmail();
-  }
+    @Watch('email')
+    onEmailChange() {
+        this.debouncedQueryEmail()
+    }
 
-  async queryEmail() {
-    const hash = md5(this.email);
-    const user = await this.gravatarRepository.getUserByEmailHash(hash);
-    this.user = user;
-  }
+    async queryEmail() {
+        const hash = md5(this.email)
+        const user = await this.gravatarRepository.getUserByEmailHash(hash)
+        this.user = user
+    }
 }
 </script>
 <style scoped>
 .viewer {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .email {
-  margin-left: 8px;
+    margin-left: 8px;
 }
 </style>
 ```
 
-Aquí tendremos un problema muy grande si queremos mañana consumir un repositorio distinto. Tendremos que cambiar _todos_ los componentes donde haya una concreción como la hay cuando se llama a la factoría `GravatarRepositoryFactory.photo()`. 
+Aquí tendremos un problema muy grande si queremos mañana consumir un repositorio distinto. Tendremos que cambiar _todos_ los componentes donde haya una concreción como la hay cuando se llama a la factoría `GravatarRepositoryFactory.photo()`.
 
 Además los tests de este componente van a ser insufribles, porque tendremos que de alguna forma mockear el import, ya que no queremos que haga peticiones de verdad en el test unitario ya que este pasaría de ser unitario a de integración.
 
@@ -113,67 +120,67 @@ Con inject podemos mejorar esta situación:
 
 ```vue
 <template>
-  <section class="viewer">
-    <header>
-      <h1>Gravatar Viewer</h1>
-      <label for="email">Email</label>
-      <input name="email" type="email" v-model="email" class="email" />
-    </header>
+    <section class="viewer">
+        <header>
+            <h1>Gravatar Viewer</h1>
+            <label for="email">Email</label>
+            <input name="email" type="email" v-model="email" class="email" />
+        </header>
 
-    <main v-if="showUser">
-      <h3>User</h3>
-      <img :src="user.photo" alt="User image" />
-    </main>
-  </section>
+        <main v-if="showUser">
+            <h3>User</h3>
+            <img :src="user.photo" alt="User image" />
+        </main>
+    </section>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Inject } from "vue-property-decorator";
-import { GravatarRepository } from "../domains/gravatar/repositories/GravatarRepository";
-import { User } from "../domains/users/User";
-import md5 from "md5";
-import { debounce } from "../utils/debounce";
+import { Component, Vue, Watch, Inject } from 'vue-property-decorator'
+import { GravatarRepository } from '../domains/gravatar/repositories/GravatarRepository'
+import { User } from '../domains/users/User'
+import md5 from 'md5'
+import { debounce } from '../utils/debounce'
 
 @Component
 export default class UserComponent extends Vue {
-  email: string = "";
-  user: User = User.empty();
+    email: string = ''
+    user: User = User.empty()
 
-  @Inject()
-  gravatarRepository!: GravatarRepository;
+    @Inject()
+    gravatarRepository!: GravatarRepository
 
-  debouncedQueryEmail!: () => void;
+    debouncedQueryEmail!: () => void
 
-  created() {
-    this.debouncedQueryEmail = debounce(this.queryEmail, 1000);
-  }
+    created() {
+        this.debouncedQueryEmail = debounce(this.queryEmail, 1000)
+    }
 
-  get showUser() {
-    return this.user.exists();
-  }
+    get showUser() {
+        return this.user.exists()
+    }
 
-  @Watch("email")
-  onEmailChange() {
-    this.debouncedQueryEmail();
-  }
+    @Watch('email')
+    onEmailChange() {
+        this.debouncedQueryEmail()
+    }
 
-  async queryEmail() {
-    const hash = md5(this.email);
-    const user = await this.gravatarRepository.getUserByEmailHash(hash);
-    this.user = user;
-  }
+    async queryEmail() {
+        const hash = md5(this.email)
+        const user = await this.gravatarRepository.getUserByEmailHash(hash)
+        this.user = user
+    }
 }
 </script>
 <style scoped>
 .viewer {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .email {
-  margin-left: 8px;
+    margin-left: 8px;
 }
 </style>
 ```
@@ -182,19 +189,19 @@ El cambio es muy sutil, pero muy efectivo. Ahora nos falta proveer de la impleme
 
 ```vue
 <template>
-  <div><slot /></div>
+    <div><slot /></div>
 </template>
 <script lang="ts">
-import { Component, Vue, Provide } from "vue-property-decorator";
-import { GravatarRepositoryFactory } from "./../domains/gravatar/repositories/GravatarRepositoryFactory";
-import { GravatarRepository } from "./../domains/gravatar/repositories/GravatarRepository";
-import { debounce } from "./../utils/debounce";
-import { hasher } from "./../utils/hasher";
+import { Component, Vue, Provide } from 'vue-property-decorator'
+import { GravatarRepositoryFactory } from './../domains/gravatar/repositories/GravatarRepositoryFactory'
+import { GravatarRepository } from './../domains/gravatar/repositories/GravatarRepository'
+import { debounce } from './../utils/debounce'
+import { hasher } from './../utils/hasher'
 
 @Component
 export default class ProviderFactory extends Vue {
-  @Provide()
-  gravatarRepository: GravatarRepository = GravatarRepositoryFactory.photo();
+    @Provide()
+    gravatarRepository: GravatarRepository = GravatarRepositoryFactory.photo()
 }
 </script>
 ```
@@ -203,19 +210,19 @@ Y ahora en el fichero `App.vue` haremos uso de él:
 
 ```vue
 <template>
-  <ProviderFactory> <AvatarViewerContainer /> </ProviderFactory>
+    <ProviderFactory> <AvatarViewerContainer /> </ProviderFactory>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
-import AvatarViewerContainer from "./components/AvatarViewerContainer.vue";
-import ProviderFactory from "./components/ProviderFactory.vue";
+import { Vue, Component } from 'vue-property-decorator'
+import AvatarViewerContainer from './components/AvatarViewerContainer.vue'
+import ProviderFactory from './components/ProviderFactory.vue'
 
 @Component({
-  components: {
-    AvatarViewerContainer,
-    ProviderFactory
-  }
+    components: {
+        AvatarViewerContainer,
+        ProviderFactory
+    }
 })
 export default class App extends Vue {}
 </script>
@@ -237,23 +244,23 @@ Como ejemplo vamos a refactorizar nuestro componente `UserComponenteInject`. Cre
 
 ```vue
 <template>
-  <div v-if="showUser">
-    <h3>User</h3>
-    <img :src="user.photo" alt="User image" />
-  </div>
+    <div v-if="showUser">
+        <h3>User</h3>
+        <img :src="user.photo" alt="User image" />
+    </div>
 </template>
 <script lang="ts">
-import { Prop, Component, Vue } from "vue-property-decorator";
-import { User } from "../domains/users/User";
+import { Prop, Component, Vue } from 'vue-property-decorator'
+import { User } from '../domains/users/User'
 
 @Component
 export default class AvatarComponent extends Vue {
-  @Prop({ type: Object, default: () => User.empty() })
-  user!: User;
+    @Prop({ type: Object, default: () => User.empty() })
+    user!: User
 
-  get showUser() {
-    return this.user.exists();
-  }
+    get showUser() {
+        return this.user.exists()
+    }
 }
 </script>
 ```
@@ -262,96 +269,96 @@ Ahora podemos crear el componente que se encarga del input del email. Creamos el
 
 ```vue
 <template>
-  <header>
-    <h1>Gravatar Viewer</h1>
-    <label for="email">Email</label>
-    <input name="email" type="email" @input="onEmailChange" class="email" />
-  </header>
+    <header>
+        <h1>Gravatar Viewer</h1>
+        <label for="email">Email</label>
+        <input name="email" type="email" @input="onEmailChange" class="email" />
+    </header>
 </template>
 <script lang="ts">
-import { Component, Vue, Emit } from "vue-property-decorator";
+import { Component, Vue, Emit } from 'vue-property-decorator'
 
 @Component
 export default class UserFormComponent extends Vue {
-  @Emit()
-  onEmailChange(event: Event) {
-    return (event.target as HTMLInputElement).value;
-  }
+    @Emit()
+    onEmailChange(event: Event) {
+        return (event.target as HTMLInputElement).value
+    }
 }
 </script>
 <style scoped>
 .email {
-  margin-left: 8px;
+    margin-left: 8px;
 }
 </style>
 ```
 
-Y por último creamos `AvatarViewerContainer`: 
+Y por último creamos `AvatarViewerContainer`:
 
 ```vue
 <template>
-  <section class="viewer">
-    <UserFormComponent @on-email-change="updateEmail" />
-    <AvatarComponent :user="user" />
-  </section>
+    <section class="viewer">
+        <UserFormComponent @on-email-change="updateEmail" />
+        <AvatarComponent :user="user" />
+    </section>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Inject } from "vue-property-decorator";
-import { GravatarRepository } from "../domains/gravatar/repositories/GravatarRepository";
-import UserFormComponent from "./UserFormComponent.vue";
-import AvatarComponent from "./AvatarComponent.vue";
-import { User } from "../domains/users/User";
-import { debounce } from "../utils/debounce";
-import { hasher } from "../utils/hasher";
+import { Component, Vue, Watch, Inject } from 'vue-property-decorator'
+import { GravatarRepository } from '../domains/gravatar/repositories/GravatarRepository'
+import UserFormComponent from './UserFormComponent.vue'
+import AvatarComponent from './AvatarComponent.vue'
+import { User } from '../domains/users/User'
+import { debounce } from '../utils/debounce'
+import { hasher } from '../utils/hasher'
 
 @Component({
-  components: {
-    AvatarComponent,
-    UserFormComponent
-  }
+    components: {
+        AvatarComponent,
+        UserFormComponent
+    }
 })
 export default class AvatarViewerContainer extends Vue {
-  email: string = "";
-  user: User = User.empty();
+    email: string = ''
+    user: User = User.empty()
 
-  @Inject()
-  gravatarRepository!: GravatarRepository;
+    @Inject()
+    gravatarRepository!: GravatarRepository
 
-  @Inject()
-  debounce!: typeof debounce;
+    @Inject()
+    debounce!: typeof debounce
 
-  @Inject()
-  hasher!: typeof hasher;
+    @Inject()
+    hasher!: typeof hasher
 
-  debouncedQueryEmail!: () => void;
+    debouncedQueryEmail!: () => void
 
-  created() {
-    this.debouncedQueryEmail = this.debounce(this.queryEmail, 1000);
-  }
+    created() {
+        this.debouncedQueryEmail = this.debounce(this.queryEmail, 1000)
+    }
 
-  @Watch("email")
-  onEmailChange() {
-    this.debouncedQueryEmail();
-  }
+    @Watch('email')
+    onEmailChange() {
+        this.debouncedQueryEmail()
+    }
 
-  updateEmail(email: string) {
-    this.email = email;
-  }
+    updateEmail(email: string) {
+        this.email = email
+    }
 
-  async queryEmail() {
-    const hash = this.hasher(this.email);
-    const user = await this.gravatarRepository.getUserByEmailHash(hash);
-    this.user = user;
-  }
+    async queryEmail() {
+        const hash = this.hasher(this.email)
+        const user = await this.gravatarRepository.getUserByEmailHash(hash)
+        this.user = user
+    }
 }
 </script>
 <style scoped>
 .viewer {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 </style>
 ```
@@ -360,25 +367,25 @@ También modificamos el ProviderFactory para inyectar el `debounce` y el `hasher
 
 ```vue
 <template>
-  <div><slot /></div>
+    <div><slot /></div>
 </template>
 <script lang="ts">
-import { Component, Vue, Provide } from "vue-property-decorator";
-import { GravatarRepositoryFactory } from "./../domains/gravatar/repositories/GravatarRepositoryFactory";
-import { GravatarRepository } from "./../domains/gravatar/repositories/GravatarRepository";
-import { debounce } from "./../utils/debounce";
-import { hasher } from "./../utils/hasher";
+import { Component, Vue, Provide } from 'vue-property-decorator'
+import { GravatarRepositoryFactory } from './../domains/gravatar/repositories/GravatarRepositoryFactory'
+import { GravatarRepository } from './../domains/gravatar/repositories/GravatarRepository'
+import { debounce } from './../utils/debounce'
+import { hasher } from './../utils/hasher'
 
 @Component
 export default class ProviderFactory extends Vue {
-  @Provide()
-  gravatarRepository: GravatarRepository = GravatarRepositoryFactory.photo();
+    @Provide()
+    gravatarRepository: GravatarRepository = GravatarRepositoryFactory.photo()
 
-  @Provide()
-  debounce = debounce;
+    @Provide()
+    debounce = debounce
 
-  @Provide()
-  hasher = hasher;
+    @Provide()
+    hasher = hasher
 }
 </script>
 ```
@@ -390,141 +397,138 @@ Como puedes ver en proyecto de ejemplo, todos los componentes y piezas están te
 Por ejemplo veamos el `AvatarViewerContainer.spec.ts`:
 
 ```typescript
-import Vue from "vue";
-import AvatarViewerContainer from "./../AvatarViewerContainer.vue";
-import { Wrapper, shallowMount } from "@vue/test-utils";
-import { User } from "../../domains/users/User";
-import { flushPromises } from "../../utils/flushPromises";
-import { hasher } from "../../utils/hasher";
-import { debounce } from "../../utils/debounce";
-import { GravatarRepository } from "../../domains/gravatar/repositories/GravatarRepository";
+import Vue from 'vue'
+import AvatarViewerContainer from './../AvatarViewerContainer.vue'
+import { Wrapper, shallowMount } from '@vue/test-utils'
+import { User } from '../../domains/users/User'
+import { flushPromises } from '../../utils/flushPromises'
+import { hasher } from '../../utils/hasher'
+import { debounce } from '../../utils/debounce'
+import { GravatarRepository } from '../../domains/gravatar/repositories/GravatarRepository'
 
-describe("AvatarViewerContainer", () => {
-  let wrapper: Wrapper<Vue>;
-  let gravatarRepositoryMock: GravatarRepository;
-  let debounceMock: typeof debounce;
-  let hasherMock: typeof hasher;
+describe('AvatarViewerContainer', () => {
+    let wrapper: Wrapper<Vue>
+    let gravatarRepositoryMock: GravatarRepository
+    let debounceMock: typeof debounce
+    let hasherMock: typeof hasher
 
-  beforeEach(() => {
-    hasherMock = jest.fn();
-    debounceMock = jest.fn((func: Function) => () => func());
-    gravatarRepositoryMock = {
-      getUserByEmailHash: jest
-        .fn()
-        .mockReturnValue(Promise.resolve(new User("foo")))
-    };
+    beforeEach(() => {
+        hasherMock = jest.fn()
+        debounceMock = jest.fn((func: Function) => () => func())
+        gravatarRepositoryMock = {
+            getUserByEmailHash: jest.fn().mockReturnValue(Promise.resolve(new User('foo')))
+        }
 
-    wrapper = shallowMount(AvatarViewerContainer, {
-      provide: {
-        gravatarRepository: gravatarRepositoryMock,
-        debounce: debounceMock,
-        hasher: hasherMock
-      }
-    });
-  });
+        wrapper = shallowMount(AvatarViewerContainer, {
+            provide: {
+                gravatarRepository: gravatarRepositoryMock,
+                debounce: debounceMock,
+                hasher: hasherMock
+            }
+        })
+    })
 
-  it("should call gravatarRepository when email changes", async () => {
-    const userFormComponent = wrapper.find({ name: "UserFormComponent" });
+    it('should call gravatarRepository when email changes', async () => {
+        const userFormComponent = wrapper.find({ name: 'UserFormComponent' })
 
-    userFormComponent.vm.$emit("on-email-change", "foo@foo.com");
-    await flushPromises();
+        userFormComponent.vm.$emit('on-email-change', 'foo@foo.com')
+        await flushPromises()
 
-    expect(gravatarRepositoryMock.getUserByEmailHash).toHaveBeenCalled();
-  });
+        expect(gravatarRepositoryMock.getUserByEmailHash).toHaveBeenCalled()
+    })
 
-  it("should debounce call when email changes", async () => {
-    const userFormComponent = wrapper.find({ name: "UserFormComponent" });
+    it('should debounce call when email changes', async () => {
+        const userFormComponent = wrapper.find({ name: 'UserFormComponent' })
 
-    userFormComponent.vm.$emit("on-email-change", "foo@foo.com");
-    await flushPromises();
+        userFormComponent.vm.$emit('on-email-change', 'foo@foo.com')
+        await flushPromises()
 
-    expect(debounceMock).toHaveBeenCalled();
-  });
+        expect(debounceMock).toHaveBeenCalled()
+    })
 
-  it("should set user to AvatarComponent", async () => {
-    const userFormComponent = wrapper.find({ name: "UserFormComponent" });
-    const avatarComponent = wrapper.find({ name: "AvatarComponent" });
+    it('should set user to AvatarComponent', async () => {
+        const userFormComponent = wrapper.find({ name: 'UserFormComponent' })
+        const avatarComponent = wrapper.find({ name: 'AvatarComponent' })
 
-    userFormComponent.vm.$emit("on-email-change", "foo@foo.com");
-    await flushPromises();
+        userFormComponent.vm.$emit('on-email-change', 'foo@foo.com')
+        await flushPromises()
 
-    expect(avatarComponent.props("user").photo).toBe("foo");
-  });
+        expect(avatarComponent.props('user').photo).toBe('foo')
+    })
 
-  it("should use the hasher", async () => {
-    expect.assertions(1);
+    it('should use the hasher', async () => {
+        expect.assertions(1)
 
-    const userFormComponent = wrapper.find({ name: "UserFormComponent" });
+        const userFormComponent = wrapper.find({ name: 'UserFormComponent' })
 
-    userFormComponent.vm.$emit("on-email-change", "foo@foo.com");
-    await flushPromises();
+        userFormComponent.vm.$emit('on-email-change', 'foo@foo.com')
+        await flushPromises()
 
-    expect(hasherMock).toHaveBeenCalledWith("foo@foo.com");
-  });
-});
+        expect(hasherMock).toHaveBeenCalledWith('foo@foo.com')
+    })
+})
 ```
 
 O el componente `AvatarComponent.spec.ts`:
 
-
 ```typescript
-import Vue from "vue";
-import AvatarComponent from "../AvatarComponent.vue";
-import { Wrapper, shallowMount } from "@vue/test-utils";
-import { User } from "../../domains/users/User";
+import Vue from 'vue'
+import AvatarComponent from '../AvatarComponent.vue'
+import { Wrapper, shallowMount } from '@vue/test-utils'
+import { User } from '../../domains/users/User'
 
-describe("AvatarComponent", () => {
-  let wrapper: Wrapper<Vue>;
+describe('AvatarComponent', () => {
+    let wrapper: Wrapper<Vue>
 
-  beforeEach(() => {
-    wrapper = shallowMount(AvatarComponent);
-  });
+    beforeEach(() => {
+        wrapper = shallowMount(AvatarComponent)
+    })
 
-  it("should hide if the user doesn't exist", () => {
-    wrapper.setProps({ user: User.empty() });
+    it("should hide if the user doesn't exist", () => {
+        wrapper.setProps({ user: User.empty() })
 
-    expect(wrapper.html()).toBeUndefined();
-  });
+        expect(wrapper.html()).toBeUndefined()
+    })
 
-  it("should show if the user exists", () => {
-    wrapper.setProps({ user: new User("foo") });
+    it('should show if the user exists', () => {
+        wrapper.setProps({ user: new User('foo') })
 
-    expect(wrapper.html()).toBeDefined();
-  });
+        expect(wrapper.html()).toBeDefined()
+    })
 
-  it("should set the image url with the user's photo", () => {
-    wrapper.setProps({ user: new User("foo") });
+    it("should set the image url with the user's photo", () => {
+        wrapper.setProps({ user: new User('foo') })
 
-    const image = wrapper.find("img");
-    expect(image.attributes("src")).toEqual("foo");
-  });
-});
+        const image = wrapper.find('img')
+        expect(image.attributes('src')).toEqual('foo')
+    })
+})
 ```
 
 Y el `UserFormComponent`:
 
 ```typescript
-import Vue from "vue";
-import UserFormComponent from "./../UserFormComponent.vue";
-import { shallowMount, Wrapper } from "@vue/test-utils";
+import Vue from 'vue'
+import UserFormComponent from './../UserFormComponent.vue'
+import { shallowMount, Wrapper } from '@vue/test-utils'
 
-describe("UserFormComponent", () => {
-  let wrapper: Wrapper<Vue>;
+describe('UserFormComponent', () => {
+    let wrapper: Wrapper<Vue>
 
-  beforeEach(() => {
-    wrapper = shallowMount(UserFormComponent);
-  });
+    beforeEach(() => {
+        wrapper = shallowMount(UserFormComponent)
+    })
 
-  it("should emit event", () => {
-    const input = wrapper.find("input");
-    (input.element as HTMLInputElement).value = "foo";
-    input.trigger("input");
-    expect(wrapper.emitted("on-email-change")[0][0]).toEqual("foo");
-  });
-});
+    it('should emit event', () => {
+        const input = wrapper.find('input')
+        ;(input.element as HTMLInputElement).value = 'foo'
+        input.trigger('input')
+        expect(wrapper.emitted('on-email-change')[0][0]).toEqual('foo')
+    })
+})
 ```
 
-No hacer testing __nunca__ está justificado.
+No hacer testing **nunca** está justificado.
 
 ## 5. Mueve lógica de negocio fuera de los componentes
 
@@ -533,10 +537,10 @@ Como hemos visto antes en el contenedor `AvatarViewerContainer` había un `Grava
 Veamos más detenidamente `GravatarRepository`:
 
 ```typescript
-import { User } from "../../users/User";
+import { User } from '../../users/User'
 
 export interface GravatarRepository {
-  getUserByEmailHash(hash: string): Promise<User>;
+    getUserByEmailHash(hash: string): Promise<User>
 }
 ```
 
@@ -545,55 +549,53 @@ Pues resulta que es una interfaz. ¿Por qué? Porque esto nos permite definir va
 Aquí está `GravatarBlobRepository`:
 
 ```typescript
-import { GravatarRepository } from "./GravatarRepository";
-import { User } from "../../users/User";
-import { Fetcher } from "../../Fetcher";
+import { GravatarRepository } from './GravatarRepository'
+import { User } from '../../users/User'
+import { Fetcher } from '../../Fetcher'
 
 export class GravatarBlobRepository implements GravatarRepository {
-  private url: string;
+    private url: string
 
-  constructor(private readonly fetcher: Fetcher) {
-    this.url =
-      "https://cors-anywhere.herokuapp.com/https://seccdn.libravatar.org/avatar";
-  }
+    constructor(private readonly fetcher: Fetcher) {
+        this.url = 'https://cors-anywhere.herokuapp.com/https://seccdn.libravatar.org/avatar'
+    }
 
-  async getUserByEmailHash(hash: string): Promise<User> {
-    const response = await this.fetcher(`${this.url}/${hash}`);
-    const result = await response.blob();
-    const object = URL.createObjectURL(result);
-    return new User(object);
-  }
+    async getUserByEmailHash(hash: string): Promise<User> {
+        const response = await this.fetcher(`${this.url}/${hash}`)
+        const result = await response.blob()
+        const object = URL.createObjectURL(result)
+        return new User(object)
+    }
 }
-``` 
+```
 
 Por constructor le hemos pasado un `fetcher`, este es el encargado de recoger los datos de una API y tiene el siguiente tipo:
 
-
 ```typescript
 export type Fetcher = <Response = any>(
-  query: string,
-  options?: {
-    mode: string;
-  }
-) => Promise<{ json: () => Promise<Response>; blob: () => Promise<Response> }>;
+    query: string,
+    options?: {
+        mode: string
+    }
+) => Promise<{ json: () => Promise<Response>; blob: () => Promise<Response> }>
 ```
 
 A aquellos que les suene verá que es igualito que el API de [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), que es el que usaremos luego en verdad.
 
-Y por último, ¿dónde creamos la instancia de `GravatarBlobRepository`? Pues con una factoría. 
+Y por último, ¿dónde creamos la instancia de `GravatarBlobRepository`? Pues con una factoría.
 
 `GravataRepositoryFactory`:
 
 ```typescript
-import { GravatarRepository } from "./GravatarRepository";
-import { GravatarBlobRepository } from "./GravatarBlobRepository";
-import { Fetcher } from "../../Fetcher";
+import { GravatarRepository } from './GravatarRepository'
+import { GravatarBlobRepository } from './GravatarBlobRepository'
+import { Fetcher } from '../../Fetcher'
 
 export class GravatarRepositoryFactory {
-  static photo(): GravatarRepository {
-    const fetcher = window.fetch.bind(window) as Fetcher;
-    return new GravatarBlobRepository(fetcher);
-  }
+    static photo(): GravatarRepository {
+        const fetcher = window.fetch.bind(window) as Fetcher
+        return new GravatarBlobRepository(fetcher)
+    }
 }
 ```
 
@@ -601,20 +603,19 @@ Aquí vemos que hemos pasado de una abstracción `Fetcher` a una concreción: `w
 
 Por último hemos modelado nuestro usuario con una clase. Aquí tenemos el modelo del `User`:
 
-
-````typescript
+```typescript
 export class User {
-  constructor(private readonly photo: string) {}
+    constructor(private readonly photo: string) {}
 
-  static empty() {
-    return new User("");
-  }
+    static empty() {
+        return new User('')
+    }
 
-  exists(): boolean {
-    return this.photo.length !== 0;
-  }
+    exists(): boolean {
+        return this.photo.length !== 0
+    }
 }
-````
+```
 
 Es importante evitar que nuestros modelos sean interfaces sin comportamiento o clases con setters o propiedades públicas, ya que nos pueden llevar a [modelos anémicos](https://www.martinfowler.com/bliki/AnemicDomainModel.html), es decir modelos que son una bolsa de propiedades, siendo imposible determinar cual es su estado válido, delegando en el consumidor la lógica de validez, lo que haría a su vez que duplicásemos esa lógica.
 

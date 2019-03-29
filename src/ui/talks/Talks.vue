@@ -7,16 +7,15 @@
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { TranslationService } from '../../application'
+import { TranslationService, UseCaseFactory } from '../../application'
 import { State } from '../state'
 import { Talk } from '../../domain/talks'
 import TalkComponent from './Talk.vue'
-import { GetTalksGiven } from '../../application/useCases/GetTalksGiven'
 import { TalkDetail } from './TalkDetail'
 
 @Component<Talks>({
   async beforeRouteEnter(_to, _options, next) {
-    const talks = await new GetTalksGiven().execute()
+    const talks = await UseCaseFactory.get<Talk[]>('GetTalksGiven').execute()
 
     next(vm => {
       vm.talks = talks

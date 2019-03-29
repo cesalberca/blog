@@ -13,9 +13,6 @@ import { Article } from '../domain/articles'
 @Component
 export default class Injector extends Vue {
   @Provide()
-  getArticles = UseCaseFactory.get('GetArticles')
-
-  @Provide()
   getRecentArticles = UseCaseFactory.get<Article[]>('GetRecentArticles')
 
   @Provide()

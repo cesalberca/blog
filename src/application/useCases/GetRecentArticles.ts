@@ -1,5 +1,5 @@
 import { Command } from '../../infraestructure/Command'
-import { Article } from '../../domain/articles/Article'
+import { Article } from '../../domain/articles'
 import { ArticlesMother } from '../../domain/articles/ArticlesMother'
 
 export class GetRecentArticles implements Command<Article[]> {

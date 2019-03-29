@@ -20,8 +20,10 @@ import { Id } from '../../domain'
 import { NavigateToArticle } from '../NavigateToArticle'
 
 @Component<Articles>({
-  async beforeRouteEnter(_to, _options, next) {
-    const articles = await UseCaseFactory.get<Article[]>('GetArticles').execute()
+  async beforeRouteEnter(to, _options, next) {
+    const articles = await UseCaseFactory.get<Article[]>('GetArticles', {
+      locale: to.params.locale || 'en'
+    }).execute()
     next(vm => {
       vm.articles = articles
     })

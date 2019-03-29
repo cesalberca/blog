@@ -2,7 +2,7 @@
   <div class="excerpt" @click="onClick">
     <h3>{{ excerpt.title }}</h3>
     <span class="slugline">{{ excerpt.date }}</span>
-    <p>{{ excerpt.body }}</p>
+    <p v-html="excerpt.body"></p>
   </div>
 </template>
 

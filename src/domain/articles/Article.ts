@@ -3,8 +3,6 @@ import { Markdown } from '../Markdown'
 import { Datetime } from '../../infraestructure/Datetime'
 
 export class Article {
-  private static readonly EXCERPT_MAX_CHARACTERS = 500
-
   private constructor(
     public readonly id: Id,
     public readonly title: string,
@@ -21,11 +19,15 @@ export class Article {
       id: this.id,
       title: this.title,
       date: this.getFormattedDate(),
-      body: this.body.toHtml().substr(0, Article.EXCERPT_MAX_CHARACTERS)
+      body: this.getSummary(this.body.toHtml())
     }
   }
 
   private getFormattedDate() {
     return this.date.format()
+  }
+
+  private getSummary(body: string) {
+    return body.split('<!--more-->')[0]
   }
 }

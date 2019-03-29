@@ -14,7 +14,7 @@ import TalkComponent from './Talk.vue'
 import { TalkDetail } from './TalkDetail'
 
 @Component<Talks>({
-  async beforeRouteEnter(_to, _options, next) {
+  async beforeRouteEnter(_to, _from, next) {
     const talks = await UseCaseFactory.get<Talk[]>('GetTalksGiven').execute()
 
     next(vm => {

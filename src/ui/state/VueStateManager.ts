@@ -3,12 +3,21 @@ import { StateManager } from './StateManager'
 import { State } from './State'
 
 export class VueStateManager {
-  private readonly _state: State
+  private static _instance: VueStateManager | null = null
+  private _state: State = new State()
 
-  constructor(private readonly vue: VueConstructor) {
+  public static get instance(): VueStateManager {
+    if (this._instance === null) {
+      this._instance = new VueStateManager()
+    }
+    return this._instance
+  }
+
+  public create(vue: VueConstructor) {
     const stateManager = new StateManager()
     const state = stateManager.state
-    this._state = this.vue.observable(state)
+    this._state = vue.observable(state)
+    return this
   }
 
   get state(): State {

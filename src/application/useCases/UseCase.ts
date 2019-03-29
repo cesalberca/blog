@@ -1,1 +1,1 @@
-export type UseCase = 'GetArticle' | 'GetArticles' | 'GetRecentArticles' | 'GetTalksGiven'
+export type UseCase = 'GetArticle' | 'GetAllArticles' | 'GetTalksGiven'

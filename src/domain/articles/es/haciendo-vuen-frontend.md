@@ -1,4 +1,5 @@
 ---
+id: haciend
 title: Haciendo (Vue)n frontend
 date: 2019-03-29
 ---

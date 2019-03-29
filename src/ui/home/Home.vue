@@ -2,7 +2,7 @@
   <div>
     <h1>{{ recentArticlesTitle }}</h1>
     <ArticleExcerpt
-      v-for="article in recentArticles"
+      v-for="article in articles"
       :key="article.id.slug"
       :excerpt="article.getExcerpt()"
       @on-click="navigateToArticle"
@@ -15,14 +15,16 @@ import { Component, Inject, Vue } from 'vue-property-decorator'
 import { TranslationService, UseCaseFactory } from '../../application'
 import { Article, Id } from '../../domain/articles'
 import { ArticleExcerpt } from '../commons'
-import { State } from '../state'
+import { State, VueStateManager } from '../state'
 import { NavigateToArticle } from '../NavigateToArticle'
 
 @Component<Home>({
-  async beforeRouteEnter(_to, _options, next) {
-    const recentArticles = await UseCaseFactory.get<Article[]>('GetRecentArticles').execute()
+  async beforeRouteEnter(_to, _from, next) {
+    const articles = await UseCaseFactory.get<Article[]>('GetAllArticles', {
+      locale: VueStateManager.instance.state.locale
+    }).execute()
     next(vm => {
-      vm.recentArticles = recentArticles
+      vm.articles = articles
     })
   },
   components: {
@@ -36,7 +38,7 @@ export default class Home extends Vue {
   @Inject()
   readonly state!: State
 
-  recentArticles: Article[] = []
+  articles: Article[] = []
 
   navigateToArticle(id: Id) {
     new NavigateToArticle(this.$router, id, this.state.locale).execute()

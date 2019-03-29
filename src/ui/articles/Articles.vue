@@ -15,14 +15,14 @@ import { Component, Inject, Vue } from 'vue-property-decorator'
 import { TranslationService, UseCaseFactory } from '../../application'
 import { ArticleExcerpt } from '../commons'
 import { Article } from '../../domain/articles'
-import { State } from '../state'
+import { State, VueStateManager } from '../state'
 import { Id } from '../../domain'
 import { NavigateToArticle } from '../NavigateToArticle'
 
 @Component<Articles>({
-  async beforeRouteEnter(to, _options, next) {
-    const articles = await UseCaseFactory.get<Article[]>('GetArticles', {
-      locale: to.params.locale || 'en'
+  async beforeRouteEnter(_to, _from, next) {
+    const articles = await UseCaseFactory.get<Article[]>('GetAllArticles', {
+      locale: VueStateManager.instance.state.locale
     }).execute()
     next(vm => {
       vm.articles = articles

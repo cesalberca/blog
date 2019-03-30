@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Inject, Vue } from 'vue-property-decorator'
+import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import { TranslationService, UseCaseFactory } from '../../application'
 import { Article, Id } from '../../domain/articles'
 import { ArticleExcerpt } from '../commons'
@@ -39,6 +39,13 @@ export default class Home extends Vue {
   readonly state!: State
 
   articles: Article[] = []
+
+  @Watch('state.locale')
+  async onLocaleChange() {
+    this.articles = await UseCaseFactory.get<Article[]>('GetAllArticles', {
+      locale: VueStateManager.instance.state.locale
+    }).execute()
+  }
 
   navigateToArticle(id: Id) {
     ActionsFactory.get('NavigateToArticle', {

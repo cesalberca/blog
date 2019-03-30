@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Inject, Vue } from 'vue-property-decorator'
+import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import { UseCaseFactory } from '../../application'
 import { Article, Id } from '../../domain'
 import { State, VueStateManager } from '../state'
@@ -32,6 +32,14 @@ export default class ArticleComponent extends Vue {
 
   @Inject()
   readonly state!: State
+
+  @Watch('state.locale')
+  async onLocaleChange() {
+    this.article = await UseCaseFactory.get<Article>('GetArticle', {
+      id: Id.fromValue(this.$route.params.id),
+      locale: VueStateManager.instance.state.locale
+    }).execute()
+  }
 
   get title() {
     return this.article!.title

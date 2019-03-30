@@ -1,18 +1,26 @@
 <template>
   <nav class="navbar">
-    <router-link class="link" to="/">{{ translations.home }}</router-link>
-    <router-link class="link" to="/articles">{{ translations.articles }}</router-link>
-    <router-link class="link" to="/talks">{{ translations.talks }}</router-link>
-    <router-link class="link" to="/about">{{ translations.about }}</router-link>
+    <div class="links">
+      <router-link to="/">{{ translations.home }}</router-link>
+      <router-link to="/articles">{{ translations.articles }}</router-link>
+      <router-link to="/talks">{{ translations.talks }}</router-link>
+      <router-link to="/about">{{ translations.about }}</router-link>
+    </div>
+    <Options class="options" />
   </nav>
 </template>
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
 import { TranslationService } from '../../application'
-import { State } from '../state/State'
+import { State } from '../state'
+import { Options } from './index'
 
-@Component
+@Component({
+  components: {
+    Options
+  }
+})
 export default class Navbar extends Vue {
   @Inject()
   readonly translationService!: TranslationService
@@ -33,10 +41,16 @@ export default class Navbar extends Vue {
 <style scoped>
 .navbar {
   max-width: var(--body-width);
-  margin: 0 auto;
+  margin: 0 auto var(--medium-size);
   display: flex;
+  justify-content: space-between;
 }
-.link {
-  margin-right: calc(var(--base) * 2);
+
+.links > * {
+  font-size: var(--title-size);
+  margin-right: var(--medium-size);
+}
+
+.options {
 }
 </style>

@@ -1,3 +1,6 @@
+import Options from './Options.vue'
+export { Options }
+
 import Navbar from './Navbar.vue'
 export { Navbar }
 
@@ -6,6 +9,3 @@ export { ArticleExcerpt }
 
 import Page from './Page.vue'
 export { Page }
-
-import Options from './Options.vue'
-export { Options }

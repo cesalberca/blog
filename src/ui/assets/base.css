@@ -25,7 +25,7 @@ body {
 }
 
 a {
-  color: black;
+  color: var(--link-color);
   text-underline-position: under;
 }
 

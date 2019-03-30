@@ -1,16 +1,17 @@
 import { GetAllArticles } from '../GetAllArticles'
 import { ArticlesFileRepository } from '../../../infraestructure/articles/ArticlesFileRepository'
+import { Locale } from '../../../infraestructure/language'
 
 jest.mock('../../../infraestructure/articles/ArticlesFileRepository')
 
 describe('GetAllArticles', () => {
   it('should get all articles', async () => {
     expect.assertions(1)
-    const getArticle = new GetAllArticles(new ArticlesFileRepository(), 'en')
+    const getArticle = new GetAllArticles(new ArticlesFileRepository(), Locale.EN)
 
     await getArticle.execute()
 
     const calls = (ArticlesFileRepository as jest.Mock).mock.instances[0].findAllByLocale.mock.calls
-    expect(calls[0][0]).toEqual('en')
+    expect(calls[0][0]).toEqual('EN')
   })
 })

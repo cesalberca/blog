@@ -16,7 +16,7 @@ import { TranslationService, UseCaseFactory } from '../../application'
 import { Article, Id } from '../../domain/articles'
 import { ArticleExcerpt } from '../commons'
 import { State, VueStateManager } from '../state'
-import { NavigateToArticle } from '../NavigateToArticle'
+import { ActionsFactory } from '../actions/ActionsFactory'
 
 @Component<Home>({
   async beforeRouteEnter(_to, _from, next) {
@@ -41,7 +41,12 @@ export default class Home extends Vue {
   articles: Article[] = []
 
   navigateToArticle(id: Id) {
-    new NavigateToArticle(this.$router, id, this.state.locale).execute()
+    ActionsFactory.get('NavigateToArticle', {
+      router: this.$router,
+      id,
+      translationService: this.translationService,
+      locale: this.state.locale
+    }).execute()
   }
 
   get recentArticlesTitle() {

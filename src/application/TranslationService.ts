@@ -25,4 +25,27 @@ export class TranslationService {
 
     return this.translator.getDefaultLocaleTranslation().get(key)!
   }
+
+  public toString(locale: Locale) {
+    switch (locale) {
+      case Locale.DEFAULT:
+      case Locale.EN:
+        return 'en'
+      case Locale.ES:
+        return 'es'
+      default:
+        throw new TranslationError(`Locale ${locale} not found`)
+    }
+  }
+
+  public toLocale(string: string): Locale {
+    switch (string) {
+      case 'en':
+        return Locale.EN
+      case 'es':
+        return Locale.ES
+      default:
+        throw new TranslationError(`String ${string} could not be mapped to a locale`)
+    }
+  }
 }

@@ -3,4 +3,7 @@
   --background-color: var(--white-color);
   --primary-color: var(--blue-color);
   --secondary-color: var(--teal-color);
+
+  --link-color: black;
+  --code-background: var(--gray-color);
 }

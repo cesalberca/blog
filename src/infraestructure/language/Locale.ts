@@ -1,1 +1,5 @@
-export type Locale = 'en' | 'es'
+export enum Locale {
+  EN,
+  ES,
+  DEFAULT = Locale.EN
+}

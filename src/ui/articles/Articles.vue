@@ -17,7 +17,7 @@ import { ArticleExcerpt } from '../commons'
 import { Article } from '../../domain/articles'
 import { State, VueStateManager } from '../state'
 import { Id } from '../../domain'
-import { NavigateToArticle } from '../NavigateToArticle'
+import { ActionsFactory } from '../actions/ActionsFactory'
 
 @Component<Articles>({
   async beforeRouteEnter(_to, _from, next) {
@@ -42,7 +42,12 @@ export default class Articles extends Vue {
   articles: Article[] = []
 
   navigateToArticle(id: Id) {
-    new NavigateToArticle(this.$router, id, this.state.locale).execute()
+    ActionsFactory.get('NavigateToArticle', {
+      router: this.$router,
+      id,
+      translationService: this.translationService,
+      locale: this.state.locale
+    }).execute()
   }
 
   get title() {

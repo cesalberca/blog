@@ -1,5 +1,6 @@
 import { ArticlesFileRepository } from '../ArticlesFileRepository'
 import { FileLoader } from '../../FileLoader'
+import { Locale } from '../../language'
 
 jest.mock('../../FileLoader')
 
@@ -11,7 +12,7 @@ describe('ArticlesFileRepository', () => {
 
     const repository = new ArticlesFileRepository(fileLoader)
 
-    const articles = await repository.findAllByLocale('en')
+    const articles = await repository.findAllByLocale(Locale.EN)
 
     expect(articles).toEqual([])
   })

@@ -2,7 +2,6 @@
   <main>
     <Injector>
       <Navbar />
-      <Options />
       <Page>
         <router-view />
       </Page>
@@ -11,14 +10,13 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { Navbar, Options } from './commons'
+import { Navbar } from './commons'
 import { Injector } from './'
 import Page from './commons/Page.vue'
 
 @Component({
   components: {
     Page,
-    Options,
     Injector,
     Navbar
   }

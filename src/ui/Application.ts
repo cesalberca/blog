@@ -1,7 +1,7 @@
-import './assets/base.css'
+import './assets/variables-typograghy.css'
 import './assets/variables-color.css'
 import './assets/variables-size.css'
-import './assets/variables-typograghy.css'
+import './assets/base.css'
 import './assets/theme.css'
 
 import { VueConstructor } from 'vue'

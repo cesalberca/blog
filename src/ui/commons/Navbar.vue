@@ -44,6 +44,7 @@ export default class Navbar extends Vue {
   margin: 0 auto var(--medium-size);
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .links > * {

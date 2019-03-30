@@ -6,16 +6,16 @@ body {
   font-family: var(--body-font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: var(--body-font);
   line-height: 1.8;
-  color: var(--foreground-color);
-  background-color: var(--background-color);
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
+  font-size: var(--body-size);
+  min-height: 100vh;
+
 }
 
 *,
@@ -36,7 +36,7 @@ h4,
 h5,
 h6 {
   margin: 2.75rem 0 1rem;
-  color: #3a3a3a;
+  color: var(--foreground-color);
   font-family: var(--title-font);
   font-weight: 400;
   line-height: 1.15;

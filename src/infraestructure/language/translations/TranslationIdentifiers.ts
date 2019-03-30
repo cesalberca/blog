@@ -1,4 +1,8 @@
 export interface TranslationIdentifiers {
+  _theme: string
+  _language: string
+  _dark: string
+  _light: string
   home_title: string
   home_recentArticles: string
   about_title: string

@@ -2,6 +2,10 @@ import { Translation } from './Translation'
 import { TranslationIdentifiers } from './TranslationIdentifiers'
 
 export const es: Translation = new Map<keyof TranslationIdentifiers, string>([
+  ['_theme', 'Tema'],
+  ['_language', 'Idioma'],
+  ['_dark', 'Oscuro'],
+  ['_light', 'Claro'],
   ['home_title', 'Inicio'],
   ['home_recentArticles', 'Artículos recientes'],
   ['article_title', 'Artículos'],

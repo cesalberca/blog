@@ -1,4 +1,4 @@
-export enum Difficulty {
+export const enum Difficulty {
   EASY,
   INTERMEDIATE,
   ADVANCED

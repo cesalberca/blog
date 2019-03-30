@@ -1,5 +1,5 @@
 import { Locale } from '../../infraestructure/language'
-import { Theme } from '../Theme'
+import { Theme } from '../theme/Theme'
 
 export class State {
   public locale: Locale = Locale.DEFAULT

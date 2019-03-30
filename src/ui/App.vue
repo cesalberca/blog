@@ -1,10 +1,12 @@
 <template>
   <main>
     <Injector>
-      <Navbar />
-      <Page>
-        <router-view />
-      </Page>
+      <Theming class="full-height">
+        <Navbar />
+        <Page>
+          <router-view />
+        </Page>
+      </Theming>
     </Injector>
   </main>
 </template>
@@ -13,13 +15,20 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Navbar } from './commons'
 import { Injector } from './'
 import Page from './commons/Page.vue'
+import { Theming } from './theme'
 
 @Component({
   components: {
     Page,
     Injector,
-    Navbar
+    Navbar,
+    Theming
   }
 })
 export default class App extends Vue {}
 </script>
+<style scoped>
+.full-height {
+  min-height: 100vh;
+}
+</style>

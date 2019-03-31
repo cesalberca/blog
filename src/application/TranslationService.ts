@@ -6,7 +6,7 @@ import {
 } from '../infraestructure/language'
 
 export class TranslationService {
-  private constructor(private readonly translator = new Translator()) {}
+  private constructor(private readonly translator: Translator) {}
 
   public translate(locale: Locale, key: keyof TranslationIdentifiers): string {
     const language = this.translator.translations.get(locale)
@@ -17,9 +17,14 @@ export class TranslationService {
       if (translation !== undefined) {
         return translation
       } else {
-        throw new TranslationError(
-          `Translation for key "${key}" in locale "${locale}" could not be found`
-        )
+        const defaultTranslation = this.translator.getDefaultLocaleTranslation().get(key)
+        if (defaultTranslation === undefined) {
+          throw new TranslationError(
+            `Translation for key "${key}" in locale "${locale}" could not be found`
+          )
+        }
+
+        return defaultTranslation
       }
     }
 
@@ -49,7 +54,7 @@ export class TranslationService {
     }
   }
 
-  public static create(translator?: Translator) {
+  public static create(translator: Translator) {
     return new TranslationService(translator)
   }
 }

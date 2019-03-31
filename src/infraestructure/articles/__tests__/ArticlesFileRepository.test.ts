@@ -13,7 +13,7 @@ describe('ArticlesFileRepository', () => {
 
     const repository = new ArticlesFileRepository(
       fileLoader,
-      TranslationService.create(new Translator())
+      TranslationService.create(Translator.create())
     )
 
     const articles = await repository.findAllByLocale(Locale.EN)

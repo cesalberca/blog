@@ -1,6 +1,6 @@
 import { GetAllArticles } from '../GetAllArticles'
 import { ArticlesFileRepository } from '../../../infraestructure/articles/ArticlesFileRepository'
-import { Locale } from '../../../infraestructure/language'
+import { Locale, Translator } from '../../../infraestructure/language'
 import { FileLoader } from '../../../infraestructure/FileLoader'
 import { TranslationService } from '../../TranslationService'
 
@@ -10,7 +10,10 @@ describe('GetAllArticles', () => {
   it('should get all articles', async () => {
     expect.assertions(1)
     const getArticle = new GetAllArticles(
-      new ArticlesFileRepository(FileLoader.create(), TranslationService.create()),
+      new ArticlesFileRepository(
+        FileLoader.create(),
+        TranslationService.create(Translator.create())
+      ),
       Locale.EN
     )
 

@@ -6,7 +6,7 @@ import {
 } from '../infraestructure/language'
 
 export class TranslationService {
-  private readonly translator = new Translator()
+  private constructor(private readonly translator = new Translator()) {}
 
   public translate(locale: Locale, key: keyof TranslationIdentifiers): string {
     const language = this.translator.translations.get(locale)
@@ -47,5 +47,9 @@ export class TranslationService {
       default:
         throw new TranslationError(`String ${string} could not be mapped to a locale`)
     }
+  }
+
+  public static create(translator?: Translator) {
+    return new TranslationService(translator)
   }
 }

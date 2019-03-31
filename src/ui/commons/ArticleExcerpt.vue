@@ -1,5 +1,5 @@
 <template>
-  <div class="excerpt" @click="onClick">
+  <div class="excerpt" tabindex="0" @click="onClick">
     <h3>{{ excerpt.title }}</h3>
     <span class="slugline">{{ excerpt.date }}</span>
     <p v-html="excerpt.body"></p>

@@ -3,8 +3,7 @@ title: Haciendo (Vue)n frontend
 date: 2019-03-29
 ---
 
-¿SOLID, testing, separación por capas y patrones de diseño en el frontend con Vue y TypeScript? ¿Estamos locos? No, se puede hacer y además te lo enseño en este tutorial.
-
+english
 <!--more-->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->

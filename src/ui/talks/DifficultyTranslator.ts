@@ -12,4 +12,8 @@ export class DifficultyTranslator {
         return 'talks_talkDifficultyEasy'
     }
   }
+
+  public static create() {
+    return new DifficultyTranslator()
+  }
 }

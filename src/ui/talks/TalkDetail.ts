@@ -8,7 +8,7 @@ export class TalkDetail {
       title: talk.title,
       abstract: talk.abstract.toHtml(),
       length: talk.length.minutes,
-      difficulty: new DifficultyTranslator().translate(talk.difficulty),
+      difficulty: DifficultyTranslator.create().translate(talk.difficulty),
       language: talk.language,
       topics: talk.topics,
       references: talk.references

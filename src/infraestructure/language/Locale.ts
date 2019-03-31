@@ -1,4 +1,4 @@
-export const enum Locale {
+export enum Locale {
   EN,
   ES,
   DEFAULT = Locale.EN

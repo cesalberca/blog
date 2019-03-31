@@ -12,8 +12,12 @@ module.exports = {
   globals: {
     'ts-jest': {
       babelConfig: true
+    },
+    require: {
+      context: true
     }
   },
+  setupFiles: ['./tests/setUp.ts'],
   coverageReporters: ['lcov', 'text-summary'],
   coverageThreshold: {
     global: {

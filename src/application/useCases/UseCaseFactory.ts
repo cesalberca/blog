@@ -10,14 +10,14 @@ export class UseCaseFactory {
     switch (useCase) {
       case 'GetAllArticles':
         return (new GetAllArticles(
-          new ArticlesFileRepository(new FileLoader(), new TranslationService()),
+          new ArticlesFileRepository(FileLoader.create(), TranslationService.create()),
           context.locale
         ) as unknown) as Command<T>
       case 'GetTalksGiven':
         return (new GetTalksGiven() as unknown) as Command<T>
       case 'GetArticle':
         return (new GetArticle(
-          new ArticlesFileRepository(new FileLoader(), new TranslationService()),
+          new ArticlesFileRepository(FileLoader.create(), TranslationService.create()),
           context.id,
           context.locale
         ) as unknown) as Command<T>

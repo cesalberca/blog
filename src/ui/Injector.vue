@@ -13,7 +13,7 @@ import { ThemeService } from './theme/ThemeService'
 @Component
 export default class Injector extends Vue {
   @Provide()
-  translationService = new TranslationService()
+  translationService = TranslationService.create()
 
   @Provide()
   themeService = new ThemeService()

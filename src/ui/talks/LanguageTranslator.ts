@@ -9,4 +9,8 @@ export class LanguageTranslator {
         return ''
     }
   }
+
+  public static create() {
+    return new LanguageTranslator()
+  }
 }

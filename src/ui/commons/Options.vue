@@ -2,16 +2,18 @@
   <div>
     <label>
       {{ languageLabel }}
-      <select v-model="locale" @change="changeLocale">
-        <option value="es">es</option>
-        <option value="en">en</option>
+      <select v-model="locale" @change="changeLocale(locale)">
+        <option v-for="locale in locales" :key="locale.value" :value="locale.value">{{
+          locale.text
+        }}</option>
       </select>
     </label>
     <label>
       {{ themeLabel }}
-      <select v-model="theme" @change="changeTheme">
-        <option value="light">{{ light }}</option>
-        <option value="dark">{{ dark }}</option>
+      <select v-model="theme" @change="changeTheme(theme)">
+        <option v-for="theme in themes" :key="theme.value" :value="theme.value">{{
+          theme.text
+        }}</option>
       </select>
     </label>
   </div>
@@ -21,7 +23,8 @@
 import { Component, Inject, Vue } from 'vue-property-decorator'
 import { State } from '../state'
 import { TranslationService } from '../../application'
-import { ThemeService } from '../theme/ThemeService'
+import { Theme } from '../theme/Theme'
+import { Locale } from '../../infraestructure/language'
 
 @Component
 export default class Options extends Vue {
@@ -31,16 +34,24 @@ export default class Options extends Vue {
   @Inject()
   translationService!: TranslationService
 
-  @Inject()
-  themeService!: ThemeService
+  theme = Theme.DEFAULT
+  themes = [{ text: this.light, value: Theme.LIGHT }, { text: this.dark, value: Theme.DARK }]
 
-  locale: string = this.translationService.toString(this.state.locale)
+  locale = Locale.DEFAULT
+  locales = [{ text: this.en, value: Locale.EN }, { text: this.es, value: Locale.ES }]
 
-  theme: string = this.themeService.toString(this.state.theme)
+  get en() {
+    return this.translationService.translate(this.state.locale, '_en')
+  }
+
+  get es() {
+    return this.translationService.translate(this.state.locale, '_es')
+  }
 
   get light() {
     return this.translationService.translate(this.state.locale, '_light')
   }
+
   get dark() {
     return this.translationService.translate(this.state.locale, '_dark')
   }
@@ -53,12 +64,12 @@ export default class Options extends Vue {
     return this.translationService.translate(this.state.locale, '_language')
   }
 
-  changeLocale() {
-    this.state.locale = this.translationService.toLocale(this.locale)
+  changeLocale(locale: Locale) {
+    this.state.locale = locale
   }
 
-  changeTheme() {
-    this.state.theme = this.themeService.toTheme(this.theme)
+  changeTheme(theme: Theme) {
+    this.state.theme = theme
   }
 }
 </script>

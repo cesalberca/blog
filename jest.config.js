@@ -18,13 +18,5 @@ module.exports = {
     }
   },
   setupFiles: ['./tests/setUp.ts'],
-  coverageReporters: ['lcov', 'text-summary'],
-  coverageThreshold: {
-    global: {
-      statements: 90,
-      branches: 85,
-      functions: 86,
-      lines: 90
-    }
-  }
+  coverageReporters: ['lcov', 'text-summary']
 }

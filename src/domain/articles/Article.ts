@@ -3,6 +3,8 @@ import { Markdown } from '../Markdown'
 import { Datetime } from '../../infraestructure/Datetime'
 
 export class Article {
+  private static readonly SUMMARY_SEPARATOR = '<!--more-->'
+
   private constructor(
     public readonly id: Id,
     public readonly title: string,
@@ -28,6 +30,6 @@ export class Article {
   }
 
   private getSummary(body: string) {
-    return body.split('<!--more-->')[0]
+    return body.split(Article.SUMMARY_SEPARATOR)[0]
   }
 }

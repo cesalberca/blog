@@ -73,3 +73,8 @@ export default class Options extends Vue {
   }
 }
 </script>
+<style scoped>
+label {
+  margin-right: var(--small-size);
+}
+</style>

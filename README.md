@@ -32,3 +32,28 @@ yarn run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## Tasks
+
+### To do
+
+- [ ] Upload articles
+- [ ] Deploy
+- [ ] Autogenerate index
+- [ ] Translate articles
+- [ ] Reading progress
+- [ ] Time to read
+- [ ] Upload talks
+- [ ] Socials links
+- [ ] SSR and SEO
+- [ ] Improve about me section
+- [ ] Persist user settings to locale storage
+- [ ] Improve Navbar with gear icon
+- [ ] Add styling for code samples
+
+### Doing
+
+- [ ] Handle articles not translated
+
+### Done

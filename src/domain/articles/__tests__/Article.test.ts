@@ -2,6 +2,7 @@ import { Article } from '../Article'
 import { Id } from '../../Id'
 import { Markdown } from '../../Markdown'
 import { Datetime } from '../../../infraestructure/Datetime'
+import { Locale } from '../../../infraestructure/language'
 
 describe('Article', () => {
   it('should get the excerpt', () => {
@@ -9,7 +10,8 @@ describe('Article', () => {
       id: Id.fromValue('foo'),
       title: 'foo',
       body: Markdown.fromValue('foo'),
-      date: Datetime.fromValue(new Date(2019, 2, 27))
+      date: Datetime.fromDate(new Date(2019, 2, 27)),
+      locale: Locale.DEFAULT
     })
 
     const excerpt = article.getExcerpt()
@@ -18,7 +20,8 @@ describe('Article', () => {
       body: '<p>foo</p>\n',
       date: 'March 27, 2019',
       id: Id.fromValue('foo'),
-      title: 'foo'
+      title: 'foo',
+      locale: 0
     })
   })
 
@@ -27,7 +30,8 @@ describe('Article', () => {
       id: Id.fromValue('foo'),
       title: 'foo',
       body: Markdown.fromValue(`foo <!--more-->bar`),
-      date: Datetime.fromValue(new Date(2019, 2, 27))
+      date: Datetime.fromDate(new Date(2019, 2, 27)),
+      locale: Locale.DEFAULT
     })
 
     const excerpt = article.getExcerpt()

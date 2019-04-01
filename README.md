@@ -38,22 +38,24 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### To do
 
-- [ ] Upload articles
-- [ ] Deploy
-- [ ] Autogenerate index
-- [ ] Translate articles
-- [ ] Reading progress
 - [ ] Time to read
-- [ ] Upload talks
+- [ ] Reading progress
+- [ ] Add talks
 - [ ] Socials links
-- [ ] SSR and SEO
 - [ ] Improve about me section
-- [ ] Persist user settings to locale storage
 - [ ] Improve Navbar with gear icon
 - [ ] Add styling for code samples
+- [ ] Responsive
+- [ ] Persist user settings to locale storage
+- [ ] SSR and SEO
+- [ ] Create first article
+- [ ] Deploy
 
 ### Doing
 
-- [ ] Handle articles not translated
+- [ ] Autogenerate index
+    - [ ] Use doctoc in deploy script
 
 ### Done
+
+- [x] Handle articles not translated

@@ -2,6 +2,7 @@ import { Article } from './Article'
 import { Id } from '../Id'
 import { Markdown } from '../Markdown'
 import { Datetime } from '../../infraestructure/Datetime'
+import { Locale } from '../../infraestructure/language'
 
 export class ArticlesMother {
   static getFakeArticles() {
@@ -640,7 +641,8 @@ El front no es fácil. Venimos de un mundo dónde a lo más que podíamos aspira
 
 Sígueme en [Twitter](https://twitter.com/) y en [Github](https://github.com/cesalberca).
 
-        `)
+        `),
+        locale: Locale.DEFAULT
       }),
       Article.create({
         id: Id.fromValue('patrones-de-diseno'),
@@ -648,7 +650,8 @@ Sígueme en [Twitter](https://twitter.com/) y en [Github](https://github.com/ces
         date: Datetime.fromNow(),
         body: Markdown.fromValue(
           'El mundo frontend es conocido por su gran _volatilidad_, sin embargo poco hacemos para que esta volatilidad no afecte a nuestros desarrollos. Nos importa últimamente estar más __a la última del framework del momento que de aprender a hacer nuestro código más mantenible__. Así que este tutorial irá en pos de hacer una aplicación lo más _"Frameworkless"_ posible.'
-        )
+        ),
+        locale: Locale.DEFAULT
       })
     ]
   }

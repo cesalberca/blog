@@ -5,7 +5,11 @@ export class Datetime {
     return this._value
   }
 
-  public static fromValue(value: Date) {
+  public static fromString(value: string) {
+    return new Datetime(new Date(value))
+  }
+
+  public static fromDate(value: Date) {
     return new Datetime(value)
   }
 

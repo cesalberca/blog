@@ -1,13 +1,17 @@
 <template>
   <div v-if="article">
     <h1>{{ article.title }}</h1>
+    <header>
+      <span class="date">{{ article.date.format() }}</span>
+      <span class="locale">{{ articleLocale }}</span>
+    </header>
     <div class="article" v-html="body"></div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
-import { UseCaseFactory } from '../../application'
+import { TranslationService, UseCaseFactory } from '../../application'
 import { Article, Id } from '../../domain'
 import { State, VueStateManager } from '../state'
 
@@ -33,12 +37,19 @@ export default class ArticleComponent extends Vue {
   @Inject()
   readonly state!: State
 
+  @Inject()
+  readonly translationService!: TranslationService
+
   @Watch('state.locale')
   async onLocaleChange() {
     this.article = await UseCaseFactory.get<Article>('GetArticle', {
       id: Id.fromValue(this.$route.params.id),
       locale: VueStateManager.instance.state.locale
     }).execute()
+  }
+
+  get articleLocale() {
+    return this.translationService.toString(this.article!.locale)
   }
 
   get title() {
@@ -51,6 +62,22 @@ export default class ArticleComponent extends Vue {
 }
 </script>
 <style>
+header {
+  display: flex;
+}
+
+.date {
+  font-style: italic;
+}
+
+.locale {
+  margin-left: var(--small-size);
+  background-color: var(--code-background);
+  padding: var(--base);
+  border-radius: 5px;
+  line-height: 1;
+}
+
 .article code,
 .article pre {
   border-radius: 5px;

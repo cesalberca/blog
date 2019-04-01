@@ -1,6 +1,7 @@
 import { Id } from '../Id'
 import { Markdown } from '../Markdown'
 import { Datetime } from '../../infraestructure/Datetime'
+import { Locale } from '../../infraestructure/language'
 
 export class Article {
   private static readonly SUMMARY_SEPARATOR = '<!--more-->'
@@ -9,11 +10,18 @@ export class Article {
     public readonly id: Id,
     public readonly title: string,
     public readonly date: Datetime,
-    public readonly body: Markdown
+    public readonly body: Markdown,
+    public readonly locale: Locale
   ) {}
 
-  public static create(article: { id: Id; title: string; date: Datetime; body: Markdown }) {
-    return new Article(article.id, article.title, article.date, article.body)
+  public static create(article: {
+    id: Id
+    title: string
+    date: Datetime
+    body: Markdown
+    locale: Locale
+  }) {
+    return new Article(article.id, article.title, article.date, article.body, article.locale)
   }
 
   public getExcerpt() {
@@ -21,7 +29,8 @@ export class Article {
       id: this.id,
       title: this.title,
       date: this.getFormattedDate(),
-      body: this.getSummary(this.body.toHtml())
+      body: this.getSummary(this.body.toHtml()),
+      locale: this.locale
     }
   }
 

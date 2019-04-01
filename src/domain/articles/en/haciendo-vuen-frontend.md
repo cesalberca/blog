@@ -1,6 +1,7 @@
 ---
 title: Haciendo (Vue)n frontend
 date: 2019-03-29
+locale: es
 ---
 
 english

@@ -45,7 +45,7 @@ Ahora veamos cómo lo usaríamos en una mini aplicación que hace peticiones al 
 
 Comenzamos imaginando que nuestro componente llama a un [repositorio](https://deviq.com/repository-pattern/):
 
-```vue
+```html
 <template>
     <section class="viewer">
         <header>
@@ -118,7 +118,7 @@ _Nota: La función `debounce` hace que un método no se ejecute hasta que pase u
 
 Con inject podemos mejorar esta situación:
 
-```vue
+```html
 <template>
     <section class="viewer">
         <header>
@@ -187,7 +187,7 @@ export default class UserComponent extends Vue {
 
 El cambio es muy sutil, pero muy efectivo. Ahora nos falta proveer de la implementación de `GravatarRepository` (que adelanto que es una interfaz). Para ello nos podemos crear un componente `ProviderFactory` que sea el que se encarga de gestionar la creación de instancias y el que las inyecta:
 
-```vue
+```html
 <template>
     <div><slot /></div>
 </template>
@@ -208,7 +208,7 @@ export default class ProviderFactory extends Vue {
 
 Y ahora en el fichero `App.vue` haremos uso de él:
 
-```vue
+```html
 <template>
     <ProviderFactory> <AvatarViewerContainer /> </ProviderFactory>
 </template>
@@ -242,7 +242,7 @@ Los componentes se comunican con los contenedores mediante eventos, y los conten
 
 Como ejemplo vamos a refactorizar nuestro componente `UserComponenteInject`. Creamos primero el componente `AvatarComponent`
 
-```vue
+```html
 <template>
     <div v-if="showUser">
         <h3>User</h3>
@@ -267,7 +267,7 @@ export default class AvatarComponent extends Vue {
 
 Ahora podemos crear el componente que se encarga del input del email. Creamos el componente `UserForm`:
 
-```vue
+```html
 <template>
     <header>
         <h1>Gravatar Viewer</h1>
@@ -295,7 +295,7 @@ export default class UserFormComponent extends Vue {
 
 Y por último creamos `AvatarViewerContainer`:
 
-```vue
+```html
 <template>
     <section class="viewer">
         <UserFormComponent @on-email-change="updateEmail" />
@@ -365,7 +365,7 @@ export default class AvatarViewerContainer extends Vue {
 
 También modificamos el ProviderFactory para inyectar el `debounce` y el `hasher`:
 
-```vue
+```html
 <template>
     <div><slot /></div>
 </template>

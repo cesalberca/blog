@@ -1,3 +1,11 @@
 module.exports = {
-  presets: ['@vue/app', '@vue/babel-preset-jsx']
+  presets: ['@vue/app'],
+  plugins: [
+    [
+      'prismjs',
+      {
+        languages: ['javascript', 'css', 'markup', 'typescript', 'html']
+      }
+    ]
+  ]
 }

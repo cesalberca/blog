@@ -3,7 +3,6 @@ import './assets/variables-color.css'
 import './assets/variables-size.css'
 import './assets/base.css'
 import './assets/theme.css'
-
 import { VueConstructor } from 'vue'
 import { ServiceWorkerRegisterer } from './ServiceWorkerRegisterer'
 import { Router } from './Router'

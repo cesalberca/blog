@@ -44,7 +44,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - [ ] Socials links
 - [ ] Improve about me section
 - [ ] Improve Navbar with gear icon
-- [ ] Add styling for code samples
 - [ ] Responsive
 - [ ] Persist user settings to locale storage
 - [ ] SSR and SEO
@@ -53,6 +52,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Doing
 
+- [ ] Add styling for code samples
 - [ ] Autogenerate index
     - [ ] Use doctoc in deploy script
 

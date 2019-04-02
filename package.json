@@ -14,6 +14,7 @@
     "register-service-worker": "1.6.2",
     "vue": "2.6.10",
     "vue-class-component": "7.0.2",
+    "vue-prism-component": "1.1.1",
     "vue-property-decorator": "8.1.0",
     "vue-router": "3.0.2"
   },
@@ -30,10 +31,12 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
+    "babel-plugin-prismjs": "1.0.2",
     "eslint": "5.15.3",
     "eslint-plugin-vue": "5.2.2",
     "frontmatter-markdown-loader": "1.6.0",
     "lint-staged": "8.1.5",
+    "prismjs": "1.16.0",
     "ts-jest": "23.10.5",
     "typescript": "3.3.4000",
     "vue-template-compiler": "2.6.10"

@@ -14,6 +14,7 @@ import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import { TranslationService, UseCaseFactory } from '../../application'
 import { Article, Id } from '../../domain'
 import { State, VueStateManager } from '../state'
+import Prism from 'prismjs'
 
 @Component<ArticleComponent>({
   async beforeRouteEnter(to, _from, next) {
@@ -46,6 +47,10 @@ export default class ArticleComponent extends Vue {
       id: Id.fromValue(this.$route.params.id),
       locale: VueStateManager.instance.state.locale
     }).execute()
+  }
+
+  mounted() {
+    Prism.highlightAll()
   }
 
   get articleLocale() {
@@ -86,7 +91,6 @@ header {
 .article pre {
   width: calc(var(--body-width) * 1.2);
   margin-left: calc(var(--body-width) * -0.2 / 2);
-  background-color: var(--code-background);
   overflow-x: scroll;
   padding: var(--medium-size);
 }

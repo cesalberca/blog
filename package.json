@@ -6,7 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test": "vue-cli-service test:unit",
+    "test:unit": "vue-cli-service test:unit",
+    "deploy": "yarn lint --no-fix && yarn test && yarn build && git subtree push --prefix docs origin gh-pages"
   },
   "dependencies": {
     "@types/marked": "0.6.5",

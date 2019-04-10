@@ -4,7 +4,9 @@ module.exports = {
     [
       'prismjs',
       {
-        languages: ['javascript', 'css', 'markup', 'typescript', 'html']
+        languages: ['javascript', 'css', 'markup', 'typescript'],
+        theme: 'default',
+        css: true
       }
     ]
   ]

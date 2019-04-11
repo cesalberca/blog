@@ -12,10 +12,12 @@ import { State } from '../state'
 import { Talk } from '../../domain/talks'
 import TalkComponent from './Talk.vue'
 import { TalkDetail } from './TalkDetail'
+import { UseCase } from '../../application/useCases/UseCase'
+import { GetTalksGivenType } from '../../application/useCases/GetTalksGiven'
 
 @Component<Talks>({
   async beforeRouteEnter(_to, _from, next) {
-    const talks = await UseCaseFactory.get<Talk[]>('GetTalksGiven').execute()
+    const talks = (await UseCaseFactory.get(UseCase.GET_TALKS_GIVEN).execute()) as GetTalksGivenType
 
     next(vm => {
       vm.talks = talks

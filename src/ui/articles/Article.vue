@@ -15,6 +15,8 @@ import { TranslationService, UseCaseFactory } from '../../application'
 import { Article, Id } from '../../domain'
 import { State, VueStateManager } from '../state'
 import Prism from 'prismjs'
+import { UseCase } from '../../application/useCases/UseCase'
+import { GetArticleType } from '../../application/useCases/GetArticle'
 
 @Component<ArticleComponent>({
   async beforeRouteEnter(to, _from, next) {
@@ -22,10 +24,10 @@ import Prism from 'prismjs'
       return
     }
 
-    const article = await UseCaseFactory.get<Article>('GetArticle', {
+    const article = (await UseCaseFactory.get(UseCase.GET_ARTICLE, {
       id: Id.fromValue(to.params.id),
       locale: VueStateManager.instance.state.locale
-    }).execute()
+    }).execute()) as GetArticleType
 
     next(vm => {
       vm.article = article
@@ -43,10 +45,10 @@ export default class ArticleComponent extends Vue {
 
   @Watch('state.locale')
   async onLocaleChange() {
-    this.article = await UseCaseFactory.get<Article>('GetArticle', {
+    this.article = (await UseCaseFactory.get(UseCase.GET_ARTICLE, {
       id: Id.fromValue(this.$route.params.id),
       locale: VueStateManager.instance.state.locale
-    }).execute()
+    }).execute()) as GetArticleType
   }
 
   mounted() {

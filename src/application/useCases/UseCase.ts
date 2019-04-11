@@ -1,1 +1,5 @@
-export type UseCase = 'GetArticle' | 'GetAllArticles' | 'GetTalksGiven'
+export enum UseCase {
+  GET_ARTICLE,
+  GET_ALL_ARTICLES,
+  GET_TALKS_GIVEN
+}

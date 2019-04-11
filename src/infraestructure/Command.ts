@@ -1,3 +1,3 @@
-export interface Command<T = unknown> {
+export interface Command<T> {
   execute(): Promise<T>
 }

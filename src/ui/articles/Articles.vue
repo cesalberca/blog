@@ -18,12 +18,14 @@ import { Article } from '../../domain/articles'
 import { State, VueStateManager } from '../state'
 import { Id } from '../../domain'
 import { ActionsFactory } from '../actions/ActionsFactory'
+import { UseCase } from '../../application/useCases/UseCase'
+import { GetAllArticlesType } from '../../application/useCases/GetAllArticles'
 
 @Component<Articles>({
   async beforeRouteEnter(_to, _from, next) {
-    const articles = await UseCaseFactory.get<Article[]>('GetAllArticles', {
+    const articles = (await UseCaseFactory.get(UseCase.GET_ALL_ARTICLES, {
       locale: VueStateManager.instance.state.locale
-    }).execute()
+    }).execute()) as GetAllArticlesType
     next(vm => {
       vm.articles = articles
     })
@@ -43,9 +45,9 @@ export default class Articles extends Vue {
 
   @Watch('state.locale')
   async onLocaleChange() {
-    this.articles = await UseCaseFactory.get<Article[]>('GetAllArticles', {
+    this.articles = (await UseCaseFactory.get(UseCase.GET_ALL_ARTICLES, {
       locale: VueStateManager.instance.state.locale
-    }).execute()
+    }).execute()) as GetAllArticlesType
   }
 
   navigateToArticle(id: Id) {

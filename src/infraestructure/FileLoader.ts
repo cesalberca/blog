@@ -7,6 +7,12 @@ export class FileLoader {
     return Array.from(new Set([...spanishArticles, ...englishArticles]))
   }
 
+  public loadTalks(): string[] {
+    const spanishTalks = require.context(`./../domain/talks/es`).keys()
+    const englishTalks = require.context(`./../domain/talks/en`).keys()
+    return Array.from(new Set([...spanishTalks, ...englishTalks]))
+  }
+
   public static create() {
     return new FileLoader()
   }

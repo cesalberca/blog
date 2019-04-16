@@ -4,6 +4,7 @@ import { ArticlesFileRepository } from '../../infraestructure/articles/ArticlesF
 import { FileLoader } from '../../infraestructure/FileLoader'
 import { TranslationService } from '../TranslationService'
 import { Translator } from '../../infraestructure/language'
+import { TalksFileRepository } from '../../infraestructure/talks/TalksFileRepository'
 
 export class UseCaseFactory {
   public static get<T extends UseCase>(useCase: T, context?: any) {
@@ -17,7 +18,13 @@ export class UseCaseFactory {
           context.locale
         )
       case UseCase.GET_TALKS_GIVEN:
-        return new GetTalksGiven()
+        return new GetTalksGiven(
+          new TalksFileRepository(
+            FileLoader.create(),
+            TranslationService.create(Translator.create())
+          ),
+          context.locale
+        )
       case UseCase.GET_ARTICLE:
         return new GetArticle(
           new ArticlesFileRepository(

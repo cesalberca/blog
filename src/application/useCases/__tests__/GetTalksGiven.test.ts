@@ -1,15 +1,23 @@
 import { GetTalksGiven } from '../GetTalksGiven'
-import { TalksMother } from '../../../domain/talks'
+import { FileLoader } from '../../../infraestructure/FileLoader'
+import { TranslationService } from '../../TranslationService'
+import { Locale, Translator } from '../../../infraestructure/language'
+import { TalksFileRepository } from '../../../infraestructure/talks/TalksFileRepository'
 
-jest.mock('../../../infraestructure/articles/ArticlesFileRepository')
+jest.mock('../../../infraestructure/talks/TalksFileRepository')
 
 describe('GetTalksGiven', () => {
   it('should get all talks given', async () => {
     expect.assertions(1)
-    const getTalksGiven = new GetTalksGiven()
+    const getTalksGiven = new GetTalksGiven(
+      new TalksFileRepository(FileLoader.create(), TranslationService.create(Translator.create())),
+      Locale.DEFAULT
+    )
 
-    const actual = await getTalksGiven.execute()
+    await getTalksGiven.execute()
 
-    expect(actual).toEqual(TalksMother.getTalksGiven())
+    expect(
+      (TalksFileRepository as jest.Mock).mock.instances[0].findAllByLocale
+    ).toHaveBeenCalledWith(0)
   })
 })

@@ -1,13 +1,37 @@
 <template>
-  <div>
-    <h2>{{ translations.title }} {{ detail.title }}</h2>
-    <p>{{ translations.abstract }} {{ detail.abstract }}</p>
-    <p>
-      {{ translations.topics }}
-      <span v-for="topic in detail.topics" :key="topic">{{ topic }}</span>
-    </p>
-    <p>{{ translations.length }} {{ detail.length }}</p>
-    <p>{{ translations.difficulty }} {{ translations.detailDifficulty }}</p>
+  <div class="talk">
+    <section>
+      <p>
+        <strong>{{ translations.title }}</strong>
+      </p>
+      <p>{{ detail.title }}</p>
+    </section>
+    <section>
+      <p>
+        <strong>{{ translations.abstract }}</strong>
+      </p>
+      <div v-html="detail.abstract"></div>
+    </section>
+    <section>
+      <p>
+        <strong>{{ translations.topics }}</strong>
+      </p>
+      <p>
+        <span v-for="topic in detail.topics" :key="topic">{{ topic }}</span>
+      </p>
+    </section>
+    <section>
+      <p>
+        <strong>{{ translations.length }}</strong>
+      </p>
+      <p>{{ detail.length }}</p>
+    </section>
+    <section>
+      <p>
+        <strong>{{ translations.difficulty }}</strong>
+      </p>
+      <p>{{ translations.detailDifficulty }}</p>
+    </section>
   </div>
 </template>
 
@@ -41,3 +65,17 @@ export default class Talk extends Vue {
   }
 }
 </script>
+<style scoped>
+.talk > section {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.talk > section *:first-child {
+}
+
+.talk > section > *:last-child {
+  margin-left: var(--medium-size);
+}
+</style>

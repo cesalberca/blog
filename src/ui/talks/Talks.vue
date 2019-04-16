@@ -8,7 +8,7 @@
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
 import { TranslationService, UseCaseFactory } from '../../application'
-import { State } from '../state'
+import { State, VueStateManager } from '../state'
 import { Talk } from '../../domain/talks'
 import TalkComponent from './Talk.vue'
 import { TalkDetail } from './TalkDetail'
@@ -17,7 +17,9 @@ import { GetTalksGivenType } from '../../application/useCases/GetTalksGiven'
 
 @Component<Talks>({
   async beforeRouteEnter(_to, _from, next) {
-    const talks = (await UseCaseFactory.get(UseCase.GET_TALKS_GIVEN).execute()) as GetTalksGivenType
+    const talks = (await UseCaseFactory.get(UseCase.GET_TALKS_GIVEN, {
+      locale: VueStateManager.instance.state.locale
+    }).execute()) as GetTalksGivenType
 
     next(vm => {
       vm.talks = talks

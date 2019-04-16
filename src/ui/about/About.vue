@@ -25,8 +25,11 @@ export default class About extends Vue {
   @Inject()
   readonly state!: State
 
+  @Inject()
+  readonly translate!: any
+
   get title() {
-    return this.translationService.translate(this.state.locale, 'about_title')
+    return this.translate('about_title')
   }
 
   get description() {

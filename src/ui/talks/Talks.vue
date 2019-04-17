@@ -14,6 +14,7 @@ import TalkComponent from './Talk.vue'
 import { TalkDetail } from './TalkDetail'
 import { UseCase } from '../../application/useCases/UseCase'
 import { GetTalksGivenType } from '../../application/useCases/GetTalksGiven'
+import { Translate } from '../commons/Translate'
 
 @Component<Talks>({
   async beforeRouteEnter(_to, _from, next) {
@@ -36,6 +37,9 @@ export default class Talks extends Vue {
   @Inject()
   readonly state!: State
 
+  @Inject()
+  readonly translate!: Translate
+
   talks: Talk[] = []
 
   talkDetail(talk: Talk) {
@@ -43,7 +47,7 @@ export default class Talks extends Vue {
   }
 
   get title() {
-    return this.translationService.translate(this.state.locale, 'talks_title')
+    return this.translate('talks_title')
   }
 }
 </script>

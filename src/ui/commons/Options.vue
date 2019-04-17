@@ -21,18 +21,18 @@
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { State } from '../state'
-import { TranslationService } from '../../application'
 import { Theme } from '../theme/Theme'
 import { Locale } from '../../infraestructure/language'
+import { Translate } from './Translate'
+import { State } from '../state'
 
 @Component
 export default class Options extends Vue {
   @Inject()
-  state!: State
+  readonly translate!: Translate
 
   @Inject()
-  translationService!: TranslationService
+  readonly state!: State
 
   theme = Theme.DEFAULT
   themes = [{ text: this.light, value: Theme.LIGHT }, { text: this.dark, value: Theme.DARK }]
@@ -41,27 +41,27 @@ export default class Options extends Vue {
   locales = [{ text: this.en, value: Locale.EN }, { text: this.es, value: Locale.ES }]
 
   get en() {
-    return this.translationService.translate(this.state.locale, '_en')
+    return this.translate('_en')
   }
 
   get es() {
-    return this.translationService.translate(this.state.locale, '_es')
+    return this.translate('_es')
   }
 
   get light() {
-    return this.translationService.translate(this.state.locale, '_light')
+    return this.translate('_light')
   }
 
   get dark() {
-    return this.translationService.translate(this.state.locale, '_dark')
+    return this.translate('_dark')
   }
 
   get themeLabel() {
-    return this.translationService.translate(this.state.locale, '_theme')
+    return this.translate('_theme')
   }
 
   get languageLabel() {
-    return this.translationService.translate(this.state.locale, '_language')
+    return this.translate('_language')
   }
 
   changeLocale(locale: Locale) {

@@ -37,9 +37,8 @@
 
 <script lang="ts">
 import { Component, Inject, Prop, Vue } from 'vue-property-decorator'
-import { State } from '../state'
-import { TranslationService } from '../../application'
 import { TalkDetail } from './TalkDetail'
+import { Translate } from '../commons/Translate'
 
 @Component
 export default class Talk extends Vue {
@@ -47,20 +46,17 @@ export default class Talk extends Vue {
   readonly detail!: TalkDetail
 
   @Inject()
-  readonly translationService!: TranslationService
-
-  @Inject()
-  readonly state!: State
+  readonly translate!: Translate
 
   get translations() {
     return {
-      title: this.translationService.translate(this.state.locale, 'talks_talkTitle'),
-      abstract: this.translationService.translate(this.state.locale, 'talks_talkAbstract'),
-      topics: this.translationService.translate(this.state.locale, 'talks_talkTopics'),
-      length: this.translationService.translate(this.state.locale, 'talks_talkLength'),
-      difficulty: this.translationService.translate(this.state.locale, 'talks_talkDifficulty'),
+      title: this.translate('talks_talkTitle'),
+      abstract: this.translate('talks_talkAbstract'),
+      topics: this.translate('talks_talkTopics'),
+      length: this.translate('talks_talkLength'),
+      difficulty: this.translate('talks_talkDifficulty'),
       // @ts-ignore For some reason difficulty is not inferred correctly, even though it exists
-      detailDifficulty: this.translationService.translate(this.state.locale, this.detail.difficulty)
+      detailDifficulty: this.translate(this.detail.difficulty)
     }
   }
 }

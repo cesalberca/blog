@@ -19,6 +19,7 @@ import { State, VueStateManager } from '../state'
 import { ActionsFactory } from '../actions/ActionsFactory'
 import { UseCase } from '../../application/useCases/UseCase'
 import { GetAllArticlesType } from '../../application/useCases/GetAllArticles'
+import { Translate } from '../commons/Translate'
 
 @Component<Home>({
   async beforeRouteEnter(_to, _from, next) {
@@ -40,6 +41,9 @@ export default class Home extends Vue {
   @Inject()
   readonly state!: State
 
+  @Inject()
+  readonly translate!: Translate
+
   articles: Article[] = []
 
   @Watch('state.locale')
@@ -59,7 +63,7 @@ export default class Home extends Vue {
   }
 
   get recentArticlesTitle() {
-    return this.translationService.translate(this.state.locale, 'home_recentArticles')
+    return this.translate('home_recentArticles')
   }
 }
 </script>

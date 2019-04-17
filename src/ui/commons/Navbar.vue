@@ -12,9 +12,8 @@
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { TranslationService } from '../../application'
-import { State } from '../state'
 import { Options } from './index'
+import { Translate } from './Translate'
 
 @Component({
   components: {
@@ -23,17 +22,14 @@ import { Options } from './index'
 })
 export default class Navbar extends Vue {
   @Inject()
-  readonly translationService!: TranslationService
-
-  @Inject()
-  readonly state!: State
+  readonly translate!: Translate
 
   get translations() {
     return {
-      home: this.translationService.translate(this.state.locale, 'home_title'),
-      about: this.translationService.translate(this.state.locale, 'about_title'),
-      talks: this.translationService.translate(this.state.locale, 'talks_title'),
-      articles: this.translationService.translate(this.state.locale, 'article_title')
+      home: this.translate('home_title'),
+      about: this.translate('about_title'),
+      talks: this.translate('talks_title'),
+      articles: this.translate('article_title')
     }
   }
 }

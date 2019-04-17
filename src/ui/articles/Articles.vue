@@ -20,6 +20,7 @@ import { Id } from '../../domain'
 import { ActionsFactory } from '../actions/ActionsFactory'
 import { UseCase } from '../../application/useCases/UseCase'
 import { GetAllArticlesType } from '../../application/useCases/GetAllArticles'
+import { Translate } from '../commons/Translate'
 
 @Component<Articles>({
   async beforeRouteEnter(_to, _from, next) {
@@ -41,6 +42,9 @@ export default class Articles extends Vue {
   @Inject()
   readonly state!: State
 
+  @Inject()
+  readonly translate!: Translate
+
   articles: Article[] = []
 
   @Watch('state.locale')
@@ -60,7 +64,7 @@ export default class Articles extends Vue {
   }
 
   get title() {
-    return this.translationService.translate(this.state.locale, 'article_title')
+    return this.translate('article_title')
   }
 }
 </script>

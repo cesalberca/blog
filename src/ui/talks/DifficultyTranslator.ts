@@ -1,15 +1,14 @@
 import { Difficulty } from '../../domain/talks/Difficulty'
-import { TranslationIdentifiers } from '../../infraestructure/language'
 
 export class DifficultyTranslator {
-  public translate(difficulty: Difficulty): keyof TranslationIdentifiers {
+  public translate(difficulty: Difficulty) {
     switch (difficulty) {
       case Difficulty.ADVANCED:
-        return 'talks_talkDifficultyAdvanced'
+        return 'talks_talkDifficultyAdvanced' as const
       case Difficulty.INTERMEDIATE:
-        return 'talks_talkDifficultyIntermediate'
+        return 'talks_talkDifficultyIntermediate' as const
       case Difficulty.EASY:
-        return 'talks_talkDifficultyEasy'
+        return 'talks_talkDifficultyEasy' as const
     }
   }
 

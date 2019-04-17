@@ -1,5 +1,5 @@
 import { Talk } from '../../domain/talks'
-import { DifficultyTranslator } from './DifficultyTranslator'
+import { DifficultyService } from '../../application/DifficultyService'
 
 export class TalkDetail {
   public static fromTalk(talk: Talk) {
@@ -8,7 +8,7 @@ export class TalkDetail {
       title: talk.title,
       abstract: talk.abstract.toHtml(),
       length: talk.length.minutes,
-      difficulty: DifficultyTranslator.create().translate(talk.difficulty),
+      difficulty: DifficultyService.create().toString(talk.difficulty),
       language: talk.language,
       topics: talk.topics,
       references: talk.references

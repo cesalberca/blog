@@ -24,5 +24,5 @@ export const es: Translation = new Map<keyof TranslationIdentifiers, string>([
   ['talks_talkLength', 'Duración'],
   ['talks_talkDifficultyAdvanced', 'Avanzado'],
   ['talks_talkDifficultyIntermediate', 'Intermedio'],
-  ['talks_talkDifficultyEasy', 'Fácil']
+  ['talks_talkDifficultyEasy', 'Iniciado']
 ])

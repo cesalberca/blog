@@ -12,21 +12,8 @@ type Stdout = {
 export class Logger {
   private constructor(private readonly stdout: Stdout) {}
 
-  public log(message: Message, options: { level: Level } = { level: 'info' }) {
-    switch (options.level) {
-      case 'info':
-        this.stdout.info(`[${Datetime.fromNow()}] ${message}`)
-        break
-      case 'warning':
-        this.stdout.warn(`[${Datetime.fromNow()}] ${message}`)
-        break
-      case 'error':
-        this.stdout.error(`[${Datetime.fromNow()}] ${message}`)
-        break
-      default:
-        this.stdout.info(`[${Datetime.fromNow()}] ${message}`)
-        break
-    }
+  public log(message: Message, _options: { level: Level } = { level: 'info' }) {
+    this.stdout.info(`[${Datetime.fromNow()}] ${message}`)
   }
 
   public static create(options: { stdout: Stdout }) {

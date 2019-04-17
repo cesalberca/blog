@@ -32,4 +32,14 @@ describe('Datetime', () => {
 
     expect(actual).toEqual('2019-04-04T21:03:03.001Z')
   })
+
+  it('should get now datetime', () => {
+    const date = new Date(2019, 3, 3, 3, 3, 3, 3)
+    ;(global.Date as any) = jest.fn(() => date)
+    const datetime = Datetime.fromNow()
+
+    const actual = datetime.value
+
+    expect(actual).toEqual(new Date(2019, 3, 3, 3, 3, 3, 3))
+  })
 })

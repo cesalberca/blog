@@ -1,7 +1,4 @@
 import { UseCaseFactory } from '../UseCaseFactory'
-import { GetArticle } from '../GetArticle'
-import { GetAllArticles } from '../GetAllArticles'
-import { GetTalksGiven } from '../GetTalksGiven'
 import { UseCase } from '../UseCase'
 
 describe('UseCaseFactory', () => {
@@ -10,9 +7,9 @@ describe('UseCaseFactory', () => {
     const getAllArticles = UseCaseFactory.get(UseCase.GET_ALL_ARTICLES, { locale: 0 })
     const getTalksGiven = UseCaseFactory.get(UseCase.GET_TALKS_GIVEN, { locale: 0 })
 
-    expect(getArticle).toBeInstanceOf(GetArticle)
-    expect(getAllArticles).toBeInstanceOf(GetAllArticles)
-    expect(getTalksGiven).toBeInstanceOf(GetTalksGiven)
+    expect(getArticle).toMatchSnapshot()
+    expect(getAllArticles).toMatchSnapshot()
+    expect(getTalksGiven).toMatchSnapshot()
   })
 
   it('should throw an error if an use case is not found', () => {

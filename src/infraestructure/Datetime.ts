@@ -24,4 +24,8 @@ export class Datetime {
       year: 'numeric'
     })
   }
+
+  public toString() {
+    return this._value.toISOString()
+  }
 }

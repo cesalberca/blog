@@ -9,7 +9,7 @@ describe('ArticlesFileRepository', () => {
   it.skip('should get articles from file system', async () => {
     expect.assertions(1)
     const mock = jest.fn()
-    mock.mockReturnValue({ loadArticles: () => ['./haciendo-vuen-frontend.md'] })
+    mock.mockReturnValue({ loadArticles: () => ['./use-cases-and-commands.md'] })
     FileLoader.create = mock.bind(FileLoader)
     const fileLoader = FileLoader.create()
     const repository = new ArticlesFileRepository(

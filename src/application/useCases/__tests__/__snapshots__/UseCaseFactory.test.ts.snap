@@ -89,7 +89,7 @@ LoggerCommandDecorator {
                 ],
                 Array [
                   "talks_talkDifficultyEasy",
-                  "Fácil",
+                  "Iniciado",
                 ],
               ],
             ],
@@ -174,7 +174,7 @@ LoggerCommandDecorator {
                 ],
                 Array [
                   "talks_talkDifficultyEasy",
-                  "Easy",
+                  "Beginner",
                 ],
               ],
             ],
@@ -284,7 +284,7 @@ LoggerCommandDecorator {
                 ],
                 Array [
                   "talks_talkDifficultyEasy",
-                  "Fácil",
+                  "Iniciado",
                 ],
               ],
             ],
@@ -369,7 +369,7 @@ LoggerCommandDecorator {
                 ],
                 Array [
                   "talks_talkDifficultyEasy",
-                  "Easy",
+                  "Beginner",
                 ],
               ],
             ],
@@ -479,7 +479,7 @@ LoggerCommandDecorator {
                 ],
                 Array [
                   "talks_talkDifficultyEasy",
-                  "Fácil",
+                  "Iniciado",
                 ],
               ],
             ],
@@ -564,7 +564,7 @@ LoggerCommandDecorator {
                 ],
                 Array [
                   "talks_talkDifficultyEasy",
-                  "Easy",
+                  "Beginner",
                 ],
               ],
             ],

@@ -11,6 +11,7 @@ function deploy() {
   tag_name="${datetime}"
   git tag --annotate "${tag_name}" --message="Deployed on ${datetime}"
   git push origin "${tag_name}" --no-verify
+  git push origin master --no-verify
 }
 
 function _vcs_assert_everything_committed() {

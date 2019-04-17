@@ -35,9 +35,9 @@ export class TranslationService {
     switch (locale) {
       case Locale.DEFAULT:
       case Locale.EN:
-        return 'en'
+        return 'en' as const
       case Locale.ES:
-        return 'es'
+        return 'es' as const
       default:
         throw new TranslationError(`Locale ${locale} not found`)
     }

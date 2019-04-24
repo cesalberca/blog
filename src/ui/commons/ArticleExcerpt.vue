@@ -1,7 +1,11 @@
 <template>
   <a class="excerpt" tabindex="0" @click="onAction" @keydown.enter="onAction">
     <h3>{{ excerpt.title }}</h3>
-    <span class="slugline">{{ excerpt.date }}</span>
+    <div class="slugline">
+      <span>{{ excerpt.date }}</span>
+      <span class="accented-slugline"> / </span>
+      <span>{{ excerpt.readingTime.minutes }} minutes</span>
+    </div>
     <p v-html="excerpt.body"></p>
   </a>
 </template>
@@ -34,5 +38,9 @@ export default class ArticleExcerpt extends Vue {
 .slugline {
   font-size: calc(var(--body-size) - 2);
   color: var(--gray-color);
+}
+
+.accented-slugline {
+  color: var(--primary-color);
 }
 </style>

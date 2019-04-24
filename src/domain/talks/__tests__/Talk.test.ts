@@ -2,7 +2,7 @@ import { Talk } from '../Talk'
 import { Id } from '../../Id'
 import { Language } from '../Language'
 import { Difficulty } from '../Difficulty'
-import { Length } from '../Length'
+import { Length } from '../../Length'
 import { Markdown } from '../../Markdown'
 
 describe('Talk', () => {

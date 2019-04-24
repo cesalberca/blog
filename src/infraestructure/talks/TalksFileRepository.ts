@@ -3,7 +3,7 @@ import { Talk } from '../../domain/talks'
 import { Locale } from '../../domain/language'
 import { Id, Markdown } from '../../domain'
 import { FileLoader } from '../FileLoader'
-import { Length } from '../../domain/talks/Length'
+import { Length } from '../../domain/Length'
 import { DifficultyService } from '../../domain/DifficultyService'
 import { TranslationService } from '../../domain/TranslationService'
 

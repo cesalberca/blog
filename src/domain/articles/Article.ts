@@ -2,9 +2,11 @@ import { Id } from '../Id'
 import { Markdown } from '../Markdown'
 import { Datetime } from '../../infraestructure/Datetime'
 import { Locale } from '../language'
+import { Length } from '../Length'
 
 export class Article {
   private static readonly SUMMARY_SEPARATOR = '<!--more-->'
+  private static readonly AVERAGE_WORDS_PER_MINUTE = 180
 
   private constructor(
     public readonly id: Id,
@@ -30,12 +32,18 @@ export class Article {
       title: this.title,
       date: this.getFormattedDate(),
       body: this.getSummary(this.body.toHtml()),
-      locale: this.locale
+      locale: this.locale,
+      readingTime: this.getReadingTime()
     }
   }
 
   private getFormattedDate() {
     return this.date.format()
+  }
+
+  public getReadingTime(): Length {
+    const words = this.body.value.split(' ').length
+    return Length.fromMinutes(Math.round(words / Article.AVERAGE_WORDS_PER_MINUTE))
   }
 
   private getSummary(body: string) {

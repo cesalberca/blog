@@ -24,13 +24,13 @@ And then we can look at a specific command, for example the one used to retrieve
 import { Command } from '../../infraestructure/Command'
 import { Article, ArticlesRepository } from '../../domain/articles'
 import { Id } from '../../domain'
-import { Locale } from '../../infraestructure/language'
-import { CommandType } from '../../infraestructure/types/CommandType'
-
-export type GetArticleType = CommandType<GetArticle>
+import { Locale, Translator } from '../../domain/language'
+import { ArticlesFileRepository } from '../../infraestructure/articles/ArticlesFileRepository'
+import { FileLoader } from '../../infraestructure/FileLoader'
+import { TranslationService } from '../../domain/TranslationService'
 
 export class GetArticle implements Command<Article> {
-    public constructor(
+    private constructor(
         private readonly articlesRepository: ArticlesRepository,
         private readonly id: Id,
         private readonly locale: Locale
@@ -39,46 +39,28 @@ export class GetArticle implements Command<Article> {
     public async execute(): Promise<Article> {
         return this.articlesRepository.findOneByLocale(this.id, this.locale)
     }
-}
-```
 
-This command is responsible for obtaining a certain article using a [repository](http://shawnmc.cool/the-repository-pattern), where and how do we get this data we neither know or care, that's responsibility of another class.
-
-This command represents a [Use Case](https://en.wikipedia.org/wiki/Use_case) of my application. Right now it only needs to get the article from the repository but in the feature it could handle if a use has read the article, or if the user is a PRO user and then can read all articles instead of a subset of articles or anything we'd like.
-
-Who builds the command? A factory:
-
-```typescript
-import { UseCase } from './UseCase'
-import { GetArticle } from './index'
-import { ArticlesFileRepository } from '../../infraestructure/articles/ArticlesFileRepository'
-import { FileLoader } from '../../infraestructure/FileLoader'
-import { TranslationService } from '../TranslationService'
-import { Translator } from '../../infraestructure/language'
-
-export class UseCaseFactory {
-    public static get<T extends UseCase>(useCase: T, context?: any) {
-        switch (useCase) {
-            case UseCase.GET_ARTICLE:
-                new GetArticle(
-                    new ArticlesFileRepository(
-                        FileLoader.create(),
-                        TranslationService.create(Translator.create())
-                    ),
-                    context.id,
-                    context.locale
-                )
-            default:
-                throw new Error(`Use case "${useCase}" not found`)
-        }
+    public static create(context: { id: Id; locale: Locale }) {
+        return new GetArticle(
+            new ArticlesFileRepository(
+                FileLoader.create(),
+                TranslationService.create(Translator.create())
+            ),
+            context.id,
+            context.locale
+        )
     }
 }
 ```
 
-How do we call it? Like this:
+This command is responsible for obtaining a certain article using a [repository](http://shawnmc.cool/the-repository-pattern), where and how do we get this data we neither know nor care, that's responsibility of another class.
+
+This command represents a [Use Case](https://en.wikipedia.org/wiki/Use_case) of my application. Right now it only needs to get the article from the repository but in the feature it could handle if a use has read the article, or if the user is a PRO user and then can read all articles instead of a subset of articles or anything we'd like.
+
+Who builds the command? Whoever uses it:
 
 ```typescript
-const article = await UseCaseFactory.get(UseCase.GET_ARTICLE, {
+const article = await GetArticle.create({
     id: 'use-cases-and-commands',
     locale: Locale.EN
 }).execute()
@@ -109,41 +91,59 @@ export class LoggerCommandDecorator<T> implements Command<T> {
 }
 ```
 
-Then, in the factory we create an instance:
+Then, using a `UserCaseDecorator` I specify which decorators I want for **all my use cases**:
 
 ```typescript
-import { UseCase } from './UseCase'
-import { GetArticle } from './index'
-import { ArticlesFileRepository } from '../../infraestructure/articles/ArticlesFileRepository'
-import { FileLoader } from '../../infraestructure/FileLoader'
-import { TranslationService } from '../TranslationService'
-import { Translator } from '../../infraestructure/language'
+import { Command } from '../../infraestructure/Command'
 import { LoggerCommandDecorator } from '../../infraestructure/LoggerCommandDecorator'
 import { Logger } from '../../infraestructure/Logger'
 
-export class UseCaseFactory {
+export class UseCaseDecorator {
     private static readonly logger = Logger.create({
         // eslint-disable-next-line
         stdout: { error: console.error, info: console.log, warn: console.warn }
     })
 
-    public static get<T extends UseCase>(useCase: T, context?: any) {
-        switch (useCase) {
-            case UseCase.GET_ARTICLE:
-                return new LoggerCommandDecorator(
-                    new GetArticle(
-                        new ArticlesFileRepository(
-                            FileLoader.create(),
-                            TranslationService.create(Translator.create())
-                        ),
-                        context.id,
-                        context.locale
-                    ),
-                    UseCaseFactory.logger
-                )
-            default:
-                throw new Error(`Use case "${useCase}" not found`)
-        }
+    public static decorate<T>(command: Command<T>) {
+        return new LoggerCommandDecorator<T>(command, UseCaseDecorator.logger)
+    }
+}
+```
+
+And then in each decorator we use the `UseCaseDecorator` like so:
+
+```typescript
+import { Command } from '../../infraestructure/Command'
+import { Article, ArticlesRepository } from '../../domain/articles'
+import { Id } from '../../domain'
+import { Locale, Translator } from '../../domain/language'
+import { UseCaseDecorator } from './UseCaseDecorator'
+import { ArticlesFileRepository } from '../../infraestructure/articles/ArticlesFileRepository'
+import { FileLoader } from '../../infraestructure/FileLoader'
+import { TranslationService } from '../../domain/TranslationService'
+
+export class GetArticle implements Command<Article> {
+    private constructor(
+        private readonly articlesRepository: ArticlesRepository,
+        private readonly id: Id,
+        private readonly locale: Locale
+    ) {}
+
+    public async execute(): Promise<Article> {
+        return this.articlesRepository.findOneByLocale(this.id, this.locale)
+    }
+
+    public static create(context: { id: Id; locale: Locale }) {
+        return UseCaseDecorator.decorate(
+            new GetArticle(
+                new ArticlesFileRepository(
+                    FileLoader.create(),
+                    TranslationService.create(Translator.create())
+                ),
+                context.id,
+                context.locale
+            )
+        )
     }
 }
 ```

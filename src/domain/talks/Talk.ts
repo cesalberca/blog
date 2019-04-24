@@ -1,5 +1,5 @@
 import { Markdown } from '../Markdown'
-import { Length } from './Length'
+import { Length } from '../Length'
 import { Difficulty } from './Difficulty'
 import { Language } from './Language'
 import { Topic } from './Topic'

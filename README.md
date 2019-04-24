@@ -40,7 +40,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 - [ ] Time to read
 - [ ] Reading progress
-- [ ] Add talks
 - [ ] Socials links
 - [ ] Improve about me section
 - [ ] Improve Navbar with gear icon
@@ -59,3 +58,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Done
 
 - [x] Handle articles not translated
+- [x] Add talks

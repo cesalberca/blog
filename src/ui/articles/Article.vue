@@ -31,6 +31,7 @@ import { State } from '../../application/state'
 
     next(vm => {
       vm.article = article
+      vm.highlight()
     })
   }
 })
@@ -51,8 +52,10 @@ export default class ArticleComponent extends Vue {
     }).execute()
   }
 
-  mounted() {
-    Prism.highlightAll()
+  highlight() {
+    this.$nextTick(() => {
+      Prism.highlightAll()
+    })
   }
 
   get articleLocale() {

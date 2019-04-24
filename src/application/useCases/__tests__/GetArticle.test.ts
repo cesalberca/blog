@@ -1,23 +1,18 @@
 import { GetArticle } from '../GetArticle'
 import { ArticlesFileRepository } from '../../../infraestructure/articles/ArticlesFileRepository'
 import { Id } from '../../../domain'
-import { Locale, Translator } from '../../../infraestructure/language'
-import { FileLoader } from '../../../infraestructure/FileLoader'
-import { TranslationService } from '../../TranslationService'
+import { Locale } from '../../../domain/language'
 
 jest.mock('../../../infraestructure/articles/ArticlesFileRepository')
+jest.mock('../UseCaseDecorator')
 
 describe('GetArticle', () => {
   it('should get an article', async () => {
     expect.assertions(2)
-    const getArticle = new GetArticle(
-      new ArticlesFileRepository(
-        FileLoader.create(),
-        TranslationService.create(Translator.create())
-      ),
-      Id.fromValue('foo'),
-      Locale.EN
-    )
+    const getArticle = GetArticle.create({
+      id: Id.fromValue('foo'),
+      locale: Locale.EN
+    })
 
     await getArticle.execute()
 

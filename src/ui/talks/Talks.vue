@@ -7,20 +7,19 @@
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { TranslationService, UseCaseFactory } from '../../application'
 import { State, VueStateManager } from '../state'
 import { Talk } from '../../domain/talks'
 import TalkComponent from './Talk.vue'
 import { TalkDetail } from './TalkDetail'
-import { UseCase } from '../../application/useCases/UseCase'
-import { GetTalksGivenType } from '../../application/useCases/GetTalksGiven'
+import { GetTalksGiven } from '../../application/useCases'
 import { Translate } from '../commons/Translate'
+import { TranslationService } from '../../domain/TranslationService'
 
 @Component<Talks>({
   async beforeRouteEnter(_to, _from, next) {
-    const talks = (await UseCaseFactory.get(UseCase.GET_TALKS_GIVEN, {
+    const talks = await GetTalksGiven.create({
       locale: VueStateManager.instance.state.locale
-    }).execute()) as GetTalksGivenType
+    }).execute()
 
     next(vm => {
       vm.talks = talks

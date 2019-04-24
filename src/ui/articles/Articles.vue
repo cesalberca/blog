@@ -12,21 +12,20 @@
 
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
-import { TranslationService, UseCaseFactory } from '../../application'
 import { ArticleExcerpt } from '../commons'
 import { Article } from '../../domain/articles'
 import { State, VueStateManager } from '../state'
 import { Id } from '../../domain'
 import { ActionsFactory } from '../actions/ActionsFactory'
-import { UseCase } from '../../application/useCases/UseCase'
-import { GetAllArticlesType } from '../../application/useCases/GetAllArticles'
 import { Translate } from '../commons/Translate'
+import { GetAllArticles } from '../../application/useCases'
+import { TranslationService } from '../../domain/TranslationService'
 
 @Component<Articles>({
   async beforeRouteEnter(_to, _from, next) {
-    const articles = (await UseCaseFactory.get(UseCase.GET_ALL_ARTICLES, {
+    const articles = await GetAllArticles.create({
       locale: VueStateManager.instance.state.locale
-    }).execute()) as GetAllArticlesType
+    }).execute()
     next(vm => {
       vm.articles = articles
     })
@@ -49,9 +48,9 @@ export default class Articles extends Vue {
 
   @Watch('state.locale')
   async onLocaleChange() {
-    this.articles = (await UseCaseFactory.get(UseCase.GET_ALL_ARTICLES, {
+    this.articles = await GetAllArticles.create({
       locale: VueStateManager.instance.state.locale
-    }).execute()) as GetAllArticlesType
+    }).execute()
   }
 
   navigateToArticle(id: Id) {

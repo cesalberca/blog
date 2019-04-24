@@ -2,7 +2,7 @@ import { Article } from './Article'
 import { Id } from '../Id'
 import { Markdown } from '../Markdown'
 import { Datetime } from '../../infraestructure/Datetime'
-import { Locale } from '../../infraestructure/language'
+import { Locale } from '../language'
 
 export class ArticlesMother {
   static getFakeArticles() {

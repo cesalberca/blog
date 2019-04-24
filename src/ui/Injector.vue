@@ -7,9 +7,9 @@
 <script lang="ts">
 import { Component, Provide, Vue } from 'vue-property-decorator'
 import { VueStateManager } from './state'
-import { TranslationService } from '../application'
-import { Translator } from '../infraestructure/language'
+import { Translator } from '../domain/language'
 import { Translate } from './commons/Translate'
+import { TranslationService } from '../domain/TranslationService'
 
 @Component
 export default class Injector extends Vue {

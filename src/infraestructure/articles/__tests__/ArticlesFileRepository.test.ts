@@ -1,7 +1,7 @@
 import { ArticlesFileRepository } from '../ArticlesFileRepository'
 import { FileLoader } from '../../FileLoader'
-import { Locale, Translator } from '../../language'
-import { TranslationService } from '../../../application'
+import { Locale, Translator } from '../../../domain/language'
+import { TranslationService } from '../../../domain/TranslationService'
 
 jest.mock('../../FileLoader')
 

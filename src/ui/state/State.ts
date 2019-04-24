@@ -1,4 +1,4 @@
-import { Locale } from '../../infraestructure/language'
+import { Locale } from '../../domain/language'
 import { Theme } from '../theme/Theme'
 
 export class State {

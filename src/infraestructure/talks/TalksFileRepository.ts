@@ -1,11 +1,11 @@
 import { TalksRepository } from '../../domain/talks/TalksRepository'
 import { Talk } from '../../domain/talks'
-import { Locale } from '../language'
+import { Locale } from '../../domain/language'
 import { Id, Markdown } from '../../domain'
 import { FileLoader } from '../FileLoader'
-import { TranslationService } from '../../application'
 import { Length } from '../../domain/talks/Length'
-import { DifficultyService } from '../../application/DifficultyService'
+import { DifficultyService } from '../../domain/DifficultyService'
+import { TranslationService } from '../../domain/TranslationService'
 
 export class TalksFileRepository implements TalksRepository {
   public constructor(

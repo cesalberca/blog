@@ -11,12 +11,11 @@
 
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
-import { TranslationService, UseCaseFactory } from '../../application'
 import { Article, Id } from '../../domain'
 import { State, VueStateManager } from '../state'
 import Prism from 'prismjs'
-import { UseCase } from '../../application/useCases/UseCase'
-import { GetArticleType } from '../../application/useCases/GetArticle'
+import { GetArticle } from '../../application/useCases'
+import { TranslationService } from '../../domain/TranslationService'
 
 @Component<ArticleComponent>({
   async beforeRouteEnter(to, _from, next) {
@@ -24,10 +23,10 @@ import { GetArticleType } from '../../application/useCases/GetArticle'
       return
     }
 
-    const article = (await UseCaseFactory.get(UseCase.GET_ARTICLE, {
+    const article = await GetArticle.create({
       id: Id.fromValue(to.params.id),
       locale: VueStateManager.instance.state.locale
-    }).execute()) as GetArticleType
+    }).execute()
 
     next(vm => {
       vm.article = article
@@ -45,10 +44,10 @@ export default class ArticleComponent extends Vue {
 
   @Watch('state.locale')
   async onLocaleChange() {
-    this.article = (await UseCaseFactory.get(UseCase.GET_ARTICLE, {
+    this.article = await GetArticle.create({
       id: Id.fromValue(this.$route.params.id),
       locale: VueStateManager.instance.state.locale
-    }).execute()) as GetArticleType
+    }).execute()
   }
 
   mounted() {

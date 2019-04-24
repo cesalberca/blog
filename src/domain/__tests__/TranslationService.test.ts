@@ -1,12 +1,7 @@
 import { TranslationService } from '../TranslationService'
-import {
-  Locale,
-  TranslationError,
-  TranslationIdentifiers,
-  Translator
-} from '../../infraestructure/language'
+import { Locale, TranslationError, TranslationIdentifiers, Translator } from '../language'
 
-jest.mock('../../infraestructure/language/Translator')
+jest.mock('../language/Translator')
 
 describe('TranslationService', () => {
   let translationService: TranslationService

@@ -1,18 +1,14 @@
 import { GetTalksGiven } from '../GetTalksGiven'
-import { FileLoader } from '../../../infraestructure/FileLoader'
-import { TranslationService } from '../../TranslationService'
-import { Locale, Translator } from '../../../infraestructure/language'
+import { Locale } from '../../../domain/language'
 import { TalksFileRepository } from '../../../infraestructure/talks/TalksFileRepository'
 
 jest.mock('../../../infraestructure/talks/TalksFileRepository')
+jest.mock('../UseCaseDecorator')
 
 describe('GetTalksGiven', () => {
   it('should get all talks given', async () => {
     expect.assertions(1)
-    const getTalksGiven = new GetTalksGiven(
-      new TalksFileRepository(FileLoader.create(), TranslationService.create(Translator.create())),
-      Locale.DEFAULT
-    )
+    const getTalksGiven = GetTalksGiven.create({ locale: Locale.DEFAULT })
 
     await getTalksGiven.execute()
 

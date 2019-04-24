@@ -1,5 +1,5 @@
-import { TranslationError } from '../infraestructure/language'
-import { Difficulty } from '../domain/talks/Difficulty'
+import { TranslationError } from './language'
+import { Difficulty } from './talks/Difficulty'
 
 export class DifficultyService {
   public toDifficulty(string: string): Difficulty {

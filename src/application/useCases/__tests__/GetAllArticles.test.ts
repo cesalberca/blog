@@ -1,21 +1,14 @@
 import { GetAllArticles } from '../GetAllArticles'
 import { ArticlesFileRepository } from '../../../infraestructure/articles/ArticlesFileRepository'
-import { Locale, Translator } from '../../../infraestructure/language'
-import { FileLoader } from '../../../infraestructure/FileLoader'
-import { TranslationService } from '../../TranslationService'
+import { Locale } from '../../../domain/language'
 
 jest.mock('../../../infraestructure/articles/ArticlesFileRepository')
+jest.mock('../UseCaseDecorator')
 
 describe('GetAllArticles', () => {
   it('should get all articles', async () => {
     expect.assertions(1)
-    const getArticle = new GetAllArticles(
-      new ArticlesFileRepository(
-        FileLoader.create(),
-        TranslationService.create(Translator.create())
-      ),
-      Locale.EN
-    )
+    const getArticle = GetAllArticles.create({ locale: Locale.DEFAULT })
 
     await getArticle.execute()
 

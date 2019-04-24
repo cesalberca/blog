@@ -1,9 +1,4 @@
-import {
-  Locale,
-  TranslationError,
-  TranslationIdentifiers,
-  Translator
-} from '../infraestructure/language'
+import { Locale, TranslationError, TranslationIdentifiers, Translator } from './language'
 
 export class TranslationService {
   private constructor(private readonly translator: Translator) {}

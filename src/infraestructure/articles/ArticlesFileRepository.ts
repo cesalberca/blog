@@ -1,8 +1,8 @@
 import { Article, ArticlesRepository, Id, Markdown } from '../../domain/articles'
-import { Locale } from '../language'
+import { Locale } from '../../domain/language'
 import { Datetime } from '../Datetime'
 import { FileLoader } from '../FileLoader'
-import { TranslationService } from '../../application'
+import { TranslationService } from '../../domain/TranslationService'
 
 export class ArticlesFileRepository implements ArticlesRepository {
   public constructor(

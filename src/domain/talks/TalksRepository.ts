@@ -1,5 +1,5 @@
 import { Id } from '../Id'
-import { Locale } from '../../infraestructure/language'
+import { Locale } from '../language'
 import { Talk } from './Talk'
 
 export interface TalksRepository {

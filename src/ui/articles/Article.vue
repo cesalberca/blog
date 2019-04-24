@@ -71,7 +71,7 @@ export default class ArticleComponent extends Vue {
   }
 }
 </script>
-<style>
+<style scoped>
 header {
   display: flex;
 }
@@ -86,27 +86,5 @@ header {
   padding: var(--base);
   border-radius: 5px;
   line-height: 1;
-}
-
-.article code,
-.article pre {
-  border-radius: 5px;
-}
-
-.article pre {
-  width: calc(var(--body-width) * 1.2);
-  margin-left: calc(var(--body-width) * -0.2 / 2);
-  overflow-x: scroll;
-  padding: var(--medium-size);
-}
-
-.article code {
-  background-color: var(--code-background);
-  padding: var(--base);
-}
-
-.article pre code {
-  padding: 0;
-  background-color: transparent;
 }
 </style>

@@ -6,5 +6,18 @@
 
   --title-color: white;
   --link-color: black;
+  --bold-color: #3a3a3a;
+
   --code-background: var(--gray-color);
+  --code-foreground: var(--dark-blue);
+  --code-commment-color: hsl(0, 0%, 40%);
+  --code-punctuation-color: hsl(0, 0%, 60%);
+  --code-tag-color: hsl(358, 65%, 48%);
+  --code-function-color: hsl(210, 51%, 39%);
+  --code-token-color: hsl(24, 85%, 41%);
+  --code-property-color: hsl(41, 92%, 45%);
+  --code-selector-color: hsl(299, 34%, 50%);
+  --code-string-color: hsl(142, 39%, 44%);
+  --code-operator-color: hsl(179, 50%, 49%);
+  --code-inserted-color: green;
 }

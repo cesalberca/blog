@@ -1,0 +1,6 @@
+.light {
+  --foreground-color: var(--black-color);
+  --background-color: var(--white-color);
+  --title-color: var(--foreground-color);
+  --code-background: var(--white-light-color);
+}

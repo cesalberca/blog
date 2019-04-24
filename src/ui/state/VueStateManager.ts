@@ -1,6 +1,6 @@
 import { VueConstructor } from 'vue'
-import { StateManager } from './StateManager'
-import { State } from './State'
+import { StateManager } from '../../application/state/StateManager'
+import { State } from '../../application/state/State'
 
 export class VueStateManager {
   private static _instance: VueStateManager | null = null

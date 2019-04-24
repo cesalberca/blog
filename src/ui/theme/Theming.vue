@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { State } from '../state'
 import { Theme } from './Theme'
+import { State } from '../../application/state'
 
 @Component
 export default class Theming extends Vue {

@@ -24,7 +24,7 @@ import { Component, Inject, Vue } from 'vue-property-decorator'
 import { Theme } from '../theme/Theme'
 import { Locale } from '../../domain/language'
 import { Translate } from './Translate'
-import { State } from '../state'
+import { State } from '../../application/state'
 
 @Component
 export default class Options extends Vue {

@@ -12,10 +12,11 @@
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import { Article, Id } from '../../domain'
-import { State, VueStateManager } from '../state'
+import { VueStateManager } from '../state'
 import Prism from 'prismjs'
 import { GetArticle } from '../../application/useCases'
 import { TranslationService } from '../../domain/TranslationService'
+import { State } from '../../application/state'
 
 @Component<ArticleComponent>({
   async beforeRouteEnter(to, _from, next) {

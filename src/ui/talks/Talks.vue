@@ -7,13 +7,14 @@
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { State, VueStateManager } from '../state'
+import { VueStateManager } from '../state'
 import { Talk } from '../../domain/talks'
 import TalkComponent from './Talk.vue'
 import { TalkDetail } from './TalkDetail'
 import { GetTalksGiven } from '../../application/useCases'
 import { Translate } from '../commons/Translate'
 import { TranslationService } from '../../domain/TranslationService'
+import { State } from '../../application/state'
 
 @Component<Talks>({
   async beforeRouteEnter(_to, _from, next) {

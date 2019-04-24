@@ -1,4 +1,4 @@
-import { State } from './State'
+import { State } from './'
 import { Observer, Subject } from '../../infraestructure'
 
 export class StateManager implements Subject {

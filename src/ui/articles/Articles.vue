@@ -14,12 +14,13 @@
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import { ArticleExcerpt } from '../commons'
 import { Article } from '../../domain/articles'
-import { State, VueStateManager } from '../state'
+import { VueStateManager } from '../state'
 import { Id } from '../../domain'
 import { ActionsFactory } from '../actions/ActionsFactory'
 import { Translate } from '../commons/Translate'
 import { GetAllArticles } from '../../application/useCases'
 import { TranslationService } from '../../domain/TranslationService'
+import { State } from '../../application/state'
 
 @Component<Articles>({
   async beforeRouteEnter(_to, _from, next) {

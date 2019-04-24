@@ -9,8 +9,8 @@
 import { Component, Inject, Vue } from 'vue-property-decorator'
 import { Injector } from '../index'
 import { Page } from '../commons/'
-import { State } from '../state'
 import { Translate } from '../commons/Translate'
+import { State } from '../../application/state'
 
 @Component({
   components: {

@@ -36,9 +36,9 @@ h4,
 h5,
 h6 {
   margin: 2.75rem 0 1rem;
-  color: var(--foreground-color);
+  color: var(--title-color);
   font-family: var(--title-font);
-  font-weight: 400;
+  font-weight: 900;
   line-height: 1.15;
 }
 

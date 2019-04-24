@@ -1,7 +1,9 @@
 :root {
-  --white-color: hsl(0, 0%, 100%);
+  --white-color: hsla(0, 0%, 100%, 0.88);
   --black-color: hsl(0, 1%, 15%);
+  --dark-blue: hsl(222, 14%, 18%);
   --gray-color: hsl(150, 2%, 79%);
   --blue-color: hsl(229, 87%, 44%);
+  --blue-light-color: hsl(206, 68%, 55%);
   --teal-color: hsl(184, 97%, 37%);
 }

@@ -1,9 +1,9 @@
 <template>
-  <div class="excerpt" tabindex="0" @click="onClick">
+  <a class="excerpt" tabindex="0" @click="onAction" @keydown.enter="onAction">
     <h3>{{ excerpt.title }}</h3>
     <span class="slugline">{{ excerpt.date }}</span>
     <p v-html="excerpt.body"></p>
-  </div>
+  </a>
 </template>
 
 <script lang="ts">
@@ -16,13 +16,17 @@ export default class ArticleExcerpt extends Vue {
   excerpt!: ReturnType<Article['getExcerpt']>
 
   @Emit()
-  onClick() {
+  onAction() {
     return this.excerpt.id
   }
 }
 </script>
 
 <style scoped>
+.excerpt {
+  display: block;
+}
+
 .excerpt:hover {
   cursor: pointer;
 }

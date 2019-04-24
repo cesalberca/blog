@@ -77,4 +77,10 @@ export default class Options extends Vue {
 label {
   margin-right: var(--small-size);
 }
+
+select {
+  background: transparent;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
 </style>

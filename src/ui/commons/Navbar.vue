@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="links">
-      <router-link to="/">{{ translations.home }}</router-link>
+      <router-link to="/" exact>{{ translations.home }}</router-link>
       <router-link to="/articles">{{ translations.articles }}</router-link>
       <router-link to="/talks">{{ translations.talks }}</router-link>
       <router-link to="/about">{{ translations.about }}</router-link>
@@ -48,6 +48,7 @@ export default class Navbar extends Vue {
   margin-right: var(--medium-size);
 }
 
-.options {
+.router-link-active {
+  color: var(--primary-color);
 }
 </style>

@@ -5,7 +5,7 @@
       v-for="article in articles"
       :key="article.id.slug"
       :excerpt="article.getExcerpt()"
-      @on-click="navigateToArticle(article.id)"
+      @on-action="navigateToArticle"
     />
   </div>
 </template>

@@ -21,7 +21,7 @@ export class Router {
         {
           path: '/article/:id',
           name: 'article',
-          component: () => import(/* webpackChunkName: "articles" */ './articles/Article.vue')
+          component: () => import(/* webpackChunkName: "article" */ './articles/Article.vue')
         },
         {
           path: '/about',

@@ -7,7 +7,8 @@ function deploy() {
   yarn ci
   yarn build
 
-  git subtree push --prefix docs origin gh-pages
+  git push origin `git subtree split --prefix docs master`:gh-pages --no-verify
+
   datetime="$(date '+%Y%m%d.%H%M%S')"
   tag_name="${datetime}"
   git tag --annotate "${tag_name}" --message="Deployed on ${datetime}"

@@ -4,6 +4,9 @@ function deploy() {
   _vcs_assert_everything_committed
   _vcs_assert_all_changes_pushed
 
+  yarn ci
+  yarn build
+
   git subtree push --prefix docs origin gh-pages
   git add .
   git commit -m "[CI] Automatic commit"

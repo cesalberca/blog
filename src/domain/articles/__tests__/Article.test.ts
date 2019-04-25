@@ -3,6 +3,7 @@ import { Id } from '../../Id'
 import { Markdown } from '../../Markdown'
 import { Datetime } from '../../../infraestructure/Datetime'
 import { Locale } from '../../language'
+import { Length } from '../../Length'
 
 describe('Article', () => {
   it('should get the excerpt', () => {
@@ -21,7 +22,8 @@ describe('Article', () => {
       date: 'March 27, 2019',
       id: Id.fromValue('foo'),
       title: 'foo',
-      locale: 0
+      locale: 0,
+      readingTime: Length.fromMinutes(1)
     })
   })
 
@@ -78,7 +80,7 @@ describe('Article', () => {
 
     const actual = article.getReadingTime()
 
-    expect(actual.seconds).toBe(1)
+    expect(actual.seconds).toBe(60)
   })
 })
 

@@ -43,7 +43,8 @@ export class Article {
 
   public getReadingTime(): Length {
     const words = this.body.value.split(' ').length
-    return Length.fromMinutes(Math.round(words / Article.AVERAGE_WORDS_PER_MINUTE))
+    const readingTime = words / Article.AVERAGE_WORDS_PER_MINUTE
+    return readingTime > 1 ? Length.fromMinutes(readingTime) : Length.fromMinutes(1)
   }
 
   private getSummary(body: string) {

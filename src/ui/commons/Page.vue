@@ -15,13 +15,11 @@ export default class Page extends Vue {}
 
 <style scoped>
 .page {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  padding: var(--medium-size);
 }
 
 .wrapper {
+  margin: 0 auto;
   max-width: var(--body-width);
 }
 </style>

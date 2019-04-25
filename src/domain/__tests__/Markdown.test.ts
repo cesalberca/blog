@@ -11,4 +11,10 @@ describe('Markdown', () => {
 
     expect(marked).toHaveBeenCalledWith('foo')
   })
+
+  it('should configure marked', () => {
+    Markdown.fromValue('foo')
+
+    expect(marked.setOptions).toHaveBeenCalled()
+  })
 })

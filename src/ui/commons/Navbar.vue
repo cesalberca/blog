@@ -46,6 +46,8 @@ export default class Navbar extends Vue {
 .links > * {
   font-size: var(--title-size);
   margin-right: var(--medium-size);
+  transition: 0.25s ease color;
+  text-decoration: none;
 }
 
 .router-link-active {

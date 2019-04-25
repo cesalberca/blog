@@ -38,7 +38,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### To do
 
-- [ ] Time to read
 - [ ] Reading progress
 - [ ] Socials links
 - [ ] Improve about me section
@@ -51,11 +50,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Doing
 
-- [ ] Add styling for code samples
 - [ ] Autogenerate index
     - [ ] Use doctoc in deploy script
 
 ### Done
 
+- [x] Add styling for code samples
+- [x] Time to read
 - [x] Handle articles not translated
 - [x] Add talks

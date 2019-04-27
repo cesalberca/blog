@@ -6,6 +6,7 @@
       <span class="locale">{{ articleLocale }}</span>
     </header>
     <div class="article" v-html="body"></div>
+    <SocialLinks />
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import Prism from 'prismjs'
 import { GetArticle } from '../../application/useCases'
 import { TranslationService } from '../../domain/TranslationService'
 import { State } from '../../application/state'
+import SocialLinks from './SocialLinks.vue'
 
 @Component<ArticleComponent>({
   async beforeRouteEnter(to, _from, next) {
@@ -33,6 +35,9 @@ import { State } from '../../application/state'
       vm.article = article
       vm.highlight()
     })
+  },
+  components: {
+    SocialLinks
   }
 })
 export default class ArticleComponent extends Vue {

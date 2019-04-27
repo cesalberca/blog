@@ -10,6 +10,7 @@ export interface TranslationIdentifiers {
   about_title: string
   about_description: string
   article_title: string
+  article_shareArticle: string
   talks_title: string
   talks_talkAbstract: string
   talks_talkTitle: string

@@ -11,6 +11,7 @@ export const es: Translation = new Map<keyof TranslationIdentifiers, string>([
   ['home_title', 'Inicio'],
   ['home_recentArticles', 'Artículos recientes'],
   ['article_title', 'Artículos'],
+  ['article_via', 'vía'],
   ['article_shareArticle', 'Compartir artículo'],
   ['about_title', 'Acerca de mí'],
   [

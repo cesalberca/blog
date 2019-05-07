@@ -10,6 +10,7 @@ import { VueStateManager } from './state'
 import { Translator } from '../domain/language'
 import { Translate } from './commons/Translate'
 import { TranslationService } from '../domain/TranslationService'
+import { TwitterSharerService } from '../domain/TwitterSharerService'
 
 @Component
 export default class Injector extends Vue {
@@ -17,7 +18,13 @@ export default class Injector extends Vue {
   translationService = TranslationService.create(Translator.create())
 
   @Provide()
+  twitterSharerService = TwitterSharerService.create()
+
+  @Provide()
   state = VueStateManager.instance.create(Vue).state
+
+  @Provide()
+  window: Window = window
 
   @Provide()
   translate: Translate = key =>

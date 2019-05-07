@@ -6,7 +6,7 @@
       <span class="locale">{{ articleLocale }}</span>
     </header>
     <div class="article" v-html="body"></div>
-    <SocialLinks />
+    <SocialLinks :body="article.getSummary()" />
   </div>
 </template>
 
@@ -55,6 +55,7 @@ export default class ArticleComponent extends Vue {
       id: Id.fromValue(this.$route.params.id),
       locale: VueStateManager.instance.state.locale
     }).execute()
+    this.highlight()
   }
 
   highlight() {
@@ -91,5 +92,10 @@ header {
   padding: var(--base);
   border-radius: 5px;
   line-height: 1;
+}
+</style>
+<style>
+.article p {
+  margin-top: var(--medium-size);
 }
 </style>

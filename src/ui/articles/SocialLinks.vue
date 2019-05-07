@@ -5,7 +5,7 @@
     <div class="share">
       <p>{{ shareArticle }} <span>—</span></p>
       <section class="links">
-        <a href="https://twitter.com">
+        <a target="_blank" :href="twitterLink">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20">
             <path
               fill="currentColor"
@@ -14,7 +14,7 @@
             ></path>
           </svg>
         </a>
-        <a href="https://github.com/cesalberca"
+        <a target="_blank" href="https://github.com/cesalberca"
           ><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
             <path
               fill="currentColor"
@@ -29,10 +29,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Inject, Vue } from 'vue-property-decorator'
+import { Component, Inject, Prop, Vue } from 'vue-property-decorator'
 import GithubSvg from './github.svg'
 import TwitterSvg from './twitter.svg'
 import { Translate } from '../commons/Translate'
+import { TwitterSharerService } from '../../domain/TwitterSharerService'
+import { State } from '../../application/state'
 
 @Component
 export default class SocialLinks extends Vue {
@@ -42,15 +44,35 @@ export default class SocialLinks extends Vue {
   @Inject()
   translate!: Translate
 
+  @Inject()
+  state!: State
+
+  @Inject()
+  readonly twitterSharerService!: TwitterSharerService
+
+  @Inject()
+  readonly window!: Window
+
+  @Prop({ type: String, required: true })
+  body!: string
+
   get shareArticle() {
     return this.translate('article_shareArticle')
+  }
+
+  get twitterLink() {
+    return this.twitterSharerService.getShareUrlFromBody({
+      body: this.body,
+      url: this.window.location.href,
+      locale: this.state.locale
+    })
   }
 }
 </script>
 <style scoped>
 .separator {
   border-bottom: 1px solid var(--gray-color);
-  margin-bottom: var(--medium-size);
+  margin: var(--medium-size) 0;
 }
 
 .share {

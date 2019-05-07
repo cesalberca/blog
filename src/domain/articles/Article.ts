@@ -31,14 +31,10 @@ export class Article {
       id: this.id,
       title: this.title,
       date: this.getFormattedDate(),
-      body: this.getSummary(this.body.toHtml()),
+      body: this.getSummary(),
       locale: this.locale,
       readingTime: this.getReadingTime()
     }
-  }
-
-  private getFormattedDate() {
-    return this.date.format()
   }
 
   public getReadingTime(): Length {
@@ -47,7 +43,11 @@ export class Article {
     return readingTime > 1 ? Length.fromMinutes(Math.round(readingTime)) : Length.fromMinutes(1)
   }
 
-  private getSummary(body: string) {
-    return body.split(Article.SUMMARY_SEPARATOR)[0]
+  public getSummary() {
+    return this.body.toHtml().split(Article.SUMMARY_SEPARATOR)[0]
+  }
+
+  private getFormattedDate() {
+    return this.date.format()
   }
 }

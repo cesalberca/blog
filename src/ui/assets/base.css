@@ -16,7 +16,6 @@ body {
   padding: 0;
   font-size: var(--body-size);
   min-height: 100vh;
-
 }
 
 *,
@@ -25,9 +24,21 @@ body {
   box-sizing: inherit;
 }
 
+a:focus,
+button:focus,
+select:focus {
+  outline: 2px solid var(--secondary-color);
+  text-decoration: none;
+  outline-offset: 5px;
+}
+
 a {
   color: var(--link-color);
   text-underline-position: under;
+}
+
+p {
+  margin: 0;
 }
 
 h1,

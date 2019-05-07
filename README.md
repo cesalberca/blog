@@ -39,8 +39,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### To do
 
 - [ ] Reading progress
-- [ ] Socials links
 - [ ] Improve about me section
+- [ ] Autogenerate index
+    - [ ] Use doctoc in deploy script
 - [ ] Improve Navbar with gear icon
 - [ ] Responsive
 - [ ] Persist user settings to locale storage
@@ -50,8 +51,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Doing
 
-- [ ] Autogenerate index
-    - [ ] Use doctoc in deploy script
+- [ ] Socials links
 
 ### Done
 

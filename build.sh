@@ -7,11 +7,12 @@ function deploy() {
   yarn ci
   yarn build
 
+  cd docs
   git add .
   datetime="$(date '+%Y%m%d.%H%M%S')"
   git commit -m "[CI] Automatic commit message ${datetime}"
-
-  git subtree push --prefix docs origin gh-pages
+  git push origin gh-pages
+  cd ..
 
   tag_name="${datetime}"
   git tag --annotate "${tag_name}" --message="Deployed on ${datetime}"

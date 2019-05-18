@@ -4,6 +4,10 @@ function deploy() {
   _vcs_assert_everything_committed
   _vcs_assert_all_changes_pushed
 
+  rm -rf dist
+  rm -rf node_modules
+
+  yarn
   yarn ci
   yarn build
 

@@ -5,7 +5,6 @@ export class Router {
 
   private constructor(private readonly vueRouter: typeof VueRouter) {
     this._value = new this.vueRouter({
-      mode: 'history',
       base: process.env.BASE_URL,
       routes: [
         {

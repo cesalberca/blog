@@ -9,3 +9,6 @@ export { ArticleExcerpt }
 
 import Page from './Page.vue'
 export { Page }
+
+import Markdown from './Markdown.vue'
+export { Markdown }

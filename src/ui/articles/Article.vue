@@ -5,7 +5,7 @@
       <span class="date">{{ article.date.format() }}</span>
       <span class="locale">{{ articleLocale }}</span>
     </header>
-    <div class="article" v-html="body"></div>
+    <Markdown class="article" :body="body"></Markdown>
     <SocialLinks :body="article.getSummary()" />
   </div>
 </template>
@@ -14,11 +14,11 @@
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import { Article, Id } from '../../domain'
 import { VueStateManager } from '../state'
-import Prism from 'prismjs'
 import { GetArticle } from '../../application/useCases'
 import { TranslationService } from '../../domain/TranslationService'
 import { State } from '../../application/state'
 import SocialLinks from './SocialLinks.vue'
+import Markdown from '../commons/Markdown.vue'
 
 @Component<ArticleComponent>({
   async beforeRouteEnter(to, _from, next) {
@@ -33,10 +33,10 @@ import SocialLinks from './SocialLinks.vue'
 
     next(vm => {
       vm.article = article
-      vm.highlight()
     })
   },
   components: {
+    Markdown,
     SocialLinks
   }
 })
@@ -55,13 +55,6 @@ export default class ArticleComponent extends Vue {
       id: Id.fromValue(this.$route.params.id),
       locale: VueStateManager.instance.state.locale
     }).execute()
-    this.highlight()
-  }
-
-  highlight() {
-    this.$nextTick(() => {
-      Prism.highlightAll()
-    })
   }
 
   get articleLocale() {
@@ -73,7 +66,7 @@ export default class ArticleComponent extends Vue {
   }
 
   get body() {
-    return this.article!.body.toHtml()
+    return this.article!.body
   }
 }
 </script>

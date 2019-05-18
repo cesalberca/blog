@@ -8,7 +8,7 @@ function deploy() {
   yarn build
 
   datetime="$(date '+%Y%m%d.%H%M%S')"
-  git subtree push --prefix docs origin gh-pages
+  git subtree push --prefix dist origin gh-pages
   tag_name="${datetime}"
   git tag --annotate "${tag_name}" --message="Deployed on ${datetime}"
   git push origin "${tag_name}" --no-verify

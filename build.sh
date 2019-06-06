@@ -11,10 +11,7 @@ function deploy() {
   yarn ci
   yarn build
 
-  git add .
-  git commit -m "[CI] Automatic commit"
-
-  git subtree split --branch deploy --prefix dist/
+  yarn gh-pages -d dist
 
   datetime="$(date '+%Y%m%d.%H%M%S')"
   tag_name="${datetime}"

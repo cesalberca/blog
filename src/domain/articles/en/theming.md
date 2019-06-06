@@ -1,6 +1,6 @@
 ---
 title: Theming
-date: 2019-05-31
+date: 2019-06-06
 locale: en
 ---
 
@@ -73,7 +73,7 @@ Now, if the color changes slightly to another one, we should change this file. B
 
 ```css
 :root {
-  --orange-color: blue;
+    --orange-color: blue;
 }
 ```
 
@@ -83,17 +83,29 @@ How can we tackle this problem? The answer lies in a previous paragraph: "requir
 
 ```css
 :root {
-  --primary-color: var(--orange-color);
-  --secondary-color: var(--teal-color);
+    --primary-color: var(--orange-color);
+    --secondary-color: var(--teal-color);
 }
 ```
 
 Another thing I like to do is declare the foreground and background color, this allows me to create in a future a dark theme or a light theme:
 
+```css
+:root {
+    --foreground-color: var(--black-color);
+    --background-color: var(--white-color);
+}
+```
+
+In order to change to a dark color mode we can just swap the values:
 
 ```css
 :root {
-  --foreground-color: var(--black-color);
-  --background-color: var(--white-color);
+    --foreground-color: var(--white-color);
+    --background-color: var(--black-color);
 }
 ```
+
+## Conclusion
+
+Theming as shown in this tutorial can save you a lot of headaches if done well. However we must be precise on what custom properties we assign to our components and try to identify as much as we can business concepts. For example, some error state can be represented today as red, so we should have an `--error-state-color: var(--red-color);` property and if it changes tomorrow we can do it easily `--error-state-color: var(--orange-color);`.

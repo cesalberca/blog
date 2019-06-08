@@ -11,7 +11,7 @@ function deploy() {
   yarn ci
   yarn build
 
-  yarn gh-pages -d dist
+  yarn gh-pages -b master -d dist
 
   datetime="$(date '+%Y%m%d.%H%M%S')"
   tag_name="${datetime}"

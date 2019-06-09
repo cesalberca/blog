@@ -1,7 +1,4 @@
-const path = require('path')
-
 module.exports = {
-  publicPath: 'blog',
   configureWebpack: config => {
     if (process.env.NODE_ENV === 'development') {
       config.devtool = 'source-map'

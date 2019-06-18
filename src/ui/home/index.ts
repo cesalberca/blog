@@ -1,3 +1,3 @@
-import Home from './Home.vue'
+import XHome from './XHome.vue'
 
-export { Home }
+export { XHome }

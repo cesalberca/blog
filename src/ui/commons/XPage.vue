@@ -9,8 +9,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
-@Component
-export default class Page extends Vue {}
+@Component({ name: 'XPage' })
+export default class XPage extends Vue {}
 </script>
 
 <style scoped>

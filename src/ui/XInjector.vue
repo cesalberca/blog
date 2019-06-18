@@ -12,8 +12,10 @@ import { Translate } from './commons/Translate'
 import { TranslationService } from '../domain/TranslationService'
 import { TwitterSharerService } from '../domain/TwitterSharerService'
 
-@Component
-export default class Injector extends Vue {
+@Component({
+  name: 'XInjector'
+})
+export default class XInjector extends Vue {
   @Provide()
   translationService = TranslationService.create(Translator.create())
 

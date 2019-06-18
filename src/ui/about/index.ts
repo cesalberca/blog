@@ -1,2 +1,2 @@
-import About from './About.vue'
-export { About }
+import XAbout from './XAbout.vue'
+export { XAbout }

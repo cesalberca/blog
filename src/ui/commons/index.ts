@@ -1,14 +1,14 @@
-import Options from './Options.vue'
-export { Options }
+import XOptions from './XOptions.vue'
+export { XOptions }
 
-import Navbar from './Navbar.vue'
-export { Navbar }
+import XNavbar from './XNavbar.vue'
+export { XNavbar }
 
-import ArticleExcerpt from './ArticleExcerpt.vue'
-export { ArticleExcerpt }
+import XArticleExcerpt from './XArticleExcerpt.vue'
+export { XArticleExcerpt }
 
-import Page from './Page.vue'
-export { Page }
+import XPage from './XPage.vue'
+export { XPage }
 
-import Markdown from './Markdown.vue'
+import Markdown from './XMarkdown.vue'
 export { Markdown }

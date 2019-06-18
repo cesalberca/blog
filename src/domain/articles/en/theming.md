@@ -46,7 +46,7 @@ And what is even more amazing is that we can change dynamically the values of cu
 }
 ```
 
-_Note: One would thing that we can declare variables for the values of media queries but we can't, we'll have to wait until [env](https://developer.mozilla.org/en-US/docs/Web/CSS/env) lands in Edge and Internet Explorer to have full support (as of June 2019)._
+_Note: One would think that we can declare variables for the values of media queries but we can't, we'll have to wait until [env](https://developer.mozilla.org/en-US/docs/Web/CSS/env) lands in Edge and Internet Explorer to have full support (as of June 2019)._
 
 ## Theming
 
@@ -69,7 +69,7 @@ So, using custom properties how can we theme an app? Well, we first start by cre
 
 _Note: The `:root` selector targets the root element of a document._
 
-Now, if the color changes slightly to another one, we should change this file. But, should we still reference this in our components or CSSs? The answer is no, we should have another indirection. Imagine the following case. We declare in very component to use the custom property `--orange-color`. However, a new redesign requires a change of the main color of the app (which is the `--orange-color`) to a blue color. Now, in order to make it work we could do something like this:
+Now, if the color changes slightly to another one, we should change this file. But, should we still reference this in our components or CSSs? The answer is no, we should have another indirection. Imagine the following case. We declare in every component to use the custom property `--orange-color`. However, a new redesign requires a change of the main color of the app (which is the `--orange-color`) to a blue color. Now, in order to make it work we could do something like this:
 
 ```css
 :root {

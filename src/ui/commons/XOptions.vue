@@ -26,8 +26,8 @@ import { Locale } from '../../domain/language'
 import { Translate } from './Translate'
 import { State } from '../../application/state'
 
-@Component
-export default class Options extends Vue {
+@Component({ name: 'XOptions' })
+export default class XOptions extends Vue {
   @Inject()
   readonly translate!: Translate
 

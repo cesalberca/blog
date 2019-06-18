@@ -36,16 +36,16 @@ import { Translate } from '../commons/Translate'
 import { TwitterSharerService } from '../../domain/TwitterSharerService'
 import { State } from '../../application/state'
 
-@Component
-export default class SocialLinks extends Vue {
+@Component({ name: 'XSocialLinks' })
+export default class XSocialLinks extends Vue {
   githubIcon = GithubSvg
   twitterIcon = TwitterSvg
 
   @Inject()
-  translate!: Translate
+  readonly translate!: Translate
 
   @Inject()
-  state!: State
+  readonly state!: State
 
   @Inject()
   readonly twitterSharerService!: TwitterSharerService

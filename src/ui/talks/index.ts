@@ -1,2 +1,2 @@
-import Talks from './Talks.vue'
+import Talks from './XTalks.vue'
 export { Talks }

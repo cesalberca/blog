@@ -1,2 +1,2 @@
-import Articles from './Articles.vue'
-export { Articles }
+import XArticles from './XArticles.vue'
+export { XArticles }

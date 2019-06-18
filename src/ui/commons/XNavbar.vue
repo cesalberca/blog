@@ -2,7 +2,7 @@
   <nav class="navbar">
     <div class="links">
       <router-link to="/" exact>{{ translations.home }}</router-link>
-      <router-link to="/articles">{{ translations.articles }}</router-link>
+      <!--<router-link to="/articles">{{ translations.articles }}</router-link>-->
       <router-link to="/talks">{{ translations.talks }}</router-link>
       <router-link to="/about">{{ translations.about }}</router-link>
     </div>
@@ -12,15 +12,16 @@
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { Options } from './index'
+import { XOptions } from './index'
 import { Translate } from './Translate'
 
 @Component({
+  name: 'XNavbar',
   components: {
-    Options
+    Options: XOptions
   }
 })
-export default class Navbar extends Vue {
+export default class XNavbar extends Vue {
   @Inject()
   readonly translate!: Translate
 
@@ -48,6 +49,14 @@ export default class Navbar extends Vue {
   margin-right: var(--medium-size);
   transition: 0.25s ease color;
   text-decoration: none;
+}
+
+.links > *:hover {
+  color: inherit;
+}
+
+.links > *:after {
+  content: none;
 }
 
 .router-link-active {

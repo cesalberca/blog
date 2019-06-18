@@ -1,5 +1,5 @@
 <template>
-  <a class="excerpt" tabindex="0" @click="onAction" @keydown.enter="onAction">
+  <x-link class="excerpt" tabindex="0" @click="onAction" @keydown.enter="onAction">
     <h3>{{ excerpt.title }}</h3>
     <div class="slugline">
       <span>{{ excerpt.date }}</span>
@@ -7,15 +7,19 @@
       <span>{{ excerpt.readingTime.minutes }} minutes</span>
     </div>
     <p v-html="excerpt.body"></p>
-  </a>
+  </x-link>
 </template>
 
 <script lang="ts">
 import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
 import { Article } from '../../domain/articles'
+import XLink from './XLink.vue'
 
-@Component
-export default class ArticleExcerpt extends Vue {
+@Component({
+  name: 'XArticleExcerpt',
+  components: { XLink }
+})
+export default class XArticleExcerpt extends Vue {
   @Prop()
   excerpt!: ReturnType<Article['getExcerpt']>
 
@@ -31,7 +35,12 @@ export default class ArticleExcerpt extends Vue {
   display: block;
 }
 
+.excerpt:after {
+  content: none;
+}
+
 .excerpt:hover {
+  color: inherit;
   cursor: pointer;
 }
 

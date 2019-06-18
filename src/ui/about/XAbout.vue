@@ -7,21 +7,18 @@
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { Injector } from '../index'
-import { Page } from '../commons/'
 import { Translate } from '../commons/Translate'
 import { State } from '../../application/state'
-import MarkdownComponent from '../commons/Markdown.vue'
+import MarkdownComponent from '../commons/XMarkdown.vue'
 import { Markdown } from '../../domain'
 
 @Component({
+  name: 'XAbout',
   components: {
-    MarkdownComponent,
-    Page,
-    Injector
+    MarkdownComponent
   }
 })
-export default class About extends Vue {
+export default class XAbout extends Vue {
   @Inject()
   readonly state!: State
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <Talk v-for="talk in talks" :key="talk.id.value" :detail="talkDetail(talk)" />
+    <x-talk v-for="talk in talks" :key="talk.id.value" :detail="talkDetail(talk)" />
   </div>
 </template>
 
@@ -9,14 +9,14 @@
 import { Component, Inject, Vue } from 'vue-property-decorator'
 import { VueStateManager } from '../state'
 import { Talk } from '../../domain/talks'
-import TalkComponent from './Talk.vue'
+import TalkComponent from './XTalk.vue'
 import { TalkDetail } from './TalkDetail'
 import { GetTalksGiven } from '../../application/useCases'
 import { Translate } from '../commons/Translate'
 import { TranslationService } from '../../domain/TranslationService'
 import { State } from '../../application/state'
 
-@Component<Talks>({
+@Component<XTalks>({
   async beforeRouteEnter(_to, _from, next) {
     const talks = await GetTalksGiven.create({
       locale: VueStateManager.instance.state.locale
@@ -27,10 +27,10 @@ import { State } from '../../application/state'
     })
   },
   components: {
-    Talk: TalkComponent
+    XTalk: TalkComponent
   }
 })
-export default class Talks extends Vue {
+export default class XTalks extends Vue {
   @Inject()
   readonly translationService!: TranslationService
 

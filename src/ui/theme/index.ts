@@ -1,2 +1,2 @@
-import Theming from './Theming.vue'
-export { Theming }
+import XTheming from './XTheming.vue'
+export { XTheming }

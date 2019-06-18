@@ -16,6 +16,7 @@ body {
   padding: 0;
   font-size: var(--body-size);
   min-height: 100vh;
+  position: relative;
 }
 
 *,
@@ -30,11 +31,6 @@ select:focus {
   outline: 2px solid var(--secondary-color);
   text-decoration: none;
   outline-offset: 5px;
-}
-
-a {
-  color: var(--link-color);
-  text-underline-position: under;
 }
 
 p {

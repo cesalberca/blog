@@ -9,10 +9,10 @@ import { Component, Inject, Vue } from 'vue-property-decorator'
 import { Theme } from './Theme'
 import { State } from '../../application/state'
 
-@Component
-export default class Theming extends Vue {
+@Component({ name: 'XTheming' })
+export default class XTheming extends Vue {
   @Inject()
-  state!: State
+  readonly state!: State
 
   get theme(): string {
     switch (this.state.theme) {

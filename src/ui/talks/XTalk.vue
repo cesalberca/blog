@@ -40,8 +40,8 @@ import { Component, Inject, Prop, Vue } from 'vue-property-decorator'
 import { TalkDetail } from './TalkDetail'
 import { Translate } from '../commons/Translate'
 
-@Component
-export default class Talk extends Vue {
+@Component({ name: 'XTalk' })
+export default class XTalk extends Vue {
   @Prop({ type: Object })
   readonly detail!: TalkDetail
 

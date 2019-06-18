@@ -2,5 +2,6 @@
   --foreground-color: var(--black-color);
   --background-color: var(--white-color);
   --title-color: var(--foreground-color);
-  --code-background: var(--white-light-color);
+  --code-background: var(--blue-dark-color);
+  --code-foreground: var(--background-color);
 }

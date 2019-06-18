@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>{{ recentArticlesTitle }}</h1>
-    <ArticleExcerpt
+    <h1>{{ title }}</h1>
+    <x-article-excerpt
       v-for="article in articles"
       :key="article.id.slug"
       :excerpt="article.getExcerpt()"
@@ -12,30 +12,30 @@
 
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
-import { Article, Id } from '../../domain/articles'
-import { ArticleExcerpt } from '../commons'
+import { XArticleExcerpt } from '../commons'
+import { Article } from '../../domain/articles'
 import { VueStateManager } from '../state'
+import { Id } from '../../domain'
 import { ActionsFactory } from '../actions/ActionsFactory'
-import { GetAllArticles } from '../../application/useCases'
 import { Translate } from '../commons/Translate'
+import { GetAllArticles } from '../../application/useCases'
 import { TranslationService } from '../../domain/TranslationService'
 import { State } from '../../application/state'
 
-@Component<Home>({
+@Component<XArticles>({
   async beforeRouteEnter(_to, _from, next) {
     const articles = await GetAllArticles.create({
       locale: VueStateManager.instance.state.locale
     }).execute()
-
     next(vm => {
       vm.articles = articles
     })
   },
   components: {
-    ArticleExcerpt
+    XArticleExcerpt
   }
 })
-export default class Home extends Vue {
+export default class XArticles extends Vue {
   @Inject()
   readonly translationService!: TranslationService
 
@@ -63,8 +63,8 @@ export default class Home extends Vue {
     }).execute()
   }
 
-  get recentArticlesTitle() {
-    return this.translate('home_recentArticles')
+  get title() {
+    return this.translate('article_title')
   }
 }
 </script>

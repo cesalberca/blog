@@ -3,7 +3,7 @@
     <h1>{{ article.title }}</h1>
     <header>
       <span class="date">{{ article.date.format() }}</span>
-      <span class="locale">{{ articleLocale }}</span>
+      <Tag class="locale">{{ articleLocale }}</Tag>
     </header>
     <Markdown class="article" :body="body"></Markdown>
     <SocialLinks :body="article.getSummary()" />
@@ -17,10 +17,12 @@ import { VueStateManager } from '../state'
 import { GetArticle } from '../../application/useCases'
 import { TranslationService } from '../../domain/TranslationService'
 import { State } from '../../application/state'
-import SocialLinks from './SocialLinks.vue'
-import Markdown from '../commons/Markdown.vue'
+import XSocialLinks from './XSocialLinks.vue'
+import Markdown from '../commons/XMarkdown.vue'
+import Tag from '../commons/XTag.vue'
 
 @Component<ArticleComponent>({
+  name: 'XArticle',
   async beforeRouteEnter(to, _from, next) {
     if (to.name === undefined) {
       return
@@ -36,8 +38,9 @@ import Markdown from '../commons/Markdown.vue'
     })
   },
   components: {
+    Tag,
     Markdown,
-    SocialLinks
+    SocialLinks: XSocialLinks
   }
 })
 export default class ArticleComponent extends Vue {
@@ -81,10 +84,6 @@ header {
 
 .locale {
   margin-left: var(--small-size);
-  background-color: var(--code-background);
-  padding: var(--base);
-  border-radius: 5px;
-  line-height: 1;
 }
 </style>
 <style>

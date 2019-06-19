@@ -30,17 +30,12 @@
 
 <script lang="ts">
 import { Component, Inject, Prop, Vue } from 'vue-property-decorator'
-import GithubSvg from './github.svg'
-import TwitterSvg from './twitter.svg'
-import { Translate } from '../commons/Translate'
-import { TwitterSharerService } from '../../domain/TwitterSharerService'
-import { State } from '../../application/state'
+import { TwitterSharerService } from '../../../domain/TwitterSharerService'
+import { State } from '../../../application/state'
+import { Translate } from '../../commons/Translate'
 
 @Component({ name: 'XSocialLinks' })
 export default class XSocialLinks extends Vue {
-  githubIcon = GithubSvg
-  twitterIcon = TwitterSvg
-
   @Inject()
   readonly translate!: Translate
 

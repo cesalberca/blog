@@ -8,7 +8,7 @@ import { Markdown } from '../../domain'
 import Prism from 'prismjs'
 
 @Component({ name: 'XMarkdown' })
-export default class XMarkdownComponent extends Vue {
+export default class XMarkdown extends Vue {
   @Prop({ type: Object, required: true })
   body!: Markdown
 

@@ -12,14 +12,14 @@
 
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
-import { Article, Id } from '../../domain'
-import { VueStateManager } from '../state'
-import { GetArticle } from '../../application/useCases'
-import { TranslationService } from '../../domain/TranslationService'
-import { State } from '../../application/state'
 import XSocialLinks from './XSocialLinks.vue'
-import XMarkdown from '../commons/XMarkdown.vue'
-import XTag from '../commons/XTag.vue'
+import { TranslationService } from '../../../domain/TranslationService'
+import { State } from '../../../application/state'
+import { GetArticle } from '../../../application/useCases'
+import { Article, Id } from '../../../domain/articles'
+import { VueStateManager } from '../../state'
+import XMarkdown from '../../commons/XMarkdown.vue'
+import XTag from '../../commons/XTag.vue'
 
 @Component<ArticleComponent>({
   name: 'XArticle',

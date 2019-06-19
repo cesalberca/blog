@@ -1,5 +1,5 @@
-import { Talk } from '../../domain/talks'
-import { DifficultyService } from '../../domain/DifficultyService'
+import { Talk } from '../../../domain/talks'
+import { DifficultyService } from '../../../domain/DifficultyService'
 
 export class TalkDetail {
   public static fromTalk(talk: Talk) {

@@ -10,27 +10,28 @@ export class Router {
         {
           path: '/',
           name: 'home',
-          component: () => import(/* webpackChunkName: "home" */ './home/XHome.vue')
+          component: () => import(/* webpackChunkName: "home" */ './pages/home/XHome.vue')
         },
         {
           path: '/articles',
           name: 'articles',
-          component: () => import(/* webpackChunkName: "articles" */ './articles/XArticles.vue')
+          component: () =>
+            import(/* webpackChunkName: "articles" */ './pages/articles/XArticles.vue')
         },
         {
           path: '/article/:id',
           name: 'article',
-          component: () => import(/* webpackChunkName: "article" */ './articles/XArticle.vue')
+          component: () => import(/* webpackChunkName: "article" */ './pages/articles/XArticle.vue')
         },
         {
           path: '/about',
           name: 'about',
-          component: () => import(/* webpackChunkName: "about" */ './about/XAbout.vue')
+          component: () => import(/* webpackChunkName: "about" */ './pages/about/XAbout.vue')
         },
         {
           path: '/talks',
           name: 'talks',
-          component: () => import(/* webpackChunkName: "talks" */ './talks/XTalks.vue')
+          component: () => import(/* webpackChunkName: "talks" */ './pages/talks/XTalks.vue')
         }
       ]
     })

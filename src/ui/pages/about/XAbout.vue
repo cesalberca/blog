@@ -1,16 +1,16 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <MarkdownComponent :body="description"></MarkdownComponent>
+    <markdown-component :body="description"></markdown-component>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { Translate } from '../commons/Translate'
-import { State } from '../../application/state'
-import MarkdownComponent from '../commons/XMarkdown.vue'
-import { Markdown } from '../../domain'
+import { State } from '../../../application/state'
+import { Translate } from '../../commons/Translate'
+import { Markdown } from '../../../domain'
+import MarkdownComponent from '../../commons/XMarkdown.vue'
 
 @Component({
   name: 'XAbout',

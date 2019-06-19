@@ -38,7 +38,7 @@
 <script lang="ts">
 import { Component, Inject, Prop, Vue } from 'vue-property-decorator'
 import { TalkDetail } from './TalkDetail'
-import { Translate } from '../commons/Translate'
+import { Translate } from '../../commons/Translate'
 
 @Component({ name: 'XTalk' })
 export default class XTalk extends Vue {

@@ -26,7 +26,7 @@ import XTheming from './theme/XTheming.vue'
     XNavbar
   }
 })
-export default class App extends Vue {}
+export default class XApp extends Vue {}
 </script>
 <style scoped>
 .full-height {

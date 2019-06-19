@@ -6,7 +6,12 @@ module.exports = {
 
     config.module.rules.push({
       test: /\.md$/,
-      loader: 'frontmatter-markdown-loader'
+      loader: 'frontmatter-markdown-loader',
+      options: {
+        vue: {
+          root: 'dynamicContent'
+        }
+      }
     })
   }
 }

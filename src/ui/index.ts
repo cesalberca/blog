@@ -1,6 +1,6 @@
 import XInjector from './XInjector.vue'
 export { XInjector }
-import App from './XApp.vue'
-export { App }
+import XApp from './XApp.vue'
+export { XApp }
 export * from './Application'
 export { Router } from './Router'

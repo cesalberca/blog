@@ -1,18 +1,36 @@
 import { GetAllArticles } from '../GetAllArticles'
-import { ArticlesFileRepository } from '../../../infraestructure/articles/ArticlesFileRepository'
 import { Locale } from '../../../domain/language'
+import { ArticlesMockRepository } from '../../../infraestructure/articles/ArticlesMockRepository'
+import { ArticlesMother } from '../../../domain/articles/ArticlesMother'
+import { Article, ArticlesRepository } from '../../../domain/articles'
 
-jest.mock('../../../infraestructure/articles/ArticlesFileRepository')
 jest.mock('../UseCaseDecorator')
 
 describe('GetAllArticles', () => {
+  let getAllArticles: GetAllArticles
+  let mock: ArticlesRepository
+
+  beforeEach(() => {
+    mock = new ArticlesMockRepository()
+    ;(mock.findAllByLocale as jest.Mock).mockResolvedValue([])
+    getAllArticles = new GetAllArticles(mock, Locale.EN)
+  })
+
   it('should get all articles', async () => {
     expect.assertions(1)
-    const getArticle = GetAllArticles.create({ locale: Locale.DEFAULT })
 
-    await getArticle.execute()
+    await getAllArticles.execute()
 
-    const calls = (ArticlesFileRepository as jest.Mock).mock.instances[0].findAllByLocale.mock.calls
-    expect(calls[0][0]).toEqual(0)
+    expect(mock.findAllByLocale).toHaveBeenCalledWith(0)
+  })
+
+  it('should return the articles ordered by date', async () => {
+    expect.assertions(1)
+    const articles: Article[] = ArticlesMother.getFakeArticles()
+    ;(mock.findAllByLocale as jest.Mock).mockResolvedValue(articles)
+
+    const result = await getAllArticles.execute()
+
+    expect(result[0].date.value > result[1].date.value).toBe(true)
   })
 })

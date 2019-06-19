@@ -7,13 +7,14 @@ import { TranslationService } from '../../domain/TranslationService'
 import { UseCaseDecorator } from './UseCaseDecorator'
 
 export class GetAllArticles implements Command<Article[]> {
-  private constructor(
+  public constructor(
     private readonly articlesRepository: ArticlesRepository,
     private readonly locale: Locale
   ) {}
 
   public async execute(): Promise<Article[]> {
-    return this.articlesRepository.findAllByLocale(this.locale)
+    const articles = await this.articlesRepository.findAllByLocale(this.locale)
+    return articles.slice().sort((articleA, articleB) => (articleB.date < articleA.date ? -1 : 1))
   }
 
   public static create(context: { locale: Locale }) {

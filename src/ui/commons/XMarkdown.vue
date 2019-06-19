@@ -64,4 +64,22 @@ export default class XMarkdownComponent extends Vue {
 .markdown ::v-deep code {
   color: var(--code-foreground);
 }
+
+.markdown ::v-deep blockquote {
+  font-style: italic;
+  position: relative;
+  margin-left: 0;
+  padding-left: 40px;
+}
+
+.markdown ::v-deep blockquote:before {
+  display: inline-block;
+  content: '';
+  position: absolute;
+  width: 3px;
+  left: 0;
+  height: 90%;
+  top: 5%;
+  background-color: var(--primary-color);
+}
 </style>

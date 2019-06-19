@@ -10,6 +10,8 @@ Theming a web with custom properties is as easy as it gets as shown in this arti
 
 Theming is such an important aspect of web development, and even though your app or website might not require different themes we should develop our visual styles such as color, spacing, fonts and animations as if they were to change every day. Why? Because it is what changes most often. If done well, a rebranding, introducing a "dark mode" or adjusting colors will be super easy.
 
+> "we should develop our visual styles such as color, spacing, fonts and animations as if they were to change every day."
+
 ## Custom properties
 
 CSS's Custom properties are truly a gift. They open up so many possibilities because of their dynamic behaviour. We can create a new custom property in a given element as follows:

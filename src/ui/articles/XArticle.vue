@@ -3,10 +3,10 @@
     <h1>{{ article.title }}</h1>
     <header>
       <span class="date">{{ article.date.format() }}</span>
-      <Tag class="locale">{{ articleLocale }}</Tag>
+      <x-tag class="locale">{{ articleLocale }}</x-tag>
     </header>
-    <Markdown class="article" :body="body"></Markdown>
-    <SocialLinks :body="article.getSummary()" />
+    <x-markdown class="article" :body="body"></x-markdown>
+    <x-social-links class="social-links" :body="article.getSummary()" />
   </div>
 </template>
 
@@ -18,8 +18,8 @@ import { GetArticle } from '../../application/useCases'
 import { TranslationService } from '../../domain/TranslationService'
 import { State } from '../../application/state'
 import XSocialLinks from './XSocialLinks.vue'
-import Markdown from '../commons/XMarkdown.vue'
-import Tag from '../commons/XTag.vue'
+import XMarkdown from '../commons/XMarkdown.vue'
+import XTag from '../commons/XTag.vue'
 
 @Component<ArticleComponent>({
   name: 'XArticle',
@@ -38,9 +38,9 @@ import Tag from '../commons/XTag.vue'
     })
   },
   components: {
-    Tag,
-    Markdown,
-    SocialLinks: XSocialLinks
+    XTag,
+    XMarkdown,
+    XSocialLinks
   }
 })
 export default class ArticleComponent extends Vue {
@@ -85,9 +85,12 @@ header {
 .locale {
   margin-left: var(--small-size);
 }
-</style>
-<style>
-.article p {
+
+.social-links {
+  margin-bottom: var(--big-size);
+}
+
+.article ::v-deep p {
   margin-top: var(--medium-size);
 }
 </style>

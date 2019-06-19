@@ -43,7 +43,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 2.75rem 0 1rem;
+  margin: 2rem 0 1rem;
   color: var(--title-color);
   font-family: var(--title-font);
   font-weight: 900;

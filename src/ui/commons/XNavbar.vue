@@ -1,39 +1,23 @@
 <template>
   <nav class="navbar">
-    <div class="links">
-      <router-link to="/" exact>{{ translations.home }}</router-link>
-      <!--<router-link to="/articles">{{ translations.articles }}</router-link>-->
-      <router-link to="/talks">{{ translations.talks }}</router-link>
-      <router-link to="/about">{{ translations.about }}</router-link>
-    </div>
-    <Options class="options" />
+    <x-links></x-links>
+    <x-options class="options" />
   </nav>
 </template>
 
 <script lang="ts">
-import { Component, Inject, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { XOptions } from './index'
-import { Translate } from './Translate'
+import XLinks from './XLinks.vue'
 
 @Component({
   name: 'XNavbar',
   components: {
-    Options: XOptions
+    XOptions,
+    XLinks
   }
 })
-export default class XNavbar extends Vue {
-  @Inject()
-  readonly translate!: Translate
-
-  get translations() {
-    return {
-      home: this.translate('home_title'),
-      about: this.translate('about_title'),
-      talks: this.translate('talks_title'),
-      articles: this.translate('article_title')
-    }
-  }
-}
+export default class XNavbar extends Vue {}
 </script>
 <style scoped>
 .navbar {
@@ -42,24 +26,5 @@ export default class XNavbar extends Vue {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.links > * {
-  font-size: var(--title-size);
-  margin-right: var(--medium-size);
-  transition: 0.25s ease color;
-  text-decoration: none;
-}
-
-.links > *:hover {
-  color: inherit;
-}
-
-.links > *:after {
-  content: none;
-}
-
-.router-link-active {
-  color: var(--primary-color);
 }
 </style>

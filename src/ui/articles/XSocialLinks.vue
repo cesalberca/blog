@@ -72,7 +72,7 @@ export default class XSocialLinks extends Vue {
 <style scoped>
 .separator {
   border-bottom: 1px solid var(--gray-color);
-  margin: var(--medium-size) 0;
+  margin: var(--big-size) 0;
 }
 
 .share {

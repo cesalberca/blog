@@ -9,6 +9,9 @@
   --link-hover-color: white;
   --bold-color: #3a3a3a;
 
+  --active-opacity: 0.8;
+  --disabled-opacity: 0.3;
+
   --code-background: var(--gray-color);
   --code-foreground: var(--dark-blue);
   --code-commment-color: hsl(0, 0%, 40%);

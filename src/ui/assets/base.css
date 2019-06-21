@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior-y: none;
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 html,
@@ -34,7 +34,7 @@ select:focus {
 }
 
 p {
-  margin: 0;
+  margin-bottom: var(--small-size);
 }
 
 h1,

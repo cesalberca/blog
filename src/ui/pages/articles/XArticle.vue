@@ -4,8 +4,10 @@
       <h1 class="title">{{ article.title }}</h1>
     </x-hero>
     <x-page>
-      <header>
-        <span class="date">{{ article.date.format() }}</span>
+      <header class="header">
+        <span class="date">{{ date }}</span>
+        <span class="dash">—</span>
+        <span class="time">{{ article.getReadingTime().minutes }} {{ minutes }}</span>
         <x-tag class="locale">{{ articleLocale }}</x-tag>
       </header>
       <x-markdown class="article" :body="body"></x-markdown>
@@ -26,6 +28,7 @@ import XMarkdown from '../../commons/XMarkdown.vue'
 import XTag from '../../commons/XTag.vue'
 import XHero from '../../commons/XHero.vue'
 import XPage from '../../commons/XPage.vue'
+import { Translate } from '../../commons/Translate'
 
 @Component<ArticleComponent>({
   name: 'XArticle',
@@ -60,12 +63,23 @@ export default class ArticleComponent extends Vue {
   @Inject()
   readonly translationService!: TranslationService
 
+  @Inject()
+  readonly translate!: Translate
+
   @Watch('state.locale')
   async onLocaleChange() {
     this.article = await GetArticle.create({
       id: Id.fromValue(this.$route.params.id),
       locale: VueStateManager.instance.state.locale
     }).execute()
+  }
+
+  get date() {
+    return this.article!.date.format(this.translationService.toString(this.state.locale))
+  }
+
+  get minutes() {
+    return this.translate('_minutes')
   }
 
   get articleLocale() {
@@ -95,7 +109,19 @@ header {
   text-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.5);
 }
 
+.header > * {
+  margin-right: var(--small-size);
+}
+
 .date {
+  font-style: italic;
+}
+
+.dash {
+  color: var(--primary-color);
+}
+
+.time {
   font-style: italic;
 }
 
@@ -108,6 +134,6 @@ header {
 }
 
 .article ::v-deep p {
-  margin-top: var(--medium-size);
+  margin-bottom: var(--medium-size);
 }
 </style>

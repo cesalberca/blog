@@ -21,8 +21,8 @@ export class Datetime {
     return this._value.getFullYear()
   }
 
-  public format() {
-    return this._value.toLocaleDateString(undefined, {
+  public format(locale: string | undefined = undefined) {
+    return this._value.toLocaleDateString(locale, {
       day: 'numeric',
       month: 'long',
       year: 'numeric'

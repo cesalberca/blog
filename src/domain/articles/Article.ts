@@ -58,7 +58,7 @@ export class Article {
     return this.body.toHtml().split(Article.SUMMARY_SEPARATOR)[0]
   }
 
-  private getFormattedDate() {
-    return this.date.format()
+  private getFormattedDate(locale: string | undefined = undefined) {
+    return this.date.format(locale)
   }
 }

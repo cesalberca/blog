@@ -7,6 +7,7 @@ export const en: Translation = new Map<keyof TranslationIdentifiers, string>([
   ['_dark', 'Dark'],
   ['_light', 'Light'],
   ['_coverage', 'Test coverage'],
+  ['_minutes', 'minutes'],
   ['home_title', 'Home'],
   ['home_recentArticles', 'Recent articles'],
   ['article_title', 'Articles'],

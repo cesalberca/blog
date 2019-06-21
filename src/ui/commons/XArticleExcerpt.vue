@@ -4,16 +4,17 @@
     <div class="slugline">
       <span>{{ excerpt.date }}</span>
       <span class="accented-slugline"> / </span>
-      <span>{{ excerpt.readingTime.minutes }} minutes</span>
+      <span>{{ excerpt.readingTime.minutes }} {{ minutes }}</span>
     </div>
     <p v-html="excerpt.body"></p>
   </x-link>
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
+import { Component, Emit, Inject, Prop, Vue } from 'vue-property-decorator'
 import { Article } from '../../domain/articles'
 import XLink from './XLink.vue'
+import { Translate } from './Translate'
 
 @Component({
   name: 'XArticleExcerpt',
@@ -23,9 +24,16 @@ export default class XArticleExcerpt extends Vue {
   @Prop()
   excerpt!: ReturnType<Article['getExcerpt']>
 
+  @Inject()
+  readonly translate!: Translate
+
   @Emit()
   onAction() {
     return this.excerpt.id
+  }
+
+  get minutes() {
+    return this.translate('_minutes')
   }
 }
 </script>

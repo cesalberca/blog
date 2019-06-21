@@ -1,7 +1,6 @@
 <template>
   <div>
     <label>
-      {{ languageLabel }}
       <select v-model="locale" @change="changeLocale(locale)">
         <option v-for="locale in locales" :key="locale.value" :value="locale.value">{{
           locale.text
@@ -9,7 +8,6 @@
       </select>
     </label>
     <label>
-      {{ themeLabel }}
       <select v-model="theme" @change="changeTheme(theme)">
         <option v-for="theme in themes" :key="theme.value" :value="theme.value">{{
           theme.text
@@ -56,14 +54,6 @@ export default class XOptions extends Vue {
     return this.translate('_dark')
   }
 
-  get themeLabel() {
-    return this.translate('_theme')
-  }
-
-  get languageLabel() {
-    return this.translate('_language')
-  }
-
   changeLocale(locale: Locale) {
     this.state.locale = locale
   }
@@ -74,13 +64,16 @@ export default class XOptions extends Vue {
 }
 </script>
 <style scoped>
-label {
-  margin-right: var(--small-size);
-}
-
 select {
+  margin-right: var(--small-size);
   background: transparent;
   color: var(--primary-color);
   border-color: var(--primary-color);
+  -webkit-appearance: none;
+  border-width: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: var(--small-size);
+  border-radius: 0;
 }
 </style>

@@ -14,7 +14,7 @@
           >.</small
         >
         <small class="coverage"
-          >{{ coverageLiteral }} > <span class="coverage-percentage"></span>{{ coverage }}%</small
+          >{{ coverageLiteral }}<span class="coverage-percentage"></span>{{ coverage }}%</small
         >
       </section>
     </div>

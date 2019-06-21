@@ -22,6 +22,7 @@ export default class XHero extends Vue {
 
 <style scoped>
 .image {
+  --title-color: var(--black-color);
   height: 45vh;
   width: 100%;
   display: flex;

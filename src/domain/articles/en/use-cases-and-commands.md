@@ -2,7 +2,7 @@
 title: Use Cases and Command Pattern
 date: 2019-04-17
 locale: en
-image: art-background-black-and-white.jpg
+image: abstract-dark-design.jpg
 ---
 
 Use cases and commands. How to.

@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <x-page>
     <h1>{{ title }}</h1>
     <markdown-component :body="description"></markdown-component>
-  </div>
+  </x-page>
 </template>
 
 <script lang="ts">
@@ -11,10 +11,12 @@ import { State } from '../../../application/state'
 import { Translate } from '../../commons/Translate'
 import { Markdown } from '../../../domain'
 import MarkdownComponent from '../../commons/XMarkdown.vue'
+import XPage from '../../commons/XPage.vue'
 
 @Component({
   name: 'XAbout',
   components: {
+    XPage,
     MarkdownComponent
   }
 })

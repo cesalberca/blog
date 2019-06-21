@@ -1,13 +1,17 @@
 <template>
-  <div v-if="article">
-    <h1>{{ article.title }}</h1>
-    <header>
-      <span class="date">{{ article.date.format() }}</span>
-      <x-tag class="locale">{{ articleLocale }}</x-tag>
-    </header>
-    <x-markdown class="article" :body="body"></x-markdown>
-    <x-social-links class="social-links" :body="article.getSummary()" />
-  </div>
+  <article v-if="article">
+    <x-hero :image="article.image" class="hero">
+      <h1 class="title">{{ article.title }}</h1>
+    </x-hero>
+    <x-page>
+      <header>
+        <span class="date">{{ article.date.format() }}</span>
+        <x-tag class="locale">{{ articleLocale }}</x-tag>
+      </header>
+      <x-markdown class="article" :body="body"></x-markdown>
+      <x-social-links class="social-links" :body="article.getSummary()" />
+    </x-page>
+  </article>
 </template>
 
 <script lang="ts">
@@ -20,6 +24,8 @@ import { Article, Id } from '../../../domain/articles'
 import { VueStateManager } from '../../state'
 import XMarkdown from '../../commons/XMarkdown.vue'
 import XTag from '../../commons/XTag.vue'
+import XHero from '../../commons/XHero.vue'
+import XPage from '../../commons/XPage.vue'
 
 @Component<ArticleComponent>({
   name: 'XArticle',
@@ -38,6 +44,8 @@ import XTag from '../../commons/XTag.vue'
     })
   },
   components: {
+    XPage,
+    XHero,
     XTag,
     XMarkdown,
     XSocialLinks
@@ -76,6 +84,15 @@ export default class ArticleComponent extends Vue {
 <style scoped>
 header {
   display: flex;
+}
+
+.hero {
+  margin-bottom: var(--medium-size);
+}
+
+.title {
+  filter: invert(1);
+  text-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.5);
 }
 
 .date {

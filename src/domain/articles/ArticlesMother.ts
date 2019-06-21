@@ -11,6 +11,7 @@ export class ArticlesMother {
         id: Id.fromValue('haciendo-vuen-frontend'),
         title: 'Haciendo (Vue)n frontend',
         date: Datetime.fromDate(new Date(2019, 5, 10)),
+        image: '',
         body: Markdown.fromValue(`
         ---
 title: Haciendo (Vue)n frontend
@@ -651,7 +652,8 @@ Sígueme en [Twitter](https://twitter.com/) y en [Github](https://github.com/ces
         body: Markdown.fromValue(
           'El mundo frontend es conocido por su gran _volatilidad_, sin embargo poco hacemos para que esta volatilidad no afecte a nuestros desarrollos. Nos importa últimamente estar más __a la última del framework del momento que de aprender a hacer nuestro código más mantenible__. Así que este tutorial irá en pos de hacer una aplicación lo más _"Frameworkless"_ posible.'
         ),
-        locale: Locale.DEFAULT
+        locale: Locale.DEFAULT,
+        image: ''
       })
     ]
   }

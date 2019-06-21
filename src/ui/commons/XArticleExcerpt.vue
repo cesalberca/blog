@@ -45,7 +45,7 @@ export default class XArticleExcerpt extends Vue {
 }
 
 .slugline {
-  font-size: calc(var(--body-size) - 2);
+  font-size: calc(var(--body-text) - 2);
   color: var(--gray-color);
 }
 

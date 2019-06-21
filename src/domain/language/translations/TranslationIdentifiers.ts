@@ -5,6 +5,7 @@ export interface TranslationIdentifiers {
   _es: string
   _dark: string
   _light: string
+  _coverage: string
   home_title: string
   home_recentArticles: string
   about_title: string

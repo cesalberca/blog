@@ -14,7 +14,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-size: var(--body-size);
+  font-size: var(--body-text);
   min-height: 100vh;
   position: relative;
 }

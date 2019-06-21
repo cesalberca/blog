@@ -4,10 +4,11 @@ import { TranslationIdentifiers } from './TranslationIdentifiers'
 export const es: Translation = new Map<keyof TranslationIdentifiers, string>([
   ['_theme', 'Tema'],
   ['_language', 'Idioma'],
-  ['_en', 'Inglés'],
-  ['_es', 'Español'],
+  ['_en', 'EN'],
+  ['_es', 'ES'],
   ['_dark', 'Oscuro'],
   ['_light', 'Claro'],
+  ['_coverage', 'Cobertura'],
   ['home_title', 'Inicio'],
   ['home_recentArticles', 'Artículos recientes'],
   ['article_title', 'Artículos'],

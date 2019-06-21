@@ -17,6 +17,10 @@ export class Datetime {
     return new Datetime(new Date())
   }
 
+  public get year() {
+    return this._value.getFullYear()
+  }
+
   public format() {
     return this._value.toLocaleDateString(undefined, {
       day: 'numeric',

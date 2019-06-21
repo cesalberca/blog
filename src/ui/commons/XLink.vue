@@ -1,5 +1,5 @@
 <template>
-  <a :href="to" v-on="$listeners"><slot></slot></a>
+  <a :href="to" :target="target" v-on="$listeners"><slot></slot></a>
 </template>
 
 <script lang="ts">
@@ -11,6 +11,13 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 export default class XLink extends Vue {
   @Prop({ type: String })
   to?: string
+
+  @Prop({ type: Boolean, default: false })
+  external!: boolean
+
+  get target() {
+    return this.external ? '_blank' : '_self'
+  }
 }
 </script>
 

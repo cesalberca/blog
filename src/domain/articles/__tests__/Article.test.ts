@@ -12,7 +12,8 @@ describe('Article', () => {
       title: 'foo',
       body: Markdown.fromValue('foo'),
       date: Datetime.fromDate(new Date(2019, 2, 27)),
-      locale: Locale.DEFAULT
+      locale: Locale.DEFAULT,
+      image: ''
     })
 
     const excerpt = article.getExcerpt()
@@ -23,7 +24,8 @@ describe('Article', () => {
       id: Id.fromValue('foo'),
       title: 'foo',
       locale: 0,
-      readingTime: Length.fromMinutes(1)
+      readingTime: Length.fromMinutes(1),
+      image: ''
     })
   })
 
@@ -33,7 +35,8 @@ describe('Article', () => {
       title: 'foo',
       body: Markdown.fromValue(`foo <!--more-->bar`),
       date: Datetime.fromDate(new Date(2019, 2, 27)),
-      locale: Locale.DEFAULT
+      locale: Locale.DEFAULT,
+      image: ''
     })
 
     const excerpt = article.getExcerpt()
@@ -47,7 +50,8 @@ describe('Article', () => {
       title: 'foo',
       body: Markdown.fromValue(get180WordsArticle()),
       date: Datetime.fromDate(new Date(2019, 2, 27)),
-      locale: Locale.DEFAULT
+      locale: Locale.DEFAULT,
+      image: ''
     })
 
     const actual = article.getReadingTime()
@@ -61,7 +65,8 @@ describe('Article', () => {
       title: 'foo',
       body: Markdown.fromValue(get360WordsArticle()),
       date: Datetime.fromDate(new Date(2019, 2, 27)),
-      locale: Locale.DEFAULT
+      locale: Locale.DEFAULT,
+      image: ''
     })
 
     const actual = article.getReadingTime()
@@ -75,7 +80,8 @@ describe('Article', () => {
       title: 'foo',
       body: Markdown.fromValue(`It all started`),
       date: Datetime.fromDate(new Date(2019, 2, 27)),
-      locale: Locale.DEFAULT
+      locale: Locale.DEFAULT,
+      image: ''
     })
 
     const actual = article.getReadingTime()

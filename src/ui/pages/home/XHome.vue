@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <x-page>
     <h1>{{ recentArticlesTitle }}</h1>
     <x-article-excerpt
       v-for="article in articles"
@@ -7,7 +7,7 @@
       :excerpt="article.getExcerpt()"
       @on-action="navigateToArticle"
     />
-  </div>
+  </x-page>
 </template>
 
 <script lang="ts">
@@ -20,6 +20,7 @@ import { Translate } from '../../commons/Translate'
 import { VueStateManager } from '../../state'
 import { ActionsFactory } from '../../actions/ActionsFactory'
 import XArticleExcerpt from '../../commons/XArticleExcerpt.vue'
+import XPage from '../../commons/XPage.vue'
 
 @Component<XHome>({
   name: 'XHome',
@@ -33,6 +34,7 @@ import XArticleExcerpt from '../../commons/XArticleExcerpt.vue'
     })
   },
   components: {
+    XPage,
     XArticleExcerpt
   }
 })

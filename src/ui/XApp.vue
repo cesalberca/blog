@@ -3,9 +3,7 @@
     <x-injector>
       <x-theming class="full-height">
         <x-navbar />
-        <x-page>
-          <router-view />
-        </x-page>
+        <router-view />
       </x-theming>
     </x-injector>
   </main>
@@ -14,14 +12,12 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { XNavbar } from './commons'
 import { XInjector } from './'
-import XPage from './commons/XPage.vue'
 import XTheming from './theme/XTheming.vue'
 
 @Component({
   name: 'XApp',
   components: {
     XTheming,
-    XPage,
     XInjector,
     XNavbar
   }

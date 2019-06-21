@@ -3,6 +3,7 @@ import { Markdown } from '../Markdown'
 import { Datetime } from '../../infraestructure/Datetime'
 import { Locale } from '../language'
 import { Length } from '../Length'
+import { Image } from '../../infraestructure/Image'
 
 export class Article {
   private static readonly SUMMARY_SEPARATOR = '<!--more-->'
@@ -13,7 +14,8 @@ export class Article {
     public readonly title: string,
     public readonly date: Datetime,
     public readonly body: Markdown,
-    public readonly locale: Locale
+    public readonly locale: Locale,
+    public readonly image: Image
   ) {}
 
   public static create(article: {
@@ -22,8 +24,16 @@ export class Article {
     date: Datetime
     body: Markdown
     locale: Locale
+    image: Image
   }) {
-    return new Article(article.id, article.title, article.date, article.body, article.locale)
+    return new Article(
+      article.id,
+      article.title,
+      article.date,
+      article.body,
+      article.locale,
+      article.image
+    )
   }
 
   public getExcerpt() {
@@ -33,7 +43,8 @@ export class Article {
       date: this.getFormattedDate(),
       body: this.getSummary(),
       locale: this.locale,
-      readingTime: this.getReadingTime()
+      readingTime: this.getReadingTime(),
+      image: this.image
     }
   }
 

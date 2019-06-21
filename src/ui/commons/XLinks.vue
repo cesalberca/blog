@@ -57,11 +57,12 @@ export default class XLinks extends Vue {
 }
 
 .links > * {
-  font-size: var(--title-size);
+  font-size: var(--title-text);
   color: var(--primary-color);
   margin-right: var(--medium-size);
   transition: 0.25s ease opacity;
   text-decoration: none;
+  width: max-content;
 }
 
 .links > *:hover {

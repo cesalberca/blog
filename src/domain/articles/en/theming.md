@@ -2,6 +2,7 @@
 title: Theming
 date: 2019-06-06
 locale: en
+image: art-artistic-canvas.jpg
 ---
 
 Theming a web with custom properties is as easy as it gets as shown in this article.

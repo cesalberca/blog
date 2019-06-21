@@ -2,6 +2,7 @@
 title: Casos de Uso y el patrón Comando
 date: 2019-04-17
 locale: es
+image: art-background-black-and-white.jpg
 ---
 
 Casos de Uso y comandos. Cómo.

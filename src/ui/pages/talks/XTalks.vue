@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <x-page>
     <h1>{{ title }}</h1>
     <x-talk v-for="talk in talks" :key="talk.id.value" :detail="talkDetail(talk)" />
-  </div>
+  </x-page>
 </template>
 
 <script lang="ts">
@@ -15,6 +15,7 @@ import { GetTalksGiven } from '../../../application/useCases'
 import { Talk } from '../../../domain/talks'
 import { Translate } from '../../commons/Translate'
 import { VueStateManager } from '../../state'
+import XPage from '../../commons/XPage.vue'
 
 @Component<XTalks>({
   async beforeRouteEnter(_to, _from, next) {
@@ -27,6 +28,7 @@ import { VueStateManager } from '../../state'
     })
   },
   components: {
+    XPage,
     XTalk: TalkComponent
   }
 })

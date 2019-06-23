@@ -46,6 +46,7 @@ h6 {
   margin: 2rem 0 1rem;
   color: var(--title-color);
   font-family: var(--title-font);
+  font-size: var(--title-text);
   font-weight: 900;
   line-height: 1.15;
 }

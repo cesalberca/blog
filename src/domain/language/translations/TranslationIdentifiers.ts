@@ -6,7 +6,9 @@ export interface TranslationIdentifiers {
   _coverage: string
   _minutes: string
   home_title: string
-  home_recentArticles: string
+  home_heroTitle: string
+  home_heroCaption: string
+  home_articles: string
   about_title: string
   about_description: string
   article_title: string

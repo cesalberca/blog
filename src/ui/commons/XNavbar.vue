@@ -23,6 +23,8 @@ export default class XNavbar extends Vue {}
 </script>
 <style scoped>
 .navbar {
+  --link-color: var(--white-color);
+  background-color: var(--primary-color);
 }
 
 .wrapper {

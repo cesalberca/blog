@@ -8,8 +8,13 @@ export const en: Translation = new Map<keyof TranslationIdentifiers, string>([
   ['_light', 'Light'],
   ['_coverage', 'Test coverage'],
   ['_minutes', 'minutes'],
-  ['home_title', 'Home'],
-  ['home_recentArticles', 'Recent articles'],
+  ['home_title', 'César Alberca'],
+  ['home_articles', 'Articles'],
+  ['home_heroTitle', 'Frontend developer.<br/>Designer.<br/>Speaker.<br/>'],
+  [
+    'home_heroCaption',
+    'Passionate about <strong>good practices</strong> and <strong>testing</strong>.'
+  ],
   ['article_title', 'Articles'],
   ['article_shareArticle', 'Share article'],
   ['article_via', 'via'],

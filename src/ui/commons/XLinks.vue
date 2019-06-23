@@ -1,6 +1,6 @@
 <template>
   <div :class="[links]" class="links">
-    <router-link to="/" exact>{{ translations.home }}</router-link>
+    <router-link to="/" exact class="home">{{ translations.home }}</router-link>
     <!--<router-link to="/articles">{{ translations.articles }}</router-link>-->
     <router-link to="/talks">{{ translations.talks }}</router-link>
     <router-link to="/about">{{ translations.about }}</router-link>
@@ -46,6 +46,8 @@ export default class XLinks extends Vue {
 .horizontal,
 .vertical {
   display: flex;
+  width: 100%;
+  align-items: center;
 }
 
 .horizontal {
@@ -54,18 +56,21 @@ export default class XLinks extends Vue {
 
 .vertical {
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .links > * {
-  font-size: var(--title-text);
-  color: var(--primary-color);
+  font-size: var(--body-text);
+  color: var(--link-color);
   margin-right: var(--medium-size);
-  transition: 0.25s ease opacity;
+  transition: 0.25s ease opacity, 0.25s ease background-color;
+  padding: 0 var(--small-size);
   text-decoration: none;
   width: max-content;
 }
 
 .links > *:hover {
+  background-color: var(--blue-dark-color-1);
   opacity: var(--active-opacity);
 }
 
@@ -73,7 +78,13 @@ export default class XLinks extends Vue {
   content: none;
 }
 
+.home {
+  margin-right: auto;
+  font-size: var(--title-text);
+  color: white;
+}
+
 .router-link-active {
-  color: var(--primary-color);
+  text-shadow: 0 0 0.65px var(--link-color);
 }
 </style>

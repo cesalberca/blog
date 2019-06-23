@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="options">
     <label>
       <select v-model="locale" @change="changeLocale(locale)">
         <option v-for="locale in locales" :key="locale.value" :value="locale.value">{{
@@ -64,10 +64,15 @@ export default class XOptions extends Vue {
 }
 </script>
 <style scoped>
+.options {
+  display: flex;
+  flex-direction: row;
+}
+
 select {
   margin-right: var(--small-size);
-  background: transparent;
-  color: var(--primary-color);
+  background: var(--blue-dark-color-1);
+  color: var(--white-color);
   border-color: var(--primary-color);
   -webkit-appearance: none;
   border-width: 2px;

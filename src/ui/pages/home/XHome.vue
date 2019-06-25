@@ -103,7 +103,7 @@ export default class XHome extends Vue {
 .wrapper {
   display: flex;
   margin: 0 auto;
-  width: var(--body-width);
+  max-width: var(--body-width);
   align-items: center;
   justify-content: space-between;
 }
@@ -122,5 +122,11 @@ export default class XHome extends Vue {
 .photo {
   transform: scale(-1, 1);
   mix-blend-mode: soft-light;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
 }
 </style>

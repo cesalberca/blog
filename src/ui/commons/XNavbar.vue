@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="wrapper">
-      <x-links></x-links>
+      <x-links class="links"></x-links>
       <x-options class="options" />
     </div>
   </nav>
@@ -34,5 +34,11 @@ export default class XNavbar extends Vue {}
   justify-content: space-between;
   align-items: center;
   max-width: var(--body-width);
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
 }
 </style>

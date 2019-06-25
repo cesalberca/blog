@@ -82,6 +82,11 @@ export default class XLinks extends Vue {
   margin-right: auto;
   font-size: var(--title-text);
   color: white;
+  padding: 0;
+}
+
+.home:hover {
+  background-color: initial;
 }
 
 .router-link-active {

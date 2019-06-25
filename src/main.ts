@@ -1,10 +1,5 @@
 import Vue from 'vue'
-import { XApp, Application, Router } from './ui'
-import { ServiceWorkerRegisterer } from './ui/ServiceWorkerRegisterer'
+import { Application, Router, XApp } from './ui'
 import VueRouter from 'vue-router'
 
-new Application(
-  Vue,
-  Router.create(VueRouter),
-  new ServiceWorkerRegisterer(window.console.log)
-).bootstrap(XApp)
+new Application(Vue, Router.create(VueRouter)).create(XApp)

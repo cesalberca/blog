@@ -18,8 +18,8 @@ import { State } from '../../../application/state'
 import { Article, Id } from '../../../domain/articles'
 import { Translate } from '../../commons/Translate'
 import { VueStateManager } from '../../state'
-import { ActionsFactory } from '../../actions/ActionsFactory'
 import XArticleExcerpt from '../../commons/XArticleExcerpt.vue'
+import { NavigateToArticle } from '../../actions/NavigateToArticle'
 
 @Component<XArticles>({
   async beforeRouteEnter(_to, _from, next) {
@@ -54,7 +54,7 @@ export default class XArticles extends Vue {
   }
 
   navigateToArticle(id: Id) {
-    ActionsFactory.get('NavigateToArticle', {
+    NavigateToArticle.create({
       router: this.$router,
       id,
       translationService: this.translationService,

@@ -10,7 +10,7 @@
       </div>
     </div>
     <x-page>
-      <h2>{{ articlesTitle }}</h2>
+      <h2 class="articles">{{ articlesTitle }}</h2>
       <x-article-excerpt
         v-for="article in articles"
         :key="article.id.slug"
@@ -29,11 +29,11 @@ import { State } from '../../../application/state'
 import { Article, Id } from '../../../domain/articles'
 import { Translate } from '../../commons/Translate'
 import { VueStateManager } from '../../state'
-import { ActionsFactory } from '../../actions/ActionsFactory'
 import XArticleExcerpt from '../../commons/XArticleExcerpt.vue'
 import XPage from '../../commons/XPage.vue'
 import XHero from '../../commons/XHero.vue'
 import me from './../../assets/images/me.png'
+import { NavigateToArticle } from '../../actions/NavigateToArticle'
 
 @Component<XHome>({
   name: 'XHome',
@@ -73,7 +73,7 @@ export default class XHome extends Vue {
   }
 
   navigateToArticle(id: Id) {
-    ActionsFactory.get('NavigateToArticle', {
+    NavigateToArticle.create({
       router: this.$router,
       id,
       translationService: this.translationService,
@@ -111,6 +111,10 @@ export default class XHome extends Vue {
 .title {
   color: var(--white-color);
   font-size: var(--title-text);
+}
+
+.articles {
+  margin-top: 0;
 }
 
 .caption {

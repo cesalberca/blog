@@ -1,5 +1,5 @@
 <template>
-  <article v-if="article">
+  <article v-if="article" class="article">
     <x-hero :image="article.image" class="hero">
       <h1 class="title">{{ article.title }}</h1>
     </x-hero>
@@ -44,6 +44,8 @@ import { Translate } from '../../commons/Translate'
 
     next(vm => {
       vm.article = article
+      vm.window.document.documentElement.style.setProperty('--navbar-background', 'transparent')
+      vm.window.document.documentElement.style.setProperty('--navbar-position', 'absolute')
     })
   },
   components: {
@@ -52,6 +54,11 @@ import { Translate } from '../../commons/Translate'
     XTag,
     XMarkdown,
     XSocialLinks
+  },
+  async beforeRouteLeave(_to, _from, next) {
+    this.window.document.documentElement.style.removeProperty('--navbar-background')
+    this.window.document.documentElement.style.removeProperty('--navbar-position')
+    next()
   }
 })
 export default class ArticleComponent extends Vue {
@@ -65,6 +72,9 @@ export default class ArticleComponent extends Vue {
 
   @Inject()
   readonly translate!: Translate
+
+  @Inject()
+  readonly window!: Window
 
   @Watch('state.locale')
   async onLocaleChange() {
@@ -96,7 +106,7 @@ export default class ArticleComponent extends Vue {
 }
 </script>
 <style scoped>
-header {
+.header {
   display: flex;
 }
 

@@ -7,21 +7,17 @@ import './assets/dark-theme.css'
 import './assets/light-theme.css'
 import './assets/code-theme.css'
 import { VueConstructor } from 'vue'
-import { ServiceWorkerRegisterer } from './ServiceWorkerRegisterer'
 import { Router } from './Router'
 import VueRouter from 'vue-router'
+import { ServiceWorkerRegisterer } from './ServiceWorkerRegisterer'
 
 export class Application {
-  public constructor(
-    private readonly vue: VueConstructor,
-    private readonly router: Router,
-    private readonly serviceWorker: ServiceWorkerRegisterer
-  ) {}
+  public constructor(private readonly vue: VueConstructor, private readonly router: Router) {}
 
-  public bootstrap(app: VueConstructor) {
+  public create(app: VueConstructor) {
     this.vue.use(VueRouter)
     this.vue.config.productionTip = false
-    this.serviceWorker.register()
+    ServiceWorkerRegisterer.create()
 
     new this.vue({
       router: this.router.value,

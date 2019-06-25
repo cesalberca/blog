@@ -11,6 +11,7 @@ import { Translator } from '../domain/language'
 import { Translate } from './commons/Translate'
 import { TranslationService } from '../domain/TranslationService'
 import { TwitterSharerService } from '../domain/TwitterSharerService'
+import { ServiceWorkerRegisterer } from './ServiceWorkerRegisterer'
 
 @Component({
   name: 'XInjector'
@@ -23,7 +24,7 @@ export default class XInjector extends Vue {
   twitterSharerService = TwitterSharerService.create()
 
   @Provide()
-  state = VueStateManager.instance.create(Vue).state
+  state = VueStateManager.instance.create(Vue, ServiceWorkerRegisterer.create()).state
 
   @Provide()
   window: Window = window

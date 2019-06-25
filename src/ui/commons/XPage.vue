@@ -10,8 +10,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import XFooter from './XFooter.vue'
+import { State } from '../../application/state'
 
 @Component({
   name: 'XPage',
@@ -19,12 +20,25 @@ import XFooter from './XFooter.vue'
     XFooter
   }
 })
-export default class XPage extends Vue {}
+export default class XPage extends Vue {
+  @Inject()
+  window!: Window
+
+  @Inject()
+  state!: State
+
+  @Watch('state.shouldReload')
+  onShouldReloadChange() {
+    if (this.state.shouldReload) {
+      this.window.location.reload(true)
+    }
+  }
+}
 </script>
 
 <style scoped>
 .page {
-  padding: var(--medium-size);
+  padding: var(--large-size) var(--medium-size) var(--medium-size);
   min-height: 100vh;
 }
 

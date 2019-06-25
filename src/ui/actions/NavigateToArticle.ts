@@ -18,4 +18,18 @@ export class NavigateToArticle implements Command<void> {
       params: { id: this.id.slug, locale: this.translationService.toString(this.locale) }
     })
   }
+
+  public static create(context: {
+    router: VueRouter
+    id: Id
+    translationService: TranslationService
+    locale: Locale
+  }) {
+    return new NavigateToArticle(
+      context.router,
+      context.id,
+      context.translationService,
+      context.locale
+    )
+  }
 }

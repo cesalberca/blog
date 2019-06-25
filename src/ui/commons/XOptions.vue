@@ -73,9 +73,8 @@ select {
   margin-right: var(--small-size);
   background: var(--blue-dark-color-1);
   color: var(--white-color);
-  border-color: var(--primary-color);
   -webkit-appearance: none;
-  border-width: 2px;
+  border: none;
   font-weight: 600;
   text-transform: uppercase;
   padding: var(--small-size);

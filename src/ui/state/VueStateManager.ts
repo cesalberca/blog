@@ -1,8 +1,8 @@
 import { VueConstructor } from 'vue'
 import { StateManager, State } from '../../application/state'
-import { Observer } from '../../infraestructure'
+import { Observer, Subject } from '../../infraestructure'
 
-export class VueStateManager {
+export class VueStateManager implements Observer {
   private static _instance: VueStateManager | null = null
   private _state: State = new State()
   private readonly stateManager: StateManager = new StateManager()
@@ -14,9 +14,10 @@ export class VueStateManager {
     return this._instance
   }
 
-  public create(vue: VueConstructor) {
+  public create(vue: VueConstructor, serviceWorker: Subject) {
     const state = this.stateManager.state
     this._state = vue.observable(state)
+    serviceWorker.register(this)
     return this
   }
 
@@ -24,7 +25,11 @@ export class VueStateManager {
     this.stateManager.register(observer)
   }
 
-  get state(): State {
+  public get state(): State {
     return this._state
+  }
+
+  public notify() {
+    this._state.shouldReload = true
   }
 }

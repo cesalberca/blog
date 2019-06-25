@@ -1,9 +1,10 @@
 import { register } from 'register-service-worker'
+import { Observer, Subject } from '../infraestructure'
 
-export class ServiceWorkerRegisterer {
-  public constructor(private readonly log: Function) {}
+export class ServiceWorkerRegisterer implements Subject {
+  private observers: Observer[] = []
 
-  public register() {
+  public constructor(private readonly log: Function) {
     if (process.env.NODE_ENV === 'production') {
       register(`${process.env.BASE_URL}service-worker.js`, {
         ready: () => {
@@ -22,7 +23,7 @@ For more details, visit https://goo.gl/AFskqB`
           this.log('New content is downloading.')
         },
         updated: () => {
-          this.log('New content is available; please refresh.')
+          this.notifyAll()
         },
         offline: () => {
           this.log('No internet connection found. App is running in offline mode.')
@@ -32,5 +33,18 @@ For more details, visit https://goo.gl/AFskqB`
         }
       })
     }
+  }
+
+  public static create() {
+    // eslint-disable-next-line
+    return new ServiceWorkerRegisterer(window.console.log)
+  }
+
+  notifyAll() {
+    this.observers.forEach(o => o.notify())
+  }
+
+  public register(observer: Observer) {
+    this.observers.push(observer)
   }
 }

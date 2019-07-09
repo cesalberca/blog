@@ -5,6 +5,7 @@ import { Language } from './Language'
 import { Topic } from './Topic'
 import { Reference } from './Reference'
 import { Id } from '../Id'
+import { Event } from './Event'
 
 export class Talk {
   private constructor(
@@ -15,7 +16,8 @@ export class Talk {
     public readonly difficulty: Difficulty,
     public readonly language: Language,
     public readonly topics: Topic[],
-    public readonly references: Reference[]
+    public readonly references: Reference[],
+    public readonly events: Event[]
   ) {}
 
   public static create(talk: {
@@ -27,6 +29,7 @@ export class Talk {
     language: Language
     topics: Topic[]
     references: Reference[]
+    events: Event[]
   }) {
     return new Talk(
       talk.id,
@@ -36,7 +39,8 @@ export class Talk {
       talk.difficulty,
       talk.language,
       talk.topics,
-      talk.references
+      talk.references,
+      talk.events
     )
   }
 }

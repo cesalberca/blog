@@ -1,5 +1,5 @@
 import { Article, ArticlesRepository, Id, Markdown } from '../../domain/articles'
-import { Locale } from '../../domain/language'
+import { Locale, Translator } from '../../domain/language'
 import { Datetime } from '../Datetime'
 import { FileLoader } from '../FileLoader'
 import { TranslationService } from '../../domain/TranslationService'
@@ -9,6 +9,13 @@ export class ArticlesFileRepository implements ArticlesRepository {
     private readonly fileLoader: FileLoader,
     private readonly translationService: TranslationService
   ) {}
+
+  public static create() {
+    return new ArticlesFileRepository(
+      FileLoader.create(),
+      TranslationService.create(Translator.create())
+    )
+  }
 
   public async findOneByLocale(id: Id, locale: Locale): Promise<Article> {
     let article: any

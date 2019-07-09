@@ -13,6 +13,7 @@ export class TalksMother {
         title: 'Advanced JavaScript Patterns',
         topics: [],
         language: Language.ENGLISH,
+        events: [],
         difficulty: Difficulty.ADVANCED,
         length: Length.fromMinutes(45),
         references: [],

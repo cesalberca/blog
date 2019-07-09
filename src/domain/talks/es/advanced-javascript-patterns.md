@@ -2,7 +2,7 @@
 title: Advanced JavaScript Patterns
 length: 45
 difficulty: Advanced
-language: en
+language: es
 topics:
     - Proxies
     - JavaScript

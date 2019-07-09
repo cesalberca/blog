@@ -46,6 +46,7 @@ import { Translate } from '../../commons/Translate'
       vm.article = article
       vm.window.document.documentElement.style.setProperty('--navbar-background', 'transparent')
       vm.window.document.documentElement.style.setProperty('--navbar-position', 'absolute')
+      vm.window.document.documentElement.style.setProperty('--navbar-text-shadow', '0 0 10px black')
     })
   },
   components: {
@@ -58,6 +59,7 @@ import { Translate } from '../../commons/Translate'
   async beforeRouteLeave(_to, _from, next) {
     this.window.document.documentElement.style.removeProperty('--navbar-background')
     this.window.document.documentElement.style.removeProperty('--navbar-position')
+    this.window.document.documentElement.style.removeProperty('--navbar-text-shadow')
     next()
   }
 })

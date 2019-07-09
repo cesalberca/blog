@@ -27,7 +27,7 @@ export default class XNavbar extends Vue {}
   background-color: var(--navbar-background, var(--primary-color));
   position: var(--navbar-position, initial);
   width: 100%;
-  text-shadow: 0 0 10px black;
+  text-shadow: var(--navbar-text-shadow);
 }
 
 .wrapper {

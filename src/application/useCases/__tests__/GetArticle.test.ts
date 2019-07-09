@@ -1,24 +1,25 @@
 import { GetArticle } from '../GetArticle'
-import { ArticlesFileRepository } from '../../../infraestructure/articles/ArticlesFileRepository'
-import { Id } from '../../../domain'
+import { ArticlesRepository, Id } from '../../../domain'
 import { Locale } from '../../../domain/language'
+import { ArticlesMockRepository } from '../../../infraestructure/articles/ArticlesMockRepository'
 
-jest.mock('../../../infraestructure/articles/ArticlesFileRepository')
 jest.mock('../UseCaseDecorator')
 
 describe('GetArticle', () => {
+  let getArticle: GetArticle
+  let mock: ArticlesRepository
+
+  beforeEach(() => {
+    mock = new ArticlesMockRepository()
+    ;(mock.findAllByLocale as jest.Mock).mockResolvedValue([])
+    getArticle = new GetArticle(mock, Id.fromValue('bar'), Locale.EN)
+  })
+
   it('should get an article', async () => {
-    expect.assertions(2)
-    const getArticle = GetArticle.create({
-      id: Id.fromValue('foo'),
-      locale: Locale.EN
-    })
+    expect.assertions(1)
 
     await getArticle.execute()
 
-    const findOneByLocaleCalls = (ArticlesFileRepository as jest.Mock).mock.instances[0]
-      .findOneByLocale.mock.calls
-    expect(findOneByLocaleCalls[0][0]).toEqual(Id.fromValue('foo'))
-    expect(findOneByLocaleCalls[0][1]).toEqual(0)
+    expect(mock.findOneByLocale).toHaveBeenCalledWith(Id.fromValue('bar'), 0)
   })
 })

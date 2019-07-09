@@ -78,6 +78,15 @@ export default class XLinks extends Vue {
   content: none;
 }
 
+.vertical.links > * {
+  padding: 0;
+}
+
+.vertical.links > *:hover {
+  padding: 0;
+  background-color: initial;
+}
+
 .home {
   margin-right: auto;
   font-size: var(--title-text);

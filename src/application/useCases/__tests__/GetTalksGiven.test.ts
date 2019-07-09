@@ -1,19 +1,25 @@
 import { GetTalksGiven } from '../GetTalksGiven'
 import { Locale } from '../../../domain/language'
-import { TalksFileRepository } from '../../../infraestructure/talks/TalksFileRepository'
+import { TalksMockRepository } from '../../../domain/talks/TalksMockRepository'
+import { TalksRepository } from '../../../domain/talks/TalksRepository'
 
-jest.mock('../../../infraestructure/talks/TalksFileRepository')
 jest.mock('../UseCaseDecorator')
 
 describe('GetTalksGiven', () => {
+  let getTalksGiven: GetTalksGiven
+  let mock: TalksRepository
+
+  beforeEach(() => {
+    mock = new TalksMockRepository()
+    ;(mock.findAllByLocale as jest.Mock).mockResolvedValue([])
+    getTalksGiven = new GetTalksGiven(mock, Locale.EN)
+  })
+
   it('should get all talks given', async () => {
     expect.assertions(1)
-    const getTalksGiven = GetTalksGiven.create({ locale: Locale.DEFAULT })
 
     await getTalksGiven.execute()
 
-    expect(
-      (TalksFileRepository as jest.Mock).mock.instances[0].findAllByLocale
-    ).toHaveBeenCalledWith(0)
+    expect(mock.findAllByLocale).toHaveBeenCalledWith(0)
   })
 })

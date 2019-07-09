@@ -16,9 +16,7 @@
       <p>
         <strong>{{ translations.topics }}</strong>
       </p>
-      <p>
-        <span v-for="topic in detail.topics" :key="topic">{{ topic }}</span>
-      </p>
+      <p>{{ detail.topics.map(topic => topic.value).join(', ') }}</p>
     </section>
     <section>
       <p>

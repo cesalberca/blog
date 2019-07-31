@@ -1,18 +1,18 @@
-import { GetTalksGiven } from '../GetTalksGiven'
+import { GetTalksGivenUseCase } from '../GetTalksGivenUseCase'
 import { Locale } from '../../../domain/language'
 import { TalksMockRepository } from '../../../domain/talks/TalksMockRepository'
 import { TalksRepository } from '../../../domain/talks/TalksRepository'
 
 jest.mock('../UseCaseDecorator')
 
-describe('GetTalksGiven', () => {
-  let getTalksGiven: GetTalksGiven
+describe('GetTalksGivenUseCase', () => {
+  let getTalksGiven: GetTalksGivenUseCase
   let mock: TalksRepository
 
   beforeEach(() => {
     mock = new TalksMockRepository()
     ;(mock.findAllByLocale as jest.Mock).mockResolvedValue([])
-    getTalksGiven = new GetTalksGiven(mock, Locale.EN)
+    getTalksGiven = new GetTalksGivenUseCase(mock, Locale.EN)
   })
 
   it('should get all talks given', async () => {

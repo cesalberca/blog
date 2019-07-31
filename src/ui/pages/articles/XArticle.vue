@@ -21,7 +21,7 @@ import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import XSocialLinks from './XSocialLinks.vue'
 import { TranslationService } from '../../../domain/TranslationService'
 import { State } from '../../../application/state'
-import { GetArticle } from '../../../application/useCases'
+import { GetArticleUseCase } from '../../../application/useCases'
 import { Article, Id } from '../../../domain/articles'
 import { VueStateManager } from '../../state'
 import XMarkdown from '../../commons/XMarkdown.vue'
@@ -37,7 +37,7 @@ import { Translate } from '../../commons/Translate'
       return
     }
 
-    const article = await GetArticle.create({
+    const article = await GetArticleUseCase.create({
       id: Id.fromValue(to.params.id),
       locale: VueStateManager.instance.state.locale
     }).execute()
@@ -80,7 +80,7 @@ export default class ArticleComponent extends Vue {
 
   @Watch('state.locale')
   async onLocaleChange() {
-    this.article = await GetArticle.create({
+    this.article = await GetArticleUseCase.create({
       id: Id.fromValue(this.$route.params.id),
       locale: VueStateManager.instance.state.locale
     }).execute()

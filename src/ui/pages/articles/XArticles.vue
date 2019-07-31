@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
-import { GetAllArticles } from '../../../application/useCases'
+import { GetAllArticlesUseCase } from '../../../application/useCases'
 import { TranslationService } from '../../../domain/TranslationService'
 import { State } from '../../../application/state'
 import { Article, Id } from '../../../domain/articles'
@@ -23,7 +23,7 @@ import { NavigateToArticle } from '../../actions/NavigateToArticle'
 
 @Component<XArticles>({
   async beforeRouteEnter(_to, _from, next) {
-    const articles = await GetAllArticles.create({
+    const articles = await GetAllArticlesUseCase.create({
       locale: VueStateManager.instance.state.locale
     }).execute()
     next(vm => {
@@ -48,7 +48,7 @@ export default class XArticles extends Vue {
 
   @Watch('state.locale')
   async onLocaleChange() {
-    this.articles = await GetAllArticles.create({
+    this.articles = await GetAllArticlesUseCase.create({
       locale: VueStateManager.instance.state.locale
     }).execute()
   }

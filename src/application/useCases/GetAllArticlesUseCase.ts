@@ -4,7 +4,7 @@ import { Locale } from '../../domain/language'
 import { ArticlesFileRepository } from '../../infraestructure/articles/ArticlesFileRepository'
 import { UseCaseDecorator } from './UseCaseDecorator'
 
-export class GetAllArticles implements Command<Article[]> {
+export class GetAllArticlesUseCase implements Command<Article[]> {
   public constructor(
     private readonly articlesRepository: ArticlesRepository,
     private readonly locale: Locale
@@ -17,7 +17,7 @@ export class GetAllArticles implements Command<Article[]> {
 
   public static create(context: { locale: Locale }) {
     return UseCaseDecorator.create().decorate(
-      new GetAllArticles(ArticlesFileRepository.create(), context.locale)
+      new GetAllArticlesUseCase(ArticlesFileRepository.create(), context.locale)
     )
   }
 }

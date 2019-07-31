@@ -1,4 +1,4 @@
-import { GetAllArticles } from '../GetAllArticles'
+import { GetAllArticlesUseCase } from '../GetAllArticlesUseCase'
 import { Locale } from '../../../domain/language'
 import { ArticlesMockRepository } from '../../../infraestructure/articles/ArticlesMockRepository'
 import { ArticlesMother } from '../../../domain/articles/ArticlesMother'
@@ -6,14 +6,14 @@ import { Article, ArticlesRepository } from '../../../domain/articles'
 
 jest.mock('../UseCaseDecorator')
 
-describe('GetAllArticles', () => {
-  let getAllArticles: GetAllArticles
+describe('GetAllArticlesUseCase', () => {
+  let getAllArticles: GetAllArticlesUseCase
   let mock: ArticlesRepository
 
   beforeEach(() => {
     mock = new ArticlesMockRepository()
     ;(mock.findAllByLocale as jest.Mock).mockResolvedValue([])
-    getAllArticles = new GetAllArticles(mock, Locale.EN)
+    getAllArticles = new GetAllArticlesUseCase(mock, Locale.EN)
   })
 
   it('should get all articles', async () => {

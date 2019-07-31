@@ -11,7 +11,7 @@ import TalkComponent from './XTalk.vue'
 import { TalkDetail } from './TalkDetail'
 import { TranslationService } from '../../../domain/TranslationService'
 import { State } from '../../../application/state'
-import { GetTalksGiven } from '../../../application/useCases'
+import { GetTalksGivenUseCase } from '../../../application/useCases'
 import { Talk } from '../../../domain/talks'
 import { Translate } from '../../commons/Translate'
 import { VueStateManager } from '../../state'
@@ -19,7 +19,7 @@ import XPage from '../../commons/XPage.vue'
 
 @Component<XTalks>({
   async beforeRouteEnter(_to, _from, next) {
-    const talks = await GetTalksGiven.create({
+    const talks = await GetTalksGivenUseCase.create({
       locale: VueStateManager.instance.state.locale
     }).execute()
 

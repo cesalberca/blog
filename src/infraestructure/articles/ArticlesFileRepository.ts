@@ -3,6 +3,7 @@ import { Locale, Translator } from '../../domain/language'
 import { Datetime } from '../Datetime'
 import { FileLoader } from '../FileLoader'
 import { TranslationService } from '../../domain/TranslationService'
+import { ArticleDto } from './ArticleDto'
 
 export class ArticlesFileRepository implements ArticlesRepository {
   public constructor(
@@ -18,7 +19,7 @@ export class ArticlesFileRepository implements ArticlesRepository {
   }
 
   public async findOneByLocale(id: Id, locale: Locale): Promise<Article> {
-    let article: any
+    let article: ArticleDto
 
     try {
       article = await import(`./../../domain/articles/${this.translationService.toString(locale)}/${

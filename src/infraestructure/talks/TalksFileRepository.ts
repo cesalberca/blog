@@ -11,18 +11,7 @@ import { Datetime } from '../Datetime'
 import { Maybe } from '../Maybe'
 import { LanguageService } from '../../domain/talks/LanguageService'
 import { Topic } from '../../domain/talks/Topic'
-
-interface TalkFile {
-  body: string
-  attributes: {
-    title: string
-    length: number
-    difficulty: string
-    language: string
-    topics: string[]
-    events: { name: string; date: string }[]
-  }
-}
+import { TalkDto } from './TalkDto'
 
 export class TalksFileRepository implements TalksRepository {
   public constructor(
@@ -40,7 +29,7 @@ export class TalksFileRepository implements TalksRepository {
   }
 
   public async findOneByLocale(id: Id, locale: Locale): Promise<Talk> {
-    let talk: TalkFile
+    let talk: TalkDto
 
     try {
       talk = await import(`./../../domain/talks/${this.translationService.toString(locale)}/${

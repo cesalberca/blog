@@ -16,7 +16,7 @@ export class Maybe<T> {
     return this.isValid(value) ? Maybe.some(value as T) : Maybe.none<T>()
   }
 
-  private constructor(private value: T | null) {}
+  public constructor(private value: T | null) {}
 
   public get(): T {
     if (!this.has()) {

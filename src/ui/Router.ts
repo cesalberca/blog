@@ -3,7 +3,7 @@ import { VueRouter } from 'vue-router/types/router'
 export class Router {
   private readonly _value: VueRouter
 
-  private constructor(private readonly vueRouter: typeof VueRouter) {
+  public constructor(private readonly vueRouter: typeof VueRouter) {
     this._value = new this.vueRouter({
       base: process.env.BASE_URL,
       routes: [

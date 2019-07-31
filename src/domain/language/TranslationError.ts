@@ -1,5 +1,5 @@
 export class TranslationError extends Error {
-  constructor(message?: string) {
+  public constructor(message?: string) {
     super(message)
   }
 }

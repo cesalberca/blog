@@ -6,7 +6,7 @@ import { Locale } from './Locale'
 export class Translator {
   public readonly translations: Map<Locale, Translation>
 
-  private constructor() {
+  public constructor() {
     this.translations = new Map<Locale, Translation>([[Locale.ES, es], [Locale.EN, en]])
   }
 

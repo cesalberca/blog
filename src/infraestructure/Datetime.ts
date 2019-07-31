@@ -1,5 +1,5 @@
 export class Datetime {
-  private constructor(private readonly _value: Date) {}
+  public constructor(private readonly _value: Date) {}
 
   get value(): Date {
     return this._value

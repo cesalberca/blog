@@ -1,9 +1,7 @@
 export class HtmlParserService {
-  private constructor() {}
-
   public parseToPlainText(html: string): string {
-    const doc = new DOMParser().parseFromString(html, 'text/html')
-    return doc.body.textContent || ''
+    const document = new DOMParser().parseFromString(html, 'text/html')
+    return document.body.textContent || ''
   }
 
   public static create() {

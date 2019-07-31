@@ -1,7 +1,7 @@
 import { EncoderService } from './EncoderService'
 
 export class Id {
-  private constructor(
+  public constructor(
     private readonly _value: string,
     private readonly encoderService: EncoderService
   ) {}

@@ -6,7 +6,7 @@ import { Locale, Translator } from './language'
 export class TwitterSharerService {
   private static readonly USER_HANDLER = `@cesalberca`
 
-  private constructor(
+  public constructor(
     private readonly encoderService: EncoderService,
     private readonly htmlParserService: HtmlParserService,
     private readonly translationService: TranslationService

@@ -31,7 +31,7 @@ import { FileLoader } from '../../infraestructure/FileLoader'
 import { TranslationService } from '../../domain/TranslationService'
 
 export class GetArticle implements Command<Article> {
-    private constructor(
+    public constructor(
         private readonly articlesRepository: ArticlesRepository,
         private readonly id: Id,
         private readonly locale: Locale
@@ -139,7 +139,7 @@ import { FileLoader } from '../../infraestructure/FileLoader'
 import { TranslationService } from '../../domain/TranslationService'
 
 export class GetArticle implements Command<Article> {
-    private constructor(
+    public constructor(
         private readonly articlesRepository: ArticlesRepository,
         private readonly id: Id,
         private readonly locale: Locale

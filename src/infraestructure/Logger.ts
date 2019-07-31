@@ -10,7 +10,7 @@ type Stdout = {
 }
 
 export class Logger {
-  private constructor(private readonly stdout: Stdout) {}
+  public constructor(private readonly stdout: Stdout) {}
 
   public log(message: Message, _options: { level: Level } = { level: 'info' }) {
     this.stdout.info(`[${Datetime.fromNow()}] ${message}`)

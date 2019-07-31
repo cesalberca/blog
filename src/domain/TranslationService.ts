@@ -1,7 +1,7 @@
 import { Locale, TranslationError, TranslationIdentifiers, Translator } from './language'
 
 export class TranslationService {
-  private constructor(private readonly translator: Translator) {}
+  public constructor(private readonly translator: Translator) {}
 
   public translate(locale: Locale, key: keyof TranslationIdentifiers): string {
     const language = this.translator.translations.get(locale)

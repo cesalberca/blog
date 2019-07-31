@@ -6,7 +6,7 @@ const es = new Map<string, string>([['existingKey', 'bar']])
 export class Translator {
   public readonly translations: Map<Locale, Translation>
 
-  private constructor() {
+  public constructor() {
     this.translations = new Map<Locale, any>([[Locale.ES, es], [Locale.EN, en]])
   }
 

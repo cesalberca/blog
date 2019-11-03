@@ -4,9 +4,9 @@ import { Observer, Subject } from '../../infraestructure'
 export class StateManager implements Subject {
   private readonly observers: Observer[] = []
 
-  public state: State
+  state: State
 
-  public constructor() {
+  constructor() {
     this.state = new Proxy(new State(), {
       set: (target: State, p: PropertyKey, value: any, receiver: any): boolean => {
         Reflect.set(target, p, value, receiver)
@@ -16,11 +16,11 @@ export class StateManager implements Subject {
     })
   }
 
-  public notifyAll() {
+  notifyAll() {
     this.observers.forEach(observer => observer.notify())
   }
 
-  public register(observer: Observer) {
+  register(observer: Observer) {
     this.observers.push(observer)
   }
 }

@@ -5,17 +5,17 @@ import { ArticlesFileRepository } from '../../infraestructure/articles/ArticlesF
 import { UseCaseDecorator } from './UseCaseDecorator'
 
 export class GetAllArticlesUseCase implements Command<Article[]> {
-  public constructor(
+  constructor(
     private readonly articlesRepository: ArticlesRepository,
     private readonly locale: Locale
   ) {}
 
-  public async execute(): Promise<Article[]> {
+  async execute(): Promise<Article[]> {
     const articles = await this.articlesRepository.findAllByLocale(this.locale)
     return articles.slice().sort((articleA, articleB) => (articleB.date < articleA.date ? -1 : 1))
   }
 
-  public static create(context: { locale: Locale }) {
+  static create(context: { locale: Locale }) {
     return UseCaseDecorator.create().decorate(
       new GetAllArticlesUseCase(ArticlesFileRepository.create(), context.locale)
     )

@@ -1,20 +1,17 @@
 import { EncoderService } from './EncoderService'
 
 export class Id {
-  public constructor(
-    private readonly _value: string,
-    private readonly encoderService: EncoderService
-  ) {}
+  constructor(private readonly _value: string, private readonly encoderService: EncoderService) {}
 
-  public static fromValue(value: string) {
+  static fromValue(value: string) {
     return new Id(value, EncoderService.create())
   }
 
-  public get slug() {
+  get slug() {
     return this.encoderService.encode(this._value.toLowerCase())
   }
 
-  public get value() {
+  get value() {
     return this._value
   }
 }

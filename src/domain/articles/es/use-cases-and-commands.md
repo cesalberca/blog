@@ -31,17 +31,17 @@ import { FileLoader } from '../../infraestructure/FileLoader'
 import { TranslationService } from '../../domain/TranslationService'
 
 export class GetArticle implements Command<Article> {
-    public constructor(
+    constructor(
         private readonly articlesRepository: ArticlesRepository,
         private readonly id: Id,
         private readonly locale: Locale
     ) {}
 
-    public async execute(): Promise<Article> {
+    async execute(): Promise<Article> {
         return this.articlesRepository.findOneByLocale(this.id, this.locale)
     }
 
-    public static create(context: { id: Id; locale: Locale }) {
+    static create(context: { id: Id; locale: Locale }) {
         return new GetArticle(
             new ArticlesFileRepository(
                 FileLoader.create(),
@@ -70,7 +70,7 @@ const article = await GetArticle.create({
 Estoy usando [inversion de control](https://en.wikipedia.org/wiki/Inversion_of_control) para proveer de las dependencias necesarias para que el case de uso GetArticle funcione. Esto lo hago mediante un función constructura (si fuese muy complejo construir este caso de uso nos crearíamos una [factoría](https://sourcemaking.com/design_patterns/factory_method)):
 
 ```typescript
-public static create(context: { id: Id; locale: Locale }) {
+static create(context: { id: Id; locale: Locale }) {
     return new GetArticle(
         new ArticlesFileRepository(
           FileLoader.create(),
@@ -91,12 +91,12 @@ import { Command } from './Command'
 import { Logger } from './Logger'
 
 export class LoggerCommandDecorator<T> implements Command<T> {
-    public constructor(
+    constructor(
         private readonly decoratedCommand: Command<T>,
         private readonly logger: Logger
     ) {}
 
-    public execute(): Promise<T> {
+    execute(): Promise<T> {
         this.logger.log(
             (this.decoratedCommand as Object).constructor.name +
                 ' - ' +
@@ -120,7 +120,7 @@ export class UseCaseDecorator {
         stdout: { error: console.error, info: console.log, warn: console.warn }
     })
 
-    public static decorate<T>(command: Command<T>) {
+    static decorate<T>(command: Command<T>) {
         return new LoggerCommandDecorator<T>(command, UseCaseDecorator.logger)
     }
 }
@@ -139,17 +139,17 @@ import { FileLoader } from '../../infraestructure/FileLoader'
 import { TranslationService } from '../../domain/TranslationService'
 
 export class GetArticle implements Command<Article> {
-    public constructor(
+    constructor(
         private readonly articlesRepository: ArticlesRepository,
         private readonly id: Id,
         private readonly locale: Locale
     ) {}
 
-    public async execute(): Promise<Article> {
+    async execute(): Promise<Article> {
         return this.articlesRepository.findOneByLocale(this.id, this.locale)
     }
 
-    public static create(context: { id: Id; locale: Locale }) {
+    static create(context: { id: Id; locale: Locale }) {
         return UseCaseDecorator.decorate(
             new GetArticle(
                 new ArticlesFileRepository(

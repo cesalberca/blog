@@ -10,13 +10,13 @@ type Stdout = {
 }
 
 export class Logger {
-  public constructor(private readonly stdout: Stdout) {}
+  constructor(private readonly stdout: Stdout) {}
 
-  public log(message: Message, _options: { level: Level } = { level: 'info' }) {
+  log(message: Message, _options: { level: Level } = { level: 'info' }) {
     this.stdout.info(`[${Datetime.fromNow()}] ${message}`)
   }
 
-  public static create(options: { stdout: Stdout }) {
+  static create(options: { stdout: Stdout }) {
     return new Logger(options.stdout)
   }
 }

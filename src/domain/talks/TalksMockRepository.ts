@@ -1,7 +1,6 @@
 import { TalksRepository } from './TalksRepository'
 
 export class TalksMockRepository implements TalksRepository {
-  public findAllByLocale = jest.fn()
-
-  public findOneByLocale = jest.fn()
+  findAllByLocale = jest.fn()
+  findOneByLocale = jest.fn()
 }

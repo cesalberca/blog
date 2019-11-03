@@ -2,7 +2,7 @@ import { TranslationError } from './language'
 import { Difficulty } from './talks/Difficulty'
 
 export class DifficultyService {
-  public toDifficulty(string: string): Difficulty {
+  toDifficulty(string: string): Difficulty {
     switch (string) {
       case 'Advanced':
         return Difficulty.ADVANCED
@@ -15,7 +15,7 @@ export class DifficultyService {
     }
   }
 
-  public toString(difficulty: Difficulty) {
+  toString(difficulty: Difficulty) {
     switch (difficulty) {
       case Difficulty.ADVANCED:
         return 'talks_talkDifficultyAdvanced' as const
@@ -26,7 +26,7 @@ export class DifficultyService {
     }
   }
 
-  public static create() {
+  static create() {
     return new DifficultyService()
   }
 }

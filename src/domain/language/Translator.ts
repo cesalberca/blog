@@ -4,17 +4,17 @@ import { en } from './translations/en'
 import { Locale } from './Locale'
 
 export class Translator {
-  public readonly translations: Map<Locale, Translation>
+  readonly translations: Map<Locale, Translation>
 
-  public constructor() {
+  constructor() {
     this.translations = new Map<Locale, Translation>([[Locale.ES, es], [Locale.EN, en]])
   }
 
-  public getDefaultLocaleTranslation(): Translation {
+  getDefaultLocaleTranslation(): Translation {
     return this.translations.get(Locale.DEFAULT)!
   }
 
-  public static create() {
+  static create() {
     return new Translator()
   }
 }

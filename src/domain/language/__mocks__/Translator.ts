@@ -4,17 +4,17 @@ const en = new Map<string, string>([['existingKey', 'foo'], ['nonExistingKeyInSp
 const es = new Map<string, string>([['existingKey', 'bar']])
 
 export class Translator {
-  public readonly translations: Map<Locale, Translation>
+  readonly translations: Map<Locale, Translation>
 
-  public constructor() {
+  constructor() {
     this.translations = new Map<Locale, any>([[Locale.ES, es], [Locale.EN, en]])
   }
 
-  public getDefaultLocaleTranslation(): Translation {
+  getDefaultLocaleTranslation(): Translation {
     return this.translations.get(Locale.DEFAULT)!
   }
 
-  public static create() {
+  static create() {
     return new Translator()
   }
 }

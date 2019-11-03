@@ -6,7 +6,7 @@ import { Length } from '../Length'
 import { Markdown } from '../Markdown'
 
 export class TalksMother {
-  public static getTalksGiven() {
+  static getTalksGiven() {
     return [
       Talk.create({
         id: Id.fromValue('Advanced JavaScript Patterns'),

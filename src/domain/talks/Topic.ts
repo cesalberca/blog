@@ -1,7 +1,7 @@
 export class Topic {
-  public constructor(private readonly _value: string) {}
+  constructor(private readonly _value: string) {}
 
-  public static fromValue(label: string) {
+  static fromValue(label: string) {
     return new Topic(label)
   }
 

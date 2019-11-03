@@ -6,17 +6,17 @@ import { UseCaseDecorator } from './UseCaseDecorator'
 import { ArticlesFileRepository } from '../../infraestructure/articles/ArticlesFileRepository'
 
 export class GetArticleUseCase implements Command<Article> {
-  public constructor(
+  constructor(
     private readonly articlesRepository: ArticlesRepository,
     private readonly id: Id,
     private readonly locale: Locale
   ) {}
 
-  public async execute(): Promise<Article> {
+  async execute(): Promise<Article> {
     return this.articlesRepository.findOneByLocale(this.id, this.locale)
   }
 
-  public static create(context: { id: Id; locale: Locale }) {
+  static create(context: { id: Id; locale: Locale }) {
     return UseCaseDecorator.create().decorate(
       new GetArticleUseCase(ArticlesFileRepository.create(), context.id, context.locale)
     )

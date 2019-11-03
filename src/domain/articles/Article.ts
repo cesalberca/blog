@@ -9,7 +9,7 @@ export class Article {
   private static readonly SUMMARY_SEPARATOR = '<!-- more -->'
   private static readonly AVERAGE_WORDS_PER_MINUTE = 180
 
-  public constructor(
+  constructor(
     public readonly id: Id,
     public readonly title: string,
     public readonly date: Datetime,
@@ -18,7 +18,7 @@ export class Article {
     public readonly image: Image
   ) {}
 
-  public static create(article: {
+  static create(article: {
     id: Id
     title: string
     date: Datetime
@@ -36,7 +36,7 @@ export class Article {
     )
   }
 
-  public getExcerpt() {
+  getExcerpt() {
     return {
       id: this.id,
       title: this.title,
@@ -48,17 +48,17 @@ export class Article {
     }
   }
 
-  public getReadingTime(): Length {
+  getReadingTime(): Length {
     const words = this.body.value.split(' ').length
     const readingTime = words / Article.AVERAGE_WORDS_PER_MINUTE
     return readingTime > 1 ? Length.fromMinutes(Math.round(readingTime)) : Length.fromMinutes(1)
   }
 
-  public getSummary() {
+  getSummary() {
     return this.body.toHtml().split(Article.SUMMARY_SEPARATOR)[0]
   }
 
-  private getFormattedDate(locale: string | undefined = undefined) {
+  getFormattedDate(locale: string | undefined = undefined) {
     return this.date.format(locale)
   }
 }

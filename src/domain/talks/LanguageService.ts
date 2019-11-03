@@ -1,7 +1,7 @@
 import { Language } from './Language'
 
 export class LanguageService {
-  public toLanguage(string: string): Language {
+  toLanguage(string: string): Language {
     switch (string.toLowerCase()) {
       case 'es':
         return Language.SPANISH
@@ -12,7 +12,7 @@ export class LanguageService {
     }
   }
 
-  public static create() {
+  static create() {
     return new LanguageService()
   }
 }

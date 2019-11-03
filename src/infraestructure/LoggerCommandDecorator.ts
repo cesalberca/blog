@@ -2,12 +2,9 @@ import { Command } from './Command'
 import { Logger } from './Logger'
 
 export class LoggerCommandDecorator<T> implements Command<T> {
-  public constructor(
-    private readonly decoratedCommand: Command<T>,
-    private readonly logger: Logger
-  ) {}
+  constructor(private readonly decoratedCommand: Command<T>, private readonly logger: Logger) {}
 
-  public execute(): Promise<T> {
+  execute(): Promise<T> {
     this.logger.log(
       (this.decoratedCommand as Object).constructor.name +
         ' - ' +

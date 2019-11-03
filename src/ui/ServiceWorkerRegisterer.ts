@@ -4,7 +4,7 @@ import { Observer, Subject } from '../infraestructure'
 export class ServiceWorkerRegisterer implements Subject {
   private observers: Observer[] = []
 
-  public constructor(private readonly log: Function) {
+  constructor(private readonly log: Function) {
     if (process.env.NODE_ENV === 'production') {
       register(`${process.env.BASE_URL}service-worker.js`, {
         ready: () => {
@@ -35,7 +35,7 @@ For more details, visit https://goo.gl/AFskqB`
     }
   }
 
-  public static create() {
+  static create() {
     // eslint-disable-next-line
     return new ServiceWorkerRegisterer(window.console.log)
   }
@@ -44,7 +44,7 @@ For more details, visit https://goo.gl/AFskqB`
     this.observers.forEach(o => o.notify())
   }
 
-  public register(observer: Observer) {
+  register(observer: Observer) {
     this.observers.push(observer)
   }
 }

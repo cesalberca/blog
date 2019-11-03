@@ -8,7 +8,7 @@ import { Id } from '../Id'
 import { Event } from './Event'
 
 export class Talk {
-  public constructor(
+  constructor(
     public readonly id: Id,
     public readonly title: string,
     public readonly abstract: Markdown,
@@ -20,7 +20,7 @@ export class Talk {
     public readonly events: Event[]
   ) {}
 
-  public static create(talk: {
+  static create(talk: {
     id: Id
     title: string
     abstract: Markdown

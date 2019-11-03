@@ -1,11 +1,11 @@
 export class Datetime {
-  public constructor(private readonly _value: Date) {}
+  constructor(private readonly _value: Date) {}
 
-  public static fromNow() {
+  static fromNow() {
     return new Datetime(new Date(2019, 2, 3))
   }
 
-  public toString() {
+  toString() {
     return this._value.toISOString()
   }
 }

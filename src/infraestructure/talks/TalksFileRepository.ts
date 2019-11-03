@@ -14,13 +14,13 @@ import { Topic } from '../../domain/talks/Topic'
 import { TalkDto } from './TalkDto'
 
 export class TalksFileRepository implements TalksRepository {
-  public constructor(
+  constructor(
     private readonly fileLoader: FileLoader,
     private readonly translationService: TranslationService,
     private readonly languageService: LanguageService
   ) {}
 
-  public static create() {
+  static create() {
     return new TalksFileRepository(
       FileLoader.create(),
       TranslationService.create(Translator.create()),
@@ -28,7 +28,7 @@ export class TalksFileRepository implements TalksRepository {
     )
   }
 
-  public async findOneByLocale(id: Id, locale: Locale): Promise<Talk> {
+  async findOneByLocale(id: Id, locale: Locale): Promise<Talk> {
     let talk: TalkDto
 
     try {
@@ -60,7 +60,7 @@ export class TalksFileRepository implements TalksRepository {
     })
   }
 
-  public async findAllByLocale(locale: Locale): Promise<Talk[]> {
+  async findAllByLocale(locale: Locale): Promise<Talk[]> {
     const talksIds = this.fileLoader
       .loadTalks()
       .map(id => id.substr(2, id.length).substr(0, id.length - 5))

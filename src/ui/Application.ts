@@ -12,9 +12,9 @@ import VueRouter from 'vue-router'
 import { ServiceWorkerRegisterer } from './ServiceWorkerRegisterer'
 
 export class Application {
-  public constructor(private readonly vue: VueConstructor, private readonly router: Router) {}
+  constructor(private readonly vue: VueConstructor, private readonly router: Router) {}
 
-  public create(app: VueConstructor) {
+  create(app: VueConstructor) {
     this.vue.use(VueRouter)
     this.vue.config.productionTip = false
     ServiceWorkerRegisterer.create()

@@ -1,9 +1,9 @@
 import { Locale, TranslationError, TranslationIdentifiers, Translator } from './language'
 
 export class TranslationService {
-  public constructor(private readonly translator: Translator) {}
+  constructor(private readonly translator: Translator) {}
 
-  public translate(locale: Locale, key: keyof TranslationIdentifiers): string {
+  translate(locale: Locale, key: keyof TranslationIdentifiers): string {
     const language = this.translator.translations.get(locale)
 
     if (language !== undefined) {
@@ -26,7 +26,7 @@ export class TranslationService {
     return this.translator.getDefaultLocaleTranslation().get(key)!
   }
 
-  public toString(locale: Locale) {
+  toString(locale: Locale) {
     switch (locale) {
       case Locale.DEFAULT:
       case Locale.EN:
@@ -38,7 +38,7 @@ export class TranslationService {
     }
   }
 
-  public toLocale(string: string): Locale {
+  toLocale(string: string): Locale {
     switch (string) {
       case 'en':
         return Locale.EN
@@ -49,7 +49,7 @@ export class TranslationService {
     }
   }
 
-  public static create(translator: Translator) {
+  static create(translator: Translator) {
     return new TranslationService(translator)
   }
 }

@@ -9,9 +9,9 @@ describe('LoggerCommandDecorator', () => {
   let infoMock: jest.Mock
 
   class MockCommand implements Command<void> {
-    public constructor(private readonly foo: string) {}
+    constructor(private readonly foo: string) {}
 
-    public async execute(): Promise<void> {
+    async execute(): Promise<void> {
       mock(this.foo)
       return
     }

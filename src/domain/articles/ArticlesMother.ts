@@ -571,7 +571,7 @@ import { Fetcher } from '../../Fetcher'
 export class GravatarBlobRepository implements GravatarRepository {
     private url: string
 
-    public constructor(private readonly fetcher: Fetcher) {
+    constructor(private readonly fetcher: Fetcher) {
         this.url = 'https://cors-anywhere.herokuapp.com/https://seccdn.libravatar.org/avatar'
     }
 
@@ -620,7 +620,7 @@ Por último hemos modelado nuestro usuario con una clase. Aquí tenemos el model
 
 \`\`\`typescript
 export class User {
-    public constructor(private readonly photo: string) {}
+    constructor(private readonly photo: string) {}
 
     static empty() {
         return new User('')

@@ -1,24 +1,24 @@
 export type CallbackFunction<T = unknown> = (...params: unknown[]) => T
 
 export class Maybe<T> {
-  public static some<T>(value: T): Maybe<T> {
+  static some<T>(value: T): Maybe<T> {
     if (!this.isValid(value)) {
       throw Error('Provided value must not be empty')
     }
     return new Maybe(value)
   }
 
-  public static none<T>(): Maybe<T> {
+  static none<T>(): Maybe<T> {
     return new Maybe<T>(null)
   }
 
-  public static fromValue<T>(value: T | undefined | null): Maybe<T> {
+  static fromValue<T>(value: T | undefined | null): Maybe<T> {
     return this.isValid(value) ? Maybe.some(value as T) : Maybe.none<T>()
   }
 
-  public constructor(private value: T | null) {}
+  constructor(private value: T | null) {}
 
-  public get(): T {
+  get(): T {
     if (!this.has()) {
       throw new Error(
         "It  doesn't have a value. Make sure it has a value first by using .has method"
@@ -27,15 +27,15 @@ export class Maybe<T> {
     return this.value as T
   }
 
-  public getOrElse(defaultValue: T): T {
+  getOrElse(defaultValue: T): T {
     return this.value === null ? defaultValue : this.value
   }
 
-  public getOrExecute(defaultValue: CallbackFunction<T>): T {
+  getOrExecute(defaultValue: CallbackFunction<T>): T {
     return this.value === null ? defaultValue() : this.value
   }
 
-  public getOrThrow(error: Error): T {
+  getOrThrow(error: Error): T {
     return this.value === null
       ? (() => {
           throw error
@@ -43,11 +43,11 @@ export class Maybe<T> {
       : this.value
   }
 
-  public has(): boolean {
+  has(): boolean {
     return this.value !== null
   }
 
-  public map<R>(f: (wrapped: T) => R): Maybe<R> {
+  map<R>(f: (wrapped: T) => R): Maybe<R> {
     if (this.value === null) {
       return Maybe.none<R>()
     } else {
@@ -55,7 +55,7 @@ export class Maybe<T> {
     }
   }
 
-  public flatMap<R>(f: (wrapped: T) => Maybe<R>): Maybe<R> {
+  flatMap<R>(f: (wrapped: T) => Maybe<R>): Maybe<R> {
     if (this.value === null) {
       return Maybe.none<R>()
     } else {

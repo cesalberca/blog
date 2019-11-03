@@ -7,29 +7,29 @@ export class VueStateManager implements Observer {
   private _state: State = new State()
   private readonly stateManager: StateManager = new StateManager()
 
-  public static get instance(): VueStateManager {
+  static get instance(): VueStateManager {
     if (this._instance === null) {
       this._instance = new VueStateManager()
     }
     return this._instance
   }
 
-  public create(vue: VueConstructor, serviceWorker: Subject) {
+  create(vue: VueConstructor, serviceWorker: Subject) {
     const state = this.stateManager.state
     this._state = vue.observable(state)
     serviceWorker.register(this)
     return this
   }
 
-  public register(observer: Observer) {
+  register(observer: Observer) {
     this.stateManager.register(observer)
   }
 
-  public get state(): State {
+  get state(): State {
     return this._state
   }
 
-  public notify() {
+  notify() {
     this._state.shouldReload = true
   }
 }

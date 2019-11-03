@@ -3,20 +3,20 @@ import marked from 'marked'
 export class Markdown {
   private readonly renderer = new marked.Renderer()
 
-  public constructor(private readonly _value: string) {
+  constructor(private readonly _value: string) {
     this.configureRenderer()
     marked.setOptions({ renderer: this.renderer })
   }
 
-  public static fromValue(value: string) {
+  static fromValue(value: string) {
     return new Markdown(value)
   }
 
-  public get value(): string {
+  get value(): string {
     return this._value
   }
 
-  public toHtml(): string {
+  toHtml(): string {
     return marked(this._value)
   }
 

@@ -6,16 +6,13 @@ import { TalksFileRepository } from '../../infraestructure/talks/TalksFileReposi
 import { UseCaseDecorator } from './UseCaseDecorator'
 
 export class GetTalksGivenUseCase implements Command<Talk[]> {
-  public constructor(
-    private readonly talksRepository: TalksRepository,
-    private readonly locale: Locale
-  ) {}
+  constructor(private readonly talksRepository: TalksRepository, private readonly locale: Locale) {}
 
-  public async execute(): Promise<Talk[]> {
+  async execute(): Promise<Talk[]> {
     return this.talksRepository.findAllByLocale(this.locale)
   }
 
-  public static create(context: { locale: Locale }) {
+  static create(context: { locale: Locale }) {
     return UseCaseDecorator.create().decorate(
       new GetTalksGivenUseCase(TalksFileRepository.create(), context.locale)
     )

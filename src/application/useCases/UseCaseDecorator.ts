@@ -3,13 +3,13 @@ import { LoggerCommandDecorator } from '../../infraestructure/LoggerCommandDecor
 import { Logger } from '../../infraestructure/Logger'
 
 export class UseCaseDecorator {
-  public constructor(private readonly logger: Logger) {}
+  constructor(private readonly logger: Logger) {}
 
-  public decorate<T>(command: Command<T>) {
+  decorate<T>(command: Command<T>) {
     return new LoggerCommandDecorator<T>(command, this.logger)
   }
 
-  public static create() {
+  static create() {
     return new UseCaseDecorator(
       Logger.create({
         // eslint-disable-next-line

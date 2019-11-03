@@ -6,19 +6,19 @@ import { TranslationService } from '../../domain/TranslationService'
 import { ArticleDto } from './ArticleDto'
 
 export class ArticlesFileRepository implements ArticlesRepository {
-  public constructor(
+  constructor(
     private readonly fileLoader: FileLoader,
     private readonly translationService: TranslationService
   ) {}
 
-  public static create() {
+  static create() {
     return new ArticlesFileRepository(
       FileLoader.create(),
       TranslationService.create(Translator.create())
     )
   }
 
-  public async findOneByLocale(id: Id, locale: Locale): Promise<Article> {
+  async findOneByLocale(id: Id, locale: Locale): Promise<Article> {
     let article: ArticleDto
 
     try {
@@ -26,8 +26,13 @@ export class ArticlesFileRepository implements ArticlesRepository {
         id.value
       }.md`)
     } catch (e) {
-      const locale = this.translationService.toString(Locale.DEFAULT)
-      article = await import(`./../../domain/articles/${locale}/${id.value}.md`)
+      try {
+        const locale = this.translationService.toString(Locale.DEFAULT)
+        article = await import(`./../../domain/articles/${locale}/${id.value}.md`)
+      } catch (e) {
+        const spanishLocale = this.translationService.toString(Locale.ES)
+        article = await import(`./../../domain/articles/${spanishLocale}/${id.value}.md`)
+      }
     }
 
     return Article.create({
@@ -40,7 +45,7 @@ export class ArticlesFileRepository implements ArticlesRepository {
     })
   }
 
-  public async findAllByLocale(locale: Locale): Promise<Article[]> {
+  async findAllByLocale(locale: Locale): Promise<Article[]> {
     const articlesIds = this.fileLoader
       .loadArticles()
       .map(id => id.substr(2, id.length).substr(0, id.length - 5))

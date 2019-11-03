@@ -7,7 +7,7 @@ image: abstract-dark-design.jpg
 
 Use cases and commands. How to.
 
-<!--more-->
+<!-- more -->
 
 The [command pattern](https://sourcemaking.com/design_patterns/command) helps us encapsulate requests in order to perform certain operations, like logging, queuing and filtering.
 

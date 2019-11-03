@@ -29,11 +29,11 @@ describe('Article', () => {
     })
   })
 
-  it('should get text in the excerpt until the <!--more--> tag', () => {
+  it('should get text in the excerpt until the <!-- more --> tag', () => {
     const article = Article.create({
       id: Id.fromValue('foo'),
       title: 'foo',
-      body: Markdown.fromValue(`foo <!--more-->bar`),
+      body: Markdown.fromValue(`foo <!-- more -->bar`),
       date: Datetime.fromDate(new Date(2019, 2, 27)),
       locale: Locale.DEFAULT,
       image: ''

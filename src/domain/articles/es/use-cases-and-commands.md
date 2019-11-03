@@ -7,7 +7,7 @@ image: abstract-dark-design.jpg
 
 Casos de Uso y comandos. Cómo.
 
-<!--more-->
+<!-- more -->
 
 El [patrón comando](https://sourcemaking.com/design_patterns/command) nos ayuda a encapsular peticiones para realizar ciertas operaciones como logs, colas y filtrado.
 

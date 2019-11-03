@@ -6,7 +6,7 @@ import { Length } from '../Length'
 import { Image } from '../../infraestructure/Image'
 
 export class Article {
-  private static readonly SUMMARY_SEPARATOR = '<!--more-->'
+  private static readonly SUMMARY_SEPARATOR = '<!-- more -->'
   private static readonly AVERAGE_WORDS_PER_MINUTE = 180
 
   public constructor(

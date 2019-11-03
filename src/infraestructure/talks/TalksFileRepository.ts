@@ -32,9 +32,9 @@ export class TalksFileRepository implements TalksRepository {
     let talk: TalkDto
 
     try {
-      talk = await import(`./../../domain/talks/${this.translationService.toString(locale)}/${
-        id.value
-      }.md`)
+      talk = await import(
+        `./../../domain/talks/${this.translationService.toString(locale)}/${id.value}.md`
+      )
     } catch (e) {
       const locale = this.translationService.toString(Locale.DEFAULT)
       talk = await import(`./../../domain/talks/${locale}/${id.value}.md`)

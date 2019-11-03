@@ -22,9 +22,9 @@ export class ArticlesFileRepository implements ArticlesRepository {
     let article: ArticleDto
 
     try {
-      article = await import(`./../../domain/articles/${this.translationService.toString(locale)}/${
-        id.value
-      }.md`)
+      article = await import(
+        `./../../domain/articles/${this.translationService.toString(locale)}/${id.value}.md`
+      )
     } catch (e) {
       try {
         const locale = this.translationService.toString(Locale.DEFAULT)

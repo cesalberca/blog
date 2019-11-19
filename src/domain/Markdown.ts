@@ -34,7 +34,7 @@ export class Markdown {
         out += ` title="${title}"`
       }
 
-      return (out += `>${text}</a>`)
+      return out + `>${text}</a>`
     }
   }
 }

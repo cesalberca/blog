@@ -16,7 +16,7 @@ export class Application {
   constructor(
     private readonly vue: VueConstructor,
     private readonly router: Router,
-    private readonly analytics: VueAnalytics
+    private readonly analytics: typeof VueAnalytics
   ) {}
 
   create(app: VueConstructor) {

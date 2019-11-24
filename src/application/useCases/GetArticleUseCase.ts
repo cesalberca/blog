@@ -3,22 +3,18 @@ import { Article, ArticlesRepository } from '../../domain/articles'
 import { Id } from '../../domain'
 import { Locale } from '../../domain/language'
 import { UseCaseDecorator } from './UseCaseDecorator'
-import { ArticlesFileRepository } from '../../infraestructure/articles/ArticlesFileRepository'
+import { Injectable } from '../../Injectable'
 
-export class GetArticleUseCase implements Command<Article> {
+@Injectable()
+export class GetArticleUseCase implements Command<Article, { id: Id; locale: Locale }> {
   constructor(
     private readonly articlesRepository: ArticlesRepository,
-    private readonly id: Id,
-    private readonly locale: Locale
-  ) {}
-
-  async execute(): Promise<Article> {
-    return this.articlesRepository.findOneByLocale(this.id, this.locale)
+    private readonly useCaseDecorator: UseCaseDecorator
+  ) {
+    return this.useCaseDecorator.decorate(this)
   }
 
-  static create(context: { id: Id; locale: Locale }) {
-    return UseCaseDecorator.create().decorate(
-      new GetArticleUseCase(ArticlesFileRepository.create(), context.id, context.locale)
-    )
+  async execute({ id, locale }: { id: Id; locale: Locale }): Promise<Article> {
+    return this.articlesRepository.findOneByLocale(id, locale)
   }
 }

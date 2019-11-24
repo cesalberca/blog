@@ -1,3 +1,6 @@
+import { Injectable } from '../Injectable'
+
+@Injectable()
 export class FileLoader {
   loadArticles(): string[] {
     const spanishArticles = require.context(`./../domain/articles/es`).keys()
@@ -9,9 +12,5 @@ export class FileLoader {
     const spanishTalks = require.context(`./../domain/talks/es`).keys()
     const englishTalks = require.context(`./../domain/talks/en`).keys()
     return Array.from(new Set([...spanishTalks, ...englishTalks]))
-  }
-
-  static create() {
-    return new FileLoader()
   }
 }

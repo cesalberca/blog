@@ -1,22 +1,16 @@
 import { Datetime } from './Datetime'
+import { Injectable } from '../Injectable'
+import { Inject } from '../Inject'
+import { STDOUT_TYPE } from '../types'
+import { Message, Stdout } from './Stdout'
 
-type Message = string | number
 type Level = 'warning' | 'error' | 'info'
-type Log = (message: Message) => void
-type Stdout = {
-  error: Log
-  info: Log
-  warn: Log
-}
 
+@Injectable()
 export class Logger {
-  constructor(private readonly stdout: Stdout) {}
+  constructor(@Inject(STDOUT_TYPE) private readonly stdout: Stdout) {}
 
   log(message: Message, _options: { level: Level } = { level: 'info' }) {
     this.stdout.info(`[${Datetime.fromNow()}] ${message}`)
-  }
-
-  static create(options: { stdout: Stdout }) {
-    return new Logger(options.stdout)
   }
 }

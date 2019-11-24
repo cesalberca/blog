@@ -1,5 +1,7 @@
 import { Language } from './Language'
+import { Injectable } from '../../Injectable'
 
+@Injectable()
 export class LanguageService {
   toLanguage(string: string): Language {
     switch (string.toLowerCase()) {
@@ -10,9 +12,5 @@ export class LanguageService {
       default:
         throw new Error('Language could not be found')
     }
-  }
-
-  static create() {
-    return new LanguageService()
   }
 }

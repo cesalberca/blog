@@ -34,13 +34,17 @@ import XPage from '../../commons/XPage.vue'
 import XHero from '../../commons/XHero.vue'
 import me from './../../assets/images/me.png'
 import { NavigateToArticle } from '../../actions/NavigateToArticle'
+import { container } from '../../../container'
+import { GET_ALL_ARTICLES_USE_CASE_TYPE } from '../../../types'
 
 @Component<XHome>({
   name: 'XHome',
   async beforeRouteEnter(_to, _from, next) {
-    const articles = await GetAllArticlesUseCase.create({
-      locale: VueStateManager.instance.state.locale
-    }).execute()
+    const articles = await container
+      .get<GetAllArticlesUseCase>(GET_ALL_ARTICLES_USE_CASE_TYPE)
+      .execute({
+        locale: VueStateManager.instance.state.locale
+      })
 
     next(vm => {
       vm.articles = articles
@@ -67,9 +71,11 @@ export default class XHome extends Vue {
 
   @Watch('state.locale')
   async onLocaleChange() {
-    this.articles = await GetAllArticlesUseCase.create({
-      locale: VueStateManager.instance.state.locale
-    }).execute()
+    this.articles = await container
+      .get<GetAllArticlesUseCase>(GET_ALL_ARTICLES_USE_CASE_TYPE)
+      .execute({
+        locale: VueStateManager.instance.state.locale
+      })
   }
 
   navigateToArticle(id: Id) {

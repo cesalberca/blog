@@ -1,5 +1,7 @@
 import { Locale, TranslationError, TranslationIdentifiers, Translator } from './language'
+import { Injectable } from '../Injectable'
 
+@Injectable()
 export class TranslationService {
   constructor(private readonly translator: Translator) {}
 
@@ -47,9 +49,5 @@ export class TranslationService {
       default:
         throw new TranslationError(`String ${string} could not be mapped to a locale`)
     }
-  }
-
-  static create(translator: Translator) {
-    return new TranslationService(translator)
   }
 }

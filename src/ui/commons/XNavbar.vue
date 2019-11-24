@@ -25,6 +25,7 @@ export default class XNavbar extends Vue {}
 .navbar {
   --link-color: var(--white-color);
   background-color: var(--navbar-background, var(--primary-color));
+  padding: 0 var(--medium-size);
   position: var(--navbar-position, initial);
   width: 100%;
   text-shadow: var(--navbar-text-shadow);
@@ -41,7 +42,6 @@ export default class XNavbar extends Vue {}
 
 @media (max-width: 768px) {
   .links {
-    display: none;
   }
 }
 </style>

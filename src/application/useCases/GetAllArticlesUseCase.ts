@@ -1,23 +1,22 @@
 import { Command } from '../../infraestructure/Command'
 import { Article, ArticlesRepository } from '../../domain/articles'
 import { Locale } from '../../domain/language'
-import { ArticlesFileRepository } from '../../infraestructure/articles/ArticlesFileRepository'
 import { UseCaseDecorator } from './UseCaseDecorator'
+import { Injectable } from '../../Injectable'
+import { Inject } from '../../Inject'
+import { ARTICLES_REPOSITORY_TYPE } from '../../types'
 
-export class GetAllArticlesUseCase implements Command<Article[]> {
+@Injectable()
+export class GetAllArticlesUseCase implements Command<Article[], { locale: Locale }> {
   constructor(
-    private readonly articlesRepository: ArticlesRepository,
-    private readonly locale: Locale
-  ) {}
-
-  async execute(): Promise<Article[]> {
-    const articles = await this.articlesRepository.findAllByLocale(this.locale)
-    return articles.slice().sort((articleA, articleB) => (articleB.date < articleA.date ? -1 : 1))
+    @Inject(ARTICLES_REPOSITORY_TYPE) private readonly articlesRepository: ArticlesRepository,
+    private readonly useCaseDecorator: UseCaseDecorator
+  ) {
+    return this.useCaseDecorator.decorate(this)
   }
 
-  static create(context: { locale: Locale }) {
-    return UseCaseDecorator.create().decorate(
-      new GetAllArticlesUseCase(ArticlesFileRepository.create(), context.locale)
-    )
+  async execute({ locale }: { locale: Locale }): Promise<Article[]> {
+    const articles = await this.articlesRepository.findAllByLocale(locale)
+    return articles.slice().sort((articleA, articleB) => (articleB.date < articleA.date ? -1 : 1))
   }
 }

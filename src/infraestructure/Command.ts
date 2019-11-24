@@ -1,3 +1,3 @@
-export interface Command<T> {
-  execute(): Promise<T>
+export interface Command<T = void, P = void> {
+  execute(param: P): Promise<T>
 }

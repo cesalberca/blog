@@ -1,6 +1,6 @@
 import { TalksRepository } from '../../domain/talks/TalksRepository'
 import { Talk } from '../../domain/talks'
-import { Locale, Translator } from '../../domain/language'
+import { Locale } from '../../domain/language'
 import { Id, Markdown } from '../../domain'
 import { FileLoader } from '../FileLoader'
 import { Length } from '../../domain/Length'
@@ -12,21 +12,15 @@ import { Maybe } from '../Maybe'
 import { LanguageService } from '../../domain/talks/LanguageService'
 import { Topic } from '../../domain/talks/Topic'
 import { TalkDto } from './TalkDto'
+import { Injectable } from '../../Injectable'
 
+@Injectable()
 export class TalksFileRepository implements TalksRepository {
   constructor(
     private readonly fileLoader: FileLoader,
     private readonly translationService: TranslationService,
     private readonly languageService: LanguageService
   ) {}
-
-  static create() {
-    return new TalksFileRepository(
-      FileLoader.create(),
-      TranslationService.create(Translator.create()),
-      LanguageService.create()
-    )
-  }
 
   async findOneByLocale(id: Id, locale: Locale): Promise<Talk> {
     let talk: TalkDto

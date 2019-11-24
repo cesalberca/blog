@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import Vue from 'vue'
 import { Application, Router, XApp } from './ui'
 import VueRouter from 'vue-router'

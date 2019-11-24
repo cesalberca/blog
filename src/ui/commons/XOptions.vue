@@ -33,10 +33,16 @@ export default class XOptions extends Vue {
   readonly state!: State
 
   theme = Theme.DEFAULT
-  themes = [{ text: this.light, value: Theme.LIGHT }, { text: this.dark, value: Theme.DARK }]
+  themes = [
+    { text: this.light, value: Theme.LIGHT },
+    { text: this.dark, value: Theme.DARK }
+  ]
 
   locale = Locale.DEFAULT
-  locales = [{ text: this.en, value: Locale.EN }, { text: this.es, value: Locale.ES }]
+  locales = [
+    { text: this.en, value: Locale.EN },
+    { text: this.es, value: Locale.ES }
+  ]
 
   get en() {
     return this.translate('_en')

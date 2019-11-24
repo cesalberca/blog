@@ -29,6 +29,8 @@ import XTag from '../../commons/XTag.vue'
 import XHero from '../../commons/XHero.vue'
 import XPage from '../../commons/XPage.vue'
 import { Translate } from '../../commons/Translate'
+import { container } from '../../../container'
+import { GET_ARTICLE_USE_CASE_TYPE } from '../../../types'
 
 @Component<ArticleComponent>({
   name: 'XArticle',
@@ -37,10 +39,10 @@ import { Translate } from '../../commons/Translate'
       return
     }
 
-    const article = await GetArticleUseCase.create({
+    const article = await container.get<GetArticleUseCase>(GET_ARTICLE_USE_CASE_TYPE).execute({
       id: Id.fromValue(to.params.id),
       locale: VueStateManager.instance.state.locale
-    }).execute()
+    })
 
     next(vm => {
       vm.article = article
@@ -80,10 +82,10 @@ export default class ArticleComponent extends Vue {
 
   @Watch('state.locale')
   async onLocaleChange() {
-    this.article = await GetArticleUseCase.create({
+    this.article = await container.get<GetArticleUseCase>(GET_ARTICLE_USE_CASE_TYPE).execute({
       id: Id.fromValue(this.$route.params.id),
       locale: VueStateManager.instance.state.locale
-    }).execute()
+    })
   }
 
   get date() {

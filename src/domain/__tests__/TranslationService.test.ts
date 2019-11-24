@@ -7,7 +7,7 @@ describe('TranslationService', () => {
   let translationService: TranslationService
 
   beforeEach(() => {
-    translationService = TranslationService.create(Translator.create())
+    translationService = new TranslationService(new Translator())
   })
 
   it('should translate a given key', () => {

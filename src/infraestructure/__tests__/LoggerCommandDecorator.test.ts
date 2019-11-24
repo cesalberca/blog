@@ -8,7 +8,7 @@ describe('LoggerCommandDecorator', () => {
   let mock: jest.Mock = jest.fn()
   let infoMock: jest.Mock
 
-  class MockCommand implements Command<void> {
+  class MockCommand implements Command<unknown, unknown> {
     constructor(private readonly foo: string) {}
 
     async execute(): Promise<void> {
@@ -17,7 +17,7 @@ describe('LoggerCommandDecorator', () => {
     }
   }
 
-  let decoratedCommand: Command<void>
+  let decoratedCommand: Command<unknown, void>
 
   beforeEach(() => {
     infoMock = jest.fn()

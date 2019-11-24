@@ -12,16 +12,18 @@ import { Translate } from './commons/Translate'
 import { TranslationService } from '../domain/TranslationService'
 import { TwitterSharerService } from '../domain/TwitterSharerService'
 import { ServiceWorkerRegisterer } from './ServiceWorkerRegisterer'
+import { container } from '../container'
+import { TRANSLATION_SERVICE_TYPE, TRANSLATOR_TYPE, TWITTER_SHARER_SERVICE_TYPE } from '../types'
 
 @Component({
   name: 'XInjector'
 })
 export default class XInjector extends Vue {
   @Provide()
-  translationService = TranslationService.create(Translator.create())
+  translationService = container.get<TranslationService>(TRANSLATION_SERVICE_TYPE)
 
   @Provide()
-  twitterSharerService = TwitterSharerService.create()
+  twitterSharerService = container.get<TwitterSharerService>(TWITTER_SHARER_SERVICE_TYPE)
 
   @Provide()
   state = VueStateManager.instance.create(Vue, ServiceWorkerRegisterer.create()).state
@@ -31,7 +33,8 @@ export default class XInjector extends Vue {
 
   @Provide()
   translate: Translate = key =>
-    Translator.create()
+    container
+      .get<Translator>(TRANSLATOR_TYPE)
       .translations.get(VueStateManager.instance.state.locale)!
       .get(key)!
 }

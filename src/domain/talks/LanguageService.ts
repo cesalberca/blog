@@ -1,7 +1,7 @@
 import { Language } from './Language'
-import { Injectable } from '../../Injectable'
+import { injectable } from 'inversify'
 
-@Injectable()
+@injectable()
 export class LanguageService {
   toLanguage(string: string): Language {
     switch (string.toLowerCase()) {

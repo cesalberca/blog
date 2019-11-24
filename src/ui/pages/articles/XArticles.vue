@@ -12,21 +12,22 @@
 
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
-import { GetAllArticlesUseCase } from '../../../application/useCases'
 import { TranslationService } from '../../../domain/TranslationService'
-import { State } from '../../../application/state'
-import { Article, Id } from '../../../domain/articles'
 import { Translate } from '../../commons/Translate'
-import { VueStateManager } from '../../state'
 import XArticleExcerpt from '../../commons/XArticleExcerpt.vue'
 import { NavigateToArticle } from '../../actions/NavigateToArticle'
 import { ContainerFactory } from '../../../ContainerFactory'
-import { GET_ALL_ARTICLES_USE_CASE_TYPE } from '../../../types'
+import { TYPES } from '../../../types'
+import { GetAllArticlesUseCase } from '../../../application/useCases/GetAllArticlesUseCase'
+import { State } from '../../../application/state/State'
+import { Article } from '../../../domain/articles/Article'
+import { Id } from '../../../domain/Id'
+import { VueStateManager } from '../../state/VueStateManager'
 
 @Component<XArticles>({
   async beforeRouteEnter(_to, _from, next) {
     const articles = await ContainerFactory.get()
-      .container.get<GetAllArticlesUseCase>(GET_ALL_ARTICLES_USE_CASE_TYPE)
+      .container.get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE_TYPE)
       .execute({
         locale: VueStateManager.instance.state.locale
       })
@@ -53,7 +54,7 @@ export default class XArticles extends Vue {
   @Watch('state.locale')
   async onLocaleChange() {
     this.articles = await ContainerFactory.get()
-      .container.get<GetAllArticlesUseCase>(GET_ALL_ARTICLES_USE_CASE_TYPE)
+      .container.get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE_TYPE)
       .execute({
         locale: VueStateManager.instance.state.locale
       })

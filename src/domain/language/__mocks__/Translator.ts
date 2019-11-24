@@ -1,4 +1,5 @@
-import { Locale, Translation } from '../index'
+import { Locale } from '../Locale'
+import { Translation } from '../translations/Translation'
 
 const en = new Map<string, string>([
   ['existingKey', 'foo'],

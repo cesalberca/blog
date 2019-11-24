@@ -11,7 +11,6 @@ import { Router } from './Router'
 import VueRouter from 'vue-router'
 import { ServiceWorkerRegisterer } from './ServiceWorkerRegisterer'
 import VueAnalytics from 'vue-analytics'
-import { ContainerFactory } from '../ContainerFactory'
 
 export class Application {
   constructor(
@@ -21,15 +20,14 @@ export class Application {
   ) {}
 
   create(app: VueConstructor) {
-    ContainerFactory.get()
     this.vue.use(VueRouter)
     this.vue.config.productionTip = false
     this.vue.use(this.analytics, { id: 'UA-66392350-1' })
     ServiceWorkerRegisterer.create()
 
-    new this.vue({
+    return new this.vue({
       router: this.router.value,
-      render: h => h(app)
+      render: create => create(app)
     }).$mount('#app')
   }
 }

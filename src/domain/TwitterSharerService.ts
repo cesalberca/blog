@@ -1,10 +1,10 @@
 import { EncoderService } from './EncoderService'
 import { HtmlParserService } from './HtmlParserService'
 import { TranslationService } from './TranslationService'
-import { Locale } from './language'
-import { Injectable } from '../Injectable'
+import { injectable } from 'inversify'
+import { Locale } from './language/Locale'
 
-@Injectable()
+@injectable()
 export class TwitterSharerService {
   private static readonly USER_HANDLER = `@cesalberca`
 

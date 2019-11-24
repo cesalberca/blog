@@ -1,8 +1,8 @@
 import { Command } from '../../infraestructure/Command'
-import { Id } from '../../domain'
 import { VueRouter } from 'vue-router/types/router'
-import { Locale } from '../../domain/language'
 import { TranslationService } from '../../domain/TranslationService'
+import { Id } from '../../domain/Id'
+import { Locale } from '../../domain/language/Locale'
 
 export class NavigateToArticle implements Command<void> {
   constructor(

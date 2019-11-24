@@ -7,11 +7,11 @@
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { State } from '../../../application/state'
 import { Translate } from '../../commons/Translate'
-import { Markdown } from '../../../domain'
 import MarkdownComponent from '../../commons/XMarkdown.vue'
 import XPage from '../../commons/XPage.vue'
+import { State } from '../../../application/state/State'
+import { Markdown } from '../../../domain/Markdown'
 
 @Component({
   name: 'XAbout',

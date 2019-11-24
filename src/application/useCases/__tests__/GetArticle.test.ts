@@ -1,7 +1,8 @@
 import { GetArticleUseCase } from '../GetArticleUseCase'
-import { ArticlesRepository, Id } from '../../../domain'
-import { Locale } from '../../../domain/language'
 import { ArticlesMockRepository } from '../../../infraestructure/articles/ArticlesMockRepository'
+import { Locale } from '../../../domain/language/Locale'
+import { ArticlesRepository } from '../../../domain/articles/ArticlesRepository'
+import { Id } from '../../../domain/Id'
 
 jest.mock('../UseCaseDecorator')
 

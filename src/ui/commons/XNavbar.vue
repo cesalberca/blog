@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { XOptions } from './index'
 import XLinks from './XLinks.vue'
+import XOptions from './XOptions.vue'
 
 @Component({
   name: 'XNavbar',

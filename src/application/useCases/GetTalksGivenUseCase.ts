@@ -1,16 +1,15 @@
-import { Talk } from '../../domain/talks'
 import { Command } from '../../infraestructure/Command'
 import { TalksRepository } from '../../domain/talks/TalksRepository'
-import { Locale } from '../../domain/language'
-import { Inject } from '../../Inject'
-import { TALKS_REPOSITORY_TYPE } from '../../types'
-import { Injectable } from '../../Injectable'
+import { TYPES } from '../../types'
 import { UseCaseDecorator } from './UseCaseDecorator'
+import { injectable, inject } from 'inversify'
+import { Locale } from '../../domain/language/Locale'
+import { Talk } from '../../domain/talks/Talk'
 
-@Injectable()
+@injectable()
 export class GetTalksGivenUseCase implements Command<Talk[], { locale: Locale }> {
   constructor(
-    @Inject(TALKS_REPOSITORY_TYPE) private readonly talksRepository: TalksRepository,
+    @inject(TYPES.TALKS_REPOSITORY_TYPE) private readonly talksRepository: TalksRepository,
     private readonly useCaseDecorator: UseCaseDecorator
   ) {
     return this.useCaseDecorator.decorate<GetTalksGivenUseCase>(this)

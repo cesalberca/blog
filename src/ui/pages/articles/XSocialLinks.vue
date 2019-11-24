@@ -31,8 +31,8 @@
 <script lang="ts">
 import { Component, Inject, Prop, Vue } from 'vue-property-decorator'
 import { TwitterSharerService } from '../../../domain/TwitterSharerService'
-import { State } from '../../../application/state'
 import { Translate } from '../../commons/Translate'
+import { State } from '../../../application/state/State'
 
 @Component({ name: 'XSocialLinks' })
 export default class XSocialLinks extends Vue {

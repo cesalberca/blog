@@ -1,1 +1,0 @@
-export { VueStateManager } from './VueStateManager'

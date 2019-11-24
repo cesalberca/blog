@@ -2,9 +2,9 @@ import { Translation } from './translations/Translation'
 import { es } from './translations/es'
 import { en } from './translations/en'
 import { Locale } from './Locale'
-import { Injectable } from '../../Injectable'
+import { injectable } from 'inversify'
 
-@Injectable()
+@injectable()
 export class Translator {
   readonly translations: Map<Locale, Translation>
 

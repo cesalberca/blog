@@ -7,7 +7,7 @@
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
 import { Theme } from './Theme'
-import { State } from '../../application/state'
+import { State } from '../../application/state/State'
 
 @Component({ name: 'XTheming' })
 export default class XTheming extends Vue {

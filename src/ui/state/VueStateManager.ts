@@ -1,6 +1,8 @@
 import { VueConstructor } from 'vue'
-import { StateManager, State } from '../../application/state'
-import { Observer, Subject } from '../../infraestructure'
+import { Observer } from '../../infraestructure/Observer'
+import { State } from '../../application/state/State'
+import { StateManager } from '../../application/state/StateManager'
+import { Subject } from '../../infraestructure/Subject'
 
 export class VueStateManager implements Observer {
   private static _instance: VueStateManager | null = null

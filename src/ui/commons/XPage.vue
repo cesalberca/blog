@@ -12,7 +12,7 @@
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import XFooter from './XFooter.vue'
-import { State } from '../../application/state'
+import { State } from '../../application/state/State'
 
 @Component({
   name: 'XPage',

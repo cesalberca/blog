@@ -1,7 +1,10 @@
-import { Locale, TranslationError, TranslationIdentifiers, Translator } from './language'
-import { Injectable } from '../Injectable'
+import { injectable } from 'inversify'
+import { Locale } from './language/Locale'
+import { TranslationIdentifiers } from './language/translations/TranslationIdentifiers'
+import { TranslationError } from './language/TranslationError'
+import { Translator } from './language/Translator'
 
-@Injectable()
+@injectable()
 export class TranslationService {
   constructor(private readonly translator: Translator) {}
 

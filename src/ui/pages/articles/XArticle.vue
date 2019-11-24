@@ -20,17 +20,18 @@
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import XSocialLinks from './XSocialLinks.vue'
 import { TranslationService } from '../../../domain/TranslationService'
-import { State } from '../../../application/state'
-import { GetArticleUseCase } from '../../../application/useCases'
-import { Article, Id } from '../../../domain/articles'
-import { VueStateManager } from '../../state'
 import XMarkdown from '../../commons/XMarkdown.vue'
 import XTag from '../../commons/XTag.vue'
 import XHero from '../../commons/XHero.vue'
 import XPage from '../../commons/XPage.vue'
 import { Translate } from '../../commons/Translate'
 import { ContainerFactory } from '../../../ContainerFactory'
-import { GET_ARTICLE_USE_CASE_TYPE } from '../../../types'
+import { TYPES } from '../../../types'
+import { GetArticleUseCase } from '../../../application/useCases/GetArticleUseCase'
+import { State } from '../../../application/state/State'
+import { Article } from '../../../domain/articles/Article'
+import { Id } from '../../../domain/Id'
+import { VueStateManager } from '../../state/VueStateManager'
 
 @Component<ArticleComponent>({
   name: 'XArticle',
@@ -40,7 +41,7 @@ import { GET_ARTICLE_USE_CASE_TYPE } from '../../../types'
     }
 
     const article = await ContainerFactory.get()
-      .container.get<GetArticleUseCase>(GET_ARTICLE_USE_CASE_TYPE)
+      .container.get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE_TYPE)
       .execute({
         id: Id.fromValue(to.params.id),
         locale: VueStateManager.instance.state.locale
@@ -85,7 +86,7 @@ export default class ArticleComponent extends Vue {
   @Watch('state.locale')
   async onLocaleChange() {
     this.article = await ContainerFactory.get()
-      .container.get<GetArticleUseCase>(GET_ARTICLE_USE_CASE_TYPE)
+      .container.get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE_TYPE)
       .execute({
         id: Id.fromValue(this.$route.params.id),
         locale: VueStateManager.instance.state.locale

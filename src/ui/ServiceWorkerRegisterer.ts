@@ -1,5 +1,6 @@
 import { register } from 'register-service-worker'
-import { Observer, Subject } from '../infraestructure'
+import { Subject } from '../infraestructure/Subject'
+import { Observer } from '../infraestructure/Observer'
 
 export class ServiceWorkerRegisterer implements Subject {
   private observers: Observer[] = []

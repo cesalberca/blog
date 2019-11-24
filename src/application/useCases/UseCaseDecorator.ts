@@ -1,9 +1,9 @@
 import { LoggerCommandDecorator } from '../../infraestructure/LoggerCommandDecorator'
 import { Logger } from '../../infraestructure/Logger'
 import { Command } from '../../infraestructure/Command'
-import { Injectable } from '../../Injectable'
+import { injectable } from 'inversify'
 
-@Injectable()
+@injectable()
 export class UseCaseDecorator {
   constructor(private readonly logger: Logger) {}
 

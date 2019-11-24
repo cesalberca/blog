@@ -10,19 +10,19 @@ import { Component, Inject, Vue } from 'vue-property-decorator'
 import TalkComponent from './XTalk.vue'
 import { TalkDetail } from './TalkDetail'
 import { TranslationService } from '../../../domain/TranslationService'
-import { State } from '../../../application/state'
-import { GetTalksGivenUseCase } from '../../../application/useCases'
-import { Talk } from '../../../domain/talks'
 import { Translate } from '../../commons/Translate'
-import { VueStateManager } from '../../state'
 import XPage from '../../commons/XPage.vue'
 import { ContainerFactory } from '../../../ContainerFactory'
-import { GET_TALKS_GIVEN_USE_CASE_TYPE } from '../../../types'
+import { TYPES } from '../../../types'
+import { State } from '../../../application/state/State'
+import { GetTalksGivenUseCase } from '../../../application/useCases/GetTalksGivenUseCase'
+import { Talk } from '../../../domain/talks/Talk'
+import { VueStateManager } from '../../state/VueStateManager'
 
 @Component<XTalks>({
   async beforeRouteEnter(_to, _from, next) {
     const talks = await ContainerFactory.get()
-      .container.get<GetTalksGivenUseCase>(GET_TALKS_GIVEN_USE_CASE_TYPE)
+      .container.get<GetTalksGivenUseCase>(TYPES.GET_TALKS_GIVEN_USE_CASE_TYPE)
       .execute({ locale: VueStateManager.instance.state.locale })
 
     next(vm => {

@@ -2,8 +2,8 @@ import { Article } from '../Article'
 import { Id } from '../../Id'
 import { Markdown } from '../../Markdown'
 import { Datetime } from '../../../infraestructure/Datetime'
-import { Locale } from '../../language'
 import { Length } from '../../Length'
+import { Locale } from '../../language/Locale'
 
 describe('Article', () => {
   it('should get the excerpt', () => {

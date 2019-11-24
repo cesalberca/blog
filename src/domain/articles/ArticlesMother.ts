@@ -2,7 +2,7 @@ import { Article } from './Article'
 import { Id } from '../Id'
 import { Markdown } from '../Markdown'
 import { Datetime } from '../../infraestructure/Datetime'
-import { Locale } from '../language'
+import { Locale } from '../language/Locale'
 
 export class ArticlesMother {
   static getFakeArticles() {
@@ -656,9 +656,5 @@ Sígueme en [Twitter](https://twitter.com/) y en [Github](https://github.com/ces
         image: ''
       })
     ]
-  }
-
-  static getFakeArticle() {
-    return ArticlesMother.getFakeArticles()[0]
   }
 }

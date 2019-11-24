@@ -1,5 +1,5 @@
-import { TranslationError } from './language'
 import { Difficulty } from './talks/Difficulty'
+import { TranslationError } from './language/TranslationError'
 
 export class DifficultyService {
   toDifficulty(string: string): Difficulty {

@@ -8,7 +8,7 @@ describe('Logger', () => {
 
   beforeEach(() => {
     mock = jest.fn()
-    logger = Logger.create({ stdout: { warn: mock, info: mock, error: mock } })
+    logger = new Logger({ warn: mock, info: mock, error: mock })
   })
 
   it('should log as info with the current date', () => {

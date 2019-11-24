@@ -1,7 +1,7 @@
 import { GetTalksGivenUseCase } from '../GetTalksGivenUseCase'
-import { Locale } from '../../../domain/language'
 import { TalksMockRepository } from '../../../domain/talks/TalksMockRepository'
 import { TalksRepository } from '../../../domain/talks/TalksRepository'
+import { Locale } from '../../../domain/language/Locale'
 
 jest.mock('../UseCaseDecorator')
 

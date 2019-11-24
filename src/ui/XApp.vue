@@ -10,9 +10,9 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { XNavbar } from './commons'
-import { XInjector } from './'
 import XTheming from './theme/XTheming.vue'
+import XInjector from './XInjector.vue'
+import XNavbar from './commons/XNavbar.vue'
 
 @Component({
   name: 'XApp',

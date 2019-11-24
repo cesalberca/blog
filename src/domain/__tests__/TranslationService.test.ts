@@ -1,5 +1,8 @@
 import { TranslationService } from '../TranslationService'
-import { Locale, TranslationError, TranslationIdentifiers, Translator } from '../language'
+import { Locale } from '../language/Locale'
+import { TranslationIdentifiers } from '../language/translations/TranslationIdentifiers'
+import { TranslationError } from '../language/TranslationError'
+import { Translator } from '../language/Translator'
 
 jest.mock('../language/Translator')
 

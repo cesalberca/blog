@@ -1,12 +1,15 @@
-import { Article, ArticlesRepository, Id, Markdown } from '../../domain/articles'
-import { Locale } from '../../domain/language'
 import { Datetime } from '../Datetime'
 import { FileLoader } from '../FileLoader'
 import { TranslationService } from '../../domain/TranslationService'
 import { ArticleDto } from './ArticleDto'
-import { Injectable } from '../../Injectable'
+import { injectable } from 'inversify'
+import { Locale } from '../../domain/language/Locale'
+import { Article } from '../../domain/articles/Article'
+import { ArticlesRepository } from '../../domain/articles/ArticlesRepository'
+import { Id } from '../../domain/Id'
+import { Markdown } from '../../domain/Markdown'
 
-@Injectable()
+@injectable()
 export class ArticlesFileRepository implements ArticlesRepository {
   constructor(
     private readonly fileLoader: FileLoader,

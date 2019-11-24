@@ -20,9 +20,9 @@
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
 import { Theme } from '../theme/Theme'
-import { Locale } from '../../domain/language'
 import { Translate } from './Translate'
-import { State } from '../../application/state'
+import { Locale } from '../../domain/language/Locale'
+import { State } from '../../application/state/State'
 
 @Component({ name: 'XOptions' })
 export default class XOptions extends Vue {

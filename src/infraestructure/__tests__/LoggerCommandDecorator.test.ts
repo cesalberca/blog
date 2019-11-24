@@ -24,7 +24,7 @@ describe('LoggerCommandDecorator', () => {
     mock.mockClear()
     decoratedCommand = new LoggerCommandDecorator(
       new MockCommand('foo'),
-      Logger.create({ stdout: { info: infoMock, warn: jest.fn(), error: jest.fn() } })
+      new Logger({ info: infoMock, warn: jest.fn(), error: jest.fn() })
     )
   })
 

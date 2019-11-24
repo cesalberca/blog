@@ -12,9 +12,9 @@
 
 <script lang="ts">
 import { Component, Emit, Inject, Prop, Vue } from 'vue-property-decorator'
-import { Article } from '../../domain/articles'
 import XLink from './XLink.vue'
 import { Translate } from './Translate'
+import { Article } from '../../domain/articles/Article'
 
 @Component({
   name: 'XArticleExcerpt',

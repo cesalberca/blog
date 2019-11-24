@@ -1,7 +1,4 @@
 import { TalksRepository } from '../../domain/talks/TalksRepository'
-import { Talk } from '../../domain/talks'
-import { Locale } from '../../domain/language'
-import { Id, Markdown } from '../../domain'
 import { FileLoader } from '../FileLoader'
 import { Length } from '../../domain/Length'
 import { DifficultyService } from '../../domain/DifficultyService'
@@ -12,9 +9,13 @@ import { Maybe } from '../Maybe'
 import { LanguageService } from '../../domain/talks/LanguageService'
 import { Topic } from '../../domain/talks/Topic'
 import { TalkDto } from './TalkDto'
-import { Injectable } from '../../Injectable'
+import { injectable } from 'inversify'
+import { Locale } from '../../domain/language/Locale'
+import { Id } from '../../domain/Id'
+import { Talk } from '../../domain/talks/Talk'
+import { Markdown } from '../../domain/Markdown'
 
-@Injectable()
+@injectable()
 export class TalksFileRepository implements TalksRepository {
   constructor(
     private readonly fileLoader: FileLoader,

@@ -4,8 +4,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { Markdown } from '../../domain'
 import Prism from 'prismjs'
+import { Markdown } from '../../domain/Markdown'
 
 @Component({ name: 'XMarkdown' })
 export default class XMarkdown extends Vue {

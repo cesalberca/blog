@@ -1,6 +1,6 @@
-import { Injectable } from '../Injectable'
+import { injectable } from 'inversify'
 
-@Injectable()
+@injectable()
 export class FileLoader {
   loadArticles(): string[] {
     const spanishArticles = require.context(`./../domain/articles/es`).keys()

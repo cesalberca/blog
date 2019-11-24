@@ -1,17 +1,9 @@
 module.exports = {
-  configureWebpack: config => {
-    if (process.env.NODE_ENV === 'development') {
-      config.devtool = 'source-map'
-    }
-
-    config.module.rules.push({
-      test: /\.md$/,
-      loader: 'frontmatter-markdown-loader',
-      options: {
-        vue: {
-          root: 'dynamicContent'
-        }
-      }
-    })
+  chainWebpack: config => {
+    config.module
+      .rule('markdown')
+      .test(/\.md$/)
+      .use('frontmatter-markdown-loader')
+      .loader('frontmatter-markdown-loader')
   }
 }

@@ -1398,7 +1398,7 @@
     semver "^6.1.0"
     string.prototype.padstart "^3.0.0"
 
-"@vue/component-compiler-utils@^3.0.0":
+"@vue/component-compiler-utils@3.0.2", "@vue/component-compiler-utils@^3.0.0":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@vue/component-compiler-utils/-/component-compiler-utils-3.0.2.tgz#7daf8aaf0d5faa66e7c8a1f6fea315630e45fbc9"
   integrity sha512-BSnY2PmW4QwU1AOcGSNYAmEPLjdQ9itl1YpLCWtpwMA5Jy/aqWNuzZ9+ZZ8h6yZJ53W95tVkEP6yrXJ/zUHdEA==

@@ -53,7 +53,7 @@ export default class XFooter extends Vue {
 <style scoped>
 .footer {
   --link-color: var(--white-color);
-  padding: calc(var(--base) * 6) 0;
+  padding: calc(var(--base) * 6) var(--medium-size);
   background-color: var(--blue-dark-color);
 }
 

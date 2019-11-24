@@ -131,7 +131,7 @@ Si quieres ver los tipos básicos echa un ojo [a la documentación oficial](http
 
 Con clases veremos ciertas mejoras sintácticas respecto a JavaScript:
 
-``` javascript
+```javascript
 export class Subject {
   constructor() {
     this.observers = []
@@ -221,7 +221,6 @@ export class Observer {
     this.value = subject.counter
   }
 }
-
 ```
 
 Que pasa a ser:
@@ -304,8 +303,6 @@ export const either = (value: object, fallback: any) => (value === notDefined ? 
 
 const isObject = (obj: object) => typeof obj === 'object'
 const hasKey = (obj: object, key: string | number | symbol) => key in obj
-
-
 ```
 Ahora bien, no tenemos por qué pero podemos mejorar un poco los tipos. Dada la naturaleza del [proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) que estamos creando, el tipo del objeto que retornamos deberá ser el mismo que el tipo que le pasamos. Porque si no, cuando usemos esta función ocurrirá esto:
 
@@ -371,7 +368,6 @@ Uff, César, esto parece complejo, ¿no? Pues sí, porque el ejemplo que he eleg
 		...
   }
 }
-
 ```
 
 Con esta opción TypeScript nos ofrecerá más comprobaciones en cuanto a nulos, this, bind, call, apply e inicialización de propiedades.
@@ -420,7 +416,6 @@ module.exports = {
     '@babel/preset-typescript'
   ]
 }
-
 ```
 
 Añadimos configuración a `jest.config.js`:

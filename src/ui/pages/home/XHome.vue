@@ -106,6 +106,7 @@ export default class XHome extends Vue {
   max-width: var(--body-width);
   align-items: center;
   justify-content: space-between;
+  padding: 0 var(--medium-size);
 }
 
 .title {

@@ -14,10 +14,10 @@ export class VueStateManager implements Observer {
     return this._instance
   }
 
-  create(vue: VueConstructor, serviceWorker: Subject) {
+  create(vue: VueConstructor, subject: Subject) {
     const state = this.stateManager.state
     this._state = vue.observable(state)
-    serviceWorker.register(this)
+    subject.register(this)
     return this
   }
 

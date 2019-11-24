@@ -33,6 +33,10 @@ select:focus {
   outline-offset: 5px;
 }
 
+a:visited {
+  color: var(--blue-light-color);
+}
+
 p {
   margin-bottom: var(--small-size);
 }

@@ -1,10 +1,10 @@
 import { Command } from '../../infraestructure/Command'
 import { Article, ArticlesRepository } from '../../domain/articles'
 import { Locale } from '../../domain/language'
-import { UseCaseDecorator } from './UseCaseDecorator'
 import { Injectable } from '../../Injectable'
 import { Inject } from '../../Inject'
 import { ARTICLES_REPOSITORY_TYPE } from '../../types'
+import { UseCaseDecorator } from './UseCaseDecorator'
 
 @Injectable()
 export class GetAllArticlesUseCase implements Command<Article[], { locale: Locale }> {

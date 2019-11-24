@@ -4,8 +4,8 @@ import { TalksRepository } from '../../domain/talks/TalksRepository'
 import { Locale } from '../../domain/language'
 import { Inject } from '../../Inject'
 import { TALKS_REPOSITORY_TYPE } from '../../types'
-import { UseCaseDecorator } from './UseCaseDecorator'
 import { Injectable } from '../../Injectable'
+import { UseCaseDecorator } from './UseCaseDecorator'
 
 @Injectable()
 export class GetTalksGivenUseCase implements Command<Talk[], { locale: Locale }> {

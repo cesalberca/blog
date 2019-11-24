@@ -34,14 +34,14 @@ import XPage from '../../commons/XPage.vue'
 import XHero from '../../commons/XHero.vue'
 import me from './../../assets/images/me.png'
 import { NavigateToArticle } from '../../actions/NavigateToArticle'
-import { container } from '../../../container'
+import { ContainerFactory } from '../../../ContainerFactory'
 import { GET_ALL_ARTICLES_USE_CASE_TYPE } from '../../../types'
 
 @Component<XHome>({
   name: 'XHome',
   async beforeRouteEnter(_to, _from, next) {
-    const articles = await container
-      .get<GetAllArticlesUseCase>(GET_ALL_ARTICLES_USE_CASE_TYPE)
+    const articles = await ContainerFactory.get()
+      .container.get<GetAllArticlesUseCase>(GET_ALL_ARTICLES_USE_CASE_TYPE)
       .execute({
         locale: VueStateManager.instance.state.locale
       })
@@ -71,8 +71,8 @@ export default class XHome extends Vue {
 
   @Watch('state.locale')
   async onLocaleChange() {
-    this.articles = await container
-      .get<GetAllArticlesUseCase>(GET_ALL_ARTICLES_USE_CASE_TYPE)
+    this.articles = await ContainerFactory.get()
+      .container.get<GetAllArticlesUseCase>(GET_ALL_ARTICLES_USE_CASE_TYPE)
       .execute({
         locale: VueStateManager.instance.state.locale
       })

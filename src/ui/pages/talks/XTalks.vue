@@ -16,12 +16,13 @@ import { Talk } from '../../../domain/talks'
 import { Translate } from '../../commons/Translate'
 import { VueStateManager } from '../../state'
 import XPage from '../../commons/XPage.vue'
-import { container } from '../../../container'
+import { ContainerFactory } from '../../../ContainerFactory'
+import { GET_TALKS_GIVEN_USE_CASE_TYPE } from '../../../types'
 
 @Component<XTalks>({
   async beforeRouteEnter(_to, _from, next) {
-    const talks = await container
-      .get(GetTalksGivenUseCase)
+    const talks = await ContainerFactory.get()
+      .container.get<GetTalksGivenUseCase>(GET_TALKS_GIVEN_USE_CASE_TYPE)
       .execute({ locale: VueStateManager.instance.state.locale })
 
     next(vm => {

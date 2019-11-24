@@ -1,6 +1,4 @@
 import { Datetime } from '../Datetime'
-import { FileLoader } from '../FileLoader'
-import { TranslationService } from '../../domain/TranslationService'
 import { ArticleDto } from './ArticleDto'
 import { injectable } from 'inversify'
 import { Locale } from '../../domain/language/Locale'
@@ -8,13 +6,13 @@ import { Article } from '../../domain/articles/Article'
 import { ArticlesRepository } from '../../domain/articles/ArticlesRepository'
 import { Id } from '../../domain/Id'
 import { Markdown } from '../../domain/Markdown'
+import { FileLoader } from '../FileLoader'
+import { TranslationService } from '../../domain/TranslationService'
+import { Translator } from '../../domain/language/Translator'
 
 @injectable()
 export class ArticlesFileRepository implements ArticlesRepository {
-  constructor(
-    private readonly fileLoader: FileLoader,
-    private readonly translationService: TranslationService
-  ) {}
+  private translationService = new TranslationService(new Translator())
 
   async findOneByLocale(id: Id, locale: Locale): Promise<Article> {
     let article: ArticleDto
@@ -44,7 +42,7 @@ export class ArticlesFileRepository implements ArticlesRepository {
   }
 
   async findAllByLocale(locale: Locale): Promise<Article[]> {
-    const articlesIds = this.fileLoader
+    const articlesIds = new FileLoader()
       .loadArticles()
       .map(id => id.substr(2, id.length).substr(0, id.length - 5))
 

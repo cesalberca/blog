@@ -1,6 +1,6 @@
-import { LoggerCommandDecorator } from '../../domain/LoggerCommandDecorator'
-import { Command } from '../../domain/Command'
-import { Logger } from '../../domain/Logger'
+import { LoggerCommandDecorator } from '../../domain/logger-command-decorator'
+import { Command } from '../../domain/command'
+import { Logger } from '../../domain/logger'
 
 jest.mock('../Datetime')
 

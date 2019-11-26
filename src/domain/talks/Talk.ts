@@ -1,10 +1,10 @@
-import { Markdown } from '../Markdown'
-import { Length } from '../Length'
+import { Markdown } from '../markdown'
+import { Length } from '../length'
 import { Difficulty } from './Difficulty'
 import { Language } from './Language'
 import { Topic } from './Topic'
 import { Reference } from './Reference'
-import { Id } from '../Id'
+import { Id } from '../id'
 import { Event } from './Event'
 
 export class Talk {

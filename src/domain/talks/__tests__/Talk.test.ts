@@ -1,9 +1,9 @@
 import { Talk } from '../Talk'
-import { Id } from '../../Id'
+import { Id } from '../../id'
 import { Language } from '../Language'
 import { Difficulty } from '../Difficulty'
-import { Length } from '../../Length'
-import { Markdown } from '../../Markdown'
+import { Length } from '../../length'
+import { Markdown } from '../../markdown'
 
 describe('Talk', () => {
   it('should be able to create a talk', () => {

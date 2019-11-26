@@ -1,4 +1,4 @@
-import { Logger } from '../../domain/Logger'
+import { Logger } from '../../domain/logger'
 
 jest.mock('../Datetime')
 

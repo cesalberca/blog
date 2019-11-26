@@ -1,5 +1,5 @@
 module.exports = {
   preset: '@vue/cli-plugin-unit-jest/presets/typescript-and-babel',
-  setupFiles: ['./tests/setUp.ts'],
+  setupFiles: ['./tests/set-up.ts'],
   coverageReporters: ['lcov', 'text-summary']
 }

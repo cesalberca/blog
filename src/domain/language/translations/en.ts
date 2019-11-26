@@ -1,5 +1,5 @@
-import { Translation } from './Translation'
-import { TranslationIdentifiers } from './TranslationIdentifiers'
+import { Translation } from './translation'
+import { TranslationIdentifiers } from './translation-identifiers'
 
 export const en: Translation = new Map<keyof TranslationIdentifiers, string>([
   ['_en', 'EN'],

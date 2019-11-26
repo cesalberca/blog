@@ -107,9 +107,13 @@ export class Container {
 
   static instance() {
     if (this._instance === null) {
-      this._instance = new this()
+      Container.boostrap()
     }
 
-    return this._instance._container
+    return this._instance!._container
+  }
+
+  static boostrap() {
+    this._instance = new this()
   }
 }

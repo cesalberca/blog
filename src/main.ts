@@ -7,5 +7,5 @@ import { Router } from './ui/Router'
 import { Application } from './ui/Application'
 import { Container } from './Container'
 
-Container.instance()
+Container.boostrap()
 new Application(Vue, Router.create(VueRouter), VueAnalytics).create(XApp)

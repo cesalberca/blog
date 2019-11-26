@@ -31,7 +31,7 @@
 <script lang="ts">
 import { Component, Inject, Prop, Vue } from 'vue-property-decorator'
 import { TwitterSharerService } from '../../../domain/TwitterSharerService'
-import { Translate } from '../../commons/Translate'
+import { Translate } from '../../components/Translate'
 import { State } from '../../../application/state/State'
 
 @Component({ name: 'XSocialLinks' })

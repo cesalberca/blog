@@ -7,9 +7,9 @@
 
 <script lang="ts">
 import { Component, Inject, Vue } from 'vue-property-decorator'
-import { Translate } from '../../commons/Translate'
-import MarkdownComponent from '../../commons/XMarkdown.vue'
-import XPage from '../../commons/XPage.vue'
+import { Translate } from '../../components/Translate'
+import MarkdownComponent from '../../components/XMarkdown.vue'
+import XPage from '../../components/XPage.vue'
 import { State } from '../../../application/state/State'
 import { Markdown } from '../../../domain/Markdown'
 

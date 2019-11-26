@@ -1,6 +1,6 @@
 import { State } from './State'
-import { Observer } from '../../infraestructure/Observer'
-import { Subject } from '../../infraestructure/Subject'
+import { Observer } from '../../domain/Observer'
+import { Subject } from '../../domain/Subject'
 
 export class StateManager implements Subject {
   private readonly observers: Observer[] = []

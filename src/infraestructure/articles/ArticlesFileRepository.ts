@@ -1,4 +1,4 @@
-import { Datetime } from '../Datetime'
+import { Datetime } from '../../domain/Datetime'
 import { ArticleDto } from './ArticleDto'
 import { injectable } from 'inversify'
 import { Locale } from '../../domain/language/Locale'

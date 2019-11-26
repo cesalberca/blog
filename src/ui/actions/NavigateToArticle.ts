@@ -1,9 +1,11 @@
-import { Command } from '../../infraestructure/Command'
-import { VueRouter } from 'vue-router/types/router'
+import { Command } from '../../domain/Command'
+import VueRouter from 'vue-router'
 import { TranslationService } from '../../domain/TranslationService'
 import { Id } from '../../domain/Id'
 import { Locale } from '../../domain/language/Locale'
+import { injectable } from 'inversify'
 
+@injectable()
 export class NavigateToArticle implements Command {
   constructor(
     private readonly router: VueRouter,

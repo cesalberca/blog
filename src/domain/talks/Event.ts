@@ -1,4 +1,4 @@
-import { Datetime } from '../../infraestructure/Datetime'
+import { Datetime } from '../Datetime'
 
 export class Event {
   constructor(public readonly name: string, public readonly datetime: Datetime) {}

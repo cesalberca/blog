@@ -1,7 +1,7 @@
 import { Article } from '../Article'
 import { Id } from '../../Id'
 import { Markdown } from '../../Markdown'
-import { Datetime } from '../../../infraestructure/Datetime'
+import { Datetime } from '../../Datetime'
 import { Length } from '../../Length'
 import { Locale } from '../../language/Locale'
 

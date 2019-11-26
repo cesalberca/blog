@@ -1,4 +1,4 @@
-import { Command } from '../../infraestructure/Command'
+import { Command } from '../../domain/Command'
 import { TalksRepository } from '../../domain/talks/TalksRepository'
 import { TYPES } from '../../types'
 import { inject, injectable } from 'inversify'

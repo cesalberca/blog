@@ -1,6 +1,6 @@
-import { LoggerCommandDecorator } from '../../infraestructure/LoggerCommandDecorator'
-import { Logger } from '../../infraestructure/Logger'
-import { Command } from '../../infraestructure/Command'
+import { LoggerCommandDecorator } from '../../domain/LoggerCommandDecorator'
+import { Logger } from '../../domain/Logger'
+import { Command } from '../../domain/Command'
 import { injectable } from 'inversify'
 
 @injectable()

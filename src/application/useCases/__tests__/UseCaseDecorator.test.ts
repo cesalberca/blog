@@ -1,7 +1,7 @@
 import { UseCaseDecorator } from '../UseCaseDecorator'
-import { Logger } from '../../../infraestructure/Logger'
-import { Command } from '../../../infraestructure/Command'
-import { LoggerCommandDecorator } from '../../../infraestructure/LoggerCommandDecorator'
+import { Logger } from '../../../domain/Logger'
+import { Command } from '../../../domain/Command'
+import { LoggerCommandDecorator } from '../../../domain/LoggerCommandDecorator'
 
 jest.mock('../../../infraestructure/LoggerCommandDecorator')
 

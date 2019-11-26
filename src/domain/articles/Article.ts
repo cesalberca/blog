@@ -1,8 +1,8 @@
 import { Id } from '../Id'
 import { Markdown } from '../Markdown'
-import { Datetime } from '../../infraestructure/Datetime'
+import { Datetime } from '../Datetime'
 import { Length } from '../Length'
-import { Image } from '../../infraestructure/Image'
+import { Image } from '../Image'
 import { Locale } from '../language/Locale'
 
 export class Article {

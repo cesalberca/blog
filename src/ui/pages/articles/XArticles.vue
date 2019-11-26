@@ -13,8 +13,8 @@
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import { TranslationService } from '../../../domain/TranslationService'
-import { Translate } from '../../commons/Translate'
-import XArticleExcerpt from '../../commons/XArticleExcerpt.vue'
+import { Translate } from '../../components/Translate'
+import XArticleExcerpt from '../../components/XArticleExcerpt.vue'
 import { NavigateToArticle } from '../../actions/NavigateToArticle'
 import { ContainerFactory } from '../../../ContainerFactory'
 import { TYPES } from '../../../types'

@@ -25,7 +25,7 @@
 import { Component, Vue, Inject } from 'vue-property-decorator'
 import XLinks from './XLinks.vue'
 import { Direction } from './Direction'
-import { Datetime } from '../../infraestructure/Datetime'
+import { Datetime } from '../../domain/Datetime'
 import XLink from './XLink.vue'
 import { Translate } from './Translate'
 

@@ -23,7 +23,7 @@ import { Translate } from './ui/components/Translate'
 import { VueStateManager } from './ui/state/VueStateManager'
 
 export class ContainerFactory {
-  private static instance: ContainerFactory | null = null
+  private static _instance: ContainerFactory | null = null
   private readonly _container: interfaces.Container
 
   private constructor() {
@@ -105,15 +105,11 @@ export class ContainerFactory {
     this._container = container
   }
 
-  get container(): interfaces.Container {
-    return this._container
-  }
-
-  static get() {
-    if (this.instance === null) {
-      this.instance = new this()
+  static instance() {
+    if (this._instance === null) {
+      this._instance = new this()
     }
 
-    return this.instance
+    return this._instance._container
   }
 }

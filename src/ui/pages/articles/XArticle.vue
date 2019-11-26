@@ -25,7 +25,6 @@ import XTag from '../../components/XTag.vue'
 import XHero from '../../components/XHero.vue'
 import XPage from '../../components/XPage.vue'
 import { Translate } from '../../components/Translate'
-import { ContainerFactory } from '../../../ContainerFactory'
 import { TYPES } from '../../../types'
 import { GetArticleUseCase } from '../../../application/useCases/GetArticleUseCase'
 import { State } from '../../../application/state/State'
@@ -33,6 +32,7 @@ import { Article } from '../../../domain/articles/Article'
 import { Id } from '../../../domain/Id'
 import { VueStateManager } from '../../state/VueStateManager'
 import { Inject } from '../../../inject'
+import { ContainerFactory } from '../../../ContainerFactory'
 
 @Component<ArticleComponent>({
   name: 'XArticle',
@@ -41,8 +41,8 @@ import { Inject } from '../../../inject'
       return
     }
 
-    const article = await ContainerFactory.get()
-      .container.get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE)
+    const article = await ContainerFactory.instance()
+      .get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE)
       .execute({
         id: Id.fromValue(to.params.id),
         locale: VueStateManager.instance.state.locale
@@ -86,8 +86,8 @@ export default class ArticleComponent extends Vue {
 
   @Watch('state.locale')
   async onLocaleChange() {
-    this.article = await ContainerFactory.get()
-      .container.get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE)
+    this.article = await ContainerFactory.instance()
+      .get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE)
       .execute({
         id: Id.fromValue(this.$route.params.id),
         locale: VueStateManager.instance.state.locale

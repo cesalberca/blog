@@ -30,7 +30,6 @@ import XPage from '../../components/XPage.vue'
 import XHero from '../../components/XHero.vue'
 import me from './../../assets/images/me.png'
 import { NavigateToArticle } from '../../actions/NavigateToArticle'
-import { ContainerFactory } from '../../../ContainerFactory'
 import { TYPES } from '../../../types'
 import { GetAllArticlesUseCase } from '../../../application/useCases/GetAllArticlesUseCase'
 import { State } from '../../../application/state/State'
@@ -38,12 +37,13 @@ import { Article } from '../../../domain/articles/Article'
 import { Id } from '../../../domain/Id'
 import { VueStateManager } from '../../state/VueStateManager'
 import { Inject } from '../../../inject'
+import { ContainerFactory } from '../../../ContainerFactory'
 
 @Component<XHome>({
   name: 'XHome',
   async beforeRouteEnter(_to, _from, next) {
-    const articles = await ContainerFactory.get()
-      .container.get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
+    const articles = await ContainerFactory.instance()
+      .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute({
         locale: VueStateManager.instance.state.locale
       })
@@ -73,8 +73,8 @@ export default class XHome extends Vue {
 
   @Watch('state.locale')
   async onLocaleChange() {
-    this.articles = await ContainerFactory.get()
-      .container.get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
+    this.articles = await ContainerFactory.instance()
+      .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute({
         locale: VueStateManager.instance.state.locale
       })
@@ -133,6 +133,7 @@ export default class XHome extends Vue {
 }
 
 .photo {
+  max-width: 500px;
   transform: scale(-1, 1);
   mix-blend-mode: soft-light;
 }

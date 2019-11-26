@@ -1,15 +1,12 @@
 import { EncoderService } from './EncoderService'
-import { ContainerFactory } from '../ContainerFactory'
 import { TYPES } from '../types'
+import { ContainerFactory } from '../ContainerFactory'
 
 export class Id {
   constructor(private readonly _value: string, private readonly encoderService: EncoderService) {}
 
   static fromValue(value: string) {
-    return new Id(
-      value,
-      ContainerFactory.get().container.get<EncoderService>(TYPES.ENCODER_SERVICE)
-    )
+    return new Id(value, ContainerFactory.instance().get<EncoderService>(TYPES.ENCODER_SERVICE))
   }
 
   get slug() {

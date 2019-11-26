@@ -9,21 +9,20 @@
 import { Component, Vue } from 'vue-property-decorator'
 import TalkComponent from './XTalk.vue'
 import { TalkDetail } from './TalkDetail'
-import { TranslationService } from '../../../domain/TranslationService'
 import { Translate } from '../../components/Translate'
 import XPage from '../../components/XPage.vue'
-import { ContainerFactory } from '../../../ContainerFactory'
 import { TYPES } from '../../../types'
 import { State } from '../../../application/state/State'
 import { GetTalksGivenUseCase } from '../../../application/useCases/GetTalksGivenUseCase'
 import { Talk } from '../../../domain/talks/Talk'
 import { VueStateManager } from '../../state/VueStateManager'
 import { Inject } from '../../../inject'
+import { ContainerFactory } from '../../../ContainerFactory'
 
 @Component<XTalks>({
   async beforeRouteEnter(_to, _from, next) {
-    const talks = await ContainerFactory.get()
-      .container.get<GetTalksGivenUseCase>(TYPES.GET_TALKS_GIVEN_USE_CASE)
+    const talks = await ContainerFactory.instance()
+      .get<GetTalksGivenUseCase>(TYPES.GET_TALKS_GIVEN_USE_CASE)
       .execute({ locale: VueStateManager.instance.state.locale })
 
     next(vm => {
@@ -36,9 +35,6 @@ import { Inject } from '../../../inject'
   }
 })
 export default class XTalks extends Vue {
-  @Inject(TYPES.TRANSLATION_SERVICE)
-  readonly translationService!: TranslationService
-
   @Inject(TYPES.STATE)
   readonly state!: State
 

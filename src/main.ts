@@ -7,5 +7,5 @@ import { Router } from './ui/Router'
 import { Application } from './ui/Application'
 import { ContainerFactory } from './ContainerFactory'
 
-ContainerFactory.get()
+ContainerFactory.instance()
 new Application(Vue, Router.create(VueRouter), VueAnalytics).create(XApp)

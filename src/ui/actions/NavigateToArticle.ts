@@ -4,7 +4,7 @@ import { TranslationService } from '../../domain/TranslationService'
 import { Id } from '../../domain/Id'
 import { Locale } from '../../domain/language/Locale'
 
-export class NavigateToArticle implements Command<void> {
+export class NavigateToArticle implements Command {
   constructor(
     private readonly router: VueRouter,
     private readonly id: Id,

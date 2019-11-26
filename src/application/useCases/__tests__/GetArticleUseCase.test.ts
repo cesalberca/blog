@@ -2,7 +2,6 @@ import { GetArticleUseCase } from '../GetArticleUseCase'
 import { Locale } from '../../../domain/language/Locale'
 import { ArticlesRepository } from '../../../domain/articles/ArticlesRepository'
 import { Id } from '../../../domain/Id'
-import { UseCaseDecorator } from '../UseCaseDecorator'
 import { instance, mock, verify } from 'ts-mockito'
 
 describe('GetArticleUseCase', () => {
@@ -16,13 +15,9 @@ describe('GetArticleUseCase', () => {
 })
 
 function setup() {
-  const useCaseDecorator = mock(UseCaseDecorator)
   const articlesRepository = mock<ArticlesRepository>()
   return {
     articlesRepository,
-    getArticleUseCase: new GetArticleUseCase(
-      instance(articlesRepository),
-      instance(useCaseDecorator)
-    )
+    getArticleUseCase: new GetArticleUseCase(instance(articlesRepository))
   }
 }

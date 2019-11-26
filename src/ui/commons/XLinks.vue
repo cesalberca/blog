@@ -17,7 +17,7 @@ export default class XLinks extends Vue {
   @Inject()
   readonly translate!: Translate
 
-  @Prop({ default: Direction.HORIZONTAL })
+  @Prop({ default: Direction.HORIZONTAL, type: Number })
   direction!: Direction
 
   get links() {

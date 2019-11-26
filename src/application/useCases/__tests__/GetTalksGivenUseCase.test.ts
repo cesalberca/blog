@@ -1,8 +1,7 @@
 import { GetTalksGivenUseCase } from '../GetTalksGivenUseCase'
 import { TalksRepository } from '../../../domain/talks/TalksRepository'
 import { Locale } from '../../../domain/language/Locale'
-import { mock, instance, verify } from 'ts-mockito'
-import { UseCaseDecorator } from '../UseCaseDecorator'
+import { instance, mock, verify } from 'ts-mockito'
 
 describe('GetTalksGivenUseCase', () => {
   it('should get all talks given', async () => {
@@ -16,12 +15,8 @@ describe('GetTalksGivenUseCase', () => {
 
 function setup() {
   const talksRepository = mock<TalksRepository>()
-  const useCaseDecorator = mock(UseCaseDecorator)
   return {
     talksRepository,
-    getTalksGivenUseCase: new GetTalksGivenUseCase(
-      instance(talksRepository),
-      instance(useCaseDecorator)
-    )
+    getTalksGivenUseCase: new GetTalksGivenUseCase(instance(talksRepository))
   }
 }

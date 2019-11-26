@@ -12,7 +12,7 @@ import MarkdownComponent from '../../components/XMarkdown.vue'
 import XPage from '../../components/XPage.vue'
 import { State } from '../../../application/state/State'
 import { Markdown } from '../../../domain/Markdown'
-import { InjectProp } from '../../../inject'
+import { Inject } from '../../../inject'
 import { TYPES } from '../../../types'
 
 @Component({
@@ -23,10 +23,10 @@ import { TYPES } from '../../../types'
   }
 })
 export default class XAbout extends Vue {
-  @InjectProp(TYPES.STATE)
+  @Inject(TYPES.STATE)
   readonly state!: State
 
-  @InjectProp(TYPES.TRANSLATE)
+  @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
   get title() {

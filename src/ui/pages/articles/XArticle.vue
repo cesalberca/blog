@@ -32,7 +32,7 @@ import { State } from '../../../application/state/State'
 import { Article } from '../../../domain/articles/Article'
 import { Id } from '../../../domain/Id'
 import { VueStateManager } from '../../state/VueStateManager'
-import { InjectProp } from '../../../inject'
+import { Inject } from '../../../inject'
 
 @Component<ArticleComponent>({
   name: 'XArticle',
@@ -72,16 +72,16 @@ import { InjectProp } from '../../../inject'
 export default class ArticleComponent extends Vue {
   article: Article | null = null
 
-  @InjectProp(TYPES.STATE)
+  @Inject(TYPES.STATE)
   readonly state!: State
 
-  @InjectProp(TYPES.TRANSLATION_SERVICE)
+  @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
 
-  @InjectProp(TYPES.TRANSLATE)
+  @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
-  @InjectProp(TYPES.WINDOW)
+  @Inject(TYPES.WINDOW)
   readonly window!: Window
 
   @Watch('state.locale')

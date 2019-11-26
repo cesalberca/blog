@@ -16,7 +16,7 @@ import XLink from './XLink.vue'
 import { Translate } from './Translate'
 import { Article } from '../../domain/articles/Article'
 import { TYPES } from '../../types'
-import { InjectProp } from '../../inject'
+import { Inject } from '../../inject'
 
 @Component({
   name: 'XArticleExcerpt',
@@ -26,7 +26,7 @@ export default class XArticleExcerpt extends Vue {
   @Prop()
   excerpt!: ReturnType<Article['getExcerpt']>
 
-  @InjectProp(TYPES.TRANSLATE)
+  @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
   @Emit()

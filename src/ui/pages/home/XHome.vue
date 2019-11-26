@@ -37,7 +37,7 @@ import { State } from '../../../application/state/State'
 import { Article } from '../../../domain/articles/Article'
 import { Id } from '../../../domain/Id'
 import { VueStateManager } from '../../state/VueStateManager'
-import { InjectProp } from '../../../inject'
+import { Inject } from '../../../inject'
 
 @Component<XHome>({
   name: 'XHome',
@@ -59,13 +59,13 @@ import { InjectProp } from '../../../inject'
   }
 })
 export default class XHome extends Vue {
-  @InjectProp(TYPES.TRANSLATION_SERVICE)
+  @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
 
-  @InjectProp(TYPES.STATE)
+  @Inject(TYPES.STATE)
   readonly state!: State
 
-  @InjectProp(TYPES.TRANSLATE)
+  @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
   articles: Article[] = []

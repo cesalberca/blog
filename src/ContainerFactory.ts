@@ -91,13 +91,11 @@ export class ContainerFactory {
       // eslint-disable-next-line
       warn: console.warn
     })
-    container.bind<Translate>(TYPES.TRANSLATE).toConstantValue(
-      key =>
-        container
-          .get(Translator)
-          .translations.get(VueStateManager.instance.state.locale)!
-          .get(key)!
-    )
+    container
+      .bind<Translate>(TYPES.TRANSLATE)
+      .toFunction(
+        key => new Translator().translations.get(VueStateManager.instance.state.locale)!.get(key)!
+      )
     container
       .bind<State>(TYPES.STATE)
       .to(State)

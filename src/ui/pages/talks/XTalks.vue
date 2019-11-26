@@ -18,7 +18,7 @@ import { State } from '../../../application/state/State'
 import { GetTalksGivenUseCase } from '../../../application/useCases/GetTalksGivenUseCase'
 import { Talk } from '../../../domain/talks/Talk'
 import { VueStateManager } from '../../state/VueStateManager'
-import { InjectProp } from '../../../inject'
+import { Inject } from '../../../inject'
 
 @Component<XTalks>({
   async beforeRouteEnter(_to, _from, next) {
@@ -36,13 +36,13 @@ import { InjectProp } from '../../../inject'
   }
 })
 export default class XTalks extends Vue {
-  @InjectProp(TYPES.TRANSLATION_SERVICE)
+  @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
 
-  @InjectProp(TYPES.STATE)
+  @Inject(TYPES.STATE)
   readonly state!: State
 
-  @InjectProp(TYPES.TRANSLATION_SERVICE)
+  @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translate!: Translate
 
   talks: Talk[] = []

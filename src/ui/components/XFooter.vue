@@ -28,14 +28,14 @@ import { Direction } from './Direction'
 import { Datetime } from '../../domain/Datetime'
 import XLink from './XLink.vue'
 import { Translate } from './Translate'
-import { InjectProp } from '../../inject'
+import { Inject } from '../../inject'
 import { TYPES } from '../../types'
 
 @Component({ name: 'XFooter', components: { XLink, XLinks } })
 export default class XFooter extends Vue {
   direction = Direction.VERTICAL
 
-  @InjectProp(TYPES.TRANSLATE)
+  @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
   get coverageLiteral() {

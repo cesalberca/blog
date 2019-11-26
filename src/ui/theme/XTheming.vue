@@ -8,12 +8,12 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { Theme } from './Theme'
 import { State } from '../../application/state/State'
-import { InjectProp } from '../../inject'
+import { Inject } from '../../inject'
 import { TYPES } from '../../types'
 
 @Component({ name: 'XTheming' })
 export default class XTheming extends Vue {
-  @InjectProp(TYPES.STATE)
+  @Inject(TYPES.STATE)
   readonly state!: State
 
   get theme(): string {

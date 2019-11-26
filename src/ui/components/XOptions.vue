@@ -23,15 +23,15 @@ import { Theme } from '../theme/Theme'
 import { Translate } from './Translate'
 import { Locale } from '../../domain/language/Locale'
 import { State } from '../../application/state/State'
-import { InjectProp } from '../../inject'
+import { Inject } from '../../inject'
 import { TYPES } from '../../types'
 
 @Component({ name: 'XOptions' })
 export default class XOptions extends Vue {
-  @InjectProp(TYPES.TRANSLATE)
+  @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
-  @InjectProp(TYPES.STATE)
+  @Inject(TYPES.STATE)
   readonly state!: State
 
   theme = Theme.DEFAULT

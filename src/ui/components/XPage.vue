@@ -13,7 +13,7 @@
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import XFooter from './XFooter.vue'
 import { State } from '../../application/state/State'
-import { InjectProp } from '../../inject'
+import { Inject } from '../../inject'
 import { TYPES } from '../../types'
 
 @Component({
@@ -23,10 +23,10 @@ import { TYPES } from '../../types'
   }
 })
 export default class XPage extends Vue {
-  @InjectProp(TYPES.WINDOW)
+  @Inject(TYPES.WINDOW)
   window!: Window
 
-  @InjectProp(TYPES.STATE)
+  @Inject(TYPES.STATE)
   state!: State
 
   @Watch('state.shouldReload')

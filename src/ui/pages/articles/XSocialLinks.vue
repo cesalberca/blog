@@ -33,21 +33,21 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import { TwitterSharerService } from '../../../domain/TwitterSharerService'
 import { Translate } from '../../components/Translate'
 import { State } from '../../../application/state/State'
-import { InjectProp } from '../../../inject'
+import { Inject } from '../../../inject'
 import { TYPES } from '../../../types'
 
 @Component({ name: 'XSocialLinks' })
 export default class XSocialLinks extends Vue {
-  @InjectProp(TYPES.TRANSLATE)
+  @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
-  @InjectProp(TYPES.STATE)
+  @Inject(TYPES.STATE)
   readonly state!: State
 
-  @InjectProp(TYPES.TWITTER_SHARER_SERVICE)
+  @Inject(TYPES.TWITTER_SHARER_SERVICE)
   readonly twitterSharerService!: TwitterSharerService
 
-  @InjectProp(TYPES.WINDOW)
+  @Inject(TYPES.WINDOW)
   readonly window!: Window
 
   @Prop({ type: String, required: true })

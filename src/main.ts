@@ -5,7 +5,7 @@ import VueAnalytics from 'vue-analytics'
 import XApp from './ui/XApp.vue'
 import { Router } from './ui/Router'
 import { Application } from './ui/Application'
-import { ContainerFactory } from './ContainerFactory'
+import { Container } from './Container'
 
-ContainerFactory.instance()
+Container.instance()
 new Application(Vue, Router.create(VueRouter), VueAnalytics).create(XApp)

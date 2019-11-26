@@ -32,7 +32,7 @@ import { Article } from '../../../domain/articles/Article'
 import { Id } from '../../../domain/Id'
 import { VueStateManager } from '../../state/VueStateManager'
 import { Inject } from '../../../inject'
-import { ContainerFactory } from '../../../ContainerFactory'
+import { Container } from '../../../Container'
 
 @Component<ArticleComponent>({
   name: 'XArticle',
@@ -41,7 +41,7 @@ import { ContainerFactory } from '../../../ContainerFactory'
       return
     }
 
-    const article = await ContainerFactory.instance()
+    const article = await Container.instance()
       .get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE)
       .execute({
         id: Id.fromValue(to.params.id),
@@ -86,7 +86,7 @@ export default class ArticleComponent extends Vue {
 
   @Watch('state.locale')
   async onLocaleChange() {
-    this.article = await ContainerFactory.instance()
+    this.article = await Container.instance()
       .get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE)
       .execute({
         id: Id.fromValue(this.$route.params.id),

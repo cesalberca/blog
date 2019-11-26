@@ -22,8 +22,8 @@ import { State } from './application/state/State'
 import { Translate } from './ui/components/Translate'
 import { VueStateManager } from './ui/state/VueStateManager'
 
-export class ContainerFactory {
-  private static _instance: ContainerFactory | null = null
+export class Container {
+  private static _instance: Container | null = null
   private readonly _container: interfaces.Container
 
   private constructor() {

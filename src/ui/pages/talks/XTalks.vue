@@ -17,11 +17,11 @@ import { GetTalksGivenUseCase } from '../../../application/useCases/GetTalksGive
 import { Talk } from '../../../domain/talks/Talk'
 import { VueStateManager } from '../../state/VueStateManager'
 import { Inject } from '../../../inject'
-import { ContainerFactory } from '../../../ContainerFactory'
+import { Container } from '../../../Container'
 
 @Component<XTalks>({
   async beforeRouteEnter(_to, _from, next) {
-    const talks = await ContainerFactory.instance()
+    const talks = await Container.instance()
       .get<GetTalksGivenUseCase>(TYPES.GET_TALKS_GIVEN_USE_CASE)
       .execute({ locale: VueStateManager.instance.state.locale })
 

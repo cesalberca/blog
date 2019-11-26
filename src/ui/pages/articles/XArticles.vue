@@ -23,11 +23,11 @@ import { Article } from '../../../domain/articles/Article'
 import { Id } from '../../../domain/Id'
 import { VueStateManager } from '../../state/VueStateManager'
 import { Inject } from '../../../inject'
-import { ContainerFactory } from '../../../ContainerFactory'
+import { Container } from '../../../Container'
 
 @Component<XArticles>({
   async beforeRouteEnter(_to, _from, next) {
-    const articles = await ContainerFactory.instance()
+    const articles = await Container.instance()
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute({
         locale: VueStateManager.instance.state.locale
@@ -54,7 +54,7 @@ export default class XArticles extends Vue {
 
   @Watch('state.locale')
   async onLocaleChange() {
-    this.articles = await ContainerFactory.instance()
+    this.articles = await Container.instance()
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute({
         locale: VueStateManager.instance.state.locale

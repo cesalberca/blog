@@ -1,25 +1,27 @@
 import { GetTalksGivenUseCase } from '../GetTalksGivenUseCase'
-import { TalksMockRepository } from '../../../domain/talks/TalksMockRepository'
 import { TalksRepository } from '../../../domain/talks/TalksRepository'
 import { Locale } from '../../../domain/language/Locale'
-
-jest.mock('../UseCaseDecorator')
+import { mock, instance, verify } from 'ts-mockito'
+import { UseCaseDecorator } from '../UseCaseDecorator'
 
 describe('GetTalksGivenUseCase', () => {
-  let getTalksGiven: GetTalksGivenUseCase
-  let mock: TalksRepository
-
-  beforeEach(() => {
-    mock = new TalksMockRepository()
-    ;(mock.findAllByLocale as jest.Mock).mockResolvedValue([])
-    getTalksGiven = new GetTalksGivenUseCase(mock, Locale.EN)
-  })
-
   it('should get all talks given', async () => {
-    expect.assertions(1)
+    const { getTalksGivenUseCase, talksRepository } = setup()
 
-    await getTalksGiven.execute()
+    await getTalksGivenUseCase.execute({ locale: Locale.ES })
 
-    expect(mock.findAllByLocale).toHaveBeenCalledWith(0)
+    verify(talksRepository.findAllByLocale(Locale.ES)).once()
   })
 })
+
+function setup() {
+  const talksRepository = mock<TalksRepository>()
+  const useCaseDecorator = mock(UseCaseDecorator)
+  return {
+    talksRepository,
+    getTalksGivenUseCase: new GetTalksGivenUseCase(
+      instance(talksRepository),
+      instance(useCaseDecorator)
+    )
+  }
+}

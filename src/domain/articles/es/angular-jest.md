@@ -46,7 +46,6 @@ Después borraremos de `types`la propiedad `jasmine` y también quitaremos de `f
     "src/**/*.d.ts"
   ]
 }
-
 ```
 
 Añadiremos en el fichero `tsconfig.json` lo siguiente dentro de `compilerOptions`

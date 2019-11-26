@@ -11,10 +11,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Inject, Prop, Vue } from 'vue-property-decorator'
+import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
 import XLink from './XLink.vue'
 import { Translate } from './Translate'
 import { Article } from '../../domain/articles/Article'
+import { TYPES } from '../../types'
+import { InjectProp } from '../../inject'
 
 @Component({
   name: 'XArticleExcerpt',
@@ -24,7 +26,7 @@ export default class XArticleExcerpt extends Vue {
   @Prop()
   excerpt!: ReturnType<Article['getExcerpt']>
 
-  @Inject()
+  @InjectProp(TYPES.TRANSLATE)
   readonly translate!: Translate
 
   @Emit()

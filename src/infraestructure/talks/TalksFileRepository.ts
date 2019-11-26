@@ -9,13 +9,13 @@ import { Maybe } from '../../domain/Maybe'
 import { LanguageService } from '../../domain/talks/LanguageService'
 import { Topic } from '../../domain/talks/Topic'
 import { TalkDto } from './TalkDto'
-import { injectable } from 'inversify'
 import { Locale } from '../../domain/language/Locale'
 import { Id } from '../../domain/Id'
 import { Talk } from '../../domain/talks/Talk'
 import { Markdown } from '../../domain/Markdown'
+import { Injectable } from '../../injectable'
 
-@injectable()
+@Injectable()
 export class TalksFileRepository implements TalksRepository {
   constructor(
     private readonly fileLoader: FileLoader,

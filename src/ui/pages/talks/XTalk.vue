@@ -34,16 +34,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Inject, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import { TalkDetail } from './TalkDetail'
 import { Translate } from '../../components/Translate'
+import { InjectProp } from '../../../inject'
+import { TYPES } from '../../../types'
 
 @Component({ name: 'XTalk' })
 export default class XTalk extends Vue {
   @Prop({ type: Object })
   readonly detail!: TalkDetail
 
-  @Inject()
+  @InjectProp(TYPES.TRANSLATE)
   readonly translate!: Translate
 
   get translations() {

@@ -1,15 +1,16 @@
 import { Command } from '../../domain/Command'
 import { TYPES } from '../../types'
-import { inject, injectable } from 'inversify'
 import { Locale } from '../../domain/language/Locale'
 import { Article } from '../../domain/articles/Article'
 import { ArticlesRepository } from '../../domain/articles/ArticlesRepository'
 import { Id } from '../../domain/Id'
+import { Injectable } from '../../injectable'
+import { Inject } from '../../inject'
 
-@injectable()
+@Injectable()
 export class GetArticleUseCase implements Command<Article, { id: Id; locale: Locale }> {
   constructor(
-    @inject(TYPES.ARTICLES_REPOSITORY_TYPE) private readonly articlesRepository: ArticlesRepository
+    @Inject(TYPES.ARTICLES_REPOSITORY) private readonly articlesRepository: ArticlesRepository
   ) {}
 
   async execute({ id, locale }: { id: Id; locale: Locale }): Promise<Article> {

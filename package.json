@@ -44,6 +44,7 @@
     "eslint-plugin-vue": "5.2.3",
     "frontmatter-markdown-loader": "3.1.0",
     "gh-pages": "2.1.1",
+    "inversify-props": "1.4.9",
     "lint-staged": "9.4.3",
     "prettier": "1.19.1",
     "prismjs": "1.17.1",

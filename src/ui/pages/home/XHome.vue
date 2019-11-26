@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import { TranslationService } from '../../../domain/TranslationService'
 import { Translate } from '../../components/Translate'
 import XArticleExcerpt from '../../components/XArticleExcerpt.vue'
@@ -37,12 +37,13 @@ import { State } from '../../../application/state/State'
 import { Article } from '../../../domain/articles/Article'
 import { Id } from '../../../domain/Id'
 import { VueStateManager } from '../../state/VueStateManager'
+import { InjectProp } from '../../../inject'
 
 @Component<XHome>({
   name: 'XHome',
   async beforeRouteEnter(_to, _from, next) {
     const articles = await ContainerFactory.get()
-      .container.get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE_TYPE)
+      .container.get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute({
         locale: VueStateManager.instance.state.locale
       })
@@ -58,13 +59,13 @@ import { VueStateManager } from '../../state/VueStateManager'
   }
 })
 export default class XHome extends Vue {
-  @Inject()
+  @InjectProp(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
 
-  @Inject()
+  @InjectProp(TYPES.STATE)
   readonly state!: State
 
-  @Inject()
+  @InjectProp(TYPES.TRANSLATE)
   readonly translate!: Translate
 
   articles: Article[] = []
@@ -73,7 +74,7 @@ export default class XHome extends Vue {
   @Watch('state.locale')
   async onLocaleChange() {
     this.articles = await ContainerFactory.get()
-      .container.get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE_TYPE)
+      .container.get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute({
         locale: VueStateManager.instance.state.locale
       })

@@ -3,9 +3,9 @@ import VueRouter from 'vue-router'
 import { TranslationService } from '../../domain/TranslationService'
 import { Id } from '../../domain/Id'
 import { Locale } from '../../domain/language/Locale'
-import { injectable } from 'inversify'
+import { Injectable } from '../../injectable'
 
-@injectable()
+@Injectable()
 export class NavigateToArticle implements Command {
   constructor(
     private readonly router: VueRouter,

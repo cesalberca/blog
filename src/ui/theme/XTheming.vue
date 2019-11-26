@@ -5,13 +5,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Inject, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { Theme } from './Theme'
 import { State } from '../../application/state/State'
+import { InjectProp } from '../../inject'
+import { TYPES } from '../../types'
 
 @Component({ name: 'XTheming' })
 export default class XTheming extends Vue {
-  @Inject()
+  @InjectProp(TYPES.STATE)
   readonly state!: State
 
   get theme(): string {

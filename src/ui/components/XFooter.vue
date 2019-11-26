@@ -22,18 +22,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Inject } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import XLinks from './XLinks.vue'
 import { Direction } from './Direction'
 import { Datetime } from '../../domain/Datetime'
 import XLink from './XLink.vue'
 import { Translate } from './Translate'
+import { InjectProp } from '../../inject'
+import { TYPES } from '../../types'
 
 @Component({ name: 'XFooter', components: { XLink, XLinks } })
 export default class XFooter extends Vue {
   direction = Direction.VERTICAL
 
-  @Inject()
+  @InjectProp(TYPES.TRANSLATE)
   readonly translate!: Translate
 
   get coverageLiteral() {

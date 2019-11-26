@@ -1,6 +1,5 @@
 import { Datetime } from '../../domain/Datetime'
 import { ArticleDto } from './ArticleDto'
-import { injectable } from 'inversify'
 import { Locale } from '../../domain/language/Locale'
 import { Article } from '../../domain/articles/Article'
 import { ArticlesRepository } from '../../domain/articles/ArticlesRepository'
@@ -9,8 +8,9 @@ import { Markdown } from '../../domain/Markdown'
 import { FileLoader } from '../FileLoader'
 import { TranslationService } from '../../domain/TranslationService'
 import { Translator } from '../../domain/language/Translator'
+import { Injectable } from '../../injectable'
 
-@injectable()
+@Injectable()
 export class ArticlesFileRepository implements ArticlesRepository {
   private translationService = new TranslationService(new Translator())
 

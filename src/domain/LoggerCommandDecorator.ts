@@ -1,8 +1,8 @@
 import { Command } from './Command'
 import { Logger } from './Logger'
-import { injectable } from 'inversify'
+import { Injectable } from '../injectable'
 
-@injectable()
+@Injectable()
 export class LoggerCommandDecorator implements Command<unknown, unknown> {
   constructor(
     private readonly decoratedCommand: Command<unknown, unknown>,

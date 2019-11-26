@@ -29,23 +29,25 @@
 </template>
 
 <script lang="ts">
-import { Component, Inject, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import { TwitterSharerService } from '../../../domain/TwitterSharerService'
 import { Translate } from '../../components/Translate'
 import { State } from '../../../application/state/State'
+import { InjectProp } from '../../../inject'
+import { TYPES } from '../../../types'
 
 @Component({ name: 'XSocialLinks' })
 export default class XSocialLinks extends Vue {
-  @Inject()
+  @InjectProp(TYPES.TRANSLATE)
   readonly translate!: Translate
 
-  @Inject()
+  @InjectProp(TYPES.STATE)
   readonly state!: State
 
-  @Inject()
+  @InjectProp(TYPES.TWITTER_SHARER_SERVICE)
   readonly twitterSharerService!: TwitterSharerService
 
-  @Inject()
+  @InjectProp(TYPES.WINDOW)
   readonly window!: Window
 
   @Prop({ type: String, required: true })

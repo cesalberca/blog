@@ -1,6 +1,6 @@
-import { injectable } from 'inversify'
+import { Injectable } from '../injectable'
 
-@injectable()
+@Injectable()
 export class HtmlParserService {
   parseToPlainText(html: string): string {
     const document = new DOMParser().parseFromString(html, 'text/html')

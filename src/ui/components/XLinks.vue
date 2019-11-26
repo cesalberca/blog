@@ -8,13 +8,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Inject, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Translate } from './Translate'
 import { Direction } from './Direction'
+import { InjectProp } from '../../inject'
+import { TYPES } from '../../types'
 
 @Component({ name: 'XLinks' })
 export default class XLinks extends Vue {
-  @Inject()
+  @InjectProp(TYPES.TRANSLATE)
   readonly translate!: Translate
 
   @Prop({ default: Direction.HORIZONTAL, type: Number })

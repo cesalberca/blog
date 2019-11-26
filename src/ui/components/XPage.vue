@@ -10,9 +10,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import XFooter from './XFooter.vue'
 import { State } from '../../application/state/State'
+import { InjectProp } from '../../inject'
+import { TYPES } from '../../types'
 
 @Component({
   name: 'XPage',
@@ -21,10 +23,10 @@ import { State } from '../../application/state/State'
   }
 })
 export default class XPage extends Vue {
-  @Inject()
+  @InjectProp(TYPES.WINDOW)
   window!: Window
 
-  @Inject()
+  @InjectProp(TYPES.STATE)
   state!: State
 
   @Watch('state.shouldReload')

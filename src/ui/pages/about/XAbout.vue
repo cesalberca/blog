@@ -6,12 +6,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Inject, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { Translate } from '../../components/Translate'
 import MarkdownComponent from '../../components/XMarkdown.vue'
 import XPage from '../../components/XPage.vue'
 import { State } from '../../../application/state/State'
 import { Markdown } from '../../../domain/Markdown'
+import { InjectProp } from '../../../inject'
+import { TYPES } from '../../../types'
 
 @Component({
   name: 'XAbout',
@@ -21,10 +23,10 @@ import { Markdown } from '../../../domain/Markdown'
   }
 })
 export default class XAbout extends Vue {
-  @Inject()
+  @InjectProp(TYPES.STATE)
   readonly state!: State
 
-  @Inject()
+  @InjectProp(TYPES.TRANSLATE)
   readonly translate!: Translate
 
   get title() {

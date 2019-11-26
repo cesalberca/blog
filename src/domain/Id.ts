@@ -8,7 +8,7 @@ export class Id {
   static fromValue(value: string) {
     return new Id(
       value,
-      ContainerFactory.get().container.get<EncoderService>(TYPES.ENCODER_SERVICE_TYPE)
+      ContainerFactory.get().container.get<EncoderService>(TYPES.ENCODER_SERVICE)
     )
   }
 

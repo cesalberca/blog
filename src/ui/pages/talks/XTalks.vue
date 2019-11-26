@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Inject, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import TalkComponent from './XTalk.vue'
 import { TalkDetail } from './TalkDetail'
 import { TranslationService } from '../../../domain/TranslationService'
@@ -18,11 +18,12 @@ import { State } from '../../../application/state/State'
 import { GetTalksGivenUseCase } from '../../../application/useCases/GetTalksGivenUseCase'
 import { Talk } from '../../../domain/talks/Talk'
 import { VueStateManager } from '../../state/VueStateManager'
+import { InjectProp } from '../../../inject'
 
 @Component<XTalks>({
   async beforeRouteEnter(_to, _from, next) {
     const talks = await ContainerFactory.get()
-      .container.get<GetTalksGivenUseCase>(TYPES.GET_TALKS_GIVEN_USE_CASE_TYPE)
+      .container.get<GetTalksGivenUseCase>(TYPES.GET_TALKS_GIVEN_USE_CASE)
       .execute({ locale: VueStateManager.instance.state.locale })
 
     next(vm => {
@@ -35,13 +36,13 @@ import { VueStateManager } from '../../state/VueStateManager'
   }
 })
 export default class XTalks extends Vue {
-  @Inject()
+  @InjectProp(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
 
-  @Inject()
+  @InjectProp(TYPES.STATE)
   readonly state!: State
 
-  @Inject()
+  @InjectProp(TYPES.TRANSLATION_SERVICE)
   readonly translate!: Translate
 
   talks: Talk[] = []

@@ -1,24 +1,20 @@
 <template>
   <main>
-    <x-injector>
-      <x-theming class="full-height">
-        <x-navbar />
-        <router-view />
-      </x-theming>
-    </x-injector>
+    <x-theming class="full-height">
+      <x-navbar />
+      <router-view />
+    </x-theming>
   </main>
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import XTheming from './theme/XTheming.vue'
-import XInjector from './XInjector.vue'
-import XNavbar from './commons/XNavbar.vue'
+import XNavbar from './components/XNavbar.vue'
 
 @Component({
   name: 'XApp',
   components: {
     XTheming,
-    XInjector,
     XNavbar
   }
 })

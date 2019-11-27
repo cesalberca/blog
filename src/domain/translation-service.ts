@@ -3,10 +3,12 @@ import { TranslationIdentifiers } from './language/translations/translation-iden
 import { TranslationError } from './language/translation-error'
 import { Translator } from './language/translator'
 import { Injectable } from '../injectable'
+import { Inject } from '../inject'
+import { TYPES } from '../types'
 
 @Injectable()
 export class TranslationService {
-  constructor(private readonly translator: Translator) {}
+  constructor(@Inject(TYPES.TRANSLATOR) private readonly translator: Translator) {}
 
   translate(locale: Locale, key: keyof TranslationIdentifiers): string {
     const language = this.translator.translations.get(locale)

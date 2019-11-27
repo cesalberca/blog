@@ -82,7 +82,7 @@ export default class XArticle extends Vue {
   @Inject(TYPES.WINDOW)
   readonly window!: Window
 
-  @Watch('state.locale')
+  @Watch('stateManage.state.locale')
   async onLocaleChange() {
     this.article = await Container.instance()
       .get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE)

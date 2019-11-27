@@ -5,7 +5,7 @@
       v-for="article in articles"
       :key="article.id.slug"
       :excerpt="article.getExcerpt()"
-      @on-action="navigateToArticle"
+      @on-action="navigateToArticleById"
     />
   </div>
 </template>
@@ -47,22 +47,20 @@ export default class XArticles extends Vue {
   @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
+  @Inject(TYPES.NAVIGATE_TO_ARTICLE)
+  readonly navigateToArticle!: NavigateToArticle
+
   articles: Article[] = []
 
-  @Watch('state.locale')
+  @Watch('stateManager.state.locale')
   async onLocaleChange() {
     this.articles = await Container.instance()
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
   }
 
-  navigateToArticle(id: Id) {
-    NavigateToArticle.create({
-      router: this.$router,
-      id,
-      translationService: this.translationService,
-      locale: this.stateManager.state.locale
-    }).execute()
+  navigateToArticleById(id: Id) {
+    this.navigateToArticle.execute(id)
   }
 
   get title() {

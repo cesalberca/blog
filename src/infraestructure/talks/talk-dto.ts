@@ -1,5 +1,5 @@
 export interface TalkDto {
-  body: string
+  html: string
   attributes: {
     title: string
     length: number

@@ -4,13 +4,12 @@ import { TYPES } from './types'
 import { EncoderService } from './domain/encoder-service'
 import { TranslationService } from './domain/translation-service'
 import { HtmlParserService } from './domain/html-parser-service'
-import { FileLoader } from './infraestructure/FileLoader'
+import { FileLoader } from './infraestructure/file-loader'
 import { LanguageService } from './domain/talks/LanguageService'
-import { TalksFileRepository } from './infraestructure/talks/TalksFileRepository'
+import { TalksFileRepository } from './infraestructure/talks/talks-file-repository'
 import { TalksRepository } from './domain/talks/TalksRepository'
-import { ArticlesFileRepository } from './infraestructure/articles/ArticlesFileRepository'
+import { ArticlesFileRepository } from './infraestructure/articles/articles-file-repository'
 import { UseCaseDecorator } from './application/use-cases/use-case-decorator'
-import { Stdout } from './domain/stdout'
 import { Logger } from './domain/logger'
 import { TwitterSharerService } from './domain/twitter-sharer-service'
 import { GetAllArticlesUseCase } from './application/use-cases/get-all-articles-use-case'
@@ -23,12 +22,23 @@ import { Translate } from './ui/components/translate'
 import { VueStateManager } from './ui/state/vue-state-manager'
 import { StateManager } from './application/state/state-manager'
 import { BaseStateManager } from './application/state/base-state-manager'
+import { NavigateToArticle } from './ui/actions/navigate-to-article'
+import VueRouter from 'vue-router'
+import VueAnalytics from 'vue-analytics'
+import { Application } from './ui/application'
+import Vue, { VueConstructor } from 'vue'
+import { Router } from './ui/router'
+import { ServiceWorkerRegisterer } from './ui/service-worker-registerer'
 
 export class Container {
   private static _instance: Container | null = null
   private readonly _container: interfaces.Container
 
   private constructor() {
+    container
+      .bind<TranslationService>(TYPES.TRANSLATION_SERVICE)
+      .to(TranslationService)
+      .inSingletonScope()
     container
       .bind<FileLoader>(TYPES.FILE_LOADER)
       .to(FileLoader)
@@ -40,10 +50,6 @@ export class Container {
     container
       .bind<EncoderService>(TYPES.ENCODER_SERVICE)
       .to(EncoderService)
-      .inSingletonScope()
-    container
-      .bind<TranslationService>(TYPES.TRANSLATION_SERVICE)
-      .to(TranslationService)
       .inSingletonScope()
     container
       .bind<TwitterSharerService>(TYPES.TWITTER_SHARER_SERVICE)
@@ -81,18 +87,8 @@ export class Container {
       .bind<UseCaseDecorator>(TYPES.USE_CASE_DECORATOR)
       .to(UseCaseDecorator)
       .inSingletonScope()
-    container
-      .bind<Logger>(TYPES.LOGGER)
-      .to(Logger)
-      .inSingletonScope()
-    container.bind<Stdout>(TYPES.STDOUT).toConstantValue({
-      // eslint-disable-next-line
-      error: console.error,
-      // eslint-disable-next-line
-      info: console.log,
-      // eslint-disable-next-line
-      warn: console.warn
-    })
+    // @ts-ignore
+    container.bind<Logger>(TYPES.LOGGER).toConstantValue(window.console.log)
     container
       .bind<State>(TYPES.STATE)
       .to(State)
@@ -113,19 +109,34 @@ export class Container {
           .translations.get(container.get<StateManager>(TYPES.STATE_MANAGER).state.locale)!
           .get(key)!
     )
+    container
+      .bind<NavigateToArticle>(TYPES.NAVIGATE_TO_ARTICLE)
+      .to(NavigateToArticle)
+      .inSingletonScope()
+    container.bind<typeof VueRouter>(TYPES.VUE_ROUTER).toConstantValue(VueRouter)
+    container.bind<typeof VueAnalytics>(TYPES.VUE_ANALYTICS).toConstantValue(VueAnalytics)
+    container
+      .bind<Application>(TYPES.APPLICATION)
+      .to(Application)
+      .inSingletonScope()
+    container.bind<VueConstructor>(TYPES.VUE).toConstantValue(Vue)
+    container
+      .bind<Router>(TYPES.ROUTER)
+      .to(Router)
+      .inSingletonScope()
+    container
+      .bind<ServiceWorkerRegisterer>(TYPES.SERVICE_WORKER_REGISTERER)
+      .to(ServiceWorkerRegisterer)
+      .inSingletonScope()
 
     this._container = container
   }
 
   static instance() {
     if (this._instance === null) {
-      Container.boostrap()
+      Container._instance = new Container()
     }
 
     return this._instance!._container
-  }
-
-  static boostrap() {
-    this._instance = new this()
   }
 }

@@ -1,10 +1,14 @@
-import { VueRouter } from 'vue-router/types/router'
+import { Inject } from '../inject'
+import { TYPES } from '../types'
+import VueRouter from 'vue-router'
+import { Injectable } from '../injectable'
 
+@Injectable()
 export class Router {
-  private readonly _value: VueRouter
+  readonly value: VueRouter
 
-  constructor(private readonly vueRouter: typeof VueRouter) {
-    this._value = new this.vueRouter({
+  constructor(@Inject(TYPES.VUE_ROUTER) private readonly vueRouter: typeof VueRouter) {
+    this.value = new this.vueRouter({
       base: process.env.BASE_URL,
       routes: [
         {
@@ -36,13 +40,5 @@ export class Router {
         }
       ]
     })
-  }
-
-  get value(): VueRouter {
-    return this._value
-  }
-
-  static create(vueRouter: typeof VueRouter) {
-    return new Router(vueRouter)
   }
 }

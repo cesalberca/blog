@@ -1,18 +1,22 @@
 import { Datetime } from '../../domain/datetime'
-import { ArticleDto } from './ArticleDto'
+import { ArticleDto } from './article-dto'
 import { Locale } from '../../domain/language/locale'
 import { Article } from '../../domain/articles/article'
 import { ArticlesRepository } from '../../domain/articles/articles-repository'
 import { Id } from '../../domain/id'
 import { Markdown } from '../../domain/markdown'
-import { FileLoader } from '../FileLoader'
+import { FileLoader } from '../file-loader'
 import { TranslationService } from '../../domain/translation-service'
-import { Translator } from '../../domain/language/translator'
 import { Injectable } from '../../injectable'
+import { TYPES } from '../../types'
+import { Inject } from '../../inject'
 
 @Injectable()
 export class ArticlesFileRepository implements ArticlesRepository {
-  private translationService = new TranslationService(new Translator())
+  constructor(
+    @Inject(TYPES.TRANSLATION_SERVICE) private readonly translationService: TranslationService,
+    @Inject(TYPES.FILE_LOADER) private readonly fileLoader: FileLoader
+  ) {}
 
   async findOneByLocale(id: Id, locale: Locale): Promise<Article> {
     let article: ArticleDto
@@ -42,7 +46,7 @@ export class ArticlesFileRepository implements ArticlesRepository {
   }
 
   async findAllByLocale(locale: Locale): Promise<Article[]> {
-    const articlesIds = new FileLoader()
+    const articlesIds = this.fileLoader
       .loadArticles()
       .map(id => id.substr(2, id.length).substr(0, id.length - 5))
 

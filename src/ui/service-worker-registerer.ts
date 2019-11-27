@@ -1,51 +1,44 @@
 import { register } from 'register-service-worker'
-import { Subject } from '../domain/subject'
-import { Observer } from '../domain/observer'
+import { Injectable } from '../injectable'
+import { Inject } from '../inject'
+import { TYPES } from '../types'
+import { Logger } from '../domain/logger'
 
-export class ServiceWorkerRegisterer implements Subject {
-  private observers: Observer[] = []
+@Injectable()
+export class ServiceWorkerRegisterer {
+  constructor(
+    @Inject(TYPES.LOGGER) private readonly logger: Logger,
+    @Inject(TYPES.WINDOW) private readonly window: Window
+  ) {}
 
-  constructor(private readonly log: Function) {
+  register() {
     if (process.env.NODE_ENV === 'production') {
       register(`${process.env.BASE_URL}service-worker.js`, {
         ready: () => {
-          this.log(
+          this.logger.log(
             `App is being served from cache by a service worker.
 For more details, visit https://goo.gl/AFskqB`
           )
         },
         registered: () => {
-          this.log('Service worker has been registered.')
+          this.logger.log('Service worker has been registered.')
         },
         cached: () => {
-          this.log('Content has been cached for offline use.')
+          this.logger.log('Content has been cached for offline use.')
         },
         updatefound: () => {
-          this.log('New content is downloading.')
+          this.logger.log('New content is downloading.')
         },
         updated: () => {
-          this.notifyAll()
+          this.window.location.reload()
         },
         offline: () => {
-          this.log('No internet connection found. App is running in offline mode.')
+          this.logger.log('No internet connection found. App is running in offline mode.')
         },
         error: error => {
-          this.log('Error during service worker registration:', error)
+          this.logger.log('Error during service worker registration:' + error)
         }
       })
     }
-  }
-
-  static create() {
-    // eslint-disable-next-line
-    return new ServiceWorkerRegisterer(window.console.log)
-  }
-
-  notifyAll() {
-    this.observers.forEach(o => o.notify())
-  }
-
-  register(observer: Observer) {
-    this.observers.push(observer)
   }
 }

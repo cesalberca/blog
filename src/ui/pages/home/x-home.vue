@@ -15,7 +15,7 @@
         v-for="article in articles"
         :key="article.id.slug"
         :excerpt="article.getExcerpt()"
-        @on-action="navigateToArticle"
+        @on-action="navigateToArticleById"
       />
     </x-page>
   </main>
@@ -32,7 +32,6 @@ import me from './../../assets/images/me.png'
 import { NavigateToArticle } from '../../actions/navigate-to-article'
 import { TYPES } from '../../../types'
 import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case'
-import { State } from '../../../application/state/state'
 import { Article } from '../../../domain/articles/article'
 import { Id } from '../../../domain/id'
 import { Inject } from '../../../inject'
@@ -66,23 +65,21 @@ export default class XHome extends Vue {
   @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
+  @Inject(TYPES.NAVIGATE_TO_ARTICLE)
+  readonly navigateToArticle!: NavigateToArticle
+
   articles: Article[] = []
   me = me
 
-  @Watch('state.locale')
+  @Watch('stateManager.state.locale')
   async onLocaleChange() {
     this.articles = await Container.instance()
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
   }
 
-  navigateToArticle(id: Id) {
-    NavigateToArticle.create({
-      router: this.$router,
-      id,
-      translationService: this.translationService,
-      locale: this.stateManager.state.locale
-    }).execute()
+  navigateToArticleById(id: Id) {
+    this.navigateToArticle.execute(id)
   }
 
   get articlesTitle() {

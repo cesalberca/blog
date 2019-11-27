@@ -27,11 +27,11 @@ export default class XPage extends Vue {
   window!: Window
 
   @Inject(TYPES.STATE_MANAGER)
-  stateManage!: StateManager
+  stateManager!: StateManager
 
-  @Watch('state.shouldReload')
+  @Watch('stateManager.state.shouldReload')
   onShouldReloadChange() {
-    if (this.stateManage.state.shouldReload) {
+    if (this.stateManager.state.shouldReload) {
       this.window.location.reload(true)
     }
   }

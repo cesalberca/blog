@@ -3,15 +3,17 @@ import { HtmlParserService } from './html-parser-service'
 import { TranslationService } from './translation-service'
 import { Locale } from './language/locale'
 import { Injectable } from '../injectable'
+import { Inject } from '../inject'
+import { TYPES } from '../types'
 
 @Injectable()
 export class TwitterSharerService {
   private static readonly USER_HANDLER = `@cesalberca`
 
   constructor(
-    private readonly encoderService: EncoderService,
-    private readonly htmlParserService: HtmlParserService,
-    private readonly translationService: TranslationService
+    @Inject(TYPES.ENCODER_SERVICE) private readonly encoderService: EncoderService,
+    @Inject(TYPES.HTML_PARSER_SERVICE) private readonly htmlParserService: HtmlParserService,
+    @Inject(TYPES.TRANSLATION_SERVICE) private readonly translationService: TranslationService
   ) {}
 
   getShareUrlFromBody(options: { body: string; url: string; locale: Locale }): string {

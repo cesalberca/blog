@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import TalkComponent from './x-talk.vue'
+import XTalk from './x-talk.vue'
 import { TalkDetail } from './talk-detail'
 import { Translate } from '../../components/translate'
 import XPage from '../../components/x-page.vue'
@@ -30,14 +30,14 @@ import { StateManager } from '../../../application/state/state-manager'
   },
   components: {
     XPage,
-    XTalk: TalkComponent
+    XTalk
   }
 })
 export default class XTalks extends Vue {
   @Inject(TYPES.STATE_MANAGER)
   readonly stateManager!: StateManager
 
-  @Inject(TYPES.TRANSLATION_SERVICE)
+  @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
   talks: Talk[] = []

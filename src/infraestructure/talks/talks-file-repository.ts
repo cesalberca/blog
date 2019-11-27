@@ -1,5 +1,5 @@
 import { TalksRepository } from '../../domain/talks/TalksRepository'
-import { FileLoader } from '../FileLoader'
+import { FileLoader } from '../file-loader'
 import { Length } from '../../domain/length'
 import { DifficultyService } from '../../domain/difficulty-service'
 import { TranslationService } from '../../domain/translation-service'
@@ -8,19 +8,21 @@ import { Datetime } from '../../domain/datetime'
 import { Maybe } from '../../domain/maybe'
 import { LanguageService } from '../../domain/talks/LanguageService'
 import { Topic } from '../../domain/talks/Topic'
-import { TalkDto } from './TalkDto'
+import { TalkDto } from './talk-dto'
 import { Locale } from '../../domain/language/locale'
 import { Id } from '../../domain/id'
 import { Talk } from '../../domain/talks/Talk'
 import { Markdown } from '../../domain/markdown'
 import { Injectable } from '../../injectable'
+import { Inject } from '../../inject'
+import { TYPES } from '../../types'
 
 @Injectable()
 export class TalksFileRepository implements TalksRepository {
   constructor(
-    private readonly fileLoader: FileLoader,
-    private readonly translationService: TranslationService,
-    private readonly languageService: LanguageService
+    @Inject(TYPES.FILE_LOADER) private readonly fileLoader: FileLoader,
+    @Inject(TYPES.TRANSLATION_SERVICE) private readonly translationService: TranslationService,
+    @Inject(TYPES.LANGUAGE_SERVICE) private readonly languageService: LanguageService
   ) {}
 
   async findOneByLocale(id: Id, locale: Locale): Promise<Talk> {
@@ -39,7 +41,7 @@ export class TalksFileRepository implements TalksRepository {
       id,
       language: this.languageService.toLanguage(talk.attributes.language),
       title: talk.attributes.title,
-      abstract: Markdown.fromValue(talk.body),
+      abstract: Markdown.fromValue(talk.html),
       references: [],
       length: Length.fromMinutes(talk.attributes.length),
       difficulty: DifficultyService.create().toDifficulty(talk.attributes.difficulty),

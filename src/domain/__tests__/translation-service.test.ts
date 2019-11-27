@@ -3,17 +3,12 @@ import { Locale } from '../language/locale'
 import { TranslationIdentifiers } from '../language/translations/translation-identifiers'
 import { TranslationError } from '../language/translation-error'
 import { Translator } from '../language/translator'
-
-jest.mock('../language/Translator')
+import { instance, mock, when } from 'ts-mockito'
 
 describe('TranslationService', () => {
-  let translationService: TranslationService
-
-  beforeEach(() => {
-    translationService = new TranslationService(new Translator())
-  })
-
   it('should translate a given key', () => {
+    const { translationService } = setup()
+
     const actual = translationService.translate(
       Locale.EN,
       'existingKey' as keyof TranslationIdentifiers
@@ -23,6 +18,7 @@ describe('TranslationService', () => {
   })
 
   it('should give default translation of a given key if it does not exist in the given locale', () => {
+    const { translationService } = setup()
     const actual = translationService.translate(
       Locale.ES,
       'nonExistingKeyInSpanish' as keyof TranslationIdentifiers
@@ -32,6 +28,7 @@ describe('TranslationService', () => {
   })
 
   it('should error if translation is not found neither in the given locale or the default locale', () => {
+    const { translationService } = setup()
     expect(() => {
       translationService.translate(Locale.ES, 'nonExistingKey' as keyof TranslationIdentifiers)
     }).toThrowError(
@@ -40,6 +37,7 @@ describe('TranslationService', () => {
   })
 
   it('should return the default locale if the given locale does not exist', () => {
+    const { translationService } = setup()
     const NON_EXISTING_LOCALE = 99
     const actual = translationService.translate(
       NON_EXISTING_LOCALE,
@@ -50,6 +48,7 @@ describe('TranslationService', () => {
   })
 
   it('should translate locale to string', () => {
+    const { translationService } = setup()
     const en = translationService.toString(Locale.EN)
     const es = translationService.toString(Locale.ES)
     const defaultLocale = translationService.toString(Locale.DEFAULT)
@@ -60,6 +59,7 @@ describe('TranslationService', () => {
   })
 
   it('should throw an error if locale is not matched to string', () => {
+    const { translationService } = setup()
     expect(() => {
       const NON_EXISTING_LOCALE = 99
       translationService.toString(NON_EXISTING_LOCALE)
@@ -67,6 +67,7 @@ describe('TranslationService', () => {
   })
 
   it('should translate string to locale', () => {
+    const { translationService } = setup()
     const en = translationService.toLocale('en')
     const es = translationService.toLocale('es')
 
@@ -75,6 +76,7 @@ describe('TranslationService', () => {
   })
 
   it('should throw an error if string is not matched to locale', () => {
+    const { translationService } = setup()
     expect(() => {
       translationService.toLocale('NON_EXISTING_LOCALE')
     }).toThrowError(
@@ -82,3 +84,26 @@ describe('TranslationService', () => {
     )
   })
 })
+
+function setup() {
+  const translator = mock(Translator)
+  const en = new Map<string, string>([
+    ['existingKey', 'foo'],
+    ['nonExistingKeyInSpanish', 'baz']
+  ])
+  const es = new Map<string, string>([['existingKey', 'bar']])
+
+  const translations = new Map<Locale, any>([
+    [Locale.ES, es],
+    [Locale.EN, en]
+  ])
+
+  when(translator.translations).thenReturn(translations)
+  when(translator.getDefaultLocaleTranslation()).thenReturn(translations.get(Locale.EN))
+  const translationService = new TranslationService(instance(translator))
+
+  return {
+    translator,
+    translationService
+  }
+}

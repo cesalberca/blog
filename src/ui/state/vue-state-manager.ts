@@ -6,13 +6,11 @@ import { Injectable } from '../../injectable'
 
 @Injectable()
 export class VueStateManager extends BaseStateManager implements Observer {
-  private readonly stateManager = new BaseStateManager()
   private _state: State
 
   constructor() {
     super()
     this._state = Vue.observable(new State())
-    this.stateManager.register(this)
   }
 
   get state(): State {

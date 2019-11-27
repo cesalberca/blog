@@ -1,4 +1,4 @@
-import { Datetime } from '../../domain/datetime'
+import { Datetime } from './datetime'
 
 describe('Datetime', () => {
   it('should get the value', () => {

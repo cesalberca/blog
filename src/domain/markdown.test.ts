@@ -1,4 +1,4 @@
-import { Markdown } from '../markdown'
+import { Markdown } from './markdown'
 import marked from 'marked'
 
 jest.mock('marked')

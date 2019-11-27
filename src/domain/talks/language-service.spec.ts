@@ -1,5 +1,5 @@
-import { LanguageService } from '../LanguageService'
-import { Language } from '../Language'
+import { LanguageService } from './language-service'
+import { Language } from './Language'
 
 describe('LanguageService', () => {
   it('should translate a language from a given string', () => {

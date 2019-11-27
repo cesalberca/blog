@@ -1,4 +1,4 @@
-import { Length } from '../../length'
+import { Length } from '../length'
 
 describe('Length', () => {
   it('should create in seconds', () => {

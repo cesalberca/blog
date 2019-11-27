@@ -1,4 +1,4 @@
-import { Maybe } from '../../domain/maybe'
+import { Maybe } from './maybe'
 
 describe('Maybe', () => {
   it('should handle a value', () => {

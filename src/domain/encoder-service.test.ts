@@ -1,4 +1,4 @@
-import { EncoderService } from '../encoder-service'
+import { EncoderService } from './encoder-service'
 
 describe('EncoderService', () => {
   it('should encode to url like', () => {

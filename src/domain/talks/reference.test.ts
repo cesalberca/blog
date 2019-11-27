@@ -1,4 +1,4 @@
-import { Reference } from '../Reference'
+import { Reference } from './reference'
 
 describe('Reference', () => {
   it('should get the value', () => {

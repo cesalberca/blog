@@ -1,8 +1,8 @@
-import { TranslationService } from '../translation-service'
-import { Locale } from '../language/locale'
-import { TranslationIdentifiers } from '../language/translations/translation-identifiers'
-import { TranslationError } from '../language/translation-error'
-import { Translator } from '../language/translator'
+import { TranslationService } from './translation-service'
+import { Locale } from './language/locale'
+import { TranslationIdentifiers } from './language/translations/translation-identifiers'
+import { TranslationError } from './language/translation-error'
+import { Translator } from './language/translator'
 import { instance, mock, when } from 'ts-mockito'
 
 describe('TranslationService', () => {

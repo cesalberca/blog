@@ -1,10 +1,10 @@
-import { GetArticleUseCase } from '../get-article-use-case'
-import { Locale } from '../../../domain/language/locale'
-import { ArticlesRepository } from '../../../domain/articles/articles-repository'
-import { Id } from '../../../domain/id'
+import { GetArticleUseCase } from './get-article-use-case'
+import { Locale } from '../../domain/language/locale'
+import { ArticlesRepository } from '../../domain/articles/articles-repository'
+import { Id } from '../../domain/id'
 import { instance, mock, verify, when } from 'ts-mockito'
-import { StateManager } from '../../state/state-manager'
-import { Theme } from '../../../ui/theme/theme'
+import { StateManager } from '../state/state-manager'
+import { Theme } from '../../ui/theme/theme'
 
 describe('GetArticleUseCase', () => {
   it('should get an article', async () => {

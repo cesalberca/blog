@@ -1,4 +1,4 @@
-import { Talk } from './Talk'
+import { Talk } from './talk'
 import { Id } from '../id'
 import { Language } from './Language'
 import { Difficulty } from './Difficulty'

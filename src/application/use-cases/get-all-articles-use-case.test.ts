@@ -1,11 +1,11 @@
-import { GetAllArticlesUseCase } from '../get-all-articles-use-case'
-import { ArticlesMother } from '../../../domain/articles/articles-mother'
-import { Locale } from '../../../domain/language/locale'
-import { Article } from '../../../domain/articles/article'
-import { ArticlesRepository } from '../../../domain/articles/articles-repository'
+import { GetAllArticlesUseCase } from './get-all-articles-use-case'
+import { ArticlesMother } from '../../domain/articles/articles-mother'
+import { Locale } from '../../domain/language/locale'
+import { Article } from '../../domain/articles/article'
+import { ArticlesRepository } from '../../domain/articles/articles-repository'
 import { instance, mock, verify, when } from 'ts-mockito'
-import { StateManager } from '../../state/state-manager'
-import { Theme } from '../../../ui/theme/theme'
+import { StateManager } from '../state/state-manager'
+import { Theme } from '../../ui/theme/theme'
 
 describe('GetAllArticlesUseCase', () => {
   it('should get all articles', async () => {

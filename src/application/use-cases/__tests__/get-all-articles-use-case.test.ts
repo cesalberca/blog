@@ -4,12 +4,14 @@ import { Locale } from '../../../domain/language/locale'
 import { Article } from '../../../domain/articles/article'
 import { ArticlesRepository } from '../../../domain/articles/articles-repository'
 import { instance, mock, verify, when } from 'ts-mockito'
+import { StateManager } from '../../state/state-manager'
+import { Theme } from '../../../ui/theme/theme'
 
 describe('GetAllArticlesUseCase', () => {
   it('should get all articles', async () => {
     const { articlesRepository, getAllArticlesUseCase } = setup()
 
-    await getAllArticlesUseCase.execute({ locale: Locale.DEFAULT })
+    await getAllArticlesUseCase.execute()
 
     verify(articlesRepository.findAllByLocale(Locale.EN)).once()
   })
@@ -17,7 +19,7 @@ describe('GetAllArticlesUseCase', () => {
   it('should return the articles ordered by date', async () => {
     const { getAllArticlesUseCase } = setup()
 
-    const result = await getAllArticlesUseCase.execute({ locale: Locale.EN })
+    const result = await getAllArticlesUseCase.execute()
 
     expect(result[0].date.value > result[1].date.value).toBe(true)
   })
@@ -27,8 +29,13 @@ function setup() {
   const articlesRepository = mock<ArticlesRepository>()
   const articles: Article[] = ArticlesMother.getFakeArticles()
   when(articlesRepository.findAllByLocale(Locale.EN)).thenResolve(articles)
+  const stateManager = mock<StateManager>()
+  when(stateManager.state).thenReturn({ locale: Locale.EN, shouldReload: false, theme: Theme.DARK })
   return {
     articlesRepository,
-    getAllArticlesUseCase: new GetAllArticlesUseCase(instance(articlesRepository))
+    getAllArticlesUseCase: new GetAllArticlesUseCase(
+      instance(articlesRepository),
+      instance(stateManager)
+    )
   }
 }

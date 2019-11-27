@@ -7,17 +7,17 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { Theme } from './theme'
-import { State } from '../../application/state/state'
 import { Inject } from '../../inject'
 import { TYPES } from '../../types'
+import { StateManager } from '../../application/state/state-manager'
 
 @Component({ name: 'x-theming' })
 export default class XTheming extends Vue {
-  @Inject(TYPES.STATE)
-  readonly state!: State
+  @Inject(TYPES.STATE_MANAGER)
+  readonly stateManager!: StateManager
 
   get theme(): string {
-    switch (this.state.theme) {
+    switch (this.stateManager.state.theme) {
       case Theme.DARK:
         return 'dark'
       case Theme.LIGHT:

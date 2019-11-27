@@ -17,21 +17,18 @@ import { Translate } from '../../components/translate'
 import XArticleExcerpt from '../../components/x-article-excerpt.vue'
 import { NavigateToArticle } from '../../actions/navigate-to-article'
 import { TYPES } from '../../../types'
-import { GetAllArticlesUseCase } from '../../../application/useCases/get-all-articles-use-case'
-import { State } from '../../../application/state/state'
+import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case'
 import { Article } from '../../../domain/articles/article'
 import { Id } from '../../../domain/id'
-import { VueStateManager } from '../../state/vue-state-manager'
 import { Inject } from '../../../inject'
 import { Container } from '../../../container'
+import { StateManager } from '../../../application/state/state-manager'
 
 @Component<XArticles>({
   async beforeRouteEnter(_to, _from, next) {
     const articles = await Container.instance()
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
-      .execute({
-        locale: VueStateManager.instance.state.locale
-      })
+      .execute()
     next(vm => {
       vm.articles = articles
     })
@@ -44,8 +41,8 @@ export default class XArticles extends Vue {
   @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
 
-  @Inject(TYPES.STATE)
-  readonly state!: State
+  @Inject(TYPES.STATE_MANAGER)
+  readonly stateManager!: StateManager
 
   @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
@@ -56,9 +53,7 @@ export default class XArticles extends Vue {
   async onLocaleChange() {
     this.articles = await Container.instance()
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
-      .execute({
-        locale: VueStateManager.instance.state.locale
-      })
+      .execute()
   }
 
   navigateToArticle(id: Id) {
@@ -66,7 +61,7 @@ export default class XArticles extends Vue {
       router: this.$router,
       id,
       translationService: this.translationService,
-      locale: this.state.locale
+      locale: this.stateManager.state.locale
     }).execute()
   }
 

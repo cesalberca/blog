@@ -12,9 +12,9 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import XFooter from './x-footer.vue'
-import { State } from '../../application/state/state'
 import { Inject } from '../../inject'
 import { TYPES } from '../../types'
+import { StateManager } from '../../application/state/state-manager'
 
 @Component({
   name: 'x-page',
@@ -26,12 +26,12 @@ export default class XPage extends Vue {
   @Inject(TYPES.WINDOW)
   window!: Window
 
-  @Inject(TYPES.STATE)
-  state!: State
+  @Inject(TYPES.STATE_MANAGER)
+  stateManage!: StateManager
 
   @Watch('state.shouldReload')
   onShouldReloadChange() {
-    if (this.state.shouldReload) {
+    if (this.stateManage.state.shouldReload) {
       this.window.location.reload(true)
     }
   }

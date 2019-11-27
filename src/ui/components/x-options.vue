@@ -22,17 +22,17 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Theme } from '../theme/theme'
 import { Translate } from './translate'
 import { Locale } from '../../domain/language/locale'
-import { State } from '../../application/state/state'
 import { Inject } from '../../inject'
 import { TYPES } from '../../types'
+import { StateManager } from '../../application/state/state-manager'
 
 @Component({ name: 'x-options' })
 export default class XOptions extends Vue {
   @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
-  @Inject(TYPES.STATE)
-  readonly state!: State
+  @Inject(TYPES.STATE_MANAGER)
+  readonly stateManager!: StateManager
 
   theme = Theme.DEFAULT
   themes = [
@@ -63,11 +63,11 @@ export default class XOptions extends Vue {
   }
 
   changeLocale(locale: Locale) {
-    this.state.locale = locale
+    this.stateManager.state.locale = locale
   }
 
   changeTheme(theme: Theme) {
-    this.state.theme = theme
+    this.stateManager.state.theme = theme
   }
 }
 </script>

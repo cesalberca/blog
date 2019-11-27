@@ -26,13 +26,12 @@ import XHero from '../../components/x-hero.vue'
 import XPage from '../../components/x-page.vue'
 import { Translate } from '../../components/translate'
 import { TYPES } from '../../../types'
-import { GetArticleUseCase } from '../../../application/useCases/get-article-use-case'
-import { State } from '../../../application/state/state'
+import { GetArticleUseCase } from '../../../application/use-cases/get-article-use-case'
 import { Article } from '../../../domain/articles/article'
 import { Id } from '../../../domain/id'
-import { VueStateManager } from '../../state/vue-state-manager'
 import { Inject } from '../../../inject'
 import { Container } from '../../../container'
+import { StateManager } from '../../../application/state/state-manager'
 
 @Component<XArticle>({
   name: 'XArticle',
@@ -44,8 +43,7 @@ import { Container } from '../../../container'
     const article = await Container.instance()
       .get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE)
       .execute({
-        id: Id.fromValue(to.params.id),
-        locale: VueStateManager.instance.state.locale
+        id: Id.fromValue(to.params.id)
       })
 
     next(vm => {
@@ -72,8 +70,8 @@ import { Container } from '../../../container'
 export default class XArticle extends Vue {
   article: Article | null = null
 
-  @Inject(TYPES.STATE)
-  readonly state!: State
+  @Inject(TYPES.STATE_MANAGER)
+  readonly stateManager!: StateManager
 
   @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
@@ -89,13 +87,14 @@ export default class XArticle extends Vue {
     this.article = await Container.instance()
       .get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE)
       .execute({
-        id: Id.fromValue(this.$route.params.id),
-        locale: VueStateManager.instance.state.locale
+        id: Id.fromValue(this.$route.params.id)
       })
   }
 
   get date() {
-    return this.article!.date.format(this.translationService.toString(this.state.locale))
+    return this.article!.date.format(
+      this.translationService.toString(this.stateManager.state.locale)
+    )
   }
 
   get minutes() {

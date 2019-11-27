@@ -32,17 +32,17 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { TwitterSharerService } from '../../../domain/twitter-sharer-service'
 import { Translate } from '../../components/translate'
-import { State } from '../../../application/state/state'
 import { Inject } from '../../../inject'
 import { TYPES } from '../../../types'
+import { StateManager } from '../../../application/state/state-manager'
 
 @Component({ name: 'x-social-links' })
 export default class XSocialLinks extends Vue {
   @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
-  @Inject(TYPES.STATE)
-  readonly state!: State
+  @Inject(TYPES.STATE_MANAGER)
+  readonly stateManager!: StateManager
 
   @Inject(TYPES.TWITTER_SHARER_SERVICE)
   readonly twitterSharerService!: TwitterSharerService
@@ -61,7 +61,7 @@ export default class XSocialLinks extends Vue {
     return this.twitterSharerService.getShareUrlFromBody({
       body: this.body,
       url: this.window.location.href,
-      locale: this.state.locale
+      locale: this.stateManager.state.locale
     })
   }
 }

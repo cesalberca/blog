@@ -16,5 +16,7 @@ export const TYPES = {
   STDOUT: Symbol.for('STDOUT'),
   STATE: Symbol.for('STATE'),
   WINDOW: Symbol.for('WINDOW'),
-  TRANSLATE: Symbol.for('TRANSLATE')
+  TRANSLATE: Symbol.for('TRANSLATE'),
+  STATE_MANAGER: Symbol.for('STATE_MANAGER'),
+  BASE_STATE_MANAGER: Symbol.for('BASE_STATE_MANAGER')
 }

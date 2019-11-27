@@ -1,34 +1,27 @@
-import { VueConstructor } from 'vue'
+import Vue from 'vue'
 import { Observer } from '../../domain/observer'
 import { State } from '../../application/state/state'
-import { StateManager } from '../../application/state/state-manager'
-import { Subject } from '../../domain/subject'
+import { BaseStateManager } from '../../application/state/base-state-manager'
+import { Injectable } from '../../injectable'
 
-export class VueStateManager implements Observer {
-  private static _instance: VueStateManager | null = null
-  private _state: State = new State()
-  private readonly stateManager: StateManager = new StateManager()
+@Injectable()
+export class VueStateManager extends BaseStateManager implements Observer {
+  private readonly stateManager = new BaseStateManager()
+  private _state: State
 
-  static get instance(): VueStateManager {
-    if (this._instance === null) {
-      this._instance = new VueStateManager()
-    }
-    return this._instance
-  }
-
-  create(vue: VueConstructor, subject: Subject) {
-    const state = this.stateManager.state
-    this._state = vue.observable(state)
-    subject.register(this)
-    return this
-  }
-
-  register(observer: Observer) {
-    this.stateManager.register(observer)
+  constructor() {
+    super()
+    this._state = Vue.observable(new State())
+    this.stateManager.register(this)
   }
 
   get state(): State {
     return this._state
+  }
+
+  set state(value: State) {
+    this._state = value
+    this.notifyAll()
   }
 
   notify() {

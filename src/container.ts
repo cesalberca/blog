@@ -9,18 +9,20 @@ import { LanguageService } from './domain/talks/LanguageService'
 import { TalksFileRepository } from './infraestructure/talks/TalksFileRepository'
 import { TalksRepository } from './domain/talks/TalksRepository'
 import { ArticlesFileRepository } from './infraestructure/articles/ArticlesFileRepository'
-import { UseCaseDecorator } from './application/useCases/use-case-decorator'
+import { UseCaseDecorator } from './application/use-cases/use-case-decorator'
 import { Stdout } from './domain/stdout'
 import { Logger } from './domain/logger'
 import { TwitterSharerService } from './domain/twitter-sharer-service'
-import { GetAllArticlesUseCase } from './application/useCases/get-all-articles-use-case'
-import { GetArticleUseCase } from './application/useCases/get-article-use-case'
-import { GetTalksGivenUseCase } from './application/useCases/get-talks-given-use-case'
+import { GetAllArticlesUseCase } from './application/use-cases/get-all-articles-use-case'
+import { GetArticleUseCase } from './application/use-cases/get-article-use-case'
+import { GetTalksGivenUseCase } from './application/use-cases/get-talks-given-use-case'
 import { ArticlesRepository } from './domain/articles/articles-repository'
 import { Translator } from './domain/language/translator'
 import { State } from './application/state/state'
 import { Translate } from './ui/components/translate'
 import { VueStateManager } from './ui/state/vue-state-manager'
+import { StateManager } from './application/state/state-manager'
+import { BaseStateManager } from './application/state/base-state-manager'
 
 export class Container {
   private static _instance: Container | null = null
@@ -92,15 +94,25 @@ export class Container {
       warn: console.warn
     })
     container
-      .bind<Translate>(TYPES.TRANSLATE)
-      .toFunction(
-        key => new Translator().translations.get(VueStateManager.instance.state.locale)!.get(key)!
-      )
-    container
       .bind<State>(TYPES.STATE)
       .to(State)
       .inSingletonScope()
+    container
+      .bind<StateManager>(TYPES.STATE_MANAGER)
+      .to(VueStateManager)
+      .inSingletonScope()
+    container
+      .bind<BaseStateManager>(TYPES.BASE_STATE_MANAGER)
+      .to(BaseStateManager)
+      .inSingletonScope()
     container.bind<Window>(TYPES.WINDOW).toConstantValue(window)
+    container.bind<Translate>(TYPES.TRANSLATE).toFunction(
+      key =>
+        container
+          .get<Translator>(TYPES.TRANSLATOR)
+          .translations.get(container.get<StateManager>(TYPES.STATE_MANAGER).state.locale)!
+          .get(key)!
+    )
 
     this._container = container
   }

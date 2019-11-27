@@ -12,18 +12,17 @@ import { TalkDetail } from './talk-detail'
 import { Translate } from '../../components/translate'
 import XPage from '../../components/x-page.vue'
 import { TYPES } from '../../../types'
-import { State } from '../../../application/state/state'
-import { GetTalksGivenUseCase } from '../../../application/useCases/get-talks-given-use-case'
+import { GetTalksGivenUseCase } from '../../../application/use-cases/get-talks-given-use-case'
 import { Talk } from '../../../domain/talks/Talk'
-import { VueStateManager } from '../../state/vue-state-manager'
 import { Inject } from '../../../inject'
 import { Container } from '../../../container'
+import { StateManager } from '../../../application/state/state-manager'
 
 @Component<XTalks>({
   async beforeRouteEnter(_to, _from, next) {
     const talks = await Container.instance()
       .get<GetTalksGivenUseCase>(TYPES.GET_TALKS_GIVEN_USE_CASE)
-      .execute({ locale: VueStateManager.instance.state.locale })
+      .execute()
 
     next(vm => {
       vm.talks = talks
@@ -35,8 +34,8 @@ import { Container } from '../../../container'
   }
 })
 export default class XTalks extends Vue {
-  @Inject(TYPES.STATE)
-  readonly state!: State
+  @Inject(TYPES.STATE_MANAGER)
+  readonly stateManager!: StateManager
 
   @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translate!: Translate

@@ -11,7 +11,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Translate } from './translate'
 import { Direction } from './direction'
-import { Inject } from '../../inject'
+import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
 
 @Component({ name: 'x-links' })

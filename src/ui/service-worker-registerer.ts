@@ -1,6 +1,6 @@
 import { register } from 'register-service-worker'
-import { Injectable } from '../injectable'
-import { Inject } from '../inject'
+import { Injectable } from '../domain/types/injectable'
+import { Inject } from '../domain/types/inject'
 import { TYPES } from '../types'
 import { Logger } from '../domain/logger'
 

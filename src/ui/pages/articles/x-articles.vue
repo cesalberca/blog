@@ -20,7 +20,7 @@ import { TYPES } from '../../../types'
 import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case'
 import { Article } from '../../../domain/articles/article'
 import { Id } from '../../../domain/id'
-import { Inject } from '../../../inject'
+import { Inject } from '../../../domain/types/inject'
 import { Container } from '../../../container'
 import { StateManager } from '../../../application/state/state-manager'
 

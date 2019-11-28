@@ -28,7 +28,7 @@ import { Direction } from './direction'
 import { Datetime } from '../../domain/datetime'
 import XLink from './x-link.vue'
 import { Translate } from './translate'
-import { Inject } from '../../inject'
+import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
 
 @Component({ name: 'x-footer', components: { XLink, XLinks } })

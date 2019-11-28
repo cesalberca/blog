@@ -1,4 +1,4 @@
-import { Injectable } from '../injectable'
+import { Injectable } from './types/injectable'
 
 @Injectable()
 export class HtmlParserService {

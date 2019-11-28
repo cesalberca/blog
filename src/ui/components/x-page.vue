@@ -12,7 +12,7 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import XFooter from './x-footer.vue'
-import { Inject } from '../../inject'
+import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
 import { StateManager } from '../../application/state/state-manager'
 

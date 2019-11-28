@@ -14,7 +14,7 @@ import XPage from '../../components/x-page.vue'
 import { TYPES } from '../../../types'
 import { GetTalksGivenUseCase } from '../../../application/use-cases/get-talks-given-use-case'
 import { Talk } from '../../../domain/talks/talk'
-import { Inject } from '../../../inject'
+import { Inject } from '../../../domain/types/inject'
 import { Container } from '../../../container'
 import { StateManager } from '../../../application/state/state-manager'
 

@@ -16,7 +16,7 @@ import XLink from './x-link.vue'
 import { Translate } from './translate'
 import { Article } from '../../domain/articles/article'
 import { TYPES } from '../../types'
-import { Inject } from '../../inject'
+import { Inject } from '../../domain/types/inject'
 
 @Component({
   name: 'x-article-excerpt',

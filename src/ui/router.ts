@@ -1,7 +1,7 @@
-import { Inject } from '../inject'
+import { Inject } from '../domain/types/inject'
 import { TYPES } from '../types'
 import VueRouter from 'vue-router'
-import { Injectable } from '../injectable'
+import { Injectable } from '../domain/types/injectable'
 
 @Injectable()
 export class Router {

@@ -1,10 +1,10 @@
-import { Command } from '../../domain/command'
+import { Command } from '../../domain/types/command'
 import { TYPES } from '../../types'
 import { Locale } from '../../domain/language/locale'
 import { Article } from '../../domain/articles/article'
 import { ArticlesRepository } from '../../domain/articles/articles-repository'
-import { Injectable } from '../../injectable'
-import { Inject } from '../../inject'
+import { Injectable } from '../../domain/types/injectable'
+import { Inject } from '../../domain/types/inject'
 import { StateManager } from '../state/state-manager'
 
 @Injectable()

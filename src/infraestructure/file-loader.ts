@@ -1,4 +1,4 @@
-import { Injectable } from '../injectable'
+import { Injectable } from '../domain/types/injectable'
 
 @Injectable()
 export class FileLoader {

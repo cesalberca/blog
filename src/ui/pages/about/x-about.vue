@@ -11,7 +11,7 @@ import { Translate } from '../../components/translate'
 import MarkdownComponent from '../../components/x-markdown.vue'
 import XPage from '../../components/x-page.vue'
 import { Markdown } from '../../../domain/markdown'
-import { Inject } from '../../../inject'
+import { Inject } from '../../../domain/types/inject'
 import { TYPES } from '../../../types'
 
 @Component({

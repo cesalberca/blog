@@ -30,9 +30,9 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { TwitterSharerService } from '../../../domain/twitter-sharer-service'
+import { TwitterSharerService } from '../../../domain/articles/twitter-sharer-service'
 import { Translate } from '../../components/translate'
-import { Inject } from '../../../inject'
+import { Inject } from '../../../domain/types/inject'
 import { TYPES } from '../../../types'
 import { StateManager } from '../../../application/state/state-manager'
 

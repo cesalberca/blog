@@ -1,10 +1,10 @@
-import { EncoderService } from './encoder-service'
-import { HtmlParserService } from './html-parser-service'
-import { TranslationService } from './translation-service'
-import { Locale } from './language/locale'
-import { Injectable } from '../injectable'
-import { Inject } from '../inject'
-import { TYPES } from '../types'
+import { EncoderService } from '../encoder-service'
+import { HtmlParserService } from '../html-parser-service'
+import { TranslationService } from '../translation-service'
+import { Locale } from '../language/locale'
+import { Injectable } from '../types/injectable'
+import { Inject } from '../types/inject'
+import { TYPES } from '../../types'
 
 @Injectable()
 export class TwitterSharerService {

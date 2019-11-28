@@ -1,10 +1,10 @@
-import { Command } from '../../domain/command'
+import { Command } from '../../domain/types/command'
 import { TranslationService } from '../../domain/translation-service'
 import { Id } from '../../domain/id'
-import { Injectable } from '../../injectable'
+import { Injectable } from '../../domain/types/injectable'
 import { StateManager } from '../../application/state/state-manager'
 import { TYPES } from '../../types'
-import { Inject } from '../../inject'
+import { Inject } from '../../domain/types/inject'
 import { Router } from '../router'
 import { EncoderService } from '../../domain/encoder-service'
 

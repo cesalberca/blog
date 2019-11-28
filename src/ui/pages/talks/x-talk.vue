@@ -37,7 +37,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { TalkDetail } from './talk-detail'
 import { Translate } from '../../components/translate'
-import { Inject } from '../../../inject'
+import { Inject } from '../../../domain/types/inject'
 import { TYPES } from '../../../types'
 
 @Component({ name: 'x-talk' })

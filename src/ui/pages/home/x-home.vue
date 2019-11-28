@@ -4,7 +4,7 @@
       <div class="wrapper">
         <header>
           <h1 class="title" v-html="heroTitle"></h1>
-          <small class="caption" v-html="heroCaption"></small>
+          <p class="caption" v-html="heroCaption"></p>
         </header>
         <img class="photo" :src="me" alt="César Alberca" />
       </div>
@@ -34,7 +34,7 @@ import { TYPES } from '../../../types'
 import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case'
 import { Article } from '../../../domain/articles/article'
 import { Id } from '../../../domain/id'
-import { Inject } from '../../../inject'
+import { Inject } from '../../../domain/types/inject'
 import { Container } from '../../../container'
 import { StateManager } from '../../../application/state/state-manager'
 
@@ -113,6 +113,13 @@ export default class XHome extends Vue {
 .title {
   color: var(--white-color);
   font-size: var(--title-text);
+  padding: var(--medium-size);
+}
+
+@media (max-width: 768px) {
+  .title {
+    margin: 0;
+  }
 }
 
 .articles {
@@ -123,6 +130,8 @@ export default class XHome extends Vue {
   --bold-color: var(--white-color);
   font-size: var(--body-text);
   color: var(--white-color);
+  padding: var(--medium-size);
+  margin: 0;
 }
 
 .photo {

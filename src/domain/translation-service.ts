@@ -2,8 +2,8 @@ import { Locale } from './language/locale'
 import { TranslationIdentifiers } from './language/translations/translation-identifiers'
 import { TranslationError } from './language/translation-error'
 import { Translator } from './language/translator'
-import { Injectable } from '../injectable'
-import { Inject } from '../inject'
+import { Injectable } from './types/injectable'
+import { Inject } from './types/inject'
 import { TYPES } from '../types'
 
 @Injectable()

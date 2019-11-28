@@ -1,9 +1,9 @@
-import { Command } from '../../domain/command'
+import { Command } from '../../domain/types/command'
 import { TalksRepository } from '../../domain/talks/talks-repository'
 import { TYPES } from '../../types'
 import { Talk } from '../../domain/talks/talk'
-import { Injectable } from '../../injectable'
-import { Inject } from '../../inject'
+import { Injectable } from '../../domain/types/injectable'
+import { Inject } from '../../domain/types/inject'
 import { StateManager } from '../state/state-manager'
 
 @Injectable()

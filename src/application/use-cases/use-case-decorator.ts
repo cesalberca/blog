@@ -1,7 +1,7 @@
 import { LoggerCommandDecorator } from '../../domain/logger-command-decorator'
 import { Logger } from '../../domain/logger'
-import { Command } from '../../domain/command'
-import { Injectable } from '../../injectable'
+import { Command } from '../../domain/types/command'
+import { Injectable } from '../../domain/types/injectable'
 
 @Injectable()
 export class UseCaseDecorator {

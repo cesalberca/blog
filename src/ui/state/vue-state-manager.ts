@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import { Observer } from '../../domain/observer'
+import { Observer } from '../../domain/types/observer'
 import { State } from '../../application/state/state'
 import { BaseStateManager } from '../../application/state/base-state-manager'
-import { Injectable } from '../../injectable'
+import { Injectable } from '../../domain/types/injectable'
 
 @Injectable()
 export class VueStateManager extends BaseStateManager implements Observer {

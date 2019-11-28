@@ -31,6 +31,13 @@ pre[class*='language-'] {
   padding: var(--medium-size);
 }
 
+@media (max-width: 1024px) {
+  pre[class*='language-'] {
+    margin: 0.5em 0;
+    width: 100%;
+  }
+}
+
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
   background: var(--code-background);

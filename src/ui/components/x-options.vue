@@ -22,7 +22,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Theme } from '../theme/theme'
 import { Translate } from './translate'
 import { Locale } from '../../domain/language/locale'
-import { Inject } from '../../inject'
+import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
 import { StateManager } from '../../application/state/state-manager'
 

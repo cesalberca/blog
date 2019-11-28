@@ -2,7 +2,7 @@ import { Id } from '../id'
 import { Markdown } from '../markdown'
 import { Datetime } from '../datetime'
 import { Length } from '../length'
-import { Image } from '../image'
+import { Image } from './image'
 import { Locale } from '../language/locale'
 
 export class Article {

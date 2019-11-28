@@ -1,4 +1,4 @@
-import { DifficultyService } from '../../../domain/difficulty-service'
+import { DifficultyService } from '../../../domain/talks/difficulty-service'
 import { Talk } from '../../../domain/talks/talk'
 
 export class TalkDetail {

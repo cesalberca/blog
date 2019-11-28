@@ -7,9 +7,9 @@ import { Id } from '../../domain/id'
 import { Markdown } from '../../domain/markdown'
 import { FileLoader } from '../file-loader'
 import { TranslationService } from '../../domain/translation-service'
-import { Injectable } from '../../injectable'
+import { Injectable } from '../../domain/types/injectable'
 import { TYPES } from '../../types'
-import { Inject } from '../../inject'
+import { Inject } from '../../domain/types/inject'
 
 @Injectable()
 export class ArticlesFileRepository implements ArticlesRepository {

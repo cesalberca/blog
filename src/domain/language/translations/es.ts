@@ -13,7 +13,7 @@ export const es: Translation = new Map<keyof TranslationIdentifiers, string>([
   ['home_heroTitle', 'Frontend developer.<br/>Designer.<br/>Speaker.<br/>'],
   [
     'home_heroCaption',
-    'Apasionado de las <strong>buenas prácticas</strong> y el <strong>testing</strong>.'
+    'Apasionado de las <strong>buenas prácticas</strong>,<strong>arquitectura</strong> y el <strong>testing</strong>.'
   ],
   ['article_title', 'Artículos'],
   ['article_via', 'vía'],

@@ -11,13 +11,12 @@ import { TalksRepository } from './domain/talks/talks-repository'
 import { ArticlesFileRepository } from './infraestructure/articles/articles-file-repository'
 import { UseCaseDecorator } from './application/use-cases/use-case-decorator'
 import { Logger } from './domain/logger'
-import { TwitterSharerService } from './domain/twitter-sharer-service'
+import { TwitterSharerService } from './domain/articles/twitter-sharer-service'
 import { GetAllArticlesUseCase } from './application/use-cases/get-all-articles-use-case'
 import { GetArticleUseCase } from './application/use-cases/get-article-use-case'
 import { GetTalksGivenUseCase } from './application/use-cases/get-talks-given-use-case'
 import { ArticlesRepository } from './domain/articles/articles-repository'
 import { Translator } from './domain/language/translator'
-import { State } from './application/state/state'
 import { Translate } from './ui/components/translate'
 import { VueStateManager } from './ui/state/vue-state-manager'
 import { StateManager } from './application/state/state-manager'
@@ -89,10 +88,6 @@ export class Container {
       .inSingletonScope()
     // @ts-ignore
     container.bind<Logger>(TYPES.LOGGER).toConstantValue(window.console.log)
-    container
-      .bind<State>(TYPES.STATE)
-      .to(State)
-      .inSingletonScope()
     container
       .bind<StateManager>(TYPES.STATE_MANAGER)
       .to(VueStateManager)

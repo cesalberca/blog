@@ -1,4 +1,4 @@
-import { Subject } from '../../domain/subject'
+import { Subject } from '../../domain/types/subject'
 import { State } from './state'
 
 export interface StateManager extends Subject {

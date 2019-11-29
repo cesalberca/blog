@@ -108,17 +108,22 @@ export default class XHome extends Vue {
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--medium-size);
+  overflow: hidden;
 }
 
 .title {
   color: var(--white-color);
   font-size: var(--title-text);
-  padding: var(--medium-size);
 }
 
 @media (max-width: 768px) {
   .title {
     margin: 0;
+  }
+
+  .caption,
+  .title {
+    padding: var(--medium-size);
   }
 }
 
@@ -130,7 +135,6 @@ export default class XHome extends Vue {
   --bold-color: var(--white-color);
   font-size: var(--body-text);
   color: var(--white-color);
-  padding: var(--medium-size);
   margin: 0;
 }
 

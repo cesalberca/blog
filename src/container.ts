@@ -28,6 +28,8 @@ import { Application } from './ui/application'
 import Vue, { VueConstructor } from 'vue'
 import { Router } from './ui/router'
 import { ServiceWorkerRegisterer } from './ui/service-worker-registerer'
+import { DifficultyService } from './domain/talks/difficulty-service'
+import { TalkDetail } from './ui/pages/talks/talk-detail'
 
 export class Container {
   private static _instance: Container | null = null
@@ -122,6 +124,14 @@ export class Container {
     container
       .bind<ServiceWorkerRegisterer>(TYPES.SERVICE_WORKER_REGISTERER)
       .to(ServiceWorkerRegisterer)
+      .inSingletonScope()
+    container
+      .bind<DifficultyService>(TYPES.DIFFICULTY_SERVICE)
+      .to(DifficultyService)
+      .inSingletonScope()
+    container
+      .bind<TalkDetail>(TYPES.TALK_DETAIL)
+      .to(TalkDetail)
       .inSingletonScope()
 
     this._container = container

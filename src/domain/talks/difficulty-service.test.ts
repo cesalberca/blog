@@ -5,7 +5,7 @@ describe('DifficultyService', () => {
   let difficultyService: DifficultyService
 
   beforeEach(() => {
-    difficultyService = DifficultyService.create()
+    difficultyService = new DifficultyService()
   })
 
   it('should map string to difficulty', () => {

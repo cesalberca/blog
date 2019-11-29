@@ -157,6 +157,7 @@ export default class XNavbar extends Vue {
 @media (max-width: 768px) {
   .navbar {
     display: flex;
+    padding-bottom: var(--medium-size);
   }
 
   nav {
@@ -168,12 +169,12 @@ export default class XNavbar extends Vue {
     position: absolute;
     z-index: 999;
     top: var(--big-size);
-    left: var(--big-size);
+    left: var(--medium-size);
   }
 
   .backdrop {
     display: flex;
-    padding: var(--big-size);
+    padding: var(--medium-size) var(--big-size);
     position: absolute;
     top: 0;
     left: 0;

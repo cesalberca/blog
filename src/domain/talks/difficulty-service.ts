@@ -1,6 +1,8 @@
 import { Difficulty } from './Difficulty'
 import { TranslationError } from '../language/translation-error'
+import { Injectable } from '../types/injectable'
 
+@Injectable()
 export class DifficultyService {
   toDifficulty(string: string): Difficulty {
     switch (string) {
@@ -24,9 +26,5 @@ export class DifficultyService {
       case Difficulty.EASY:
         return 'talks_talkDifficultyEasy' as const
     }
-  }
-
-  static create() {
-    return new DifficultyService()
   }
 }

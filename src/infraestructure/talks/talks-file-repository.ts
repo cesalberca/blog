@@ -22,7 +22,8 @@ export class TalksFileRepository implements TalksRepository {
   constructor(
     @Inject(TYPES.FILE_LOADER) private readonly fileLoader: FileLoader,
     @Inject(TYPES.TRANSLATION_SERVICE) private readonly translationService: TranslationService,
-    @Inject(TYPES.LANGUAGE_SERVICE) private readonly languageService: LanguageService
+    @Inject(TYPES.LANGUAGE_SERVICE) private readonly languageService: LanguageService,
+    @Inject(TYPES.DIFFICULTY_SERVICE) private readonly difficultyService: DifficultyService
   ) {}
 
   async findOneByLocale(id: Id, locale: Locale): Promise<Talk> {
@@ -44,7 +45,7 @@ export class TalksFileRepository implements TalksRepository {
       abstract: Markdown.fromValue(talk.html),
       references: [],
       length: Length.fromMinutes(talk.attributes.length),
-      difficulty: DifficultyService.create().toDifficulty(talk.attributes.difficulty),
+      difficulty: this.difficultyService.toDifficulty(talk.attributes.difficulty),
       topics: talk.attributes.topics.map(topic => Topic.fromValue(topic)),
       events: Maybe.fromValue(talk.attributes.events)
         .getOrElse([])

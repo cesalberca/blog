@@ -1,35 +1,19 @@
 <template>
   <div class="talk">
-    <section>
-      <p>
-        <strong>{{ translations.title }}</strong>
-      </p>
-      <p>{{ detail.title }}</p>
-    </section>
-    <section>
-      <p>
-        <strong>{{ translations.abstract }}</strong>
-      </p>
-      <div v-html="detail.abstract"></div>
-    </section>
-    <section>
-      <p>
-        <strong>{{ translations.topics }}</strong>
-      </p>
-      <p>{{ detail.topics.map(topic => topic.value).join(', ') }}</p>
-    </section>
-    <section>
-      <p>
-        <strong>{{ translations.length }}</strong>
-      </p>
-      <p>{{ detail.length }}</p>
-    </section>
-    <section>
-      <p>
-        <strong>{{ translations.difficulty }}</strong>
-      </p>
-      <p>{{ translations.detailDifficulty }}</p>
-    </section>
+    <x-talk-section :title="translations.title" :description="detail.title" />
+    <x-talk-section :title="translations.abstract"
+      ><div v-html="detail.abstract"></div
+    ></x-talk-section>
+    <x-talk-section :title="translations.topics" :description="detail.topics" />
+    <x-talk-section :title="translations.length" :description="detail.length" />
+    <x-talk-section :title="translations.difficulty" :description="detail.difficulty" />
+    <x-talk-section v-if="detail.events.length" :title="translations.events">
+      <div v-for="event in detail.events" :key="event.name">
+        <p>
+          {{ event.name }} – <small>{{ event.datetime }}</small>
+        </p>
+      </div>
+    </x-talk-section>
   </div>
 </template>
 
@@ -39,11 +23,17 @@ import { TalkDetail } from './talk-detail'
 import { Translate } from '../../components/translate'
 import { Inject } from '../../../domain/types/inject'
 import { TYPES } from '../../../types'
+import XTalkSection from './x-talk-section.vue'
 
-@Component({ name: 'x-talk' })
+@Component({
+  name: 'x-talk',
+  components: {
+    XTalkSection
+  }
+})
 export default class XTalk extends Vue {
   @Prop({ type: Object })
-  readonly detail!: TalkDetail
+  readonly detail!: ReturnType<TalkDetail['fromTalk']>
 
   @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
@@ -51,27 +41,13 @@ export default class XTalk extends Vue {
   get translations() {
     return {
       title: this.translate('talks_talkTitle'),
+      events: this.translate('talks_event'),
       abstract: this.translate('talks_talkAbstract'),
       topics: this.translate('talks_talkTopics'),
       length: this.translate('talks_talkLength'),
-      difficulty: this.translate('talks_talkDifficulty'),
+      difficulty: this.translate('talks_talkDifficulty')
       // @ts-ignore For some reason difficulty is not inferred correctly, even though it exists
-      detailDifficulty: this.translate(this.detail.difficulty)
     }
   }
 }
 </script>
-<style scoped>
-.talk > section {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-}
-
-.talk > section *:first-child {
-}
-
-.talk > section > *:last-child {
-  margin-left: var(--medium-size);
-}
-</style>

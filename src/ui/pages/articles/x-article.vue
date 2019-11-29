@@ -125,6 +125,8 @@ export default class XArticle extends Vue {
 
 .title {
   filter: invert(1);
+  padding: var(--medium-size);
+  margin-top: var(--big-size);
   text-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.5);
 }
 

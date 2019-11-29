@@ -1,7 +1,10 @@
 <template>
   <x-page>
     <h1>{{ title }}</h1>
-    <x-talk v-for="talk in talks" :key="talk.id.value" :detail="talkDetail(talk)" />
+    <div v-for="talk in talks" :key="talk.id.value">
+      <x-talk :detail="talkDetail.fromTalk(talk)" />
+      <hr />
+    </div>
   </x-page>
 </template>
 
@@ -40,11 +43,10 @@ export default class XTalks extends Vue {
   @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
-  talks: Talk[] = []
+  @Inject(TYPES.TALK_DETAIL)
+  readonly talkDetail!: TalkDetail
 
-  talkDetail(talk: Talk) {
-    return TalkDetail.fromTalk(talk)
-  }
+  talks: Talk[] = []
 
   get title() {
     return this.translate('talks_title')

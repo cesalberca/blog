@@ -23,7 +23,8 @@ export default class XHero extends Vue {
 <style scoped>
 .image {
   --title-color: var(--black-color);
-  height: 45vh;
+  min-height: 45vh;
+  padding-top: var(--medium-size);
   width: 100%;
   display: flex;
   align-items: center;

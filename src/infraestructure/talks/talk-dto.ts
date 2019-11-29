@@ -6,6 +6,13 @@ export interface TalkDto {
     difficulty: string
     language: string
     topics: string[]
-    events: { name: string; date: string }[]
+    events: {
+      name: string
+      date: string
+      slides: string
+      demo: string | undefined
+      video: string
+      code: string
+    }[]
   }
 }

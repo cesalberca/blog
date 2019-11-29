@@ -34,8 +34,13 @@ export class TalksFileRepository implements TalksRepository {
         `./../../domain/talks/${this.translationService.toString(locale)}/${id.value}.md`
       )
     } catch (e) {
-      const locale = this.translationService.toString(Locale.DEFAULT)
-      talk = await import(`./../../domain/talks/${locale}/${id.value}.md`)
+      try {
+        const locale = this.translationService.toString(Locale.DEFAULT)
+        talk = await import(`./../../domain/talks/${locale}/${id.value}.md`)
+      } catch (e) {
+        const locale = this.translationService.toString(Locale.ES)
+        talk = await import(`./../../domain/talks/${locale}/${id.value}.md`)
+      }
     }
 
     return Talk.create({
@@ -52,7 +57,11 @@ export class TalksFileRepository implements TalksRepository {
         .map(event =>
           Event.create({
             name: event.name,
-            datetime: Datetime.fromString(event.date)
+            datetime: Datetime.fromString(event.date),
+            video: event.video,
+            code: event.code,
+            slides: event.slides,
+            demo: Maybe.fromValue(event.demo)
           })
         )
     })

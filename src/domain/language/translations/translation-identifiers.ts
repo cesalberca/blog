@@ -25,4 +25,8 @@ export interface TranslationIdentifiers {
   talks_talkDifficultyAdvanced: string
   talks_talkDifficultyIntermediate: string
   talks_talkDifficultyEasy: string
+  talks_talkSlides: string
+  talks_talkCode: string
+  talks_talkVideo: string
+  talks_talkDemo: string
 }

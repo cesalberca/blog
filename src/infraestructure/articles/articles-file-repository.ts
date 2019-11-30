@@ -41,7 +41,7 @@ export class ArticlesFileRepository implements ArticlesRepository {
       date: Datetime.fromString(article.attributes.date),
       title: article.attributes.title,
       locale: this.translationService.toLocale(article.attributes.locale),
-      image: require(`./../../domain/articles/assets/${article.attributes.image}`)
+      image: require(`../../../public/assets/${article.attributes.image}`)
     })
   }
 

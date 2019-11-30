@@ -72,6 +72,10 @@ export default class XMarkdown extends Vue {
   padding-left: 40px;
 }
 
+.markdown ::v-deep img {
+  width: 100%;
+}
+
 .markdown ::v-deep blockquote:before {
   display: inline-block;
   content: '';

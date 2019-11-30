@@ -29,7 +29,7 @@ Lo primero de todo es incluir un fichero `tsconfig.json` en la raíz del proyect
 
 `moduleResolution` especifica cómo [debe resolver TypeScript las dependencias](https://www.typescriptlang.org/docs/handbook/module-resolution.html).
 
-El `outDir` será el directorio donde tendremos nuestro código compilado y el que posteriormente desplegaremos o ejecutaremos. 
+El `outDir` será el directorio donde tendremos nuestro código compilado y el que posteriormente desplegaremos o ejecutaremos.
 
 La opción `allowJs` nos permite hacer una migración incremental, lo que supone **una grandísima ventaja**.
 
@@ -49,15 +49,15 @@ Ahora instalamos TypeScript como `dev-dependency`: `npm i typescript -DE`. Y pod
 
 Como no tenemos ningún fichero `.ts` al ejecutar este comando veremos como no nos salta ningún error.
 
-![image-20191112213355655](../assets/migrating-to-typescript/image-20191112213355655.png)
+![image-20191112213355655](/assets/migrating-to-typescript/image-20191112213355655.png)
 
 ## Migración
 
 Probemos a cambiar la extensión de un fichero `.js` a `.ts`  y compilamos otra vez:
 
-![image-20191112213602568](../assets/migrating-to-typescript/image-20191112213602568.png)
+![image-20191112213602568](/assets/migrating-to-typescript/image-20191112213602568.png)
 
-¿¡Cómo!? ¡Pero si este compila! Pues sí, **cualquier fichero JavaScript es código TypeScript perfectamente válido**. 
+¿¡Cómo!? ¡Pero si este compila! Pues sí, **cualquier fichero JavaScript es código TypeScript perfectamente válido**.
 
 TypeScript por defecto infiere todo aquello que no entiendo como [any](https://www.typescriptlang.org/docs/handbook/basic-types.html#any). Y `any` no mola. _Nada_. Con la opción `noImplicitAny` a `true` en nuestro `tsconfig.json` conseguiremos que nos avise de aquellos sitios que infiere algo como `any`:
 
@@ -250,18 +250,18 @@ Además en los constructores si definimos `private` o `public` lo siguiente:
 ```typescript
 class Foo {
   foo: number
-  
+
   constructor(foo: number) {
     this.foo = foo
-  } 
+  }
 }
 ```
 
 Es análogo a esto:
 
 ```typescript
-class Foo {  
-  constructor(public foo: number) {} 
+class Foo {
+  constructor(public foo: number) {}
 }
 ```
 
@@ -272,7 +272,7 @@ Y por último vamos a ver este ejemplo más complicado:
 ```typescript
 // Ya veremos como mejoraremos el any del tipo de retorno
 export function createSafe(target: object): any {
-  const handler = { 
+  const handler = {
     get(target: object, name: string | number | symbol, receiver: any) {
       if (hasKey(target, name)) {
         const targetElement = Reflect.get(target, name, receiver)
@@ -343,7 +343,7 @@ const bar = createSafe(1) // bar se infiere como number
 
 Y sin embargo, si compilamos veremos que todavía tenemos un error:
 
-![image-20191113201553918](../assets/migrating-to-typescript/image-20191113201553918.png)
+![image-20191113201553918](/assets/migrating-to-typescript/image-20191113201553918.png)
 
 ¿Qué ocurre? Pues que aquí bien dice el genérico `Target` puede ser cualquier cosa aunque sea de un tipo en concreto. Lo que queremos decir es que Target será cualquier cosa que corresponda con el tipo `object`. Para esto necesitamos [limitaciones en los genéricos](https://www.typescriptlang.org/docs/handbook/generics.html#generic-constraints):
 
@@ -359,7 +359,7 @@ Uff, César, esto parece complejo, ¿no? Pues sí, porque el ejemplo que he eleg
 
 ## Nos volvemos estrictos
 
-¿Y si te dijese que podrías hacer tu programa a prueba de fuego? Pues ahí entra el [modo strict](https://www.typescriptlang.org/docs/handbook/compiler-options.html) de TypeScript: 
+¿Y si te dijese que podrías hacer tu programa a prueba de fuego? Pues ahí entra el [modo strict](https://www.typescriptlang.org/docs/handbook/compiler-options.html) de TypeScript:
 
 ```json
 {
@@ -392,7 +392,7 @@ Así, TypeScript me avisa cuándo me queda por controlar una rama en un switch, 
 
 ## Tests
 
-El proyecto cuenta con tests hechos en [Jest](https://jestjs.io/). En cualquier tipo de refactor es buena idea tener una red de tests que nos cubran por si nos equivocamos. Porque claro, si TypeScript no compila no podré desplegar a producción, ¿no? No, TypeScript siempre compila a JavaScript, simplemente ignoraríamos los errores. Aunque claro, ¿si se quejase estarías seguro de lo que despliegas? 
+El proyecto cuenta con tests hechos en [Jest](https://jestjs.io/). En cualquier tipo de refactor es buena idea tener una red de tests que nos cubran por si nos equivocamos. Porque claro, si TypeScript no compila no podré desplegar a producción, ¿no? No, TypeScript siempre compila a JavaScript, simplemente ignoraríamos los errores. Aunque claro, ¿si se quejase estarías seguro de lo que despliegas?
 
 Vamos a ejecutar los tests:
 
@@ -400,7 +400,7 @@ Vamos a ejecutar los tests:
 npm test
 ```
 
-![image-20191113202705616](../assets/migrating-to-typescript/image-20191113202705616.png)
+![image-20191113202705616](/assets/migrating-to-typescript/image-20191113202705616.png)
 
 Oups, ¿qué pasa? Pues que [Jest](https://jestjs.io/), el test runner que estamos usando, no sabe compilar TypeScript, con lo que necesitamos algo de configuración. Añadimos [Babel](https://babeljs.io/) para que se encargue de eliminar los tipos antes de ejecutar los tests:
 
@@ -430,10 +430,10 @@ module.exports = {
 
 ¡Y pasamos los tests!
 
-![image-20191115194956149](../assets/migrating-to-typescript/image-20191115194956149.png)
+![image-20191115194956149](/assets/migrating-to-typescript/image-20191115194956149.png)
 
 ## Conclusión
 
-Si quieres ver todo el código migrado echa un ojo a esta [pull request](https://github.com/cesalberca/advanced-javascript-patterns/pull/8/files). Si te ha quedado alguna duda acerca de TypeScript echa otro ojo a este [tutorial que compara TypeScript y JavaScript](https://www.adictosaltrabajo.com/2018/08/01/typescript-vs-javascript/). 
+Si quieres ver todo el código migrado echa un ojo a esta [pull request](https://github.com/cesalberca/advanced-javascript-patterns/pull/8/files). Si te ha quedado alguna duda acerca de TypeScript echa otro ojo a este [tutorial que compara TypeScript y JavaScript](https://www.adictosaltrabajo.com/2018/08/01/typescript-vs-javascript/).
 
 ¿Y ahora _qué_? Pues verás la gran ganancia cuando toda una miríada de bugs desaparecen de tu aplicación, o cuando algo tan tonto como renombrar un símbolo se vuelva trivial o cómo tu programa ha quedado documentado de una forma viviente. Todas estas mejoras y muchas más de la mano de TypeScript.

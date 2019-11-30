@@ -2,7 +2,7 @@
 title: Jest Angular
 date: 2019-11-03
 locale: es
-image: fog.gif
+image: desert.jpg
 ---
 
 ¿Quieres cambiar el dichoso Karma en Angular por un test runner en condiciones como Jest? ¡Pues entonces este tutorial es el tuyo!

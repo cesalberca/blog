@@ -9,7 +9,7 @@
     "deploy": "./build.sh deploy",
     "ci": "yarn lint --no-fix && yarn test",
     "start": "vue-cli-service serve",
-    "test": "vue-cli-service test:unit"
+    "test": "vue-cli-service test:unit --coverage"
   },
   "dependencies": {
     "core-js": "^3.4.3",
@@ -44,6 +44,7 @@
     "eslint-plugin-vue": "5.2.3",
     "frontmatter-markdown-loader": "3.1.0",
     "gh-pages": "2.1.1",
+    "imagemin-webpack-plugin": "2.4.2",
     "inversify-props": "1.4.9",
     "lint-staged": "9.4.3",
     "prettier": "1.19.1",

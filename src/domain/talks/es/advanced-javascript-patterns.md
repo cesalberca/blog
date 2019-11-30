@@ -24,4 +24,4 @@ events:
       video: https://youtu.be/MuCgyOTXIRU
 ---
 
-When you tell people you code in JavaScript they usually look down on you. This talk will give you the tools to enlighten those heretics. We'll be entering the world of **design patterns** applied to JavaScript, looking through some of the cutting edge properties of ES6 such as **Proxies** and **default function parameter expressions**, dealing with **objects** and even some examples of **functional programming**. This talk is not allowed for cardiacs.
+Cuando decimos a la gente que programamos en JavaScript normalmente nos miran mal. Esta charla te dará el conocimiento para iluminar a los herejes y enseñarles que JavaScript, mola. Veremos **Proxies**, **default parameter expressions**, indagaremos en algún **patrón de diseño** e incluso aplicarremos un poco de **programación funcional**. Esta charla no es apropiada para cardíacos.

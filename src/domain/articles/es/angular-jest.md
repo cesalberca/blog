@@ -15,7 +15,7 @@ image: desert.jpg
 
 El primer paso será ejecutar el siguiente comando:
 
-``` bash
+```bash
 npm uninstall -DE karma karma-chrome-launcher karma-coverage-istanbul-reporter karma-jasmine karma-jasmine-html-reporter @types/jasmine @types/jasminewd2 jasmine-core jasmine-spec-reporter
 ```
 
@@ -31,29 +31,26 @@ Después borraremos de `types`la propiedad `jasmine` y también quitaremos de `f
 
 ```json
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "./out-tsc/spec",
-    "types": [
-      "node"
-    ]
-  },
-  "files": [
-    "src/polyfills.ts"
-  ],
-  "include": [
-    "src/**/*.spec.ts",
-    "src/**/*.d.ts"
-  ]
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./out-tsc/spec",
+        "types": ["node"]
+    },
+    "files": ["src/polyfills.ts"],
+    "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
 }
 ```
 
 Añadiremos en el fichero `tsconfig.json` lo siguiente dentro de `compilerOptions`
 
-```
-"types": [
-  "jest"
-]
+```json
+{
+    ...
+    "compilerOptions": {
+        "types": ["jest"]
+    }
+    ...
+}
 ```
 
 E instalaremos jest y builders-jest:

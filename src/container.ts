@@ -4,7 +4,6 @@ import { TYPES } from './types'
 import { EncoderService } from './domain/encoder-service'
 import { TranslationService } from './domain/translation-service'
 import { HtmlParserService } from './domain/html-parser-service'
-import { FileLoader } from './infraestructure/file-loader'
 import { LanguageService } from './domain/talks/language-service'
 import { TalksFileRepository } from './infraestructure/talks/talks-file-repository'
 import { TalksRepository } from './domain/talks/talks-repository'
@@ -22,14 +21,10 @@ import { VueStateManager } from './ui/state/vue-state-manager'
 import { StateManager } from './application/state/state-manager'
 import { BaseStateManager } from './application/state/base-state-manager'
 import { NavigateToArticle } from './ui/actions/navigate-to-article'
-import VueRouter from 'vue-router'
-import VueAnalytics from 'vue-analytics'
-import { Application } from './ui/application'
 import Vue, { VueConstructor } from 'vue'
-import { Router } from './ui/router'
-import { ServiceWorkerRegisterer } from './ui/service-worker-registerer'
 import { DifficultyService } from './domain/talks/difficulty-service'
 import { TalkDetail } from './ui/pages/talks/talk-detail'
+import { FileLoader } from './infraestructure/file-loader'
 
 export class Container {
   private static _instance: Container | null = null
@@ -110,21 +105,7 @@ export class Container {
       .bind<NavigateToArticle>(TYPES.NAVIGATE_TO_ARTICLE)
       .to(NavigateToArticle)
       .inSingletonScope()
-    container.bind<typeof VueRouter>(TYPES.VUE_ROUTER).toConstantValue(VueRouter)
-    container.bind<typeof VueAnalytics>(TYPES.VUE_ANALYTICS).toConstantValue(VueAnalytics)
-    container
-      .bind<Application>(TYPES.APPLICATION)
-      .to(Application)
-      .inSingletonScope()
     container.bind<VueConstructor>(TYPES.VUE).toConstantValue(Vue)
-    container
-      .bind<Router>(TYPES.ROUTER)
-      .to(Router)
-      .inSingletonScope()
-    container
-      .bind<ServiceWorkerRegisterer>(TYPES.SERVICE_WORKER_REGISTERER)
-      .to(ServiceWorkerRegisterer)
-      .inSingletonScope()
     container
       .bind<DifficultyService>(TYPES.DIFFICULTY_SERVICE)
       .to(DifficultyService)

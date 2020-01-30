@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'nuxt-property-decorator'
 import XLinks from './x-links.vue'
 import XOptions from './x-options.vue'
 import { Direction } from './direction'

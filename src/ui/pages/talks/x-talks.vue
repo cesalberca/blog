@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
 import XTalk from './x-talk.vue'
 import { TalkDetail } from './talk-detail'
 import { Translate } from '../../components/translate'
@@ -21,15 +21,15 @@ import { Inject } from '../../../domain/types/inject'
 import { Container } from '../../../container'
 import { StateManager } from '../../../application/state/state-manager'
 
-@Component<XTalks>({
-  async beforeRouteEnter(_to, _from, next) {
+@Component({
+  async asyncData() {
     const talks = await Container.instance()
       .get<GetTalksGivenUseCase>(TYPES.GET_TALKS_GIVEN_USE_CASE)
       .execute()
 
-    next(vm => {
-      vm.talks = talks
-    })
+    return {
+      talks
+    }
   },
   components: {
     XPage,

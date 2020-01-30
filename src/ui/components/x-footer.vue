@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
 import XLinks from './x-links.vue'
 import { Direction } from './direction'
 import { Datetime } from '../../domain/datetime'

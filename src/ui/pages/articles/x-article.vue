@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'nuxt-property-decorator'
 import XSocialLinks from './x-social-links.vue'
 import { TranslationService } from '../../../domain/translation-service'
 import XMarkdown from '../../components/x-markdown.vue'

@@ -22,32 +22,29 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'nuxt-property-decorator'
 import { TranslationService } from '../../../domain/translation-service'
 import { Translate } from '../../components/translate'
 import XArticleExcerpt from '../../components/x-article-excerpt.vue'
 import XPage from '../../components/x-page.vue'
 import XHero from '../../components/x-hero.vue'
 import me from './../../assets/images/me.png'
-import { NavigateToArticle } from '../../actions/navigate-to-article'
 import { TYPES } from '../../../types'
 import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case'
-import { Article } from '../../../domain/articles/article'
 import { Id } from '../../../domain/id'
 import { Inject } from '../../../domain/types/inject'
 import { Container } from '../../../container'
 import { StateManager } from '../../../application/state/state-manager'
+import { Article } from '../../../domain/articles/article'
 
-@Component<XHome>({
+@Component({
   name: 'x-home',
-  async beforeRouteEnter(_to, _from, next) {
+  async asyncData() {
     const articles = await Container.instance()
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
 
-    next(vm => {
-      vm.articles = articles
-    })
+    return { articles }
   },
   components: {
     XHero,
@@ -65,9 +62,6 @@ export default class XHome extends Vue {
   @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
-  @Inject(TYPES.NAVIGATE_TO_ARTICLE)
-  readonly navigateToArticle!: NavigateToArticle
-
   articles: Article[] = []
   me = me
 
@@ -79,7 +73,13 @@ export default class XHome extends Vue {
   }
 
   navigateToArticleById(id: Id) {
-    this.navigateToArticle.execute(id)
+    this.$router.push({
+      name: 'article',
+      params: {
+        id: id.value,
+        locale: this.translationService.toString(this.stateManager.state.locale)
+      }
+    })
   }
 
   get articlesTitle() {

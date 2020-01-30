@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
 import { Theme } from './theme'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'

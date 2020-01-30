@@ -11,11 +11,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'nuxt-property-decorator'
 import { TranslationService } from '../../../domain/translation-service'
 import { Translate } from '../../components/translate'
 import XArticleExcerpt from '../../components/x-article-excerpt.vue'
-import { NavigateToArticle } from '../../actions/navigate-to-article'
 import { TYPES } from '../../../types'
 import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case'
 import { Article } from '../../../domain/articles/article'
@@ -47,9 +46,6 @@ export default class XArticles extends Vue {
   @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
-  @Inject(TYPES.NAVIGATE_TO_ARTICLE)
-  readonly navigateToArticle!: NavigateToArticle
-
   articles: Article[] = []
 
   @Watch('stateManager.state.locale')
@@ -60,7 +56,13 @@ export default class XArticles extends Vue {
   }
 
   navigateToArticleById(id: Id) {
-    this.navigateToArticle.execute(id)
+    this.$router.push({
+      name: 'article',
+      params: {
+        id: id.value,
+        locale: this.translationService.toString(this.stateManager.state.locale)
+      }
+    })
   }
 
   get title() {

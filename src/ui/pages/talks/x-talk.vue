@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
 import { TalkDetail } from './talk-detail'
 import { Translate } from '../../components/translate'
 import { Inject } from '../../../domain/types/inject'

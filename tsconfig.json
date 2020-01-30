@@ -19,7 +19,8 @@
     "types": [
       "webpack-env",
       "jest",
-      "reflect-metadata"
+      "reflect-metadata",
+      "@types/nuxt"
     ],
     "lib": [
       "esnext",

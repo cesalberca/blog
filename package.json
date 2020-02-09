@@ -4,14 +4,16 @@
   "private": true,
   "homepage": "http://cesalberca.github.io",
   "scripts": {
-    "start": "nuxt",
-    "build": "nuxt build",
-    "generate": "nuxt generate",
+    "dev": "nuxt-ts",
+    "start": "nuxt-ts start",
+    "build": "nuxt-ts build",
+    "generate": "nuxt-ts generate",
     "deploy": "./build.sh deploy",
     "ci": "yarn lint --no-fix && yarn test",
     "test": "jest"
   },
   "dependencies": {
+    "@nuxt/typescript-runtime": "0.3.8",
     "@nuxtjs/dotenv": "1.4.1",
     "@nuxtjs/pwa": "3.0.0-beta.19",
     "inversify": "5.0.1",
@@ -21,13 +23,14 @@
     "reflect-metadata": "0.1.13",
     "vue": "2.6.11",
     "vue-class-component": "7.2.2",
-    "vue-prism-component": "1.1.1"
+    "vue-prism-component": "1.1.1",
+    "vue-router": "3.1.5"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "0.5.6",
     "@types/jest": "25.1.1",
     "@types/marked": "0.7.2",
-    "@types/node": "12.12.26",
+    "@types/node": "13.5.2",
     "babel-jest": "25.1.0",
     "babel-plugin-prismjs": "2.0.1",
     "frontmatter-markdown-loader": "3.1.0",
@@ -36,7 +39,7 @@
     "imagemin-webpack-plugin": "2.4.2",
     "inversify-props": "1.4.9",
     "jest": "25.1.0",
-    "lint-staged": "10.0.5",
+    "lint-staged": "10.0.6",
     "prettier": "1.19.1",
     "prismjs": "1.19.0",
     "ts-mockito": "2.5.0",

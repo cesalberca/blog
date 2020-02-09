@@ -9,7 +9,7 @@
         <img class="photo" :src="me" alt="César Alberca" />
       </div>
     </div>
-    <x-page>
+    <!--<x-page>
       <h2 class="articles">{{ articlesTitle }}</h2>
       <x-article-excerpt
         v-for="article in articles"
@@ -17,39 +17,33 @@
         :excerpt="article.getExcerpt()"
         @on-action="navigateToArticleById"
       />
-    </x-page>
+    </x-page>-->
   </main>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'nuxt-property-decorator'
-import { TranslationService } from '../../../domain/translation-service'
-import { Translate } from '../../components/translate'
-import XArticleExcerpt from '../../components/x-article-excerpt.vue'
-import XPage from '../../components/x-page.vue'
-import XHero from '../../components/x-hero.vue'
-import me from './../../assets/images/me.png'
-import { TYPES } from '../../../types'
-import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case'
-import { Id } from '../../../domain/id'
-import { Inject } from '../../../domain/types/inject'
-import { Container } from '../../../container'
-import { StateManager } from '../../../application/state/state-manager'
-import { Article } from '../../../domain/articles/article'
+import { Component, Vue } from 'nuxt-property-decorator'
+import XPage from '../components/x-page.vue'
+import XHero from '../components/x-hero.vue'
+import me from '../assets/images/me.png'
+import { Id } from '../../domain/id'
+import { Article } from '../../domain/articles/article'
+import { Translate } from '../components/translate'
+import { TYPES } from '../../types'
+import { Inject } from '../../domain/types/inject'
+import { StateManager } from '../../application/state/state-manager'
+import { TranslationService } from '../../domain/translation-service'
 
 @Component({
   name: 'x-home',
   async asyncData() {
-    const articles = await Container.instance()
-      .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
-      .execute()
+    const articles: Article[] = []
 
     return { articles }
   },
   components: {
     XHero,
-    XPage,
-    XArticleExcerpt
+    XPage
   }
 })
 export default class XHome extends Vue {
@@ -65,12 +59,11 @@ export default class XHome extends Vue {
   articles: Article[] = []
   me = me
 
-  @Watch('stateManager.state.locale')
+  /*@Watch('stateManager.state.locale')
   async onLocaleChange() {
-    this.articles = await Container.instance()
-      .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
-      .execute()
-  }
+    // TODO: Make real request
+    this.articles = []
+  }*/
 
   navigateToArticleById(id: Id) {
     this.$router.push({
@@ -83,7 +76,8 @@ export default class XHome extends Vue {
   }
 
   get articlesTitle() {
-    return this.translate('home_articles')
+    //return this.translate('home_articles')
+    return ''
   }
 
   get heroTitle() {
@@ -91,7 +85,8 @@ export default class XHome extends Vue {
   }
 
   get heroCaption() {
-    return this.translate('home_heroCaption')
+    //return this.translate('home_heroCaption')
+    return ''
   }
 }
 </script>

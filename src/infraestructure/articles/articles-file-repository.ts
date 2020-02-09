@@ -23,15 +23,15 @@ export class ArticlesFileRepository implements ArticlesRepository {
 
     try {
       article = await import(
-        `./../../domain/articles/${this.translationService.toString(locale)}/${id.value}.md`
+        `../../ui/content/articles/${this.translationService.toString(locale)}/${id.value}.md`
       )
     } catch (e) {
       try {
         const locale = this.translationService.toString(Locale.DEFAULT)
-        article = await import(`./../../domain/articles/${locale}/${id.value}.md`)
+        article = await import(`../../ui/content/articles/${locale}/${id.value}.md`)
       } catch (e) {
         const spanishLocale = this.translationService.toString(Locale.ES)
-        article = await import(`./../../domain/articles/${spanishLocale}/${id.value}.md`)
+        article = await import(`../../ui/content/articles/${spanishLocale}/${id.value}.md`)
       }
     }
 

@@ -31,15 +31,15 @@ export class TalksFileRepository implements TalksRepository {
 
     try {
       talk = await import(
-        `./../../domain/talks/${this.translationService.toString(locale)}/${id.value}.md`
+        `../../ui/content/talks/${this.translationService.toString(locale)}/${id.value}.md`
       )
     } catch (e) {
       try {
         const locale = this.translationService.toString(Locale.DEFAULT)
-        talk = await import(`./../../domain/talks/${locale}/${id.value}.md`)
+        talk = await import(`../../ui/content/talks/${locale}/${id.value}.md`)
       } catch (e) {
         const locale = this.translationService.toString(Locale.ES)
-        talk = await import(`./../../domain/talks/${locale}/${id.value}.md`)
+        talk = await import(`../../ui/content/talks/${locale}/${id.value}.md`)
       }
     }
 

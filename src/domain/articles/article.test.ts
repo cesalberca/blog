@@ -44,7 +44,7 @@ describe('Article', () => {
     expect(excerpt.body).toEqual('<p>foo ')
   })
 
-  it('shold return 1 minute length if the article has the same amount of words as in average words per minute', () => {
+  it('should return 1 minute length if the article has the same amount of words as in average words per minute', () => {
     const article = Article.create({
       id: Id.fromValue('foo'),
       title: 'foo',
@@ -59,7 +59,7 @@ describe('Article', () => {
     expect(actual.minutes).toBe(1)
   })
 
-  it('shold return 2 minutes if the article has the same amount of words as in average words per minute times 2', () => {
+  it('should return 2 minutes if the article has the same amount of words as in average words per minute times 2', () => {
     const article = Article.create({
       id: Id.fromValue('foo'),
       title: 'foo',
@@ -74,7 +74,7 @@ describe('Article', () => {
     expect(actual.minutes).toBe(2)
   })
 
-  it('shold return 1 minute length if the article is very short', () => {
+  it('should return 1 minute length if the article is very short', () => {
     const article = Article.create({
       id: Id.fromValue('foo'),
       title: 'foo',

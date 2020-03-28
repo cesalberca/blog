@@ -18,12 +18,12 @@ import { TYPES } from '../../../types'
 import { GetTalksGivenUseCase } from '../../../application/use-cases/get-talks-given-use-case'
 import { Talk } from '../../../domain/talks/talk'
 import { Inject } from '../../../domain/types/inject'
-import { container } from '../../../container'
+import { Container } from '../../../container'
 import { StateManager } from '../../../application/state/state-manager'
 
 @Component({
   async asyncData() {
-    const talks = await container
+    const talks = await Container.instance()
       .get<GetTalksGivenUseCase>(TYPES.GET_TALKS_GIVEN_USE_CASE)
       .execute()
 

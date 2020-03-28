@@ -34,12 +34,12 @@ import { Inject } from '../../domain/types/inject'
 import { StateManager } from '../../application/state/state-manager'
 import { TranslationService } from '../../domain/translation-service'
 import { GetAllArticlesUseCase } from '../../application/use-cases/get-all-articles-use-case'
-import { container } from '../../container'
+import { Container } from '../../container'
 
 @Component({
   name: 'x-home',
   async asyncData() {
-    const articles = await container
+    const articles = await Container.instance()
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
 
@@ -65,7 +65,7 @@ export default class XHome extends Vue {
 
   @Watch('stateManager.state.locale')
   async onLocaleChange() {
-    this.articles = await container
+    this.articles = await Container.instance()
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
   }

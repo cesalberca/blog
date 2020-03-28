@@ -9,7 +9,7 @@
         <img class="photo" :src="me" alt="César Alberca" />
       </div>
     </div>
-    <!--<x-page>
+    <x-page>
       <h2 class="articles">{{ articlesTitle }}</h2>
       <x-article-excerpt
         v-for="article in articles"
@@ -17,12 +17,12 @@
         :excerpt="article.getExcerpt()"
         @on-action="navigateToArticleById"
       />
-    </x-page>-->
+    </x-page>
   </main>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, Vue, Watch } from 'nuxt-property-decorator'
 import XPage from '../components/x-page.vue'
 import XHero from '../components/x-hero.vue'
 import me from '../assets/images/me.png'
@@ -59,11 +59,11 @@ export default class XHome extends Vue {
   articles: Article[] = []
   me = me
 
-  /*@Watch('stateManager.state.locale')
+  @Watch('stateManager.state.locale')
   async onLocaleChange() {
     // TODO: Make real request
     this.articles = []
-  }*/
+  }
 
   navigateToArticleById(id: Id) {
     this.$router.push({
@@ -76,8 +76,7 @@ export default class XHome extends Vue {
   }
 
   get articlesTitle() {
-    //return this.translate('home_articles')
-    return ''
+    return this.translate('home_articles')
   }
 
   get heroTitle() {
@@ -85,8 +84,7 @@ export default class XHome extends Vue {
   }
 
   get heroCaption() {
-    //return this.translate('home_heroCaption')
-    return ''
+    return this.translate('home_heroCaption')
   }
 }
 </script>

@@ -30,8 +30,8 @@ import { GetArticleUseCase } from '../../../application/use-cases/get-article-us
 import { Article } from '../../../domain/articles/article'
 import { Id } from '../../../domain/id'
 import { Inject } from '../../../domain/types/inject'
-import { Container } from '../../../container'
 import { StateManager } from '../../../application/state/state-manager'
+import { container } from '../../../container'
 
 @Component<XArticle>({
   name: 'XArticle',
@@ -40,11 +40,9 @@ import { StateManager } from '../../../application/state/state-manager'
       return
     }
 
-    const article = await Container.instance()
-      .get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE)
-      .execute({
-        id: Id.fromValue(to.params.id)
-      })
+    const article = await container.get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE).execute({
+      id: Id.fromValue(to.params.id)
+    })
 
     next(vm => {
       vm.article = article
@@ -84,7 +82,7 @@ export default class XArticle extends Vue {
 
   @Watch('stateManage.state.locale')
   async onLocaleChange() {
-    this.article = await Container.instance()
+    this.article = await container
       .get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE)
       .execute({
         id: Id.fromValue(this.$route.params.id)

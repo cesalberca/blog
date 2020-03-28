@@ -20,12 +20,12 @@ import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-ar
 import { Article } from '../../../domain/articles/article'
 import { Id } from '../../../domain/id'
 import { Inject } from '../../../domain/types/inject'
-import { Container } from '../../../container'
 import { StateManager } from '../../../application/state/state-manager'
+import { container } from '../../../container'
 
 @Component<XArticles>({
   async beforeRouteEnter(_to, _from, next) {
-    const articles = await Container.instance()
+    const articles = await container
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
     next(vm => {
@@ -50,7 +50,7 @@ export default class XArticles extends Vue {
 
   @Watch('stateManager.state.locale')
   async onLocaleChange() {
-    this.articles = await Container.instance()
+    this.articles = await container
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
   }

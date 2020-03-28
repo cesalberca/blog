@@ -18,12 +18,9 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  router: {
-    middleware: ['dependency-injection']
-  },
   loading: { color: '#fff' },
   css: [],
-  plugins: [],
+  plugins: ['./plugins/container-plugin.ts'],
   buildModules: ['@nuxt/typescript-build'],
   modules: [
     '@nuxtjs/pwa',

@@ -33,11 +33,15 @@ import { TYPES } from '../../types'
 import { Inject } from '../../domain/types/inject'
 import { StateManager } from '../../application/state/state-manager'
 import { TranslationService } from '../../domain/translation-service'
+import { GetAllArticlesUseCase } from '../../application/use-cases/get-all-articles-use-case'
+import { container } from '../../container'
 
 @Component({
   name: 'x-home',
   async asyncData() {
-    const articles: Article[] = []
+    const articles = await container
+      .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
+      .execute()
 
     return { articles }
   },
@@ -61,8 +65,9 @@ export default class XHome extends Vue {
 
   @Watch('stateManager.state.locale')
   async onLocaleChange() {
-    // TODO: Make real request
-    this.articles = []
+    this.articles = await container
+      .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
+      .execute()
   }
 
   navigateToArticleById(id: Id) {

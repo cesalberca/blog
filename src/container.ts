@@ -4,7 +4,6 @@ import { TYPES } from './types'
 import { EncoderService } from './domain/encoder-service'
 import { TranslationService } from './domain/translation-service'
 import { HtmlParserService } from './domain/html-parser-service'
-import { FileLoader } from './infraestructure/file-loader'
 import { LanguageService } from './domain/talks/language-service'
 import { TalksFileRepository } from './infraestructure/talks/talks-file-repository'
 import { TalksRepository } from './domain/talks/talks-repository'
@@ -31,10 +30,6 @@ import { TalkDetail } from './ui/pages/talks/talk-detail'
 container
   .bind<TranslationService>(TYPES.TRANSLATION_SERVICE)
   .to(TranslationService)
-  .inSingletonScope()
-container
-  .bind<FileLoader>(TYPES.FILE_LOADER)
-  .to(FileLoader)
   .inSingletonScope()
 container
   .bind<Translator>(TYPES.TRANSLATOR)

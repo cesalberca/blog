@@ -1,6 +1,8 @@
 {
   "name": "blog",
+  "description": "César Alberca's blog",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "homepage": "https://www.cesalberca.es",
   "scripts": {
@@ -22,27 +24,25 @@
   "devDependencies": {
     "@babel/core": "7.9.0",
     "@babel/preset-typescript": "7.9.0",
-    "@types/jest": "25.1.4",
+    "@types/jest": "25.2.1",
     "@types/marked": "0.7.3",
-    "@types/node": "13.9.5",
+    "@types/node": "13.11.0",
     "@typescript-eslint/eslint-plugin": "2.26.0",
     "@typescript-eslint/parser": "2.26.0",
     "awesome-typescript-loader": "5.2.1",
-    "babel-jest": "25.2.3",
+    "babel-jest": "25.2.6",
     "babel-loader": "8.1.0",
     "babel-plugin-prismjs": "2.0.1",
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.10.1",
     "frontmatter-markdown-loader": "3.3.0",
-    "gh-pages": "2.2.0",
     "husky": "4.2.3",
-    "imagemin-webpack-plugin": "2.4.2",
     "inversify-props": "2.0.1",
-    "jest": "25.2.3",
-    "lint-staged": "10.0.9",
+    "jest": "25.2.7",
+    "lint-staged": "10.1.2",
     "parcel-bundler": "1.12.4",
     "prettier": "2.0.2",
-    "prismjs": "1.19.0",
+    "prismjs": "1.20.0",
     "stylelint": "13.3.0",
     "stylelint-config-recommended": "3.0.0",
     "stylelint-config-styled-components": "0.1.1",
@@ -56,7 +56,7 @@
   },
   "lint-staged": {
     "*.{ts}": [
-      "vue-cli-service lint",
+      "prettier --write",
       "git add"
     ]
   }

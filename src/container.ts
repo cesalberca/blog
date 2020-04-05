@@ -21,8 +21,6 @@ import { VueStateManager } from './ui/state/vue-state-manager'
 import { StateManager } from './application/state/state-manager'
 import { BaseStateManager } from './application/state/base-state-manager'
 import { NavigateToArticle } from './ui/actions/navigate-to-article'
-import VueRouter from 'vue-router'
-import Vue, { VueConstructor } from 'vue'
 import { Router } from './ui/router'
 import { DifficultyService } from './domain/talks/difficulty-service'
 import { TalkDetail } from './ui/pages/talks/talk-detail'
@@ -37,14 +35,8 @@ export class Container {
       .bind<TranslationService>(TYPES.TRANSLATION_SERVICE)
       .to(TranslationService)
       .inSingletonScope()
-    container
-      .bind<Translator>(TYPES.TRANSLATOR)
-      .to(Translator)
-      .inSingletonScope()
-    container
-      .bind<EncoderService>(TYPES.ENCODER_SERVICE)
-      .to(EncoderService)
-      .inSingletonScope()
+    container.bind<Translator>(TYPES.TRANSLATOR).to(Translator).inSingletonScope()
+    container.bind<EncoderService>(TYPES.ENCODER_SERVICE).to(EncoderService).inSingletonScope()
     container
       .bind<TwitterSharerService>(TYPES.TWITTER_SHARER_SERVICE)
       .to(TwitterSharerService)
@@ -53,10 +45,7 @@ export class Container {
       .bind<HtmlParserService>(TYPES.HTML_PARSER_SERVICE)
       .to(HtmlParserService)
       .inSingletonScope()
-    container
-      .bind<LanguageService>(TYPES.LANGUAGE_SERVICE)
-      .to(LanguageService)
-      .inSingletonScope()
+    container.bind<LanguageService>(TYPES.LANGUAGE_SERVICE).to(LanguageService).inSingletonScope()
     container
       .bind<TalksRepository>(TYPES.TALKS_REPOSITORY)
       .to(TalksFileRepository)
@@ -81,46 +70,34 @@ export class Container {
       .bind<UseCaseDecorator>(TYPES.USE_CASE_DECORATOR)
       .to(UseCaseDecorator)
       .inSingletonScope()
-    container
-      .bind<StateManager>(TYPES.STATE_MANAGER)
-      .to(VueStateManager)
-      .inSingletonScope()
+    container.bind<StateManager>(TYPES.STATE_MANAGER).to(VueStateManager).inSingletonScope()
     container
       .bind<BaseStateManager>(TYPES.BASE_STATE_MANAGER)
       .to(BaseStateManager)
       .inSingletonScope()
 
-    container.bind<Translate>(TYPES.TRANSLATE).toFunction(
-      key =>
-        container
-          .get<Translator>(TYPES.TRANSLATOR)
-          .translations.get(container.get<StateManager>(TYPES.STATE_MANAGER).state.locale)!
-          .get(key)!
-    )
+    container
+      .bind<Translate>(TYPES.TRANSLATE)
+      .toFunction(
+        key =>
+          container
+            .get<Translator>(TYPES.TRANSLATOR)
+            .translations.get(container.get<StateManager>(TYPES.STATE_MANAGER).state.locale)!
+            .get(key)!
+      )
     container
       .bind<NavigateToArticle>(TYPES.NAVIGATE_TO_ARTICLE)
       .to(NavigateToArticle)
       .inSingletonScope()
-    container.bind<typeof VueRouter>(TYPES.VUE_ROUTER).toConstantValue(VueRouter)
-    container.bind<VueConstructor>(TYPES.VUE).toConstantValue(Vue)
-    container
-      .bind<Router>(TYPES.ROUTER)
-      .to(Router)
-      .inSingletonScope()
+    container.bind<Router>(TYPES.ROUTER).to(Router).inSingletonScope()
     container
       .bind<DifficultyService>(TYPES.DIFFICULTY_SERVICE)
       .to(DifficultyService)
       .inSingletonScope()
-    container
-      .bind<TalkDetail>(TYPES.TALK_DETAIL)
-      .to(TalkDetail)
-      .inSingletonScope()
+    container.bind<TalkDetail>(TYPES.TALK_DETAIL).to(TalkDetail).inSingletonScope()
 
-    if (process.client) {
-      // @ts-ignore
-      container.bind<Logger>(TYPES.LOGGER).toConstantValue(window.console.log)
-      container.bind<Window>(TYPES.WINDOW).toConstantValue(window)
-    }
+    container.bind<Logger>(TYPES.LOGGER).toConstantValue(window.console.log)
+    container.bind<Window>(TYPES.WINDOW).toConstantValue(window)
 
     this._container = container
   }

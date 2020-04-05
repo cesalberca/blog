@@ -1,5 +1,5 @@
 import { DifficultyService } from './difficulty-service'
-import { Difficulty } from './Difficulty'
+import { Difficulty } from './difficulty'
 
 describe('DifficultyService', () => {
   let difficultyService: DifficultyService

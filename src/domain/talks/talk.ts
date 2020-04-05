@@ -1,11 +1,11 @@
 import { Markdown } from '../markdown'
 import { Length } from '../length'
-import { Difficulty } from './Difficulty'
-import { Language } from './Language'
+import { Difficulty } from './difficulty'
+import { Language } from './language'
 import { Topic } from './topic'
 import { Reference } from './reference'
 import { Id } from '../id'
-import { Event } from './Event'
+import { Event } from './event'
 
 export class Talk {
   constructor(

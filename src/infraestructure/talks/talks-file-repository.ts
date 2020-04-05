@@ -2,7 +2,7 @@ import { TalksRepository } from '../../domain/talks/talks-repository'
 import { Length } from '../../domain/length'
 import { DifficultyService } from '../../domain/talks/difficulty-service'
 import { TranslationService } from '../../domain/translation-service'
-import { Event } from '../../domain/talks/Event'
+import { Event } from '../../domain/talks/event'
 import { Datetime } from '../../domain/datetime'
 import { Maybe } from '../../domain/utils/maybe'
 import { LanguageService } from '../../domain/talks/language-service'
@@ -15,7 +15,7 @@ import { Markdown } from '../../domain/markdown'
 import { Injectable } from '../../domain/types/injectable'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
-import { talks } from '../../ui/content/talks/talks'
+import { talks } from '../../domain/talks/files/talks'
 
 @Injectable()
 export class TalksFileRepository implements TalksRepository {

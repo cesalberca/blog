@@ -1,4 +1,4 @@
-import { Difficulty } from './Difficulty'
+import { Difficulty } from './difficulty'
 import { TranslationError } from '../language/translation-error'
 import { Injectable } from '../types/injectable'
 

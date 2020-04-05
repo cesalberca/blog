@@ -11,12 +11,11 @@ export class App extends LitElement {
   }
 
   render() {
-    return html`
-    <main>
-    <app-theming class="full-height">
-      <app-navbar></app-navbar>
-      <router-view></router-view>
-    </app-theming>
-  </main>`
+    return html` <main>
+      <app-theming class="full-height">
+        <x-navbar></x-navbar>
+        <router-view></router-view>
+      </app-theming>
+    </main>`
   }
 }

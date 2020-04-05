@@ -1,7 +1,7 @@
 import { Talk } from './talk'
 import { Id } from '../id'
-import { Language } from './Language'
-import { Difficulty } from './Difficulty'
+import { Language } from './language'
+import { Difficulty } from './difficulty'
 import { Length } from '../length'
 import { Markdown } from '../markdown'
 

@@ -9,7 +9,7 @@ import { TranslationService } from '../../domain/translation-service'
 import { Injectable } from '../../domain/types/injectable'
 import { TYPES } from '../../types'
 import { Inject } from '../../domain/types/inject'
-import { articles } from '../../ui/content/articles/articles'
+import { articles } from '../../domain/articles/files/articles'
 
 @Injectable()
 export class ArticlesFileRepository implements ArticlesRepository {

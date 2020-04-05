@@ -1,5 +1,5 @@
-import { container } from '../../container'
+import { Container } from '../../container'
 
 export default ({}, inject: (key: string, value: any) => void) => {
-  inject('container', container)
+  inject('container', Container.instance())
 }

@@ -20,18 +20,12 @@ export default {
   },
   loading: { color: '#fff' },
   css: [],
-  plugins: ['./plugins/container-plugin.ts'],
+  plugins: [{ src: './plugins/container-plugin.ts', mode: 'server'}],
   buildModules: ['@nuxt/typescript-build'],
   modules: [
     '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
   ],
-  render: {
-    bundleRenderer: {
-      runInNewContext: false
-    }
-  },
   build: {
     extend(config) {
       config.module.rules.push({

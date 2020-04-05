@@ -2,37 +2,37 @@
   "name": "blog",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://cesalberca.github.io",
+  "homepage": "https://www.cesalberca.es",
   "scripts": {
-    "dev": "nuxt-ts",
-    "start": "nuxt-ts start",
-    "build": "nuxt-ts build",
-    "generate": "nuxt-ts generate",
+    "start": "parcel src/ui/index.html",
+    "build": "parcel build src/ui/index.html --public-url /web/",
     "deploy": "./build.sh deploy",
-    "ci": "yarn lint --no-fix && yarn test",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint src/**/*.ts",
+    "lint:css": "stylelint \"src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "test": "jest"
   },
   "dependencies": {
-    "@nuxt/typescript-runtime": "0.4.1",
-    "@nuxtjs/dotenv": "1.4.1",
-    "@nuxtjs/pwa": "3.0.0-beta.19",
     "inversify": "5.0.1",
+    "lit-element": "2.3.1",
     "marked": "0.8.2",
-    "nuxt": "2.12.1",
-    "nuxt-property-decorator": "2.5.1",
-    "reflect-metadata": "0.1.13",
-    "vue": "2.6.11",
-    "vue-class-component": "7.2.3",
-    "vue-prism-component": "1.1.1",
-    "vue-router": "3.1.6"
+    "reflect-metadata": "0.1.13"
   },
   "devDependencies": {
-    "@nuxt/typescript-build": "0.6.1",
+    "@babel/core": "7.9.0",
+    "@babel/preset-typescript": "7.9.0",
     "@types/jest": "25.1.4",
     "@types/marked": "0.7.3",
     "@types/node": "13.9.5",
+    "@typescript-eslint/eslint-plugin": "2.26.0",
+    "@typescript-eslint/parser": "2.26.0",
+    "awesome-typescript-loader": "5.2.1",
     "babel-jest": "25.2.3",
+    "babel-loader": "8.1.0",
     "babel-plugin-prismjs": "2.0.1",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.1",
     "frontmatter-markdown-loader": "3.3.0",
     "gh-pages": "2.2.0",
     "husky": "4.2.3",
@@ -40,19 +40,22 @@
     "inversify-props": "2.0.1",
     "jest": "25.2.3",
     "lint-staged": "10.0.9",
+    "parcel-bundler": "1.12.4",
     "prettier": "2.0.2",
     "prismjs": "1.19.0",
+    "stylelint": "13.3.0",
+    "stylelint-config-recommended": "3.0.0",
+    "stylelint-config-styled-components": "0.1.1",
+    "stylelint-processor-styled-components": "1.10.0",
     "ts-mockito": "2.5.0",
-    "typescript": "3.8.3",
-    "vue-jest": "4.0.0-beta.2",
-    "vue-template-compiler": "2.6.11"
+    "typescript": "3.8.3"
   },
   "gitHooks": {
     "pre-commit": "lint-staged",
-    "pre-push": "yarn ci"
+    "pre-push": "npm run lint && npm run test"
   },
   "lint-staged": {
-    "*.{ts,vue}": [
+    "*.{ts}": [
       "vue-cli-service lint",
       "git add"
     ]

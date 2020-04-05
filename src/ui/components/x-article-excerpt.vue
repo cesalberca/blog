@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
+import { Component, Emit, Prop, Vue } from 'nuxt-property-decorator'
 import XLink from './x-link.vue'
 import { Translate } from './translate'
 import { Article } from '../../domain/articles/article'

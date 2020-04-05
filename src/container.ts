@@ -1,10 +1,9 @@
-import { interfaces } from 'inversify'
+import 'reflect-metadata'
 import { container } from 'inversify-props'
 import { TYPES } from './types'
 import { EncoderService } from './domain/encoder-service'
 import { TranslationService } from './domain/translation-service'
 import { HtmlParserService } from './domain/html-parser-service'
-import { FileLoader } from './infraestructure/file-loader'
 import { LanguageService } from './domain/talks/language-service'
 import { TalksFileRepository } from './infraestructure/talks/talks-file-repository'
 import { TalksRepository } from './domain/talks/talks-repository'
@@ -23,13 +22,11 @@ import { StateManager } from './application/state/state-manager'
 import { BaseStateManager } from './application/state/base-state-manager'
 import { NavigateToArticle } from './ui/actions/navigate-to-article'
 import VueRouter from 'vue-router'
-import VueAnalytics from 'vue-analytics'
-import { Application } from './ui/application'
 import Vue, { VueConstructor } from 'vue'
 import { Router } from './ui/router'
-import { ServiceWorkerRegisterer } from './ui/service-worker-registerer'
 import { DifficultyService } from './domain/talks/difficulty-service'
 import { TalkDetail } from './ui/pages/talks/talk-detail'
+import { interfaces } from 'inversify'
 
 export class Container {
   private static _instance: Container | null = null
@@ -39,10 +36,6 @@ export class Container {
     container
       .bind<TranslationService>(TYPES.TRANSLATION_SERVICE)
       .to(TranslationService)
-      .inSingletonScope()
-    container
-      .bind<FileLoader>(TYPES.FILE_LOADER)
-      .to(FileLoader)
       .inSingletonScope()
     container
       .bind<Translator>(TYPES.TRANSLATOR)
@@ -88,8 +81,6 @@ export class Container {
       .bind<UseCaseDecorator>(TYPES.USE_CASE_DECORATOR)
       .to(UseCaseDecorator)
       .inSingletonScope()
-    // @ts-ignore
-    container.bind<Logger>(TYPES.LOGGER).toConstantValue(window.console.log)
     container
       .bind<StateManager>(TYPES.STATE_MANAGER)
       .to(VueStateManager)
@@ -98,7 +89,7 @@ export class Container {
       .bind<BaseStateManager>(TYPES.BASE_STATE_MANAGER)
       .to(BaseStateManager)
       .inSingletonScope()
-    container.bind<Window>(TYPES.WINDOW).toConstantValue(window)
+
     container.bind<Translate>(TYPES.TRANSLATE).toFunction(
       key =>
         container
@@ -111,19 +102,10 @@ export class Container {
       .to(NavigateToArticle)
       .inSingletonScope()
     container.bind<typeof VueRouter>(TYPES.VUE_ROUTER).toConstantValue(VueRouter)
-    container.bind<typeof VueAnalytics>(TYPES.VUE_ANALYTICS).toConstantValue(VueAnalytics)
-    container
-      .bind<Application>(TYPES.APPLICATION)
-      .to(Application)
-      .inSingletonScope()
     container.bind<VueConstructor>(TYPES.VUE).toConstantValue(Vue)
     container
       .bind<Router>(TYPES.ROUTER)
       .to(Router)
-      .inSingletonScope()
-    container
-      .bind<ServiceWorkerRegisterer>(TYPES.SERVICE_WORKER_REGISTERER)
-      .to(ServiceWorkerRegisterer)
       .inSingletonScope()
     container
       .bind<DifficultyService>(TYPES.DIFFICULTY_SERVICE)
@@ -133,6 +115,12 @@ export class Container {
       .bind<TalkDetail>(TYPES.TALK_DETAIL)
       .to(TalkDetail)
       .inSingletonScope()
+
+    if (process.client) {
+      // @ts-ignore
+      container.bind<Logger>(TYPES.LOGGER).toConstantValue(window.console.log)
+      container.bind<Window>(TYPES.WINDOW).toConstantValue(window)
+    }
 
     this._container = container
   }

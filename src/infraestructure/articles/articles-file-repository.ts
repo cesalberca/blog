@@ -5,17 +5,16 @@ import { Article } from '../../domain/articles/article'
 import { ArticlesRepository } from '../../domain/articles/articles-repository'
 import { Id } from '../../domain/id'
 import { Markdown } from '../../domain/markdown'
-import { FileLoader } from '../file-loader'
 import { TranslationService } from '../../domain/translation-service'
 import { Injectable } from '../../domain/types/injectable'
 import { TYPES } from '../../types'
 import { Inject } from '../../domain/types/inject'
+import { articles } from '../../ui/content/articles/articles'
 
 @Injectable()
 export class ArticlesFileRepository implements ArticlesRepository {
   constructor(
-    @Inject(TYPES.TRANSLATION_SERVICE) private readonly translationService: TranslationService,
-    @Inject(TYPES.FILE_LOADER) private readonly fileLoader: FileLoader
+    @Inject(TYPES.TRANSLATION_SERVICE) private readonly translationService: TranslationService
   ) {}
 
   async findOneByLocale(id: Id, locale: Locale): Promise<Article> {
@@ -23,15 +22,15 @@ export class ArticlesFileRepository implements ArticlesRepository {
 
     try {
       article = await import(
-        `./../../domain/articles/${this.translationService.toString(locale)}/${id.value}.md`
+        `../../ui/content/articles/${this.translationService.toString(locale)}/${id.value}.md`
       )
     } catch (e) {
       try {
         const locale = this.translationService.toString(Locale.DEFAULT)
-        article = await import(`./../../domain/articles/${locale}/${id.value}.md`)
+        article = await import(`../../ui/content/articles/${locale}/${id.value}.md`)
       } catch (e) {
         const spanishLocale = this.translationService.toString(Locale.ES)
-        article = await import(`./../../domain/articles/${spanishLocale}/${id.value}.md`)
+        article = await import(`../../ui/content/articles/${spanishLocale}/${id.value}.md`)
       }
     }
 
@@ -46,10 +45,6 @@ export class ArticlesFileRepository implements ArticlesRepository {
   }
 
   async findAllByLocale(locale: Locale): Promise<Article[]> {
-    const articlesIds = this.fileLoader
-      .loadArticles()
-      .map(id => id.substr(2, id.length).substr(0, id.length - 5))
-
-    return Promise.all(articlesIds.map(id => this.findOneByLocale(Id.fromValue(id), locale)))
+    return Promise.all(articles.map(id => this.findOneByLocale(Id.fromValue(id), locale)))
   }
 }

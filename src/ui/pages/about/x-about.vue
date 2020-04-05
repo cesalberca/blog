@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
 import { Translate } from '../../components/translate'
 import MarkdownComponent from '../../components/x-markdown.vue'
 import XPage from '../../components/x-page.vue'

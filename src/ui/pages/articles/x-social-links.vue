@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
 import { TwitterSharerService } from '../../../domain/articles/twitter-sharer-service'
 import { Translate } from '../../components/translate'
 import { Inject } from '../../../domain/types/inject'

@@ -7,7 +7,7 @@
   </main>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
 import XTheming from './theme/x-theming.vue'
 import XNavbar from './components/x-navbar.vue'
 

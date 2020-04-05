@@ -1,5 +1,4 @@
 import { TalksRepository } from '../../domain/talks/talks-repository'
-import { FileLoader } from '../file-loader'
 import { Length } from '../../domain/length'
 import { DifficultyService } from '../../domain/talks/difficulty-service'
 import { TranslationService } from '../../domain/translation-service'
@@ -16,11 +15,11 @@ import { Markdown } from '../../domain/markdown'
 import { Injectable } from '../../domain/types/injectable'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
+import { talks } from '../../ui/content/talks/talks'
 
 @Injectable()
 export class TalksFileRepository implements TalksRepository {
   constructor(
-    @Inject(TYPES.FILE_LOADER) private readonly fileLoader: FileLoader,
     @Inject(TYPES.TRANSLATION_SERVICE) private readonly translationService: TranslationService,
     @Inject(TYPES.LANGUAGE_SERVICE) private readonly languageService: LanguageService,
     @Inject(TYPES.DIFFICULTY_SERVICE) private readonly difficultyService: DifficultyService
@@ -31,15 +30,15 @@ export class TalksFileRepository implements TalksRepository {
 
     try {
       talk = await import(
-        `./../../domain/talks/${this.translationService.toString(locale)}/${id.value}.md`
+        `../../ui/content/talks/${this.translationService.toString(locale)}/${id.value}.md`
       )
     } catch (e) {
       try {
         const locale = this.translationService.toString(Locale.DEFAULT)
-        talk = await import(`./../../domain/talks/${locale}/${id.value}.md`)
+        talk = await import(`../../ui/content/talks/${locale}/${id.value}.md`)
       } catch (e) {
         const locale = this.translationService.toString(Locale.ES)
-        talk = await import(`./../../domain/talks/${locale}/${id.value}.md`)
+        talk = await import(`../../ui/content/talks/${locale}/${id.value}.md`)
       }
     }
 
@@ -68,10 +67,6 @@ export class TalksFileRepository implements TalksRepository {
   }
 
   async findAllByLocale(locale: Locale): Promise<Talk[]> {
-    const talksIds = this.fileLoader
-      .loadTalks()
-      .map(id => id.substr(2, id.length).substr(0, id.length - 5))
-
-    return Promise.all(talksIds.map(id => this.findOneByLocale(Id.fromValue(id), locale)))
+    return Promise.all(talks.map(id => this.findOneByLocale(Id.fromValue(id), locale)))
   }
 }

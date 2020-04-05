@@ -1,18 +1,17 @@
-import { Watch } from 'nuxt-property-decorator'
-import me from '../images/me.png'
-import { Id } from '../../domain/id'
-import { Article } from '../../domain/articles/article'
-import { Translate } from '../components/translate'
-import { TYPES } from '../../types'
-import { Inject } from '../../domain/types/inject'
-import { StateManager } from '../../application/state/state-manager'
-import { TranslationService } from '../../domain/translation-service'
-import { GetAllArticlesUseCase } from '../../application/use-cases/get-all-articles-use-case'
-import { Container } from '../../container'
-import { customElement, LitElement } from 'lit-element'
+import me from '../../images/me.png'
+import { Id } from '../../../domain/id'
+import { Article } from '../../../domain/articles/article'
+import { Translate } from '../../components/translate'
+import { TYPES } from '../../../types'
+import { Inject } from '../../../domain/types/inject'
+import { StateManager } from '../../../application/state/state-manager'
+import { TranslationService } from '../../../domain/translation-service'
+import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case'
+import { Container } from '../../../container'
+import { customElement, LitElement, html, css } from 'lit-element'
 
-@customElement('x-home')
-export default class XHome extends LitElement {
+@customElement('app-home')
+export class Home extends LitElement {
   @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
 
@@ -25,7 +24,6 @@ export default class XHome extends LitElement {
   articles: Article[] = []
   me = me
 
-  @Watch('stateManager.state.locale')
   async onLocaleChange() {
     this.articles = await Container.instance()
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)

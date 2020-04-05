@@ -1,11 +1,11 @@
 import { css, customElement, LitElement, property, html } from 'lit-element'
 
-@customElement('x-hero')
-export default class XHero extends LitElement {
-  @property({ type: String, required: true })
+@customElement('app-hero')
+export class Hero extends LitElement {
+  @property({ type: String })
   image!: string
 
-  get style() {
+  get customStyle() {
     return { 'background-image': `url(${this.image})` }
   }
 
@@ -31,7 +31,7 @@ export default class XHero extends LitElement {
   }
 
   render() {
-    return html` <div class="image" :style="style">
+    return html` <div class="image" style="${this.customStyle}">
       <div class="wrapper">
         <slot></slot>
       </div>

@@ -1,18 +1,16 @@
-import { Watch } from 'nuxt-property-decorator'
 import { Direction } from './direction'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
 import { css, customElement, LitElement } from 'lit-element'
 
-@customElement('x-navbar')
-export class XNavbar extends LitElement {
+@customElement('app-navbar')
+export class Navbar extends LitElement {
   isActive = false
   Direction = Direction
 
   @Inject(TYPES.WINDOW)
   window!: Window
 
-  @Watch('isActive')
   onIsActiveChange() {
     this.window.document.body.classList.toggle('block')
   }

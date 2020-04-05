@@ -1,18 +1,17 @@
-import { Watch } from 'nuxt-property-decorator'
 import { TranslationService } from '../../../domain/translation-service'
 import { Translate } from '../../components/translate'
 import { TYPES } from '../../../types'
 import { GetArticleUseCase } from '../../../application/use-cases/get-article-use-case'
-import { Article } from '../../../domain/articles/article'
 import { Id } from '../../../domain/id'
 import { Inject } from '../../../domain/types/inject'
 import { StateManager } from '../../../application/state/state-manager'
 import { Container } from '../../../container'
-import { customElement, LitElement } from 'lit-element'
+import { css, customElement, LitElement, html } from 'lit-element'
+import { Article as ArticleObject } from '../../../domain/articles/article'
 
-@customElement('x-article')
-export class XArticle extends LitElement {
-  article: Article | null = null
+@customElement('app-article')
+export class Article extends LitElement {
+  article: ArticleObject | null = null
 
   @Inject(TYPES.STATE_MANAGER)
   readonly stateManager!: StateManager
@@ -26,7 +25,6 @@ export class XArticle extends LitElement {
   @Inject(TYPES.WINDOW)
   readonly window!: Window
 
-  @Watch('stateManage.state.locale')
   async onLocaleChange() {
     this.article = await Container.instance()
       .get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE)

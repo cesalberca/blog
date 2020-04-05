@@ -1,7 +1,7 @@
 import { customElement, LitElement, property, html, css } from 'lit-element'
 
-@customElement('x-link')
-export class XLink extends LitElement {
+@customElement('app-link')
+export class Link extends LitElement {
   @property({ type: String })
   to?: string
 

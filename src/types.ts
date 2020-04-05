@@ -18,9 +18,7 @@ export const TYPES = {
   STATE_MANAGER: Symbol.for('STATE_MANAGER'),
   BASE_STATE_MANAGER: Symbol.for('BASE_STATE_MANAGER'),
   NAVIGATE_TO_ARTICLE: Symbol.for('NAVIGATE_TO_ARTICLE'),
-  VUE_ROUTER: Symbol.for('VUE_ROUTER'),
   APPLICATION: Symbol.for('APPLICATION'),
-  VUE: Symbol.for('VUE'),
   ROUTER: Symbol.for('ROUTER'),
   DIFFICULTY_SERVICE: Symbol.for('DIFFICULTY_SERVICE'),
   TALK_DETAIL: Symbol.for('TALK_DETAIL')

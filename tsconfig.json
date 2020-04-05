@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "es2018",
     "module": "esnext",
-    "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "strict": true,
@@ -11,12 +10,9 @@
     "noFallthroughCasesInSwitch": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "resolveJsonModule": true,
-    "baseUrl": ".",
-    "types": ["webpack-env", "jest", "reflect-metadata", "@nuxt/types"],
+    "types": ["jest", "reflect-metadata"],
     "lib": ["esnext", "dom", "dom.iterable"]
   },
   "exclude": ["node_modules"]

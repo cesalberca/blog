@@ -1,7 +1,7 @@
-import { css, customElement, LitElement, property } from 'lit-element'
+import { css, customElement, LitElement, property, html } from 'lit-element'
 
-@customElement('x-talk-section')
-export class XTalkSection extends LitElement {
+@customElement('app-talk-section')
+export class TalkSection extends LitElement {
   @property()
   title!: string
 
@@ -26,10 +26,10 @@ export class XTalkSection extends LitElement {
   render() {
     return html` <section>
       <h3 class="title">
-        <strong>{{ title }}</strong>
+        <strong>${this.title}</strong>
       </h3>
       <slot>
-        <p>{{ description }}</p>
+        <p>${this.description}</p>
       </slot>
     </section>`
   }

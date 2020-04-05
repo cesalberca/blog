@@ -17,7 +17,6 @@ import { GetTalksGivenUseCase } from './application/use-cases/get-talks-given-us
 import { ArticlesRepository } from './domain/articles/articles-repository'
 import { Translator } from './domain/language/translator'
 import { Translate } from './ui/components/translate'
-import { VueStateManager } from './ui/state/vue-state-manager'
 import { StateManager } from './application/state/state-manager'
 import { BaseStateManager } from './application/state/base-state-manager'
 import { NavigateToArticle } from './ui/actions/navigate-to-article'
@@ -70,7 +69,7 @@ export class Container {
       .bind<UseCaseDecorator>(TYPES.USE_CASE_DECORATOR)
       .to(UseCaseDecorator)
       .inSingletonScope()
-    container.bind<StateManager>(TYPES.STATE_MANAGER).to(VueStateManager).inSingletonScope()
+    container.bind<StateManager>(TYPES.STATE_MANAGER).to(BaseStateManager).inSingletonScope()
     container
       .bind<BaseStateManager>(TYPES.BASE_STATE_MANAGER)
       .to(BaseStateManager)

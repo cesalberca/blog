@@ -4,8 +4,8 @@ import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
 import { customElement, LitElement, property } from 'lit-element'
 
-@customElement('x-links')
-export class XLinks extends LitElement {
+@customElement('app-links')
+export class Links extends LitElement {
   @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 

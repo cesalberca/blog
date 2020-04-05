@@ -1,19 +1,17 @@
-import XLink from './x-link.js'
 import { Translate } from './translate'
 import { Article } from '../../domain/articles/article'
 import { TYPES } from '../../types'
 import { Inject } from '../../domain/types/inject'
 import { css, customElement, LitElement, property } from 'lit-element'
 
-@customElement('x-article-excerpt')
-export class XArticleExcerpt extends LitElement {
+@customElement('app-article-excerpt')
+export class ArticleExcerpt extends LitElement {
   @property({ type: String })
   excerpt!: ReturnType<Article['getExcerpt']>
 
   @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 
-  @Emit()
   onAction() {
     return this.excerpt.id
   }

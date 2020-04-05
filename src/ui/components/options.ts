@@ -4,15 +4,15 @@ import { Locale } from '../../domain/language/locale'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
 import { StateManager } from '../../application/state/state-manager'
-import { css, LitElement, html } from 'lit-element'
+import { css, customElement, html, LitElement } from 'lit-element'
 
-@Component('x-options')
-export class XOptions extends LitElement {
+@customElement('app-options')
+export class Options extends LitElement {
   @Inject(TYPES.TRANSLATE)
-  readonly translate!: Translate
+  translate!: Translate
 
   @Inject(TYPES.STATE_MANAGER)
-  readonly stateManager!: StateManager
+  stateManager!: StateManager
 
   theme = Theme.DEFAULT
   themes = [

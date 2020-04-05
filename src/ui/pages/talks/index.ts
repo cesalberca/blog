@@ -1,2 +1,2 @@
-import Talks from './x-talks.js'
+import Talks from './talks.js'
 export { Talks }

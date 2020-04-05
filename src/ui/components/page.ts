@@ -3,15 +3,14 @@ import { TYPES } from '../../types'
 import { StateManager } from '../../application/state/state-manager'
 import { css, customElement, html, LitElement } from 'lit-element'
 
-@customElement('x-page')
-export class XPage extends LitElement {
+@customElement('app-page')
+export class Page extends LitElement {
   @Inject(TYPES.WINDOW)
   window!: Window
 
   @Inject(TYPES.STATE_MANAGER)
   stateManager!: StateManager
 
-  @Watch('stateManager.state.shouldReload')
   onShouldReloadChange() {
     if (this.stateManager.state.shouldReload) {
       this.window.location.reload(true)

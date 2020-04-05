@@ -1,7 +1,7 @@
-import { css, customElement, LitElement } from 'lit-element'
+import { css, customElement, LitElement, html } from 'lit-element'
 
-@customElement('x-tag')
-export class XTag extends LitElement {
+@customElement('app-tag')
+export class Tag extends LitElement {
   static get styles() {
     return css`
       .tag {

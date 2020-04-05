@@ -5,8 +5,8 @@ import { TYPES } from '../../../types'
 import { StateManager } from '../../../application/state/state-manager'
 import { customElement, LitElement, property } from 'lit-element'
 
-@customElement('x-social-links')
-export class XSocialLinks extends LitElement {
+@customElement('app-social-links')
+export class SocialLinks extends LitElement {
   @Inject(TYPES.TRANSLATE)
   readonly translate!: Translate
 

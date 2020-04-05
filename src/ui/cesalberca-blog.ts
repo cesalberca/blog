@@ -1,7 +1,7 @@
 import { css, customElement, html, LitElement } from 'lit-element'
 
 @customElement('cesalberca-blog')
-export class App extends LitElement {
+export class CesalbercaBlog extends LitElement {
   static get styles() {
     return css`
       .full-height {
@@ -13,7 +13,7 @@ export class App extends LitElement {
   render() {
     return html` <main>
       <app-theming class="full-height">
-        <x-navbar></x-navbar>
+        <app-navbar></app-navbar>
         <router-view></router-view>
       </app-theming>
     </main>`

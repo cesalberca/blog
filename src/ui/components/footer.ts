@@ -5,8 +5,8 @@ import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
 import { css, customElement, LitElement, html } from 'lit-element'
 
-@customElement('x-footer')
-export class XFooter extends LitElement {
+@customElement('app-footer')
+export class Footer extends LitElement {
   direction = Direction.VERTICAL
 
   @Inject(TYPES.TRANSLATE)
@@ -17,7 +17,7 @@ export class XFooter extends LitElement {
   }
 
   get coverage() {
-    return process.env.VUE_APP_COVERAGE
+    return process.env.APP_COVERAGE
   }
 
   get todaysYear() {

@@ -1,4 +1,3 @@
-import { Watch } from 'nuxt-property-decorator'
 import { TranslationService } from '../../../domain/translation-service'
 import { Translate } from '../../components/translate'
 import { TYPES } from '../../../types'
@@ -8,10 +7,10 @@ import { Id } from '../../../domain/id'
 import { Inject } from '../../../domain/types/inject'
 import { StateManager } from '../../../application/state/state-manager'
 import { Container } from '../../../container'
-import { customElement, LitElement } from 'lit-element'
+import { customElement, LitElement, html } from 'lit-element'
 
-@customElement('x-articles')
-export default class XArticles extends LitElement {
+@customElement('app-articles')
+export class Articles extends LitElement {
   @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
 
@@ -23,7 +22,6 @@ export default class XArticles extends LitElement {
 
   articles: Article[] = []
 
-  @Watch('stateManager.state.locale')
   async onLocaleChange() {
     this.articles = await Container.instance()
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
@@ -56,7 +54,7 @@ export default class XArticles extends LitElement {
 
   render() {
     return html`<div>
-      <h1>{{ title }}</h1>
+      <h1>${this.title}</h1>
       <x-article-excerpt
         v-for="article in articles"
         :key="article.id.slug"

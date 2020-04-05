@@ -1,12 +1,12 @@
-import { css, customElement, LitElement } from 'lit-element'
+import { css, customElement, LitElement, property } from 'lit-element'
 import { Translate } from '../../components/translate'
 import { TYPES } from '../../../types'
 import { Inject } from 'inversify-props'
 import { TalkDetail } from './talk-detail'
 
-@customElement('x-talk')
-export default class XTalk extends LitElement {
-  @Prop({ type: Object })
+@customElement('app-talk')
+export class Talk extends LitElement {
+  @property({ type: Object })
   readonly detail!: ReturnType<TalkDetail['fromTalk']>
 
   @Inject(TYPES.TRANSLATE)

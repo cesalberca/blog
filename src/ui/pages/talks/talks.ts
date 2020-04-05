@@ -4,10 +4,10 @@ import { TYPES } from '../../../types'
 import { Talk } from '../../../domain/talks/talk'
 import { Inject } from '../../../domain/types/inject'
 import { StateManager } from '../../../application/state/state-manager'
-import { customElement, LitElement } from 'lit-element'
+import { customElement, LitElement, html } from 'lit-element'
 
-@customElement('x-talks')
-export class XTalks extends LitElement {
+@customElement('app-talks')
+export class Talks extends LitElement {
   @Inject(TYPES.STATE_MANAGER)
   readonly stateManager!: StateManager
 
@@ -25,7 +25,7 @@ export class XTalks extends LitElement {
 
   render() {
     return html`<x-page>
-      <h1>{{ title }}</h1>
+      <h1>${this.title}</h1>
       <div v-for="talk in talks" :key="talk.id.value">
         <x-talk :detail="talkDetail.fromTalk(talk)" />
         <hr />

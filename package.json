@@ -18,8 +18,10 @@
   "dependencies": {
     "inversify": "5.0.1",
     "lit-element": "2.3.1",
+    "lit-html": "1.2.1",
     "marked": "0.8.2",
-    "reflect-metadata": "0.1.13"
+    "reflect-metadata": "0.1.13",
+    "router-slot": "1.5.3"
   },
   "devDependencies": {
     "@types/jest": "25.2.1",

@@ -1,5 +1,5 @@
 import { TwitterSharerService } from '../../../domain/articles/twitter-sharer-service'
-import { Translate } from '../../components/translate'
+import { Translation } from '../../components/translation'
 import { Inject } from '../../../domain/types/inject'
 import { TYPES } from '../../../types'
 import { StateManager } from '../../../application/state/state-manager'
@@ -7,8 +7,8 @@ import { customElement, LitElement, property } from 'lit-element'
 
 @customElement('app-social-links')
 export class SocialLinks extends LitElement {
-  @Inject(TYPES.TRANSLATE)
-  readonly translate!: Translate
+  @Inject(TYPES.TRANSLATION)
+  readonly translation!: Translation
 
   @Inject(TYPES.STATE_MANAGER)
   readonly stateManager!: StateManager
@@ -23,7 +23,7 @@ export class SocialLinks extends LitElement {
   body!: string
 
   get shareArticle() {
-    return this.translate('article_shareArticle')
+    return this.translation('article_shareArticle')
   }
 
   get twitterLink() {

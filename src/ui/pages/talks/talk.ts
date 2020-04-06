@@ -1,5 +1,5 @@
 import { css, customElement, LitElement, property } from 'lit-element'
-import { Translate } from '../../components/translate'
+import { Translation } from '../../components/translation'
 import { TYPES } from '../../../types'
 import { Inject } from 'inversify-props'
 import { TalkDetail } from './talk-detail'
@@ -9,21 +9,21 @@ export class Talk extends LitElement {
   @property({ type: Object })
   readonly detail!: ReturnType<TalkDetail['fromTalk']>
 
-  @Inject(TYPES.TRANSLATE)
-  readonly translate!: Translate
+  @Inject(TYPES.TRANSLATION)
+  readonly translation!: Translation
 
   get translations() {
     return {
-      title: this.translate('talks_talkTitle'),
-      events: this.translate('talks_event'),
-      abstract: this.translate('talks_talkAbstract'),
-      topics: this.translate('talks_talkTopics'),
-      length: this.translate('talks_talkLength'),
-      slides: this.translate('talks_talkSlides'),
-      demo: this.translate('talks_talkDemo'),
-      code: this.translate('talks_talkCode'),
-      video: this.translate('talks_talkVideo'),
-      difficulty: this.translate('talks_talkDifficulty')
+      title: this.translation('talks_talkTitle'),
+      events: this.translation('talks_event'),
+      abstract: this.translation('talks_talkAbstract'),
+      topics: this.translation('talks_talkTopics'),
+      length: this.translation('talks_talkLength'),
+      slides: this.translation('talks_talkSlides'),
+      demo: this.translation('talks_talkDemo'),
+      code: this.translation('talks_talkCode'),
+      video: this.translation('talks_talkVideo'),
+      difficulty: this.translation('talks_talkDifficulty')
     }
   }
 

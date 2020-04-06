@@ -1,4 +1,4 @@
-import { Translate } from './translate'
+import { Translation } from './translation'
 import { Direction } from './direction'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
@@ -6,8 +6,8 @@ import { customElement, LitElement, property } from 'lit-element'
 
 @customElement('app-links')
 export class Links extends LitElement {
-  @Inject(TYPES.TRANSLATE)
-  readonly translate!: Translate
+  @Inject(TYPES.TRANSLATION)
+  readonly translation!: Translation
 
   @property({ type: Number })
   direction: Direction = Direction.HORIZONTAL
@@ -25,10 +25,10 @@ export class Links extends LitElement {
 
   get translations() {
     return {
-      home: this.translate('home_title'),
-      about: this.translate('about_title'),
-      talks: this.translate('talks_title'),
-      articles: this.translate('article_title')
+      home: this.translation('home_title'),
+      about: this.translation('about_title'),
+      talks: this.translation('talks_title'),
+      articles: this.translation('article_title')
     }
   }
 

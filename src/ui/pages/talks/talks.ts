@@ -1,5 +1,5 @@
 import { TalkDetail } from './talk-detail'
-import { Translate } from '../../components/translate'
+import { Translation } from '../../components/translation'
 import { TYPES } from '../../../types'
 import { Talk } from '../../../domain/talks/talk'
 import { Inject } from '../../../domain/types/inject'
@@ -11,8 +11,8 @@ export class Talks extends LitElement {
   @Inject(TYPES.STATE_MANAGER)
   readonly stateManager!: StateManager
 
-  @Inject(TYPES.TRANSLATE)
-  readonly translate!: Translate
+  @Inject(TYPES.TRANSLATION)
+  readonly translation!: Translation
 
   @Inject(TYPES.TALK_DETAIL)
   readonly talkDetail!: TalkDetail
@@ -20,7 +20,7 @@ export class Talks extends LitElement {
   talks: Talk[] = []
 
   get title() {
-    return this.translate('talks_title')
+    return this.translation('talks_title')
   }
 
   render() {

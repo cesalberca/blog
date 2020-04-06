@@ -1,7 +1,7 @@
 import { Direction } from './direction'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
-import { css, customElement, LitElement } from 'lit-element'
+import { css, customElement, LitElement, html } from 'lit-element'
 
 @customElement('app-navbar')
 export class Navbar extends LitElement {

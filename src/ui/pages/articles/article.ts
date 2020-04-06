@@ -1,5 +1,5 @@
 import { TranslationService } from '../../../domain/translation-service'
-import { Translate } from '../../components/translate'
+import { Translation } from '../../components/translation'
 import { TYPES } from '../../../types'
 import { GetArticleUseCase } from '../../../application/use-cases/get-article-use-case'
 import { Id } from '../../../domain/id'
@@ -19,8 +19,8 @@ export class Article extends LitElement {
   @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
 
-  @Inject(TYPES.TRANSLATE)
-  readonly translate!: Translate
+  @Inject(TYPES.TRANSLATION)
+  readonly translation!: Translation
 
   @Inject(TYPES.WINDOW)
   readonly window!: Window
@@ -40,7 +40,7 @@ export class Article extends LitElement {
   }
 
   get minutes() {
-    return this.translate('_minutes')
+    return this.translation('_minutes')
   }
 
   get articleLocale() {

@@ -1,5 +1,5 @@
 import { Theme } from '../theme/theme'
-import { Translate } from './translate'
+import { Translation } from './translation'
 import { Locale } from '../../domain/language/locale'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
@@ -8,8 +8,8 @@ import { css, customElement, html, LitElement } from 'lit-element'
 
 @customElement('app-options')
 export class Options extends LitElement {
-  @Inject(TYPES.TRANSLATE)
-  translate!: Translate
+  @Inject(TYPES.TRANSLATION)
+  translation!: Translation
 
   @Inject(TYPES.STATE_MANAGER)
   stateManager!: StateManager
@@ -27,19 +27,19 @@ export class Options extends LitElement {
   ]
 
   get en() {
-    return this.translate('_en')
+    return this.translation('_en')
   }
 
   get es() {
-    return this.translate('_es')
+    return this.translation('_es')
   }
 
   get light() {
-    return this.translate('_light')
+    return this.translation('_light')
   }
 
   get dark() {
-    return this.translate('_dark')
+    return this.translation('_dark')
   }
 
   changeLocale(locale: Locale) {

@@ -1,4 +1,4 @@
-import { Translate } from './translate'
+import { Translation } from './translation'
 import { Article } from '../../domain/articles/article'
 import { TYPES } from '../../types'
 import { Inject } from '../../domain/types/inject'
@@ -9,8 +9,8 @@ export class ArticleExcerpt extends LitElement {
   @property({ type: String })
   excerpt!: ReturnType<Article['getExcerpt']>
 
-  @Inject(TYPES.TRANSLATE)
-  readonly translate!: Translate
+  @Inject(TYPES.TRANSLATION)
+  readonly translation!: Translation
 
   onAction() {
     return this.excerpt.id
@@ -43,7 +43,7 @@ export class ArticleExcerpt extends LitElement {
   }
 
   get minutes() {
-    return this.translate('_minutes')
+    return this.translation('_minutes')
   }
 
   render() {

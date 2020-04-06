@@ -1,14 +1,15 @@
 import me from '../../images/me.png'
 import { Id } from '../../../domain/id'
 import { Article } from '../../../domain/articles/article'
-import { Translate } from '../../components/translate'
+import { Translation } from '../../components/translation'
 import { TYPES } from '../../../types'
 import { Inject } from '../../../domain/types/inject'
 import { StateManager } from '../../../application/state/state-manager'
 import { TranslationService } from '../../../domain/translation-service'
 import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case'
-import { Container } from '../../../container'
+import { container } from '../../../container'
 import { customElement, LitElement, html, css } from 'lit-element'
+import { unsafeHTML } from 'lit-html/directives/unsafe-html'
 
 @customElement('app-home')
 export class Home extends LitElement {
@@ -18,38 +19,39 @@ export class Home extends LitElement {
   @Inject(TYPES.STATE_MANAGER)
   readonly stateManager!: StateManager
 
-  @Inject(TYPES.TRANSLATE)
-  readonly translate!: Translate
+  @Inject(TYPES.TRANSLATION)
+  readonly translation!: Translation
 
   articles: Article[] = []
   me = me
 
   async onLocaleChange() {
-    this.articles = await Container.instance()
+    this.articles = await container
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
   }
 
   navigateToArticleById(id: Id) {
-    this.$router.push({
-      name: 'article',
-      params: {
+    history.replaceState(
+      {
         id: id.value,
         locale: this.translationService.toString(this.stateManager.state.locale)
-      }
-    })
+      },
+      '',
+      '/article'
+    )
   }
 
   get articlesTitle() {
-    return this.translate('home_articles')
+    return this.translation('home_articles')
   }
 
   get heroTitle() {
-    return this.translate('home_heroTitle')
+    return this.translation('home_heroTitle')
   }
 
   get heroCaption() {
-    return this.translate('home_heroCaption')
+    return this.translation('home_heroCaption')
   }
 
   static get styles() {
@@ -114,14 +116,14 @@ export class Home extends LitElement {
       <div class="hero">
         <div class="wrapper">
           <header>
-            <h1 class="title" v-html="heroTitle"></h1>
-            <p class="caption" v-html="heroCaption"></p>
+            <h1 class="title">${unsafeHTML(this.heroTitle)}</h1>
+            <p class="caption">${unsafeHTML(this.heroCaption)}</p>
           </header>
-          <img class="photo" :src="me" alt="César Alberca" />
+          <img class="photo" .src="${me}" alt="César Alberca" />
         </div>
       </div>
       <x-page>
-        <h2 class="articles">{{ articlesTitle }}</h2>
+        <h2 class="articles">${this.articlesTitle}</h2>
         <x-article-excerpt
           v-for="article in articles"
           :key="article.id.slug"

@@ -1,7 +1,11 @@
-import { css, customElement, html, LitElement } from 'lit-element'
+import { css, customElement, html, LitElement, PropertyValues, query } from 'lit-element'
+import { RouterSlot } from 'router-slot'
 
 @customElement('cesalberca-blog')
 export class CesalbercaBlog extends LitElement {
+  @query('router-slot')
+  routerSlot!: RouterSlot
+
   static get styles() {
     return css`
       .full-height {
@@ -10,11 +14,29 @@ export class CesalbercaBlog extends LitElement {
     `
   }
 
+  firstUpdated(props: PropertyValues) {
+    super.firstUpdated(props)
+    this.routerSlot.add([
+      {
+        path: '/about',
+        component: () => import('./pages/about-page')
+      },
+      {
+        path: '/',
+        component: () => import('./pages/home-page')
+      },
+      {
+        path: '**',
+        redirectTo: '/'
+      }
+    ])
+  }
+
   render() {
     return html` <main>
       <app-theming class="full-height">
         <app-navbar></app-navbar>
-        <router-view></router-view>
+        <router-slot></router-slot>
       </app-theming>
     </main>`
   }

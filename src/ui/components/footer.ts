@@ -1,6 +1,6 @@
 import { Direction } from './direction'
 import { Datetime } from '../../domain/datetime'
-import { Translate } from './translate'
+import { Translation } from './translation'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
 import { css, customElement, LitElement, html } from 'lit-element'
@@ -9,11 +9,11 @@ import { css, customElement, LitElement, html } from 'lit-element'
 export class Footer extends LitElement {
   direction = Direction.VERTICAL
 
-  @Inject(TYPES.TRANSLATE)
-  readonly translate!: Translate
+  @Inject(TYPES.TRANSLATION)
+  readonly translation!: Translation
 
   get coverageLiteral() {
-    return this.translate('_coverage')
+    return this.translation('_coverage')
   }
 
   get coverage() {

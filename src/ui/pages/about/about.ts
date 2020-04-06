@@ -1,4 +1,4 @@
-import { Translate } from '../../components/translate'
+import { Translation } from '../../components/translation'
 import { Markdown } from '../../../domain/markdown'
 import { Inject } from '../../../domain/types/inject'
 import { TYPES } from '../../../types'
@@ -6,15 +6,15 @@ import { customElement, LitElement, html } from 'lit-element'
 
 @customElement('app-about')
 export class About extends LitElement {
-  @Inject(TYPES.TRANSLATE)
-  readonly translate!: Translate
+  @Inject(TYPES.TRANSLATION)
+  translation!: Translation
 
   get title() {
-    return this.translate('about_title')
+    return this.translation('about_title')
   }
 
   get description() {
-    return Markdown.fromValue(this.translate('about_description'))
+    return Markdown.fromValue(this.translation('about_description'))
   }
 
   render() {

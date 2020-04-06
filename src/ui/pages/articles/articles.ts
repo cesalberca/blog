@@ -1,5 +1,5 @@
 import { TranslationService } from '../../../domain/translation-service'
-import { Translate } from '../../components/translate'
+import { Translation } from '../../components/translation'
 import { TYPES } from '../../../types'
 import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case'
 import { Article } from '../../../domain/articles/article'
@@ -17,8 +17,8 @@ export class Articles extends LitElement {
   @Inject(TYPES.STATE_MANAGER)
   readonly stateManager!: StateManager
 
-  @Inject(TYPES.TRANSLATE)
-  readonly translate!: Translate
+  @Inject(TYPES.TRANSLATION)
+  readonly translation!: Translation
 
   articles: Article[] = []
 
@@ -49,7 +49,7 @@ export class Articles extends LitElement {
   }
 
   get title() {
-    return this.translate('article_title')
+    return this.translation('article_title')
   }
 
   render() {

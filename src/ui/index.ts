@@ -1,3 +1,12 @@
+import './styles/base.css'
+import './styles/theme.css'
+import './styles/dark-theme.css'
+import './styles/light-theme.css'
+import './styles/code-theme.css'
+import './styles/variables-color.css'
+import './styles/variables-size.css'
+import './styles/variables-typograghy.css'
+
 import 'router-slot'
 import './cesalberca-blog'
 import './../container'

@@ -6,7 +6,7 @@ import { Id } from '../../../domain/id'
 import { Inject } from '../../../domain/types/inject'
 import { StateManager } from '../../../application/state/state-manager'
 import { Container } from '../../../container'
-import { css, customElement, LitElement, html } from 'lit-element'
+import { css, customElement, LitElement, html } from '/web_modules/lit-element'
 import { Article as ArticleObject } from '../../../domain/articles/article'
 
 @customElement('app-article')

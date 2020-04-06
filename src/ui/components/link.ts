@@ -1,4 +1,4 @@
-import { customElement, LitElement, property, html, css } from 'lit-element'
+import { customElement, LitElement, property, html, css } from '/web_modules/lit-element'
 
 @customElement('app-link')
 export class Link extends LitElement {
@@ -49,6 +49,6 @@ export class Link extends LitElement {
   }
 
   render() {
-    return html` <a :href="to" :target="target" v-on="$listeners"><slot></slot></a>`
+    return html` <a href="${this.to}" target="${this.target}"><slot></slot></a>`
   }
 }

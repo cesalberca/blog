@@ -1,6 +1,6 @@
 import Prism from 'prismjs'
 import { Markdown as MarkdownObject } from '../../domain/markdown'
-import { css, customElement, LitElement, property } from 'lit-element'
+import { css, customElement, LitElement, property } from '/web_modules/lit-element'
 
 @customElement('app-markdown')
 export class Markdown extends LitElement {

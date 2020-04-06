@@ -2,7 +2,7 @@ import { Theme } from './theme'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
 import { StateManager } from '../../application/state/state-manager'
-import { customElement, LitElement, css, html } from 'lit-element'
+import { customElement, LitElement, css, html } from '/web_modules/lit-element'
 import { classMap } from 'lit-html/directives/class-map'
 
 @customElement('app-theming')

@@ -2,7 +2,8 @@ import { Translation } from './translation'
 import { Direction } from './direction'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
-import { customElement, LitElement, property } from 'lit-element'
+import { customElement, LitElement, property, css, html } from '/web_modules/lit-element'
+import { classMap } from 'lit-html/directives/class-map'
 
 @customElement('app-links')
 export class Links extends LitElement {
@@ -10,7 +11,7 @@ export class Links extends LitElement {
   readonly translation!: Translation
 
   @property({ type: Number })
-  direction: Direction = Direction.HORIZONTAL
+  readonly direction: Direction = Direction.HORIZONTAL
 
   get links() {
     switch (this.direction) {
@@ -96,11 +97,10 @@ export class Links extends LitElement {
   }
 
   render() {
-    return html`<div :class="[links]" class="links">
-      <router-link to="/" exact class="home">{{ translations.home }}</router-link>
-      <!--<router-link to="/articles">{{ translations.articles }}</router-link>-->
-      <router-link to="/talks">{{ translations.talks }}</router-link>
-      <router-link to="/about">{{ translations.about }}</router-link>
+    return html`<div class="${classMap({ [this.links]: true, links: true })}">
+      <router-link to="/" exact class="home">${this.translations.home}</router-link>
+      <router-link to="/talks">${this.translations.talks}</router-link>
+      <router-link to="/about">${this.translations.about}</router-link>
     </div>`
   }
 }

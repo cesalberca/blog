@@ -1,7 +1,8 @@
 import { Direction } from './direction'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
-import { css, customElement, LitElement, html } from 'lit-element'
+import { css, customElement, LitElement, html } from '/web_modules/lit-element'
+import { classMap } from 'lit-html/directives/class-map'
 
 @customElement('app-navbar')
 export class Navbar extends LitElement {
@@ -176,8 +177,8 @@ export class Navbar extends LitElement {
           type="button"
           aria-label="Menu"
           aria-controls="navigation"
-          :class="{ 'is-active': isActive }"
-          @click="isActive = !isActive"
+          class="${classMap({ 'is-active': this.isActive })}"
+          @click="${() => (this.isActive = !this.isActive)}"
         >
           <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -186,16 +187,20 @@ export class Navbar extends LitElement {
 
         <app-options class="options"></app-options>
 
-        <div class="backdrop" :class="{ 'has-backdrop': isActive }">
+        <div class="backdrop" class="${classMap({ 'has-backdrop': this.isActive })}">
           <app-links :direction="Direction.VERTICAL" class="mobile-links"></app-links>
         </div>
-        <div class="veil" :class="{ 'show-veil': isActive }" @click="isActive = false"></div>
+        <div
+          class="veil"
+          class="${classMap({ 'show-veil': this.isActive })}"
+          @click="${() => (this.isActive = false)}"
+        ></div>
       </nav>
 
       <nav class="desktop-navigation">
         <div class="wrapper">
           <app-links></app-links>
-          <app-options class="options" />
+          <app-options class="options"></app-options>
         </div>
       </nav>
     </header>`

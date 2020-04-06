@@ -12,8 +12,15 @@
     "emitDecoratorMetadata": true,
     "sourceMap": true,
     "resolveJsonModule": true,
-    "types": ["jest", "reflect-metadata"],
-    "lib": ["esnext", "dom", "dom.iterable"]
+    "types": ["jest", "reflect-metadata", "node"],
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "paths": {
+      "/web_modules/*.js": [
+        "node_modules/@types/*",
+        "node_modules/*",
+        "web_modules/*.js"
+      ]
+    }
   },
   "exclude": ["node_modules"]
 }

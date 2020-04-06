@@ -7,7 +7,7 @@ import { Id } from '../../../domain/id'
 import { Inject } from '../../../domain/types/inject'
 import { StateManager } from '../../../application/state/state-manager'
 import { container, Container } from '../../../container'
-import { customElement, html, LitElement } from 'lit-element'
+import { customElement, html, LitElement } from '/web_modules/lit-element'
 
 @customElement('app-articles')
 export class Articles extends LitElement {

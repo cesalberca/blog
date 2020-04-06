@@ -3,7 +3,7 @@ import { Datetime } from '../../domain/datetime'
 import { Translation } from './translation'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
-import { css, customElement, LitElement, html } from 'lit-element'
+import { css, customElement, LitElement, html } from '/web_modules/lit-element'
 
 @customElement('app-footer')
 export class Footer extends LitElement {

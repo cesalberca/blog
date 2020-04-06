@@ -8,7 +8,7 @@ import { StateManager } from '../../../application/state/state-manager'
 import { TranslationService } from '../../../domain/translation-service'
 import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case'
 import { container } from '../../../container'
-import { customElement, LitElement, html, css } from 'lit-element'
+import { customElement, LitElement, html, css } from '/web_modules/lit-element'
 import { unsafeHTML } from 'lit-html/directives/unsafe-html'
 
 @customElement('app-home')
@@ -26,6 +26,13 @@ export class Home extends LitElement {
   me = me
 
   async onLocaleChange() {
+    this.articles = await container
+      .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
+      .execute()
+  }
+
+  async connectedCallback(): Promise<void> {
+    super.connectedCallback()
     this.articles = await container
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
@@ -124,12 +131,12 @@ export class Home extends LitElement {
       </div>
       <app-page>
         <h2 class="articles">${this.articlesTitle}</h2>
-        <app-article-excerpt
-          v-for="article in articles"
-          :key="article.id.slug"
-          :excerpt="article.getExcerpt()"
-          @on-action="navigateToArticleById"
-        />
+        ${this.articles.map(article => {
+          return `<app-article-excerpt
+          .excerpt="${article.getExcerpt()}"
+          @on-action="${this.navigateToArticleById}"
+        ></app-article-excerpt>`
+        })}
       </app-page>
     </main>`
   }

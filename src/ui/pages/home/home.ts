@@ -122,15 +122,15 @@ export class Home extends LitElement {
           <img class="photo" .src="${me}" alt="César Alberca" />
         </div>
       </div>
-      <x-page>
+      <app-page>
         <h2 class="articles">${this.articlesTitle}</h2>
-        <x-article-excerpt
+        <app-article-excerpt
           v-for="article in articles"
           :key="article.id.slug"
           :excerpt="article.getExcerpt()"
           @on-action="navigateToArticleById"
         />
-      </x-page>
+      </app-page>
     </main>`
   }
 }

@@ -73,16 +73,16 @@ export class Footer extends LitElement {
   render() {
     return html` <footer class="footer">
       <div class="wrapper">
-        <x-links :direction="direction" class="links" />
+        <app-links :direction="direction" class="links" />
         <section class="info">
           <small class="copy"
             >© {{ todaysYear }} ‒ Made with
-            <x-link to="https://www.typescriptlang.org/" external>TypeScript</x-link>,
-            <x-link to="https://wikipedia.org/wiki/SOLID" external>SOLID</x-link> and
-            <x-link
+            <app-link to="https://www.typescriptlang.org/" external>TypeScript</app-link>,
+            <app-link to="https://wikipedia.org/wiki/SOLID" external>SOLID</app-link> and
+            <app-link
               to="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
               external
-              >Clean Architecture</x-link
+              >Clean Architecture</app-link
             >.</small
           >
           <small class="coverage"

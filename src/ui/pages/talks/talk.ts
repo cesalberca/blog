@@ -1,4 +1,4 @@
-import { css, customElement, LitElement, property } from 'lit-element'
+import { css, customElement, html, LitElement, property } from 'lit-element'
 import { Translation } from '../../components/translation'
 import { TYPES } from '../../../types'
 import { Inject } from 'inversify-props'
@@ -37,28 +37,28 @@ export class Talk extends LitElement {
 
   render() {
     return html` <div class="talk">
-      <x-talk-section :title="translations.title" :description="detail.title" />
-      <x-talk-section :title="translations.abstract"
+      <app-talk-section :title="translations.title" :description="detail.title" />
+      <app-talk-section :title="translations.abstract"
         ><div v-html="detail.abstract"></div
-      ></x-talk-section>
-      <x-talk-section :title="translations.topics" :description="detail.topics" />
-      <x-talk-section :title="translations.length" :description="detail.length" />
-      <x-talk-section :title="translations.difficulty" :description="detail.difficulty" />
-      <x-talk-section v-if="detail.events.length" :title="translations.events">
+      ></app-talk-section>
+      <app-talk-section :title="translations.topics" :description="detail.topics" />
+      <app-talk-section :title="translations.length" :description="detail.length" />
+      <app-talk-section :title="translations.difficulty" :description="detail.difficulty" />
+      <app-talk-section v-if="detail.events.length" :title="translations.events">
         <div v-for="event in detail.events" :key="event.name">
           <p>{{ event.name }} – <small>{{ event.datetime }}</small></p>
           <div class="links">
-            <x-link :to="event.slides" :external="true">{{ translations.slides }}</x-link>
-            <x-link :to="event.code" :external="true">{{ translations.code }}</x-link>
-            <x-link v-if="event.demo.has()" :to="event.demo.getOrElse('')" :external="true"
-              >{{ translations.demo }}</x-link
+            <app-link :to="event.slides" :external="true">{{ translations.slides }}</app-link>
+            <app-link :to="event.code" :external="true">{{ translations.code }}</app-link>
+            <app-link v-if="event.demo.has()" :to="event.demo.getOrElse('')" :external="true"
+              >{{ translations.demo }}</app-link
             >
-            <x-link v-if="event.video" :to="event.video" :external="true"
-              >{{ translations.video }}</x-link
+            <app-link v-if="event.video" :to="event.video" :external="true"
+              >{{ translations.video }}</app-link
             >
           </div>
         </div>
-      </x-talk-section>
+      </app-talk-section>
     </div>`
   }
 }

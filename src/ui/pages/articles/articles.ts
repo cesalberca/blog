@@ -6,8 +6,8 @@ import { Article } from '../../../domain/articles/article'
 import { Id } from '../../../domain/id'
 import { Inject } from '../../../domain/types/inject'
 import { StateManager } from '../../../application/state/state-manager'
-import { Container } from '../../../container'
-import { customElement, LitElement, html } from 'lit-element'
+import { container, Container } from '../../../container'
+import { customElement, html, LitElement } from 'lit-element'
 
 @customElement('app-articles')
 export class Articles extends LitElement {
@@ -30,7 +30,7 @@ export class Articles extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback()
-    Container.instance()
+    container
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
       .then(x => {
@@ -39,13 +39,14 @@ export class Articles extends LitElement {
   }
 
   navigateToArticleById(id: Id) {
-    this.$router.push({
-      name: 'article',
-      params: {
+    history.pushState(
+      {
         id: id.value,
         locale: this.translationService.toString(this.stateManager.state.locale)
-      }
-    })
+      },
+      '',
+      '/article'
+    )
   }
 
   get title() {
@@ -55,7 +56,7 @@ export class Articles extends LitElement {
   render() {
     return html`<div>
       <h1>${this.title}</h1>
-      <x-article-excerpt
+      <app-article-excerpt
         v-for="article in articles"
         :key="article.id.slug"
         :excerpt="article.getExcerpt()"

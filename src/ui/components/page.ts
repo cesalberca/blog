@@ -38,7 +38,7 @@ export class Page extends LitElement {
           <slot />
         </div>
       </div>
-      <x-footer></x-footer>
+      <app-footer></app-footer>
     </div>`
   }
 }

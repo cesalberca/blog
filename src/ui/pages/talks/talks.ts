@@ -24,12 +24,12 @@ export class Talks extends LitElement {
   }
 
   render() {
-    return html`<x-page>
+    return html`<app-page>
       <h1>${this.title}</h1>
       <div v-for="talk in talks" :key="talk.id.value">
-        <x-talk :detail="talkDetail.fromTalk(talk)" />
+        <app-talk :detail="talkDetail.fromTalk(talk)"></app-talk>
         <hr />
       </div>
-    </x-page>`
+    </app-page>`
   }
 }

@@ -104,19 +104,19 @@ export class Article extends LitElement {
 
   render() {
     return html` <article v-if="article" class="article">
-      <x-hero :image="article.image" class="hero">
+      <app-hero :image="article.image" class="hero">
         <h1 class="title">{{ article.title }}</h1>
-      </x-hero>
-      <x-page>
+      </app-hero>
+      <app-page>
         <header class="header">
           <span class="date">{{ date }}</span>
           <span class="dash">—</span>
           <span class="time">{{ article.getReadingTime().minutes }} {{ minutes }}</span>
-          <x-tag class="locale">{{ articleLocale }}</x-tag>
+          <app-tag class="locale">{{ articleLocale }}</app-tag>
         </header>
-        <x-markdown class="article" :body="body"></x-markdown>
-        <x-social-links class="social-links" :body="article.getSummary()" />
-      </x-page>
+        <app-markdown class="article" :body="body"></app-markdown>
+        <app-social-links class="social-links" :body="article.getSummary()" />
+      </app-page>
     </article>`
   }
 }

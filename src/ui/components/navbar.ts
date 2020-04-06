@@ -184,18 +184,18 @@ export class Navbar extends LitElement {
           </span>
         </button>
 
-        <x-options class="options" />
+        <app-options class="options"></app-options>
 
         <div class="backdrop" :class="{ 'has-backdrop': isActive }">
-          <x-links :direction="Direction.VERTICAL" class="mobile-links"></x-links>
+          <app-links :direction="Direction.VERTICAL" class="mobile-links"></app-links>
         </div>
         <div class="veil" :class="{ 'show-veil': isActive }" @click="isActive = false"></div>
       </nav>
 
       <nav class="desktop-navigation">
         <div class="wrapper">
-          <x-links></x-links>
-          <x-options class="options" />
+          <app-links></app-links>
+          <app-options class="options" />
         </div>
       </nav>
     </header>`

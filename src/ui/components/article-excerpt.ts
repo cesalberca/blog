@@ -2,7 +2,7 @@ import { Translation } from './translation'
 import { Article } from '../../domain/articles/article'
 import { TYPES } from '../../types'
 import { Inject } from '../../domain/types/inject'
-import { css, customElement, LitElement, property } from 'lit-element'
+import { css, customElement, html, LitElement, property } from 'lit-element'
 
 @customElement('app-article-excerpt')
 export class ArticleExcerpt extends LitElement {
@@ -47,7 +47,7 @@ export class ArticleExcerpt extends LitElement {
   }
 
   render() {
-    return html`<x-link class="excerpt" tabindex="0" @click="onAction" @keydown.enter="onAction">
+    return html`<app-link class="excerpt" tabindex="0" @click="onAction" @keydown.enter="onAction">
       <h3>{{ excerpt.title }}</h3>
       <div class="slugline">
         <span>{{ excerpt.date }}</span>
@@ -55,6 +55,6 @@ export class ArticleExcerpt extends LitElement {
         <span>{{ excerpt.readingTime.minutes }} {{ minutes }}</span>
       </div>
       <p v-html="excerpt.body"></p>
-    </x-link>`
+    </app-link>`
   }
 }

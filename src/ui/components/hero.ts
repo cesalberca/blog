@@ -1,4 +1,4 @@
-import { css, customElement, LitElement, property, html } from '/web_modules/lit-element'
+import { css, customElement, LitElement, property, html } from '/web_modules/lit-element.js'
 
 @customElement('app-hero')
 export class Hero extends LitElement {

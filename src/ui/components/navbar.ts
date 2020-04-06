@@ -1,7 +1,7 @@
 import { Direction } from './direction'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
-import { css, customElement, LitElement, html } from '/web_modules/lit-element'
+import { css, customElement, LitElement, html } from '/web_modules/lit-element.js'
 import { classMap } from 'lit-html/directives/class-map'
 
 @customElement('app-navbar')

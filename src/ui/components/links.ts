@@ -2,7 +2,7 @@ import { Translation } from './translation'
 import { Direction } from './direction'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
-import { customElement, LitElement, property, css, html } from '/web_modules/lit-element'
+import { customElement, LitElement, property, css, html } from '/web_modules/lit-element.js'
 import { classMap } from 'lit-html/directives/class-map'
 
 @customElement('app-links')

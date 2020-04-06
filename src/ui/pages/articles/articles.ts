@@ -6,8 +6,8 @@ import { Article } from '../../../domain/articles/article'
 import { Id } from '../../../domain/id'
 import { Inject } from '../../../domain/types/inject'
 import { StateManager } from '../../../application/state/state-manager'
-import { container, Container } from '../../../container'
-import { customElement, html, LitElement } from '/web_modules/lit-element'
+import { container } from '../../../container'
+import { customElement, html, LitElement } from '/web_modules/lit-element.js'
 
 @customElement('app-articles')
 export class Articles extends LitElement {
@@ -23,7 +23,7 @@ export class Articles extends LitElement {
   articles: Article[] = []
 
   async onLocaleChange() {
-    this.articles = await Container.instance()
+    this.articles = await container
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
   }

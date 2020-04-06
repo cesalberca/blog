@@ -1,4 +1,4 @@
-import { css, customElement, html, LitElement, property } from '/web_modules/lit-element'
+import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
 import { Translation } from '../../components/translation'
 import { TYPES } from '../../../types'
 import { Inject } from 'inversify-props'

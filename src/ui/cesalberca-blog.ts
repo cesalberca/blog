@@ -1,4 +1,4 @@
-import { css, customElement, html, LitElement, PropertyValues, query } from '/web_modules/lit-element'
+import { css, customElement, html, LitElement, PropertyValues, query } from '/web_modules/lit-element.js'
 import { RouterSlot } from 'router-slot'
 
 @customElement('cesalberca-blog')

@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es2018",
     "module": "esnext",
+    "outDir": "dist",
     "importHelpers": true,
     "moduleResolution": "node",
     "strict": true,
@@ -14,13 +15,15 @@
     "resolveJsonModule": true,
     "types": ["jest", "reflect-metadata", "node"],
     "lib": ["esnext", "dom", "dom.iterable"],
+    "baseUrl": ".",
     "paths": {
       "/web_modules/*.js": [
         "node_modules/@types/*",
         "node_modules/*",
         "web_modules/*.js"
       ]
-    }
+    },
+    "allowSyntheticDefaultImports": true
   },
   "exclude": ["node_modules"]
 }

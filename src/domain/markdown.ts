@@ -1,4 +1,4 @@
-import marked from 'marked'
+import marked from '/web_modules/marked.js'
 
 export class Markdown {
   private readonly renderer = new marked.Renderer()
@@ -21,7 +21,7 @@ export class Markdown {
   }
 
   private configureRenderer() {
-    this.renderer.link = (href, title, text) => {
+    this.renderer.link = (href: string, title: string, text: string) => {
       const external = /^https?:\/\/.+$/.test(href)
       const newWindow = external || title === 'newWindow'
       let out = `<a href="${href}"`

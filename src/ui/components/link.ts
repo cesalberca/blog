@@ -1,4 +1,4 @@
-import { customElement, LitElement, property, html, css } from '/web_modules/lit-element'
+import { customElement, LitElement, property, html, css } from '/web_modules/lit-element.js'
 
 @customElement('app-link')
 export class Link extends LitElement {

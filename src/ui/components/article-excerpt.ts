@@ -2,7 +2,7 @@ import { Translation } from './translation'
 import { Article } from '../../domain/articles/article'
 import { TYPES } from '../../types'
 import { Inject } from '../../domain/types/inject'
-import { css, customElement, html, LitElement, property } from '/web_modules/lit-element'
+import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
 
 @customElement('app-article-excerpt')
 export class ArticleExcerpt extends LitElement {

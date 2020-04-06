@@ -8,7 +8,7 @@ import { Injectable } from '../../../domain/types/injectable'
 @Injectable()
 export class TalkDetail {
   constructor(
-    @Inject(TYPES.TRANSLATION) private readonly translate: Translation,
+    @Inject(TYPES.TRANSLATION) private readonly translation: Translation,
     @Inject(TYPES.DIFFICULTY_SERVICE) private readonly difficultyService: DifficultyService
   ) {}
 

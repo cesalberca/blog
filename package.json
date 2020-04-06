@@ -7,7 +7,7 @@
   "homepage": "https://www.cesalberca.es",
   "scripts": {
     "prepare": "snowpack",
-    "start": "servor src/ui/index.html --reload",
+    "start": "servor dist --reload",
     "build": "tsc",
     "deploy": "./build.sh deploy",
     "lint": "npm run lint:js && npm run lint:css",

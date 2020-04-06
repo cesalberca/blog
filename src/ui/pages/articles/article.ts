@@ -5,9 +5,9 @@ import { GetArticleUseCase } from '../../../application/use-cases/get-article-us
 import { Id } from '../../../domain/id'
 import { Inject } from '../../../domain/types/inject'
 import { StateManager } from '../../../application/state/state-manager'
-import { Container } from '../../../container'
-import { css, customElement, LitElement, html } from '/web_modules/lit-element'
+import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
 import { Article as ArticleObject } from '../../../domain/articles/article'
+import { container } from '../../../container'
 
 @customElement('app-article')
 export class Article extends LitElement {
@@ -26,11 +26,9 @@ export class Article extends LitElement {
   readonly window!: Window
 
   async onLocaleChange() {
-    this.article = await Container.instance()
-      .get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE)
-      .execute({
-        id: Id.fromValue(this.$route.params.id)
-      })
+    this.article = await container.get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE).execute({
+      id: Id.fromValue('a')
+    })
   }
 
   get date() {
@@ -96,7 +94,7 @@ export class Article extends LitElement {
         margin-bottom: var(--big-size);
       }
 
-      .article ::v-deep p {
+      .article p {
         margin-bottom: var(--medium-size);
       }
     `

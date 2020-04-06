@@ -8,7 +8,7 @@ import { StateManager } from '../../../application/state/state-manager'
 import { TranslationService } from '../../../domain/translation-service'
 import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case'
 import { container } from '../../../container'
-import { customElement, LitElement, html, css } from '/web_modules/lit-element'
+import { customElement, LitElement, html, css } from '/web_modules/lit-element.js'
 import { unsafeHTML } from 'lit-html/directives/unsafe-html'
 
 @customElement('app-home')

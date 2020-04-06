@@ -4,7 +4,7 @@ import { TYPES } from '../../../types'
 import { Talk } from '../../../domain/talks/talk'
 import { Inject } from '../../../domain/types/inject'
 import { StateManager } from '../../../application/state/state-manager'
-import { customElement, LitElement, html } from '/web_modules/lit-element'
+import { customElement, LitElement, html } from '/web_modules/lit-element.js'
 
 @customElement('app-talks')
 export class Talks extends LitElement {

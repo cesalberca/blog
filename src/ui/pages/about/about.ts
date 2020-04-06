@@ -2,7 +2,7 @@ import { Translation } from '../../components/translation'
 import { Markdown } from '../../../domain/markdown'
 import { Inject } from '../../../domain/types/inject'
 import { TYPES } from '../../../types'
-import { customElement, LitElement, html } from '/web_modules/lit-element'
+import { customElement, LitElement, html } from '/web_modules/lit-element.js'
 
 @customElement('app-about')
 export class About extends LitElement {

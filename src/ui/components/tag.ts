@@ -1,4 +1,4 @@
-import { css, customElement, LitElement, html } from '/web_modules/lit-element'
+import { css, customElement, LitElement, html } from '/web_modules/lit-element.js'
 
 @customElement('app-tag')
 export class Tag extends LitElement {

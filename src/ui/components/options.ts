@@ -4,7 +4,7 @@ import { Locale } from '../../domain/language/locale'
 import { Inject } from '../../domain/types/inject'
 import { TYPES } from '../../types'
 import { StateManager } from '../../application/state/state-manager'
-import { css, customElement, html, LitElement } from '/web_modules/lit-element'
+import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
 
 @customElement('app-options')
 export class Options extends LitElement {

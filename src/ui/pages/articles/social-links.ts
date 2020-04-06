@@ -3,7 +3,8 @@ import { Translation } from '../../components/translation'
 import { Inject } from '../../../domain/types/inject'
 import { TYPES } from '../../../types'
 import { StateManager } from '../../../application/state/state-manager'
-import { customElement, LitElement, property } from '/web_modules/lit-element'
+import { css, customElement, LitElement, property } from '/web_modules/lit-element.js'
+import { html } from '/web_modules/lit-html.js'
 
 @customElement('app-social-links')
 export class SocialLinks extends LitElement {

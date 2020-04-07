@@ -1,8 +1,8 @@
-import { TwitterSharerService } from '../../../domain/articles/twitter-sharer-service'
-import { Translation } from '../../components/translation'
-import { Inject } from '../../../domain/types/inject'
-import { TYPES } from '../../../types'
-import { StateManager } from '../../../application/state/state-manager'
+import { TwitterSharerService } from '../../../domain/articles/twitter-sharer-service.js'
+import { Translation } from '../../components/translation.js'
+import { Inject } from '../../../domain/types/inject.js'
+import { TYPES } from '../../../types.js'
+import { StateManager } from '../../../application/state/state-manager.js'
 import { css, customElement, LitElement, property } from '/web_modules/lit-element.js'
 import { html } from '/web_modules/lit-html.js'
 

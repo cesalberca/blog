@@ -1,5 +1,5 @@
 import { css, customElement, html, LitElement, PropertyValues, query } from '/web_modules/lit-element.js'
-import { RouterSlot } from 'router-slot'
+import { RouterSlot } from '/web_modules/router-slot.js'
 
 @customElement('cesalberca-blog')
 export class CesalbercaBlog extends LitElement {
@@ -19,11 +19,11 @@ export class CesalbercaBlog extends LitElement {
     this.routerSlot.add([
       {
         path: '/about',
-        component: () => import('./pages/about-page')
+        component: () => import('./pages/about-page.js')
       },
       {
         path: '/',
-        component: () => import('./pages/home-page')
+        component: () => import('./pages/home-page.js')
       },
       {
         path: '**',

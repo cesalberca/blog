@@ -1,8 +1,8 @@
-import { Direction } from './direction'
-import { Inject } from '../../domain/types/inject'
-import { TYPES } from '../../types'
+import { Direction } from './direction.js'
+import { Inject } from '../../domain/types/inject.js'
+import { TYPES } from '../../types.js'
 import { css, customElement, LitElement, html } from '/web_modules/lit-element.js'
-import { classMap } from 'lit-html/directives/class-map'
+import { classMap } from '/web_modules/lit-html/directives/class-map.js'
 
 @customElement('app-navbar')
 export class Navbar extends LitElement {

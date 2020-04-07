@@ -1,8 +1,8 @@
 import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
-import { Translation } from '../../components/translation'
-import { TYPES } from '../../../types'
-import { Inject } from 'inversify-props'
-import { TalkDetail } from './talk-detail'
+import { Translation } from '../../components/translation.js'
+import { TYPES } from '../../../types.js'
+import { TalkDetail } from './talk-detail.js'
+import { Inject } from '../../../domain/types/inject.js'
 
 @customElement('app-talk')
 export class Talk extends LitElement {

@@ -1,5 +1,5 @@
-import { Language } from './language'
-import { Injectable } from '../types/injectable'
+import { Language } from './language.js'
+import { Injectable } from '../types/injectable.js'
 
 @Injectable()
 export class LanguageService {

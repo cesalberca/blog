@@ -1,13 +1,13 @@
-import { TranslationService } from '../../../domain/translation-service'
-import { Translation } from '../../components/translation'
-import { TYPES } from '../../../types'
-import { GetArticleUseCase } from '../../../application/use-cases/get-article-use-case'
-import { Id } from '../../../domain/id'
-import { Inject } from '../../../domain/types/inject'
-import { StateManager } from '../../../application/state/state-manager'
+import { TranslationService } from '../../../domain/translation-service.js'
+import { Translation } from '../../components/translation.js'
+import { TYPES } from '../../../types.js'
+import { GetArticleUseCase } from '../../../application/use-cases/get-article-use-case.js'
+import { Id } from '../../../domain/id.js'
+import { Inject } from '../../../domain/types/inject.js'
+import { StateManager } from '../../../application/state/state-manager.js'
 import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
-import { Article as ArticleObject } from '../../../domain/articles/article'
-import { container } from '../../../container'
+import { Article as ArticleObject } from '../../../domain/articles/article.js'
+import { container } from '../../../container.js'
 
 @customElement('app-article')
 export class Article extends LitElement {

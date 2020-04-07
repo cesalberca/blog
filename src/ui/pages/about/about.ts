@@ -1,7 +1,7 @@
-import { Translation } from '../../components/translation'
-import { Markdown } from '../../../domain/markdown'
-import { Inject } from '../../../domain/types/inject'
-import { TYPES } from '../../../types'
+import { Translation } from '../../components/translation.js'
+import { Markdown } from '../../../domain/markdown.js'
+import { Inject } from '../../../domain/types/inject.js'
+import { TYPES } from '../../../types.js'
 import { customElement, LitElement, html } from '/web_modules/lit-element.js'
 
 @customElement('app-about')

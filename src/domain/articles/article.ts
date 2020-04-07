@@ -1,9 +1,9 @@
-import { Id } from '../id'
-import { Markdown } from '../markdown'
-import { Datetime } from '../datetime'
-import { Length } from '../length'
-import { Image } from './image'
-import { Locale } from '../language/locale'
+import { Id } from '../id.js'
+import { Markdown } from '../markdown.js'
+import { Datetime } from '../datetime.js'
+import { Length } from '../length.js'
+import { Image } from './image.js'
+import { Locale } from '../language/locale.js'
 
 export class Article {
   private static readonly SUMMARY_SEPARATOR = '<!-- more -->'

@@ -1,9 +1,9 @@
-import { DifficultyService } from '../../../domain/talks/difficulty-service'
-import { Talk } from '../../../domain/talks/talk'
-import { Inject } from '../../../domain/types/inject'
-import { TYPES } from '../../../types'
-import { Translation } from '../../components/translation'
-import { Injectable } from '../../../domain/types/injectable'
+import { DifficultyService } from '../../../domain/talks/difficulty-service.js'
+import { Talk } from '../../../domain/talks/talk.js'
+import { Inject } from '../../../domain/types/inject.js'
+import { TYPES } from '../../../types.js'
+import { Translation } from '../../components/translation.js'
+import { Injectable } from '../../../domain/types/injectable.js'
 
 @Injectable()
 export class TalkDetail {

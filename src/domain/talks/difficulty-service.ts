@@ -1,6 +1,6 @@
-import { Difficulty } from './difficulty'
-import { TranslationError } from '../language/translation-error'
-import { Injectable } from '../types/injectable'
+import { Difficulty } from './difficulty.js'
+import { TranslationError } from '../language/translation-error.js'
+import { Injectable } from '../types/injectable.js'
 
 @Injectable()
 export class DifficultyService {

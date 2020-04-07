@@ -1,9 +1,9 @@
-import { Theme } from '../theme/theme'
-import { Translation } from './translation'
-import { Locale } from '../../domain/language/locale'
-import { Inject } from '../../domain/types/inject'
-import { TYPES } from '../../types'
-import { StateManager } from '../../application/state/state-manager'
+import { Theme } from '../theme/theme.js'
+import { Translation } from './translation.js'
+import { Locale } from '../../domain/language/locale.js'
+import { Inject } from '../../domain/types/inject.js'
+import { TYPES } from '../../types.js'
+import { StateManager } from '../../application/state/state-manager.js'
 import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
 
 @customElement('app-options')

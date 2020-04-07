@@ -1,11 +1,11 @@
-import { Command } from '../../domain/types/command'
-import { TranslationService } from '../../domain/translation-service'
-import { Id } from '../../domain/id'
-import { Injectable } from '../../domain/types/injectable'
-import { StateManager } from '../../application/state/state-manager'
-import { TYPES } from '../../types'
-import { Inject } from '../../domain/types/inject'
-import { EncoderService } from '../../domain/encoder-service'
+import { Command } from '../../domain/types/command.js'
+import { TranslationService } from '../../domain/translation-service.js'
+import { Id } from '../../domain/id.js'
+import { Injectable } from '../../domain/types/injectable.js'
+import { StateManager } from '../../application/state/state-manager.js'
+import { TYPES } from '../../types.js'
+import { Inject } from '../../domain/types/inject.js'
+import { EncoderService } from '../../domain/encoder-service.js'
 
 @Injectable()
 export class NavigateToArticle implements Command<void, Id> {

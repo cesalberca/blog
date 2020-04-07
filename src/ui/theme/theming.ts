@@ -1,12 +1,12 @@
-import { Theme } from './theme'
-import { Inject } from '../../domain/types/inject'
-import { TYPES } from '../../types'
-import { StateManager } from '../../application/state/state-manager'
+import { Theme } from './theme.js'
+import { Inject } from '../../domain/types/inject.js'
+import { TYPES } from '../../types.js'
+import { StateManager } from '../../application/state/state-manager.js'
 import { customElement, LitElement, css, html } from '/web_modules/lit-element.js'
-import { classMap } from 'lit-html/directives/class-map'
+import { classMap } from '/web_modules/lit-html/directives/class-map.js'
 
 @customElement('app-theming')
-export class XTheming extends LitElement {
+export class Theming extends LitElement {
   @Inject(TYPES.STATE_MANAGER)
   readonly stateManager!: StateManager
 

@@ -1,15 +1,15 @@
-import { Datetime } from '../../domain/datetime'
-import { ArticleDto } from './article-dto'
-import { Locale } from '../../domain/language/locale'
-import { Article } from '../../domain/articles/article'
-import { ArticlesRepository } from '../../domain/articles/articles-repository'
-import { Id } from '../../domain/id'
-import { Markdown } from '../../domain/markdown'
-import { TranslationService } from '../../domain/translation-service'
-import { Injectable } from '../../domain/types/injectable'
-import { TYPES } from '../../types'
-import { Inject } from '../../domain/types/inject'
-import { articles } from '../../domain/articles/files/articles'
+import { Datetime } from '../../domain/datetime.js'
+import { ArticleDto } from './article-dto.js'
+import { Locale } from '../../domain/language/locale.js'
+import { Article } from '../../domain/articles/article.js'
+import { ArticlesRepository } from '../../domain/articles/articles-repository.js'
+import { Id } from '../../domain/id.js'
+import { Markdown } from '../../domain/markdown.js'
+import { TranslationService } from '../../domain/translation-service.js'
+import { Injectable } from '../../domain/types/injectable.js'
+import { TYPES } from '../../types.js'
+import { Inject } from '../../domain/types/inject.js'
+import { articles } from './articles.js'
 
 @Injectable()
 export class ArticlesFileRepository implements ArticlesRepository {
@@ -22,15 +22,15 @@ export class ArticlesFileRepository implements ArticlesRepository {
 
     try {
       article = await import(
-        `../../domain/articles/files/${this.translationService.toString(locale)}/${id.value}.md`
+        `./${this.translationService.toString(locale)}/${id.value}.md`
       )
     } catch (e) {
       try {
         const locale = this.translationService.toString(Locale.DEFAULT)
-        article = await import(`../../domain/articles/files/${locale}/${id.value}.md`)
+        article = await import(`./${locale}/${id.value}.md`)
       } catch (e) {
         const spanishLocale = this.translationService.toString(Locale.ES)
-        article = await import(`../../domain/articles/files/${spanishLocale}/${id.value}.md`)
+        article = await import(`./${spanishLocale}/${id.value}.md`)
       }
     }
 
@@ -40,7 +40,7 @@ export class ArticlesFileRepository implements ArticlesRepository {
       date: Datetime.fromString(article.attributes.date),
       title: article.attributes.title,
       locale: this.translationService.toLocale(article.attributes.locale),
-      image: require(`../../../public/assets/${article.attributes.image}`)
+      image: await import(`../../../public/assets/${article.attributes.image}`)
     })
   }
 

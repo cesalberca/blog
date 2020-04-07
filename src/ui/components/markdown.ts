@@ -1,5 +1,5 @@
-import Prism from 'prismjs'
-import { Markdown as MarkdownObject } from '../../domain/markdown'
+import Prism from '/web_modules/prismjs.js'
+import { Markdown as MarkdownObject } from '../../domain/markdown.js'
 import { css, customElement, LitElement, property, html } from '/web_modules/lit-element.js'
 
 @customElement('app-markdown')

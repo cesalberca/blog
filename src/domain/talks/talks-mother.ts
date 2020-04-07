@@ -1,9 +1,9 @@
-import { Talk } from './talk'
-import { Id } from '../id'
-import { Language } from './language'
-import { Difficulty } from './difficulty'
-import { Length } from '../length'
-import { Markdown } from '../markdown'
+import { Talk } from './talk.js'
+import { Id } from '../id.js'
+import { Language } from './language.js'
+import { Difficulty } from './difficulty.js'
+import { Length } from '../length.js'
+import { Markdown } from '../markdown.js'
 
 export class TalksMother {
   static getTalksGiven() {

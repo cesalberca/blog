@@ -1,5 +1,5 @@
-import { Datetime } from '../datetime'
-import { Maybe } from '../utils/maybe'
+import { Datetime } from '../datetime.js'
+import { Maybe } from '../utils/maybe.js'
 
 export class Event {
   constructor(

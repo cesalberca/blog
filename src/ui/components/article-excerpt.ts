@@ -1,7 +1,7 @@
-import { Translation } from './translation'
-import { Article } from '../../domain/articles/article'
-import { TYPES } from '../../types'
-import { Inject } from '../../domain/types/inject'
+import { Translation } from './translation.js'
+import { Article } from '../../domain/articles/article.js'
+import { TYPES } from '../../types.js'
+import { Inject } from '../../domain/types/inject.js'
 import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
 
 @customElement('app-article-excerpt')

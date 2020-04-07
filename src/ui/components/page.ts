@@ -1,6 +1,6 @@
-import { Inject } from '../../domain/types/inject'
-import { TYPES } from '../../types'
-import { StateManager } from '../../application/state/state-manager'
+import { Inject } from '../../domain/types/inject.js'
+import { TYPES } from '../../types.js'
+import { StateManager } from '../../application/state/state-manager.js'
 import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
 
 @customElement('app-page')

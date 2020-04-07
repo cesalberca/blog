@@ -1,11 +1,11 @@
-import { Markdown } from '../markdown'
-import { Length } from '../length'
-import { Difficulty } from './difficulty'
-import { Language } from './language'
-import { Topic } from './topic'
-import { Reference } from './reference'
-import { Id } from '../id'
-import { Event } from './event'
+import { Markdown } from '../markdown.js'
+import { Length } from '../length.js'
+import { Difficulty } from './difficulty.js'
+import { Language } from './language.js'
+import { Topic } from './topic.js'
+import { Reference } from './reference.js'
+import { Id } from '../id.js'
+import { Event } from './event.js'
 
 export class Talk {
   constructor(

@@ -1,8 +1,8 @@
-import { Translation } from './translations/translation'
-import { es } from './translations/es'
-import { en } from './translations/en'
-import { Locale } from './locale'
-import { Injectable } from '../types/injectable'
+import { Translation } from './translations/translation.js'
+import { es } from './translations/es.js'
+import { en } from './translations/en.js'
+import { Locale } from './locale.js'
+import { Injectable } from '../types/injectable.js'
 
 @Injectable()
 export class Translator {

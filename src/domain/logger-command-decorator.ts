@@ -1,6 +1,6 @@
-import { Command } from './types/command'
-import { Logger } from './logger'
-import { Injectable } from './types/injectable'
+import { Command } from './types/command.js'
+import { Logger } from './logger.js'
+import { Injectable } from './types/injectable.js'
 
 @Injectable()
 export class LoggerCommandDecorator implements Command<unknown, unknown> {

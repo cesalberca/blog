@@ -1,12 +1,12 @@
-import { Command } from '../../domain/types/command'
-import { TYPES } from '../../types'
-import { Locale } from '../../domain/language/locale'
-import { Article } from '../../domain/articles/article'
-import { ArticlesRepository } from '../../domain/articles/articles-repository'
-import { Id } from '../../domain/id'
-import { Injectable } from '../../domain/types/injectable'
-import { Inject } from '../../domain/types/inject'
-import { StateManager } from '../state/state-manager'
+import { Command } from '../../domain/types/command.js'
+import { TYPES } from '../../types.js'
+import { Locale } from '../../domain/language/locale.js'
+import { Article } from '../../domain/articles/article.js'
+import { ArticlesRepository } from '../../domain/articles/articles-repository.js'
+import { Id } from '../../domain/id.js'
+import { Injectable } from '../../domain/types/injectable.js'
+import { Inject } from '../../domain/types/inject.js'
+import { StateManager } from '../state/state-manager.js'
 
 @Injectable()
 export class GetArticleUseCase implements Command<Article, { id: Id; locale: Locale }> {

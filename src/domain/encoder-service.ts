@@ -1,4 +1,4 @@
-import { Injectable } from './types/injectable'
+import { Injectable } from './types/injectable.js'
 
 @Injectable()
 export class EncoderService {

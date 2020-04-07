@@ -1,10 +1,10 @@
-import { Locale } from './language/locale'
-import { TranslationIdentifiers } from './language/translations/translation-identifiers'
-import { TranslationError } from './language/translation-error'
-import { Translator } from './language/translator'
-import { Injectable } from './types/injectable'
-import { Inject } from './types/inject'
-import { TYPES } from '../types'
+import { Locale } from './language/locale.js'
+import { TranslationIdentifiers } from './language/translations/translation-identifiers.js'
+import { TranslationError } from './language/translation-error.js'
+import { Translator } from './language/translator.js'
+import { Injectable } from './types/injectable.js'
+import { Inject } from './types/inject.js'
+import { TYPES } from '../types.js'
 
 @Injectable()
 export class TranslationService {

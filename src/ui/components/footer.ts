@@ -1,8 +1,8 @@
-import { Direction } from './direction'
-import { Datetime } from '../../domain/datetime'
-import { Translation } from './translation'
-import { Inject } from '../../domain/types/inject'
-import { TYPES } from '../../types'
+import { Direction } from './direction.js'
+import { Datetime } from '../../domain/datetime.js'
+import { Translation } from './translation.js'
+import { Inject } from '../../domain/types/inject.js'
+import { TYPES } from '../../types.js'
 import { css, customElement, LitElement, html } from '/web_modules/lit-element.js'
 
 @customElement('app-footer')

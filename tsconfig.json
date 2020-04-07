@@ -3,7 +3,6 @@
     "target": "es2018",
     "module": "esnext",
     "outDir": "dist",
-    "importHelpers": true,
     "moduleResolution": "node",
     "strict": true,
     "noUnusedLocals": true,

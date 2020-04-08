@@ -1,5 +1,5 @@
 export interface ArticleDto {
-  html: string
+  body: string
   attributes: {
     title: string
     date: string

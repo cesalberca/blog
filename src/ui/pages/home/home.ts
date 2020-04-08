@@ -1,4 +1,3 @@
-import me from '../../images/me.png'
 import { Id } from '../../../domain/id.js'
 import { Article } from '../../../domain/articles/article.js'
 import { Translation } from '../../components/translation.js'
@@ -8,7 +7,7 @@ import { StateManager } from '../../../application/state/state-manager.js'
 import { TranslationService } from '../../../domain/translation-service.js'
 import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case.js'
 import { container } from '../../../container.js'
-import { customElement, LitElement, html, css } from '/web_modules/lit-element.js'
+import { customElement, LitElement, html, css, property } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 
 @customElement('app-home')
@@ -22,14 +21,8 @@ export class Home extends LitElement {
   @Inject(TYPES.TRANSLATION)
   readonly translation!: Translation
 
+  @property({ type: Array })
   articles: Article[] = []
-  me = me
-
-  async onLocaleChange() {
-    this.articles = await container
-      .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
-      .execute()
-  }
 
   async connectedCallback(): Promise<void> {
     super.connectedCallback()
@@ -119,23 +112,23 @@ export class Home extends LitElement {
   }
 
   render() {
-    return html` <main>
+    return html`<main>
       <div class="hero">
         <div class="wrapper">
           <header>
             <h1 class="title">${unsafeHTML(this.heroTitle)}</h1>
             <p class="caption">${unsafeHTML(this.heroCaption)}</p>
           </header>
-          <img class="photo" .src="${me}" alt="César Alberca" />
+          <img class="photo" src="src/ui/images/me.png" alt="César Alberca" />
         </div>
       </div>
       <app-page>
         <h2 class="articles">${this.articlesTitle}</h2>
         ${this.articles.map(article => {
-          return `<app-article-excerpt
-          .excerpt="${article.getExcerpt()}"
-          @on-action="${this.navigateToArticleById}"
-        ></app-article-excerpt>`
+          return html`<app-article-excerpt
+            .excerpt="${article.getExcerpt()}"
+            @on-action="${this.navigateToArticleById}"
+          ></app-article-excerpt>`
         })}
       </app-page>
     </main>`

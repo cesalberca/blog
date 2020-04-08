@@ -6,7 +6,7 @@ import { css, customElement, html, LitElement, property } from '/web_modules/lit
 
 @customElement('app-article-excerpt')
 export class ArticleExcerpt extends LitElement {
-  @property({ type: String })
+  @property({ type: Object })
   excerpt!: ReturnType<Article['getExcerpt']>
 
   @Inject(TYPES.TRANSLATION)
@@ -48,13 +48,13 @@ export class ArticleExcerpt extends LitElement {
 
   render() {
     return html`<app-link class="excerpt" tabindex="0" @click="onAction" @keydown.enter="onAction">
-      <h3>{{ excerpt.title }}</h3>
+      <h3>${this.excerpt.title}</h3>
       <div class="slugline">
-        <span>{{ excerpt.date }}</span>
+        <span>${this.excerpt.date}</span>
         <span class="accented-slugline"> / </span>
-        <span>{{ excerpt.readingTime.minutes }} {{ minutes }}</span>
+        <span>${this.excerpt.readingTime.minutes} ${this.minutes}</span>
       </div>
-      <p v-html="excerpt.body"></p>
+      <p>${this.excerpt.body}</p>
     </app-link>`
   }
 }

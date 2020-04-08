@@ -10,6 +10,7 @@ import { Injectable } from '../../domain/types/injectable.js'
 import { TYPES } from '../../types.js'
 import { Inject } from '../../domain/types/inject.js'
 import { articles } from './articles.js'
+import frontMatter from '/web_modules/front-matter.js'
 
 @Injectable()
 export class ArticlesFileRepository implements ArticlesRepository {
@@ -21,8 +22,13 @@ export class ArticlesFileRepository implements ArticlesRepository {
     let article: ArticleDto
 
     try {
-      article = await import(
-        `./${this.translationService.toString(locale)}/${id.value}.md`
+      const url = `src/infrastructure/articles/${this.translationService.toString(locale)}/${
+        id.value
+      }.md`
+      article = frontMatter(
+        await fetch(`${url}`)
+          .then(x => x.blob())
+          .then(x => x.text())
       )
     } catch (e) {
       try {
@@ -36,11 +42,11 @@ export class ArticlesFileRepository implements ArticlesRepository {
 
     return Article.create({
       id,
-      body: Markdown.fromValue(article.html),
+      body: Markdown.fromValue(article.body),
       date: Datetime.fromString(article.attributes.date),
       title: article.attributes.title,
       locale: this.translationService.toLocale(article.attributes.locale),
-      image: await import(`../../../public/assets/${article.attributes.image}`)
+      image: `src/ui/images/${article.attributes.image}`
     })
   }
 

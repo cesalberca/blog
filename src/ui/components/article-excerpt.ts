@@ -3,6 +3,7 @@ import { Article } from '../../domain/articles/article.js'
 import { TYPES } from '../../types.js'
 import { Inject } from '../../domain/types/inject.js'
 import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
+import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 
 @customElement('app-article-excerpt')
 export class ArticleExcerpt extends LitElement {
@@ -54,7 +55,7 @@ export class ArticleExcerpt extends LitElement {
         <span class="accented-slugline"> / </span>
         <span>${this.excerpt.readingTime.minutes} ${this.minutes}</span>
       </div>
-      <p>${this.excerpt.body}</p>
+      <p>${unsafeHTML(this.excerpt.body)}</p>
     </app-link>`
   }
 }

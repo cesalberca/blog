@@ -119,7 +119,7 @@ export class Home extends LitElement {
             <h1 class="title">${unsafeHTML(this.heroTitle)}</h1>
             <p class="caption">${unsafeHTML(this.heroCaption)}</p>
           </header>
-          <img class="photo" src="src/ui/images/me.png" alt="César Alberca" />
+          <img class="photo" src="ui/images/me.png" alt="César Alberca" />
         </div>
       </div>
       <app-page>

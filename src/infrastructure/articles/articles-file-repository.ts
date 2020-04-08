@@ -22,7 +22,7 @@ export class ArticlesFileRepository implements ArticlesRepository {
     let article: ArticleDto
 
     try {
-      const url = `src/infrastructure/articles/${this.translationService.toString(locale)}/${
+      const url = `infrastructure/articles/${this.translationService.toString(locale)}/${
         id.value
       }.md`
       article = frontMatter(
@@ -46,7 +46,7 @@ export class ArticlesFileRepository implements ArticlesRepository {
       date: Datetime.fromString(article.attributes.date),
       title: article.attributes.title,
       locale: this.translationService.toLocale(article.attributes.locale),
-      image: `src/ui/images/${article.attributes.image}`
+      image: `ui/images/${article.attributes.image}`
     })
   }
 

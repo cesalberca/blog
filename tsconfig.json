@@ -15,15 +15,13 @@
     "resolveJsonModule": true,
     "types": ["jest", "reflect-metadata", "node"],
     "lib": ["esnext", "dom", "dom.iterable"],
+    "rootDir": "src",
     "baseUrl": ".",
     "paths": {
-      "/web_modules/*.js": [
-        "node_modules/@types/*",
-        "node_modules/*",
-        "web_modules/*.js"
-      ]
+      "/web_modules/*.js": ["node_modules/@types/*", "node_modules/*", "web_modules/*.js"]
     },
     "allowSyntheticDefaultImports": true
   },
+  "include": ["src/*"],
   "exclude": ["node_modules"]
 }

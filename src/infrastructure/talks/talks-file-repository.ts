@@ -15,7 +15,8 @@ import { Markdown } from '../../domain/markdown.js'
 import { Injectable } from '../../domain/types/injectable.js'
 import { Inject } from '../../domain/types/inject.js'
 import { TYPES } from '../../types.js'
-import { talks } from '../../domain/talks/files/talks.js'
+import { talks } from './talks.js'
+import frontMatter from '/web_modules/front-matter.js'
 
 @Injectable()
 export class TalksFileRepository implements TalksRepository {
@@ -29,16 +30,31 @@ export class TalksFileRepository implements TalksRepository {
     let talk: TalkDto
 
     try {
-      talk = await import(
-        `../../ui/content/talks/${this.translationService.toString(locale)}/${id.value}.md`
+      const url = `infrastructure/talks/${this.translationService.toString(locale)}/${id.value}.md`
+      talk = frontMatter(
+        await fetch(`${url}`)
+          .then(x => x.blob())
+          .then(x => x.text())
       )
     } catch (e) {
       try {
-        const locale = this.translationService.toString(Locale.DEFAULT)
-        talk = await import(`../../ui/content/talks/${locale}/${id.value}.md`)
+        const url = `infrastructure/talks/${this.translationService.toString(Locale.DEFAULT)}/${
+          id.value
+        }.md`
+        talk = frontMatter(
+          await fetch(`${url}`)
+            .then(x => x.blob())
+            .then(x => x.text())
+        )
       } catch (e) {
-        const locale = this.translationService.toString(Locale.ES)
-        talk = await import(`../../ui/content/talks/${locale}/${id.value}.md`)
+        const url = `infrastructure/talks/${this.translationService.toString(Locale.ES)}/${
+          id.value
+        }.md`
+        talk = frontMatter(
+          await fetch(`${url}`)
+            .then(x => x.blob())
+            .then(x => x.text())
+        )
       }
     }
 
@@ -46,7 +62,7 @@ export class TalksFileRepository implements TalksRepository {
       id,
       language: this.languageService.toLanguage(talk.attributes.language),
       title: talk.attributes.title,
-      abstract: Markdown.fromValue(talk.html),
+      abstract: Markdown.fromValue(talk.body),
       references: [],
       length: Length.fromMinutes(talk.attributes.length),
       difficulty: this.difficultyService.toDifficulty(talk.attributes.difficulty),

@@ -11,7 +11,7 @@ import { RouterSlot } from '/web_modules/router-slot.js'
 @customElement('cesalberca-blog')
 export class CesalbercaBlog extends LitElement {
   @query('router-slot')
-  routerSlot!: RouterSlot
+  readonly routerSlot!: RouterSlot
 
   static get styles() {
     return css`
@@ -25,8 +25,20 @@ export class CesalbercaBlog extends LitElement {
     super.firstUpdated(props)
     this.routerSlot.add([
       {
-        path: '/about',
+        path: 'articles',
+        component: () => import('./pages/articles-page.js')
+      },
+      {
+        path: 'articles/:id',
+        component: () => import('./pages/article-page.js')
+      },
+      {
+        path: 'about',
         component: () => import('./pages/about-page.js')
+      },
+      {
+        path: 'talks',
+        component: () => import('./pages/talks-page.js')
       },
       {
         path: '/',
@@ -40,7 +52,7 @@ export class CesalbercaBlog extends LitElement {
   }
 
   render() {
-    return html` <main>
+    return html`<main>
       <app-theming class="full-height">
         <app-navbar></app-navbar>
         <router-slot></router-slot>

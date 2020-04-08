@@ -19,8 +19,8 @@ export class About extends LitElement {
 
   render() {
     return html`<app-page>
-      <h1>{{ title }}</h1>
-      <markdown-component :body="description"></markdown-component>
+      <h1>${this.title}</h1>
+      <app-markdown .body="${this.description}"></app-markdown>
     </app-page>`
   }
 }

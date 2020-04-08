@@ -1,4 +1,5 @@
-export { Article } from './articles/article.js'
+export { Article } from './article/article.js'
+
 export { Articles } from './articles/articles.js'
 export { SocialLinks } from './articles/social-links.js'
 

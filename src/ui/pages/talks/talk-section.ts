@@ -3,10 +3,10 @@ import { css, customElement, LitElement, property, html } from '/web_modules/lit
 @customElement('app-talk-section')
 export class TalkSection extends LitElement {
   @property()
-  title!: string
+  readonly title!: string
 
   @property()
-  description!: string
+  readonly description!: string
 
   static get styles() {
     return css`
@@ -24,7 +24,7 @@ export class TalkSection extends LitElement {
   }
 
   render() {
-    return html` <section>
+    return html`<section>
       <h3 class="title">
         <strong>${this.title}</strong>
       </h3>

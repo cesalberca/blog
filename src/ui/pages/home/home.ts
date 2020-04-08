@@ -31,15 +31,9 @@ export class Home extends LitElement {
       .execute()
   }
 
-  navigateToArticleById(id: Id) {
-    history.replaceState(
-      {
-        id: id.value,
-        locale: this.translationService.toString(this.stateManager.state.locale)
-      },
-      '',
-      '/article'
-    )
+  navigateToArticleById(event: CustomEvent<{ id: Id }>) {
+    console.log('hi')
+    history.pushState(null, '', `/articles/${event.detail.id.value}`)
   }
 
   get articlesTitle() {

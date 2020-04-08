@@ -6,6 +6,9 @@ export class Link extends LitElement {
   to?: string
 
   @property({ type: Boolean })
+  simple?: boolean = false
+
+  @property({ type: Boolean })
   external: boolean = false
 
   get target() {

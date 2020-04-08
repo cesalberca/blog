@@ -36,29 +36,37 @@ export class Talk extends LitElement {
   }
 
   render() {
-    return html` <div class="talk">
-      <app-talk-section :title="translations.title" :description="detail.title" />
-      <app-talk-section :title="translations.abstract"
-        ><div v-html="detail.abstract"></div
+    return html`<div class="talk">
+      <app-talk-section .title="${this.translations.title}" .description="${this.detail.title}" />
+      <app-talk-section .title="${this.translations.abstract}"
+        ><app-markdown .body="${this.detail.abstract}"></app-markdown
       ></app-talk-section>
-      <app-talk-section :title="translations.topics" :description="detail.topics" />
-      <app-talk-section :title="translations.length" :description="detail.length" />
-      <app-talk-section :title="translations.difficulty" :description="detail.difficulty" />
-      <app-talk-section v-if="detail.events.length" :title="translations.events">
-        <div v-for="event in detail.events" :key="event.name">
-          <p>{{ event.name }} – <small>{{ event.datetime }}</small></p>
-          <div class="links">
-            <app-link :to="event.slides" :external="true">{{ translations.slides }}</app-link>
-            <app-link :to="event.code" :external="true">{{ translations.code }}</app-link>
-            <app-link v-if="event.demo.has()" :to="event.demo.getOrElse('')" :external="true"
-              >{{ translations.demo }}</app-link
-            >
-            <app-link v-if="event.video" :to="event.video" :external="true"
-              >{{ translations.video }}</app-link
-            >
-          </div>
-        </div>
-      </app-talk-section>
+      <app-talk-section .title="${this.translations.topics}" .description="${this.detail.topics}" />
+      <app-talk-section .title="${this.translations.length}" .description="${this.detail.length}" />
+      <app-talk-section
+        .title="${this.translations.difficulty}"
+        .description="${this.detail.difficulty}"
+      />
+      ${this.detail.events.length &&
+      html`<app-talk-section .title="${this.translations.events}">
+        ${this.detail.events.map(
+          event => html`<div>
+            <p>${event.name} – <small>${event.datetime}</small></p>
+            <div class="links">
+              <app-link .to="${event.slides}" .external="true"
+                >${this.translations.slides}</app-link
+              >
+              <app-link .to="${event.code}" .external="true">${this.translations.code}</app-link>
+              <app-link v-if="event.demo.has()" .to="${event.demo.getOrElse('')}" .external="true"
+                >${this.translations.demo}</app-link
+              >
+              <app-link v-if="event.video" .to="event.video" .external="true"
+                >${this.translations.video}</app-link
+              >
+            </div>
+          </div>`
+        )}
+      </app-talk-section>`}
     </div>`
   }
 }

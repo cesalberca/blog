@@ -170,7 +170,7 @@ export class Navbar extends LitElement {
   }
 
   render() {
-    return html` <header class="navbar">
+    return html`<header class="navbar">
       <nav class="mobile-navigation">
         <button
           class="hamburger"

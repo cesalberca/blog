@@ -98,9 +98,9 @@ export class Links extends LitElement {
 
   render() {
     return html`<div class="${classMap({ [this.links]: true, links: true })}">
-      <router-link to="/" exact class="home">${this.translations.home}</router-link>
-      <router-link to="/talks">${this.translations.talks}</router-link>
-      <router-link to="/about">${this.translations.about}</router-link>
+      <a href="/" class="home">${this.translations.home}</a>
+      <a href="/talks">${this.translations.talks}</a>
+      <a href="/about">${this.translations.about}</a>
     </div>`
   }
 }

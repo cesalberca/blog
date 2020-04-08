@@ -7,7 +7,7 @@ import { Inject } from '../../../domain/types/inject.js'
 import { StateManager } from '../../../application/state/state-manager.js'
 import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
 import { Article as ArticleObject } from '../../../domain/articles/article.js'
-import { container } from '../../../container.js'
+import { Params, queryParentRouterSlot } from '/web_modules/router-slot.js'
 
 @customElement('app-article')
 export class Article extends LitElement {
@@ -25,9 +25,17 @@ export class Article extends LitElement {
   @Inject(TYPES.WINDOW)
   readonly window!: Window
 
-  async onLocaleChange() {
-    this.article = await container.get<GetArticleUseCase>(TYPES.GET_ARTICLE_USE_CASE).execute({
-      id: Id.fromValue('a')
+  @Inject(TYPES.GET_ARTICLE_USE_CASE)
+  getArticleUseCase!: GetArticleUseCase
+
+  get params(): Params {
+    return queryParentRouterSlot(this)!.match!.params
+  }
+
+  async connectedCallback(): Promise<void> {
+    super.connectedCallback()
+    this.article = await this.getArticleUseCase.execute({
+      id: Id.fromValue(this.params.id)
     })
   }
 
@@ -101,9 +109,14 @@ export class Article extends LitElement {
   }
 
   render() {
-    return html` <article v-if="article" class="article">
-      <app-hero :image="article.image" class="hero">
-        <h1 class="title">{{ article.title }}</h1>
+    console.log('article')
+    if (this.article === null) {
+      return html`<h2>Article not found</h2>`
+    }
+
+    return html`<article class="article">
+      <app-hero .image="${this.article.image}" class="hero">
+        <h1 class="title">${this.article.title}</h1>
       </app-hero>
       <app-page>
         <header class="header">

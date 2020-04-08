@@ -22,12 +22,6 @@ export class Articles extends LitElement {
 
   articles: Article[] = []
 
-  async onLocaleChange() {
-    this.articles = await container
-      .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
-      .execute()
-  }
-
   connectedCallback(): void {
     super.connectedCallback()
     container
@@ -45,7 +39,7 @@ export class Articles extends LitElement {
         locale: this.translationService.toString(this.stateManager.state.locale)
       },
       '',
-      '/article'
+      `/articles/${id.value}`
     )
   }
 
@@ -60,7 +54,7 @@ export class Articles extends LitElement {
         v-for="article in articles"
         :key="article.id.slug"
         :excerpt="article.getExcerpt()"
-        @on-action="navigateToArticleById"
+        @on-action="${this.navigateToArticleById}"
       />
     </div>`
   }

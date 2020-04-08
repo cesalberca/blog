@@ -5,6 +5,7 @@ import { Talk } from '../../../domain/talks/talk.js'
 import { Inject } from '../../../domain/types/inject.js'
 import { StateManager } from '../../../application/state/state-manager.js'
 import { customElement, LitElement, html } from '/web_modules/lit-element.js'
+import { GetTalksGivenUseCase } from '../../../application/use-cases/get-talks-given-use-case.js'
 
 @customElement('app-talks')
 export class Talks extends LitElement {
@@ -17,7 +18,15 @@ export class Talks extends LitElement {
   @Inject(TYPES.TALK_DETAIL)
   readonly talkDetail!: TalkDetail
 
+  @Inject(TYPES.GET_TALKS_GIVEN_USE_CASE)
+  readonly getTalksGivenUseCase!: GetTalksGivenUseCase
+
   talks: Talk[] = []
+
+  async connectedCallback(): Promise<void> {
+    super.connectedCallback()
+    this.talks = await this.getTalksGivenUseCase.execute()
+  }
 
   get title() {
     return this.translation('talks_title')
@@ -26,10 +35,12 @@ export class Talks extends LitElement {
   render() {
     return html`<app-page>
       <h1>${this.title}</h1>
-      <div v-for="talk in talks" :key="talk.id.value">
-        <app-talk :detail="talkDetail.fromTalk(talk)"></app-talk>
-        <hr />
-      </div>
+      ${this.talks.map(
+        talk => html`<div>
+          <app-talk .detail="${this.talkDetail.fromTalk(talk)}"></app-talk>
+          <hr />
+        </div>`
+      )}
     </app-page>`
   }
 }

@@ -14,7 +14,13 @@ export class ArticleExcerpt extends LitElement {
   readonly translation!: Translation
 
   onAction() {
-    return this.excerpt.id
+    this.dispatchEvent(
+      new CustomEvent('on-action', {
+        bubbles: true,
+        composed: true,
+        detail: { id: this.excerpt.id }
+      })
+    )
   }
 
   static get styles() {
@@ -48,7 +54,12 @@ export class ArticleExcerpt extends LitElement {
   }
 
   render() {
-    return html`<app-link class="excerpt" tabindex="0" @click="onAction" @keydown.enter="onAction">
+    return html`<app-link
+      class="excerpt"
+      tabindex="0"
+      @click="${this.onAction}"
+      @keydown.enter="${this.onAction}"
+    >
       <h3>${this.excerpt.title}</h3>
       <div class="slugline">
         <span>${this.excerpt.date}</span>

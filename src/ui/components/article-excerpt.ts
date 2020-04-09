@@ -4,6 +4,7 @@ import { TYPES } from '../../types.js'
 import { Inject } from '../../domain/types/inject.js'
 import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
+import { subscribe } from '../subscribe.js'
 
 @customElement('app-article-excerpt')
 export class ArticleExcerpt extends LitElement {
@@ -12,16 +13,6 @@ export class ArticleExcerpt extends LitElement {
 
   @Inject(TYPES.TRANSLATION)
   readonly translation!: Translation
-
-  onAction() {
-    this.dispatchEvent(
-      new CustomEvent('on-action', {
-        bubbles: true,
-        composed: true,
-        detail: { id: this.excerpt.id }
-      })
-    )
-  }
 
   static get styles() {
     return css`
@@ -55,16 +46,15 @@ export class ArticleExcerpt extends LitElement {
 
   render() {
     return html`<app-link
+      .to="${`/articles/${this.excerpt.id.value}`}"
       class="excerpt"
       tabindex="0"
-      @click="${this.onAction}"
-      @keydown.enter="${this.onAction}"
     >
       <h3>${this.excerpt.title}</h3>
       <div class="slugline">
         <span>${this.excerpt.date}</span>
         <span class="accented-slugline"> / </span>
-        <span>${this.excerpt.readingTime.minutes} ${this.minutes}</span>
+        <span>${this.excerpt.readingTime.minutes} ${subscribe(this.minutes)}</span>
       </div>
       <p>${unsafeHTML(this.excerpt.body)}</p>
     </app-link>`

@@ -1,4 +1,3 @@
-import { Id } from '../../../domain/id.js'
 import { Article } from '../../../domain/articles/article.js'
 import { Translation } from '../../components/translation.js'
 import { TYPES } from '../../../types.js'
@@ -6,7 +5,7 @@ import { Inject } from '../../../domain/types/inject.js'
 import { TranslationService } from '../../../domain/translation-service.js'
 import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case.js'
 import { container } from '../../../container.js'
-import { customElement, LitElement, html, css, property } from '/web_modules/lit-element.js'
+import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 import { State } from '../../../application/state/state.js'
 import { subscribe } from '../../subscribe.js'
@@ -31,10 +30,6 @@ export class Home extends LitElement {
     this.articles = await container
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
-  }
-
-  navigateToArticleById(event: CustomEvent<{ id: Id }>) {
-    history.pushState(null, '', `/articles/${event.detail.id.value}`)
   }
 
   get articlesTitle() {
@@ -122,7 +117,6 @@ export class Home extends LitElement {
         ${this.articles.map(article => {
           return html`<app-article-excerpt
             .excerpt="${article.getExcerpt()}"
-            @on-action="${this.navigateToArticleById}"
           ></app-article-excerpt>`
         })}
       </app-page>

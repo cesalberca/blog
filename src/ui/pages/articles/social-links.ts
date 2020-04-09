@@ -5,6 +5,7 @@ import { TYPES } from '../../../types.js'
 import { State } from '../../../application/state/state.js'
 import { css, customElement, LitElement, property } from '/web_modules/lit-element.js'
 import { html } from '/web_modules/lit-html.js'
+import { subscribe } from '../../subscribe.js'
 
 @customElement('app-social-links')
 export class SocialLinks extends LitElement {
@@ -82,7 +83,7 @@ export class SocialLinks extends LitElement {
       <div class="separator"></div>
 
       <div class="share">
-        <p>${this.shareArticle} <span>—</span></p>
+        <p>${subscribe(this.shareArticle)} <span>—</span></p>
         <section class="links">
           <a target="_blank" href="${this.twitterLink}">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20">

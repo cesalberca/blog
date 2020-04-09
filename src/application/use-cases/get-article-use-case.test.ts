@@ -3,8 +3,8 @@ import { Locale } from '../../domain/language/locale'
 import { ArticlesRepository } from '../../domain/articles/articles-repository'
 import { Id } from '../../domain/id'
 import { instance, mock, verify, when } from 'ts-mockito'
-import { StateManager } from '../state/state'
-import { Theme } from '../../ui/theme/theme'
+import { StateManager } from '../state/store'
+import { Theme } from '../state/theme'
 
 describe('GetArticleUseCase', () => {
   it('should get an article', async () => {

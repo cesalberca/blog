@@ -6,7 +6,7 @@ import { Article } from '../../../domain/articles/article.js'
 import { Inject } from '../../../domain/types/inject.js'
 import { container } from '../../../container.js'
 import { customElement, html, LitElement } from '/web_modules/lit-element.js'
-import { State } from '../../../application/state/state.js'
+import { Store } from '../../../application/state/store.js'
 import { subscribe } from '../../subscribe.js'
 
 @customElement('app-articles')
@@ -14,8 +14,8 @@ export class Articles extends LitElement {
   @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
 
-  @Inject(TYPES.STATE)
-  readonly state!: State
+  @Inject(TYPES.STORE)
+  readonly state!: Store
 
   @Inject(TYPES.TRANSLATION)
   readonly translation!: Translation

@@ -18,14 +18,11 @@ export class ArticleExcerpt extends LitElement {
     return css`
       .excerpt {
         display: block;
-      }
-
-      .excerpt:after {
-        content: none;
+        color: inherit;
+        text-decoration: none;
       }
 
       .excerpt:hover {
-        color: inherit;
         cursor: pointer;
       }
 
@@ -45,8 +42,8 @@ export class ArticleExcerpt extends LitElement {
   }
 
   render() {
-    return html`<app-link
-      .to="${`/articles/${this.excerpt.id.value}`}"
+    return html`<a
+      href="${`/articles/${this.excerpt.id.value}`}"
       class="excerpt"
       tabindex="0"
     >
@@ -57,6 +54,6 @@ export class ArticleExcerpt extends LitElement {
         <span>${this.excerpt.readingTime.minutes} ${subscribe(this.minutes)}</span>
       </div>
       <p>${unsafeHTML(this.excerpt.body)}</p>
-    </app-link>`
+    </a>`
   }
 }

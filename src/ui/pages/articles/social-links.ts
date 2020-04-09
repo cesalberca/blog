@@ -2,7 +2,7 @@ import { TwitterSharerService } from '../../../domain/articles/twitter-sharer-se
 import { Translation } from '../../components/translation.js'
 import { Inject } from '../../../domain/types/inject.js'
 import { TYPES } from '../../../types.js'
-import { State } from '../../../application/state/state.js'
+import { Store } from '../../../application/state/store.js'
 import { css, customElement, LitElement, property } from '/web_modules/lit-element.js'
 import { html } from '/web_modules/lit-html.js'
 import { subscribe } from '../../subscribe.js'
@@ -12,8 +12,8 @@ export class SocialLinks extends LitElement {
   @Inject(TYPES.TRANSLATION)
   readonly translation!: Translation
 
-  @Inject(TYPES.STATE)
-  readonly state!: State
+  @Inject(TYPES.STORE)
+  readonly state!: Store
 
   @Inject(TYPES.TWITTER_SHARER_SERVICE)
   readonly twitterSharerService!: TwitterSharerService

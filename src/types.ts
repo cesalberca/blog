@@ -14,7 +14,7 @@ export const TYPES = {
   LOGGER: Symbol.for('LOGGER'),
   FETCHER: Symbol.for('FETCHER'),
   HTTP: Symbol.for('HTTP'),
-  STATE: Symbol.for('STATE'),
+  STORE: Symbol.for('STORE'),
   WINDOW: Symbol.for('WINDOW'),
   TRANSLATION: Symbol.for('TRANSLATION'),
   NAVIGATE_TO_ARTICLE: Symbol.for('NAVIGATE_TO_ARTICLE'),

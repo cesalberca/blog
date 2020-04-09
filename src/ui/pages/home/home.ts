@@ -7,7 +7,7 @@ import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-ar
 import { container } from '../../../container.js'
 import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
-import { State } from '../../../application/state/state.js'
+import { Store } from '../../../application/state/store.js'
 import { subscribe } from '../../subscribe.js'
 import { map } from '/web_modules/rxjs/operators.js'
 
@@ -16,8 +16,8 @@ export class Home extends LitElement {
   @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
 
-  @Inject(TYPES.STATE)
-  readonly state!: State
+  @Inject(TYPES.STORE)
+  readonly state!: Store
 
   @Inject(TYPES.TRANSLATION)
   readonly translation!: Translation

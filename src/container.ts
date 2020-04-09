@@ -16,7 +16,7 @@ import { GetTalksGivenUseCase } from './application/use-cases/get-talks-given-us
 import { ArticlesRepository } from './domain/articles/articles-repository.js'
 import { Translator } from './domain/language/translator.js'
 import { Translation } from './ui/components/translation.js'
-import { State } from './application/state/state.js'
+import { Store } from './application/state/store.js'
 import { NavigateToArticle } from './ui/actions/navigate-to-article.js'
 import { DifficultyService } from './domain/talks/difficulty-service.js'
 import { TalkDetail } from './ui/pages/talks/talk-detail.js'
@@ -59,11 +59,11 @@ container
   .to(GetTalksGivenUseCase)
   .inSingletonScope()
 container.bind<UseCaseDecorator>(TYPES.USE_CASE_DECORATOR).to(UseCaseDecorator).inSingletonScope()
-container.bind<State>(TYPES.STATE).to(State).inSingletonScope()
+container.bind<Store>(TYPES.STORE).to(Store).inSingletonScope()
 
 container.bind<Translation>(TYPES.TRANSLATION).toFunction(key =>
   container
-    .get<State>(TYPES.STATE)
+    .get<Store>(TYPES.STORE)
     .observable()
     .pipe(
       map(x => x.locale),

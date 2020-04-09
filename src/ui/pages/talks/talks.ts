@@ -5,13 +5,13 @@ import { Talk } from '../../../domain/talks/talk.js'
 import { Inject } from '../../../domain/types/inject.js'
 import { customElement, html, LitElement, property } from '/web_modules/lit-element.js'
 import { GetTalksGivenUseCase } from '../../../application/use-cases/get-talks-given-use-case.js'
-import { State } from '../../../application/state/state.js'
+import { Store } from '../../../application/state/store.js'
 import { subscribe } from '../../subscribe.js'
 
 @customElement('app-talks')
 export class Talks extends LitElement {
-  @Inject(TYPES.STATE)
-  readonly state!: State
+  @Inject(TYPES.STORE)
+  readonly state!: Store
 
   @Inject(TYPES.TRANSLATION)
   readonly translation!: Translation

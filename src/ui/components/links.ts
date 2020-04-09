@@ -4,7 +4,7 @@ import { Inject } from '../../domain/types/inject.js'
 import { TYPES } from '../../types.js'
 import { customElement, LitElement, property, css, html } from '/web_modules/lit-element.js'
 import { classMap } from '/web_modules/lit-html/directives/class-map.js'
-import { State } from '../../application/state/state.js'
+import { Store } from '../../application/state/store.js'
 import { subscribe } from '../subscribe.js'
 
 @customElement('app-links')
@@ -13,9 +13,9 @@ export class Links extends LitElement {
   @property({ type: Function })
   readonly translation!: Translation
 
-  @Inject(TYPES.STATE)
+  @Inject(TYPES.STORE)
   @property({ type: Object })
-  readonly state!: State
+  readonly state!: Store
 
   @property({ type: Number })
   readonly direction: Direction = Direction.HORIZONTAL

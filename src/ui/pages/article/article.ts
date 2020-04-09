@@ -4,7 +4,7 @@ import { TYPES } from '../../../types.js'
 import { GetArticleUseCase } from '../../../application/use-cases/get-article-use-case.js'
 import { Id } from '../../../domain/id.js'
 import { Inject } from '../../../domain/types/inject.js'
-import { State } from '../../../application/state/state.js'
+import { Store } from '../../../application/state/store.js'
 import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
 import { Article as ArticleObject } from '../../../domain/articles/article.js'
 import { Params, queryParentRouterSlot } from '/web_modules/router-slot.js'
@@ -15,8 +15,8 @@ export class Article extends LitElement {
   @property({ type: Object })
   article: ArticleObject | null = null
 
-  @Inject(TYPES.STATE)
-  readonly state!: State
+  @Inject(TYPES.STORE)
+  readonly state!: Store
 
   @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService

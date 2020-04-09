@@ -4,8 +4,8 @@ import { Locale } from '../../domain/language/locale'
 import { Article } from '../../domain/articles/article'
 import { ArticlesRepository } from '../../domain/articles/articles-repository'
 import { instance, mock, verify, when } from 'ts-mockito'
-import { StateManager } from '../state/state'
-import { Theme } from '../../ui/theme/theme'
+import { Store } from '../state/store'
+import { Theme } from '../state/theme'
 
 describe('GetAllArticlesUseCase', () => {
   it('should get all articles', async () => {
@@ -29,13 +29,13 @@ function setup() {
   const articlesRepository = mock<ArticlesRepository>()
   const articles: Article[] = ArticlesMother.getFakeArticles()
   when(articlesRepository.findAllByLocale(Locale.EN)).thenResolve(articles)
-  const stateManager = mock<StateManager>()
-  when(stateManager.state).thenReturn({ locale: Locale.EN, shouldReload: false, theme: Theme.DARK })
+  const state = mock<Store>()
+  when(state.state).thenReturn({ locale: Locale.EN, shouldReload: false, theme: Theme.DARK })
   return {
     articlesRepository,
     getAllArticlesUseCase: new GetAllArticlesUseCase(
       instance(articlesRepository),
-      instance(stateManager)
+      instance(state)
     )
   }
 }

@@ -10,18 +10,18 @@ import {
 import { RouterSlot } from '/web_modules/router-slot.js'
 import { Inject } from '../domain/types/inject.js'
 import { TYPES } from '../types.js'
-import { State } from '../application/state/state.js'
+import { Store } from '../application/state/store.js'
 import { Locale } from '../domain/language/locale.js'
-import { Theme } from './theme/theme.js'
+import { Theme } from '../application/state/theme.js'
 
 @customElement('cesalberca-blog')
 export class CesalbercaBlog extends LitElement {
   @query('router-slot')
   readonly routerSlot!: RouterSlot
 
-  @Inject(TYPES.STATE)
+  @Inject(TYPES.STORE)
   @property({ type: Object })
-  readonly state!: State
+  readonly state!: Store
 
   static get styles() {
     return css`

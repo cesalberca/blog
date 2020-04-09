@@ -1,7 +1,7 @@
 ---
 title: ¿QUÉ LEÑES ESTÁ PASANDO EN EL FRONT?
 length: 40
-difficulty: Basic
+difficulty: Beginner
 language: es
 topics:
     - JavaScript

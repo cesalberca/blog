@@ -5,11 +5,11 @@ import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 
 @customElement('app-markdown')
 export class Markdown extends LitElement {
-  @property({ type: Object })
-  body!: MarkdownObject
+  @property({ type: String })
+  markdown!: string
 
   get html() {
-    return this.body.toHtml()
+    return MarkdownObject.fromValue(this.markdown).toHtml()
   }
 
   highlight() {

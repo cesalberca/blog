@@ -11,10 +11,12 @@ import { TYPES } from '../../types.js'
 import { Inject } from '../../domain/types/inject.js'
 import { articles } from './articles.js'
 import frontMatter from '/web_modules/front-matter.js'
+import { Http } from '../../domain/http.js'
 
 @Injectable()
 export class ArticlesFileRepository implements ArticlesRepository {
   constructor(
+    @Inject(TYPES.HTTP) private readonly http: Http,
     @Inject(TYPES.TRANSLATION_SERVICE) private readonly translationService: TranslationService
   ) {}
 
@@ -25,18 +27,14 @@ export class ArticlesFileRepository implements ArticlesRepository {
       const url = `infrastructure/articles/${this.translationService.toString(locale)}/${
         id.value
       }.md`
-      article = frontMatter(
-        await fetch(`${url}`)
-          .then(x => x.blob())
-          .then(x => x.text())
-      )
+      article = frontMatter(await this.http.get(`${url}`))
     } catch (e) {
       try {
-        const locale = this.translationService.toString(Locale.DEFAULT)
-        article = await import(`./${locale}/${id.value}.md`)
+        const url = `infrastructure/articles/${this.translationService.toString(Locale.DEFAULT)}/${id.value}.md`
+        article = frontMatter(await this.http.get(`${url}`))
       } catch (e) {
-        const spanishLocale = this.translationService.toString(Locale.ES)
-        article = await import(`./${spanishLocale}/${id.value}.md`)
+        const url = `infrastructure/articles/${this.translationService.toString(Locale.ES)}/${id.value}.md`
+        article = frontMatter(await this.http.get(`${url}`))
       }
     }
 

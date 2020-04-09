@@ -125,7 +125,7 @@ export class Article extends LitElement {
           <span class="time">{{ article.getReadingTime().minutes }} {{ minutes }}</span>
           <app-tag class="locale">{{ articleLocale }}</app-tag>
         </header>
-        <app-markdown class="article" :body="body"></app-markdown>
+        <app-markdown class="article" .markdown="body"></app-markdown>
         <app-social-links class="social-links" :body="article.getSummary()" />
       </app-page>
     </article>`

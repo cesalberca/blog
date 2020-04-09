@@ -12,6 +12,8 @@ export const TYPES = {
   GET_TALKS_GIVEN_USE_CASE: Symbol.for('GET_TALKS_GIVEN_USE_CASE'),
   USE_CASE_DECORATOR: Symbol.for('USE_CASE_DECORATOR'),
   LOGGER: Symbol.for('LOGGER'),
+  FETCHER: Symbol.for('FETCHER'),
+  HTTP: Symbol.for('HTTP'),
   STATE: Symbol.for('STATE'),
   WINDOW: Symbol.for('WINDOW'),
   TRANSLATION: Symbol.for('TRANSLATION'),

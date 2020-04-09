@@ -22,12 +22,15 @@ import { NavigateToArticle } from './ui/actions/navigate-to-article.js'
 import { DifficultyService } from './domain/talks/difficulty-service.js'
 import { TalkDetail } from './ui/pages/talks/talk-detail.js'
 import { container } from '/web_modules/inversify-props.js'
+import { Http } from './domain/http.js'
 
 container
   .bind<TranslationService>(TYPES.TRANSLATION_SERVICE)
   .to(TranslationService)
   .inSingletonScope()
 container.bind<Translator>(TYPES.TRANSLATOR).to(Translator).inSingletonScope()
+container.bind<typeof fetch>(TYPES.FETCHER).toConstantValue(window.fetch.bind(window))
+container.bind<Http>(TYPES.HTTP).to(Http).inSingletonScope()
 container.bind<EncoderService>(TYPES.ENCODER_SERVICE).to(EncoderService).inSingletonScope()
 container
   .bind<TwitterSharerService>(TYPES.TWITTER_SHARER_SERVICE)

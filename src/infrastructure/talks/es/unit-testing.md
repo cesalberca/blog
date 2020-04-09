@@ -1,7 +1,7 @@
 ---
 title: "Unit Testing: From Zero to Hero"
 length: 40
-difficulty: Basic
+difficulty: Beginner
 language: es
 topics:
     - JavaScript

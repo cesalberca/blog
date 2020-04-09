@@ -39,7 +39,7 @@ export class Talk extends LitElement {
     return html`<div class="talk">
       <app-talk-section .title="${this.translations.title}" .description="${this.detail.title}" />
       <app-talk-section .title="${this.translations.abstract}"
-        ><app-markdown .body="${this.detail.abstract}"></app-markdown
+        ><app-markdown .markdown="${this.detail.abstract}"></app-markdown
       ></app-talk-section>
       <app-talk-section .title="${this.translations.topics}" .description="${this.detail.topics}" />
       <app-talk-section .title="${this.translations.length}" .description="${this.detail.length}" />

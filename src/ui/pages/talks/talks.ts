@@ -4,7 +4,7 @@ import { TYPES } from '../../../types.js'
 import { Talk } from '../../../domain/talks/talk.js'
 import { Inject } from '../../../domain/types/inject.js'
 import { StateManager } from '../../../application/state/state-manager.js'
-import { customElement, LitElement, html } from '/web_modules/lit-element.js'
+import { customElement, LitElement, html, property } from '/web_modules/lit-element.js'
 import { GetTalksGivenUseCase } from '../../../application/use-cases/get-talks-given-use-case.js'
 
 @customElement('app-talks')
@@ -21,6 +21,7 @@ export class Talks extends LitElement {
   @Inject(TYPES.GET_TALKS_GIVEN_USE_CASE)
   readonly getTalksGivenUseCase!: GetTalksGivenUseCase
 
+  @property({ type: Array })
   talks: Talk[] = []
 
   async connectedCallback(): Promise<void> {

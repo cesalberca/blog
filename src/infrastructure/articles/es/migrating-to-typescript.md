@@ -49,13 +49,13 @@ Ahora instalamos TypeScript como `dev-dependency`: `npm i typescript -DE`. Y pod
 
 Como no tenemos ningún fichero `.ts` al ejecutar este comando veremos como no nos salta ningún error.
 
-![image-20191112213355655](/assets/migrating-to-typescript/image-20191112213355655.png)
+![image-20191112213355655](infrastructure/articles/images/migrating-to-typescript/image-20191112213355655.png)
 
 ## Migración
 
 Probemos a cambiar la extensión de un fichero `.js` a `.ts`  y compilamos otra vez:
 
-![image-20191112213602568](/assets/migrating-to-typescript/image-20191112213602568.png)
+![image-20191112213602568](infrastructure/articles/images/migrating-to-typescript/image-20191112213602568.png)
 
 ¿¡Cómo!? ¡Pero si este compila! Pues sí, **cualquier fichero JavaScript es código TypeScript perfectamente válido**.
 
@@ -343,7 +343,7 @@ const bar = createSafe(1) // bar se infiere como number
 
 Y sin embargo, si compilamos veremos que todavía tenemos un error:
 
-![image-20191113201553918](/assets/migrating-to-typescript/image-20191113201553918.png)
+![image-20191113201553918](infrastructure/articles/images/migrating-to-typescript/image-20191113201553918.png)
 
 ¿Qué ocurre? Pues que aquí bien dice el genérico `Target` puede ser cualquier cosa aunque sea de un tipo en concreto. Lo que queremos decir es que Target será cualquier cosa que corresponda con el tipo `object`. Para esto necesitamos [limitaciones en los genéricos](https://www.typescriptlang.org/docs/handbook/generics.html#generic-constraints):
 
@@ -400,7 +400,7 @@ Vamos a ejecutar los tests:
 npm test
 ```
 
-![image-20191113202705616](/assets/migrating-to-typescript/image-20191113202705616.png)
+![image-20191113202705616](infrastructure/articles/images/migrating-to-typescript/image-20191113202705616.png)
 
 Oups, ¿qué pasa? Pues que [Jest](https://jestjs.io/), el test runner que estamos usando, no sabe compilar TypeScript, con lo que necesitamos algo de configuración. Añadimos [Babel](https://babeljs.io/) para que se encargue de eliminar los tipos antes de ejecutar los tests:
 
@@ -430,7 +430,7 @@ module.exports = {
 
 ¡Y pasamos los tests!
 
-![image-20191115194956149](/assets/migrating-to-typescript/image-20191115194956149.png)
+![image-20191115194956149](infrastructure/articles/images/migrating-to-typescript/image-20191115194956149.png)
 
 ## Conclusión
 

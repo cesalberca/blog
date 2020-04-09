@@ -1,14 +1,14 @@
 import { Theme } from './theme.js'
 import { Inject } from '../../domain/types/inject.js'
 import { TYPES } from '../../types.js'
-import { StateManager } from '../../application/state/state-manager.js'
-import { customElement, LitElement, css, html } from '/web_modules/lit-element.js'
+import { State } from '../../application/state/state.js'
+import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
 import { classMap } from '/web_modules/lit-html/directives/class-map.js'
 
 @customElement('app-theming')
 export class Theming extends LitElement {
-  @Inject(TYPES.STATE_MANAGER)
-  readonly stateManager!: StateManager
+  @Inject(TYPES.STATE)
+  readonly state!: State
 
   static get styles() {
     return css`
@@ -29,7 +29,7 @@ export class Theming extends LitElement {
   }
 
   get theme(): string {
-    switch (this.stateManager.state.theme) {
+    switch (this.state.value().theme) {
       case Theme.DARK:
         return 'dark'
       case Theme.LIGHT:

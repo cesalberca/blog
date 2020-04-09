@@ -6,16 +6,17 @@ import { ArticlesRepository } from '../../domain/articles/articles-repository.js
 import { Id } from '../../domain/id.js'
 import { Injectable } from '../../domain/types/injectable.js'
 import { Inject } from '../../domain/types/inject.js'
-import { StateManager } from '../state/state-manager.js'
+import { State } from '../state/state.js'
 
 @Injectable()
 export class GetArticleUseCase implements Command<Article, { id: Id; locale: Locale }> {
   constructor(
     @Inject(TYPES.ARTICLES_REPOSITORY) private readonly articlesRepository: ArticlesRepository,
-    @Inject(TYPES.STATE_MANAGER) private readonly stateManager: StateManager
+    @Inject(TYPES.STATE) private readonly state: State
   ) {}
 
   async execute({ id }: { id: Id }): Promise<Article> {
-    return this.articlesRepository.findOneByLocale(id, this.stateManager.state.locale)
+    const { locale } = this.state.value()
+    return this.articlesRepository.findOneByLocale(id, locale)
   }
 }

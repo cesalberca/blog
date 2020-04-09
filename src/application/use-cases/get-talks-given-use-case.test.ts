@@ -2,7 +2,7 @@ import { GetTalksGivenUseCase } from './get-talks-given-use-case'
 import { TalksRepository } from '../../domain/talks/talks-repository'
 import { Locale } from '../../domain/language/locale'
 import { instance, mock, verify, when } from 'ts-mockito'
-import { StateManager } from '../state/state-manager'
+import { StateManager } from '../state/state'
 import { Theme } from '../../ui/theme/theme'
 
 describe('GetTalksGivenUseCase', () => {

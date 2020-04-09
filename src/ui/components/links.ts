@@ -4,11 +4,18 @@ import { Inject } from '../../domain/types/inject.js'
 import { TYPES } from '../../types.js'
 import { customElement, LitElement, property, css, html } from '/web_modules/lit-element.js'
 import { classMap } from '/web_modules/lit-html/directives/class-map.js'
+import { State } from '../../application/state/state.js'
+import { subscribe } from '../subscribe.js'
 
 @customElement('app-links')
 export class Links extends LitElement {
   @Inject(TYPES.TRANSLATION)
+  @property({ type: Function })
   readonly translation!: Translation
+
+  @Inject(TYPES.STATE)
+  @property({ type: Object })
+  readonly state!: State
 
   @property({ type: Number })
   readonly direction: Direction = Direction.HORIZONTAL
@@ -35,6 +42,11 @@ export class Links extends LitElement {
 
   static get styles() {
     return css`
+      :host {
+        display: block;
+        width: 100%;
+      }
+
       .horizontal,
       .vertical {
         display: flex;
@@ -98,9 +110,9 @@ export class Links extends LitElement {
 
   render() {
     return html`<div class="${classMap({ [this.links]: true, links: true })}">
-      <a href="/" class="home">${this.translations.home}</a>
-      <a href="/talks">${this.translations.talks}</a>
-      <a href="/about">${this.translations.about}</a>
+      <a href="/" class="home">${subscribe(this.translations.home)}</a>
+      <a href="/talks">${subscribe(this.translations.talks)}</a>
+      <a href="/about">${subscribe(this.translations.about)}</a>
     </div>`
   }
 }

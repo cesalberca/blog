@@ -7,7 +7,6 @@ import { classMap } from '/web_modules/lit-html/directives/class-map.js'
 @customElement('app-navbar')
 export class Navbar extends LitElement {
   isActive = false
-  Direction = Direction
 
   @Inject(TYPES.WINDOW)
   window!: Window
@@ -21,6 +20,7 @@ export class Navbar extends LitElement {
       .block {
         overflow: hidden;
       }
+
       .navbar {
         --link-color: var(--white-color);
         background-color: var(--navbar-background, var(--primary-color));
@@ -185,10 +185,10 @@ export class Navbar extends LitElement {
           </span>
         </button>
 
-        <app-options class="options"></app-options>
+        <app-options></app-options>
 
         <div class="backdrop" class="${classMap({ 'has-backdrop': this.isActive })}">
-          <app-links :direction="Direction.VERTICAL" class="mobile-links"></app-links>
+          <app-links .direction="${Direction.VERTICAL}" class="mobile-links"></app-links>
         </div>
         <div
           class="veil"
@@ -200,7 +200,7 @@ export class Navbar extends LitElement {
       <nav class="desktop-navigation">
         <div class="wrapper">
           <app-links></app-links>
-          <app-options class="options"></app-options>
+          <app-options></app-options>
         </div>
       </nav>
     </header>`

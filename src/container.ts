@@ -16,13 +16,13 @@ import { GetTalksGivenUseCase } from './application/use-cases/get-talks-given-us
 import { ArticlesRepository } from './domain/articles/articles-repository.js'
 import { Translator } from './domain/language/translator.js'
 import { Translation } from './ui/components/translation.js'
-import { StateManager } from './application/state/state-manager.js'
-import { BaseStateManager } from './application/state/base-state-manager.js'
+import { State } from './application/state/state.js'
 import { NavigateToArticle } from './ui/actions/navigate-to-article.js'
 import { DifficultyService } from './domain/talks/difficulty-service.js'
 import { TalkDetail } from './ui/pages/talks/talk-detail.js'
 import { container } from '/web_modules/inversify-props.js'
 import { Http } from './domain/http.js'
+import { map } from '/web_modules/rxjs/operators.js'
 
 container
   .bind<TranslationService>(TYPES.TRANSLATION_SERVICE)
@@ -59,18 +59,17 @@ container
   .to(GetTalksGivenUseCase)
   .inSingletonScope()
 container.bind<UseCaseDecorator>(TYPES.USE_CASE_DECORATOR).to(UseCaseDecorator).inSingletonScope()
-container.bind<StateManager>(TYPES.STATE_MANAGER).to(BaseStateManager).inSingletonScope()
-container.bind<BaseStateManager>(TYPES.BASE_STATE_MANAGER).to(BaseStateManager).inSingletonScope()
+container.bind<State>(TYPES.STATE).to(State).inSingletonScope()
 
-container
-  .bind<Translation>(TYPES.TRANSLATION)
-  .toFunction(
-    key =>
-      container
-        .get<Translator>(TYPES.TRANSLATOR)
-        .translations.get(container.get<StateManager>(TYPES.STATE_MANAGER).state.locale)!
-        .get(key)!
-  )
+container.bind<Translation>(TYPES.TRANSLATION).toFunction(key =>
+  container
+    .get<State>(TYPES.STATE)
+    .observable()
+    .pipe(
+      map(x => x.locale),
+      map(x => container.get<Translator>(TYPES.TRANSLATOR).translations.get(x)!.get(key)!)
+    )
+)
 container
   .bind<NavigateToArticle>(TYPES.NAVIGATE_TO_ARTICLE)
   .to(NavigateToArticle)

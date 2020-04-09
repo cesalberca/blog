@@ -4,17 +4,19 @@ import { TYPES } from '../../../types.js'
 import { GetArticleUseCase } from '../../../application/use-cases/get-article-use-case.js'
 import { Id } from '../../../domain/id.js'
 import { Inject } from '../../../domain/types/inject.js'
-import { StateManager } from '../../../application/state/state-manager.js'
-import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
+import { State } from '../../../application/state/state.js'
+import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
 import { Article as ArticleObject } from '../../../domain/articles/article.js'
 import { Params, queryParentRouterSlot } from '/web_modules/router-slot.js'
+import { subscribe } from '../../subscribe.js'
 
 @customElement('app-article')
 export class Article extends LitElement {
+  @property({ type: Object })
   article: ArticleObject | null = null
 
-  @Inject(TYPES.STATE_MANAGER)
-  readonly stateManager!: StateManager
+  @Inject(TYPES.STATE)
+  readonly state!: State
 
   @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
@@ -40,9 +42,7 @@ export class Article extends LitElement {
   }
 
   get date() {
-    return this.article!.date.format(
-      this.translationService.toString(this.stateManager.state.locale)
-    )
+    return this.article!.date.format(this.translationService.toString(this.state.value().locale))
   }
 
   get minutes() {
@@ -109,7 +109,6 @@ export class Article extends LitElement {
   }
 
   render() {
-    console.log('article')
     if (this.article === null) {
       return html`<h2>Article not found</h2>`
     }
@@ -120,13 +119,13 @@ export class Article extends LitElement {
       </app-hero>
       <app-page>
         <header class="header">
-          <span class="date">{{ date }}</span>
+          <span class="date">${this.date}</span>
           <span class="dash">—</span>
-          <span class="time">{{ article.getReadingTime().minutes }} {{ minutes }}</span>
-          <app-tag class="locale">{{ articleLocale }}</app-tag>
+          <span class="time">${this.article.getReadingTime().minutes} ${subscribe(this.minutes)}</span>
+          <app-tag class="locale">${this.articleLocale}</app-tag>
         </header>
-        <app-markdown class="article" .markdown="body"></app-markdown>
-        <app-social-links class="social-links" :body="article.getSummary()" />
+        <app-markdown class="article" .markdown="${this.article.body.value}"></app-markdown>
+        <app-social-links class="social-links" .body="${this.article.getSummary()}" />
       </app-page>
     </article>`
   }

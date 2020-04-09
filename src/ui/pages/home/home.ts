@@ -3,20 +3,22 @@ import { Article } from '../../../domain/articles/article.js'
 import { Translation } from '../../components/translation.js'
 import { TYPES } from '../../../types.js'
 import { Inject } from '../../../domain/types/inject.js'
-import { StateManager } from '../../../application/state/state-manager.js'
 import { TranslationService } from '../../../domain/translation-service.js'
 import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case.js'
 import { container } from '../../../container.js'
 import { customElement, LitElement, html, css, property } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
+import { State } from '../../../application/state/state.js'
+import { subscribe } from '../../subscribe.js'
+import { map } from '/web_modules/rxjs/operators.js'
 
 @customElement('app-home')
 export class Home extends LitElement {
   @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
 
-  @Inject(TYPES.STATE_MANAGER)
-  readonly stateManager!: StateManager
+  @Inject(TYPES.STATE)
+  readonly state!: State
 
   @Inject(TYPES.TRANSLATION)
   readonly translation!: Translation
@@ -32,7 +34,6 @@ export class Home extends LitElement {
   }
 
   navigateToArticleById(event: CustomEvent<{ id: Id }>) {
-    console.log('hi')
     history.pushState(null, '', `/articles/${event.detail.id.value}`)
   }
 
@@ -110,14 +111,14 @@ export class Home extends LitElement {
       <div class="hero">
         <div class="wrapper">
           <header>
-            <h1 class="title">${unsafeHTML(this.heroTitle)}</h1>
-            <p class="caption">${unsafeHTML(this.heroCaption)}</p>
+            <h1 class="title">${subscribe(this.heroTitle.pipe(map(x => unsafeHTML(x))))}</h1>
+            <p class="caption">${subscribe(this.heroCaption.pipe(map(x => unsafeHTML(x))))}</p>
           </header>
           <img class="photo" src="ui/images/me.png" alt="César Alberca" />
         </div>
       </div>
       <app-page>
-        <h2 class="articles">${this.articlesTitle}</h2>
+        <h2 class="articles">${subscribe(this.articlesTitle)}</h2>
         ${this.articles.map(article => {
           return html`<app-article-excerpt
             .excerpt="${article.getExcerpt()}"

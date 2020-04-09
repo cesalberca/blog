@@ -12,10 +12,10 @@
     "build": "run-p -l copy compile",
     "clean": "rimraf dist",
     "copy": "run-s copy:assets copy:dependencies",
-    "copy:assets": "cpx \"src/**/*.{png,css,html,ico,md}\" dist/",
+    "copy:assets": "cpx \"src/**/*.{jpg,svg,png,css,html,ico,md}\" dist/",
     "copy:dependencies": "cpx \"web_modules/**/*.js\" dist/web_modules",
     "copy:watch": "run-p copy:assets:watch copy:dependencies:watch",
-    "copy:assets:watch": "cpx \"src/**/*.{png,css,html,ico,md}\" dist/ -w",
+    "copy:assets:watch": "cpx \"src/**/*.{jpg,svg,png,css,html,ico,md}\" dist/ -w",
     "copy:dependencies:watch": "cpx \"web_modules/**/*.js\" dist/web_modules -w",
     "compile": "tsc",
     "compile:watch": "tsc -w",
@@ -37,6 +37,7 @@
     "prismjs": "1.20.0",
     "reflect-metadata": "0.1.13",
     "router-slot": "1.5.3",
+    "rxjs": "6.5.5",
     "tslib": "1.11.1"
   },
   "devDependencies": {
@@ -69,12 +70,15 @@
       "lit-html",
       "lit-element",
       "lit-html/directives/class-map.js",
+      "lit-html/directives/style-map.js",
       "lit-html/directives/unsafe-html.js",
       "reflect-metadata",
       "inversify-props",
       "marked",
       "prismjs",
-      "front-matter"
+      "front-matter",
+      "rxjs",
+      "rxjs/operators"
     ],
     "namedExports": {
       "inversify-props": [

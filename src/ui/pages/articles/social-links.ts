@@ -2,7 +2,7 @@ import { TwitterSharerService } from '../../../domain/articles/twitter-sharer-se
 import { Translation } from '../../components/translation.js'
 import { Inject } from '../../../domain/types/inject.js'
 import { TYPES } from '../../../types.js'
-import { StateManager } from '../../../application/state/state-manager.js'
+import { State } from '../../../application/state/state.js'
 import { css, customElement, LitElement, property } from '/web_modules/lit-element.js'
 import { html } from '/web_modules/lit-html.js'
 
@@ -11,8 +11,8 @@ export class SocialLinks extends LitElement {
   @Inject(TYPES.TRANSLATION)
   readonly translation!: Translation
 
-  @Inject(TYPES.STATE_MANAGER)
-  readonly stateManager!: StateManager
+  @Inject(TYPES.STATE)
+  readonly state!: State
 
   @Inject(TYPES.TWITTER_SHARER_SERVICE)
   readonly twitterSharerService!: TwitterSharerService
@@ -31,7 +31,7 @@ export class SocialLinks extends LitElement {
     return this.twitterSharerService.getShareUrlFromBody({
       body: this.body,
       url: this.window.location.href,
-      locale: this.stateManager.state.locale
+      locale: this.state.value().locale
     })
   }
 
@@ -54,10 +54,11 @@ export class SocialLinks extends LitElement {
 
       .links {
         margin-left: var(--small-size);
+        display: flex;
       }
 
-      .links {
-        display: flex;
+      .links > a {
+        height: 24px;
       }
 
       .links svg {
@@ -81,9 +82,9 @@ export class SocialLinks extends LitElement {
       <div class="separator"></div>
 
       <div class="share">
-        <p>{{ shareArticle }} <span>—</span></p>
+        <p>${this.shareArticle} <span>—</span></p>
         <section class="links">
-          <a target="_blank" :href="twitterLink">
+          <a target="_blank" href="${this.twitterLink}">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20">
               <path
                 fill="currentColor"

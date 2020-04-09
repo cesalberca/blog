@@ -3,14 +3,15 @@ import { Translation } from '../../components/translation.js'
 import { TYPES } from '../../../types.js'
 import { Talk } from '../../../domain/talks/talk.js'
 import { Inject } from '../../../domain/types/inject.js'
-import { StateManager } from '../../../application/state/state-manager.js'
-import { customElement, LitElement, html, property } from '/web_modules/lit-element.js'
+import { customElement, html, LitElement, property } from '/web_modules/lit-element.js'
 import { GetTalksGivenUseCase } from '../../../application/use-cases/get-talks-given-use-case.js'
+import { State } from '../../../application/state/state.js'
+import { subscribe } from '../../subscribe.js'
 
 @customElement('app-talks')
 export class Talks extends LitElement {
-  @Inject(TYPES.STATE_MANAGER)
-  readonly stateManager!: StateManager
+  @Inject(TYPES.STATE)
+  readonly state!: State
 
   @Inject(TYPES.TRANSLATION)
   readonly translation!: Translation
@@ -29,13 +30,13 @@ export class Talks extends LitElement {
     this.talks = await this.getTalksGivenUseCase.execute()
   }
 
-  get title() {
+  get talksTitle() {
     return this.translation('talks_title')
   }
 
   render() {
     return html`<app-page>
-      <h1>${this.title}</h1>
+      <h1>${subscribe(this.talksTitle)}</h1>
       ${this.talks.map(
         talk => html`<div>
           <app-talk .detail="${this.talkDetail.fromTalk(talk)}"></app-talk>

@@ -1,4 +1,5 @@
 import { css, customElement, LitElement, property, html } from '/web_modules/lit-element.js'
+import { styleMap } from '/web_modules/lit-html/directives/style-map.js'
 
 @customElement('app-hero')
 export class Hero extends LitElement {
@@ -31,7 +32,7 @@ export class Hero extends LitElement {
   }
 
   render() {
-    return html` <div class="image" style="${this.customStyle}">
+    return html` <div class="image" style="${styleMap(this.customStyle)}">
       <div class="wrapper">
         <slot></slot>
       </div>

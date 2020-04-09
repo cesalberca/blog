@@ -5,17 +5,18 @@ import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-ar
 import { Article } from '../../../domain/articles/article.js'
 import { Id } from '../../../domain/id.js'
 import { Inject } from '../../../domain/types/inject.js'
-import { StateManager } from '../../../application/state/state-manager.js'
 import { container } from '../../../container.js'
 import { customElement, html, LitElement } from '/web_modules/lit-element.js'
+import { State } from '../../../application/state/state.js'
+import { subscribe } from '../../subscribe.js'
 
 @customElement('app-articles')
 export class Articles extends LitElement {
   @Inject(TYPES.TRANSLATION_SERVICE)
   readonly translationService!: TranslationService
 
-  @Inject(TYPES.STATE_MANAGER)
-  readonly stateManager!: StateManager
+  @Inject(TYPES.STATE)
+  readonly state!: State
 
   @Inject(TYPES.TRANSLATION)
   readonly translation!: Translation
@@ -36,20 +37,20 @@ export class Articles extends LitElement {
     history.pushState(
       {
         id: id.value,
-        locale: this.translationService.toString(this.stateManager.state.locale)
+        locale: this.translationService.toString(this.state.value().locale)
       },
       '',
       `/articles/${id.value}`
     )
   }
 
-  get title() {
+  get articleTitle() {
     return this.translation('article_title')
   }
 
   render() {
     return html`<div>
-      <h1>${this.title}</h1>
+      <h1>${subscribe(this.articleTitle)}</h1>
       <app-article-excerpt
         v-for="article in articles"
         :key="article.id.slug"

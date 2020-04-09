@@ -3,6 +3,7 @@ import { Translation } from '../../components/translation.js'
 import { TYPES } from '../../../types.js'
 import { TalkDetail } from './talk-detail.js'
 import { Inject } from '../../../domain/types/inject.js'
+import { subscribe } from '../../subscribe.js'
 
 @customElement('app-talk')
 export class Talk extends LitElement {
@@ -37,31 +38,31 @@ export class Talk extends LitElement {
 
   render() {
     return html`<div class="talk">
-      <app-talk-section .title="${this.translations.title}" .description="${this.detail.title}" />
-      <app-talk-section .title="${this.translations.abstract}"
+      <app-talk-section .title="${subscribe(this.translations.title)}" .description="${this.detail.title}" />
+      <app-talk-section .title="${subscribe(this.translations.abstract)}"
         ><app-markdown .markdown="${this.detail.abstract}"></app-markdown
       ></app-talk-section>
-      <app-talk-section .title="${this.translations.topics}" .description="${this.detail.topics}" />
-      <app-talk-section .title="${this.translations.length}" .description="${this.detail.length}" />
+      <app-talk-section .title="${subscribe(this.translations.topics)}" .description="${this.detail.topics}" />
+      <app-talk-section .title="${subscribe(this.translations.length)}" .description="${this.detail.length}" />
       <app-talk-section
-        .title="${this.translations.difficulty}"
+        .title="${subscribe(this.translations.difficulty)}"
         .description="${this.detail.difficulty}"
       />
       ${this.detail.events.length &&
-      html`<app-talk-section .title="${this.translations.events}">
+      html`<app-talk-section .title="${subscribe(this.translations.events)}">
         ${this.detail.events.map(
           event => html`<div>
             <p>${event.name} – <small>${event.datetime}</small></p>
             <div class="links">
               <app-link .to="${event.slides}" .external="true"
-                >${this.translations.slides}</app-link
+                >${subscribe(this.translations.slides)}</app-link
               >
-              <app-link .to="${event.code}" .external="true">${this.translations.code}</app-link>
+              <app-link .to="${event.code}" .external="true">${subscribe(this.translations.code)}</app-link>
               <app-link v-if="event.demo.has()" .to="${event.demo.getOrElse('')}" .external="true"
-                >${this.translations.demo}</app-link
+                >${subscribe(this.translations.demo)}</app-link
               >
               <app-link v-if="event.video" .to="event.video" .external="true"
-                >${this.translations.video}</app-link
+                >${subscribe(this.translations.video)}</app-link
               >
             </div>
           </div>`

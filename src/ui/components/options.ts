@@ -3,24 +3,29 @@ import { Translation } from './translation.js'
 import { Locale } from '../../domain/language/locale.js'
 import { Inject } from '../../domain/types/inject.js'
 import { TYPES } from '../../types.js'
-import { StateManager } from '../../application/state/state-manager.js'
-import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
+import { State } from '../../application/state/state.js'
+import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
+import { subscribe } from '../subscribe.js'
 
 @customElement('app-options')
 export class Options extends LitElement {
   @Inject(TYPES.TRANSLATION)
-  translation!: Translation
+  readonly translation!: Translation
 
-  @Inject(TYPES.STATE_MANAGER)
-  stateManager!: StateManager
+  @Inject(TYPES.STATE)
+  readonly stateManager!: State
 
+  @property({ type: Number })
   theme = Theme.DEFAULT
+
+  @property({ type: Number })
+  locale = Locale.DEFAULT
+
   themes = [
     { text: this.light, value: Theme.LIGHT },
     { text: this.dark, value: Theme.DARK }
   ]
 
-  locale = Locale.DEFAULT
   locales = [
     { text: this.en, value: Locale.EN },
     { text: this.es, value: Locale.ES }
@@ -43,11 +48,15 @@ export class Options extends LitElement {
   }
 
   changeLocale(locale: Locale) {
-    this.stateManager.state.locale = locale
+    this.dispatchEvent(
+      new CustomEvent('on-locale-change', { detail: locale, bubbles: true, composed: true })
+    )
   }
 
   changeTheme(theme: Theme) {
-    this.stateManager.state.theme = theme
+    this.dispatchEvent(
+      new CustomEvent('on-theme-change', { detail: theme, bubbles: true, composed: true })
+    )
   }
 
   static get styles() {
@@ -72,15 +81,17 @@ export class Options extends LitElement {
   }
 
   render() {
-    return html` <div class="options">
+    return html`<div class="options">
       <label>
-        <select @change="${this.changeLocale(this.locale)}">
-          ${this.locales.map(locale => `<option value="${locale.value}">${locale.text}</option>`)}
+        <select @change="${() => this.changeLocale(this.locale)}">
+          ${this.locales.map(
+            locale => html`<option value="${locale.value}">${subscribe(locale.text)}</option>`
+          )}
         </select>
       </label>
       <label>
-        <select @change="${this.changeTheme(this.theme)}">
-          ${this.themes.map(theme => `<option value="${theme.value}">${theme.text}</option>`)}
+        <select @change="${() => this.changeTheme(this.theme)}">
+          ${this.themes.map(theme => html`<option value="${theme.value}">${subscribe(theme.text)}</option>`)}
         </select>
       </label>
     </div>`

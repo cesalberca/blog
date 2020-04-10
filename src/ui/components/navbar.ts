@@ -48,6 +48,10 @@ export class Navbar extends LitElement {
           max-width: var(--body-width);
         }
 
+        .options {
+          margin-left: auto;
+        }
+
         .hamburger {
           display: none;
           margin: 0;
@@ -143,7 +147,7 @@ export class Navbar extends LitElement {
             position: absolute;
             top: 0;
             left: 0;
-            width: 80vw;
+            width: 60vw;
             height: 100vh;
             z-index: 2;
             padding-top: 80px;
@@ -154,7 +158,8 @@ export class Navbar extends LitElement {
 
           .mobile-navigation {
             display: flex;
-            margin-top: var(--big-size);
+            width: 100%;
+            margin-top: var(--medium-size);
           }
 
           .show-veil {
@@ -195,14 +200,19 @@ export class Navbar extends LitElement {
           </span>
         </button>
 
-        <app-options></app-options>
+        <app-options class="options"></app-options>
 
-        <div class="backdrop" class="${classMap({ 'has-backdrop': this.isActive })}">
-          <app-links .direction="${Direction.VERTICAL}" class="mobile-links"></app-links>
+        <div class="${classMap({ backdrop: true, 'has-backdrop': this.isActive })}">
+          <app-links
+            .direction="${Direction.VERTICAL}"
+            class="mobile-links"
+            @link-clicked="${() => {
+              this.isActive = false
+            }}"
+          ></app-links>
         </div>
         <div
-          class="veil"
-          class="${classMap({ 'show-veil': this.isActive })}"
+          class="${classMap({ veil: true, 'show-veil': this.isActive })}"
           @click="${() => (this.isActive = false)}"
         ></div>
       </nav>

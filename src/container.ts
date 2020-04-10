@@ -22,6 +22,7 @@ import { TalkDetail } from './ui/pages/talks/talk-detail.js'
 import { container } from '/web_modules/inversify-props.js'
 import { Http } from './domain/http.js'
 import { map } from '/web_modules/rxjs/operators.js'
+import { Storage } from './application/state/storage.js'
 
 container
   .bind<TranslationService>(TYPES.TRANSLATION_SERVICE)
@@ -72,6 +73,8 @@ container.bind<Translation>(TYPES.TRANSLATION).toFunction(key =>
 
 container.bind<DifficultyService>(TYPES.DIFFICULTY_SERVICE).to(DifficultyService).inSingletonScope()
 container.bind<TalkDetail>(TYPES.TALK_DETAIL).to(TalkDetail).inSingletonScope()
+
+container.bind<Storage>(TYPES.STORAGE).to(Storage).inSingletonScope()
 
 container.bind<Logger>(TYPES.LOGGER).toConstantValue(window.console)
 container.bind<Window>(TYPES.WINDOW).toConstantValue(window)

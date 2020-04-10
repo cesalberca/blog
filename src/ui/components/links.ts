@@ -21,6 +21,10 @@ export class Links extends LitElement {
   @property({ type: Number })
   readonly direction: Direction = Direction.HORIZONTAL
 
+  private onLinkClick() {
+    this.dispatchEvent(new CustomEvent('link-clicked', { composed: true, bubbles: true }))
+  }
+
   static get styles() {
     return [
       general,
@@ -118,9 +122,15 @@ export class Links extends LitElement {
 
   render() {
     return html`<div class="${classMap({ [this.links]: true, links: true })}">
-      <a href="/" class="link home">${subscribe(this.translations.home)}</a>
-      <a href="/talks" class="link">${subscribe(this.translations.talks)}</a>
-      <a href="/about" class="link">${subscribe(this.translations.about)}</a>
+      <a @click="${() => this.onLinkClick()}" href="/" class="link home"
+        >${subscribe(this.translations.home)}</a
+      >
+      <a @click="${() => this.onLinkClick()}" href="/talks" class="link"
+        >${subscribe(this.translations.talks)}</a
+      >
+      <a @click="${() => this.onLinkClick()}" href="/about" class="link"
+        >${subscribe(this.translations.about)}</a
+      >
     </div>`
   }
 }

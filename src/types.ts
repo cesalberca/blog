@@ -17,7 +17,7 @@ export const TYPES = {
   STORE: Symbol.for('STORE'),
   WINDOW: Symbol.for('WINDOW'),
   TRANSLATION: Symbol.for('TRANSLATION'),
-  NAVIGATE_TO_ARTICLE: Symbol.for('NAVIGATE_TO_ARTICLE'),
+  STORAGE: Symbol.for('STORAGE'),
   APPLICATION: Symbol.for('APPLICATION'),
   ROUTER: Symbol.for('ROUTER'),
   DIFFICULTY_SERVICE: Symbol.for('DIFFICULTY_SERVICE'),

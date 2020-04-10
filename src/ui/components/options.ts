@@ -4,9 +4,10 @@ import { Locale } from '../../domain/language/locale.js'
 import { Inject } from '../../domain/types/inject.js'
 import { TYPES } from '../../types.js'
 import { Store } from '../../application/state/store.js'
-import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
+import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
 import { subscribe } from '../subscribe.js'
 import { general } from '../styles/general.js'
+import { map } from '/web_modules/rxjs/operators.js'
 
 @customElement('app-options')
 export class Options extends LitElement {
@@ -15,12 +16,6 @@ export class Options extends LitElement {
 
   @Inject(TYPES.STORE)
   readonly store!: Store
-
-  @property({ type: Number })
-  theme = Theme.DEFAULT
-
-  @property({ type: Number })
-  locale = Locale.DEFAULT
 
   static get styles() {
     return [
@@ -97,14 +92,20 @@ export class Options extends LitElement {
       <label>
         <select @change="${() => this.changeLocale()}">
           ${this.locales.map(
-            locale => html`<option value="${locale.value}">${subscribe(locale.text)}</option>`
+            locale =>
+              html`<option ?selected="${subscribe(
+                this.store.observable().pipe(map(x => x.locale === locale.value))
+              )}" value="${locale.value}">${subscribe(locale.text)}</option>`
           )}
         </select>
       </label>
       <label>
         <select @change="${() => this.changeTheme()}">
           ${this.themes.map(
-            theme => html`<option value="${theme.value}">${subscribe(theme.text)}</option>`
+            theme =>
+              html`<option ?selected="${subscribe(
+                this.store.observable().pipe(map(x => x.theme === theme.value))
+              )}" value="${theme.value}">${subscribe(theme.text)}</option>`
           )}
         </select>
       </label>

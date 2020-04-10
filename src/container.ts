@@ -17,7 +17,6 @@ import { ArticlesRepository } from './domain/articles/articles-repository.js'
 import { Translator } from './domain/language/translator.js'
 import { Translation } from './ui/components/translation.js'
 import { Store } from './application/state/store.js'
-import { NavigateToArticle } from './ui/actions/navigate-to-article.js'
 import { DifficultyService } from './domain/talks/difficulty-service.js'
 import { TalkDetail } from './ui/pages/talks/talk-detail.js'
 import { container } from '/web_modules/inversify-props.js'
@@ -70,10 +69,7 @@ container.bind<Translation>(TYPES.TRANSLATION).toFunction(key =>
       map(x => container.get<Translator>(TYPES.TRANSLATOR).translations.get(x)!.get(key)!)
     )
 )
-container
-  .bind<NavigateToArticle>(TYPES.NAVIGATE_TO_ARTICLE)
-  .to(NavigateToArticle)
-  .inSingletonScope()
+
 container.bind<DifficultyService>(TYPES.DIFFICULTY_SERVICE).to(DifficultyService).inSingletonScope()
 container.bind<TalkDetail>(TYPES.TALK_DETAIL).to(TalkDetail).inSingletonScope()
 

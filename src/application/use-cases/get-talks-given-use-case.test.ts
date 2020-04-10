@@ -2,7 +2,7 @@ import { GetTalksGivenUseCase } from './get-talks-given-use-case'
 import { TalksRepository } from '../../domain/talks/talks-repository'
 import { Locale } from '../../domain/language/locale'
 import { instance, mock, verify, when } from 'ts-mockito'
-import { StateManager } from '../state/store'
+import { Store } from '../state/store'
 import { Theme } from '../state/theme'
 
 describe('GetTalksGivenUseCase', () => {
@@ -17,13 +17,10 @@ describe('GetTalksGivenUseCase', () => {
 
 function setup() {
   const talksRepository = mock<TalksRepository>()
-  const stateManager = mock<StateManager>()
-  when(stateManager.state).thenReturn({ locale: Locale.EN, shouldReload: false, theme: Theme.DARK })
+  const store = mock(Store)
+  when(store.value()).thenReturn({ locale: Locale.EN, theme: Theme.DARK })
   return {
     talksRepository,
-    getTalksGivenUseCase: new GetTalksGivenUseCase(
-      instance(talksRepository),
-      instance(stateManager)
-    )
+    getTalksGivenUseCase: new GetTalksGivenUseCase(instance(talksRepository), instance(store))
   }
 }

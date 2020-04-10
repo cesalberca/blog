@@ -1,7 +1,7 @@
 import { Markdown } from './markdown'
-import marked from 'marked'
+import marked from '/web_modules/marked.js'
 
-jest.mock('marked')
+jest.mock('/web_modules/marked.js')
 
 describe('Markdown', () => {
   it('should use marked to render HTML', () => {

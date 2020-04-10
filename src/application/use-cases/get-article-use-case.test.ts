@@ -3,8 +3,8 @@ import { Locale } from '../../domain/language/locale'
 import { ArticlesRepository } from '../../domain/articles/articles-repository'
 import { Id } from '../../domain/id'
 import { instance, mock, verify, when } from 'ts-mockito'
-import { StateManager } from '../state/store'
 import { Theme } from '../state/theme'
+import { Store } from '../state/store'
 
 describe('GetArticleUseCase', () => {
   it('should get an article', async () => {
@@ -18,10 +18,10 @@ describe('GetArticleUseCase', () => {
 
 function setup() {
   const articlesRepository = mock<ArticlesRepository>()
-  const stateManager = mock<StateManager>()
-  when(stateManager.state).thenReturn({ locale: Locale.EN, shouldReload: false, theme: Theme.DARK })
+  const store = mock(Store)
+  when(store.value()).thenReturn({ locale: Locale.EN, theme: Theme.DARK })
   return {
     articlesRepository,
-    getArticleUseCase: new GetArticleUseCase(instance(articlesRepository), instance(stateManager))
+    getArticleUseCase: new GetArticleUseCase(instance(articlesRepository), instance(store))
   }
 }

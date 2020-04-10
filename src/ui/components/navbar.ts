@@ -1,20 +1,27 @@
 import { Direction } from './direction.js'
 import { Inject } from '../../domain/types/inject.js'
 import { TYPES } from '../../types.js'
-import { css, customElement, LitElement, html } from '/web_modules/lit-element.js'
+import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
 import { classMap } from '/web_modules/lit-html/directives/class-map.js'
 import { general } from '../styles/general.js'
 
 @customElement('app-navbar')
 export class Navbar extends LitElement {
-  isActive = false
-
   @Inject(TYPES.WINDOW)
   window!: Window
 
-  onIsActiveChange() {
-    this.window.document.body.classList.toggle('block')
-  }
+  @property({
+    type: Boolean,
+    hasChanged: (value: boolean, oldValue: boolean): boolean => {
+      if (value === oldValue) {
+        return false
+      }
+
+      window.document.body.classList.toggle('block')
+      return true
+    }
+  })
+  isActive = false
 
   static get styles() {
     return [

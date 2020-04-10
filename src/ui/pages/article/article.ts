@@ -87,9 +87,19 @@ export class Article extends LitElement {
 
   async connectedCallback(): Promise<void> {
     super.connectedCallback()
+    this.window.document.documentElement.style.setProperty('--navbar-background', 'transparent')
+    this.window.document.documentElement.style.setProperty('--navbar-position', 'absolute')
+    this.window.document.documentElement.style.setProperty('--navbar-text-shadow', '0 0 10px black')
     this.article = await this.getArticleUseCase.execute({
       id: Id.fromValue(this.params.id)
     })
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback()
+    this.window.document.documentElement.style.removeProperty('--navbar-background')
+    this.window.document.documentElement.style.removeProperty('--navbar-position')
+    this.window.document.documentElement.style.removeProperty('--navbar-text-shadow')
   }
 
   get date() {

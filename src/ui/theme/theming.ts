@@ -49,10 +49,6 @@ export class Theming extends LitElement {
           background-color: var(--background-color);
         }
 
-        .wrapper {
-          height: 100%;
-        }
-
         .dark,
         .light {
           color: var(--foreground-color);

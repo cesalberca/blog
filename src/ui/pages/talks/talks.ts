@@ -7,6 +7,7 @@ import { customElement, html, LitElement, property } from '/web_modules/lit-elem
 import { GetTalksGivenUseCase } from '../../../application/use-cases/get-talks-given-use-case.js'
 import { Store } from '../../../application/state/store.js'
 import { subscribe } from '../../subscribe.js'
+import { general } from '../../styles/general.js'
 
 @customElement('app-talks')
 export class Talks extends LitElement {
@@ -24,6 +25,10 @@ export class Talks extends LitElement {
 
   @property({ type: Array })
   talks: Talk[] = []
+
+  static get styles() {
+    return [general]
+  }
 
   async connectedCallback(): Promise<void> {
     super.connectedCallback()

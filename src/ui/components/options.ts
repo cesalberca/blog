@@ -6,6 +6,7 @@ import { TYPES } from '../../types.js'
 import { Store } from '../../application/state/store.js'
 import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
 import { subscribe } from '../subscribe.js'
+import { general } from '../styles/general.js'
 
 @customElement('app-options')
 export class Options extends LitElement {
@@ -20,6 +21,30 @@ export class Options extends LitElement {
 
   @property({ type: Number })
   locale = Locale.DEFAULT
+
+  static get styles() {
+    return [
+      general,
+      css`
+        .options {
+          display: flex;
+          flex-direction: row;
+        }
+
+        select {
+          margin-right: var(--small-size);
+          background: var(--blue-dark-color-1);
+          color: var(--white-color);
+          -webkit-appearance: none;
+          border: none;
+          font-weight: 600;
+          text-transform: uppercase;
+          padding: var(--small-size);
+          border-radius: 0;
+        }
+      `
+    ]
+  }
 
   themes = [
     { text: this.light, value: Theme.LIGHT },
@@ -65,27 +90,6 @@ export class Options extends LitElement {
         composed: true
       })
     )
-  }
-
-  static get styles() {
-    return css`
-      .options {
-        display: flex;
-        flex-direction: row;
-      }
-
-      select {
-        margin-right: var(--small-size);
-        background: var(--blue-dark-color-1);
-        color: var(--white-color);
-        -webkit-appearance: none;
-        border: none;
-        font-weight: 600;
-        text-transform: uppercase;
-        padding: var(--small-size);
-        border-radius: 0;
-      }
-    `
   }
 
   render() {

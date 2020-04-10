@@ -17,7 +17,7 @@ export class TalkDetail {
       id: talk.id,
       title: talk.title,
       abstract: talk.abstract.toHtml(),
-      length: talk.length.minutes + ' ' + this.translation('talks_talkLengthMinutes'),
+      length: talk.length.minutes,
       difficulty: this.translation(this.difficultyService.toString(talk.difficulty)),
       language: talk.language,
       topics: talk.topics.map(topic => topic.value).join(', '),

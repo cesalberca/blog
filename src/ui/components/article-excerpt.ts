@@ -5,6 +5,7 @@ import { Inject } from '../../domain/types/inject.js'
 import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 import { subscribe } from '../subscribe.js'
+import { general } from '../styles/general.js'
 
 @customElement('app-article-excerpt')
 export class ArticleExcerpt extends LitElement {
@@ -15,26 +16,33 @@ export class ArticleExcerpt extends LitElement {
   readonly translation!: Translation
 
   static get styles() {
-    return css`
-      .excerpt {
-        display: block;
-        color: inherit;
-        text-decoration: none;
-      }
+    return [
+      general,
+      css`
+        .excerpt {
+          display: block;
+          color: inherit;
+          text-decoration: none;
+        }
 
-      .excerpt:hover {
-        cursor: pointer;
-      }
+        .excerpt:visited {
+          color: var(--foreground-color);
+        }
 
-      .slugline {
-        font-size: calc(var(--body-text) - 2);
-        color: var(--gray-color);
-      }
+        .excerpt:hover {
+          cursor: pointer;
+        }
 
-      .accented-slugline {
-        color: var(--primary-color);
-      }
-    `
+        .slugline {
+          font-size: calc(var(--body-text) - 2);
+          color: var(--gray-color);
+        }
+
+        .accented-slugline {
+          color: var(--primary-color);
+        }
+      `
+    ]
   }
 
   get minutes() {
@@ -42,11 +50,7 @@ export class ArticleExcerpt extends LitElement {
   }
 
   render() {
-    return html`<a
-      href="${`/articles/${this.excerpt.id.value}`}"
-      class="excerpt"
-      tabindex="0"
-    >
+    return html`<a href="${`/articles/${this.excerpt.id.value}`}" class="excerpt" tabindex="0">
       <h3>${this.excerpt.title}</h3>
       <div class="slugline">
         <span>${this.excerpt.date}</span>

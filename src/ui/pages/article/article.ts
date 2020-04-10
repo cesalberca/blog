@@ -9,6 +9,7 @@ import { css, customElement, html, LitElement, property } from '/web_modules/lit
 import { Article as ArticleObject } from '../../../domain/articles/article.js'
 import { Params, queryParentRouterSlot } from '/web_modules/router-slot.js'
 import { subscribe } from '../../subscribe.js'
+import { general } from '../../styles/general.js'
 
 @customElement('app-article')
 export class Article extends LitElement {
@@ -29,6 +30,56 @@ export class Article extends LitElement {
 
   @Inject(TYPES.GET_ARTICLE_USE_CASE)
   getArticleUseCase!: GetArticleUseCase
+
+  static get styles() {
+    return [
+      general,
+      css`
+        .header {
+          display: flex;
+        }
+
+        .hero {
+          margin-bottom: var(--medium-size);
+        }
+
+        .title {
+          filter: invert(1);
+          padding: var(--medium-size);
+          margin-top: var(--big-size);
+          text-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.5);
+        }
+
+        .header > * {
+          margin-right: var(--small-size);
+        }
+
+        .date {
+          font-style: italic;
+        }
+
+        .dash {
+          color: var(--primary-color);
+        }
+
+        .time {
+          font-style: italic;
+        }
+
+        .locale {
+          margin-left: var(--small-size);
+        }
+
+        .social-links {
+          margin-bottom: var(--big-size);
+        }
+
+        .article p {
+          margin-bottom: var(--medium-size);
+        }
+      `
+    ]
+  }
 
   get params(): Params {
     return queryParentRouterSlot(this)!.match!.params
@@ -61,53 +112,6 @@ export class Article extends LitElement {
     return this.article!.body
   }
 
-  static get styles() {
-    return css`
-      .header {
-        display: flex;
-      }
-
-      .hero {
-        margin-bottom: var(--medium-size);
-      }
-
-      .title {
-        filter: invert(1);
-        padding: var(--medium-size);
-        margin-top: var(--big-size);
-        text-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.5);
-      }
-
-      .header > * {
-        margin-right: var(--small-size);
-      }
-
-      .date {
-        font-style: italic;
-      }
-
-      .dash {
-        color: var(--primary-color);
-      }
-
-      .time {
-        font-style: italic;
-      }
-
-      .locale {
-        margin-left: var(--small-size);
-      }
-
-      .social-links {
-        margin-bottom: var(--big-size);
-      }
-
-      .article p {
-        margin-bottom: var(--medium-size);
-      }
-    `
-  }
-
   render() {
     if (this.article === null) {
       return html`<h2>Article not found</h2>`
@@ -121,11 +125,16 @@ export class Article extends LitElement {
         <header class="header">
           <span class="date">${this.date}</span>
           <span class="dash">—</span>
-          <span class="time">${this.article.getReadingTime().minutes} ${subscribe(this.minutes)}</span>
+          <span class="time"
+            >${this.article.getReadingTime().minutes} ${subscribe(this.minutes)}</span
+          >
           <app-tag class="locale">${this.articleLocale}</app-tag>
         </header>
         <app-markdown class="article" .markdown="${this.article.body.value}"></app-markdown>
-        <app-social-links class="social-links" .body="${this.article.getSummary()}" />
+        <app-social-links
+          class="social-links"
+          .body="${this.article.getSummary()}"
+        ></app-social-links>
       </app-page>
     </article>`
   }

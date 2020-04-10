@@ -1,6 +1,6 @@
 :root {
-  --title-font: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-  --body-font: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  --title-font: 'Fira Code', monospace;
+  --body-font: 'Work Sans', sans-serif;
   --title-text: 22px;
   --body-text: 18px;
   --small-text: 12px;

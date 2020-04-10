@@ -4,11 +4,11 @@ import { Translation } from './translation.js'
 import { Inject } from '../../domain/types/inject.js'
 import { TYPES } from '../../types.js'
 import { css, customElement, LitElement, html } from '/web_modules/lit-element.js'
+import { subscribe } from '../subscribe.js'
+import { general } from '../styles/general.js'
 
 @customElement('app-footer')
 export class Footer extends LitElement {
-  direction = Direction.VERTICAL
-
   @Inject(TYPES.TRANSLATION)
   readonly translation!: Translation
 
@@ -17,7 +17,7 @@ export class Footer extends LitElement {
   }
 
   get coverage() {
-    return process.env.APP_COVERAGE
+    return 90.95
   }
 
   get todaysYear() {
@@ -25,58 +25,61 @@ export class Footer extends LitElement {
   }
 
   static get styles() {
-    return css`
-      .footer {
-        --link-color: var(--white-color);
-        padding: calc(var(--base) * 6) var(--medium-size);
-        background-color: var(--blue-dark-color);
-      }
+    return [
+      general,
+      css`
+        .footer {
+          --link-color: var(--white-color);
+          padding: calc(var(--base) * 6) var(--medium-size);
+          background-color: var(--blue-dark-color);
+        }
 
-      .wrapper {
-        max-width: var(--body-width);
-        margin: 0 auto;
-      }
+        .wrapper {
+          max-width: var(--body-width);
+          margin: 0 auto;
+        }
 
-      .links {
-        --primary-color: var(--white-color);
-        --title-text: var(--body-text);
-      }
+        .links {
+          --primary-color: var(--white-color);
+          --title-text: var(--body-text);
+        }
 
-      .info {
-        color: var(--gray-color);
-        display: flex;
-        flex-direction: column;
-      }
+        .info {
+          color: var(--gray-color);
+          display: flex;
+          flex-direction: column;
+        }
 
-      .copy {
-        --link-hover-color: var(--black-color);
-      }
+        .copy {
+          --link-hover-color: var(--black-color);
+        }
 
-      .coverage {
-        font-size: var(--small-text);
-        display: flex;
-        align-items: center;
-      }
+        .coverage {
+          font-size: var(--small-text);
+          display: flex;
+          align-items: center;
+        }
 
-      .coverage-percentage {
-        display: inline-block;
-        width: 4px;
-        height: 4px;
-        background-color: var(--green-color);
-        border-radius: 100%;
-        margin-right: 4px;
-        margin-left: 10px;
-      }
-    `
+        .coverage-percentage {
+          display: inline-block;
+          width: 4px;
+          height: 4px;
+          background-color: var(--green-color);
+          border-radius: 100%;
+          margin-right: 4px;
+          margin-left: 10px;
+        }
+      `
+    ]
   }
 
   render() {
-    return html` <footer class="footer">
+    return html`<footer class="footer">
       <div class="wrapper">
-        <app-links :direction="direction" class="links" />
+        <app-links .direction="${Direction.VERTICAL}" class="links"></app-links>
         <section class="info">
           <small class="copy"
-            >© {{ todaysYear }} ‒ Made with
+            >© ${this.todaysYear} ‒ Made with
             <app-link to="https://www.typescriptlang.org/" external>TypeScript</app-link>,
             <app-link to="https://wikipedia.org/wiki/SOLID" external>SOLID</app-link> and
             <app-link
@@ -86,7 +89,8 @@ export class Footer extends LitElement {
             >.</small
           >
           <small class="coverage"
-            >{{ coverageLiteral }}<span class="coverage-percentage"></span>{{ coverage }}%</small
+            >${subscribe(this.coverageLiteral)}<span class="coverage-percentage"></span>${this
+              .coverage}%</small
           >
         </section>
       </div>

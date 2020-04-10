@@ -4,6 +4,8 @@ import { TYPES } from '../../../types.js'
 import { TalkDetail } from './talk-detail.js'
 import { Inject } from '../../../domain/types/inject.js'
 import { subscribe } from '../../subscribe.js'
+import { map } from '/web_modules/rxjs/operators.js'
+import { general } from '../../styles/general.js'
 
 @customElement('app-talk')
 export class Talk extends LitElement {
@@ -29,25 +31,37 @@ export class Talk extends LitElement {
   }
 
   static get styles() {
-    return css`
-      .links > * {
-        margin-right: var(--small-size);
-      }
-    `
+    return [
+      general,
+      css`
+        .links > * {
+          margin-right: var(--small-size);
+        }
+      `
+    ]
   }
 
   render() {
     return html`<div class="talk">
-      <app-talk-section .title="${subscribe(this.translations.title)}" .description="${this.detail.title}" />
+      <app-talk-section
+        .title="${subscribe(this.translations.title)}"
+        .description="${this.detail.title}"
+      ></app-talk-section>
       <app-talk-section .title="${subscribe(this.translations.abstract)}"
         ><app-markdown .markdown="${this.detail.abstract}"></app-markdown
       ></app-talk-section>
-      <app-talk-section .title="${subscribe(this.translations.topics)}" .description="${this.detail.topics}" />
-      <app-talk-section .title="${subscribe(this.translations.length)}" .description="${this.detail.length}" />
+      <app-talk-section
+        .title="${subscribe(this.translations.topics)}"
+        .description="${this.detail.topics}"
+      ></app-talk-section>
+      <app-talk-section
+        .title="${subscribe(this.translations.length)}"
+        .description="${subscribe(this.getLength(this.detail.length))}"
+      ></app-talk-section>
       <app-talk-section
         .title="${subscribe(this.translations.difficulty)}"
-        .description="${this.detail.difficulty}"
-      />
+        .description="${subscribe(this.detail.difficulty)}"
+      ></app-talk-section>
       ${this.detail.events.length &&
       html`<app-talk-section .title="${subscribe(this.translations.events)}">
         ${this.detail.events.map(
@@ -57,7 +71,9 @@ export class Talk extends LitElement {
               <app-link .to="${event.slides}" .external="true"
                 >${subscribe(this.translations.slides)}</app-link
               >
-              <app-link .to="${event.code}" .external="true">${subscribe(this.translations.code)}</app-link>
+              <app-link .to="${event.code}" .external="true"
+                >${subscribe(this.translations.code)}</app-link
+              >
               <app-link v-if="event.demo.has()" .to="${event.demo.getOrElse('')}" .external="true"
                 >${subscribe(this.translations.demo)}</app-link
               >
@@ -69,5 +85,9 @@ export class Talk extends LitElement {
         )}
       </app-talk-section>`}
     </div>`
+  }
+
+  private getLength(length: number) {
+    return this.translation('talks_talkLengthMinutes').pipe(map(x => length + ' ' + x))
   }
 }

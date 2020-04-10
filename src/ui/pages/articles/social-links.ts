@@ -6,6 +6,7 @@ import { Store } from '../../../application/state/store.js'
 import { css, customElement, LitElement, property } from '/web_modules/lit-element.js'
 import { html } from '/web_modules/lit-html.js'
 import { subscribe } from '../../subscribe.js'
+import { general } from '../../styles/general.js'
 
 @customElement('app-social-links')
 export class SocialLinks extends LitElement {
@@ -24,6 +25,51 @@ export class SocialLinks extends LitElement {
   @property({ type: String })
   body!: string
 
+  static get styles() {
+    return [
+      general,
+      css`
+        .separator {
+          border-bottom: 1px solid var(--gray-color);
+          margin: var(--big-size) 0;
+        }
+
+        .share {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+        }
+
+        .share span {
+          margin-left: var(--small-size);
+        }
+
+        .links {
+          margin-left: var(--small-size);
+          display: flex;
+        }
+
+        .links > a {
+          height: 24px;
+        }
+
+        .links svg {
+          height: 100%;
+          color: var(--gray-color);
+          transition: 0.25s ease-in-out color;
+        }
+
+        .links svg:hover {
+          color: var(--primary-color);
+        }
+
+        .links a:not(:first-child) {
+          margin-left: var(--medium-size);
+        }
+      `
+    ]
+  }
+
   get shareArticle() {
     return this.translation('article_shareArticle')
   }
@@ -34,48 +80,6 @@ export class SocialLinks extends LitElement {
       url: this.window.location.href,
       locale: this.state.value().locale
     })
-  }
-
-  static get styles() {
-    return css`
-      .separator {
-        border-bottom: 1px solid var(--gray-color);
-        margin: var(--big-size) 0;
-      }
-
-      .share {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-      }
-
-      .share span {
-        margin-left: var(--small-size);
-      }
-
-      .links {
-        margin-left: var(--small-size);
-        display: flex;
-      }
-
-      .links > a {
-        height: 24px;
-      }
-
-      .links svg {
-        height: 100%;
-        color: var(--gray-color);
-        transition: 0.25s ease-in-out color;
-      }
-
-      .links svg:hover {
-        color: var(--primary-color);
-      }
-
-      .links a:not(:first-child) {
-        margin-left: var(--medium-size);
-      }
-    `
   }
 
   render() {

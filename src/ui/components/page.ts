@@ -1,9 +1,10 @@
 import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
+import { general } from '../styles/general.js'
 
 @customElement('app-page')
 export class Page extends LitElement {
   static get styles() {
-    return css`
+    return [general, css`
       .page {
         padding: var(--large-size) var(--medium-size) var(--medium-size);
         min-height: 100vh;
@@ -13,7 +14,7 @@ export class Page extends LitElement {
         margin: 0 auto;
         max-width: var(--body-width);
       }
-    `
+    `]
   }
 
   render() {

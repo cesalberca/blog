@@ -8,6 +8,7 @@ import { container } from '../../../container.js'
 import { customElement, html, LitElement } from '/web_modules/lit-element.js'
 import { Store } from '../../../application/state/store.js'
 import { subscribe } from '../../subscribe.js'
+import { general } from '../../styles/general.js'
 
 @customElement('app-articles')
 export class Articles extends LitElement {
@@ -21,6 +22,10 @@ export class Articles extends LitElement {
   readonly translation!: Translation
 
   articles: Article[] = []
+
+  static get styles() {
+    return [general]
+  }
 
   connectedCallback(): void {
     super.connectedCallback()

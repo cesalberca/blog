@@ -1,5 +1,6 @@
 import { css, customElement, LitElement, property, html } from '/web_modules/lit-element.js'
 import { styleMap } from '/web_modules/lit-html/directives/style-map.js'
+import { general } from '../styles/general.js'
 
 @customElement('app-hero')
 export class Hero extends LitElement {
@@ -11,24 +12,27 @@ export class Hero extends LitElement {
   }
 
   static get styles() {
-    return css`
-      .image {
-        --title-color: var(--black-color);
-        min-height: 45vh;
-        padding-top: var(--medium-size);
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        box-shadow: inset 0 8px 20px 0 hsla(0, 0%, 0%, 0.5);
-      }
+    return [
+      general,
+      css`
+        .image {
+          --title-color: var(--black-color);
+          min-height: 45vh;
+          padding-top: var(--medium-size);
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          box-shadow: inset 0 8px 20px 0 hsla(0, 0%, 0%, 0.5);
+        }
 
-      .wrapper {
-        mix-blend-mode: difference;
-      }
-    `
+        .wrapper {
+          mix-blend-mode: difference;
+        }
+      `
+    ]
   }
 
   render() {

@@ -3,11 +3,16 @@ import { Inject } from '../../../domain/types/inject.js'
 import { TYPES } from '../../../types.js'
 import { customElement, html, LitElement } from '/web_modules/lit-element.js'
 import { subscribe } from '../../subscribe.js'
+import { general } from '../../styles/general.js'
 
 @customElement('app-about')
 export class About extends LitElement {
   @Inject(TYPES.TRANSLATION)
   translation!: Translation
+
+  static get styles() {
+    return [general]
+  }
 
   get aboutTitle() {
     return this.translation('about_title')

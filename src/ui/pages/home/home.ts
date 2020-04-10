@@ -10,6 +10,7 @@ import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 import { Store } from '../../../application/state/store.js'
 import { subscribe } from '../../subscribe.js'
 import { map } from '/web_modules/rxjs/operators.js'
+import { general } from '../../styles/general.js'
 
 @customElement('app-home')
 export class Home extends LitElement {
@@ -24,6 +25,66 @@ export class Home extends LitElement {
 
   @property({ type: Array })
   articles: Article[] = []
+
+  static get styles() {
+    return [
+      general,
+      css`
+        .hero {
+          background-color: var(--primary-color);
+        }
+
+        .wrapper {
+          display: flex;
+          margin: 0 auto;
+          max-width: var(--body-width);
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 var(--medium-size);
+          overflow: hidden;
+        }
+
+        .title {
+          color: var(--white-color);
+          font-size: var(--title-text);
+        }
+
+        @media (max-width: 768px) {
+          .title {
+            margin: 0;
+          }
+
+          .caption,
+          .title {
+            padding: var(--medium-size);
+          }
+        }
+
+        .articles {
+          margin-top: 0;
+        }
+
+        .caption {
+          --bold-color: var(--white-color);
+          font-size: var(--body-text);
+          color: var(--white-color);
+          margin: 0;
+        }
+
+        .photo {
+          max-width: 500px;
+          transform: scale(-1, 1);
+          mix-blend-mode: soft-light;
+        }
+
+        @media (max-width: 768px) {
+          .wrapper {
+            flex-direction: column;
+          }
+        }
+      `
+    ]
+  }
 
   async connectedCallback(): Promise<void> {
     super.connectedCallback()
@@ -42,63 +103,6 @@ export class Home extends LitElement {
 
   get heroCaption() {
     return this.translation('home_heroCaption')
-  }
-
-  static get styles() {
-    return css`
-      .hero {
-        background-color: var(--primary-color);
-      }
-
-      .wrapper {
-        display: flex;
-        margin: 0 auto;
-        max-width: var(--body-width);
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 var(--medium-size);
-        overflow: hidden;
-      }
-
-      .title {
-        color: var(--white-color);
-        font-size: var(--title-text);
-      }
-
-      @media (max-width: 768px) {
-        .title {
-          margin: 0;
-        }
-
-        .caption,
-        .title {
-          padding: var(--medium-size);
-        }
-      }
-
-      .articles {
-        margin-top: 0;
-      }
-
-      .caption {
-        --bold-color: var(--white-color);
-        font-size: var(--body-text);
-        color: var(--white-color);
-        margin: 0;
-      }
-
-      .photo {
-        max-width: 500px;
-        transform: scale(-1, 1);
-        mix-blend-mode: soft-light;
-      }
-
-      @media (max-width: 768px) {
-        .wrapper {
-          flex-direction: column;
-        }
-      }
-    `
   }
 
   render() {

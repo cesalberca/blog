@@ -38,8 +38,7 @@
     "prismjs": "1.20.0",
     "reflect-metadata": "0.1.13",
     "router-slot": "1.5.3",
-    "rxjs": "6.5.5",
-    "tslib": "1.11.1"
+    "rxjs": "6.5.5"
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
@@ -84,6 +83,7 @@
       "lit-html/directives/unsafe-html.js",
       "reflect-metadata",
       "inversify-props",
+      "router-slot",
       "marked",
       "prismjs",
       "front-matter",

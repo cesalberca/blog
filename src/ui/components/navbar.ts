@@ -188,11 +188,9 @@ export class Navbar extends LitElement {
     return html`<header class="navbar">
       <nav class="mobile-navigation">
         <button
-          class="hamburger"
           type="button"
           aria-label="Menu"
-          aria-controls="navigation"
-          class="${classMap({ 'is-active': this.isActive })}"
+          class="${classMap({ hamburger: true, 'is-active': this.isActive })}"
           @click="${() => (this.isActive = !this.isActive)}"
         >
           <span class="hamburger-box">

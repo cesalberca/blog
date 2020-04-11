@@ -6,6 +6,7 @@ import { css, customElement, html, LitElement, property } from '/web_modules/lit
 import { classMap } from '/web_modules/lit-html/directives/class-map.js'
 import { tap } from '/web_modules/rxjs/operators.js'
 import { Subscription } from '/web_modules/rxjs.js'
+import { general } from '../styles/general.js'
 
 const darkTheme = css`
   .dark {
@@ -44,6 +45,7 @@ export class Theming extends LitElement {
 
   static get styles() {
     return [
+      general,
       css`
         body {
           background-color: var(--background-color);

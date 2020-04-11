@@ -3,7 +3,6 @@ import { css } from '/web_modules/lit-element.js'
 export const general = css`
   :host {
     display: block;
-    contain: strict;
   }
 
   *,

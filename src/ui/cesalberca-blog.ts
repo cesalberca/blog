@@ -13,6 +13,7 @@ import { TYPES } from '../types.js'
 import { Store } from '../application/state/store.js'
 import { Locale } from '../domain/language/locale.js'
 import { Theme } from '../application/state/theme.js'
+import { general } from './styles/general.js'
 
 @customElement('cesalberca-blog')
 export class CesalbercaBlog extends LitElement {
@@ -24,15 +25,14 @@ export class CesalbercaBlog extends LitElement {
   readonly state!: Store
 
   static get styles() {
-    return css`
-      .full-height {
-        min-height: 100vh;
-      }
-    `
-  }
-
-  connectedCallback(): void {
-    super.connectedCallback()
+    return [
+      general,
+      css`
+        .full-height {
+          min-height: 100vh;
+        }
+      `
+    ]
   }
 
   firstUpdated(props: PropertyValues) {

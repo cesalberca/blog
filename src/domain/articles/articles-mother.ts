@@ -1,8 +1,8 @@
-import { Article } from './article'
-import { Id } from '../id'
-import { Markdown } from '../markdown'
-import { Datetime } from '../datetime'
-import { Locale } from '../language/locale'
+import { Article } from './article.js'
+import { Id } from '../id.js'
+import { Markdown } from '../markdown.js'
+import { Datetime } from '../datetime.js'
+import { Locale } from '../language/locale.js'
 
 export class ArticlesMother {
   static getFakeArticles() {

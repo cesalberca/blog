@@ -26,8 +26,8 @@
     "lint": "eslint \"src/**/*.ts\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "test": "jest",
-    "dependencies": "snowpack --include \"src/index.ts\"",
-    "postinstall": "run-s dependencies"
+    "dependencies": "snowpack",
+    "prepare": "run-s dependencies"
   },
   "dependencies": {
     "front-matter": "3.1.0",

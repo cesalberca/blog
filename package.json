@@ -22,7 +22,7 @@
     "compile:watch": "tsc -w",
     "optimize": "ts-node scripts/optimize.ts",
     "server": "servor dist index.html --reload --browse",
-    "deploy": "./build.sh deploy",
+    "deploy": "scripts/deploy.sh deploy",
     "lint": "eslint \"src/**/*.ts\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "test": "jest",

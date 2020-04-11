@@ -1,6 +1,6 @@
 import { Datetime } from './datetime'
 
-describe('Datetime', () => {
+describe.skip('Datetime', () => {
   it('should get the value', () => {
     const datetime = Datetime.fromDate(new Date(2019, 3, 4))
 
@@ -25,7 +25,7 @@ describe('Datetime', () => {
     expect(actual).toEqual('April 4, 2019')
   })
 
-  it.skip('should print date', () => {
+  it('should print date', () => {
     const datetime = Datetime.fromDate(new Date(2019, 3, 4, 23, 3, 3, 1))
 
     const actual = datetime.toString()

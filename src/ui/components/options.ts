@@ -89,8 +89,7 @@ export class Options extends LitElement {
 
   render() {
     return html`<div class="options">
-      <label>
-        <select @change="${() => this.changeLocale()}">
+        <select aria-label="${subscribe(this.translation('_language'))}" @change="${() => this.changeLocale()}">
           ${this.locales.map(
             locale =>
               html`<option ?selected="${subscribe(
@@ -98,9 +97,7 @@ export class Options extends LitElement {
               )}" value="${locale.value}">${subscribe(locale.text)}</option>`
           )}
         </select>
-      </label>
-      <label>
-        <select @change="${() => this.changeTheme()}">
+        <select aria-label="${subscribe(this.translation('_theme'))}" @change="${() => this.changeTheme()}">
           ${this.themes.map(
             theme =>
               html`<option ?selected="${subscribe(
@@ -108,7 +105,6 @@ export class Options extends LitElement {
               )}" value="${theme.value}">${subscribe(theme.text)}</option>`
           )}
         </select>
-      </label>
     </div>`
   }
 }

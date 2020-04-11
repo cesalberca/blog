@@ -28,7 +28,7 @@
     "lint:css": "stylelint \"src/**/*.ts\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "test": "jest",
-    "dependencies": "snowpack --include \"src/ui/index.ts\"",
+    "dependencies": "snowpack --include \"src/index.ts\"",
     "postinstall": "run-s dependencies"
   },
   "dependencies": {

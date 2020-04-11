@@ -20,6 +20,10 @@ export class Link extends LitElement {
     return [
       general,
       css`
+        :host {
+          display: inline-block;
+        }
+
         a {
           color: var(--link-color);
           text-decoration: none;
@@ -56,6 +60,6 @@ export class Link extends LitElement {
   }
 
   render() {
-    return html` <a href="${this.to}" target="${this.target}"><slot></slot></a>`
+    return html` <a href="${this.to}" target="${this.target}" rel=${this.external ? 'noopener' : ''}><slot></slot></a>`
   }
 }

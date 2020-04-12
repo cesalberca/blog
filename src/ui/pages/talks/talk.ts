@@ -62,7 +62,7 @@ export class Talk extends LitElement {
         .title="${subscribe(this.translations.difficulty)}"
         .description="${subscribe(this.detail.difficulty)}"
       ></app-talk-section>
-      ${this.detail.events.length &&
+      ${this.detail.events.length !== 0 &&
       html`<app-talk-section .title="${subscribe(this.translations.events)}">
         ${this.detail.events.map(
           event => html`<div>

@@ -24,16 +24,16 @@ export class ArticlesFileRepository implements ArticlesRepository {
     let article: ArticleDto
 
     try {
-      const url = `infrastructure/articles/${this.translationService.toString(locale)}/${
+      const url = `/infrastructure/articles/${this.translationService.toString(locale)}/${
         id.value
       }.md`
       article = frontMatter(await this.http.get(`${url}`))
     } catch (e) {
       try {
-        const url = `infrastructure/articles/${this.translationService.toString(Locale.DEFAULT)}/${id.value}.md`
+        const url = `/infrastructure/articles/${this.translationService.toString(Locale.DEFAULT)}/${id.value}.md`
         article = frontMatter(await this.http.get(`${url}`))
       } catch (e) {
-        const url = `infrastructure/articles/${this.translationService.toString(Locale.ES)}/${id.value}.md`
+        const url = `/infrastructure/articles/${this.translationService.toString(Locale.ES)}/${id.value}.md`
         article = frontMatter(await this.http.get(`${url}`))
       }
     }
@@ -44,7 +44,7 @@ export class ArticlesFileRepository implements ArticlesRepository {
       date: Datetime.fromString(article.attributes.date),
       title: article.attributes.title,
       locale: this.translationService.toLocale(article.attributes.locale),
-      image: `infrastructure/articles/images/${article.attributes.image}`
+      image: `/infrastructure/articles/images/${article.attributes.image}`
     })
   }
 

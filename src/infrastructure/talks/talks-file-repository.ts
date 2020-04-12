@@ -32,16 +32,16 @@ export class TalksFileRepository implements TalksRepository {
     let talk: TalkDto
 
     try {
-      const url = `infrastructure/talks/${this.translationService.toString(locale)}/${id.value}.md`
+      const url = `/infrastructure/talks/${this.translationService.toString(locale)}/${id.value}.md`
       talk = frontMatter(await this.http.get(url))
     } catch (e) {
       try {
-        const url = `infrastructure/talks/${this.translationService.toString(Locale.DEFAULT)}/${
+        const url = `/infrastructure/talks/${this.translationService.toString(Locale.DEFAULT)}/${
           id.value
         }.md`
         talk = frontMatter(await this.http.get(url))
       } catch (e) {
-        const url = `infrastructure/talks/${this.translationService.toString(Locale.ES)}/${
+        const url = `/infrastructure/talks/${this.translationService.toString(Locale.ES)}/${
           id.value
         }.md`
         talk = frontMatter(await this.http.get(url))

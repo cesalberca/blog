@@ -115,7 +115,7 @@ export class Markdown extends LitElement {
         @media (max-width: 1024px) {
           pre[class*='language-'] {
             margin: 0.5em 0;
-            width: 100%;
+            width: calc(100% - 2em);
           }
         }
 

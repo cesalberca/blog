@@ -65,9 +65,4 @@ export const general = css`
   h6 {
     font-size: 1rem;
   }
-
-  strong {
-    letter-spacing: 1px;
-    color: var(--bold-color);
-  }
 `

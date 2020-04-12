@@ -51,7 +51,7 @@ export class ArticleExcerpt extends LitElement {
 
   render() {
     return html`<a href="${`/articles/${this.excerpt.id.value}`}" class="excerpt" tabindex="0">
-      <h3>${this.excerpt.title}</h3>
+      <h3>${unsafeHTML(this.excerpt.title)}</h3>
       <div class="slugline">
         <span>${this.excerpt.date}</span>
         <span class="accented-slugline"> / </span>

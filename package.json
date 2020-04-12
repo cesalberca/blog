@@ -4,12 +4,12 @@
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
-  "homepage": "https://www.cesalberca.es",
+  "homepage": "https://www.cesalberca.com",
   "scripts": {
     "prestart": "run-s -l clean",
     "start": "run-p -l server copy:watch compile:watch",
     "prebuild": "run-s -l clean",
-    "build": "run-p -l dependencies copy compile",
+    "build": "run-s -l dependencies copy compile",
     "postbuild": "run-s optimize",
     "clean": "rimraf dist",
     "copy": "run-s copy:assets copy:dependencies",
@@ -106,7 +106,7 @@
     "pre-push": "run-s lint test"
   },
   "lint-staged": {
-    "*.{ts}": [
+    "*.{js,jsx,ts,tsx,json,css,md}": [
       "prettier --write",
       "git add"
     ]

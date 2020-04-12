@@ -10,6 +10,7 @@ import { Article as ArticleObject } from '../../../domain/articles/article.js'
 import { Params, queryParentRouterSlot } from '/web_modules/router-slot.js'
 import { subscribe } from '../../subscribe.js'
 import { general } from '../../styles/general.js'
+import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 
 @customElement('app-article')
 export class Article extends LitElement {
@@ -129,7 +130,7 @@ export class Article extends LitElement {
 
     return html`<article class="article">
       <app-hero .image="${this.article.image}" class="hero">
-        <h1 class="title">${this.article.title}</h1>
+        <h1 class="title">${unsafeHTML(this.article.title)}</h1>
       </app-hero>
       <app-page>
         <header class="header">

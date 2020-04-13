@@ -2,12 +2,12 @@
   command = "npm run build"
   publish = "dist"
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/infrastructure/*"
+  to = "/infrastructure/:splat"
   status = 200
   force = false
 [[redirects]]
-  from = "/infrastructure/*"
-  to = "/infrastructure/*"
+  from = "/*"
+  to = "/index.html"
   status = 200
   force = false

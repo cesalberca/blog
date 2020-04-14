@@ -29,7 +29,7 @@ container
   .to(TranslationService)
   .inSingletonScope()
 container.bind<Translator>(TYPES.TRANSLATOR).to(Translator).inSingletonScope()
-container.bind<typeof fetch>(TYPES.FETCHER).toConstantValue(window.fetch.bind(window))
+container.bind<typeof fetch>(TYPES.FETCHER).toConstantValue(window.fetch.bind(this))
 container.bind<Http>(TYPES.HTTP).to(Http).inSingletonScope()
 container.bind<EncoderService>(TYPES.ENCODER_SERVICE).to(EncoderService).inSingletonScope()
 container

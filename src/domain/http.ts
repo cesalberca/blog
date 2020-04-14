@@ -7,17 +7,21 @@ export class Http {
   constructor(@Inject(TYPES.FETCHER) private readonly fetcher: typeof fetch) {}
 
   async get(url: string): Promise<string> {
-    const response = await this.fetcher(url)
+    const request = new Request(url)
+    const response = await this.fetcher(request)
     return this.getResponse(response)
   }
 
   private async getResponse(response: Response): Promise<string> {
-    if (!response.ok || response.status > 250) {
+    if (!(response.status >= 200 || response.status < 300) || !response.ok) {
       throw new Error('HTTP Error')
     }
 
-    const result = await response.blob()
-
-    return result.text()
+    try {
+      const result = await response.blob()
+      return result.text()
+    } catch (e) {
+      throw new Error('Parsing response error')
+    }
   }
 }

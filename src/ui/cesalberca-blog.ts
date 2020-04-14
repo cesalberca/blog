@@ -14,6 +14,7 @@ import { Store } from '../application/state/store.js'
 import { Locale } from '../domain/language/locale.js'
 import { Theme } from '../application/state/theme.js'
 import { general } from './styles/general.js'
+import { Home } from './pages/home/home.js'
 
 @customElement('cesalberca-blog')
 export class CesalbercaBlog extends LitElement {
@@ -56,7 +57,7 @@ export class CesalbercaBlog extends LitElement {
       },
       {
         path: '/',
-        component: () => import('./pages/home-page.js')
+        component: Home
       },
       {
         path: '**',

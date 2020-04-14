@@ -54,7 +54,7 @@ export class ArticleExcerpt extends LitElement {
       <h3>${unsafeHTML(this.excerpt.title)}</h3>
       <div class="slugline">
         <span>${this.excerpt.date}</span>
-        <span class="accented-slugline"> / </span>
+        <span class="accented-slugline"> <strong>/</strong> </span>
         <span>${this.excerpt.readingTime.minutes} ${subscribe(this.minutes)}</span>
       </div>
       <p>${unsafeHTML(this.excerpt.body)}</p>

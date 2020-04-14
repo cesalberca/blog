@@ -7,6 +7,7 @@ export interface TranslationIdentifiers {
   _minutes: string
   _language: string
   _theme: string
+  _loading: string
   home_title: string
   home_heroTitle: string
   home_heroCaption: string

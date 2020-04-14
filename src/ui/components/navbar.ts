@@ -137,7 +137,7 @@ export class Navbar extends LitElement {
             display: inline-block;
             position: absolute;
             z-index: 999;
-            top: var(--big-size);
+            top: calc(var(--medium-size) + 4px);
             left: var(--medium-size);
           }
 

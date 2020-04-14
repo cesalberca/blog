@@ -10,6 +10,7 @@ export const es: Translation = new Map<keyof TranslationIdentifiers, string>([
   ['_minutes', 'minutos'],
   ['_language', 'Idioma'],
   ['_theme', 'Tema'],
+  ['_loading', 'Cargando'],
   ['home_title', 'César Alberca'],
   ['home_articles', 'Artículos'],
   ['home_heroTitle', 'Frontend developer.<br/>Designer.<br/>Speaker.<br/>'],

@@ -12,7 +12,7 @@
   --disabled-opacity: 0.3;
 
   --code-background: var(--gray-color);
-  --code-foreground: var(--dark-blue);
+  --code-foreground: var(--dark-blue-color);
   --code-commment-color: hsl(0, 0%, 40%);
   --code-punctuation-color: hsl(0, 0%, 60%);
   --code-tag-color: hsl(358, 65%, 48%);

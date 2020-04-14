@@ -9,7 +9,7 @@ export class Tag extends LitElement {
       css`
         .tag {
           color: var(--white-color);
-          background-color: var(--dark-blue);
+          background-color: var(--black-dark-color);
           padding: var(--base);
           border-radius: 5px;
           line-height: 1;

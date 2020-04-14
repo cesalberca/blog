@@ -36,6 +36,33 @@ export class Article extends LitElement {
     return [
       general,
       css`
+        .content {
+          display: flex;
+          align-items: center;
+          height: 100%;
+        }
+
+        .loading:after {
+          overflow: hidden;
+          display: inline-block;
+          vertical-align: bottom;
+          animation: ellipsis steps(4, end) 900ms infinite;
+          content: '\\2026';
+          width: 0;
+        }
+
+        @keyframes ellipsis {
+          to {
+            width: 35px;
+          }
+        }
+
+        @-webkit-keyframes ellipsis {
+          to {
+            width: 35px;
+          }
+        }
+
         .header {
           display: flex;
         }
@@ -125,7 +152,11 @@ export class Article extends LitElement {
 
   render() {
     if (this.article === null) {
-      return html`<h2>Article not found</h2>`
+      return html`<app-page
+        ><div class="content">
+          <h2 class="loading">${subscribe(this.translation('_loading'))}</h2>
+        </div></app-page
+      >`
     }
 
     return html`<article class="article">

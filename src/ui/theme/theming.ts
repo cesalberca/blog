@@ -11,7 +11,7 @@ import { general } from '../styles/general.js'
 const darkTheme = css`
   .dark {
     --foreground-color: var(--white-color);
-    --background-color: var(--dark-blue);
+    --background-color: var(--dark-blue-color);
     --link-color: var(--white-color);
 
     --link-hover-color: black;

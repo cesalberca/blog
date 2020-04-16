@@ -7,8 +7,7 @@ export class Http {
   constructor(@Inject(TYPES.FETCHER) private readonly fetcher: typeof fetch) {}
 
   async get(url: string): Promise<string> {
-    const request = new Request(url)
-    const response = await this.fetcher(request)
+    const response = await this.fetcher(url)
     return this.getResponse(response)
   }
 
@@ -18,8 +17,7 @@ export class Http {
     }
 
     try {
-      const result = await response.blob()
-      return result.text()
+      return response.text()
     } catch (e) {
       throw new Error('Parsing response error')
     }

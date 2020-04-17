@@ -49,9 +49,9 @@ describe('TranslationService', () => {
 
   it('should translate locale to string', () => {
     const { translationService } = setup()
-    const en = translationService.toString(Locale.EN)
-    const es = translationService.toString(Locale.ES)
-    const defaultLocale = translationService.toString(Locale.DEFAULT)
+    const en = translationService.toLiteral(Locale.EN)
+    const es = translationService.toLiteral(Locale.ES)
+    const defaultLocale = translationService.toLiteral(Locale.DEFAULT)
 
     expect(en).toEqual('en')
     expect(es).toEqual('es')
@@ -62,7 +62,7 @@ describe('TranslationService', () => {
     const { translationService } = setup()
     expect(() => {
       const NON_EXISTING_LOCALE = 99
-      translationService.toString(NON_EXISTING_LOCALE)
+      translationService.toLiteral(NON_EXISTING_LOCALE)
     }).toThrowError(new TranslationError('Locale 99 not found'))
   })
 

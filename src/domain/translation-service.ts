@@ -33,7 +33,7 @@ export class TranslationService {
     return this.translator.getDefaultLocaleTranslation().get(key)!
   }
 
-  toString(locale: Locale) {
+  toLiteral(locale: Locale) {
     switch (locale) {
       case Locale.DEFAULT:
       case Locale.EN:

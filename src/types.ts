@@ -13,7 +13,7 @@ export const TYPES = {
   USE_CASE_DECORATOR: Symbol.for('USE_CASE_DECORATOR'),
   LOGGER: Symbol.for('LOGGER'),
   FETCHER: Symbol.for('FETCHER'),
-  HTTP: Symbol.for('HTTP'),
+  FILE_LOADER: Symbol.for('FILE_LOADER'),
   STORE: Symbol.for('STORE'),
   WINDOW: Symbol.for('WINDOW'),
   TRANSLATION: Symbol.for('TRANSLATION'),

@@ -1,13 +1,14 @@
 import { Inject } from './types/inject.js'
 import { Injectable } from './types/injectable.js'
 import { TYPES } from '../types.js'
+import { Fetcher } from './fetcher.js'
 
 @Injectable()
-export class Http {
-  constructor(@Inject(TYPES.FETCHER) private readonly fetcher: typeof fetch) {}
+export class FileLoader {
+  constructor(@Inject(TYPES.FETCHER) private readonly fetcher: Fetcher) {}
 
-  async get(url: string): Promise<string> {
-    const response = await this.fetcher(url)
+  async loadFrom(url: string): Promise<string> {
+    const response = await this.fetcher.fetch(url)
     return this.getResponse(response)
   }
 

@@ -20,17 +20,18 @@ import { Store } from './application/state/store.js'
 import { DifficultyService } from './domain/talks/difficulty-service.js'
 import { TalkDetail } from './ui/pages/talks/talk-detail.js'
 import { container } from '/web_modules/inversify-props.js'
-import { Http } from './domain/http.js'
+import { FileLoader } from './domain/file-loader.js'
 import { map } from '/web_modules/rxjs/operators.js'
 import { Storage } from './application/state/storage.js'
+import { Fetcher } from './domain/fetcher.js'
 
 container
   .bind<TranslationService>(TYPES.TRANSLATION_SERVICE)
   .to(TranslationService)
   .inSingletonScope()
 container.bind<Translator>(TYPES.TRANSLATOR).to(Translator).inSingletonScope()
-container.bind<typeof fetch>(TYPES.FETCHER).toConstantValue(window.fetch.bind(this))
-container.bind<Http>(TYPES.HTTP).to(Http).inSingletonScope()
+container.bind<Fetcher>(TYPES.FETCHER).toConstantValue({ fetch: window.fetch.bind(this) })
+container.bind<FileLoader>(TYPES.FILE_LOADER).to(FileLoader).inSingletonScope()
 container.bind<EncoderService>(TYPES.ENCODER_SERVICE).to(EncoderService).inSingletonScope()
 container
   .bind<TwitterSharerService>(TYPES.TWITTER_SHARER_SERVICE)

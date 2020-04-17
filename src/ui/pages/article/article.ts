@@ -131,7 +131,7 @@ export class Article extends LitElement {
   }
 
   get date() {
-    return this.article!.date.format(this.translationService.toString(this.state.value().locale))
+    return this.article!.date.format(this.translationService.toLiteral(this.state.value().locale))
   }
 
   get minutes() {
@@ -139,7 +139,7 @@ export class Article extends LitElement {
   }
 
   get articleLocale() {
-    return this.translationService.toString(this.article!.locale)
+    return this.translationService.toLiteral(this.article!.locale)
   }
 
   get title() {

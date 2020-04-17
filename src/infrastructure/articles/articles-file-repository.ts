@@ -11,12 +11,12 @@ import { TYPES } from '../../types.js'
 import { Inject } from '../../domain/types/inject.js'
 import { articles } from './articles.js'
 import frontMatter from '/web_modules/front-matter.js'
-import { Http } from '../../domain/http.js'
+import { FileLoader } from '../../domain/file-loader.js'
 
 @Injectable()
 export class ArticlesFileRepository implements ArticlesRepository {
   constructor(
-    @Inject(TYPES.HTTP) private readonly http: Http,
+    @Inject(TYPES.FILE_LOADER) private readonly fileLoader: FileLoader,
     @Inject(TYPES.TRANSLATION_SERVICE) private readonly translationService: TranslationService
   ) {}
 
@@ -24,17 +24,21 @@ export class ArticlesFileRepository implements ArticlesRepository {
     let article: ArticleDto
 
     try {
-      const url = `/infrastructure/articles/${this.translationService.toString(locale)}/${
+      const url = `/infrastructure/articles/${this.translationService.toLiteral(locale)}/${
         id.value
       }.md`
-      article = frontMatter(await this.http.get(`${url}`))
+      article = frontMatter(await this.fileLoader.loadFrom(`${url}`))
     } catch (e) {
       try {
-        const url = `/infrastructure/articles/${this.translationService.toString(Locale.DEFAULT)}/${id.value}.md`
-        article = frontMatter(await this.http.get(`${url}`))
+        const url = `/infrastructure/articles/${this.translationService.toLiteral(Locale.DEFAULT)}/${
+          id.value
+        }.md`
+        article = frontMatter(await this.fileLoader.loadFrom(`${url}`))
       } catch (e) {
-        const url = `/infrastructure/articles/${this.translationService.toString(Locale.ES)}/${id.value}.md`
-        article = frontMatter(await this.http.get(`${url}`))
+        const url = `/infrastructure/articles/${this.translationService.toLiteral(Locale.ES)}/${
+          id.value
+        }.md`
+        article = frontMatter(await this.fileLoader.loadFrom(`${url}`))
       }
     }
 

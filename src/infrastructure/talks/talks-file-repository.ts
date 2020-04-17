@@ -17,12 +17,12 @@ import { Inject } from '../../domain/types/inject.js'
 import { TYPES } from '../../types.js'
 import { talks } from './talks.js'
 import frontMatter from '/web_modules/front-matter.js'
-import { Http } from '../../domain/http.js'
+import { FileLoader } from '../../domain/file-loader.js'
 
 @Injectable()
 export class TalksFileRepository implements TalksRepository {
   constructor(
-    @Inject(TYPES.HTTP) private readonly http: Http,
+    @Inject(TYPES.FILE_LOADER) private readonly fileLoader: FileLoader,
     @Inject(TYPES.TRANSLATION_SERVICE) private readonly translationService: TranslationService,
     @Inject(TYPES.LANGUAGE_SERVICE) private readonly languageService: LanguageService,
     @Inject(TYPES.DIFFICULTY_SERVICE) private readonly difficultyService: DifficultyService
@@ -32,19 +32,19 @@ export class TalksFileRepository implements TalksRepository {
     let talk: TalkDto
 
     try {
-      const url = `/infrastructure/talks/${this.translationService.toString(locale)}/${id.value}.md`
-      talk = frontMatter(await this.http.get(url))
+      const url = `/infrastructure/talks/${this.translationService.toLiteral(locale)}/${id.value}.md`
+      talk = frontMatter(await this.fileLoader.loadFrom(url))
     } catch (e) {
       try {
-        const url = `/infrastructure/talks/${this.translationService.toString(Locale.DEFAULT)}/${
+        const url = `/infrastructure/talks/${this.translationService.toLiteral(Locale.DEFAULT)}/${
           id.value
         }.md`
-        talk = frontMatter(await this.http.get(url))
+        talk = frontMatter(await this.fileLoader.loadFrom(url))
       } catch (e) {
-        const url = `/infrastructure/talks/${this.translationService.toString(Locale.ES)}/${
+        const url = `/infrastructure/talks/${this.translationService.toLiteral(Locale.ES)}/${
           id.value
         }.md`
-        talk = frontMatter(await this.http.get(url))
+        talk = frontMatter(await this.fileLoader.loadFrom(url))
       }
     }
 

@@ -44,10 +44,6 @@ export class CesalbercaBlog extends LitElement {
         component: () => import('./pages/article-page.js')
       },
       {
-        path: 'articles',
-        component: () => import('./pages/articles-page.js')
-      },
-      {
         path: 'about',
         component: () => import('./pages/about-page.js')
       },

@@ -111,4 +111,4 @@ In order to change to a dark color mode we can just swap the values:
 
 ## Conclusion
 
-Theming as shown in this tutorial can save you a lot of headaches if done well. However we must be precise on what custom properties we assign to our components and try to identify as much as we can business concepts. For example, some error state can be represented today as red, so we should have an `--error-state-color: var(--red-color);` property and if it changes tomorrow we can do it easily `--error-state-color: var(--orange-color);`.
+Theming as shown in this tutorial can save you a lot of headaches if done well. However we must be precise on what custom properties we assign to our components and try to identify as much as we can business concepts. For example, some error state can be represented today as red, so we should have an `--error-color: var(--red-color);` property and if it changes tomorrow we can do it easily `--error-color: var(--orange-color);`.

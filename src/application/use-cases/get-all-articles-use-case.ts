@@ -18,9 +18,7 @@ export class GetAllArticlesUseCase implements UseCase<Article[], { locale: Local
 
   execute(): Observable<Article[]> {
     return this.store.observable().pipe(
-      switchMap(({ locale }) => {
-        return this.articlesRepository.findAllByLocale(locale)
-      }),
+      switchMap(({ locale }) => this.articlesRepository.findAllByLocale(locale)),
       map(articles =>
         articles.slice().sort((articleA, articleB) => (articleB.date < articleA.date ? -1 : 1))
       )

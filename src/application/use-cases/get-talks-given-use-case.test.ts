@@ -4,6 +4,8 @@ import { Locale } from '../../domain/language/locale'
 import { instance, mock, verify, when } from 'ts-mockito'
 import { Store } from '../state/store'
 import { Theme } from '../state/theme'
+import { of } from 'rxjs'
+import { TalksMother } from '../../domain/talks/talks-mother'
 
 describe('GetTalksGivenUseCase', () => {
   it('should get all talks given', async () => {
@@ -18,7 +20,8 @@ describe('GetTalksGivenUseCase', () => {
 function setup() {
   const talksRepository = mock<TalksRepository>()
   const store = mock(Store)
-  when(store.value()).thenReturn({ locale: Locale.EN, theme: Theme.DARK })
+  when(store.observable()).thenReturn(of({ locale: Locale.EN, theme: Theme.DARK }))
+  when(talksRepository.findAllByLocale(Locale.EN)).thenResolve(TalksMother.getTalksGiven())
   return {
     talksRepository,
     getTalksGivenUseCase: new GetTalksGivenUseCase(instance(talksRepository), instance(store))

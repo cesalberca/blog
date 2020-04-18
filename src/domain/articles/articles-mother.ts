@@ -5,7 +5,7 @@ import { Datetime } from '../datetime.js'
 import { Locale } from '../language/locale.js'
 
 export class ArticlesMother {
-  static getFakeArticles() {
+  static articles() {
     return [
       Article.create({
         id: Id.fromValue('haciendo-vuen-frontend'),

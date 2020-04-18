@@ -5,6 +5,7 @@ import { Id } from '../../domain/id'
 import { instance, mock, verify, when } from 'ts-mockito'
 import { Theme } from '../state/theme'
 import { Store } from '../state/store'
+import { of } from 'rxjs'
 
 describe('GetArticleUseCase', () => {
   it('should get an article', async () => {
@@ -19,7 +20,7 @@ describe('GetArticleUseCase', () => {
 function setup() {
   const articlesRepository = mock<ArticlesRepository>()
   const store = mock(Store)
-  when(store.value()).thenReturn({ locale: Locale.EN, theme: Theme.DARK })
+  when(store.observable()).thenReturn(of({ locale: Locale.EN, theme: Theme.DARK }))
   return {
     articlesRepository,
     getArticleUseCase: new GetArticleUseCase(instance(articlesRepository), instance(store))

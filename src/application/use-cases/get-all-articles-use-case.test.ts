@@ -6,6 +6,7 @@ import { ArticlesRepository } from '../../domain/articles/articles-repository.js
 import { instance, mock, verify, when } from 'ts-mockito'
 import { Store } from '../state/store.js'
 import { Theme } from '../state/theme.js'
+import { of } from 'rxjs'
 
 describe('GetAllArticlesUseCase', () => {
   it('should get all articles', async () => {
@@ -27,10 +28,10 @@ describe('GetAllArticlesUseCase', () => {
 
 function setup() {
   const articlesRepository = mock<ArticlesRepository>()
-  const articles: Article[] = ArticlesMother.getFakeArticles()
+  const articles: Article[] = ArticlesMother.articles()
   when(articlesRepository.findAllByLocale(Locale.EN)).thenResolve(articles)
   const store = mock(Store)
-  when(store.value()).thenReturn({ locale: Locale.EN, theme: Theme.DARK })
+  when(store.observable()).thenReturn(of({ locale: Locale.EN, theme: Theme.DARK }))
   return {
     articlesRepository,
     getAllArticlesUseCase: new GetAllArticlesUseCase(instance(articlesRepository), instance(store))

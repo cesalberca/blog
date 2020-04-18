@@ -2,11 +2,11 @@ import { Datetime } from './datetime'
 
 describe.skip('Datetime', () => {
   it('should get the value', () => {
-    const datetime = Datetime.fromDate(new Date(2019, 3, 4))
+    const datetime = Datetime.fromDate(new Date(2019, 3, 4, 0, 0, 0))
 
     const actual = datetime.value
 
-    expect(actual).toEqual(new Date(2019, 3, 4))
+    expect(actual).toEqual(new Date(2019, 3, 4, 0, 0, 0))
   })
 
   it('should construct a datetime from a string', () => {

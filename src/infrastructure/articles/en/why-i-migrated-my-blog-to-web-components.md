@@ -13,7 +13,7 @@ Why did I migrate my [blog](https://github.com/cesalberca/blog) for the third an
 
 Initially my blog was powered by [Jekyll](https://jekyllrb.com/), then I migrated it to [Vue](https://vuejs.org/) and last week I was thinking about migrating it to [Nuxt](https://nuxtjs.org/) so that I could improve my SEO and performance. In the last moment I decided to approach it with a more _agnostic_ solution that could also improve my SEO. So I finally decided to migrate it to [LitElement](https://lit-element.polymer-project.org/).
 
-Why this change all of a sudden? Well, I was starting to wonder things that I had taken for granted: Is it so hard to have good SEO without using techniques like SSR or some frameworks like static sites generators like [Gatsby](https://www.gatsbyjs.org/)? Is it really necessary to add dependencies with **thousands upon thousands of lines of code**, with **so many moving parts** and **so many abstractions** to build a website nowadays? It _can't be that hard_. Or at least it shouldn't be. That's when [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) come into play, which a part from removing the need of using a complex framework they have [good SEO](https://developers.google.com/search/docs/guides/javascript-seo-basics#web-components).
+Why this change all of a sudden? Well, I was starting to wonder things that I had taken for granted: Is it so hard to have good SEO without using techniques like SSR or some frameworks like static site generators like [Gatsby](https://www.gatsbyjs.org/)? Is it really necessary to add dependencies with **thousands upon thousands of lines of code**, with **so many moving parts** and **so many abstractions** to build a website nowadays? It _can't be that hard_. Or at least it shouldn't be. That's when [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) come into play, which a part from removing the need of using a complex framework they have [good SEO](https://developers.google.com/search/docs/guides/javascript-seo-basics#web-components).
 
 > It can't be _that complicated_.
 
@@ -47,7 +47,7 @@ To use Snowpack you have to take into account the following:
 
 1. The imports must include the extension. At least if we don't want to use Babel (although we can avoid putting the extension with [this configuration](https://www.snowpack.dev/#importing-packages-by-name))
    . With TypeScript, you have to include the extension `.js`. There is an [issue](https://github.com/microsoft/TypeScript/issues/16577) where this is mentioned.
-2. When you install dependencies you have to include them in the `package.json` inside the [Snowpack configuration](https://www.snowpack.dev/#whitelisting-dependencies). In my case it was necessary because I wanted to use RxJS, which has same problems with certain exports.
+2. When you install dependencies you have to include them in the `package.json` inside the [Snowpack configuration](https://www.snowpack.dev/#whitelisting-dependencies). In my case it was necessary because I wanted to use RxJS, which has the same problems with certain exports.
 
 ```json
 {
@@ -95,13 +95,13 @@ Although be careful, because the moment you add a web dependency the `--include 
 }
 ```
 
-That is probably all you need to know for now of Snowpack, a tool that **saves us the bundle generation time**, which can shave does precious seconds in developments and **avoids complexity**.
+That is probably all you need to know for now of Snowpack, a tool that **saves us the bundle generation time**, which can shave off precious seconds in developments and **avoids complexity**.
 
 ## Migration process
 
 In my projects I bet on an architecture which **separates the logic of what my application does from how the user interacts with system**. I often follow an architecture with 4 layers: **application**, **domain**, **infrastructure** and **ui**. This has allowed me to migrate from Vue to LitElement changing mainly the **ui** layer. If you want to know more about this you can watch a talk a gave about [this](https://www.youtube.com/watch?v=NpjecaAgcVQ) (in Spanish).
 
-What other layers I needed to change? The **infrastructure** layer, because when you don't have bundler the imports of Markdown were handled by Webpack with [frontmatter-markdown-loader](https://www.npmjs.com/package/frontmatter-markdown-loader). I had to replace the retrieval of articles with HTTP requests using [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+What other layers did I need to change? The **infrastructure** layer, because when you don't have bundler the imports of Markdown are handled by Webpack with [frontmatter-markdown-loader](https://www.npmjs.com/package/frontmatter-markdown-loader). I had to replace the retrieval of articles with HTTP requests using [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
 Something so simple as importing non JavaScript files was something that was primarily introduced by Webpack and other bundlers, but is something not native, not [at moment](https://github.com/tc39/proposal-module-attributes) at least. Moreover, CSS, image and SVG imports inside JavaScript can be replaced by the use of link, img tags and inlining SVG respectively.
 
@@ -136,7 +136,7 @@ The copying of files I do it with [cpx](https://www.npmjs.com/package/cpx) which
 }
 ```
 
-You'll see that I make use of a weird command: `run-s` and `run-p`. Well, I use that in order to execute several processes at the same time, like the compiler watch, the copying watch and the local server. You can't wait for one process to finish to start another one because it will never finish executing, not until we stop it manually.
+You'll see that I make use of the weird commands: `run-s` and `run-p`. Well, I use that in order to execute several processes at the same time, like the compiler watch, the copying watch and the local server. You can't wait for one process to finish to start another one because it will never finish executing, not until we stop it manually.
 
 `run-s` and `run-p` come from the package [npm-run-all](https://www.npmjs.com/package/npm-run-all). The `s` means "sequentially" and the `p` means "parallel".
 

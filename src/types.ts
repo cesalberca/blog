@@ -17,6 +17,7 @@ export const TYPES = {
   STORE: Symbol.for('STORE'),
   WINDOW: Symbol.for('WINDOW'),
   TRANSLATION: Symbol.for('TRANSLATION'),
+  PERSISTENCE: Symbol.for('PERSISTENCE'),
   STORAGE: Symbol.for('STORAGE'),
   APPLICATION: Symbol.for('APPLICATION'),
   ROUTER: Symbol.for('ROUTER'),

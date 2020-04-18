@@ -4,8 +4,8 @@ import './ui/components/index.js'
 import './ui/cesalberca-blog.js'
 import './ui/theme/theming.js'
 import { TYPES } from './types.js'
-import { Storage } from './application/state/storage.js'
+import { Persistence } from './application/state/persistence.js'
 
-const storage = container.get<Storage>(TYPES.STORAGE)
+const storage = container.get<Persistence>(TYPES.PERSISTENCE)
 storage.setFirstValue()
 storage.start().subscribe()

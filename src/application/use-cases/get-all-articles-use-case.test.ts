@@ -11,7 +11,7 @@ describe('GetAllArticlesUseCase', () => {
   it('should get all articles', async () => {
     const { articlesRepository, getAllArticlesUseCase } = setup()
 
-    await getAllArticlesUseCase.execute()
+    await getAllArticlesUseCase.execute().toPromise()
 
     verify(articlesRepository.findAllByLocale(Locale.EN)).once()
   })
@@ -19,7 +19,7 @@ describe('GetAllArticlesUseCase', () => {
   it('should return the articles ordered by date', async () => {
     const { getAllArticlesUseCase } = setup()
 
-    const result = await getAllArticlesUseCase.execute()
+    const result = await getAllArticlesUseCase.execute().toPromise()
 
     expect(result[0].date.value > result[1].date.value).toBe(true)
   })

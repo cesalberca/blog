@@ -32,6 +32,7 @@ export class Articles extends LitElement {
     container
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
+      .toPromise()
       .then(x => {
         this.articles = x
       })

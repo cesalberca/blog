@@ -91,6 +91,7 @@ export class Home extends LitElement {
     this.articles = await container
       .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
       .execute()
+      .toPromise()
   }
 
   get articlesTitle() {

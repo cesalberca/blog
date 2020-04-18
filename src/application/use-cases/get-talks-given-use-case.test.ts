@@ -9,7 +9,7 @@ describe('GetTalksGivenUseCase', () => {
   it('should get all talks given', async () => {
     const { getTalksGivenUseCase, talksRepository } = setup()
 
-    await getTalksGivenUseCase.execute()
+    await getTalksGivenUseCase.execute().toPromise()
 
     verify(talksRepository.findAllByLocale(Locale.EN)).once()
   })

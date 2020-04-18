@@ -32,7 +32,7 @@ export class Talks extends LitElement {
 
   async connectedCallback(): Promise<void> {
     super.connectedCallback()
-    this.talks = await this.getTalksGivenUseCase.execute()
+    this.talks = await this.getTalksGivenUseCase.execute().toPromise()
   }
 
   get talksTitle() {

@@ -7,8 +7,6 @@ import { LanguageService } from './domain/talks/language-service.js'
 import { TalksFileRepository } from './infrastructure/talks/talks-file-repository.js'
 import { TalksRepository } from './domain/talks/talks-repository.js'
 import { ArticlesFileRepository } from './infrastructure/articles/articles-file-repository.js'
-import { UseCaseDecorator } from './application/use-cases/use-case-decorator.js'
-import { Logger } from './domain/logger.js'
 import { TwitterSharerService } from './domain/articles/twitter-sharer-service.js'
 import { GetAllArticlesUseCase } from './application/use-cases/get-all-articles-use-case.js'
 import { GetArticleUseCase } from './application/use-cases/get-article-use-case.js'
@@ -59,7 +57,6 @@ container
   .bind<GetTalksGivenUseCase>(TYPES.GET_TALKS_GIVEN_USE_CASE)
   .to(GetTalksGivenUseCase)
   .inSingletonScope()
-container.bind<UseCaseDecorator>(TYPES.USE_CASE_DECORATOR).to(UseCaseDecorator).inSingletonScope()
 container.bind<Store>(TYPES.STORE).to(Store).inSingletonScope()
 
 container.bind<Translation>(TYPES.TRANSLATION).toFunction(key =>
@@ -78,7 +75,6 @@ container.bind<TalkDetail>(TYPES.TALK_DETAIL).to(TalkDetail).inSingletonScope()
 container.bind<Storage>(TYPES.STORAGE).toConstantValue(window.localStorage)
 container.bind<Persistence>(TYPES.PERSISTENCE).to(Persistence).inSingletonScope()
 
-container.bind<Logger>(TYPES.LOGGER).toConstantValue(window.console)
 container.bind<Window>(TYPES.WINDOW).toConstantValue(window)
 
 export { container }

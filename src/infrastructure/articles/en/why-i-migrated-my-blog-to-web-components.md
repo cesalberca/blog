@@ -9,7 +9,7 @@ Why did I do the third and last migration (hopefully) of my [blog](https://githu
 
 <!-- more -->
 
-## Why
+## Why?
 
 Initially my blog was powered by [Jekyll](https://jekyllrb.com/), then I migrated it to [Vue](https://vuejs.org/) and last week I was thinking about moving it to [Nuxt](https://nuxtjs.org/) so that I could improve my SEO and performance. But in the last moment I decided to approach it with a more _agnostic_ solution that could also improve my SEO. So I finally decided to do migrate it to [LitElement](https://lit-element.polymer-project.org/).
 
@@ -115,9 +115,9 @@ We don't need a bundler, but we still need to execute certain tasks. For example
 
 At the end everything has its pros and cons. This I would say has been the biggest con, and that is that **many tools are not really adapted to ESModules**.
 
-### Desarrollo
+### Development
 
-El copiado de ficheros lo hago con [cpx](https://www.npmjs.com/package/cpx), que tiene modo watch. Esto lo incluí en un script en el `package.json`:
+The copying of files I do it with [cpx](https://www.npmjs.com/package/cpx) which has a watch mode. I included this in the `package.json`:
 
 ```json
 {
@@ -136,11 +136,11 @@ El copiado de ficheros lo hago con [cpx](https://www.npmjs.com/package/cpx), que
 }
 ```
 
-Verás que hago uso de un comando raro: `run-s` y `run-p`. Bien, esto lo uso ya que tengo que ejecutar varios procesos a la vez, como es el watch de compilar, el watch de copiar y el servidor local. No puedo esperar a que uno termine para ejecutar el otro, ya que nunca terminaría de ejecutarse, por lo menos hasta que paremos el proceso manualmente.
+You'll see that I make use of a weird command: `run-s` and `run-p`. Well, I use that in order to execute several processes at the same time, like the compiler watch, the copying watch and the local server. You can't wait to one to finish to start the other because it will never finish executing, not until we stop it manually.  
 
-`run-s` y `run-p` vienen del paquete [npm-run-all](https://www.npmjs.com/package/npm-run-all). La `s` quiere decir "sequentially" y la `p` es de "parallel".
+`run-s` and `run-p` come from the package [npm-run-all](https://www.npmjs.com/package/npm-run-all). The `s` means "sequentially" and the `p` means "parallel".
 
-Tras esto y con un fichero `index.html` donde importemos un script con type module ya podríamos empezar a ver algo:
+With an `index.html` file where we import a script with type module we will be able to see something: 
 
 ```html
 <!DOCTYPE html>
@@ -155,11 +155,13 @@ Tras esto y con un fichero `index.html` donde importemos un script con type modu
 </html>
 ```
 
-### Producción
+### Production
 
-Para hacer la build es bastante parecido al proceso de `start` salvo que no necesitamos el modo watch. Además aprovecho para minificar las imágenes. No hago otro tipo de tratamiento de mi código como podrías ser [minificación](<https://en.wikipedia.org/wiki/Minification_(programming)>), [uglificación](https://www.quora.com/What-does-uglify-mean) o [tree shaking](https://en.wikipedia.org/wiki/Tree_shaking). Y asumo esos costes ya que de momento son triviales para el usuario.
+To make the production build we will need to have a script similar to the `start` script except we won't need the watch mode. I also minify the images here. I don't do any other type of [minification](<https://en.wikipedia.org/wiki/Minification_(programming)>), [uglifying](https://www.quora.com/What-does-uglify-mean) or [tree shaking](https://en.wikipedia.org/wiki/Tree_shaking). I'm aware of the costs of not doing that and for the moment I think they are trivial to the user.
 
-Y una ganancia de no tener un bundle, es que el navegador ya se encarga de cachear los ficheros por ti.
+And something that we get for free without a bundle is that the browser will cache the files for you.
+
+The `package.json` now looks like this: 
 
 ```json
 {
@@ -181,7 +183,7 @@ Y una ganancia de no tener un bundle, es que el navegador ya se encarga de cache
 
 ### TypeScript
 
-Para que funcionase bien la resolución de tipos de TypeScript tuve que añadir la siguiente configuración al `tsconfig.json`:
+In order for TypeScript's type resolution to work I have to add the following configuration to `tsconfig.json`: 
 
 ```json
 {
@@ -195,11 +197,11 @@ Para que funcionase bien la resolución de tipos de TypeScript tuve que añadir 
 }
 ```
 
-Así TypeScript sabe resolver cada vez que hagamos un import de `/web_modules` que los tipos tiene que resolverlos en `node_modules`.
+So now when we do an import from `/web_modules` TypeScript knows to resolve the imports from `node_modules`. 
 
-Además tuve que añadir `inlineSourceMap` y `inlineSources` a true para que pudiese depurar con puntos de ruptura.
+Moreover I had to add `inlineSourceMap` and `inlineSources` to true in order to be able to debug with breakpoints.
 
-Mi configuración completa del `tsconfig.json` es esta:
+My whole `tsconfig.json` configuration is this: 
 
 ```json
 {

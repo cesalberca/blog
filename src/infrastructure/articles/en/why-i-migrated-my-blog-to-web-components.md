@@ -43,10 +43,11 @@ Because the fiirst way of importing is not native —not now [at least](https://
 
 ### Snowpack
 
-Para usar Snowpack hay que tener en cuenta lo siguiente:
+To use Snowpack you have to take into account the following:
 
-1. Los imports deben incluir la extensión. Por lo menos si queremos evitar hacer uso de Babel (aunque se puede obviar la extensión con [esta configuración](https://www.snowpack.dev/#importing-packages-by-name)). Con TypeScript hay que incluir aún así la extensión `.js`. Hay [un issue](https://github.com/microsoft/TypeScript/issues/16577) donde se habla más en profundidad sobre esto.
-2. Cuando se instalan dependencias se deben incluir en el `package.json` dentro de la [configuración de Snowpack](https://www.snowpack.dev/#whitelisting-dependencies). En mi caso era necesario por RxJS, que no exporta ciertos operadores y por eso hay que ponerlo de forma explícita.
+1. The imports must include the extension. At least if we don't want to use Babel (although we can avoid putting the extension with [this configuration]((https://www.snowpack.dev/#importing-packages-by-name))
+. With TypeScript you have to include the extension `.js`. There is an [issue](https://github.com/microsoft/TypeScript/issues/16577)  where this is mentioned.
+2. When you install dependencies you have to include them in the `package.json` inside the [Snowpack configuration](https://www.snowpack.dev/#whitelisting-dependencies). In my case it was necessary because I wanted to use RxJS, which has same problems with certain exports.
 
 ```json
 {
@@ -62,16 +63,19 @@ Para usar Snowpack hay que tener en cuenta lo siguiente:
 }
 ```
 
-Si ves que te funciona usando el siguiente comando entonces no pongas las `webDependencies`:
+If you find that this command works:
 
 ```bash
 snowpack --include "src/**/*.ts"
 ```
 
-Eso sí, en el momento que pongas una web dependency tendrás que quitar el `--include "src/**/*.ts"`.
+Then don't whitelist the dependencies inside the `webDependencies` option.
 
-3. Necesitas levantar un servidor local. No nos vale abrir el fichero `index.html` debido al script type module. En este caso he optado por [servor](https://github.com/lukejacksonn/servor) por ser sencillo y con opción de auto-reload.
-4. Generar los `web_modules` cuando se añaden una nuevas dependencias. Poniéndolo en el script `prepare`:
+Although be caareful, because the moment you add a web dependency the `--include "src/**/*.ts"` does not do anything, so you should remove it.
+
+3. You need to launch a local server. Opening the `index.html` file won't work because of the script type module. In this case I chose [servor](https://github.com/lukejacksonn/servor) because of it's simplicity and its option of auto-reload.
+
+4. Regenerate the `web_modules` when you add a new dependency. You can add a script `prepare` to do so: 
 
 ```json
 {
@@ -79,7 +83,7 @@ Eso sí, en el momento que pongas una web dependency tendrás que quitar el `--i
 }
 ```
 
-5. Si usas [inversify](http://inversify.io/) con [inversify-props](https://github.com/CKGrafico/inversify-props) entonces deberás añadir la siguiente configuración en el `package.json`:
+5. If you use [inversify](http://inversify.io/) with [inversify-props](https://github.com/CKGrafico/inversify-props) then you should add the following configuration in the `package.json`:
 
 ```json
 {
@@ -91,25 +95,25 @@ Eso sí, en el momento que pongas una web dependency tendrás que quitar el `--i
 }
 ```
 
-Realmente eso es todo lo que debemos saber sobre Snowpack, una herramienta que **nos evita el tiempo de generación del bundle**, lo que nos puede ahorrar _bastante_ tiempo en desarrollo y nos **quita complejidad**.
+And that is probably all you need to know for now of Snowpack, a tool that **saves us the bundle generation time**, which can shave does precious seconds in developments and **avoids complexity**.
 
-## Proceso de migración
+## Migration process
 
-En mis proyectos apuesto por una arquitectura donde **desacoplo la lógica de lo que hace mi aplicación de cómo el usuario interactúa con mi aplicación**. Suelo seguir una arquitectura de 4 capas: **aplication**, **domain**, **infrastructure** y **ui**. Y esto me ha permitido hacer la migración de Vue a LitElement cambiando mayoritariamente la capa de **ui**. Si quieres saber más acerca de esto puedes mirar [esta charla](https://www.youtube.com/watch?v=NpjecaAgcVQ) que di sobre arquitectura.
+In my proyects I bet on an architecture which **separates the logic of what my aplication does from how the user interacts with system**. I often follow an architecture with 4 layers: **application**, **domain**, **infrastructure** and **ui**. And this has allowed me to migrate from Vue to LitElement changing mainly the **ui** layer. If you want to know more about this you can watch a talk a gave about [this](https://www.youtube.com/watch?v=NpjecaAgcVQ) (in Spanish).
 
-¿Qué más capas he tenido que cambiar? Pues la capa de **infrastructure**, ya que al no tener bundler los imports de los ficheros Markdown ya no los gestiona Webpack con [frontmatter-markdown-loader](https://www.npmjs.com/package/frontmatter-markdown-loader). Tuve que sustituir la obtención de los artículos mediante peticiones HTTP con [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+What other layers I needed to change? The **infrastructure** layer, because when you don't have bundler the imports of Markdown were handled by Webpack with [frontmatter-markdown-loader](https://www.npmjs.com/package/frontmatter-markdown-loader). I had to replace the retrieval of articles with HTTP requests with [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
-Algo tan cómodo como hacer import de ficheros que no son JavaScript es algo que introdujo Webpack y que siguieron los demás bundlers, pero no es algo nativo, no [de momento](https://github.com/tc39/proposal-module-attributes) por lo menos. Además, los import de CSS dentro de JavaScript, así como de SVG e imágenes tuve que sustituirlos por uso de links, img con urls o incluir los SVGs directamente.
+Something so simple as importing non JavaScript files was something that was primarly introduced by Webpack and other bundlers, but is something not native, not [at moment](https://github.com/tc39/proposal-module-attributes) at least. Morever, CSS, image and SVG imports inside JavaScript can be replaced by the use of link, img tags and inlining SVG respectively.
 
-Una cosa que me gusta de Vue es el tema de la reactividad y cómo incluso fuera de componentes se pueden hacer objetos reactivas usando el API de [Vue.observable](https://vuejs.org/v2/api/#Vue-observable). Usaba este API principalmente para el poco estado que tengo, que es la elección de tema y de idioma. Con LitElement no hay algo así, así que como no quería que mi estado estuviese acoplado a la vista, he optado por usar [RxJS](https://rxjs-dev.firebaseapp.com/) para guardar el estado en un BehaviourSubject.
+Something that I like about Vue is the reactivity and how you can even create reactive objects outside of the components using the [Vue.observable](https://vuejs.org/v2/api/#Vue-observable) API. I was using this API mainly to handle the little state that I have, which is to change the language and theme. With LitElement there is nothing like this, and as I didn't want to couple the state with the view I had to rely on a solution like [RxJS](https://rxjs-dev.firebaseapp.com/) where I stored the state in a BehaviourSubject.
 
-Otra cosa que echaba en falta era el poder pasar props a mucho subhijos usando [Provide/Inject](https://vuejs.org/v2/api/#provide-inject). Aquí no hay un API parecido al API de [contexto](https://reactjs.org/docs/context.html) de React (que es de donde viene Provide/Inject de Vue). Pero al tener el estado centralizado en un store y pudiendo hacer inyección de dependencias con [inversify-props](https://github.com/CKGrafico/inversify-props) pude emular esa funcionalidad.
+Something that I missed was to avoid prop drilling using the [Provide/Inject](https://vuejs.org/v2/api/#provide-inject) API. With LitElement there is nothing like this or React's [context API](https://reactjs.org/docs/context.html) (which is where the Provide/Inject API comes from). But now that I have my state centralized and being able to do dependency injection with [inversify-props](https://github.com/CKGrafico/inversify-props) I could emulate this functionality.
 
-## Configuración
+## Configuration
 
-No necesitamos bundler, pero sí necesitamos ejecutar ciertas tareas. Por ejemplo, cuando compilamos TypeScript, TypeScript no copia los ficheros HTML, CSS y assets en lo compilado, lo tenemos que hacer nosotros a mano. Además, algo como minificar imágenes, que era tan sencillo con un plugin de Webpack lo tendremos que hacer nosotros invocando directamente a una biblioteca de procesado de imágenes.
+We don't need a bundler, but we still need to execute certain tasks. For example, when we compile TypeScript, it doesn't copy the HTML, CSS and assets files in the compiled sources. Moreover, something like minifying images which was so simple with a Webpack plugin now we have to do it invoking the image processing library.
 
-Al final todo tiene sus pros y contras. Este diría que ha sido el mayor contra, que **muchas herramientas todavía no están realmente adaptadas a los ESModules**.
+At the end everything has its pros and cons. This I would say has been the biggest con, and that is that **many tools are not really adapted to ESModules**.
 
 ### Desarrollo
 

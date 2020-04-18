@@ -5,7 +5,7 @@ import { GetArticleUseCase } from '../../../application/use-cases/get-article-us
 import { Id } from '../../../domain/id.js'
 import { Inject } from '../../../domain/types/inject.js'
 import { Store } from '../../../application/state/store.js'
-import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
+import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
 import { Article as ArticleObject } from '../../../domain/articles/article.js'
 import { Params, queryParentRouterSlot } from '/web_modules/router-slot.js'
 import { subscribe } from '../../subscribe.js'
@@ -31,7 +31,6 @@ export class Article extends LitElement {
   @Inject(TYPES.GET_ARTICLE_USE_CASE)
   readonly getArticleUseCase!: GetArticleUseCase
 
-  @property()
   article: Observable<ArticleObject | null> = of(null)
 
   static get styles() {

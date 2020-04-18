@@ -62,28 +62,32 @@ export class Talk extends LitElement {
         .title="${subscribe(this.translations.difficulty)}"
         .description="${subscribe(this.detail.difficulty)}"
       ></app-talk-section>
-      ${this.detail.events.length !== 0 &&
-      html`<app-talk-section .title="${subscribe(this.translations.events)}">
-        ${this.detail.events.map(
-          event => html`<div>
-            <p>${event.name} – <small>${event.datetime}</small></p>
-            <div class="links">
-              <app-link .to="${event.slides}" .external="true"
-                >${subscribe(this.translations.slides)}</app-link
-              >
-              <app-link .to="${event.code}" .external="true"
-                >${subscribe(this.translations.code)}</app-link
-              >
-              <app-link v-if="event.demo.has()" .to="${event.demo.getOrElse('')}" .external="true"
-                >${subscribe(this.translations.demo)}</app-link
-              >
-              <app-link v-if="event.video" .to="event.video" .external="true"
-                >${subscribe(this.translations.video)}</app-link
-              >
-            </div>
-          </div>`
-        )}
-      </app-talk-section>`}
+      ${this.detail.events.length !== 0
+        ? html`<app-talk-section .title="${subscribe(this.translations.events)}">
+            ${this.detail.events.map(
+              event => html`<div>
+                <p>${event.name} – <small>${event.datetime}</small></p>
+                <div class="links">
+                  <app-link .to="${event.slides}" .external="true"
+                    >${subscribe(this.translations.slides)}</app-link
+                  >
+                  <app-link .to="${event.code}" .external="true"
+                    >${subscribe(this.translations.code)}</app-link
+                  >
+                  <app-link
+                    v-if="event.demo.has()"
+                    .to="${event.demo.getOrElse('')}"
+                    .external="true"
+                    >${subscribe(this.translations.demo)}</app-link
+                  >
+                  <app-link v-if="event.video" .to="event.video" .external="true"
+                    >${subscribe(this.translations.video)}</app-link
+                  >
+                </div>
+              </div>`
+            )}
+          </app-talk-section>`
+        : ''}
     </div>`
   }
 

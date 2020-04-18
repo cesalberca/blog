@@ -11,6 +11,7 @@ import { Store } from '../../../application/state/store.js'
 import { subscribe } from '../../subscribe.js'
 import { map } from '/web_modules/rxjs/operators.js'
 import { general } from '../../styles/general.js'
+import { Observable } from '/web_modules/rxjs.js'
 
 @customElement('app-home')
 export class Home extends LitElement {
@@ -23,8 +24,10 @@ export class Home extends LitElement {
   @Inject(TYPES.TRANSLATION)
   readonly translation!: Translation
 
-  @property({ type: Array })
-  articles: Article[] = []
+  @property()
+  articles: Observable<Article[]> = container
+    .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
+    .execute()
 
   static get styles() {
     return [
@@ -86,14 +89,6 @@ export class Home extends LitElement {
     ]
   }
 
-  async connectedCallback(): Promise<void> {
-    super.connectedCallback()
-    this.articles = await container
-      .get<GetAllArticlesUseCase>(TYPES.GET_ALL_ARTICLES_USE_CASE)
-      .execute()
-      .toPromise()
-  }
-
   get articlesTitle() {
     return this.translation('home_articles')
   }
@@ -119,11 +114,17 @@ export class Home extends LitElement {
       </div>
       <app-page>
         <h2 class="articles">${subscribe(this.articlesTitle)}</h2>
-        ${this.articles.map(article => {
-          return html`<app-article-excerpt
-            .excerpt="${article.getExcerpt()}"
-          ></app-article-excerpt>`
-        })}
+        ${subscribe(
+          this.articles.pipe(
+            map(articles =>
+              articles.map(
+                article => html`<app-article-excerpt
+                  .excerpt="${article.getExcerpt()}"
+                ></app-article-excerpt>`
+              )
+            )
+          )
+        )}
       </app-page>
     </main>`
   }

@@ -11,12 +11,11 @@ import { Params, queryParentRouterSlot } from '/web_modules/router-slot.js'
 import { subscribe } from '../../subscribe.js'
 import { general } from '../../styles/general.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
+import { Observable, of } from '/web_modules/rxjs.js'
+import { map } from '/web_modules/rxjs/operators.js'
 
 @customElement('app-article')
 export class Article extends LitElement {
-  @property({ type: Object })
-  article: ArticleObject | null = null
-
   @Inject(TYPES.STORE)
   readonly state!: Store
 
@@ -30,7 +29,10 @@ export class Article extends LitElement {
   readonly window!: Window
 
   @Inject(TYPES.GET_ARTICLE_USE_CASE)
-  getArticleUseCase!: GetArticleUseCase
+  readonly getArticleUseCase!: GetArticleUseCase
+
+  @property()
+  article: Observable<ArticleObject | null> = of(null)
 
   static get styles() {
     return [
@@ -118,7 +120,7 @@ export class Article extends LitElement {
     this.window.document.documentElement.style.setProperty('--navbar-background', 'transparent')
     this.window.document.documentElement.style.setProperty('--navbar-position', 'absolute')
     this.window.document.documentElement.style.setProperty('--navbar-text-shadow', '0 0 10px black')
-    this.article = await this.getArticleUseCase.execute({
+    this.article = this.getArticleUseCase.execute({
       id: Id.fromValue(this.params.id)
     })
   }
@@ -130,54 +132,56 @@ export class Article extends LitElement {
     this.window.document.documentElement.style.removeProperty('--navbar-text-shadow')
   }
 
-  get date() {
-    return this.article!.date.format(this.translationService.toLiteral(this.state.value().locale))
-  }
-
   get minutes() {
     return this.translation('_minutes')
   }
 
-  get articleLocale() {
-    return this.translationService.toLiteral(this.article!.locale)
+  getDate(article: ArticleObject) {
+    return this.state
+      .observable()
+      .pipe(map(({ locale }) => article.date.format(this.translationService.toLiteral(locale))))
   }
 
-  get title() {
-    return this.article!.title
-  }
-
-  get body() {
-    return this.article!.body
+  getArticleLocale(article: ArticleObject) {
+    return this.translationService.toLiteral(article.locale)
   }
 
   render() {
-    if (this.article === null) {
-      return html`<app-page
-        ><div class="content">
-          <h2 class="loading">${subscribe(this.translation('_loading'))}</h2>
-        </div></app-page
-      >`
-    }
+    return html`${subscribe(
+      this.article.pipe(
+        map(article => {
+          if (article === null) {
+            return html`<app-page
+              ><div class="content">
+                <h2 class="loading">${subscribe(this.translation('_loading'))}</h2>
+              </div></app-page
+            >`
+          }
 
-    return html`<article class="article">
-      <app-hero .image="${this.article.image}" class="hero">
-        <h1 class="title">${unsafeHTML(this.article.title)}</h1>
-      </app-hero>
-      <app-page>
-        <header class="header">
-          <span class="date">${this.date}</span>
-          <span class="dash">—</span>
-          <span class="time"
-            >${this.article.getReadingTime().minutes} ${subscribe(this.minutes)}</span
-          >
-          <app-tag class="locale">${this.articleLocale}</app-tag>
-        </header>
-        <app-markdown class="article" .markdown="${this.article.body.value}"></app-markdown>
-        <app-social-links
-          class="social-links"
-          .body="${this.article.getSummary()}"
-        ></app-social-links>
-      </app-page>
-    </article>`
+          return html`<article class="article">
+            <app-hero .image="${article.image}" class="hero">
+              <h1 class="title">
+                ${unsafeHTML(article.title)}
+              </h1>
+            </app-hero>
+            <app-page>
+              <header class="header">
+                <span class="date">${subscribe(this.getDate(article))}</span>
+                <span class="dash">—</span>
+                <span class="time"
+                  >${article.getReadingTime().minutes} ${subscribe(this.minutes)}</span
+                >
+                <app-tag class="locale">${this.getArticleLocale(article)}</app-tag>
+              </header>
+              <app-markdown class="article" .markdown="${article.body.value}"></app-markdown>
+              <app-social-links
+                class="social-links"
+                .body="${article.getSummary()}"
+              ></app-social-links>
+            </app-page>
+          </article>`
+        })
+      )
+    )}`
   }
 }

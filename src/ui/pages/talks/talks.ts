@@ -3,11 +3,13 @@ import { Translation } from '../../components/translation.js'
 import { TYPES } from '../../../types.js'
 import { Talk } from '../../../domain/talks/talk.js'
 import { Inject } from '../../../domain/types/inject.js'
-import { customElement, html, LitElement, property } from '/web_modules/lit-element.js'
+import { customElement, html, LitElement } from '/web_modules/lit-element.js'
 import { GetTalksGivenUseCase } from '../../../application/use-cases/get-talks-given-use-case.js'
 import { Store } from '../../../application/state/store.js'
 import { subscribe } from '../../subscribe.js'
 import { general } from '../../styles/general.js'
+import { Observable } from '/web_modules/rxjs.js'
+import { map } from '/web_modules/rxjs/operators.js'
 
 @customElement('app-talks')
 export class Talks extends LitElement {
@@ -23,16 +25,10 @@ export class Talks extends LitElement {
   @Inject(TYPES.GET_TALKS_GIVEN_USE_CASE)
   readonly getTalksGivenUseCase!: GetTalksGivenUseCase
 
-  @property({ type: Array })
-  talks: Talk[] = []
+  talks: Observable<Talk[]> = this.getTalksGivenUseCase.execute()
 
   static get styles() {
     return [general]
-  }
-
-  async connectedCallback(): Promise<void> {
-    super.connectedCallback()
-    this.talks = await this.getTalksGivenUseCase.execute().toPromise()
   }
 
   get talksTitle() {
@@ -42,11 +38,17 @@ export class Talks extends LitElement {
   render() {
     return html`<app-page>
       <h1>${subscribe(this.talksTitle)}</h1>
-      ${this.talks.map(
-        talk => html`<div>
-          <app-talk .detail="${this.talkDetail.fromTalk(talk)}"></app-talk>
-          <hr />
-        </div>`
+      ${subscribe(
+        this.talks.pipe(
+          map(talks =>
+            talks.map(
+              talk => html`<div>
+                <app-talk .detail="${this.talkDetail.fromTalk(talk)}"></app-talk>
+                <hr />
+              </div>`
+            )
+          )
+        )
       )}
     </app-page>`
   }

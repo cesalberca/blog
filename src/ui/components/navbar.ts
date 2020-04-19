@@ -36,6 +36,7 @@ export class Navbar extends LitElement {
           background-color: var(--navbar-background, var(--primary-color));
           position: var(--navbar-position, initial);
           width: 100%;
+          z-index: 1;
           text-shadow: var(--navbar-text-shadow);
         }
 

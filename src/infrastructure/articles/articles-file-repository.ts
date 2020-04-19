@@ -21,27 +21,10 @@ export class ArticlesFileRepository implements ArticlesRepository {
   ) {}
 
   async findOneByLocale(id: Id, locale: Locale): Promise<Article> {
-    let article: ArticleDto
-
-    try {
-      const url = `/infrastructure/articles/${this.translationService.toLiteral(locale)}/${
-        id.value
-      }.md`
-      article = frontMatter(await this.fileLoader.loadFrom(`${url}`))
-    } catch (e) {
-      try {
-        const url = `/infrastructure/articles/${this.translationService.toLiteral(Locale.DEFAULT)}/${
-          id.value
-        }.md`
-        article = frontMatter(await this.fileLoader.loadFrom(`${url}`))
-      } catch (e) {
-        const url = `/infrastructure/articles/${this.translationService.toLiteral(Locale.ES)}/${
-          id.value
-        }.md`
-        article = frontMatter(await this.fileLoader.loadFrom(`${url}`))
-      }
-    }
-
+    const url = `/infrastructure/articles/${this.translationService.toLiteral(locale)}/${
+      id.value
+    }.md`
+    const article: ArticleDto = frontMatter(await this.fileLoader.loadFrom(`${url}`))
     return Article.create({
       id,
       body: Markdown.fromValue(article.body),

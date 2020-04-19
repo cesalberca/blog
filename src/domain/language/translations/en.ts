@@ -20,6 +20,8 @@ export const en: Translation = new Map<keyof TranslationIdentifiers, string>([
   ],
   ['article_title', 'Articles'],
   ['article_shareArticle', 'Share article'],
+  ['article_shareArticleOnTwitter', 'Share article on Twitter'],
+  ['article_github', 'My Github'],
   ['article_via', 'via'],
   ['about_title', 'About me'],
   [

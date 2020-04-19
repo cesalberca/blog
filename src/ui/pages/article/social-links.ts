@@ -82,6 +82,10 @@ export class SocialLinks extends LitElement {
     })
   }
 
+  get shareOnTwitter() {
+    return this.translation('article_shareArticleOnTwitter')
+  }
+
   render() {
     return html`<footer>
       <div class="separator"></div>
@@ -89,7 +93,11 @@ export class SocialLinks extends LitElement {
       <div class="share">
         <p>${subscribe(this.shareArticle)} <span>—</span></p>
         <section class="links">
-          <a target="_blank" href="${this.twitterLink}">
+          <a
+            target="_blank"
+            href="${this.twitterLink}"
+            aria-label="${subscribe(this.shareOnTwitter)}"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20">
               <path
                 fill="currentColor"
@@ -98,7 +106,10 @@ export class SocialLinks extends LitElement {
               ></path>
             </svg>
           </a>
-          <a target="_blank" href="https://github.com/cesalberca"
+          <a
+            target="_blank"
+            href="https://github.com/cesalberca"
+            aria-label="${subscribe(this.translation('article_github'))}"
             ><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
               <path
                 fill="currentColor"

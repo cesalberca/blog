@@ -16,6 +16,8 @@ export interface TranslationIdentifiers {
   about_description: string
   article_title: string
   article_shareArticle: string
+  article_shareArticleOnTwitter: string
+  article_github: string
   article_via: string
   talks_title: string
   talks_event: string

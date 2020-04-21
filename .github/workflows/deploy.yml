@@ -10,8 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-
-      - name: Publish
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.16.2'
+      - uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: install
+        run: npm ci
+      - name: build
+        run: npm run build
+      - name: publish
         uses: netlify/actions/cli@master
         with:
           args: deploy --prod

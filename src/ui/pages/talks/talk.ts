@@ -68,21 +68,22 @@ export class Talk extends LitElement {
               event => html`<div>
                 <p>${event.name} – <small>${event.datetime}</small></p>
                 <div class="links">
-                  <app-link .to="${event.slides}" .external="true"
+                  <app-link .to="${event.slides}" .external="${true}"
                     >${subscribe(this.translations.slides)}</app-link
                   >
-                  <app-link .to="${event.code}" .external="true"
+                  <app-link .to="${event.code}" .external="${true}"
                     >${subscribe(this.translations.code)}</app-link
                   >
-                  <app-link
-                    v-if="event.demo.has()"
-                    .to="${event.demo.getOrElse('')}"
-                    .external="true"
-                    >${subscribe(this.translations.demo)}</app-link
-                  >
-                  <app-link v-if="event.video" .to="event.video" .external="true"
-                    >${subscribe(this.translations.video)}</app-link
-                  >
+                  ${event.demo.has()
+                    ? html`<app-link .to="${event.demo.getOrElse('')}" .external="true"
+                        >${subscribe(this.translations.demo)}</app-link
+                      >`
+                    : ''}
+                  ${event.video
+                    ? html`<app-link .to="${event.video}" .external="${true}"
+                        >${subscribe(this.translations.video)}</app-link
+                      >`
+                    : ''}
                 </div>
               </div>`
             )}

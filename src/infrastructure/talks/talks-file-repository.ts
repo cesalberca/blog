@@ -29,24 +29,8 @@ export class TalksFileRepository implements TalksRepository {
   ) {}
 
   async findOneByLocale(id: Id, locale: Locale): Promise<Talk> {
-    let talk: TalkDto
-
-    try {
-      const url = `/infrastructure/talks/${this.translationService.toLiteral(locale)}/${id.value}.md`
-      talk = frontMatter(await this.fileLoader.loadFrom(url))
-    } catch (e) {
-      try {
-        const url = `/infrastructure/talks/${this.translationService.toLiteral(Locale.DEFAULT)}/${
-          id.value
-        }.md`
-        talk = frontMatter(await this.fileLoader.loadFrom(url))
-      } catch (e) {
-        const url = `/infrastructure/talks/${this.translationService.toLiteral(Locale.ES)}/${
-          id.value
-        }.md`
-        talk = frontMatter(await this.fileLoader.loadFrom(url))
-      }
-    }
+    const url = `/infrastructure/talks/${this.translationService.toLiteral(locale)}/${id.value}.md`
+    const talk: TalkDto = frontMatter(await this.fileLoader.loadFrom(url))
 
     return Talk.create({
       id,

@@ -1,4 +1,4 @@
-import { css } from '/web_modules/lit-element.js'
+import { css } from 'lit-element'
 
 export const general = css`
   :host {

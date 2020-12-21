@@ -7,8 +7,8 @@ import { Id } from '../../domain/id.js'
 import { Injectable } from '../../domain/types/injectable.js'
 import { Inject } from '../../domain/types/inject.js'
 import { Store } from '../state/store.js'
-import { Observable } from '/web_modules/rxjs.js'
-import { switchMap } from '/web_modules/rxjs/operators.js'
+import { Observable } from 'rxjs'
+import { switchMap } from 'rxjs/operators'
 
 @Injectable()
 export class GetArticleUseCase implements UseCase<Article, { id: Id; locale: Locale }> {

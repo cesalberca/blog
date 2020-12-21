@@ -1,5 +1,5 @@
-import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
-import { general } from '../styles/general.js'
+import { css, customElement, html, LitElement } from 'lit-element'
+import { general } from '../general.js'
 
 @customElement('app-page')
 export class Page extends LitElement {

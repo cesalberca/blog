@@ -4,10 +4,10 @@ import { Locale } from '../../domain/language/locale.js'
 import { Inject } from '../../domain/types/inject.js'
 import { TYPES } from '../../types.js'
 import { Store } from '../../application/state/store.js'
-import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
+import { css, customElement, html, LitElement } from 'lit-element'
 import { subscribe } from '../subscribe.js'
-import { general } from '../styles/general.js'
-import { map } from '/web_modules/rxjs/operators.js'
+import { general } from '../general.js'
+import { map } from 'rxjs/operators'
 
 @customElement('app-options')
 export class Options extends LitElement {

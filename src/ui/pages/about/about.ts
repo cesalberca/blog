@@ -1,9 +1,9 @@
 import { Translation } from '../../components/translation.js'
 import { Inject } from '../../../domain/types/inject.js'
 import { TYPES } from '../../../types.js'
-import { customElement, html, LitElement } from '/web_modules/lit-element.js'
+import { customElement, html, LitElement } from 'lit-element'
 import { subscribe } from '../../subscribe.js'
-import { general } from '../../styles/general.js'
+import { general } from '../../general.js'
 
 @customElement('app-about')
 export class About extends LitElement {

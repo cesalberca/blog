@@ -10,7 +10,7 @@ import { Injectable } from '../../domain/types/injectable.js'
 import { TYPES } from '../../types.js'
 import { Inject } from '../../domain/types/inject.js'
 import { articles } from './articles.js'
-import frontMatter from '/web_modules/front-matter.js'
+import frontMatter from 'front-matter'
 import { FileLoader } from '../../domain/file-loader.js'
 
 @Injectable()

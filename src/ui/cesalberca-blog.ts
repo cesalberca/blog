@@ -6,14 +6,14 @@ import {
   property,
   PropertyValues,
   query
-} from '/web_modules/lit-element.js'
-import { RouterSlot } from '/web_modules/router-slot.js'
+} from 'lit-element'
+import { RouterSlot } from 'router-slot'
 import { Inject } from '../domain/types/inject.js'
 import { TYPES } from '../types.js'
 import { Store } from '../application/state/store.js'
 import { Locale } from '../domain/language/locale.js'
 import { Theme } from '../application/state/theme.js'
-import { general } from './styles/general.js'
+import { general } from './general.js'
 import { Home } from './pages/home/home.js'
 
 @customElement('cesalberca-blog')

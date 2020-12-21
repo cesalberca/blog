@@ -2,11 +2,11 @@ import { Translation } from './translation.js'
 import { Direction } from './direction.js'
 import { Inject } from '../../domain/types/inject.js'
 import { TYPES } from '../../types.js'
-import { customElement, LitElement, property, css, html } from '/web_modules/lit-element.js'
-import { classMap } from '/web_modules/lit-html/directives/class-map.js'
+import { customElement, LitElement, property, css, html } from 'lit-element'
+import { classMap } from 'lit-html/directives/class-map.js'
 import { Store } from '../../application/state/store.js'
 import { subscribe } from '../subscribe.js'
-import { general } from '../styles/general.js'
+import { general } from '../general.js'
 
 @customElement('app-links')
 export class Links extends LitElement {

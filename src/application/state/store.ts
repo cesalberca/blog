@@ -1,5 +1,5 @@
 import { Injectable } from '../../domain/types/injectable.js'
-import { BehaviorSubject, Observable } from '/web_modules/rxjs.js'
+import { BehaviorSubject, Observable } from 'rxjs'
 import { Theme } from './theme.js'
 import { Locale } from '../../domain/language/locale.js'
 import { State } from './state.js'

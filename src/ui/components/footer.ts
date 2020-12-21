@@ -3,9 +3,9 @@ import { Datetime } from '../../domain/datetime.js'
 import { Translation } from './translation.js'
 import { Inject } from '../../domain/types/inject.js'
 import { TYPES } from '../../types.js'
-import { css, customElement, LitElement, html } from '/web_modules/lit-element.js'
+import { css, customElement, LitElement, html } from 'lit-element'
 import { subscribe } from '../subscribe.js'
-import { general } from '../styles/general.js'
+import { general } from '../general.js'
 
 @customElement('app-footer')
 export class Footer extends LitElement {

@@ -1,5 +1,5 @@
-import { css, customElement, LitElement, property, html } from '/web_modules/lit-element.js'
-import { general } from '../../styles/general.js'
+import { css, customElement, LitElement, property, html } from 'lit-element'
+import { general } from '../../general.js'
 
 @customElement('app-talk-section')
 export class TalkSection extends LitElement {

@@ -5,13 +5,13 @@ import { Inject } from '../../../domain/types/inject.js'
 import { TranslationService } from '../../../domain/translation-service.js'
 import { GetAllArticlesUseCase } from '../../../application/use-cases/get-all-articles-use-case.js'
 import { container } from '../../../container.js'
-import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
-import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
+import { css, customElement, html, LitElement } from 'lit-element'
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
 import { Store } from '../../../application/state/store.js'
 import { subscribe } from '../../subscribe.js'
-import { map } from '/web_modules/rxjs/operators.js'
-import { general } from '../../styles/general.js'
-import { Observable } from '/web_modules/rxjs.js'
+import { map } from 'rxjs/operators'
+import { general } from '../../general.js'
+import { Observable } from 'rxjs'
 
 @customElement('app-home')
 export class Home extends LitElement {

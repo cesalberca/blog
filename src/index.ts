@@ -1,10 +1,10 @@
-import { container } from './container.js'
-import '/web_modules/router-slot.js'
-import './ui/components/index.js'
-import './ui/cesalberca-blog.js'
-import './ui/theme/theming.js'
-import { TYPES } from './types.js'
-import { Persistence } from './application/state/persistence.js'
+import { container } from './container'
+import 'router-slot'
+import './ui/components/index'
+import './ui/cesalberca-blog'
+import './ui/theme/theming'
+import { TYPES } from './types'
+import { Persistence } from './application/state/persistence'
 
 const storage = container.get<Persistence>(TYPES.PERSISTENCE)
 storage.setFirstValue()

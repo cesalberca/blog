@@ -15,7 +15,7 @@
       content="Personal blog of César Alberca. I talk about testing, architecture and good practices"
       lang="en"
     />
-    <link rel="icon" href="ui/icons/favicon.ico" />
+    <link rel="icon" href="/icons/favicon.ico" />
     <link
       rel="preconnect"
       crossorigin
@@ -23,12 +23,18 @@
     />
     <title>César Alberca - Blog</title>
     <base href="/" />
-    <link rel="stylesheet" rel="preload" href="ui/styles/base.css" />
-    <link rel="stylesheet" rel="preload" href="ui/styles/theme.css" />
-    <link rel="stylesheet" rel="preload" href="ui/styles/variables-color.css" />
-    <link rel="stylesheet" rel="preload" href="ui/styles/variables-size.css" />
-    <link rel="stylesheet" rel="preload" href="ui/styles/variables-typography.css" />
-    <script type="module" src="./index.js"></script>
+    <link rel="preload" as="style" href="/styles/base.css" />
+    <link rel="preload" as="style" href="/styles/theme.css" />
+    <link rel="preload" as="style" href="/styles/variables-color.css" />
+    <link rel="preload" as="style" href="/styles/variables-size.css" />
+    <link rel="preload" as="style" href="/styles/variables-typography.css" />
+
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/styles/theme.css" />
+    <link rel="stylesheet" href="/styles/variables-color.css" />
+    <link rel="stylesheet" href="/styles/variables-size.css" />
+    <link rel="stylesheet" href="/styles/variables-typography.css" />
+    <script type="module" src="/_dist_/index.js"></script>
   </head>
   <body>
     <cesalberca-blog></cesalberca-blog>

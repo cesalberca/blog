@@ -1,1 +1,1 @@
-export { injectable as Injectable } from '/web_modules/inversify-props.js'
+export { injectable as Injectable } from 'inversify-props'

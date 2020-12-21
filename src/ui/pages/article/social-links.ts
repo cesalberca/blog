@@ -3,10 +3,10 @@ import { Translation } from '../../components/translation.js'
 import { Inject } from '../../../domain/types/inject.js'
 import { TYPES } from '../../../types.js'
 import { Store } from '../../../application/state/store.js'
-import { css, customElement, LitElement, property } from '/web_modules/lit-element.js'
-import { html } from '/web_modules/lit-html.js'
+import { css, customElement, LitElement, property } from 'lit-element'
+import { html } from 'lit-html'
 import { subscribe } from '../../subscribe.js'
-import { general } from '../../styles/general.js'
+import { general } from '../../general.js'
 
 @customElement('app-social-links')
 export class SocialLinks extends LitElement {

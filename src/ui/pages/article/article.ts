@@ -5,14 +5,14 @@ import { GetArticleUseCase } from '../../../application/use-cases/get-article-us
 import { Id } from '../../../domain/id.js'
 import { Inject } from '../../../domain/types/inject.js'
 import { Store } from '../../../application/state/store.js'
-import { css, customElement, html, LitElement } from '/web_modules/lit-element.js'
+import { css, customElement, html, LitElement } from 'lit-element'
 import { Article as ArticleObject } from '../../../domain/articles/article.js'
-import { Params, queryParentRouterSlot } from '/web_modules/router-slot.js'
+import { Params, queryParentRouterSlot } from 'router-slot'
 import { subscribe } from '../../subscribe.js'
-import { general } from '../../styles/general.js'
-import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
-import { Observable, of } from '/web_modules/rxjs.js'
-import { map } from '/web_modules/rxjs/operators.js'
+import { general } from '../../general.js'
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
+import { Observable, of } from 'rxjs'
+import { map } from 'rxjs/operators'
 
 @customElement('app-article')
 export class Article extends LitElement {

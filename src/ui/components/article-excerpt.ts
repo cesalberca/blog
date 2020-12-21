@@ -2,10 +2,10 @@ import { Translation } from './translation.js'
 import { Article } from '../../domain/articles/article.js'
 import { TYPES } from '../../types.js'
 import { Inject } from '../../domain/types/inject.js'
-import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
-import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
+import { css, customElement, html, LitElement, property } from 'lit-element'
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
 import { subscribe } from '../subscribe.js'
-import { general } from '../styles/general.js'
+import { general } from '../general.js'
 
 @customElement('app-article-excerpt')
 export class ArticleExcerpt extends LitElement {

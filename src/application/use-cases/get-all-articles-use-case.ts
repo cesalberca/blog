@@ -6,8 +6,8 @@ import { ArticlesRepository } from '../../domain/articles/articles-repository.js
 import { Injectable } from '../../domain/types/injectable.js'
 import { Inject } from '../../domain/types/inject.js'
 import { Store } from '../state/store.js'
-import { Observable } from '/web_modules/rxjs.js'
-import { map, switchMap } from '/web_modules/rxjs/operators.js'
+import { Observable } from 'rxjs'
+import { map, switchMap } from 'rxjs/operators'
 
 @Injectable()
 export class GetAllArticlesUseCase implements UseCase<Article[], { locale: Locale }> {

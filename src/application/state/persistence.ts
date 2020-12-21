@@ -1,7 +1,7 @@
 import { Injectable } from '../../domain/types/injectable.js'
 import { Store } from './store.js'
 import { Inject } from '../../domain/types/inject.js'
-import { tap } from '/web_modules/rxjs/operators.js'
+import { tap } from 'rxjs/operators'
 import { TYPES } from '../../types.js'
 
 @Injectable()

@@ -3,13 +3,13 @@ import { Translation } from '../../components/translation.js'
 import { TYPES } from '../../../types.js'
 import { Talk } from '../../../domain/talks/talk.js'
 import { Inject } from '../../../domain/types/inject.js'
-import { customElement, html, LitElement } from '/web_modules/lit-element.js'
+import { customElement, html, LitElement } from 'lit-element'
 import { GetTalksGivenUseCase } from '../../../application/use-cases/get-talks-given-use-case.js'
 import { Store } from '../../../application/state/store.js'
 import { subscribe } from '../../subscribe.js'
-import { general } from '../../styles/general.js'
-import { Observable } from '/web_modules/rxjs.js'
-import { map } from '/web_modules/rxjs/operators.js'
+import { general } from '../../general.js'
+import { Observable } from 'rxjs'
+import { map } from 'rxjs/operators'
 
 @customElement('app-talks')
 export class Talks extends LitElement {

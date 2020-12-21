@@ -1,5 +1,5 @@
-import { customElement, LitElement, property, html, css } from '/web_modules/lit-element.js'
-import { general } from '../styles/general.js'
+import { customElement, LitElement, property, html, css } from 'lit-element'
+import { general } from '../general.js'
 
 @customElement('app-link')
 export class Link extends LitElement {

@@ -2,11 +2,11 @@ import { Theme } from '../../application/state/theme.js'
 import { Inject } from '../../domain/types/inject.js'
 import { TYPES } from '../../types.js'
 import { Store } from '../../application/state/store.js'
-import { css, customElement, html, LitElement, property } from '/web_modules/lit-element.js'
-import { classMap } from '/web_modules/lit-html/directives/class-map.js'
-import { tap } from '/web_modules/rxjs/operators.js'
-import { Subscription } from '/web_modules/rxjs.js'
-import { general } from '../styles/general.js'
+import { css, customElement, html, LitElement, property } from 'lit-element'
+import { classMap } from 'lit-html/directives/class-map.js'
+import { tap } from 'rxjs/operators'
+import { Subscription } from 'rxjs'
+import { general } from '../general.js'
 
 const darkTheme = css`
   .dark {

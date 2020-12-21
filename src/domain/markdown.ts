@@ -1,4 +1,4 @@
-import marked from '/web_modules/marked.js'
+import marked from 'marked'
 
 export class Markdown {
   private readonly renderer = new marked.Renderer()

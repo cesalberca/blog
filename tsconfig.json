@@ -1,9 +1,15 @@
 {
+  "include": ["src", "types"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
-    "target": "es2018",
     "module": "esnext",
-    "outDir": "dist",
+    "target": "esnext",
     "moduleResolution": "node",
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -14,14 +20,7 @@
     "inlineSources": true,
     "resolveJsonModule": true,
     "types": ["jest", "reflect-metadata", "node"],
-    "lib": ["esnext", "dom", "dom.iterable"],
-    "rootDir": "src",
-    "baseUrl": ".",
-    "paths": {
-      "/web_modules/*.js": ["node_modules/@types/*", "node_modules/*", "web_modules/*.js"]
-    },
-    "allowSyntheticDefaultImports": true
-  },
-  "include": ["src/*"],
-  "exclude": ["node_modules"]
+    "baseUrl": "./",
+    "paths": { "*": ["web_modules/.types/*"] }
+  }
 }

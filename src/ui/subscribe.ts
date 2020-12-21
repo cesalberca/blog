@@ -1,5 +1,5 @@
-import { directive, Part } from '/web_modules/lit-html.js'
-import { Subscribable } from '/web_modules/rxjs.js'
+import { directive, Part } from 'lit-html'
+import { Subscribable } from 'rxjs'
 
 type SubscribableOrPromiseLike<T> = Subscribable<T> | PromiseLike<T>
 

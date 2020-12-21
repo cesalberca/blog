@@ -1,6 +1,6 @@
-import { css, customElement, LitElement, property, html } from '/web_modules/lit-element.js'
-import { styleMap } from '/web_modules/lit-html/directives/style-map.js'
-import { general } from '../styles/general.js'
+import { css, customElement, LitElement, property, html } from 'lit-element'
+import { styleMap } from 'lit-html/directives/style-map.js'
+import { general } from '../general.js'
 
 @customElement('app-hero')
 export class Hero extends LitElement {

@@ -30,7 +30,7 @@
     "lit-element": "2.3.1",
     "lit-html": "1.2.1",
     "marked": "1.1.0",
-    "prismjs": "1.20.0",
+    "prismjs": "1.21.0",
     "reflect-metadata": "0.1.13",
     "router-slot": "1.5.4",
     "rxjs": "6.5.5"

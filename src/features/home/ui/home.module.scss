@@ -1,0 +1,53 @@
+.hero {
+  background-color: var(--primary-color);
+}
+
+.wrapper {
+  display: flex;
+  margin: 0 auto;
+  max-width: var(--body-width);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--m);
+  overflow: hidden;
+}
+
+.title {
+  color: var(--white-color);
+  font-size: var(--title-text);
+}
+
+@media (max-width: 768px) {
+  .title {
+    margin: 0;
+  }
+
+  .caption,
+  .title {
+    padding: var(--m);
+  }
+}
+
+.articles {
+  margin-top: 0;
+}
+
+.caption {
+  --bold-color: var(--white-color);
+  font-size: var(--body-text);
+  color: var(--white-color);
+  margin: 0;
+}
+
+.photo {
+  max-width: 500px;
+  transform: scale(-1, 1);
+  mix-blend-mode: soft-light;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+}
+

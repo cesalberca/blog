@@ -1,0 +1,116 @@
+import { Theme } from '../../application/state/theme'
+import { Translation } from './translation'
+import { Locale } from '../../domain/language/locale'
+import { Inject } from '../../domain/types/inject'
+import { TYPES } from '../../types'
+import { Store } from '../../application/state/store'
+import { css, customElement, html, LitElement } from 'lit-element'
+import { subscribe } from '../subscribe'
+import { general } from '../general'
+import { map } from 'rxjs/operators'
+
+@customElement('app-options')
+export class Options extends LitElement {
+  @Inject(TYPES.TRANSLATION)
+  readonly translation!: Translation
+
+  @Inject(TYPES.STORE)
+  readonly store!: Store
+
+  static get styles() {
+    return [
+      general,
+      css`
+        .options {
+          display: flex;
+          flex-direction: row;
+        }
+
+        select {
+          margin-right: var(--s);
+          background: var(--blue-dark-color-1);
+          color: var(--white-color);
+          -webkit-appearance: none;
+          border: none;
+          font-weight: 600;
+          text-transform: uppercase;
+          padding: var(--s);
+          border-radius: 0;
+        }
+      `,
+    ]
+  }
+
+  themes = [
+    { text: this.light, value: Theme.LIGHT },
+    { text: this.dark, value: Theme.DARK },
+  ]
+
+  locales = [
+    { text: this.en, value: Locale.EN },
+    { text: this.es, value: Locale.ES },
+  ]
+
+  get en() {
+    return this.translation('_en')
+  }
+
+  get es() {
+    return this.translation('_es')
+  }
+
+  get light() {
+    return this.translation('_light')
+  }
+
+  get dark() {
+    return this.translation('_dark')
+  }
+
+  changeLocale() {
+    this.dispatchEvent(
+      new CustomEvent('on-locale-change', {
+        detail: this.store.value().locale === Locale.EN ? Locale.ES : Locale.EN,
+        bubbles: true,
+        composed: true,
+      }),
+    )
+  }
+
+  changeTheme() {
+    this.dispatchEvent(
+      new CustomEvent('on-theme-change', {
+        detail: this.store.value().theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT,
+        bubbles: true,
+        composed: true,
+      }),
+    )
+  }
+
+  render() {
+    return html`<div class="options">
+      <select aria-label="${subscribe(this.translation('_language'))}" @change="${() => this.changeLocale()}">
+        ${this.locales.map(
+          locale =>
+            html`<option
+              ?selected="${subscribe(this.store.observable().pipe(map(x => x.locale === locale.value)))}"
+              value="${locale.value}"
+            >
+              ${subscribe(locale.text)}
+            </option>`,
+        )}
+      </select>
+      <select aria-label="${subscribe(this.translation('_theme'))}" @change="${() => this.changeTheme()}">
+        ${this.themes.map(
+          theme =>
+            html`<option
+              ?selected="${subscribe(this.store.observable().pipe(map(x => x.theme === theme.value)))}"
+              value="${theme.value}"
+            >
+              ${subscribe(theme.text)}
+            </option>`,
+        )}
+      </select>
+    </div>`
+  }
+}

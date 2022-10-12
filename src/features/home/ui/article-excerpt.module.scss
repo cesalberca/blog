@@ -1,0 +1,20 @@
+.excerpt {
+  display: block;
+}
+
+.excerpt:visited {
+  color: initial;
+}
+
+.excerpt:hover {
+  cursor: pointer;
+}
+
+.slugline {
+  font-size: calc(var(--body-text) - 2);
+  color: var(--gray-color);
+}
+
+.accented-slugline {
+  color: var(--primary-color);
+}

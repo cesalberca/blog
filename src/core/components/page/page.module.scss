@@ -1,0 +1,12 @@
+.page {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: var(--body-width);
+  padding: var(--xl) var(--m);
+}

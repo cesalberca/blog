@@ -1,0 +1,62 @@
+.horizontal,
+.vertical {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.horizontal {
+  flex-direction: row;
+}
+
+.vertical {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.link {
+  font-size: var(--body-text);
+  color: var(--link-color);
+  margin-right: var(--m);
+  transition: 0.25s ease opacity, 0.25s ease background-color;
+  padding: 0 var(--s);
+  text-decoration: none;
+  width: max-content;
+}
+
+.link:visited {
+  color: white;
+}
+
+.link:hover {
+  background-color: var(--blue-dark-color-1);
+  opacity: var(--active-opacity);
+}
+
+.link:after {
+  content: none;
+}
+
+.vertical .link {
+  padding: 0;
+}
+
+.vertical .link:hover {
+  padding: 0;
+  background-color: initial;
+}
+
+.home {
+  margin-right: auto;
+  font-size: var(--title-text);
+  color: white;
+  padding: 0;
+}
+
+.home:hover {
+  background-color: initial;
+}
+
+.router-link-active {
+  text-shadow: 0 0 0.65px var(--link-color);
+}

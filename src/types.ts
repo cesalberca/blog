@@ -1,0 +1,10 @@
+export const TYPES = {
+  TALKS_REPOSITORY: Symbol.for('TALKS_REPOSITORY'),
+  ARTICLES_REPOSITORY: Symbol.for('ARTICLES_REPOSITORY'),
+  USE_CASE_DECORATOR: Symbol.for('USE_CASE_DECORATOR'),
+  FETCHER: Symbol.for('FETCHER'),
+  TRANSLATION: Symbol.for('TRANSLATION'),
+  STORE: Symbol.for('STORE'),
+  WINDOW: Symbol.for('WINDOW'),
+  STORAGE: Symbol.for('STORAGE'),
+}

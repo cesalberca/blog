@@ -1,0 +1,50 @@
+.link,
+.link span {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  text-underline-offset: 2px;
+}
+
+.regular .text {
+  font-size: inherit;
+  text-decoration: underline;
+  font-weight: var(--weight-regular);
+  margin: 0;
+}
+
+.active {
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color);
+}
+
+.regular {
+  transition: 0.25s ease-in-out all;
+}
+
+.regular:hover {
+  filter: brightness(1.2);
+  text-shadow: -0.02ex 0 currentColor, 0.01ex 0 currentColor;
+}
+
+.invisible {
+  text-decoration: none;
+}
+
+.invisible:visited {
+  text-decoration: none;
+}
+
+.navigation {
+  transition: 0.1s ease-in-out all;
+}
+
+.navigation:hover {
+  text-decoration: none;
+  text-shadow: -0.01ex 0 currentColor, 0.01ex 0 currentColor;
+}
+
+.navigation:hover .text {
+  text-decoration: none;
+}

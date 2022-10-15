@@ -18,7 +18,7 @@ export const ThemeProvider: FC<PropsWithChildren<{ theme: Theme; setTheme: (them
         setTheme,
       }}
     >
-      <div className={cx({ [theme]: true })}>{children}</div>
+      <div className={cx({ [theme]: true }, 'wrapper')}>{children}</div>
     </ThemeContext.Provider>
   )
 }

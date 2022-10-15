@@ -6,7 +6,7 @@ export interface TalkDto {
     difficulty: string
     language: string
     topics: string[]
-    events: {
+    events?: {
       name: string
       date: string
       slides: string | undefined

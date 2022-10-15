@@ -3,7 +3,7 @@ import { Markdown } from '../markdown'
 import { Datetime } from '../datetime'
 import { Length } from '../length'
 import type { Image } from './image'
-import type { Locale } from '../language/locale'
+import type { Locale } from '../../../../core/i18n/locale'
 
 export class Article {
   private static readonly SUMMARY_SEPARATOR = '<!-- more -->'

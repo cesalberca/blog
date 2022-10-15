@@ -1,14 +1,12 @@
 import type { TalksRepository } from '../../domain/talks/talks-repository'
 import { Length } from '../../domain/length'
 import { DifficultyService } from '../../domain/talks/difficulty-service'
-import { TranslationService } from '../../domain/translation-service'
 import { Event } from '../../domain/talks/event'
 import { Datetime } from '../../domain/datetime'
 import { Maybe } from '../../domain/utils/maybe'
 import { LanguageService } from '../../domain/talks/language-service'
 import { Topic } from '../../domain/talks/topic'
 import type { TalkDto } from './talk-dto'
-import type { Locale } from '../../domain/language/locale'
 import { Id } from '../../domain/id'
 import { Talk } from '../../domain/talks/talk'
 import { Markdown } from '../../domain/markdown'
@@ -16,19 +14,21 @@ import { Injectable } from '../../domain/types/injectable'
 import { talks } from './talks'
 import frontMatter from 'front-matter'
 import { FileLoader } from '../../domain/file-loader'
+import type { Locale } from '../../../../core/i18n/locale'
+import { join } from 'path'
+import fs from 'fs'
 
 @Injectable()
 export class TalksFileRepository implements TalksRepository {
   constructor(
     private readonly fileLoader: FileLoader,
-    private readonly translationService: TranslationService,
     private readonly languageService: LanguageService,
     private readonly difficultyService: DifficultyService,
   ) {}
 
   async findOneByLocale(id: Id, locale: Locale): Promise<Talk> {
-    const url = `/infrastructure/talks/${this.translationService.toLiteral(locale)}/${id.value}.md`
-    const talk: TalkDto = frontMatter(await this.fileLoader.loadFrom(url))
+    const fullPath = join(process.cwd(), `src/features/blog/infrastructure/talks/${locale}/${id.value}.md`)
+    const article: TalkDto = frontMatter(fs.readFileSync(fullPath, 'utf8'))
 
     return Talk.create({
       id,

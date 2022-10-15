@@ -1,8 +1,7 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import styles from './options.module.scss'
 import { bind } from '../../utils/bind'
 import { Theme } from '../../../features/blog/application/state/theme'
-import { Locale } from '../../../features/blog/domain/language/locale'
 
 const cx = bind(styles)
 
@@ -13,8 +12,8 @@ export const Options: FC = () => {
   ]
 
   const locales = [
-    { text: 'en', value: Locale.EN },
-    { text: 'es', value: Locale.ES },
+    { text: 'en', value: 'en' },
+    { text: 'es', value: 'es' },
   ]
   return (
     <div className={cx('options')}>

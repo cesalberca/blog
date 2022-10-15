@@ -1,14 +1,12 @@
 import { Injectable } from '../../domain/types/injectable'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { Theme } from './theme'
-import { Locale } from '../../domain/language/locale'
 import type { State } from './state'
 
 @Injectable()
 export class Store {
   private readonly behaviorSubject = new BehaviorSubject<State>({
     theme: Theme.DEFAULT,
-    locale: Locale.DEFAULT,
   })
 
   observable(): Observable<State> {

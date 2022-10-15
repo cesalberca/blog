@@ -16,6 +16,7 @@
     "front-matter": "4.0.2",
     "marked": "4.1.1",
     "next": "12.3.1",
+    "next-intl": "2.7.6",
     "prismjs": "1.29.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

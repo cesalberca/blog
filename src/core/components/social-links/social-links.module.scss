@@ -1,0 +1,37 @@
+.separator {
+  border-bottom: 1px solid var(--gray-color);
+  margin: var(--l) 0;
+}
+
+.share {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.share span {
+  margin-left: var(--s);
+}
+
+.links {
+  margin-left: var(--s);
+  display: flex;
+}
+
+.links > a {
+  height: 24px;
+}
+
+.links svg {
+  height: 100%;
+  color: var(--gray-color);
+  transition: 0.25s ease-in-out color;
+}
+
+.links svg:hover {
+  color: var(--primary-color);
+}
+
+.links a:not(:first-child) {
+  margin-left: var(--m);
+}

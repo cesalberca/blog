@@ -1,5 +1,4 @@
 import { Difficulty } from './difficulty'
-import { TranslationError } from '../language/translation-error'
 import { Injectable } from '../types/injectable'
 
 @Injectable()
@@ -12,8 +11,6 @@ export class DifficultyService {
         return Difficulty.INTERMEDIATE
       case 'Beginner':
         return Difficulty.EASY
-      default:
-        throw new TranslationError(`String ${string} could not be mapped to a difficulty`)
     }
   }
 

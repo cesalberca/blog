@@ -9,8 +9,10 @@ import './../container'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { Page } from '../core/components/page/page'
+import { NextIntlProvider } from 'next-intl'
+import type { AbstractIntlMessages } from 'use-intl'
 
-const App = ({ Component, pageProps }: AppProps) => (
+const App = ({ Component, pageProps }: AppProps<{ messages: AbstractIntlMessages }>) => (
   <>
     <Head>
       <meta charSet="UTF-8" />
@@ -20,9 +22,11 @@ const App = ({ Component, pageProps }: AppProps) => (
       />
       <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
     </Head>
-    <Page>
-      <Component {...pageProps} />
-    </Page>
+    <NextIntlProvider messages={pageProps.messages}>
+      <Page>
+        <Component {...pageProps} />
+      </Page>
+    </NextIntlProvider>
   </>
 )
 

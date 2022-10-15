@@ -1,7 +1,7 @@
 export class Reference {
   constructor(private readonly _title: string, private readonly _url: string) {}
 
-  static fromValue(title: string, url: string) {
+  static fromValue({ title, url }: { title: string; url: string }) {
     return new Reference(title, url)
   }
 

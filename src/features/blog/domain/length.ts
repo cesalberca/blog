@@ -5,6 +5,10 @@ export class Length {
     return new Length(minutes * 60)
   }
 
+  static fromSeconds(seconds: number) {
+    return new Length(seconds)
+  }
+
   get seconds(): number {
     return this._seconds
   }

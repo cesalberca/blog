@@ -4,7 +4,6 @@ import { DifficultyService } from '../../domain/talks/difficulty-service'
 import { Event } from '../../domain/talks/event'
 import { Datetime } from '../../domain/datetime'
 import { Maybe } from '../../domain/utils/maybe'
-import { LanguageService } from '../../domain/talks/language-service'
 import { Topic } from '../../domain/talks/topic'
 import type { TalkDto } from './talk-dto'
 import { Id } from '../../domain/id'
@@ -13,26 +12,21 @@ import { Markdown } from '../../domain/markdown'
 import { Injectable } from '../../domain/types/injectable'
 import { talks } from './talks'
 import frontMatter from 'front-matter'
-import { FileLoader } from '../../domain/file-loader'
 import type { Locale } from '../../../../core/i18n/locale'
 import { join } from 'path'
 import fs from 'fs'
 
 @Injectable()
 export class TalksFileRepository implements TalksRepository {
-  constructor(
-    private readonly fileLoader: FileLoader,
-    private readonly languageService: LanguageService,
-    private readonly difficultyService: DifficultyService,
-  ) {}
+  constructor(private readonly difficultyService: DifficultyService) {}
 
   async findOneByLocale(id: Id, locale: Locale): Promise<Talk> {
     const fullPath = join(process.cwd(), `src/features/blog/infrastructure/talks/${locale}/${id.value}.md`)
-    const article: TalkDto = frontMatter(fs.readFileSync(fullPath, 'utf8'))
+    const talk: TalkDto = frontMatter(fs.readFileSync(fullPath, 'utf8'))
 
     return Talk.create({
       id,
-      language: this.languageService.toLanguage(talk.attributes.language),
+      language: talk.attributes.language as Locale,
       title: talk.attributes.title,
       abstract: Markdown.fromValue(talk.body),
       references: [],

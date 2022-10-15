@@ -11,6 +11,8 @@ export class DifficultyService {
         return Difficulty.INTERMEDIATE
       case 'Beginner':
         return Difficulty.EASY
+      default:
+        throw new Error('foo')
     }
   }
 

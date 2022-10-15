@@ -12,4 +12,10 @@ yarn dev
 
 ## Todo
 
+- [ ] Cleanup
+- [ ] Images
 - [ ] Delete maybe
+- [ ] Theme
+- [ ] I18n
+- [ ] Tests
+- [ ] E2E

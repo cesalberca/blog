@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import styles from './navbar.module.scss'
-import { Direction } from '../../../features/blog/ui/components/direction'
+import { Direction } from '../../types/direction'
 import { bind } from '../../utils/bind'
 import { Links } from '../links/links'
 import { Options } from '../options/options'

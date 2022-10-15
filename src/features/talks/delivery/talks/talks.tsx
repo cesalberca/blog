@@ -1,10 +1,10 @@
 import type { FC } from 'react'
 import styles from './talks.module.scss'
-import { useTranslations } from 'use-intl'
-import type { Talk as TalkDomain } from '../../../blog/domain/talks/talk'
+import { useTranslations } from 'next-intl'
+import type { Talk as TalkDomain } from '../../domain/talk'
 import { bind } from '../../../../core/utils/bind'
 import { container } from '../../../../container'
-import { TalkDetail } from '../../../blog/ui/pages/talks/talk-detail'
+import { TalkDetail } from '../../domain/talk-detail'
 import { Talk } from '../talk/talk'
 
 const cx = bind(styles)

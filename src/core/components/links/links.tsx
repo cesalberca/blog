@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import styles from './links.module.scss'
 import { bind } from '../../utils/bind'
-import { Direction } from '../../../features/blog/ui/components/direction'
+import { Direction } from '../../types/direction'
 import { Link } from '../link/link'
 
 const cx = bind(styles)

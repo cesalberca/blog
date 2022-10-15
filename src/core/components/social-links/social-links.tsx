@@ -1,8 +1,8 @@
 import type { FC } from 'react'
 import styles from './social-links.module.scss'
-import { useTranslations } from 'use-intl'
+import { useTranslations } from 'next-intl'
 import { container } from '../../../container'
-import { TwitterSharerService } from '../../../features/blog/domain/articles/twitter-sharer-service'
+import { TwitterSharerService } from '../../../features/articles/domain/articles/twitter-sharer-service'
 import { bind } from '../../utils/bind'
 
 const cx = bind(styles)

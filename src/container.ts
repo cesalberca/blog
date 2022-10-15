@@ -1,15 +1,16 @@
 import 'reflect-metadata'
 import { container } from 'tsyringe'
 import { TYPES } from './types'
-import { ArticlesFileRepository } from './features/blog/infrastructure/articles/articles-file-repository'
-import { TalksFileRepository } from './features/blog/infrastructure/talks/talks-file-repository'
-import type { TalksRepository } from './features/blog/domain/talks/talks-repository'
-import type { ArticlesRepository } from './features/blog/domain/articles/articles-repository'
+import { ArticlesFileRepository } from './features/articles/infrastructure/articles/articles-file-repository'
+import { TalksFileRepository } from './features/articles/infrastructure/talks/talks-file-repository'
+import type { TalksRepository } from './features/talks/domain/talks-repository'
+import type { ArticlesRepository } from './features/articles/domain/articles/articles-repository'
+import type { PreferencesRepository } from './core/preferences/domain/preferences-repository'
+import { PreferencesLocalRepository } from './core/preferences/infrastructure/preferences-local-repository'
 
-container.register(TYPES.FETCHER, { useValue: global.fetch })
 container.register(TYPES.STORAGE, { useValue: global.localStorage })
-container.register(TYPES.WINDOW, { useValue: global })
 container.registerSingleton<TalksRepository>(TYPES.TALKS_REPOSITORY, TalksFileRepository)
 container.registerSingleton<ArticlesRepository>(TYPES.ARTICLES_REPOSITORY, ArticlesFileRepository)
+container.registerSingleton<PreferencesRepository>(TYPES.PREFERENCES_REPOSITORY, PreferencesLocalRepository)
 
 export { container }

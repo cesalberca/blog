@@ -1,6 +1,6 @@
-import { EncoderService } from '../encoder-service'
-import { HtmlParserService } from '../html-parser-service'
-import { Injectable } from '../../../../core/dependency-injection/injectable'
+import { EncoderService } from '../../../core/encoder-service'
+import { HtmlParserService } from '../../../core/html-parser-service'
+import { Injectable } from '../../../core/dependency-injection/injectable'
 
 @Injectable()
 export class TwitterSharerService {

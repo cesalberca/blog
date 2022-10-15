@@ -1,16 +1,16 @@
 import type { FC } from 'react'
-import styles from './article.module.scss'
-import { Hero } from '../../../../core/components/hero/hero'
-import { bind } from '../../../../core/utils/bind'
+import styles from './article.page.module.scss'
+import { Hero } from '../../../core/components/hero/hero'
+import { bind } from '../../../core/utils/bind'
 import { useTranslations } from 'next-intl'
-import type { Article as ArticleDomain } from '../../domain/articles/article'
-import { Tag } from '../../../../core/components/tag/tag'
-import { Markdown } from '../../../../core/components/markdown/markdown'
-import { SocialLinks } from '../../../../core/components/social-links/social-links'
+import type { Article as ArticleDomain } from '../domain/article'
+import { Tag } from '../../../core/components/tag/tag'
+import { Markdown } from '../../../core/components/markdown/markdown'
+import { SocialLinks } from '../../../core/components/social-links/social-links'
 
 const cx = bind(styles)
 
-export const Article: FC<{ article: ArticleDomain }> = ({ article }) => {
+export const ArticlePage: FC<{ article: ArticleDomain }> = ({ article }) => {
   const t = useTranslations()
 
   return (
@@ -21,7 +21,7 @@ export const Article: FC<{ article: ArticleDomain }> = ({ article }) => {
         <span className={cx('date')}>{article.date.format()}</span>
         <span className={cx('dash')}>—</span>
         <span className={cx('time')}>
-          {article.getReadingTime().minutes} {t('_minutes')}
+          {article.getReadingTime().minutes} {t('common.minutes')}
         </span>
         <Tag>{article.locale}</Tag>
       </header>

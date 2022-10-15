@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import styles from './markdown.module.scss'
-import { Markdown as MarkdownDomain } from '../../../features/articles/domain/markdown'
+import { Markdown as MarkdownDomain } from '../../markdown'
 import { bind } from '../../utils/bind'
 
 const cx = bind(styles)

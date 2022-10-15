@@ -1,4 +1,4 @@
-import { Length } from '../../articles/domain/length'
+import { Length } from '../../../core/length'
 
 describe('Length', () => {
   it('should create in seconds', () => {

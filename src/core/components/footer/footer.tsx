@@ -3,7 +3,7 @@ import styles from './footer.module.scss'
 import { bind } from '../../utils/bind'
 import { Links } from '../links/links'
 import { Direction } from '../../types/direction'
-import { Datetime } from '../../../features/articles/domain/datetime'
+import { Datetime } from '../../datetime'
 import { Link } from '../link/link'
 
 const cx = bind(styles)

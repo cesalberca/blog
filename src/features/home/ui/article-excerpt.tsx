@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import styles from './article-excerpt.module.scss'
-import type { Article } from '../../articles/domain/articles/article'
+import type { Article } from '../../articles/domain/article'
 import { bind } from '../../../core/utils/bind'
 import { Link } from '../../../core/components/link/link'
 

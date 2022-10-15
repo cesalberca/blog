@@ -1,6 +1,6 @@
 import type { UseCase } from '../../../core/use-case/use-case'
-import type { Article } from '../domain/articles/article'
-import type { ArticlesRepository } from '../domain/articles/articles-repository'
+import type { Article } from '../domain/article'
+import type { ArticlesRepository } from '../domain/articles-repository'
 import { Injectable } from '../../../core/dependency-injection/injectable'
 import { Inject } from '../../../core/dependency-injection/inject'
 import { TYPES } from '../../../types'

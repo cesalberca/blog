@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next'
 import { GetAllArticlesUseCase } from '../features/articles/application/get-all-articles-use-case'
 import { Home } from '../features/home/ui/home'
-import { Article } from '../features/articles/domain/articles/article'
+import { Article } from '../features/articles/domain/article'
 import { container } from '../container'
 import type { Locale } from '../core/i18n/locale'
 

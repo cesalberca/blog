@@ -1,7 +1,7 @@
 import { GetAllArticlesUseCase } from './get-all-articles-use-case'
-import { ArticlesMother } from '../domain/articles/articles-mother'
-import type { Article } from '../domain/articles/article'
-import type { ArticlesRepository } from '../domain/articles/articles-repository'
+import { ArticlesMother } from '../domain/articles-mother'
+import type { Article } from '../domain/article'
+import type { ArticlesRepository } from '../domain/articles-repository'
 import { instance, mock, verify, when } from 'ts-mockito'
 import { Locale } from '../../../core/i18n/locale'
 

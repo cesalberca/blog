@@ -2,14 +2,14 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { GetArticleUseCase } from '../../features/articles/application/get-article-use-case'
 import type { Locale } from '../../core/i18n/locale'
 import { container } from '../../container'
-import { Article as ArticleDomain } from '../../features/articles/domain/articles/article'
-import { Id } from '../../features/articles/domain/id'
-import { Article } from '../../features/articles/delivery/article/article'
+import { Article as ArticleDomain } from '../../features/articles/domain/article'
+import { Id } from '../../core/id'
+import { ArticlePage } from '../../features/articles/delivery/article.page'
 import { TYPES } from '../../types'
-import type { ArticlesRepository } from '../../features/articles/domain/articles/articles-repository'
+import type { ArticlesRepository } from '../../features/articles/domain/articles-repository'
 
 const Index: NextPage<{ article: ReturnType<ArticleDomain['toJson']> }> = ({ article }) => {
-  return <Article article={ArticleDomain.fromJson(article)} />
+  return <ArticlePage article={ArticleDomain.fromJson(article)} />
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {

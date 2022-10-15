@@ -19,11 +19,11 @@ export class DifficultyService {
   toString(difficulty: Difficulty) {
     switch (difficulty) {
       case Difficulty.ADVANCED:
-        return 'talks_talkDifficultyAdvanced' as const
+        return 'talks.talkDifficultyAdvanced' as const
       case Difficulty.INTERMEDIATE:
-        return 'talks_talkDifficultyIntermediate' as const
+        return 'talks.talkDifficultyIntermediate' as const
       case Difficulty.EASY:
-        return 'talks_talkDifficultyEasy' as const
+        return 'talks.talkDifficultyEasy' as const
     }
   }
 }

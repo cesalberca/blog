@@ -1,8 +1,8 @@
 import { Article } from './article'
-import { Id } from '../id'
-import { Markdown } from '../markdown'
-import { Datetime } from '../datetime'
-import { Locale } from '../../../../core/i18n/locale'
+import { Id } from '../../../core/id'
+import { Markdown } from '../../../core/markdown'
+import { Datetime } from '../../../core/datetime'
+import { Locale } from '../../../core/i18n/locale'
 
 export class ArticlesMother {
   static articles() {

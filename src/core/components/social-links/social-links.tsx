@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import styles from './social-links.module.scss'
 import { useTranslations } from 'next-intl'
 import { container } from '../../../container'
-import { TwitterSharerService } from '../../../features/articles/domain/articles/twitter-sharer-service'
+import { TwitterSharerService } from '../../../features/articles/domain/twitter-sharer-service'
 import { bind } from '../../utils/bind'
 
 const cx = bind(styles)
@@ -15,7 +15,7 @@ export const SocialLinks: FC<{ body: string }> = ({ body }) => {
   const twitterLink = twitterSharerService.getShareUrlFromBody({
     body: body,
     url: 'foo',
-    message: t('article_via'),
+    message: t('article.via'),
   })
 
   return (
@@ -24,10 +24,10 @@ export const SocialLinks: FC<{ body: string }> = ({ body }) => {
 
       <div className={cx('share')}>
         <p>
-          {t('article_shareArticle')} <span>—</span>
+          {t('article.shareArticle')} <span>—</span>
         </p>
         <section className={cx('links')}>
-          <a target="_blank" href={twitterLink} aria-label={t('article_shareArticleOnTwitter')} rel="noreferrer">
+          <a target="_blank" href={twitterLink} aria-label={t('article.shareArticleOnTwitter')} rel="noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20">
               <path
                 fill="currentColor"
@@ -36,7 +36,7 @@ export const SocialLinks: FC<{ body: string }> = ({ body }) => {
               ></path>
             </svg>
           </a>
-          <a target="_blank" href="https://github.com/cesalberca" aria-label={t('article_github')} rel="noreferrer">
+          <a target="_blank" href="https://github.com/cesalberca" aria-label={t('article.github')} rel="noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
               <path
                 fill="currentColor"

@@ -1,4 +1,4 @@
-import type { Id } from '../../articles/domain/id'
+import type { Id } from '../../../core/id'
 import type { Talk } from './talk'
 import type { Locale } from '../../../core/i18n/locale'
 

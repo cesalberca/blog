@@ -1,4 +1,4 @@
-import { Datetime } from '../../articles/domain/datetime'
+import { Datetime } from '../../../core/datetime'
 import { Url } from './url'
 
 export class Event {

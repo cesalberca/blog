@@ -1,8 +1,8 @@
 import { Talk } from './talk'
-import { Id } from '../../articles/domain/id'
+import { Id } from '../../../core/id'
 import { Difficulty } from './difficulty'
-import { Length } from '../../articles/domain/length'
-import { Markdown } from '../../articles/domain/markdown'
+import { Length } from '../../../core/length'
+import { Markdown } from '../../../core/markdown'
 import { Locale } from '../../../core/i18n/locale'
 
 describe('Talk', () => {

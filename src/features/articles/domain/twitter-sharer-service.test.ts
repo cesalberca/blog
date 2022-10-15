@@ -1,6 +1,6 @@
 import { TwitterSharerService } from './twitter-sharer-service'
-import { EncoderService } from '../encoder-service'
-import { HtmlParserService } from '../html-parser-service'
+import { EncoderService } from '../../../core/encoder-service'
+import { HtmlParserService } from '../../../core/html-parser-service'
 import { anything, instance, mock, when } from 'ts-mockito'
 
 describe('TwitterSharerService', () => {

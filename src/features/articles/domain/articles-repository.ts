@@ -1,6 +1,6 @@
-import type { Id } from '../id'
+import type { Id } from '../../../core/id'
 import type { Article } from './article'
-import type { Locale } from '../../../../core/i18n/locale'
+import type { Locale } from '../../../core/i18n/locale'
 import type { Slug } from './slug'
 
 export interface ArticlesRepository {

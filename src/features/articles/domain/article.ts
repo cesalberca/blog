@@ -1,9 +1,9 @@
-import { Id } from '../id'
-import { Markdown } from '../markdown'
-import { Datetime } from '../datetime'
-import { Length } from '../length'
-import type { Image } from './image'
-import type { Locale } from '../../../../core/i18n/locale'
+import { Id } from '../../../core/id'
+import { Markdown } from '../../../core/markdown'
+import { Datetime } from '../../../core/datetime'
+import { Length } from '../../../core/length'
+import type { Image } from '../../../core/image'
+import type { Locale } from '../../../core/i18n/locale'
 
 export class Article {
   private static readonly SUMMARY_SEPARATOR = '<!-- more -->'

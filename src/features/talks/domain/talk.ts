@@ -1,9 +1,9 @@
-import { Markdown } from '../../articles/domain/markdown'
-import { Length } from '../../articles/domain/length'
+import { Markdown } from '../../../core/markdown'
+import { Length } from '../../../core/length'
 import type { Difficulty } from './difficulty'
 import { Topic } from './topic'
 import { Reference } from './reference'
-import { Id } from '../../articles/domain/id'
+import { Id } from '../../../core/id'
 import { Event } from './event'
 import type { Locale } from '../../../core/i18n/locale'
 

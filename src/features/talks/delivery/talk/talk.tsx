@@ -13,24 +13,24 @@ export const Talk: FC<{ detail: ReturnType<TalkDetail['fromTalk']> }> = ({ detai
   const t = useTranslations()
   return (
     <div className={cx('talk')}>
-      <TalkSection title={t('talks_talkTitle')} description={detail.title} />
-      <TalkSection title={t('talks_talkAbstract')}>
+      <TalkSection title={t('talks.talkTitle')} description={detail.title} />
+      <TalkSection title={t('talks.talkAbstract')}>
         <Markdown value={detail.abstract} />
       </TalkSection>
-      <TalkSection title={t('talks_talkTopics')} description={detail.topics} />
-      <TalkSection title={t('talks_talkLength')} description={t('talks_talkLengthMinutes') + detail.length} />
-      <TalkSection title={t('talks_talkDifficulty')} description={detail.difficulty.toString()} />
+      <TalkSection title={t('talks.talkTopics')} description={detail.topics} />
+      <TalkSection title={t('talks.talkLength')} description={t('talks.talkLengthMinutes') + detail.length} />
+      <TalkSection title={t('talks.talkDifficulty')} description={detail.difficulty.toString()} />
       {detail.events.length !== 0 && (
-        <TalkSection title={t('talks_event')}>
+        <TalkSection title={t('talks.event')}>
           {detail.events.map((event, i) => (
             <div key={i}>
               <p>
                 {event.name} – <small>{event.datetime}</small>
                 <div className={cx('links')}>
-                  {event.slides && <Link to={event.slides.value}>{t('talks_talkSlides')}</Link>}
-                  {event.code && <Link to={event.code.value}>{t('talks_talkCode')}</Link>}
-                  {event.demo && <Link to={event.demo.value}>{t('talks_talkDemo')}</Link>}
-                  {event.video && <Link to={event.video.value}>{t('talks_talkVideo')}</Link>}
+                  {event.slides && <Link to={event.slides.value}>{t('talks.talkSlides')}</Link>}
+                  {event.code && <Link to={event.code.value}>{t('talks.talkCode')}</Link>}
+                  {event.demo && <Link to={event.demo.value}>{t('talks.talkDemo')}</Link>}
+                  {event.video && <Link to={event.video.value}>{t('talks.talkVideo')}</Link>}
                 </div>
               </p>
             </div>

@@ -1,6 +1,6 @@
 import { GetArticleUseCase } from './get-article-use-case'
-import type { ArticlesRepository } from '../domain/articles/articles-repository'
-import { Id } from '../domain/id'
+import type { ArticlesRepository } from '../domain/articles-repository'
+import { Id } from '../../../core/id'
 import { instance, mock, verify } from 'ts-mockito'
 import { Locale } from '../../../core/i18n/locale'
 

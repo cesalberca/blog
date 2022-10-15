@@ -1,5 +1,5 @@
 ---
-title: ¿Por qué he migrado mi blog<br/> a Web Components?
+title: ¿Por qué he migrado mi blog a Web Components?
 date: 2020-04-12
 locale: es
 image: clouds-in-the-sky.jpg

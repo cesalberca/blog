@@ -1,4 +1,4 @@
-import type { Locale } from '../../../core/i18n/locale'
+import type { Locale } from './i18n/locale'
 
 export class Datetime {
   private constructor(private readonly _value: Date) {}

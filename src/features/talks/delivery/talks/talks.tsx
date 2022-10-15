@@ -10,7 +10,7 @@ export const Talks: FC<{ talks: TalkDomain[] }> = ({ talks }) => {
 
   return (
     <div>
-      <h1>{t('talks_title')}</h1>
+      <h1>{t('talks.title')}</h1>
       {talks.map(talk => (
         <div key={talk.id.value}>
           <Talk detail={container.resolve(TalkDetail).fromTalk(talk)} />

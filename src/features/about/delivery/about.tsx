@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import { Markdown } from '../../../core/components/markdown/markdown'
 
 export const About: FC = () => {

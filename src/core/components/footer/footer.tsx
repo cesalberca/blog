@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import styles from './footer.module.scss'
 import { bind } from '../../utils/bind'
 import { Links } from '../links/links'

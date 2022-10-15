@@ -3,6 +3,7 @@ import { Id } from '../../articles/domain/id'
 import { Difficulty } from './difficulty'
 import { Length } from '../../articles/domain/length'
 import { Markdown } from '../../articles/domain/markdown'
+import { Locale } from '../../../core/i18n/locale'
 
 describe('Talk', () => {
   it('should be able to create a talk', () => {
@@ -11,7 +12,7 @@ describe('Talk', () => {
       title: 'Advanced JavaScript Patterns',
       topics: [],
       events: [],
-      language: 'en',
+      language: Locale.EN,
       difficulty: Difficulty.ADVANCED,
       length: Length.fromMinutes(45),
       references: [],

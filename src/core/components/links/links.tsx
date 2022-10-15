@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import styles from './links.module.scss'
 import { bind } from '../../utils/bind'
 import { Direction } from '../../types/direction'

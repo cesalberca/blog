@@ -12,12 +12,12 @@ import { Page } from '../core/components/page/page'
 import type { AbstractIntlMessages } from 'next-intl'
 import { NextIntlProvider } from 'next-intl'
 import { useEffect, useState } from 'react'
-import { ThemeContext } from '../features/theme/delivery/theme-context'
 import { container } from '../container'
 import { GetPreferencesUseCase } from '../core/preferences/application/get-preferences.use-case'
 import type { Preferences } from '../core/preferences/domain/preferences'
 import { Theme } from '../features/theme/domain/theme'
 import { SetPreferencesUseCase } from '../core/preferences/application/set-preferences.use-case'
+import { ThemeProvider } from '../features/theme/delivery/theme-provider'
 
 const App = ({ Component, pageProps }: AppProps<{ messages: AbstractIntlMessages }>) => {
   const [preferences, setPreferences] = useState<Preferences>({ theme: Theme.LIGHT })
@@ -46,12 +46,7 @@ const App = ({ Component, pageProps }: AppProps<{ messages: AbstractIntlMessages
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
       </Head>
 
-      <ThemeContext.Provider
-        value={{
-          theme: preferences.theme,
-          setTheme: theme => setPreferences({ theme }),
-        }}
-      >
+      <ThemeProvider theme={preferences.theme} setTheme={theme => setPreferences({ theme })}>
         <NextIntlProvider
           defaultTranslationValues={{
             strong: children => <strong>{children}</strong>,
@@ -62,7 +57,7 @@ const App = ({ Component, pageProps }: AppProps<{ messages: AbstractIntlMessages
             <Component {...pageProps} />
           </Page>
         </NextIntlProvider>
-      </ThemeContext.Provider>
+      </ThemeProvider>
     </>
   )
 }

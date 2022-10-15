@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import styles from './markdown.module.scss'
 import { Markdown as MarkdownDomain } from '../../../features/articles/domain/markdown'
 import { bind } from '../../utils/bind'

@@ -3,6 +3,7 @@ import { Id } from '../../articles/domain/id'
 import { Difficulty } from './difficulty'
 import { Length } from '../../articles/domain/length'
 import { Markdown } from '../../articles/domain/markdown'
+import { Locale } from '../../../core/i18n/locale'
 
 export class TalksMother {
   static getTalksGiven() {
@@ -11,7 +12,7 @@ export class TalksMother {
         id: Id.fromValue('Advanced JavaScript Patterns'),
         title: 'Advanced JavaScript Patterns',
         topics: [],
-        language: 'en',
+        language: Locale.EN,
         events: [],
         difficulty: Difficulty.ADVANCED,
         length: Length.fromMinutes(45),

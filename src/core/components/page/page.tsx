@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 import styles from './page.module.scss'
 import { bind } from '../../utils/bind'
 import { Navbar } from '../navbar/navbar'

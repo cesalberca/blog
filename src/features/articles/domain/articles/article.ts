@@ -44,7 +44,7 @@ export class Article {
     return this.body.toHtml().split(Article.SUMMARY_SEPARATOR)[0]
   }
 
-  getFormattedDate(locale: string | undefined = undefined) {
+  getFormattedDate(locale: Locale | undefined = undefined) {
     return this.date.format(locale)
   }
 

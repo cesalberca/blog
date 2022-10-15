@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import styles from './home.module.scss'
+import styles from './home.page.module.scss'
 import { bind } from '../../../core/utils/bind'
 import type { Article } from '../../articles/domain/article'
 import { ArticleExcerpt } from './article-excerpt'
@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl'
 
 const cx = bind(styles)
 
-export const Home: FC<{ articles: Article[] }> = ({ articles }) => {
+export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
   const t = useTranslations()
 
   return (

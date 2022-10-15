@@ -4,20 +4,18 @@ import styles from './options.module.scss'
 import { bind } from '../../utils/bind'
 import { Theme } from '../../../features/theme/domain/theme'
 import { ThemeContext } from '../../../features/theme/delivery/theme-context'
+import { useRouter } from 'next/router'
 
 const cx = bind(styles)
 
 export const Options: FC = () => {
   const { theme, setTheme } = useContext(ThemeContext)
 
+  const { locale, locales, route, push } = useRouter()
+
   const themes = [
     { text: 'light', value: Theme.LIGHT },
     { text: 'dark', value: Theme.DARK },
-  ]
-
-  const locales = [
-    { text: 'en', value: 'en' },
-    { text: 'es', value: 'es' },
   ]
 
   return (
@@ -29,10 +27,10 @@ export const Options: FC = () => {
           </option>
         ))}
       </select>
-      <select>
-        {locales.map(x => (
-          <option key={x.value} value={x.value}>
-            {x.text}
+      <select value={locale} onChange={event => push(route, undefined, { locale: event.target.value })}>
+        {locales?.map(x => (
+          <option key={x} value={x}>
+            {x}
           </option>
         ))}
       </select>

@@ -5,7 +5,7 @@ import { container } from '../../../../container'
 import { TalkDetail } from '../../domain/talk-detail'
 import { Talk } from '../talk/talk'
 
-export const Talks: FC<{ talks: TalkDomain[] }> = ({ talks }) => {
+export const TalksPage: FC<{ talks: TalkDomain[] }> = ({ talks }) => {
   const t = useTranslations()
 
   return (

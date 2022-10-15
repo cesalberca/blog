@@ -21,7 +21,9 @@ export class ArticlesFileRepository implements ArticlesRepository {
   async findAllByLocale(locale: Locale): Promise<Article[]> {
     const directory = join(process.cwd(), `src/features/articles/infrastructure/${locale}`)
     const files = fs.readdirSync(directory)
-    return Promise.all(files.map(path => this.getArticle(path)))
+    return Promise.all(
+      files.map(path => this.getArticle(join(process.cwd(), `src/features/articles/infrastructure/${locale}`, path))),
+    )
   }
 
   async findPostSlugs(locale: Locale): Promise<Slug[]> {

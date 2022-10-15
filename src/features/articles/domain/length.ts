@@ -1,5 +1,5 @@
 export class Length {
-  constructor(private readonly _seconds: number) {}
+  private constructor(private readonly _seconds: number) {}
 
   static fromMinutes(minutes: number) {
     return new Length(minutes * 60)

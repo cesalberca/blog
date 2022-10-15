@@ -1,17 +1,14 @@
 import { GetArticleUseCase } from './get-article-use-case'
-import { Locale } from '../../domain/language/locale'
 import type { ArticlesRepository } from '../domain/articles/articles-repository'
 import { Id } from '../domain/id'
-import { instance, mock, verify, when } from 'ts-mockito'
-import { Theme } from '../../theme/domain/theme'
-import { Store } from '../state/store'
-import { of } from 'rxjs'
+import { instance, mock, verify } from 'ts-mockito'
+import { Locale } from '../../../core/i18n/locale'
 
 describe('GetArticleUseCase', () => {
   it('should get an article', async () => {
     const { getArticleUseCase, articlesRepository } = setup()
 
-    await getArticleUseCase.execute({ id: Id.fromValue('1') })
+    await getArticleUseCase.execute({ id: Id.fromValue('1'), locale: Locale.EN })
 
     verify(articlesRepository.findOneByLocale(Id.fromValue('1'), Locale.EN))
   })
@@ -19,10 +16,8 @@ describe('GetArticleUseCase', () => {
 
 function setup() {
   const articlesRepository = mock<ArticlesRepository>()
-  const store = mock(Store)
-  when(store.observable()).thenReturn(of({ locale: Locale.EN, theme: Theme.DARK }))
   return {
     articlesRepository,
-    getArticleUseCase: new GetArticleUseCase(instance(articlesRepository), instance(store)),
+    getArticleUseCase: new GetArticleUseCase(instance(articlesRepository)),
   }
 }

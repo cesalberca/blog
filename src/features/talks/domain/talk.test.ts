@@ -1,6 +1,5 @@
 import { Talk } from './talk'
 import { Id } from '../../articles/domain/id'
-import { Language } from './language'
 import { Difficulty } from './difficulty'
 import { Length } from '../../articles/domain/length'
 import { Markdown } from '../../articles/domain/markdown'
@@ -12,7 +11,7 @@ describe('Talk', () => {
       title: 'Advanced JavaScript Patterns',
       topics: [],
       events: [],
-      language: Language.ENGLISH,
+      language: 'en',
       difficulty: Difficulty.ADVANCED,
       length: Length.fromMinutes(45),
       references: [],
@@ -24,7 +23,7 @@ describe('Talk', () => {
     expect(talk.id.value).toEqual('Advanced JavaScript Patterns')
     expect(talk.title).toEqual('Advanced JavaScript Patterns')
     expect(talk.topics).toEqual([])
-    expect(talk.language).toEqual(Language.ENGLISH)
+    expect(talk.language).toEqual('en')
     expect(talk.difficulty).toEqual(Difficulty.ADVANCED)
     expect(talk.length.minutes).toEqual(45)
     expect(talk.references).toEqual([])

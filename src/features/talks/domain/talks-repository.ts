@@ -1,6 +1,6 @@
-import { Id } from '../../articles/domain/id'
-import { Talk } from './talk'
-import { Locale } from '../language/locale'
+import type { Id } from '../../articles/domain/id'
+import type { Talk } from './talk'
+import type { Locale } from '../../../core/i18n/locale'
 
 export interface TalksRepository {
   findOneByLocale(id: Id, locale: Locale): Promise<Talk>

@@ -1,5 +1,5 @@
 import { Markdown } from './markdown'
-import marked from 'marked'
+import { marked } from 'marked'
 
 jest.mock('marked')
 

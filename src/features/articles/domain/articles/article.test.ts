@@ -3,7 +3,7 @@ import { Id } from '../id'
 import { Markdown } from '../markdown'
 import { Datetime } from '../datetime'
 import { Length } from '../length'
-import { Locale } from '../language/locale'
+import { Locale } from '../../../../core/i18n/locale'
 
 describe('Article', () => {
   it('should get the excerpt', () => {
@@ -12,7 +12,7 @@ describe('Article', () => {
       title: 'foo',
       body: Markdown.fromValue('foo'),
       date: Datetime.fromDate(new Date(2019, 2, 27)),
-      locale: Locale.DEFAULT,
+      locale: Locale.EN,
       image: '',
     })
 
@@ -23,7 +23,7 @@ describe('Article', () => {
       date: 'March 27, 2019',
       id: Id.fromValue('foo'),
       title: 'foo',
-      locale: 0,
+      locale: 'en',
       readingTime: Length.fromMinutes(1),
       image: '',
     })
@@ -35,7 +35,7 @@ describe('Article', () => {
       title: 'foo',
       body: Markdown.fromValue(`foo <!-- more -->bar`),
       date: Datetime.fromDate(new Date(2019, 2, 27)),
-      locale: Locale.DEFAULT,
+      locale: Locale.EN,
       image: '',
     })
 
@@ -50,7 +50,7 @@ describe('Article', () => {
       title: 'foo',
       body: Markdown.fromValue(get180WordsArticle()),
       date: Datetime.fromDate(new Date(2019, 2, 27)),
-      locale: Locale.DEFAULT,
+      locale: Locale.EN,
       image: '',
     })
 
@@ -65,7 +65,7 @@ describe('Article', () => {
       title: 'foo',
       body: Markdown.fromValue(get360WordsArticle()),
       date: Datetime.fromDate(new Date(2019, 2, 27)),
-      locale: Locale.DEFAULT,
+      locale: Locale.EN,
       image: '',
     })
 
@@ -80,7 +80,7 @@ describe('Article', () => {
       title: 'foo',
       body: Markdown.fromValue(`It all started`),
       date: Datetime.fromDate(new Date(2019, 2, 27)),
-      locale: Locale.DEFAULT,
+      locale: Locale.EN,
       image: '',
     })
 

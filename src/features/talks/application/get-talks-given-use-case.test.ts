@@ -1,17 +1,14 @@
 import { GetTalksGivenUseCase } from './get-talks-given-use-case'
-import { TalksRepository } from '../domain/talks-repository'
-import { Locale } from '../../domain/language/locale'
 import { instance, mock, verify, when } from 'ts-mockito'
-import { Store } from '../state/store'
-import { Theme } from '../../theme/domain/theme'
-import { of } from 'rxjs'
 import { TalksMother } from '../domain/talks-mother'
+import { Locale } from '../../../core/i18n/locale'
+import type { TalksRepository } from '../domain/talks-repository'
 
 describe('GetTalksGivenUseCase', () => {
   it('should get all talks given', async () => {
     const { getTalksGivenUseCase, talksRepository } = setup()
 
-    await getTalksGivenUseCase.execute().toPromise()
+    await getTalksGivenUseCase.execute({ locale: Locale.EN })
 
     verify(talksRepository.findAllByLocale(Locale.EN)).once()
   })
@@ -19,11 +16,9 @@ describe('GetTalksGivenUseCase', () => {
 
 function setup() {
   const talksRepository = mock<TalksRepository>()
-  const store = mock(Store)
-  when(store.observable()).thenReturn(of({ locale: Locale.EN, theme: Theme.DARK }))
   when(talksRepository.findAllByLocale(Locale.EN)).thenResolve(TalksMother.getTalksGiven())
   return {
     talksRepository,
-    getTalksGivenUseCase: new GetTalksGivenUseCase(instance(talksRepository), instance(store)),
+    getTalksGivenUseCase: new GetTalksGivenUseCase(instance(talksRepository)),
   }
 }

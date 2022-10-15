@@ -9,7 +9,7 @@ export class Article {
   private static readonly SUMMARY_SEPARATOR = '<!-- more -->'
   private static readonly AVERAGE_WORDS_PER_MINUTE = 180
 
-  constructor(
+  private constructor(
     public readonly id: Id,
     public readonly title: string,
     public readonly date: Datetime,

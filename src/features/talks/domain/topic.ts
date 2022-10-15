@@ -1,5 +1,5 @@
 export class Topic {
-  constructor(private readonly _value: string) {}
+  private constructor(private readonly _value: string) {}
 
   static fromValue(label: string) {
     return new Topic(label)

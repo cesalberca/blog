@@ -8,7 +8,7 @@ import { Event } from './event'
 import type { Locale } from '../../../core/i18n/locale'
 
 export class Talk {
-  constructor(
+  private constructor(
     public readonly id: Id,
     public readonly title: string,
     public readonly abstract: Markdown,

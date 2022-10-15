@@ -1,7 +1,7 @@
 import type { Locale } from '../../../core/i18n/locale'
 
 export class Datetime {
-  constructor(private readonly _value: Date) {}
+  private constructor(private readonly _value: Date) {}
 
   get value(): Date {
     return this._value
@@ -25,7 +25,7 @@ export class Datetime {
 
   // TODO: Receive locale
   format(_locale?: Locale) {
-    return this._value.toLocaleDateString('es', {
+    return this._value.toLocaleDateString('en', {
       day: 'numeric',
       month: 'long',
       year: 'numeric',

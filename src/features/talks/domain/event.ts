@@ -2,7 +2,7 @@ import { Datetime } from '../../articles/domain/datetime'
 import { Url } from './url'
 
 export class Event {
-  constructor(
+  private constructor(
     public readonly name: string,
     public readonly datetime: Datetime,
     public readonly slides?: Url,

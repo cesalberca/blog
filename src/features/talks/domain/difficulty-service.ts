@@ -12,7 +12,7 @@ export class DifficultyService {
       case 'Beginner':
         return Difficulty.EASY
       default:
-        throw new Error('foo')
+        throw new Error(`String ${string} could not be mapped to a difficulty`)
     }
   }
 

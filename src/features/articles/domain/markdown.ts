@@ -3,7 +3,8 @@ import { marked } from 'marked'
 export class Markdown {
   private readonly renderer = new marked.Renderer()
 
-  constructor(private readonly _value: string) {
+  private constructor(private readonly _value: string) {
+    // TODO: avoid calling marked configuration
     this.configureRenderer()
     marked.setOptions({ renderer: this.renderer })
   }

@@ -19,3 +19,4 @@ yarn dev
 - [ ] I18n
 - [ ] Tests
 - [ ] E2E
+- [ ] Share on Twitter

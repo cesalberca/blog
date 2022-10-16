@@ -1,11 +1,7 @@
 .wrapper {
-  background-color: var(--background-color);
-}
-
-.dark,
-.light {
   color: var(--foreground-color);
   background-color: var(--background-color);
+  height: auto;
 }
 
 .dark {

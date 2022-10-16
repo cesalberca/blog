@@ -1,16 +1,21 @@
 .image {
   --title-color: var(--black-color);
-  min-height: 45vh;
   padding-top: var(--m);
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+
+}
+
+.image-wrapper {
+  min-height: 45vh;
   background-size: cover;
   background-repeat: no-repeat;
   box-shadow: inset 0 8px 20px 0 hsla(0, 0%, 0%, 0.5);
 }
 
 .wrapper {
-  mix-blend-mode: difference;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

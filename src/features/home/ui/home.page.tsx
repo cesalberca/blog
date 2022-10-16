@@ -5,6 +5,7 @@ import type { Article } from '../../articles/domain/article'
 import { ArticleExcerpt } from './article-excerpt'
 import { useTranslations } from 'next-intl'
 import { Page } from '../../../core/components/page/page'
+import { Hero } from '../../../core/components/hero/hero'
 
 const cx = bind(styles)
 
@@ -12,16 +13,19 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
   const t = useTranslations()
 
   return (
-    <Page>
-      <div className={cx('hero')}>
-        <div className={cx('wrapper')}>
-          <header>
-            <h1 className={cx('title')}>{t.rich('home.heroTitle')}</h1>
-            <p className={cx('caption')}>{t.rich('home.heroCaption')}</p>
-          </header>
-          <img className={cx('photo')} src="me.png" alt={t('home.meAlt')} />
-        </div>
-      </div>
+    <Page
+      topSection={
+        <Hero className={cx('hero')}>
+          <div className={cx('wrapper')}>
+            <header>
+              <h1 className={cx('title')}>{t.rich('home.heroTitle')}</h1>
+              <p className={cx('caption')}>{t.rich('home.heroCaption')}</p>
+            </header>
+            <img className={cx('photo')} src="/assets/images/me.png" alt={t('home.meAlt')} />
+          </div>
+        </Hero>
+      }
+    >
       <div>
         <h2 className={cx('articles')}>{t('home.articles')}</h2>
         {articles.map(article => (

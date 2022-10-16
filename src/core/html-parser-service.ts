@@ -3,6 +3,6 @@ import { Injectable } from './dependency-injection/injectable'
 @Injectable()
 export class HtmlParserService {
   parseToPlainText(html: string): string {
-    return html
+    return html.replace(/<[^>]*>/g, '')
   }
 }

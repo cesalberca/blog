@@ -15,9 +15,9 @@ import { useEffect, useState } from 'react'
 import { container } from '../container'
 import { GetPreferencesUseCase } from '../core/preferences/application/get-preferences.use-case'
 import type { Preferences } from '../core/preferences/domain/preferences'
-import { Theme } from '../features/theme/domain/theme'
 import { SetPreferencesUseCase } from '../core/preferences/application/set-preferences.use-case'
 import { ThemeProvider } from '../features/theme/delivery/theme-provider'
+import { Theme } from '../features/theme/domain/theme'
 
 const App = ({ Component, pageProps }: AppProps<{ messages: AbstractIntlMessages }>) => {
   const [preferences, setPreferences] = useState<Preferences>({ theme: Theme.LIGHT })
@@ -28,12 +28,13 @@ const App = ({ Component, pageProps }: AppProps<{ messages: AbstractIntlMessages
   }
 
   useEffect(() => {
-    container.resolve(SetPreferencesUseCase).execute({ theme: preferences.theme })
-  }, [preferences])
-
-  useEffect(() => {
     loadPreferences()
   }, [])
+
+  function setNewTheme(theme: Theme) {
+    setPreferences({ theme })
+    container.resolve(SetPreferencesUseCase).execute({ theme })
+  }
 
   return (
     <>
@@ -46,7 +47,7 @@ const App = ({ Component, pageProps }: AppProps<{ messages: AbstractIntlMessages
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
       </Head>
 
-      <ThemeProvider theme={preferences.theme} setTheme={theme => setPreferences({ theme })}>
+      <ThemeProvider theme={preferences.theme} setTheme={theme => setNewTheme(theme)}>
         <NextIntlProvider
           defaultTranslationValues={{
             strong: children => <strong>{children}</strong>,

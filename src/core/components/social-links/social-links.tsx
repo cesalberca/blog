@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { container } from '../../../container'
 import { TwitterSharerService } from '../../../features/articles/domain/twitter-sharer-service'
 import { bind } from '../../utils/bind'
+import { useCanonicalUrl } from '../../utils/use-canonical-url'
 
 const cx = bind(styles)
 
@@ -11,10 +12,11 @@ export const SocialLinks: FC<{ body: string }> = ({ body }) => {
   const t = useTranslations()
 
   const twitterSharerService = container.resolve(TwitterSharerService)
+  const origin = useCanonicalUrl()
 
   const twitterLink = twitterSharerService.getShareUrlFromBody({
     body: body,
-    url: 'foo',
+    url: origin,
     message: t('article.via'),
   })
 

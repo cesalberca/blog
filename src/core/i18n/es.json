@@ -44,5 +44,10 @@
     "talkCode": "Código",
     "talkVideo": "Video",
     "talkDemo": "Demo"
+  },
+  "footer": {
+    "coverage": "Cobertura del ",
+    "madeWith": "© {currentYear} – Hecho con",
+    "and": "y"
   }
 }

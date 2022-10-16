@@ -10,10 +10,10 @@
   justify-content: space-between;
   padding: 0 var(--m);
   overflow: hidden;
+  height: 100%;
 }
 
 .title {
-  color: var(--white-color);
   font-size: var(--title-text);
 }
 
@@ -43,6 +43,7 @@
   max-width: 500px;
   transform: scale(-1, 1);
   mix-blend-mode: soft-light;
+  align-self: flex-end;
 }
 
 @media (max-width: 768px) {

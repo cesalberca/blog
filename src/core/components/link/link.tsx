@@ -8,11 +8,11 @@ const cx = bind(styles)
 
 interface Props {
   to: string
-  onClick?(): void
   type?: 'regular' | 'navigation' | 'invisible'
+  className?: string
 }
 
-export const Link: FC<PropsWithChildren<Props>> = ({ to, children, onClick, type = 'regular' }) => {
+export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, type = 'regular' }) => {
   const { asPath, isReady } = useRouter()
   const [isActive, setIsActive] = useState(false)
 
@@ -32,14 +32,17 @@ export const Link: FC<PropsWithChildren<Props>> = ({ to, children, onClick, type
   }, [asPath, isReady, to, type])
 
   return (
-    <NextLink href={to} passHref>
-      <a
-        {...(isExternal && { target: '_blank', rel: 'noreferrer' })}
-        className={cx({ [type]: true }, 'link', { active: type === 'navigation' ? false : isActive })}
-        onClick={onClick}
-      >
-        {children}
-      </a>
+    <NextLink href={to} passHref tabIndex={1}>
+      {type !== 'invisible' ? (
+        <a
+          {...(isExternal && { target: '_blank', rel: 'noreferrer' })}
+          className={cx({ [type]: true }, 'link', { active: type === 'navigation' ? false : isActive }, className)}
+        >
+          {children}
+        </a>
+      ) : (
+        <button className={cx('invisible')}>{children}</button>
+      )}
     </NextLink>
   )
 }

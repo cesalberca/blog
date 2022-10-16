@@ -5,10 +5,10 @@ import '../styles/color-theme.css'
 import '../styles/theme.css'
 import '../styles/sizes.css'
 import '../styles/typography.css'
+import '../styles/code-theme.scss'
 import './../container'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { Page } from '../core/components/page/page'
 import type { AbstractIntlMessages } from 'next-intl'
 import { NextIntlProvider } from 'next-intl'
 import { useEffect, useState } from 'react'
@@ -53,9 +53,7 @@ const App = ({ Component, pageProps }: AppProps<{ messages: AbstractIntlMessages
           }}
           messages={pageProps.messages}
         >
-          <Page>
-            <Component {...pageProps} />
-          </Page>
+          <Component {...pageProps} />
         </NextIntlProvider>
       </ThemeProvider>
     </>

@@ -3,6 +3,7 @@ import styles from './article-excerpt.module.scss'
 import type { Article } from '../../articles/domain/article'
 import { bind } from '../../../core/utils/bind'
 import { Link } from '../../../core/components/link/link'
+import { Markdown } from '../../../core/components/markdown/markdown'
 
 const cx = bind(styles)
 
@@ -19,7 +20,7 @@ export const ArticleExcerpt: FC<{ excerpt: ReturnType<Article['getExcerpt']> }> 
           </span>
           <span>{excerpt.readingTime.minutes} minutes</span>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: excerpt.body }}></div>
+        <Markdown value={excerpt.body} />
       </article>
     </Link>
   )

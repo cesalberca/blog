@@ -50,13 +50,13 @@ Now we install TypeScript as a `dev-dependency`: `npm i typescript -DE`. We add 
 
 Because we don't have any `.ts` file that we can compile we'll see that the compilation is successful:
 
-![image-20191112213355655](infrastructure/articles/images/migrating-to-typescript/image-20191112213355655.png)
+![image-20191112213355655](/assets/images/migrating-to-typescript/image-20191112213355655.png)
 
 ## Migration
 
 Let's try change the extension from `.js` to `.ts` and compile again:
 
-![image-20191112213602568](infrastructure/articles/images/migrating-to-typescript/image-20191112213602568.png)
+![image-20191112213602568](/assets/images/migrating-to-typescript/image-20191112213602568.png)
 
 What?! It compiles correctly! Well yes, **any JavaScript file is valid TypeScript code**.
 
@@ -343,7 +343,7 @@ const bar = createSafe(1) // bar is inferred as a number
 
 Yet if we compile we'll see that we get the following error:
 
-![image-20191113201553918](infrastructure/articles/images/migrating-to-typescript/image-20191113201553918.png)
+![image-20191113201553918](/assets/images/migrating-to-typescript/image-20191113201553918.png)
 
 What happened? Well, given that any type can be set to `Target` that raises a problem, as we only want `Target` to take any type that is of an object kind. So what we want here is [to constrain the type](https://www.typescriptlang.org/docs/handbook/generics.html#generic-constraints) that we can assign to `Target` to the `object` type:
 
@@ -395,7 +395,7 @@ Let's run the tests:
 npm test
 ```
 
-![image-20191113202705616](infrastructure/articles/images/migrating-to-typescript/image-20191113202705616.png)
+![image-20191113202705616](/assets/images/migrating-to-typescript/image-20191113202705616.png)
 
 Oups, what is happening? Well, [Jest](https://jestjs.io/), the test runner that we are using, doesn't know how to compile TypeScript, which requires some configuration. We add [Babel](https://babeljs.io/) so it can erase the types and then run the tests:
 
@@ -423,7 +423,7 @@ module.exports = {
 
 And we run the tests!
 
-![image-20191115194956149](infrastructure/articles/images/migrating-to-typescript/image-20191115194956149.png)
+![image-20191115194956149](/assets/images/migrating-to-typescript/image-20191115194956149.png)
 
 ## Conclusion
 

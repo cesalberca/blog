@@ -7,7 +7,7 @@ const cx = bind(styles)
 export const Hero: FC<PropsWithChildren<{ image: string }>> = ({ image, children }) => {
   return (
     <div className={cx('image')} style={{ backgroundImage: `url(${image})` }}>
-      <div className="wrapper">{children}</div>
+      <div className={cx('wrapper')}>{children}</div>
     </div>
   )
 }

@@ -30,6 +30,12 @@
 
 .invisible {
   text-decoration: none;
+  padding: 0;
+  margin: 0;
+  border: none;
+  font: inherit;
+  text-align: left;
+  background-color: transparent;
 }
 
 .invisible:visited {
@@ -38,6 +44,8 @@
 
 .navigation {
   transition: 0.1s ease-in-out all;
+  color: var(--white-color);
+  text-decoration: none;
 }
 
 .navigation:hover {

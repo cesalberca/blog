@@ -11,6 +11,6 @@ export class TwitterSharerService {
   getShareUrlFromBody(options: { body: string; url: string; message: string }): string {
     return `https://twitter.com/intent/tweet?text=${this.encoderService.encode(
       this.htmlParserService.parseToPlainText(options.body),
-    )}${options.url} ${options.message} ${TwitterSharerService.USER_HANDLER}`
+    )} ${options.url} ${options.message} ${TwitterSharerService.USER_HANDLER}`
   }
 }

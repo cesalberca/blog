@@ -1,0 +1,41 @@
+.footer {
+  --link-color: var(--white-color);
+  padding: calc(var(--base) * 6) var(--m);
+  background-color: var(--blue-dark-color);
+}
+
+  .wrapper {
+    max-width: var(--body-width);
+    margin: 0 auto;
+}
+
+  .links {
+    --primary-color: var(--white-color);
+    --title-text: var(--body-text);
+}
+
+  .info {
+    color: var(--gray-color);
+    display: flex;
+    flex-direction: column;
+}
+
+  .copy {
+    --link-hover-color: var(--black-color);
+}
+
+  .coverage {
+    font-size: var(--small-text);
+    display: flex;
+    align-items: center;
+}
+
+  .coverage-percentage {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background-color: var(--green-color);
+    border-radius: 100%;
+    margin-right: 4px;
+    margin-left: 10px;
+}

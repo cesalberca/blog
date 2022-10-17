@@ -1,0 +1,30 @@
+body {
+  background-color: var(--background-color);
+}
+
+.dark,
+.light {
+  color: var(--foreground-color);
+  background-color: var(--background-color);
+}
+
+.dark {
+  --foreground-color: var(--white-color);
+  --background-color: var(--dark-blue-color);
+  --link-color: var(--white-color);
+
+  --link-hover-color: black;
+
+  --code-background: var(--blue-dark-color);
+  --code-foreground: var(--foreground-color);
+
+  --bold-color: white;
+}
+
+.light {
+  --foreground-color: var(--black-color);
+  --background-color: var(--white-color);
+  --title-color: var(--foreground-color);
+  --code-background: var(--blue-dark-color);
+  --code-foreground: var(--background-color);
+}

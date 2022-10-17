@@ -1,0 +1,10 @@
+.talk > section {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.title {
+  margin-top: var(--s);
+  margin-bottom: 0;
+}

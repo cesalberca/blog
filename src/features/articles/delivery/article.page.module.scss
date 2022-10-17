@@ -1,0 +1,42 @@
+.content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  gap: var(--s);
+}
+
+.hero {
+  margin-bottom: var(--m);
+}
+
+.title {
+  filter: invert(1);
+  padding: var(--m);
+  margin-top: var(--l);
+  text-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.5);
+}
+
+.date {
+  font-style: italic;
+}
+
+.dash {
+  color: var(--primary-color);
+}
+
+.time {
+  font-style: italic;
+}
+
+
+.social-links {
+  margin-bottom: var(--l);
+}
+
+.article p {
+  margin-bottom: var(--m);
+}

@@ -1,0 +1,16 @@
+.options {
+  display: flex;
+  flex-direction: row;
+}
+
+.options select {
+  margin-right: var(--s);
+  background: var(--blue-dark-color-1);
+  color: var(--white-color);
+  -webkit-appearance: none;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: var(--s);
+  border-radius: 0;
+}

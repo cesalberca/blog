@@ -15,7 +15,7 @@ describe('TwitterSharerService', () => {
       message: 'foo',
     })
 
-    expect(actual).toBe('https://twitter.com/intent/tweet?text=bar bar foo @cesalberca')
+    expect(actual).toBe('https://twitter.com/intent/tweet?text=bar\nbar foo @cesalberca')
   })
 })
 

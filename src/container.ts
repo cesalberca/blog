@@ -9,6 +9,7 @@ import type { PreferencesRepository } from './core/preferences/domain/preference
 import { PreferencesLocalRepository } from './core/preferences/infrastructure/preferences-local-repository'
 
 container.register(TYPES.STORAGE, { useValue: global.localStorage })
+container.register(TYPES.GLOBAL, { useValue: global })
 container.registerSingleton<TalksRepository>(TYPES.TALKS_REPOSITORY, TalksFileRepository)
 container.registerSingleton<ArticlesRepository>(TYPES.ARTICLES_REPOSITORY, ArticlesFileRepository)
 container.registerSingleton<PreferencesRepository>(TYPES.PREFERENCES_REPOSITORY, PreferencesLocalRepository)

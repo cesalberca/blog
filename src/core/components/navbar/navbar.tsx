@@ -24,7 +24,9 @@ export const Navbar: FC = () => {
           </span>
         </button>
 
-        <Options />
+        <div className={cx('options')}>
+          <Options />
+        </div>
 
         <div className={cx({ backdrop: true, 'has-backdrop': isActive })}>
           <Links direction={Direction.VERTICAL}></Links>

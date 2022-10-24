@@ -1,1 +1,1 @@
-export type Image = any
+export type Image = string

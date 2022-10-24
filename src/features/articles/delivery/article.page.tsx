@@ -6,8 +6,8 @@ import { useTranslations } from 'next-intl'
 import type { Article as ArticleDomain } from '../domain/article'
 import { Tag } from '../../../core/components/tag/tag'
 import { Markdown } from '../../../core/components/markdown/markdown'
-import { SocialLinks } from '../../../core/components/social-links/social-links'
 import { Page } from '../../../core/components/page/page'
+import { SocialLinks } from '../../../core/components/social-links/social-links'
 
 const cx = bind(styles)
 

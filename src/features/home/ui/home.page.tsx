@@ -6,6 +6,8 @@ import { ArticleExcerpt } from './article-excerpt'
 import { useTranslations } from 'next-intl'
 import { Page } from '../../../core/components/page/page'
 import { Hero } from '../../../core/components/hero/hero'
+import Image from 'next/future/image'
+import me from '../../../../public/assets/images/me.png'
 
 const cx = bind(styles)
 
@@ -21,7 +23,7 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
               <h1 className={cx('title')}>{t.rich('home.heroTitle')}</h1>
               <p className={cx('caption')}>{t.rich('home.heroCaption')}</p>
             </header>
-            <img className={cx('photo')} src="/assets/images/me.png" alt={t('home.meAlt')} />
+            <Image priority className={cx('photo')} src={me} alt={t('home.meAlt')} />
           </div>
         </Hero>
       }

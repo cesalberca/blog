@@ -1,12 +1,12 @@
-.link,
-.link span {
+.link {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
   text-underline-offset: 2px;
+  color: var(--link-color);
 }
 
-.regular .text {
+.regular {
   font-size: inherit;
   text-decoration: underline;
   font-weight: var(--weight-regular);
@@ -54,6 +54,6 @@
   text-shadow: -0.01ex 0 currentColor, 0.01ex 0 currentColor;
 }
 
-.navigation:hover .text {
+.navigation:hover {
   text-decoration: none;
 }

@@ -47,7 +47,7 @@
   },
   "footer": {
     "coverage": "Coverage of ",
-    "madeWith": "© {currentYear} – Made with",
-    "and": "and"
+    "madeWith": "© {currentYear} – Made with ",
+    "and": "and "
   }
 }

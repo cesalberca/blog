@@ -4,6 +4,12 @@
   height: auto;
 }
 
+.dark,
+.light {
+  color: var(--foreground-color);
+  background-color: var(--background-color);
+}
+
 .dark {
   --foreground-color: var(--white-color);
   --background-color: var(--dark-blue-color);

@@ -17,11 +17,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: var(--body-width);
+  max-width: var(--overflow-width);
 }
 
 .options {
   margin-left: auto;
+  padding-right: var(--m);
+}
+
+.inner-links {
+  display: flex;
+  gap: var(--m);
+}
+
+.home {
+  color: var(--white-color)
 }
 
 .hamburger {
@@ -111,6 +121,11 @@
     z-index: 999;
     top: calc(var(--m) + 4px);
     left: var(--m);
+  }
+
+  .links{
+    display: flex;
+    flex-direction: column;
   }
 
   .backdrop {

@@ -23,6 +23,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior-y: none;
   line-height: 1.9;
+  scrollbar-gutter: stable both-edges;
 }
 
 #__next {

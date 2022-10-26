@@ -13,12 +13,6 @@
   margin: 0;
 }
 
-.active {
-  color: var(--primary-color);
-  text-decoration: underline;
-  text-decoration-color: var(--primary-color);
-}
-
 .regular {
   transition: 0.25s ease-in-out all;
 }
@@ -45,7 +39,7 @@
 
 .navigation {
   transition: 0.1s ease-in-out all;
-  color: var(--white-color);
+  color: var(--blue-light-color);
   text-decoration: none;
 }
 
@@ -56,4 +50,9 @@
 
 .navigation:hover {
   text-decoration: none;
+}
+
+.active {
+  color: var(--white-color);
+
 }

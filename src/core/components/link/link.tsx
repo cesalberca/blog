@@ -19,17 +19,13 @@ export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, ty
   const isExternal = to !== undefined && /^http/.test(to)
 
   useEffect(() => {
-    if (isReady && type === 'navigation') {
-      const linkPathname = new URL(to ?? '', location.href).pathname
+    if (isReady) {
+      const linkPathname = new URL(to as string, location.href).pathname
       const activePathname = new URL(asPath, location.href).pathname
 
-      if (linkPathname === activePathname) {
-        setIsActive(true)
-      } else {
-        setIsActive(false)
-      }
+      setIsActive(linkPathname === activePathname)
     }
-  }, [asPath, isReady, to, type])
+  }, [asPath, isReady, to])
 
   if (type === 'invisible') {
     return (
@@ -45,7 +41,7 @@ export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, ty
       passHref
       tabIndex={1}
       {...(isExternal && { target: '_blank', rel: 'noreferrer' })}
-      className={cx({ [type]: true }, 'link', { active: type === 'navigation' ? false : isActive }, className)}
+      className={cx({ [type]: true }, 'link', { active: type === 'navigation' ? isActive : false }, className)}
     >
       {children}
     </NextLink>

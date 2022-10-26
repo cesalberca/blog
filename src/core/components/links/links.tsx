@@ -15,7 +15,7 @@ export const Links: FC<{ direction?: Direction }> = ({ direction = Direction.HOR
   return (
     <div className={cx('links', { [links]: true })}>
       <Link to={'/'} className={cx('home')} type={'navigation'}>
-        {t('home.title')}
+        <strong>{t('home.title')}</strong>
       </Link>
       <Link to={'/talks'} className={cx('link')} type={'navigation'}>
         {t('talks.title')}

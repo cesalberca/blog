@@ -1,0 +1,13 @@
+.button-icon {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  cursor: pointer;
+
+  &__image {
+    color: var(--foreground-color);
+    height: 32px;
+    width: 32px;
+  }
+}

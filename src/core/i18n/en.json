@@ -27,7 +27,7 @@
   },
   "about": {
     "title": "About me",
-    "description": "I'm a software developer very interested in good practices, architecture and testing. I work at [Autentia](https://www.autentia.com/) as a frontend developer with technologies such as React, Vue, Angular, TypeScript, JavaScript, HTML, CSS, etc. I'm continuously on the lookout for things to read, learn and [share](https://www.adictosaltrabajo.com/author/calberca/). I've talked at [JSDay Madrid 2019](https://www.youtube.com/watch?v=aNf1Oos0ZB8&t=1s), Codenares 2018 and 2019, [Ritsi](https://www.youtube.com/watch?v=SuykoyC0T74&t=1s), [JSDay Canarias 2019](https://www.youtube.com/watch?v=3nPPRvRcoo0&feature=youtu.be) and [Codemotion Madrid 2019](https://www.youtube.com/watch?v=y0BymiCki54&feature=youtu.be)."
+    "description": "I’m a self-learning, creative, enthusiast and passionate person. I have a mixed profile, divided between my love for programming, software architecture and design. I truly care about sharing knowledge with my peers, that being as a speaker in different technological events, as a teacher or throughout my social networks.\n\nI believe that Software should be robust yet flexible, and the way to achieve it is to –regardless of the framework– create the right abstractions and apply architectural patterns. Testing is very important to me, the Software we build should be reliable in order to provide the maximum value."
   },
   "talks": {
     "title": "Talks",

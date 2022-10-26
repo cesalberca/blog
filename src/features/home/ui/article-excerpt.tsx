@@ -4,10 +4,12 @@ import type { Article } from '../../articles/domain/article'
 import { bind } from '../../../core/utils/bind'
 import { Link } from '../../../core/components/link/link'
 import { Markdown } from '../../../core/components/markdown/markdown'
+import { useTranslations } from 'next-intl'
 
 const cx = bind(styles)
 
 export const ArticleExcerpt: FC<{ excerpt: ReturnType<Article['getExcerpt']> }> = ({ excerpt }) => {
+  const t = useTranslations()
   return (
     <Link to={`articles/${excerpt.id.value}`} type={'invisible'}>
       <article className={cx('excerpt')}>
@@ -18,7 +20,9 @@ export const ArticleExcerpt: FC<{ excerpt: ReturnType<Article['getExcerpt']> }> 
             {' '}
             <strong>/</strong>{' '}
           </span>
-          <span>{excerpt.readingTime.minutes} minutes</span>
+          <span>
+            {excerpt.readingTime.minutes} {t('article.minutes')}
+          </span>
         </div>
         <Markdown value={excerpt.body} />
       </article>

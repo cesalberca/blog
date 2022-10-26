@@ -31,18 +31,23 @@ export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, ty
     }
   }, [asPath, isReady, to, type])
 
-  return (
-    <NextLink href={to} passHref tabIndex={1}>
-      {type !== 'invisible' ? (
-        <a
-          {...(isExternal && { target: '_blank', rel: 'noreferrer' })}
-          className={cx({ [type]: true }, 'link', { active: type === 'navigation' ? false : isActive }, className)}
-        >
-          {children}
-        </a>
-      ) : (
+  if (type === 'invisible') {
+    return (
+      <NextLink href={to} legacyBehavior passHref className={cx({ [type]: true }, 'link', className)}>
         <button className={cx('invisible')}>{children}</button>
-      )}
+      </NextLink>
+    )
+  }
+
+  return (
+    <NextLink
+      href={to}
+      passHref
+      tabIndex={1}
+      {...(isExternal && { target: '_blank', rel: 'noreferrer' })}
+      className={cx({ [type]: true }, 'link', { active: type === 'navigation' ? false : isActive }, className)}
+    >
+      {children}
     </NextLink>
   )
 }

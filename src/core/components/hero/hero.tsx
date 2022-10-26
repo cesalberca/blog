@@ -1,7 +1,7 @@
 import type { FC, PropsWithChildren } from 'react'
 import styles from './hero.module.scss'
 import { bind } from '../../utils/bind'
-import Image from 'next/future/image'
+import Image from 'next/image'
 
 const cx = bind(styles)
 

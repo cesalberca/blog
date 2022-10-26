@@ -14,7 +14,7 @@ import frontMatter from 'front-matter'
 import type { Locale } from '../../../core/i18n/locale'
 import { join } from 'path'
 import fs from 'fs'
-import { Url } from '../domain/url'
+import { Url } from '../../../core/types/url'
 
 @Injectable()
 export class TalksFileRepository implements TalksRepository {

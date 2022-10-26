@@ -1,5 +1,5 @@
 import { Datetime } from '../../../core/datetime'
-import { Url } from './url'
+import { Url } from '../../../core/types/url'
 
 export class Event {
   private constructor(

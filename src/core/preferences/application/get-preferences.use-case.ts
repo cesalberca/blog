@@ -2,7 +2,7 @@ import type { UseCase } from '../../use-case/use-case'
 import { Injectable } from '../../dependency-injection/injectable'
 import type { Preferences } from '../domain/preferences'
 import type { PreferencesRepository } from '../domain/preferences-repository'
-import { TYPES } from '../../../types'
+import { TYPES } from '../../dependency-injection/types'
 import { Inject } from '../../dependency-injection/inject'
 
 @Injectable()

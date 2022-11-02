@@ -1,7 +1,7 @@
 import type { Preferences } from '../domain/preferences'
 import type { PreferencesRepository } from '../domain/preferences-repository'
 import { Inject } from '../../dependency-injection/inject'
-import { TYPES } from '../../../types'
+import { TYPES } from '../../dependency-injection/types'
 import { Injectable } from '../../dependency-injection/injectable'
 import { Theme } from '../../../features/theme/domain/theme'
 

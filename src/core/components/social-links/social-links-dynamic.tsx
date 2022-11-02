@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import styles from './social-links.module.scss'
 import { useTranslations } from 'next-intl'
-import { container } from '../../../container'
+import { container } from '../../dependency-injection/container'
 import { TwitterSharerService } from '../../../features/articles/domain/twitter-sharer-service'
 import { bind } from '../../utils/bind'
 import { useCanonicalUrl } from '../../utils/use-canonical-url'

@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { useTranslations } from 'next-intl'
 import type { Talk as TalkDomain } from '../../domain/talk'
-import { container } from '../../../../container'
+import { container } from '../../../../core/dependency-injection/container'
 import { TalkDetail } from '../../domain/talk-detail'
 import { Talk } from '../talk/talk'
 import { Page } from '../../../../core/components/page/page'

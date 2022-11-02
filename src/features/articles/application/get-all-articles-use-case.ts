@@ -3,7 +3,7 @@ import type { Article } from '../domain/article'
 import type { ArticlesRepository } from '../domain/articles-repository'
 import { Injectable } from '../../../core/dependency-injection/injectable'
 import { Inject } from '../../../core/dependency-injection/inject'
-import { TYPES } from '../../../types'
+import { TYPES } from '../../../core/dependency-injection/types'
 import type { Locale } from '../../../core/i18n/locale'
 
 type Params = { locale: Locale }

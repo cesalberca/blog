@@ -1,11 +1,11 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { GetArticleUseCase } from '../../features/articles/application/get-article-use-case'
 import type { Locale } from '../../core/i18n/locale'
-import { container } from '../../container'
+import { container } from '../../core/dependency-injection/container'
 import { Article as ArticleDomain } from '../../features/articles/domain/article'
 import { Id } from '../../core/id'
 import { ArticlePage } from '../../features/articles/delivery/article.page'
-import { TYPES } from '../../types'
+import { TYPES } from '../../core/dependency-injection/types'
 import type { ArticlesRepository } from '../../features/articles/domain/articles-repository'
 
 const Index: NextPage<{ article: ReturnType<ArticleDomain['toJson']> }> = ({ article }) => {

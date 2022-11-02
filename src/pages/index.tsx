@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from 'next'
 import { GetAllArticlesUseCase } from '../features/articles/application/get-all-articles-use-case'
 import { HomePage } from '../features/home/ui/home.page'
 import { Article } from '../features/articles/domain/article'
-import { container } from '../container'
+import { container } from '../core/dependency-injection/container'
 import type { Locale } from '../core/i18n/locale'
 
 const Index: NextPage<{ articles: ReturnType<Article['toJson']>[] }> = ({ articles }) => {

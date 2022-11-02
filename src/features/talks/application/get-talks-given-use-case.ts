@@ -2,7 +2,7 @@ import type { UseCase } from '../../../core/use-case/use-case'
 import type { TalksRepository } from '../domain/talks-repository'
 import { Injectable } from '../../../core/dependency-injection/injectable'
 import { Inject } from '../../../core/dependency-injection/inject'
-import { TYPES } from '../../../types'
+import { TYPES } from '../../../core/dependency-injection/types'
 import type { Talk } from '../domain/talk'
 import type { Locale } from '../../../core/i18n/locale'
 

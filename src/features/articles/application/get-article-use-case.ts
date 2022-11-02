@@ -4,7 +4,7 @@ import type { ArticlesRepository } from '../domain/articles-repository'
 import type { Id } from '../../../core/id'
 import { Injectable } from '../../../core/dependency-injection/injectable'
 import { Inject } from '../../../core/dependency-injection/inject'
-import { TYPES } from '../../../types'
+import { TYPES } from '../../../core/dependency-injection/types'
 import type { Locale } from '../../../core/i18n/locale'
 
 @Injectable()

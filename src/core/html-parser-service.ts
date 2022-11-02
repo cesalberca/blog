@@ -1,6 +1,6 @@
 import { Injectable } from './dependency-injection/injectable'
 import { Inject } from './dependency-injection/inject'
-import { TYPES } from '../types'
+import { TYPES } from './dependency-injection/types'
 import type { Global } from './global'
 
 @Injectable()

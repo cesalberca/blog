@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next'
 import { TalksPage } from '../features/talks/delivery/talks/talks.page'
-import { container } from '../container'
+import { container } from '../core/dependency-injection/container'
 import { GetTalksGivenUseCase } from '../features/talks/application/get-talks-given-use-case'
 import type { Locale } from '../core/i18n/locale'
 import { Talk } from '../features/talks/domain/talk'

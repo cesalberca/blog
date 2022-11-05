@@ -38,10 +38,10 @@ export class ArticlesFileRepository implements ArticlesRepository {
     return Article.create({
       id: Id.fromValue(parse(fullPath).name),
       body: Markdown.fromValue(article.body),
-      date: Datetime.fromString(article.attributes.date),
+      date: Datetime.fromIso(article.attributes.date),
       title: article.attributes.title,
       locale: article.attributes.locale as Locale,
-      image: `/assets/images/${article.attributes.image}`,
+      image: `/assets/images/articles/${article.attributes.image}`,
     })
   }
 }

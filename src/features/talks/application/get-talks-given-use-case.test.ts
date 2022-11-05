@@ -16,7 +16,7 @@ describe('GetTalksGivenUseCase', () => {
 
 function setup() {
   const talksRepository = mock<TalksRepository>()
-  when(talksRepository.findAllByLocale(Locale.EN)).thenResolve(TalksMother.getTalksGiven())
+  when(talksRepository.findAllByLocale(Locale.EN)).thenResolve(TalksMother.advancedJavascriptPatterns())
   return {
     talksRepository,
     getTalksGivenUseCase: new GetTalksGivenUseCase(instance(talksRepository)),

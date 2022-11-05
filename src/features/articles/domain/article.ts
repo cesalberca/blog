@@ -52,7 +52,7 @@ export class Article {
     return {
       id: this.id.value,
       title: this.title,
-      date: this.date.toString(),
+      date: this.date.toIso(),
       body: this.body.value,
       locale: this.locale,
       image: this.image,
@@ -63,7 +63,7 @@ export class Article {
     return Article.create({
       id: Id.fromValue(json.id),
       body: Markdown.fromValue(json.body),
-      date: Datetime.fromString(json.date),
+      date: Datetime.fromIso(json.date),
       title: json.title,
       locale: json.locale,
       image: json.image,

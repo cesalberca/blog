@@ -7,7 +7,7 @@ export class Datetime {
     return this._value
   }
 
-  static fromString(value: string) {
+  static fromIso(value: string) {
     return new Datetime(new Date(value))
   }
 
@@ -32,7 +32,7 @@ export class Datetime {
     })
   }
 
-  toString() {
+  toIso() {
     return this._value.toISOString()
   }
 }

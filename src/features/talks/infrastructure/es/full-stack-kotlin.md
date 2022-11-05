@@ -3,6 +3,7 @@ title: 'Fullstack Kotlin: aplicaciones web modernas cliente y servidor'
 length: 45
 difficulty: Beginner
 language: es
+image: fullstack-kotlin-applications.png
 topics:
   - Kotlin
   - React

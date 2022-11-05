@@ -3,6 +3,7 @@ title: Can Deno turn Node upside down? 🦕
 length: 45
 difficulty: Beginner
 language: en
+image: deno.png
 topics:
   - Deno
   - Node

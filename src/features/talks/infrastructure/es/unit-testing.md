@@ -1,13 +1,19 @@
 ---
-title: 'Unit Testing: From Zero to Hero'
+title: 1, 2, 3, probando, probando
 length: 40
 difficulty: Beginner
 language: es
+image: 1-2-3-testing-testing.png
 topics:
   - JavaScript
   - Jest
   - Testing
   - TDD
+events:
+  - name: RITSI
+    date: 2021-06-23
+    slides: https://docs.google.com/presentation/d/1C82ewACNzqLQBASNYH2DItftTgKSjmdSoanmaMvagzU/edit?usp=sharing
+    video: https://www.youtube.com/watch?v=4gx8teA65SY
 ---
 
-En esta charla veremos cómo testear unitariamente nuestro código. Y aunque usemos Jest y JavaScript los conceptos que veremos los podrás aplicar a cualquier lenguaje y framework de testing. Profundizaremos en cómo hacer buenos tests, desde la definición del test hasta estrategias para que nuestro test sea robusto y longevo. Veremos conceptos como F.I.R.S.T, given when then, TDD, mocking y... ¡mucho más!
+¿Por qué el código cuando lo modificamos se rompe? ¿Qué estrategias puedo seguir para que mi código sea robusto, flexible y haga lo que tiene que hacer? La solución: el testing. En esta charla veremos conceptos de testing aplicados en código como: TDD, F.I.R.S.T., given when then, mocking y… ¡mucho más!

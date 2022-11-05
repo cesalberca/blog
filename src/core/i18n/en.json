@@ -40,7 +40,7 @@
     "talkDifficultyIntermediate": "Intermediate",
     "talkDifficultyEasy": "Beginner",
     "event": "Events",
-    "talkLengthMinutes": "minutes",
+    "talkLengthMinutes": "{length} minutes",
     "talkSlides": "Slides",
     "talkCode": "Code",
     "talkVideo": "Video",

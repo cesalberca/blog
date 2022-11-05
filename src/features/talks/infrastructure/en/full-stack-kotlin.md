@@ -3,6 +3,7 @@ title: 'Fullstack Kotlin: modern applications in font and back'
 length: 45
 difficulty: Beginner
 language: es
+image: fullstack-kotlin-applications.png
 topics:
   - Kotlin
   - React

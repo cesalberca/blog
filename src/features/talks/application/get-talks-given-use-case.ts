@@ -5,12 +5,17 @@ import { Inject } from '../../../core/dependency-injection/inject'
 import { TYPES } from '../../../core/dependency-injection/types'
 import type { Talk } from '../domain/talk'
 import type { Locale } from '../../../core/i18n/locale'
+import { TalkSorterer } from '../domain/talk-sorterer'
 
 @Injectable()
 export class GetTalksGivenUseCase implements UseCase<Talk[], { locale: Locale }> {
-  constructor(@Inject(TYPES.TALKS_REPOSITORY) private readonly talksRepository: TalksRepository) {}
+  constructor(
+    @Inject(TYPES.TALKS_REPOSITORY) private readonly talksRepository: TalksRepository,
+    private readonly talkSorterer: TalkSorterer,
+  ) {}
 
-  execute(params: { locale: Locale }): Promise<Talk[]> {
-    return this.talksRepository.findAllByLocale(params.locale)
+  async execute(params: { locale: Locale }): Promise<Talk[]> {
+    const talks = await this.talksRepository.findAllByLocale(params.locale)
+    return this.talkSorterer.sort(talks)
   }
 }

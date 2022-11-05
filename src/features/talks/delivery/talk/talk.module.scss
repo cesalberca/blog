@@ -1,0 +1,63 @@
+.talk {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  border: 1px solid var(--gray-color);
+
+  &__image-wrapper {
+    position: relative;
+    height: 400px;
+
+    &__image {
+      object-fit: cover;
+    }
+
+    &__topics {
+      display: flex;
+      gap: var(--s);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: var(--m);
+      flex-wrap: wrap;
+
+      &__topic {
+        border-radius: 999px;
+        padding: var(--s) var(--m);
+        color: var(--white-color);
+        background-color: var(--dark-blue-color);
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    padding: var(--l);
+
+    &__title {
+      margin-bottom: 0;
+    }
+
+    &__byline {
+      display: flex;
+      gap: var(--m);
+      color: var(--gray-color);
+    }
+
+    &__event {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+
+      &__name {
+        margin-bottom: 0;
+      }
+
+      &__links {
+        display: flex;
+        gap: var(--s);
+      }
+    }
+  }
+}

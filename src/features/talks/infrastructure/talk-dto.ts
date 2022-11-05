@@ -5,6 +5,7 @@ export interface TalkDto {
     length: number
     difficulty: string
     language: string
+    image: string
     topics: string[]
     events?: {
       name: string

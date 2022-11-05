@@ -3,6 +3,7 @@ title: Con*front*ing bad software
 length: 40
 difficulty: Advanced
 language: es
+image: good-architecture.png
 topics:
   - JavaScript
   - TypeScript

@@ -10,7 +10,7 @@ describe.skip('Datetime', () => {
   })
 
   it('should construct a datetime from a string', () => {
-    const datetime = Datetime.fromString('2019-03-31T22:00:00.000Z')
+    const datetime = Datetime.fromIso('2019-03-31T22:00:00.000Z')
 
     const actual = datetime.value
 
@@ -28,7 +28,7 @@ describe.skip('Datetime', () => {
   it('should print date', () => {
     const datetime = Datetime.fromDate(new Date(2019, 3, 4, 23, 3, 3, 1))
 
-    const actual = datetime.toString()
+    const actual = datetime.toIso()
 
     expect(actual).toEqual('2019-04-04T21:03:03.001Z')
   })

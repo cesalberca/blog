@@ -3,6 +3,7 @@ title: A*front*ando el mal Software
 length: 40
 difficulty: Advanced
 language: es
+image: good-architecture.png
 topics:
   - JavaScript
   - TypeScript

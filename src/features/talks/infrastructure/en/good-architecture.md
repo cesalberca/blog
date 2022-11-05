@@ -3,6 +3,7 @@ title: Good Architecture
 length: 50
 difficulty: Advanced
 language: es
+image: good-architecture.png
 topics:
   - TypeScript
   - Vue

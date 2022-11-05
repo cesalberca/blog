@@ -1,0 +1,23 @@
+---
+title: Hitchhiker's guide to galactic architecture
+length: 45
+difficulty: Beginner
+language: en
+image: hitchhikers-guide-to-galactic-architect.png
+topics:
+  - JavaScript
+  - SOLID
+  - Architecture
+events:
+  - name: GDG Jaén
+    date: 2021-12-11
+    slides: https://docs.google.com/presentation/d/1BI5K1gfve27rIRu7F_lHiPxzhMhBExpX3hyw_-MZp90/edit?usp=sharing
+    code: https://github.com/cesalberca/guia-del-arquitecto-galactico/tree/2021-gdg-jaen
+    video: https://www.youtube.com/watch?v=YMgkr3PV2ko
+  - name: RITSI Sevilla
+    date: 2022-04-01
+    slides: https://docs.google.com/presentation/d/1y6Gw9ryAi519BE8rLL-7JAYwPJRw5q25sDl0Oc7WqVU/edit?usp=sharing
+    code: https://github.com/cesalberca/guia-del-arquitecto-galactico/tree/2022-ritsi
+---
+
+The frontend has become complex. Very complex. We went from using JavaScript with jQuery to use frameworks that help us handle state, components and abstract us from having to deal with the DOM and so many more things. But... How do we handle the code that does not belong to the framework? Should we separate in different layers? Should we apply concepts of architecture in the frontend? In this talk we'll see different architectural patterns of Software and we'll debate how to apply them in the frontend in order to make our application more robust and solid while keeping them flexible.

@@ -3,6 +3,7 @@ title: Arquitectura de la (Vue)na
 length: 50
 difficulty: Advanced
 language: es
+image: good-architecture.png
 topics:
   - TypeScript
   - Vue

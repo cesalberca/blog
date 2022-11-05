@@ -2,6 +2,7 @@
 title: 🦕 ¿Pondrá Deno el mundo de Node del revés?
 length: 45
 difficulty: Beginner
+image: deno.png
 language: en
 topics:
   - Deno

@@ -3,6 +3,7 @@ title: Advanced JavaScript Patterns
 length: 45
 difficulty: Advanced
 language: en
+image: advanced-javascript-patterns.png
 topics:
   - Proxies
   - JavaScript
@@ -24,4 +25,4 @@ events:
     video: https://youtu.be/MuCgyOTXIRU
 ---
 
-Cuando decimos a la gente que programamos en JavaScript normalmente nos miran mal. Esta charla te dará el conocimiento para iluminar a los herejes y enseñarles que JavaScript, mola. Veremos **Proxies**, **default parameter expressions**, indagaremos en algún **patrón de diseño** e incluso aplicarremos un poco de **programación funcional**. Esta charla no es apropiada para cardíacos.
+Cuando decimos a la gente que programamos en JavaScript normalmente nos miran mal. Esta charla te dará el conocimiento para iluminar a los herejes y enseñarles que JavaScript, mola. Veremos **Proxies**, **default parameter expressions**, indagaremos en algún **patrón de diseño** e incluso aplicaremos un poco de **programación funcional**. Esta charla no es apropiada para cardíacos.

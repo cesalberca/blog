@@ -11,7 +11,8 @@ export class TalkDetail {
       length: talk.length.minutes,
       difficulty: talk.difficulty,
       language: talk.language,
-      topics: talk.topics.map(topic => topic.value).join(', '),
+      topics: talk.topics,
+      image: talk.image,
       references: talk.references,
       events: talk.events.map(event => ({ ...event, datetime: event.datetime.format() })),
     }

@@ -18,7 +18,7 @@ export class Event {
   toJson() {
     return {
       name: this.name,
-      datetime: this.datetime.toString(),
+      datetime: this.datetime.toIso(),
       slides: this.slides?.value ?? null,
       code: this.code?.value ?? null,
       video: this.video?.value ?? null,
@@ -32,7 +32,7 @@ export class Event {
       video: json.video !== null ? Url.fromValue(json.video) : undefined,
       demo: json.demo !== null ? Url.fromValue(json.demo) : undefined,
       slides: json.slides !== null ? Url.fromValue(json.slides) : undefined,
-      datetime: Datetime.fromString(json.datetime),
+      datetime: Datetime.fromIso(json.datetime),
       name: json.name,
     })
   }

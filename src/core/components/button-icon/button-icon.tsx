@@ -5,7 +5,11 @@ import Image, { StaticImageData } from 'next/image'
 
 const cx = bind(styles)
 
-export const ButtonIcon: FC<{ icon: StaticImageData; onClick: () => void; alt: string }> = ({ icon, onClick, alt }) => {
+export const ButtonIcon: FC<{ icon: StaticImageData | string; onClick: () => void; alt: string }> = ({
+  icon,
+  onClick,
+  alt,
+}) => {
   return (
     <button className={cx('button-icon')} onClick={onClick}>
       <Image className={cx('button-icon__image')} src={icon} alt={alt} />

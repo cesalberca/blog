@@ -1,22 +1,14 @@
-This is a [Next](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next/tree/canary/packages/create-next-app).
+<h1 align="center">Blog</h1>
+
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/cesalberca/blog/CI)
+![GitHub](https://img.shields.io/github/license/cesalberca/blog)
+![Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-## Todo
-
-- [ ] Cleanup
-- [ ] Images
-- [ ] Delete maybe
-- [ ] Theme
-- [ ] I18n
-- [ ] Tests
-- [ ] E2E
-- [ ] Share on Twitter
+1. Install [NodeJS](https://nodejs.org/en/)
+2. Install dependencies `npm i`.
+3. Run development server:
+   ```bash
+   npm start
+   ```

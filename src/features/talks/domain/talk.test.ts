@@ -11,6 +11,7 @@ describe('Talk', () => {
       id: Id.fromValue('Advanced JavaScript Patterns'),
       title: 'Advanced JavaScript Patterns',
       topics: [],
+      image: 'image.png',
       events: [],
       language: Locale.EN,
       difficulty: Difficulty.ADVANCED,

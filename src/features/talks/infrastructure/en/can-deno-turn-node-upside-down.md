@@ -2,7 +2,7 @@
 title: Can Deno turn Node upside down? 🦕
 length: 45
 difficulty: Beginner
-language: en
+language: es
 image: deno.png
 topics:
   - Deno
@@ -13,6 +13,14 @@ events:
   - name: NMNL
     date: 2020-06-17
     slides: https://docs.google.com/presentation/d/1IPFghU1OI6d_kChg7Fbzvs62W61_SpNWDQx4pCaagBQ/edit?usp=sharing
+    video: https://www.youtube.com/watch?v=R3uNjzCLG2s
+  - name: Codemotion Webinar
+    date: 2020-09-22
+    slides: https://docs.google.com/presentation/d/1c-rvncDEwd3Dr-s-LZX1Kj8usBhtEGMKUd-b_U60KGo/edit?usp=sharing
+    video: https://www.youtube.com/watch?v=vLMUCv3gbZA
+  - name: OS Weekends
+    date: 2020-06-27
+    slides: https://docs.google.com/presentation/d/1ugl_PN7cEzB8FEXH8t7lTevOCdM246HOWEMUXH8qB7c/edit?usp=sharing
 ---
 
 Deno is said to be by many the successor of Node, including the creator of both: Ryan Dahl, who using the knowledge obtained from Node's 10 year lifespan started this project in order to fix some of the errors, which he mentions in the [talk where he introduced Deno to the world](https://www.youtube.com/watch?v=M3BM9TB-8yA).

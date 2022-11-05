@@ -2,7 +2,7 @@
 title: Reactive architectures'
 length: 45
 difficulty: Advanced
-language: en
+language: es
 image: reactive-architectures.png
 topics:
   - JavaScript

@@ -13,6 +13,14 @@ events:
   - name: NMNL
     date: 2020-06-17
     slides: https://docs.google.com/presentation/d/1IPFghU1OI6d_kChg7Fbzvs62W61_SpNWDQx4pCaagBQ/edit?usp=sharing
+    video: https://www.youtube.com/watch?v=R3uNjzCLG2s
+  - name: Codemotion Webinar
+    date: 2020-09-22
+    slides: https://docs.google.com/presentation/d/1c-rvncDEwd3Dr-s-LZX1Kj8usBhtEGMKUd-b_U60KGo/edit?usp=sharing
+    video: https://www.youtube.com/watch?v=vLMUCv3gbZA
+  - name: OS Weekends
+    date: 2020-06-27
+    slides: https://docs.google.com/presentation/d/1ugl_PN7cEzB8FEXH8t7lTevOCdM246HOWEMUXH8qB7c/edit?usp=sharing
 ---
 
 Deno es según muchos el sucesor de Node, entre ellos el creador ambos: Ryan Dahl, que, aprovechando todo el conocimiento obtenido durante los 10 años de vida de Node decidió comenzar este proyecto para enmendar errores del pasado, los cuales menciona en [la charla donde introdujo Deno](https://www.youtube.com/watch?v=M3BM9TB-8yA).

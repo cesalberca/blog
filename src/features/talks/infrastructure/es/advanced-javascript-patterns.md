@@ -23,6 +23,14 @@ events:
     slides: https://drive.google.com/open?id=1LEWc3ErrzjaN3nzlsMtGVx1QKGsc8G2mgw-qP-WZhJo
     code: https://github.com/cesalberca/advanced-javascript-patterns/tree/2019-codenares
     video: https://youtu.be/MuCgyOTXIRU
+  - name: OS Weekends
+    date: 2019-12-13
+    slides: https://docs.google.com/presentation/d/1D0Xe0Ch5eGcy-CDLwxpW_QwoDX6-mGxjprWmQ_EkH5c/edit?usp=sharing
+    code: https://github.com/cesalberca/advanced-javascript-patterns/tree/2019-osweekends
+  - name: Codemotion Meetup
+    date: 2020-02-25
+    slides: https://docs.google.com/presentation/d/1htHNH9BfNdXmSn88eJNrLzeys6Het9i6EUqBn-v_01U/edit?usp=sharing
+    code: https://github.com/cesalberca/advanced-javascript-patterns/tree/2020-codemotion-meetup-madrid
 ---
 
 Cuando decimos a la gente que programamos en JavaScript normalmente nos miran mal. Esta charla te dará el conocimiento para iluminar a los herejes y enseñarles que JavaScript, mola. Veremos **Proxies**, **default parameter expressions**, indagaremos en algún **patrón de diseño** e incluso aplicaremos un poco de **programación funcional**. Esta charla no es apropiada para cardíacos.

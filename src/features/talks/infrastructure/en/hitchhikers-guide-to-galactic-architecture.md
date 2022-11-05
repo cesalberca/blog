@@ -2,7 +2,7 @@
 title: Hitchhiker's guide to galactic architecture
 length: 45
 difficulty: Beginner
-language: en
+language: es
 image: hitchhikers-guide-to-galactic-architect.png
 topics:
   - JavaScript

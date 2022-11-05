@@ -2,7 +2,7 @@
 title: Advanced JavaScript Patterns
 length: 45
 difficulty: Advanced
-language: en
+language: es
 image: advanced-javascript-patterns.png
 topics:
   - Proxies
@@ -23,6 +23,14 @@ events:
     slides: https://drive.google.com/open?id=1LEWc3ErrzjaN3nzlsMtGVx1QKGsc8G2mgw-qP-WZhJo
     code: https://github.com/cesalberca/advanced-javascript-patterns/tree/2019-codenares
     video: https://youtu.be/MuCgyOTXIRU
+  - name: OS Weekends
+    date: 2019-12-13
+    slides: https://docs.google.com/presentation/d/1D0Xe0Ch5eGcy-CDLwxpW_QwoDX6-mGxjprWmQ_EkH5c/edit?usp=sharing
+    code: https://github.com/cesalberca/advanced-javascript-patterns/tree/2019-osweekends
+  - name: Codemotion Meetup
+    date: 2020-02-25
+    slides: https://docs.google.com/presentation/d/1htHNH9BfNdXmSn88eJNrLzeys6Het9i6EUqBn-v_01U/edit?usp=sharing
+    code: https://github.com/cesalberca/advanced-javascript-patterns/tree/2020-codemotion-meetup-madrid
 ---
 
 When you tell people you code in JavaScript they usually look down on you. This talk will give you the tools to enlighten those heretics. We'll be entering the world of **design patterns** applied to JavaScript, looking through some of the cutting edge properties of ES6 such as **Proxies** and **default function parameter expressions**, dealing with **objects** and even some examples of **functional programming**. This talk is not allowed for cardiacs.

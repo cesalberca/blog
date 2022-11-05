@@ -2,7 +2,7 @@
 title: WHAT IS HAPPENING IN THE FRONT?
 length: 40
 difficulty: Beginner
-language: en
+language: es
 image: what-is-happening-in-the-front.png
 topics:
   - JavaScript

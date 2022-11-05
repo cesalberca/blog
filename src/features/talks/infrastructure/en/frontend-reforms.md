@@ -2,7 +2,7 @@
 title: Frontend reforms
 length: 45
 difficulty: Beginner
-language: en
+language: es
 image: frontend-reforms.png
 topics:
   - JavaScript

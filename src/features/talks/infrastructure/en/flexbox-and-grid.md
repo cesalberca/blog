@@ -2,7 +2,7 @@
 title: Taller de maquetación web con CSS Grid y flexbox
 length: 180
 difficulty: Beginner
-language: en
+language: es
 image: flexbox-and-grid.png
 topics:
   - CSS

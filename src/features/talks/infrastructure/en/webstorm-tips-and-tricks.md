@@ -2,7 +2,7 @@
 title: IntelliJ tips and tricks
 length: 40
 difficulty: Beginner
-language: en
+language: es
 image: advanced-javascript-patterns.png
 topics:
   - IntelliJ

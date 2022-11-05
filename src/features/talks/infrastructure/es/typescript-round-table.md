@@ -1,9 +1,9 @@
 ---
-title: TypeScript roundable
+title: TypeScript round table
 length: 45
 difficulty: Beginner
 language: es
-image: typescript-roundtable.png
+image: typescript-round-table.png
 topics:
 - TypeScript
 - JavaScript

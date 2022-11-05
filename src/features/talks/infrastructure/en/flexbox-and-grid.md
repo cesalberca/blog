@@ -11,7 +11,6 @@ topics:
 events:
   - name: Autentia
     date: 2018-01-24
-    slides: https://docs.google.com/presentation/d/1AHygd3fhyI-5tMK70gxcVnUiJlFU8UQh3Nq1d-2gY9Y/edit?usp=sharing
     video: https://www.youtube.com/watch?v=RFQy-ud8Ec4
 ---
 

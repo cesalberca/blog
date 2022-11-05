@@ -14,4 +14,4 @@ events:
     video: https://www.youtube.com/watch?v=RFQy-ud8Ec4
 ---
 
-La maquetación web ha evolucionado exponencialmente. Grid y flexbox son parte de esta evolución. Estas herramientas nativas de CSS permiten maquetar con mucha facilidad y soltura. Y dado que es un tema que me interesa mucho y propuse un workshop de 3 hora.
+La maquetación web ha evolucionado exponencialmente. Grid y flexbox son parte de esta evolución. Estas herramientas nativas de CSS permiten maquetar con mucha facilidad y soltura. Y dado que es un tema que me interesa mucho y propuse un workshop de 3 horas.

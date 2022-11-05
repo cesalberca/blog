@@ -1,9 +1,9 @@
 ---
-title: IntelliJ tips and tricks
+title: Webstorm tips and tricks
 length: 40
 difficulty: Beginner
 language: es
-image: advanced-javascript-patterns.png
+image: webstorm-tips-and-tricks.png
 topics:
   - IntelliJ
   - Webstorm

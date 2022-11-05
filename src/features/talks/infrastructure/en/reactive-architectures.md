@@ -1,5 +1,5 @@
 ---
-title: Reactive architectures'
+title: Reactive architectures
 length: 45
 difficulty: Advanced
 language: es

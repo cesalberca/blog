@@ -2,33 +2,30 @@ import { GetAllArticlesUseCase } from './get-all-articles-use-case'
 import { ArticlesMother } from '../domain/articles-mother'
 import type { Article } from '../domain/article'
 import type { ArticlesRepository } from '../domain/articles-repository'
-import { instance, mock, verify, when } from 'ts-mockito'
+import { anything, instance, mock, when } from 'ts-mockito'
 import { Locale } from '../../../core/i18n/locale'
+import { ArticlesOrderer } from '../domain/articles-orderer'
 
 describe('GetAllArticlesUseCase', () => {
   it('should get all articles', async () => {
-    const { articlesRepository, getAllArticlesUseCase } = setup()
+    const { articlesRepository, getAllArticlesUseCase, articlesOrderer } = setup()
+    const articles: Article[] = ArticlesMother.articles()
+    when(articlesRepository.findAllByLocale(Locale.EN)).thenResolve(articles)
+    when(articlesOrderer.order(anything())).thenReturn(articles)
 
-    await getAllArticlesUseCase.execute({ locale: Locale.EN })
+    const actual = await getAllArticlesUseCase.execute({ locale: Locale.EN })
 
-    verify(articlesRepository.findAllByLocale(Locale.EN)).once()
-  })
-
-  it('should return the articles ordered by date', async () => {
-    const { getAllArticlesUseCase } = setup()
-
-    const result = await getAllArticlesUseCase.execute({ locale: Locale.EN })
-
-    expect(result[0].date.value > result[1].date.value).toBe(true)
+    expect(actual[0].title).toBe('Haciendo (Vue)n frontend')
   })
 })
 
 function setup() {
   const articlesRepository = mock<ArticlesRepository>()
-  const articles: Article[] = ArticlesMother.articles()
-  when(articlesRepository.findAllByLocale(Locale.EN)).thenResolve(articles)
+  const articlesOrderer = mock(ArticlesOrderer)
+
   return {
     articlesRepository,
-    getAllArticlesUseCase: new GetAllArticlesUseCase(instance(articlesRepository)),
+    articlesOrderer,
+    getAllArticlesUseCase: new GetAllArticlesUseCase(instance(articlesRepository), instance(articlesOrderer)),
   }
 }

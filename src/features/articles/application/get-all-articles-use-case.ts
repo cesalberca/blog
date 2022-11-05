@@ -5,15 +5,19 @@ import { Injectable } from '../../../core/dependency-injection/injectable'
 import { Inject } from '../../../core/dependency-injection/inject'
 import { TYPES } from '../../../core/dependency-injection/types'
 import type { Locale } from '../../../core/i18n/locale'
+import { ArticlesOrderer } from '../domain/articles-orderer'
 
 type Params = { locale: Locale }
 
 @Injectable()
 export class GetAllArticlesUseCase implements UseCase<Article[], Params> {
-  constructor(@Inject(TYPES.ARTICLES_REPOSITORY) private readonly articlesRepository: ArticlesRepository) {}
+  constructor(
+    @Inject(TYPES.ARTICLES_REPOSITORY) private readonly articlesRepository: ArticlesRepository,
+    private readonly articlesOrderer: ArticlesOrderer,
+  ) {}
 
   async execute({ locale }: Params): Promise<Article[]> {
     const articles = await this.articlesRepository.findAllByLocale(locale)
-    return articles.slice().sort((articleA, articleB) => (articleB.date < articleA.date ? -1 : 1))
+    return this.articlesOrderer.order(articles)
   }
 }

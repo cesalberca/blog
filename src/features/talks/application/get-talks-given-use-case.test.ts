@@ -1,24 +1,29 @@
 import { GetTalksGivenUseCase } from './get-talks-given-use-case'
-import { instance, mock, verify, when } from 'ts-mockito'
+import { anything, instance, mock, when } from 'ts-mockito'
 import { TalksMother } from '../domain/talks-mother'
 import { Locale } from '../../../core/i18n/locale'
 import type { TalksRepository } from '../domain/talks-repository'
+import { TalksOrderer } from '../domain/talks-orderer'
 
 describe('GetTalksGivenUseCase', () => {
   it('should get all talks given', async () => {
-    const { getTalksGivenUseCase, talksRepository } = setup()
+    const { getTalksGivenUseCase, talksRepository, talksOrderer } = setup()
+    when(talksRepository.findAllByLocale(Locale.EN)).thenResolve([TalksMother.advancedJavascriptPatterns()])
+    when(talksOrderer.sort(anything())).thenReturn([TalksMother.advancedJavascriptPatterns()])
 
-    await getTalksGivenUseCase.execute({ locale: Locale.EN })
+    const actual = await getTalksGivenUseCase.execute({ locale: Locale.EN })
 
-    verify(talksRepository.findAllByLocale(Locale.EN)).once()
+    expect(actual[0].title).toBe('Advanced JavaScript Patterns')
   })
 })
 
 function setup() {
   const talksRepository = mock<TalksRepository>()
-  when(talksRepository.findAllByLocale(Locale.EN)).thenResolve(TalksMother.advancedJavascriptPatterns())
+  const talksOrderer = mock(TalksOrderer)
+
   return {
     talksRepository,
-    getTalksGivenUseCase: new GetTalksGivenUseCase(instance(talksRepository)),
+    talksOrderer,
+    getTalksGivenUseCase: new GetTalksGivenUseCase(instance(talksRepository), instance(talksOrderer)),
   }
 }

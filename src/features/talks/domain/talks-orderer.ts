@@ -2,7 +2,7 @@ import type { Talk } from './talk'
 import { Injectable } from '../../../core/dependency-injection/injectable'
 
 @Injectable()
-export class TalkSorterer {
+export class TalksOrderer {
   sort(talks: Talk[]): Talk[] {
     return talks.slice().sort((a, b) => {
       return (

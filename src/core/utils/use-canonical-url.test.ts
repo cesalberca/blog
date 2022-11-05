@@ -26,6 +26,6 @@ describe('useCanonicalUrl', () => {
 
     const actual = useCanonicalUrl()
 
-    expect(actual).toBe('foo/en/bar')
+    expect(actual.value).toBe('foo/en/bar')
   })
 })

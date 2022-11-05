@@ -2,6 +2,7 @@ import { TwitterSharerService } from './twitter-sharer-service'
 import { EncoderService } from '../../../core/encoder-service'
 import { HtmlParserService } from '../../../core/html-parser-service'
 import { anything, instance, mock, when } from 'ts-mockito'
+import { Url } from '../../../core/types/url'
 
 describe('TwitterSharerService', () => {
   it('should get the link to share', () => {
@@ -11,7 +12,7 @@ describe('TwitterSharerService', () => {
 
     const actual = twitterSharerService.getShareUrlFromBody({
       body: 'foo',
-      url: 'bar',
+      url: Url.fromValue('bar'),
       message: 'foo',
     })
 

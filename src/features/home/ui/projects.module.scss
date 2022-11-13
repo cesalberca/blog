@@ -1,0 +1,21 @@
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--m);
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+
+    &__title,
+    &__description {
+      margin: 0;
+    }
+
+    &__links {
+      margin-top: auto;
+      display: flex;
+      gap: var(--s);
+    }
+  }
+}

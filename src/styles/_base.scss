@@ -1,0 +1,67 @@
+@use "typography";
+
+@mixin base {
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *::after,
+  *::before {
+    box-sizing: inherit;
+  }
+
+  body {
+    font-family: var(--body-font);
+    font-size: var(--body-text);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: none;
+    line-height: 1.9;
+    scrollbar-gutter: stable both-edges;
+  }
+
+  #__next {
+    height: 100%;
+  }
+
+  p {
+    margin-bottom: var(--s);
+  }
+
+  h1 {
+    @include typography.text-h1;
+  }
+
+  h2 {
+    @include typography.text-h2;
+  }
+
+  h3 {
+    @include typography.text-h3;
+  }
+
+  h4 {
+    @include typography.text-h4;
+  }
+
+  h5 {
+    @include typography.text-h5;
+  }
+
+  h6 {
+    @include typography.text-h6;
+  }
+
+  small {
+    @include typography.text-small;
+  }
+}

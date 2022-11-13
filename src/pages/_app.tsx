@@ -1,6 +1,6 @@
 import 'reflect-metadata'
-import '../styles/index.scss'
 import '../core/dependency-injection/container'
+import './app.scss'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import type { AbstractIntlMessages } from 'next-intl'

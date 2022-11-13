@@ -13,9 +13,24 @@
   "home": {
     "title": "César Alberca",
     "meAlt": "Picture of César Alberca",
-    "articles": "Articles",
+    "technologies": "Technologies I use",
+    "latestArticles": "Latest articles",
+    "viewAllArticles": "View all articles",
     "heroTitle": "Frontend developer. Designer. Speaker.",
-    "heroCaption": "Passionate about <strong>good practices</strong>, <strong>architecture</strong> and <strong>testing</strong>."
+    "heroCaption": "Passionate about <strong>good practices</strong>, <strong>architecture</strong> and <strong>testing</strong>.",
+    "whoAmI1": "I’m a self-learning, creative, enthusiast and passionate person. I have a mixed profile, divided between my love for programming, software architecture and design. I truly care about sharing knowledge with my peers, that being as a speaker in different technological events, as a teacher or throughout my social networks.",
+    "whoAmI2": "I’m a self-learning, creative, enthusiast and passionate person. I have a mixed profile, divided between my love for programming, software architecture and design. I truly care about sharing knowledge with my peers, that being as a speaker in different technological events, as a teacher or throughout my social networks.",
+    "projects": {
+      "title": "Some project's I've built",
+      "code": "See the code",
+      "live": "Live version",
+      "katasTitle": "Katas",
+      "katasDescription": "Multiple TypeScript Katas to practice TDD and testing.",
+      "whoAmITitle": "Who Am I",
+      "whoAmIDescription": "Simple Who Am I game implemented using RxJs, React and Firebase.",
+      "frontendReformsTitle": "WordleJS",
+      "frontendReformsDescription": "Code for the talk Frontend Reforms where we build a Wordle for frontend frameworks"
+    }
   },
   "article": {
     "title": "Articles",

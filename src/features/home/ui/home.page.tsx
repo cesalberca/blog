@@ -8,6 +8,9 @@ import { Page } from '../../../core/components/page/page'
 import { Hero } from '../../../core/components/hero/hero'
 import Image from 'next/image'
 import me from '../../../../public/assets/images/me.png'
+import { Technologies } from './technologies'
+import { Projects } from './projects'
+import { Link } from '../../../core/components/link/link'
 
 const cx = bind(styles)
 
@@ -17,23 +20,41 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
   return (
     <Page
       topSection={
-        <Hero className={cx('hero')}>
-          <div className={cx('wrapper')}>
+        <Hero className={cx('home__hero')}>
+          <div className={cx('home__hero__wrapper')}>
             <header>
-              <h1 className={cx('title')}>{t.rich('home.heroTitle')}</h1>
-              <p className={cx('caption')}>{t.rich('home.heroCaption')}</p>
+              <h1 className={cx('home__hero__wrapper__title')}>{t.rich('home.heroTitle')}</h1>
+              <p className={cx('home__hero__wrapper__caption')}>{t.rich('home.heroCaption')}</p>
             </header>
-            <Image priority className={cx('photo')} src={me} alt={t('home.meAlt')} />
+            <Image priority className={cx('home__hero__wrapper__photo')} src={me} alt={t('home.meAlt')} />
           </div>
         </Hero>
       }
     >
-      <div>
-        <h2 className={cx('articles')}>{t('home.articles')}</h2>
+      <section className={cx('home__section')}>
+        <p>{t('home.whoAmI1')}</p>
+        <p>{t('home.whoAmI2')}</p>
+      </section>
+
+      <section className={cx('home__section')}>
+        <h2>{t('home.projects.title')}</h2>
+        <Projects />
+      </section>
+
+      <section className={cx('home__section')}>
+        <h2>{t('home.technologies')}</h2>
+        <Technologies />
+      </section>
+
+      <section className={cx('home__section', 'home__articles')}>
+        <h2 className={cx('home__articles__title')}>{t('home.latestArticles')}</h2>
         {articles.map(article => (
           <ArticleExcerpt key={article.id.value} excerpt={article.getExcerpt()} />
         ))}
-      </div>
+        <Link className={cx('home__articles__view-all')} to={'/blog'}>
+          {t('home.viewAllArticles')}
+        </Link>
+      </section>
     </Page>
   )
 }

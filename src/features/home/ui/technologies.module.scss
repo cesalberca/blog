@@ -1,0 +1,22 @@
+@use "styles";
+
+.technologies {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  align-items: center;
+  grid-gap: var(--m) var(--s);
+
+  &__technology {
+    display: flex;
+    flex-direction: column;
+    gap: var(--m);
+    align-items: center;
+
+    > * {
+      flex: 1;
+    }
+    &__label {
+      @include styles.text-small
+    }
+  }
+}

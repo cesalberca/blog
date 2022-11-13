@@ -646,14 +646,32 @@ Sígueme en [Twitter](https://twitter.com/) y en [Github](https://github.com/ces
         locale: Locale.EN,
       }),
       Article.create({
-        id: Id.fromValue('patrones-de-diseno'),
-        title: 'Patrones de Diseño',
-        date: Datetime.fromDate(new Date(2019, 10, 3)),
+        id: Id.fromValue('angular-jest'),
+        title: 'Angular Jest',
+        date: Datetime.fromDate(new Date(2019, 11, 3)),
         body: Markdown.fromValue(
-          'El mundo frontend es conocido por su gran _volatilidad_, sin embargo poco hacemos para que esta volatilidad no afecte a nuestros desarrollos. Nos importa últimamente estar más __a la última del framework del momento que de aprender a hacer nuestro código más mantenible__. Así que este tutorial irá en pos de hacer una aplicación lo más _"Frameworkless"_ posible.',
+          'You want to change [Karma](https://karma-runner.github.io/latest/index.html) in an Angular application to a better test runner like [Jest](https://jestjs.io/)? Then this tutorial is the one you were looking for!',
         ),
         locale: Locale.EN,
-        image: '',
+        image: 'desert.jpg',
+      }),
+      Article.create({
+        id: Id.fromValue('theming'),
+        title: 'Theming',
+        date: Datetime.fromDate(new Date(2019, 6, 6)),
+        body: Markdown.fromValue(
+          'Theming a web with custom properties is as easy as it gets as shown in this article.',
+        ),
+        locale: Locale.EN,
+        image: 'art-artistic-canvas.jpg',
+      }),
+      Article.create({
+        id: Id.fromValue('use-cases-and-command-pattern'),
+        title: 'Use Cases and Command Pattern',
+        date: Datetime.fromDate(new Date(2019, 4, 17)),
+        body: Markdown.fromValue('Use cases and commands. How to.'),
+        locale: Locale.EN,
+        image: 'abstract-dark-design.jpg',
       }),
     ]
   }

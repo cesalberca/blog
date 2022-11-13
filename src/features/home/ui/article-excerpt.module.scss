@@ -10,6 +10,10 @@
   cursor: pointer;
 }
 
+.title {
+  margin-bottom: 0;
+}
+
 .slugline {
   font-size: calc(var(--body-text) - 2);
   color: var(--gray-color);

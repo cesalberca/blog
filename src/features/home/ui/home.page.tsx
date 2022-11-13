@@ -1,5 +1,4 @@
 import type { FC } from 'react'
-import styles from './home.page.module.scss'
 import { bind } from '../../../core/utils/bind'
 import type { Article } from '../../articles/domain/article'
 import { ArticleExcerpt } from './article-excerpt'
@@ -11,6 +10,7 @@ import me from '../../../../public/assets/images/me.png'
 import { Technologies } from './technologies'
 import { Projects } from './projects'
 import { Link } from '../../../core/components/link/link'
+import styles from './home.page.module.scss'
 
 const cx = bind(styles)
 
@@ -51,7 +51,7 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
         {articles.map(article => (
           <ArticleExcerpt key={article.id.value} excerpt={article.getExcerpt()} />
         ))}
-        <Link className={cx('home__articles__view-all')} to={'/blog'}>
+        <Link className={cx('home__articles__view-all')} to={'/articles'}>
           {t('home.viewAllArticles')}
         </Link>
       </section>

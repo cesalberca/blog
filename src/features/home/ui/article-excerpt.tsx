@@ -13,7 +13,7 @@ export const ArticleExcerpt: FC<{ excerpt: ReturnType<Article['getExcerpt']> }> 
   return (
     <Link to={`articles/${excerpt.id.value}`} type={'invisible'}>
       <article className={cx('excerpt')}>
-        <h3 dangerouslySetInnerHTML={{ __html: excerpt.title }}></h3>
+        <h3 className={cx('title')} dangerouslySetInnerHTML={{ __html: excerpt.title }}></h3>
         <div className={cx('slugline')}>
           <span>{excerpt.date}</span>
           <span className={cx('accented-slugline')}>

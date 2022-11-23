@@ -9,6 +9,14 @@ describe('TalksOrderer', () => {
 
     expect(actual[0].title).toBe('Good Architecture')
   })
+
+  it('should handle empty events', () => {
+    const { talksOrderer } = setup()
+
+    const actual = talksOrderer.sort([TalksMother.advancedJavascriptPatterns(), TalksMother.howToBuildBadSoftware()])
+
+    expect(actual[0].title).toBe('101. How to build bad Software')
+  })
 })
 
 function setup() {

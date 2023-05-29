@@ -1,13 +1,21 @@
 ---
 title: 101. How to build bad Software
 length: 45
-difficulty: Intermediate
+difficulty: Beginner
 language: es
-image: 101-how-to-build-bad-software.png
+image: 101-how-to-build-bad-software.jpeg
 topics:
-  - Software design
+  - Comedy
   - JavaScript
 events:
+  - name: JSDay Canarias
+    date: 2023-05-28
+  - name: Agile Canarias
+    date: 2023-05-25
+  - name: Autentia OS
+    date: 2023-05-06
+  - name: Codemotion Madrid
+    date: 2023-05-10
 ---
 
-There are too many talks talking about what Good™️ Software looks and feels. However, creating Bad™️ Software requires a true level of expertise, dedication and craftsmanship. In this talk we’ll guide you how to truly create deceiving, nay, nefarious code, that’ll make your teammates rethink their career path. After this talk you will come up with new bad habits that you will integrate in your day-to-day developer life and change how you perceive Software development for the better. Join us and let’s make bad code great again!
+Hay demasiadas charlas hablando de cómo desarrollar buen Software. Sin embargo, crear mal Software requiere de disciplina, perfeccionismo y un gran nivel de dedicación y artesanía. En esta charla aprenderás a crear Software verdaderamente engañoso, que parece que hace una cosa pero que hace otra muy distinta. Lograrás crear código que, modificándolo, se romperán partes de la aplicación que aparentemente no tienen relación alguna. Introducirás tanta entropía en los proyectos, que tus compañeros de equipo se replantearán por qué eligieron la programación como carrera. ¡Únete a esta charla y creemos juntos Software que haría vomitar a una cabra!

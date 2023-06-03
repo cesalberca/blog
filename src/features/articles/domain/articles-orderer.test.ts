@@ -7,7 +7,7 @@ describe('ArticlesOrderer', () => {
 
     const actual = articlesOrderer.order(ArticlesMother.articles())
 
-    expect(actual[0].title).toBe('Patrones de Diseño')
+    expect(actual[0].title).toBe('Angular Jest')
   })
 })
 

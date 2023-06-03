@@ -21,6 +21,7 @@ events:
     date: 2022-10-23
     slides: https://docs.google.com/presentation/d/1j67i1XTtsBrYgAIWiWWb9ufOwdl1LQeb3rhIhrqBlO8/edit?usp=sharing
     code: https://github.com/cesalberca/reformas-de-frontaneria/tree/2022-scbcn
+    video: https://www.youtube.com/watch?v=31Kf8czJsno
 ---
 
 ¿No te cansa que te pidan que hagas código limpio, pero que no te haya dicho nadie en qué consiste?

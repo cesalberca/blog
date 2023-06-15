@@ -7,6 +7,7 @@ export interface TalkDto {
     language: string
     image: string
     topics: string[]
+    notes?: string
     events?: {
       name: string
       date: string

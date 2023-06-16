@@ -11,6 +11,7 @@ import { Technologies } from './technologies'
 import { Projects } from './projects'
 import { Link } from '../../../core/components/link/link'
 import styles from './home.page.module.scss'
+import { Markdown } from '../../../core/components/markdown/markdown'
 
 const cx = bind(styles)
 
@@ -32,7 +33,7 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
       }
     >
       <section className={cx('home__section')}>
-        <p>{t('home.whoAmI1')}</p>
+        <Markdown value={t('home.whoAmI1')} />
         <p>{t('home.whoAmI2')}</p>
       </section>
 

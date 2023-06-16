@@ -12,23 +12,37 @@
   },
   "home": {
     "title": "César Alberca",
-    "meAlt": "Foto de César Alberca",
-    "technologies": "Tecnologías que uso",
-    "articles": "Artículos",
-    "heroTitle": "Frontend developer. Designer. Speaker.",
-    "heroCaption": "Apasionado de las <strong>buenas prácticas</strong>,<strong>arquitectura</strong> y el <strong>testing</strong>."
+    "meAlt": "Imagen de César Alberca",
+    "technologies": "Tecnologías que utilizo",
+    "latestArticles": "Últimos artículos",
+    "viewAllArticles": "Ver todos los artículos",
+    "heroTitle": "Desarrollador Frontend. Diseñador. Ponente.",
+    "heroCaption": "Apasionado por las <strong>mejores prácticas</strong>, la <strong>arquitectura</strong> y las <strong>pruebas</strong>.",
+    "whoAmI1": "Nómada digital viajando por el mundo gracias a JavaScript. Desarrollador frontend en [Autentia](https://www.autentia.com/). [Ponente](https://www.cesalberca.com/talks). Miembro y embajador de [Codemotion](https://www.codemotion.com/). Profesor en [EscuelaIT](https://escuela.it/) y anteriormente profesor de máster en CICE.",
+    "whoAmI2": "Soy una persona autodidacta, creativa, entusiasta y apasionada. Tengo un perfil mixto, dividido entre mi amor por la programación, la arquitectura de software y el diseño. Me preocupo realmente por compartir conocimientos con mis compañeros, ya sea como ponente en diferentes eventos tecnológicos, como profesor o a través de mis redes sociales.",
+    "projects": {
+      "title": "Algunos proyectos que he desarrollado",
+      "code": "Ver código",
+      "live": "Versión en vivo",
+      "katasTitle": "Katas",
+      "katasDescription": "Múltiples Katas en TypeScript para practicar TDD y pruebas.",
+      "whoAmITitle": "Who Am I",
+      "whoAmIDescription": "Simple juego de Who Am I implementado utilizando RxJs, React y Firebase.",
+      "frontendReformsTitle": "WordleJS",
+      "frontendReformsDescription": "Código para la charla Frontend Reforms donde construimos un Wordle para frameworks frontend"
+    }
   },
   "article": {
     "title": "Artículos",
-    "via": "vía",
     "shareArticle": "Compartir artículo",
     "shareArticleOnTwitter": "Compartir artículo en Twitter",
     "github": "Mi Github",
+    "via": "via",
     "minutes": "minutos"
   },
   "about": {
-    "title": "Acerca de mí",
-    "description": "Soy una persona autodidacta, creativa, entusiasta y apasionada. Tengo un perfil mixto, dividido entre mi interés por la programación, la arquitectura de software y el diseño. Me importa compartir conocimiento con mis compañeros, ya sea siendo ponente en diversos eventos tecnológicos, como profesor o bien ya sea por mis redes sociales.\n\nCreo que el Software debe ser robusto a la par que flexible, y la forma de lograrlo es –independientemente del framework– crear las abstracciones pertinentes y aplicar patrones de arquitectura. El testing es muy importante para mí, el Software que construimos debería aportarnos confianza para que podamos aportar el máximo valor posible."
+    "title": "Sobre mí",
+    "description": "Soy una persona autodidacta, creativa, entusiasta y apasionada. Tengo un perfil mixto, dividido entre mi amor por la programación, la arquitectura de software y el diseño. Me preocupo realmente por compartir conocimientos con mis compañeros, ya sea como ponente en diferentes eventos tecnológicos, como profesor o a través de mis redes sociales.\n\nCreo que el software debe ser robusto pero flexible, y la forma de lograrlo es crear las abstracciones adecuadas y aplicar patrones arquitectónicos, independientemente del marco de trabajo utilizado. Las pruebas son muy importantes para mí, el software que construimos debe ser confiable para proporcionar el máximo valor."
   },
   "talks": {
     "title": "Charlas",

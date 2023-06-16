@@ -21,8 +21,8 @@ export const Page: FC<PropsWithChildren<{ topSection?: ReactNode; focused?: bool
       className={cx('page')}
       style={
         {
-          '--navbar-background': focused ? 'transparent' : 'var(--primary-color)',
-          '--navbar-position': focused ? 'absolute' : 'initial',
+          '--navbar-background': focused ? 'transparent' : 'var(--black-color)',
+          '--navbar-position': focused ? 'absolute' : 'fixed',
         } as CustomCSS
       }
     >

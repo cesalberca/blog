@@ -1,6 +1,7 @@
 .home {
   &__hero {
-    background-color: var(--primary-color);
+    background-color: var(--black-color);
+    margin-top: var(--l);
 
     &__wrapper {
       display: flex;
@@ -28,7 +29,6 @@
         height: auto;
         max-width: 500px;
         transform: scale(-1, 1);
-        mix-blend-mode: soft-light;
         align-self: flex-end;
       }
     }

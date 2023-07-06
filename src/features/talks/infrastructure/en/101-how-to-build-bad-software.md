@@ -1,5 +1,5 @@
 ---
-title: 101. How to build bad Software
+title: Crafting Code, Chaos and Career Confusion
 length: 45
 difficulty: Beginner
 language: en

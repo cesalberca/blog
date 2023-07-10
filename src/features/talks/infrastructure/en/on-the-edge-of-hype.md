@@ -1,0 +1,17 @@
+---
+title: 'On the Edge of Hype: NextJS 13 + tRPC + TailwindCSS + ChatGPT + Zod'
+length: 35
+difficulty: Beginner
+language: es
+image: on-the-edge-of-hype.png
+topics:
+  - tRPC
+  - TypeScript
+  - NextJS
+  - Zod
+  - TailwindCSS
+  - NextJS
+events:
+---
+
+Get ready for an amazing talk where we challenge the "hype" in the world of web development! Discover how to combine tRPC, ChatGPT, TailwindCSS, NextJS 13, and Zod to create web applications that are not only hype-worthy but also functional! We won't let ourselves be swayed by current trends, instead, we'll explore how these cutting-edge technologies can take your skills and projects to the next level. Join the hype and leave behind those who reject it!

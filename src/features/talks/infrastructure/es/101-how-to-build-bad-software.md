@@ -16,6 +16,7 @@ events:
     date: 2023-05-06
   - name: Codemotion Madrid
     date: 2023-05-10
+    video: https://talks.codemotion.com/101-como-construir-mal-software
 ---
 
 Hay demasiadas charlas hablando de cómo desarrollar buen Software. Sin embargo, crear mal Software requiere de disciplina, perfeccionismo y un gran nivel de dedicación y artesanía. En esta charla aprenderás a crear Software verdaderamente engañoso, que parece que hace una cosa pero que hace otra muy distinta. Lograrás crear código que, modificándolo, se romperán partes de la aplicación que aparentemente no tienen relación alguna. Introducirás tanta entropía en los proyectos, que tus compañeros de equipo se replantearán por qué eligieron la programación como carrera. ¡Únete a esta charla y creemos juntos Software que haría vomitar a una cabra!

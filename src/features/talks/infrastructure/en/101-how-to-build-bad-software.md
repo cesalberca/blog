@@ -16,6 +16,7 @@ events:
     date: 2023-05-06
   - name: Codemotion Madrid
     date: 2023-05-10
+    video: https://talks.codemotion.com/101-como-construir-mal-software
 notes: This is a fun and sarcastic talk where I give specific tips and examples on how to create bad Software. It's a satire, so during all the talk I'm serious.
 ---
 

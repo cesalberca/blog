@@ -15,7 +15,6 @@
     "noFallthroughCasesInSwitch": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "importsNotUsedAsValues": "error",
     "isolatedModules": true,
     "resolveJsonModule": true,
     "jsx": "preserve",

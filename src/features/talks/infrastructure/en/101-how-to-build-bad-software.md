@@ -10,13 +10,17 @@ topics:
 events:
   - name: JSDay Canarias
     date: 2023-05-28
+    slides: https://www.icloud.com/keynote/00a_BlKvSBAIykiIXt0at50IA#101-how-to-build-bad-software-js-day-canarias
   - name: Agile Canarias
     date: 2023-05-25
+    slides: https://www.icloud.com/keynote/00a_BlKvSBAIykiIXt0at50IA#101-how-to-build-bad-software-js-day-canarias
   - name: Autentia OS
     date: 2023-05-06
+    slides: https://www.icloud.com/keynote/04fwnKvdZMH0I5tNYoidshFEg#101-how-to-build-bad-software-autentia-os
   - name: Codemotion Madrid
     date: 2023-05-10
     video: https://talks.codemotion.com/101-como-construir-mal-software
+    slides: https://www.icloud.com/keynote/041e1ndK-rBOvNPU1tHBkaUOA#101-how-to-build-bad-software-codemotion
 notes: This is a fun and sarcastic talk where I give specific tips and examples on how to create bad Software. It's a satire, so during all the talk I'm serious.
 ---
 

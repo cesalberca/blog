@@ -11,6 +11,8 @@ image: my-twelve-favorite-problems/leaf.jpg
 
 [Richard Feynman](https://en.wikipedia.org/wiki/Richard_Feynman) fue un físico teórico estadounidense conocido por su trabajo en mecánica cuántica, electrodinámica cuántica, formulación integral de caminos, física de partículas y muchas otras áreas. Fue galardonado con el Premio Nobel de Física en 1965 por su trabajo. Cuando la gente le preguntaba cómo podía abordar una variedad tan diversa de problemas, él respondía que tenía una lista de sus doce problemas favoritos. Pensaba en ellos todo el tiempo, y cuando tenía una nueva idea, comprobaba si podía aplicarse a alguno de sus doce problemas favoritos. Si podía, trabajaba en ello; si no, lo descartaba.
 
+<!-- more -->
+
 Aquí está la lista de sus doce problemas favoritos:
 
 1. ¿Cómo podemos medir la probabilidad de que un trozo de uranio pueda explotar demasiado pronto?

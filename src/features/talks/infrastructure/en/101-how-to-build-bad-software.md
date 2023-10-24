@@ -21,6 +21,9 @@ events:
     date: 2023-05-10
     video: https://talks.codemotion.com/101-como-construir-mal-software
     slides: https://www.icloud.com/keynote/041e1ndK-rBOvNPU1tHBkaUOA#101-how-to-build-bad-software-codemotion
+  - name: Codemotion Milan
+    date: 2023-10-24
+    slides: https://www.icloud.com/keynote/0ac2rdnnNGsiy3embpnmB0ssw#crafting-code-chaos-career-confusion-codemotion-milan
 notes: This is a fun and sarcastic talk where I give specific tips and examples on how to create bad Software. It's a satire, so during all the talk I'm serious.
 ---
 

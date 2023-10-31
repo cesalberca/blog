@@ -1,9 +1,9 @@
 ---
-title: Crafting Code, Chaos and Career Confusion
+title: Unsustainable code
 length: 45
 difficulty: Beginner
 language: en
-image: 101-how-to-build-bad-software.jpeg
+image: unsustainable-code.jpeg
 topics:
   - Comedy
   - JavaScript

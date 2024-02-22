@@ -9,6 +9,15 @@ topics:
   - Habits
   - Good practices
 events:
+notes: '
+En esta charla, nos sumergiremos en cómo construir mejores hábitos, inspirados en el libro "Atomic Habits" de James Clear. Desglosaremos las estrategias respaldadas por la investigación de Clear en pasos fáciles de seguir. Además, te mostraremos cómo utilizar tecnologías geniales como las Progressive Web Apps y las etiquetas NFC para hacer que el seguimiento de tus hábitos sea pan comido.
+
+Al unirte a nosotros, no solo aprenderás a mantener buenos hábitos, sino también a deshacerte de los malos. Y con el apoyo de nuestra comunidad, tendrás un equipo que te animará en cada paso del camino. Así que si estás listo para mejorar tu productividad y hacer cambios positivos en tu vida, ¡esta charla es definitivamente para ti!
+'
 ---
 
-¿Quieres **evitar procrastinar** en tu trabajo? ¿Deseas **dejar de posponer tareas** que son _difíciles_ o _aburridas_? ¿Anhelas **terminar la documentación** de una vez por todas? ¿Te gustaría realizar **pruebas automáticas** pero "_se te olvidan_"? Si es así, has llegado al lugar adecuado. En esta charla, te ayudaré a diseñar un conjunto de **hábitos de programación** que te permitirán llevar tu carrera al siguiente nivel. Exploraremos cómo aplicar las enseñanzas del aclamado libro "_Hábitos Atómicos_" de James Clear para transformarte en un programador más **efectivo**.
+¿Te resulta difícil seguir una rutina? ¿A menudo pospones tareas indefinidamente o procrastinas en exceso? Si es así, no estás solo. Únete en este viaje inspirado en "Atomic Habits" de James Clear para crear hábitos positivos y liberarte de los negativos.
+
+Juntos, nos embarcaremos en la creación de una Progressive Web App (PWA) utilizando Next.js, Shadcn y Tailwind CSS para hacer un seguimiento fluido de nuestros hábitos. Al aprovechar las etiquetas NFC, registraremos nuestro progreso sin esfuerzo y nos mantendremos responsables.
+
+¡Es hora de despedirse de la procrastinación y dar abrazar una productividad sostenible!

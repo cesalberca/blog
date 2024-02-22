@@ -10,18 +10,14 @@ topics:
   - Good practices
 events:
 notes: '
-  * Introduction: Begin with an engaging opening statement.
-  * Purpose: Clearly state the purpose and significance of the talk.
-  * Background: Briefly introduce yourself and your expertise in programming.
-  * Problem Identification: Identify common programming challenges, e.g., procrastination, task postponement, etc.
-  * Solution: Atomic Programming Habits: Define what "Atomic Programming Habits" are.
-  * Explaining Habits: Explain what habits are made of and their purpose.
-  * Creating Habits: Provide practical tips for developing effective programming habits.
-  * Application: Explain how to apply atomic habits to programming tasks (e.g., documentation, testing).
-  * Reference to James Clear''s Book: Mention James Clear''s book "Atomic Habits" and its relevance to programming.
-  * Q&A: Allocate time for audience questions and answers.
-  * Conclusion and Call to Action: Summarize key takeaways and urge the audience to set programming goals and commit to developing atomic habits.
+  In this talk, we''re diving into how to build better habits, inspired by James Clear''s book "Atomic Habits." We''ll break down Clear''s research-backed strategies into easy-to-follow steps. Plus, we''ll show you how to use cool tech stuff like Progressive Web Apps and NFC tags to make tracking your habits a breeze.
+
+  By joining us, you''ll not only learn how to stick to good habits but also how to ditch the bad ones. And with the support of our community, you''ll have a team cheering you on every step of the way. So if you''re ready to level up your productivity and make positive changes in your life, this talk is definitely for you!
   '
 ---
 
-Do you want to **avoid procrastinating** at work? Do you wish to stop postponing tasks that are _difficult_ or _boring_? Do you long to **finish the documentation** once and for all? Would you like to perform **automated testing**, but you keep "_forgetting it_"? If so, you've come to the right place. In this talk, I will help you design a set of **programming habits** that will enable you to take your career to the next level. We will explore how to apply the teachings of the acclaimed book "_Atomic Habits_" by James Clear to become a more **effective** programmer.
+Are you finding it challenging to stick to a routine? Do you often put off tasks indefinitely or procrastinate excessively? If so, you're not alone. Join us on a journey inspired by James Clear's "Atomic Habits" to cultivate positive habits and break free from negative ones.
+
+Together, we'll embark on creating a Progressive Web App (PWA) using Next.js, Shadcn, and Tailwind CSS to seamlessly track our habits. By leveraging NFC tags, we'll effortlessly record our progress and hold ourselves accountable.
+
+It's time to bid farewell to procrastination and welcome productivity with open arms!

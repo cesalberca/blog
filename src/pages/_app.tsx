@@ -4,7 +4,7 @@ import './app.scss'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import type { AbstractIntlMessages } from 'next-intl'
-import { NextIntlProvider } from 'next-intl'
+import { IntlProvider } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { container } from '../core/dependency-injection/container'
 import { GetPreferencesUseCase } from '../core/preferences/application/get-preferences.use-case'
@@ -12,8 +12,11 @@ import type { Preferences } from '../core/preferences/domain/preferences'
 import { SetPreferencesUseCase } from '../core/preferences/application/set-preferences.use-case'
 import { ThemeProvider } from '../features/theme/delivery/theme-provider'
 import { Theme } from '../features/theme/domain/theme'
+import { useRouter } from 'next/router'
 
 const App = ({ Component, pageProps }: AppProps<{ messages: AbstractIntlMessages }>) => {
+  const router = useRouter()
+
   const [preferences, setPreferences] = useState<Preferences>({ theme: Theme.LIGHT })
 
   async function loadPreferences() {
@@ -43,14 +46,15 @@ const App = ({ Component, pageProps }: AppProps<{ messages: AbstractIntlMessages
       </Head>
 
       <ThemeProvider theme={preferences.theme} setTheme={theme => setNewTheme(theme)}>
-        <NextIntlProvider
+        <IntlProvider
+          locale={router.locale!}
           defaultTranslationValues={{
             strong: children => <strong>{children}</strong>,
           }}
           messages={pageProps.messages}
         >
           <Component {...pageProps} />
-        </NextIntlProvider>
+        </IntlProvider>
       </ThemeProvider>
     </>
   )

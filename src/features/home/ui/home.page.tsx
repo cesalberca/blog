@@ -34,7 +34,7 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
     >
       <section className={cx('home__section')}>
         <Markdown value={t('home.whoAmI1')} />
-        <p>{t('home.whoAmI2')}</p>
+        <Markdown value={t('home.whoAmI2')} />
       </section>
 
       <section className={cx('home__section')}>

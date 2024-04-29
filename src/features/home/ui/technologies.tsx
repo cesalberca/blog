@@ -41,11 +41,11 @@ export const Technologies: FC = () => {
     },
     {
       image: css,
-      label: 'Css',
+      label: 'CSS',
     },
     {
       image: html,
-      label: 'Html',
+      label: 'HTML',
     },
     {
       image: cypress,

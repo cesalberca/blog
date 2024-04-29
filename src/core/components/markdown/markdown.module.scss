@@ -56,4 +56,13 @@
     top: 5%;
     background-color: var(--primary-color);
   }
+
+  table {
+    border-spacing: 0;
+  }
+
+  td, th {
+    padding: var(--s);
+    border: 1px solid var(--foreground-color);
+  }
 }

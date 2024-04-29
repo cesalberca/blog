@@ -1,5 +1,5 @@
 ---
-title: Jest Angular
+title: Arquitecturas reactivas
 date: 2019-11-03
 locale: es
 image: desert.jpg

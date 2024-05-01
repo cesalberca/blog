@@ -10,6 +10,7 @@ import angular from '../../../../public/assets/icons/angular.svg'
 import vue from '../../../../public/assets/icons/vue.svg'
 import node from '../../../../public/assets/icons/node.svg'
 import deno from '../../../../public/assets/icons/deno.svg'
+import playwright from '../../../../public/assets/icons/playwright.svg'
 import capacitor from '../../../../public/assets/icons/capacitor.svg'
 import docker from '../../../../public/assets/icons/docker.svg'
 import intellij from '../../../../public/assets/icons/intellij.svg'
@@ -50,6 +51,10 @@ export const Technologies: FC = () => {
     {
       image: cypress,
       label: 'Cypress',
+    },
+    {
+      image: playwright,
+      label: 'Playwright',
     },
     {
       image: jest,

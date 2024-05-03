@@ -4,7 +4,6 @@ import { bind } from '../../utils/bind'
 import { Links } from '../links/links'
 import { Direction } from '../../types/direction'
 import { Datetime } from '../../datetime'
-import { Link } from '../link/link'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/router'
 

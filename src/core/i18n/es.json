@@ -44,6 +44,15 @@
     "title": "Sobre mí",
     "description": "Soy una persona autodidacta, creativa, entusiasta y apasionada. Tengo un perfil mixto, dividido entre mi amor por la programación, la arquitectura de software y el diseño. Me preocupo realmente por compartir conocimientos con mis compañeros, ya sea como ponente en diferentes eventos tecnológicos, como profesor o a través de mis redes sociales.\n\nCreo que el software debe ser robusto pero flexible, y la forma de lograrlo es crear las abstracciones adecuadas y aplicar patrones arquitectónicos, independientemente del marco de trabajo utilizado. Las pruebas son muy importantes para mí, el software que construimos debe ser confiable para proporcionar el máximo valor."
   },
+  "links": {
+    "title": "Links",
+    "github": "Github",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "rss": "RSS",
+    "coliversClub": "Colivers Club"
+  },
   "talks": {
     "title": "Charlas",
     "talkTitle": "Título",
@@ -62,8 +71,6 @@
     "talkDemo": "Demo"
   },
   "footer": {
-    "coverage": "Cobertura del ",
-    "madeWith": "© {currentYear} – Hecho con ",
-    "and": "y "
+    "madeWith": "© {currentYear} – Hecho con amor"
   }
 }

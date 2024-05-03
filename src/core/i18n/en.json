@@ -44,6 +44,16 @@
     "title": "About me",
     "description": "I’m a self-learning, creative, enthusiast and passionate person. I have a mixed profile, divided between my love for programming, software architecture and design. I truly care about sharing knowledge with my peers, that being as a speaker in different technological events, as a teacher or throughout my social networks.\n\nI believe that Software should be robust yet flexible, and the way to achieve it is to –regardless of the framework– create the right abstractions and apply architectural patterns. Testing is very important to me, the Software we build should be reliable in order to provide the maximum value."
   },
+  "links": {
+    "title": "Links",
+    "github": "Github",
+    "instagram": "Instagram",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "rss": "RSS",
+    "coliversClub": "Colivers Club"
+  },
   "talks": {
     "title": "Talks",
     "talkTitle": "Title",
@@ -62,8 +72,6 @@
     "talkDemo": "Demo"
   },
   "footer": {
-    "coverage": "Coverage of ",
-    "madeWith": "© {currentYear} – Made with ",
-    "and": "and "
+    "madeWith": "© {currentYear} – Made with love"
   }
 }

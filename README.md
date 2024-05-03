@@ -12,3 +12,6 @@
    ```bash
    npm start
    ```
+
+https://simpleicons.org/
+https://techicons.dev/

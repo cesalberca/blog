@@ -48,6 +48,7 @@ const App = ({ Component, pageProps }: AppProps<{ messages: AbstractIntlMessages
       <ThemeProvider theme={preferences.theme} setTheme={theme => setNewTheme(theme)}>
         <IntlProvider
           locale={router.locale!}
+          timeZone={'Europe/Madrid'}
           defaultTranslationValues={{
             strong: children => <strong>{children}</strong>,
           }}

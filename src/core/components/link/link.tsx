@@ -1,6 +1,5 @@
-import { FC, PropsWithChildren, useEffect, useState } from 'react'
+import { FC, PropsWithChildren } from 'react'
 import NextLink from 'next/link'
-import { useRouter } from 'next/router'
 
 interface Props {
   to: string
@@ -9,19 +8,7 @@ interface Props {
 }
 
 export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, type = 'regular' }) => {
-  const { asPath, isReady } = useRouter()
-  const [_isActive, setIsActive] = useState(false)
-
   const isExternal = to !== undefined && /^http/.test(to)
-
-  useEffect(() => {
-    if (isReady) {
-      const linkPathname = new URL(to as string, location.href).pathname
-      const activePathname = new URL(asPath, location.href).pathname
-
-      setIsActive(linkPathname === activePathname)
-    }
-  }, [asPath, isReady, to])
 
   if (type === 'invisible') {
     return (

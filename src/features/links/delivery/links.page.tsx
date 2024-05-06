@@ -44,7 +44,7 @@ export const LinksPage: FC = () => {
     <Page>
       <h1>{t('links.title')}</h1>
       <section>{links.map(x => (
-        <div><Image src={x.icon} alt={x.title} height={20} />
+        <div key={x.title}><Image src={x.icon} alt={x.title} height={20} />
           <Link type={'navigation'} to={x.url}>{x.title}</Link></div>
       ))}
         <div><Image src={email} alt={'Email'} height={20} />

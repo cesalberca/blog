@@ -5,25 +5,20 @@
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
-    "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "isolatedModules": true,
-    "resolveJsonModule": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["jest", "node"],
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

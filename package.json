@@ -10,7 +10,8 @@
     "compile": "tsc --noEmit --incremental",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "format": "prettier --write --ignore-path .gitignore ."
+    "format": "prettier --write --ignore-path .gitignore .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "front-matter": "4.0.2",
@@ -34,10 +35,16 @@
     "@typestrong/ts-mockito": "2.6.6",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.3",
+    "husky": "9.0.11",
     "jest": "29.7.0",
+    "lint-staged": "15.2.2",
     "prettier": "3.2.5",
     "ts-mockito": "2.6.1",
     "typescript": "5.4.5",
     "vercel": "34.1.8"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": "eslint --cache --fix",
+    "*.{js,ts,tsx,css,md}": "prettier --write"
   }
 }

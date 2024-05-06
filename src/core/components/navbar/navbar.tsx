@@ -3,7 +3,6 @@ import { Options } from '../options/options'
 import { Link } from '../link/link'
 import { useTranslations } from 'next-intl'
 
-
 const Links = () => {
   const t = useTranslations()
   return (
@@ -30,11 +29,7 @@ export const Navbar: FC = () => {
   return (
     <header>
       <nav>
-        <button
-          type="button"
-          aria-label="Menu"
-          onClick={() => setIsActive(x => !x)}
-        >
+        <button type="button" aria-label="Menu" onClick={() => setIsActive(x => !x)}>
           <span>
             <span></span>
           </span>
@@ -60,8 +55,8 @@ export const Navbar: FC = () => {
         <div onClick={() => setIsActive(false)}></div>
       </nav>
 
-      <nav >
-        <div >
+      <nav>
+        <div>
           <Links />
           <Options />
         </div>

@@ -8,7 +8,7 @@ export const ButtonIcon: FC<{ icon: StaticImageData | string; onClick: () => voi
 }) => {
   return (
     <button onClick={onClick}>
-      <Image  src={icon} alt={alt} />
+      <Image src={icon} alt={alt} />
     </button>
   )
 }

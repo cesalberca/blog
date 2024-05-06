@@ -4,7 +4,6 @@ about: Suggest an idea for the blog or a new article
 title: ''
 labels: enhancement
 assignees: cesalberca
-
 ---
 
 **Is your feature request related to a problem? Please describe.**

@@ -7,7 +7,10 @@ import type { Url } from '../../../core/types/url'
 export class TwitterSharerService {
   private static readonly USER_HANDLER = `@cesalberca`
 
-  constructor(private readonly encoderService: EncoderService, private readonly htmlParserService: HtmlParserService) {}
+  constructor(
+    private readonly encoderService: EncoderService,
+    private readonly htmlParserService: HtmlParserService,
+  ) {}
 
   getShareUrlFromBody(options: { body: string; url: Url; message: string }): string {
     return `https://twitter.com/intent/tweet?text=${this.encoderService.encode(

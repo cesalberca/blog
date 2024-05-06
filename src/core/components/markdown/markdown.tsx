@@ -7,15 +7,10 @@ import 'prismjs/components/prism-json'
 import 'prismjs/components/prism-css'
 import 'prismjs/components/prism-jsx'
 
-
 export const Markdown: FC<{ value: string }> = ({ value }) => {
   useEffect(() => {
     Prism.highlightAll()
   }, [value])
 
-  return (
-    <div
-      dangerouslySetInnerHTML={{ __html: MarkdownDomain.fromValue(value).toHtml() }}
-    ></div>
-  )
+  return <div dangerouslySetInnerHTML={{ __html: MarkdownDomain.fromValue(value).toHtml() }}></div>
 }

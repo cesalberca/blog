@@ -2,7 +2,6 @@ import type { CSSProperties, FC, PropsWithChildren, ReactNode } from 'react'
 import { Navbar } from '../navbar/navbar'
 import { Footer } from '../footer/footer'
 
-
 interface CustomCSS extends CSSProperties {
   '--navbar-background': string
   '--navbar-position': string

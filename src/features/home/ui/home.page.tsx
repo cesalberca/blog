@@ -11,7 +11,6 @@ import { Projects } from './projects'
 import { Link } from '../../../core/components/link/link'
 import { Markdown } from '../../../core/components/markdown/markdown'
 
-
 export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
   const t = useTranslations()
 
@@ -49,9 +48,7 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
         {articles.map(article => (
           <ArticleExcerpt key={article.id.value} excerpt={article.getExcerpt()} />
         ))}
-        <Link to={'/articles'}>
-          {t('home.viewAllArticles')}
-        </Link>
+        <Link to={'/articles'}>{t('home.viewAllArticles')}</Link>
       </section>
     </Page>
   )

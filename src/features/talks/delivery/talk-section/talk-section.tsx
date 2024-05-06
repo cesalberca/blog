@@ -1,6 +1,5 @@
 import type { FC, PropsWithChildren } from 'react'
 
-
 export const TalkSection: FC<PropsWithChildren<{ title: string; description?: string }>> = ({
   title,
   description,

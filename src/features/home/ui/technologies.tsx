@@ -113,9 +113,9 @@ export const Technologies: FC = () => {
   return (
     <div>
       {technologies.map(x => (
-        <div key={x.label} >
+        <div key={x.label}>
           <Image src={x.image} alt={x.label} height={20} />
-          <small >{x.label}</small>
+          <small>{x.label}</small>
         </div>
       ))}
     </div>

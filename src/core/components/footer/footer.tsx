@@ -5,7 +5,6 @@ import { Datetime } from '../../datetime'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/router'
 
-
 export const Footer: FC = () => {
   const t = useTranslations()
   const { locale, locales, route, push } = useRouter()
@@ -14,7 +13,7 @@ export const Footer: FC = () => {
 
   return (
     <footer>
-      <div >
+      <div>
         <Links direction={Direction.VERTICAL} />
         <select value={locale} onChange={event => push(route, undefined, { locale: event.target.value })}>
           {locales?.map(x => (
@@ -23,10 +22,8 @@ export const Footer: FC = () => {
             </option>
           ))}
         </select>
-        <section >
-          <small >
-            {t('footer.madeWith', { currentYear })}
-          </small>
+        <section>
+          <small>{t('footer.madeWith', { currentYear })}</small>
         </section>
       </div>
     </footer>

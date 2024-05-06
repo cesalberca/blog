@@ -1,12 +1,8 @@
 import type { FC } from 'react'
-import styles from './social-links.module.scss'
 import { useTranslations } from 'next-intl'
 import { container } from '../../dependency-injection/container'
 import { TwitterSharerService } from '../../../features/articles/domain/twitter-sharer-service'
-import { bind } from '../../utils/bind'
 import { useCanonicalUrl } from '../../utils/use-canonical-url'
-
-const cx = bind(styles)
 
 const SocialLinksDynamic: FC<{ body: string }> = ({ body }) => {
   const t = useTranslations()
@@ -22,13 +18,13 @@ const SocialLinksDynamic: FC<{ body: string }> = ({ body }) => {
 
   return (
     <footer>
-      <div className={cx('separator')}></div>
+      <div></div>
 
-      <div className={cx('share')}>
+      <div>
         <p>
           {t('article.shareArticle')} <span>—</span>
         </p>
-        <section className={cx('links')}>
+        <section>
           <a target="_blank" href={twitterLink} aria-label={t('article.shareArticleOnTwitter')} rel="noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20">
               <path

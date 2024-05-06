@@ -5,10 +5,6 @@ import { container } from '../../../../core/dependency-injection/container'
 import { TalkDetail } from '../../domain/talk-detail'
 import { Talk } from '../talk/talk'
 import { Page } from '../../../../core/components/page/page'
-import { bind } from '../../../../core/utils/bind'
-import styles from './talks.page.module.scss'
-
-const cx = bind(styles)
 
 export const TalksPage: FC<{ talks: TalkDomain[] }> = ({ talks }) => {
   const t = useTranslations()
@@ -16,7 +12,7 @@ export const TalksPage: FC<{ talks: TalkDomain[] }> = ({ talks }) => {
   return (
     <Page>
       <h1>{t('talks.title')}</h1>
-      <div className={cx('talks')}>
+      <div>
         {talks.map(talk => (
           <Talk key={talk.id.value} detail={container.resolve(TalkDetail).fromTalk(talk)} />
         ))}

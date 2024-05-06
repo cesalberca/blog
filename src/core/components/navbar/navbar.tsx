@@ -1,24 +1,21 @@
 import { FC, useState } from 'react'
-import styles from './navbar.module.scss'
-import { bind } from '../../utils/bind'
 import { Options } from '../options/options'
 import { Link } from '../link/link'
 import { useTranslations } from 'next-intl'
 
-const cx = bind(styles)
 
 const Links = () => {
   const t = useTranslations()
   return (
     <>
-      <Link to={'/'} className={cx('home')} type={'navigation'}>
+      <Link to={'/'} type={'navigation'}>
         <strong>{t('home.title')}</strong>
       </Link>
-      <div className={cx('inner-links')}>
-        <Link to={'/talks'} className={cx('link')} type={'navigation'}>
+      <div>
+        <Link to={'/talks'} type={'navigation'}>
           {t('talks.title')}
         </Link>
-        <Link to={'/about'} className={cx('link')} type={'navigation'}>
+        <Link to={'/about'} type={'navigation'}>
           {t('about.title')}
         </Link>
       </div>
@@ -27,45 +24,44 @@ const Links = () => {
 }
 
 export const Navbar: FC = () => {
-  const [isActive, setIsActive] = useState(false)
+  const [_isActive, setIsActive] = useState(false)
   const t = useTranslations()
 
   return (
-    <header className={cx('navbar')}>
-      <nav className={cx('mobile-navigation')}>
+    <header>
+      <nav>
         <button
           type="button"
           aria-label="Menu"
-          className={cx({ hamburger: true, 'is-active': isActive })}
           onClick={() => setIsActive(x => !x)}
         >
-          <span className={cx('hamburger-box')}>
-            <span className={cx('hamburger-inner')}></span>
+          <span>
+            <span></span>
           </span>
         </button>
 
-        <div className={cx('options')}>
+        <div>
           <Options />
         </div>
 
-        <div className={cx({ backdrop: true, 'has-backdrop': isActive })}>
-          <div className={cx('links')}>
+        <div>
+          <div>
             <Link to={'/'} type={'navigation'}>
               <strong>{t('home.title')}</strong>
             </Link>
-            <Link to={'/talks'} className={cx('link')} type={'navigation'}>
+            <Link to={'/talks'} type={'navigation'}>
               {t('talks.title')}
             </Link>
-            <Link to={'/about'} className={cx('link')} type={'navigation'}>
+            <Link to={'/about'} type={'navigation'}>
               {t('about.title')}
             </Link>
           </div>
         </div>
-        <div className={cx({ veil: true, 'show-veil': isActive })} onClick={() => setIsActive(false)}></div>
+        <div onClick={() => setIsActive(false)}></div>
       </nav>
 
-      <nav className={cx('desktop-navigation')}>
-        <div className={cx('wrapper')}>
+      <nav >
+        <div >
           <Links />
           <Options />
         </div>

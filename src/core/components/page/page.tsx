@@ -1,10 +1,7 @@
 import type { CSSProperties, FC, PropsWithChildren, ReactNode } from 'react'
-import styles from './page.module.scss'
-import { bind } from '../../utils/bind'
 import { Navbar } from '../navbar/navbar'
 import { Footer } from '../footer/footer'
 
-const cx = bind(styles)
 
 interface CustomCSS extends CSSProperties {
   '--navbar-background': string
@@ -18,7 +15,6 @@ export const Page: FC<PropsWithChildren<{ topSection?: ReactNode; focused?: bool
 }) => {
   return (
     <div
-      className={cx('page')}
       style={
         {
           '--navbar-background': focused ? 'transparent' : 'var(--black-color)',
@@ -28,7 +24,7 @@ export const Page: FC<PropsWithChildren<{ topSection?: ReactNode; focused?: bool
     >
       <Navbar />
       {topSection}
-      <main className={cx('wrapper')}>{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   )

@@ -1,10 +1,6 @@
 import { FC, PropsWithChildren, useEffect, useState } from 'react'
 import NextLink from 'next/link'
-import styles from './link.module.scss'
-import { bind } from '../../utils/bind'
 import { useRouter } from 'next/router'
-
-const cx = bind(styles)
 
 interface Props {
   to: string
@@ -14,7 +10,7 @@ interface Props {
 
 export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, type = 'regular' }) => {
   const { asPath, isReady } = useRouter()
-  const [isActive, setIsActive] = useState(false)
+  const [_isActive, setIsActive] = useState(false)
 
   const isExternal = to !== undefined && /^http/.test(to)
 
@@ -29,8 +25,8 @@ export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, ty
 
   if (type === 'invisible') {
     return (
-      <NextLink href={to} legacyBehavior passHref className={cx({ [type]: true }, 'link', className)}>
-        <button className={cx('invisible')}>{children}</button>
+      <NextLink href={to} legacyBehavior passHref className={className}>
+        <button>{children}</button>
       </NextLink>
     )
   }
@@ -41,7 +37,7 @@ export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, ty
       passHref
       tabIndex={1}
       {...(isExternal && { target: '_blank', rel: 'noreferrer' })}
-      className={cx({ [type]: true }, 'link', { active: type === 'navigation' ? isActive : false }, className)}
+      className={className}
     >
       {children}
     </NextLink>

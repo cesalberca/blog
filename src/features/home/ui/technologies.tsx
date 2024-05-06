@@ -1,5 +1,4 @@
 import type { FC } from 'react'
-import styles from './technologies.module.scss'
 import javascript from '../../../../public/assets/icons/javascript.svg'
 import react from '../../../../public/assets/icons/react.svg'
 import css from '../../../../public/assets/icons/css.svg'
@@ -22,9 +21,6 @@ import storybook from '../../../../public/assets/icons/storybook.svg'
 import typescript from '../../../../public/assets/icons/typescript.svg'
 import sass from '../../../../public/assets/icons/sass.svg'
 import Image from 'next/image'
-import { bind } from '../../../core/utils/bind'
-
-const cx = bind(styles)
 
 export const Technologies: FC = () => {
   const technologies = [
@@ -115,11 +111,11 @@ export const Technologies: FC = () => {
   ]
 
   return (
-    <div className={cx('technologies')}>
+    <div>
       {technologies.map(x => (
-        <div key={x.label} className={cx('technologies__technology')}>
+        <div key={x.label} >
           <Image src={x.image} alt={x.label} height={20} />
-          <small className={cx('technologies__technology__label')}>{x.label}</small>
+          <small >{x.label}</small>
         </div>
       ))}
     </div>

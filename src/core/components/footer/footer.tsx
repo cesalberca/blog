@@ -1,13 +1,10 @@
 import type { FC } from 'react'
-import styles from './footer.module.scss'
-import { bind } from '../../utils/bind'
 import { Links } from '../links/links'
 import { Direction } from '../../types/direction'
 import { Datetime } from '../../datetime'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/router'
 
-const cx = bind(styles)
 
 export const Footer: FC = () => {
   const t = useTranslations()
@@ -16,8 +13,8 @@ export const Footer: FC = () => {
   const currentYear = Datetime.fromNow().year
 
   return (
-    <footer className={cx('footer')}>
-      <div className={cx('wrapper')}>
+    <footer>
+      <div >
         <Links direction={Direction.VERTICAL} />
         <select value={locale} onChange={event => push(route, undefined, { locale: event.target.value })}>
           {locales?.map(x => (
@@ -26,8 +23,8 @@ export const Footer: FC = () => {
             </option>
           ))}
         </select>
-        <section className={cx('info')}>
-          <small className={cx('copy')}>
+        <section >
+          <small >
             {t('footer.madeWith', { currentYear })}
           </small>
         </section>

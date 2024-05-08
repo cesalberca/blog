@@ -1,5 +1,4 @@
-import { FC, useState } from 'react'
-import { Options } from '../options/options'
+import type { FC } from 'react'
 import { Link } from '../link/link'
 import { useTranslations } from 'next-intl'
 
@@ -23,21 +22,16 @@ const Links = () => {
 }
 
 export const Navbar: FC = () => {
-  const [_isActive, setIsActive] = useState(false)
   const t = useTranslations()
 
   return (
     <header>
       <nav>
-        <button type="button" aria-label="Menu" onClick={() => setIsActive(x => !x)}>
+        <button type="button" aria-label="Menu">
           <span>
             <span></span>
           </span>
         </button>
-
-        <div>
-          <Options />
-        </div>
 
         <div>
           <div>
@@ -52,13 +46,11 @@ export const Navbar: FC = () => {
             </Link>
           </div>
         </div>
-        <div onClick={() => setIsActive(false)}></div>
       </nav>
 
       <nav>
         <div>
           <Links />
-          <Options />
         </div>
       </nav>
     </header>

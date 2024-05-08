@@ -11,6 +11,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "experimentalDecorators": true,
+    "importsNotUsedAsValues": "error",
     "emitDecoratorMetadata": true,
     "jsx": "preserve",
     "incremental": true,

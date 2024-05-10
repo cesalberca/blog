@@ -2,6 +2,13 @@ import { notFound } from 'next/navigation'
 import { formatDate, getBlogPosts } from '../../utils'
 import { baseUrl } from '../../sitemap'
 import { CustomMDX } from '../../components/mdx'
+import type { Metadata } from 'next'
+
+interface Params {
+  params: {
+    slug: string
+  }
+}
 
 export async function generateStaticParams() {
   let posts = getBlogPosts()
@@ -11,21 +18,21 @@ export async function generateStaticParams() {
   }))
 }
 
-export function generateMetadata({ params }) {
+export function generateMetadata({ params }: Params): Metadata | void {
   let post = getBlogPosts().find(post => post.slug === params.slug)
   if (!post) {
     return
   }
 
-  let { title, publishedAt: publishedTime, summary: description, image } = post.metadata
+  let { title, date: publishedTime, image, summary } = post.metadata
   let ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`
 
   return {
     title,
-    description,
+    description: summary,
     openGraph: {
       title,
-      description,
+      description: summary,
       type: 'article',
       publishedTime,
       url: `${baseUrl}/blog/${post.slug}`,
@@ -38,13 +45,13 @@ export function generateMetadata({ params }) {
     twitter: {
       card: 'summary_large_image',
       title,
-      description,
+      description: summary,
       images: [ogImage],
     },
   }
 }
 
-export default function Blog({ params }) {
+export default function Blog({ params }: Params) {
   let post = getBlogPosts().find(post => post.slug === params.slug)
 
   if (!post) {
@@ -61,8 +68,8 @@ export default function Blog({ params }) {
             '@context': 'https://schema.org',
             '@type': 'BlogPosting',
             headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
+            datePublished: post.metadata.date,
+            dateModified: post.metadata.date,
             description: post.metadata.summary,
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
@@ -77,7 +84,7 @@ export default function Blog({ params }) {
       />
       <h1 className="title font-semibold text-2xl tracking-tighter">{post.metadata.title}</h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">{formatDate(post.metadata.publishedAt)}</p>
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">{formatDate(post.metadata.date)}</p>
       </div>
       <article className="prose">
         <CustomMDX source={post.content} />

@@ -16,8 +16,8 @@ Al unirte a nosotros, no solo aprenderás a mantener buenos hábitos, sino tambi
 '
 ---
 
-¿Te resulta difícil seguir una rutina? ¿A menudo pospones tareas indefinidamente o procrastinas en exceso? Si es así, no estás solo. Únete en este viaje inspirado en "Atomic Habits" de James Clear para crear hábitos positivos y liberarte de los negativos.
+¿Te resulta difícil seguir una rutina? ¿A menudo pospones tareas indefinidamente o procrastinas en exceso? Si es así, no estás sólo. Únete en este viaje inspirado en "Atomic Habits" de James Clear para crear hábitos positivos y liberarte de los negativos. En esta charla veremos qué son los hábitos, cómo se forman y cómo podemos hackearlos tanto en nuestra vida personal.
 
-Juntos, nos embarcaremos en la creación de una Progressive Web App (PWA) utilizando Next.js, Shadcn y Tailwind CSS para hacer un seguimiento fluido de nuestros hábitos. Al aprovechar las etiquetas NFC, registraremos nuestro progreso sin esfuerzo y nos mantendremos responsables.
+Juntos, usaremos una PWA con NextJS para hacer un seguimiento fluido de nuestros hábitos, integrándolo con Notion. Con etiquetas NFC, registraremos nuestro progreso sin esfuerzo.
 
 ¡Es hora de despedirse de la procrastinación y dar abrazar una productividad sostenible!

@@ -2,8 +2,7 @@ import Link from 'next/link'
 import type { MDXRemoteProps } from 'next-mdx-remote/rsc'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { highlight } from 'sugar-high'
-import React, { createElement } from 'react'
-import type { MDXComponents } from 'mdx/types'
+import React, { type ComponentProps, createElement } from 'react'
 
 function CustomLink(props: React.LinkHTMLAttributes<HTMLAnchorElement> & React.PropsWithChildren<{ href: string }>) {
   let href = props.href
@@ -57,7 +56,7 @@ function createHeading(level: number) {
   return Heading
 }
 
-const components: MDXComponents = {
+const components: ComponentProps<any>['components'] = {
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
@@ -69,5 +68,5 @@ const components: MDXComponents = {
 }
 
 export function CustomMDX(props: MDXRemoteProps) {
-  return <MDXRemote {...props} components={components} />
+  return <MDXRemote {...props} components={{ ...components, ...(props.components ?? {}) }} />
 }

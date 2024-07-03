@@ -3,11 +3,21 @@ import path from 'path'
 
 interface Metadata {
   title: string
-  date: string
-  summary: string
+  length: string
+  difficulty: string
+  language: string
+  // topics: string[]
+
   image: string
+  // events: {
+  //   name: string
+  //   date: string
+  //   slides: string
+  //   video: string
+  // }[]
 }
 
+// TODO: Parse frontmatter array
 function parseFrontmatter(fileContent: string) {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
   let match = frontmatterRegex.exec(fileContent)
@@ -49,6 +59,6 @@ function getMDXData(dir: string) {
   })
 }
 
-export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), 'src', 'app', 'blog', 'posts'))
+export function getTalks() {
+  return getMDXData(path.join(process.cwd(), 'src', 'app', 'talks', 'talks'))
 }

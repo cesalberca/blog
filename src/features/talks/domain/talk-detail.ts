@@ -7,13 +7,12 @@ export class TalkDetail {
     return {
       id: talk.id,
       title: talk.title,
-      abstract: talk.abstract.toHtml(),
+      abstract: talk.abstract,
       length: talk.length.minutes,
       difficulty: talk.difficulty,
       language: talk.language,
       topics: talk.topics,
       image: talk.image,
-      references: talk.references,
       events: talk.events.map(event => ({ ...event, datetime: event.datetime.format() })),
     }
   }

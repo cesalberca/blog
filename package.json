@@ -17,6 +17,7 @@
     "@tailwindcss/typography": "0.5.13",
     "@vercel/analytics": "1.2.2",
     "@vercel/speed-insights": "1.0.10",
+    "front-matter": "4.0.2",
     "next": "14.2.3",
     "next-intl": "3.12.2",
     "next-mdx-remote": "4.4.1",

@@ -32,7 +32,7 @@ export const Talk: FC<{ detail: ReturnType<TalkDetail['fromTalk']> }> = ({ detai
           <small>{t(difficulties[detail.difficulty] as any)}</small>
         </div>
 
-        <Markdown value={detail.abstract} />
+        <Markdown value={detail.abstract.value} />
 
         {detail.events.length !== 0 && (
           <div>

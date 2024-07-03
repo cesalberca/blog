@@ -5,13 +5,10 @@ import { ArticlesFileRepository } from '../../features/articles/infrastructure/a
 import { TalksFileRepository } from '../../features/talks/infrastructure/talks-file-repository'
 import type { TalksRepository } from '../../features/talks/domain/talks-repository'
 import type { ArticlesRepository } from '../../features/articles/domain/articles-repository'
-import type { PreferencesRepository } from '../preferences/domain/preferences-repository'
-import { PreferencesLocalRepository } from '../preferences/infrastructure/preferences-local-repository'
 
 container.register(TYPES.STORAGE, { useValue: global.localStorage })
 container.register(TYPES.GLOBAL, { useValue: global })
 container.registerSingleton<TalksRepository>(TYPES.TALKS_REPOSITORY, TalksFileRepository)
 container.registerSingleton<ArticlesRepository>(TYPES.ARTICLES_REPOSITORY, ArticlesFileRepository)
-container.registerSingleton<PreferencesRepository>(TYPES.PREFERENCES_REPOSITORY, PreferencesLocalRepository)
 
 export { container }

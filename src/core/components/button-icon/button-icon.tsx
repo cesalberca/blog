@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import Image, { StaticImageData } from 'next/image'
+import Image, { type StaticImageData } from 'next/image'
 
 export const ButtonIcon: FC<{ icon: StaticImageData | string; onClick: () => void; alt: string }> = ({
   icon,

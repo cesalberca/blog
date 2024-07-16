@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { getBlogPosts } from '../utils'
+import type { FC } from 'react'
 
-export function BlogPosts() {
+export const BlogPosts: FC = () => {
   let allBlogs = getBlogPosts()
 
   return (

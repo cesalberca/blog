@@ -1,6 +1,7 @@
-import { HomePage } from '../features/home/ui/home.page'
 import { BlogPosts } from './components/posts'
+import { useTranslations } from 'next-intl'
 
 export default function Home() {
-  return <BlogPosts />
+  const t = useTranslations()
+  return <h1>{t('common.coverage')}</h1>
 }

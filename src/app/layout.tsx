@@ -13,15 +13,15 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'César Alberca',
+    template: '%s | Blog',
   },
   description: 'This is my portfolio.',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'My blog',
+    description: 'César Alberca blog.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'cesalberca',
     locale: 'en_US',
     type: 'website',
   },

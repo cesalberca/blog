@@ -82,7 +82,7 @@ export class TalksMother {
       title: '101. How to build bad Software',
       topics: [Topic.fromValue('JavaScript'), Topic.fromValue('Software design')],
       image: '/assets/good-architecture.png',
-      language: Locale.ES,
+      language: Locale.EN,
       events: [],
       difficulty: Difficulty.INTERMEDIATE,
       length: Length.fromMinutes(40),

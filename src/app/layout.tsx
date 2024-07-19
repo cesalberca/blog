@@ -5,8 +5,6 @@ import type { ReactNode } from 'react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
 import { baseUrl } from './sitemap'
-import { Navbar } from './components/nav'
-import { Footer } from './components/footer'
 import { getLocale, getMessages } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 
@@ -50,9 +48,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     <html lang={locale} className={cx('text-black bg-white dark:text-white dark:bg-black')}>
       <body className={`antialiased max-w-xl mx-4 mt-8 lg:mx-auto ${inter.className}`}>
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-          <Navbar />
           <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
-          <Footer />
           <Analytics />
           <SpeedInsights />
         </main>

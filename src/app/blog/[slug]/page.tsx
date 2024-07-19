@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { getBlogPosts } from '../../utils'
 import { baseUrl } from '../../sitemap'
-import { CustomMDX } from '../../components/mdx'
+import { CustomMDX } from '../../../core/components/mdx/mdx'
 import type { Metadata } from 'next'
 
 interface Params {

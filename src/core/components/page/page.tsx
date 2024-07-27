@@ -1,13 +1,12 @@
-import type { FC, PropsWithChildren, ReactNode } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 import { Navbar } from '../navbar/navbar'
 import { Footer } from '../footer/footer'
 
-export const Page: FC<PropsWithChildren<{ topSection?: ReactNode }>> = ({ children, topSection }) => {
+export const Page: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div>
-      <Navbar />
-      {topSection}
-      <main>{children}</main>
+      <Navbar className="w-full" />
+      <main className="mx-auto max-w-xl flex flex-col items-center">{children}</main>
       <Footer />
     </div>
   )

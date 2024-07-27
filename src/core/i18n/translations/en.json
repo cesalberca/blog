@@ -4,11 +4,15 @@
     "es": "ES",
     "dark": "Dark",
     "light": "Light",
+    "system": "System",
     "coverage": "Test coverage",
     "minutes": "minutes",
     "language": "Language",
     "theme": "Theme",
-    "loading": "Loading"
+    "loading": "Loading",
+    "toggleNavigation": "Toggle navigation",
+    "toggleTheme": "Toggle theme",
+    "logo": "Logo"
   },
   "home": {
     "title": "César Alberca",

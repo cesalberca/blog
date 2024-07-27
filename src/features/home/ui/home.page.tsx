@@ -5,7 +5,6 @@ import { useTranslations } from 'next-intl'
 import { Page } from '../../../core/components/page/page'
 import { Hero } from '../../../core/components/hero/hero'
 import Image from 'next/image'
-import me from '../../../../public/assets/images/me.png'
 import { Technologies } from './technologies'
 import { Projects } from './projects'
 import { Link } from '../../../core/components/link/link'
@@ -15,19 +14,17 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
   const t = useTranslations()
 
   return (
-    <Page
-      topSection={
-        <Hero>
-          <div>
-            <header>
-              <h1>{t.rich('home.heroTitle')}</h1>
-              <p>{t.rich('home.heroCaption')}</p>
-            </header>
-            <Image priority src={me} alt={t('home.meAlt')} />
-          </div>
-        </Hero>
-      }
-    >
+    <Page>
+      <Hero>
+        <div>
+          <header>
+            <h1>{t.rich('home.heroTitle')}</h1>
+            <p>{t.rich('home.heroCaption')}</p>
+          </header>
+          <Image priority src="/assets/images/me.png" width={500} height={500} alt={t('home.meAlt')} />
+        </div>
+      </Hero>
+
       <section>
         <Markdown value={t('home.whoAmI1')} />
         <Markdown value={t('home.whoAmI2')} />

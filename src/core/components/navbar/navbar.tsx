@@ -1,8 +1,46 @@
-import type { FC, SVGProps } from 'react'
-import { Link } from '../link/link'
+'use client'
+
+import type { FC, PropsWithChildren, SVGProps } from 'react'
 import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from '@/core/components/theme/theme-toggle'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Button } from '@/components/ui/button'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import styles from './navbar.module.css'
+import Link from 'next/link'
+
+const MenuLink: FC<
+  PropsWithChildren<{
+    to: string
+  }>
+> = ({ to, children }) => {
+  const currentPath = usePathname()
+
+  return (
+    <Link
+      href={to}
+      className={cn(
+        styles['menu-link'],
+        'font-medium text-muted-foreground relative',
+        `${currentPath === to ? 'font-bold text-foreground' : ''}`,
+      )}
+    >
+      <span className="inline-block">{children}</span>
+    </Link>
+  )
+}
+
+const Links = () => {
+  const t = useTranslations()
+  return (
+    <>
+      <MenuLink to={'/talks'}>{t('talks.title')}</MenuLink>
+      <MenuLink to={'/about'}>{t('about.title')}</MenuLink>
+    </>
+  )
+}
 
 export const Navbar: FC<{
   className?: string
@@ -11,32 +49,38 @@ export const Navbar: FC<{
 
   return (
     <header className={cn('flex h-16 w-full items-center justify-between bg-background px-4 md:px-6', className)}>
-      <Link to={'/'} className="flex items-center gap-2">
-        <img src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
-        <span className="text-lg font-semibold">{t('home.title')}</span>
+      <Link href={'/'} className="flex items-center gap-2">
+        <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
+        <span className="text-lg">{t('home.title')}</span>
       </Link>
-      <nav className="hidden lg:flex items-center gap-4">
-        <Link to={'/talks'} className="text-sm font-medium text-muted-foreground hover:text-foreground">
-          {t('talks.title')}
-        </Link>
-        <Link to={'/about'} className="text-sm font-medium text-muted-foreground hover:text-foreground">
-          {t('about.title')}
-        </Link>
+      <nav className="hidden lg:flex items-center justify-end gap-4">
+        <Links></Links>
       </nav>
-      <div>
-        <ThemeToggle />
-      </div>
-      <div className="ml-auto lg:hidden">
-        <button>
-          <MenuIcon className="h-6 w-6" />
-          <span className="sr-only">{t('common.toggleNavigation')}</span>
-        </button>
+      <div className="flex gap-2 items-center">
+        <div className="ml-auto lg:hidden">
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline">
+                <MenuIcon className="h-6 w-6" />
+                <span className="sr-only">{t('common.toggleNavigation')}</span>
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-40">
+              <div className="flex flex-col">
+                <Links></Links>
+              </div>
+            </PopoverContent>
+          </Popover>
+        </div>
+        <div>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   )
 }
 
-function MenuIcon(props: SVGProps<SVGElement>) {
+function MenuIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

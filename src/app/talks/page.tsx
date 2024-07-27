@@ -1,15 +1,15 @@
 import { Talks } from '../components/talks'
+import { Page } from '@/core/components/page/page'
 
 export const metadata = {
   title: 'Talks',
   description: `Here are all the talks I've given.`,
 }
 
-export default function Page() {
+export default function TalksPage() {
   return (
-    <section>
-      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">My Blog</h1>
+    <Page>
       <Talks />
-    </section>
+    </Page>
   )
 }

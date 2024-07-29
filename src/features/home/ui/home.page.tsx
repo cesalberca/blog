@@ -4,25 +4,25 @@ import { ArticleExcerpt } from './article-excerpt'
 import { useTranslations } from 'next-intl'
 import { Page } from '../../../core/components/page/page'
 import { Hero } from '../../../core/components/hero/hero'
-import Image from 'next/image'
 import { Technologies } from './technologies'
 import { Projects } from './projects'
 import { Link } from '../../../core/components/link/link'
 import { Markdown } from '../../../core/components/markdown/markdown'
+import { SocialMedia } from '../../../core/components/social-media/social-media'
 
 export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
   const t = useTranslations()
 
   return (
     <Page>
-      <Hero>
-        <div>
-          <header>
-            <h1>{t.rich('home.heroTitle')}</h1>
-            <p>{t.rich('home.heroCaption')}</p>
-          </header>
-          <Image priority src="/assets/images/me.png" width={500} height={500} alt={t('home.meAlt')} />
-        </div>
+      <Hero image="/assets/images/me.png">
+        <header>
+          <h1 className="uppercase">{t.rich('home.heroTitle')}</h1>
+          <h6 className="mt-2">{t.rich('home.heroCaption')}</h6>
+          <section className="pt-4 text-xs">
+            <SocialMedia />
+          </section>
+        </header>
       </Hero>
 
       <section>

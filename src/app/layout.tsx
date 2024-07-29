@@ -46,8 +46,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const messages = await getMessages()
 
   return (
-    <html lang={locale} className={cx('text-black bg-white dark:text-white dark:bg-black')}>
-      <body className={`antialiased lg:mx-auto ${inter.className}`}>
+    <html lang={locale} className={cx('text-black bg-white dark:text-white dark:bg-black')} suppressHydrationWarning>
+      <body className={`antialiased font-medium lg:mx-auto ${inter.className}`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
           <Analytics />

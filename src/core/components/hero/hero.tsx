@@ -1,11 +1,12 @@
 import type { FC, PropsWithChildren } from 'react'
 import Image from 'next/image'
+import { cn } from '@/lib/utils'
 
 export const Hero: FC<PropsWithChildren<{ image?: string; className?: string }>> = ({ image, className, children }) => {
   return (
-    <div className={className}>
-      {image && <Image fill sizes={'100vw'} src={image} alt={''} />}
-      <div>{children}</div>
+    <div className={cn('full-width-section', className)}>
+      {image && <Image className="w-full h-full object-cover" width={1024} height={720} src={image} alt={''} />}
+      <div className="mx-auto max-w-xl inset-0 absolute flex items-center justify-center">{children}</div>
     </div>
   )
 }

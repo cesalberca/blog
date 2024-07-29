@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown'
 export const Markdown: FC<{ value: string }> = async ({ value }) => {
   return (
     <ReactMarkdown
+      className="prose prose-zinc dark:prose-invert"
       components={{
         code(props) {
           const { children, className, node, ...rest } = props

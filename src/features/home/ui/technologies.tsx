@@ -111,7 +111,7 @@ export const Technologies: FC = () => {
   ]
 
   return (
-    <div>
+    <div className="flex flex-wrap flex-row w-full gap-4">
       {technologies.map(x => (
         <div key={x.label}>
           <Image src={x.image} alt={x.label} height={20} />

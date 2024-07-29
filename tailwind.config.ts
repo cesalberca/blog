@@ -13,6 +13,14 @@ const config = {
       },
     },
     extend: {
+      spacing: {
+        xss: '4px',
+        xs: '8x',
+        m: '12px',
+        l: '16px',
+        xl: '24px',
+        xxl: '32px',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

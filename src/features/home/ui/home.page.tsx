@@ -18,19 +18,18 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
       <Hero image="/assets/images/me.png">
         <header>
           <h1 className="uppercase">{t.rich('home.heroTitle')}</h1>
-          <h6 className="mt-2">{t.rich('home.heroCaption')}</h6>
-          <section className="pt-4 text-xs">
+          <h6 className="mt-m">{t.rich('home.heroCaption')}</h6>
+          <section className="pt-l text-xs">
             <SocialMedia />
           </section>
         </header>
       </Hero>
 
-      <section>
-        <Markdown value={t('home.whoAmI1')} />
-        <Markdown value={t('home.whoAmI2')} />
+      <section className="mt-m">
+        <Markdown value={t('home.whoAmI')} />
       </section>
 
-      <section>
+      <section className="mt-m">
         <h2>{t('home.projects.title')}</h2>
         <Projects />
       </section>

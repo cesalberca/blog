@@ -13,7 +13,7 @@ export const SocialMedia: FC = () => {
   ]
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-m">
       {socialMedia.map(({ name, url, icon: Icon }) => (
         <Link key={name} target="_blank" href={url}>
           <Icon size={16} aria-label={name} title={name}></Icon>

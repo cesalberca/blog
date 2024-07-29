@@ -23,6 +23,7 @@
     "@vercel/speed-insights": "1.0.12",
     "class-variance-authority": "0.7.0",
     "clsx": "2.1.1",
+    "framer-motion": "11.3.19",
     "front-matter": "4.0.2",
     "lucide-react": "0.411.0",
     "next": "14.2.4",

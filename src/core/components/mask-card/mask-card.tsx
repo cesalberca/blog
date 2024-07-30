@@ -3,48 +3,12 @@
 import { type FC, type PropsWithChildren, useEffect, useRef, useState } from 'react'
 import './mask-card.css'
 import { motion, useAnimation, useMotionValue } from 'framer-motion'
-
-// Linear interpolation
-const lerp = (a: number, b: number, n: number) => (1 - n) * a + n * b
-
-// Gets the mouse position
-const getMousePos = (e: MouseEvent) => {
-  return {
-    x: e.clientX,
-    y: e.clientY,
-  }
-}
-
-// This function generates a random string of a given length
-const getRandomString = (length: number) => {
-  let result = ''
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length))
-  }
-  return result
-}
-
-const useMousePosition = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition(getMousePos(event))
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-    }
-  }, [])
-
-  return mousePosition
-}
+import { linearInterpolation } from '@/core/3d/linear-interpolation'
+import { useMousePosition } from '@/core/hooks/use-mouse-position'
+import { getRandomString } from '@/core/utils/get-random-string'
 
 const Item: FC<PropsWithChildren> = ({ children }) => {
   const itemRef = useRef<HTMLDivElement | null>(null)
-
   const mousePosition = useMousePosition()
   const decoRef = useRef<HTMLDivElement | null>(null)
   const [randomString, setRandomString] = useState(getRandomString(2000))
@@ -62,8 +26,6 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
       }
     }
 
-    window.addEventListener('resize', handleResize)
-
     const handleMouseEnter = () => {
       controls.start({ opacity: 1, transition: { duration: 0.5, ease: 'easeInOut' } })
     }
@@ -73,14 +35,14 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
     }
 
     if (itemRef.current) {
+      window.addEventListener('resize', handleResize)
       itemRef.current.addEventListener('mouseenter', handleMouseEnter)
       itemRef.current.addEventListener('mouseleave', handleMouseLeave)
     }
 
     return () => {
-      window.removeEventListener('resize', handleResize)
-
       if (itemRef.current) {
+        window.removeEventListener('resize', handleResize)
         itemRef.current.removeEventListener('mouseenter', handleMouseEnter)
         itemRef.current.removeEventListener('mouseleave', handleMouseLeave)
       }
@@ -98,8 +60,8 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
         const newX = mousePosition.x - (scrollDiff.x + rect.left)
         const newY = mousePosition.y - (scrollDiff.y + rect.top)
 
-        x.set(lerp(x.get(), newX, 0.1))
-        y.set(lerp(y.get(), newY, 0.1))
+        x.set(linearInterpolation(x.get(), newX, 0.1))
+        y.set(linearInterpolation(y.get(), newY, 0.1))
 
         if (itemRef.current) {
           itemRef.current.style.setProperty('--x', `${x.get()}px`)
@@ -147,7 +109,6 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
 }
 
 export const MaskCard: FC<PropsWithChildren> = ({ children }) => {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
   return (
     <div className="grid">
       <div className="grid__item">

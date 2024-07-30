@@ -1,11 +1,12 @@
 'use client'
 
 import React, { type FC, type PropsWithChildren, type ReactNode, useCallback, useEffect, useRef, useState } from 'react'
-import './mask-card.css'
+import styles from './mask-card.module.css'
 import { motion, useAnimation, useMotionValue } from 'framer-motion'
 import { linearInterpolation } from '@/core/3d/linear-interpolation'
 import { useMousePosition } from '@/core/hooks/use-mouse-position'
 import { getRandomString } from '@/core/utils/get-random-string'
+import { cn } from '@/lib/utils'
 
 const Item: FC<PropsWithChildren> = ({ children }) => {
   const itemRef = useRef<HTMLDivElement | null>(null)
@@ -87,10 +88,20 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <div
-      className="w-full h-full [aspect-ratio:1] relative overflow-hidden grid place-items-center [--x:0] [--y:0] rounded after:content[''] after:top-0  after:absolute after:left-0 after:w-full after:h-full radial-background"
+      className={cn(
+        "w-full h-full [aspect-ratio:1] relative overflow-hidden grid place-items-center [--x:0] [--y:0] rounded after:content[''] after:top-0  after:absolute after:left-0 after:w-full after:h-full",
+        styles['radial-background'],
+      )}
       ref={itemRef}
     >
-      <motion.div ref={decoRef} animate={controls} className="grid__item-img-deco"></motion.div>
+      <motion.div
+        ref={decoRef}
+        animate={controls}
+        className={cn(
+          'absolute top-0 left-0 h-full w-full font-mono text-xs break-words leading-4 text-white opacity-0',
+          styles.mask,
+        )}
+      ></motion.div>
       <span className="relative z-10">{children}</span>
     </div>
   )

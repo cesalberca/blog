@@ -23,7 +23,7 @@ const MenuLink: FC<
       href={to}
       className={cn(
         styles['menu-link'],
-        'font-medium text-muted-foreground relative',
+        'font-medium  relative',
         `${currentPath === to ? 'font-bold text-foreground' : ''}`,
       )}
     >
@@ -48,7 +48,9 @@ export const Navbar: FC<{
   const t = useTranslations()
 
   return (
-    <header className={cn('flex h-16 w-full items-center justify-between bg-background px-4 md:px-6', className)}>
+    <header
+      className={cn('flex backdrop-blur fixed z-10 h-16 w-full items-center justify-between px-4 md:px-6', className)}
+    >
       <Link href={'/'} className="flex items-center gap-2">
         <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
         <span className="text-lg">{t('home.title')}</span>

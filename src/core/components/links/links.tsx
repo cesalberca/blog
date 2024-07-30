@@ -7,7 +7,6 @@ export const Links: FC<{ direction?: Direction }> = ({ direction = Direction.HOR
   const t = useTranslations()
 
   const links = direction === Direction.HORIZONTAL ? 'horizontal' : 'vertical'
-  console.log(links)
 
   return (
     <div>

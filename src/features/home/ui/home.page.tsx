@@ -1,15 +1,15 @@
-import type { FC, PropsWithChildren } from 'react'
+import { type FC, type PropsWithChildren } from 'react'
 import type { Article } from '../../articles/domain/article'
 import { ArticleExcerpt } from './article-excerpt'
 import { useTranslations } from 'next-intl'
 import { Page } from '../../../core/components/page/page'
-import { Hero } from '../../../core/components/hero/hero'
 import { Technologies } from './technologies'
 import { Projects } from './projects'
 import { Link } from '../../../core/components/link/link'
 import { Markdown } from '../../../core/components/markdown/markdown'
-import { SocialMedia } from '../../../core/components/social-media/social-media'
 import { Services } from './services'
+import { HeroHome } from '@/features/home/ui/hero-home'
+import { SocialMedia } from '@/core/components/social-media/social-media'
 
 export const Section: FC<
   PropsWithChildren<{
@@ -27,18 +27,17 @@ export const Section: FC<
 export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
   const t = useTranslations()
 
+  const texts = [t('home.architect'), t('home.digitalNomad'), t('home.internationalSpeaker')]
+
   return (
     <Page>
-      <Hero image="/assets/images/me.png">
-        <header>
-          <h1 className="uppercase">{t.rich('home.heroTitle')}</h1>
-          <h6 className="mt-m">{t.rich('home.heroCaption')}</h6>
-          <section className="pt-l text-xs">
-            <SocialMedia />
-          </section>
-        </header>
-      </Hero>
-
+      <HeroHome texts={texts}>
+        <h1 className="uppercase">{t.rich('home.heroTitle')}</h1>
+        <h6 className="mt-m">{t.rich('home.heroCaption')}</h6>
+        <section className="pt-l text-xs">
+          <SocialMedia />
+        </section>
+      </HeroHome>
       <Section>
         <Markdown value={t('home.whoAmI')} />
       </Section>

@@ -47,8 +47,7 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
         <Services />
       </Section>
 
-      <Section>
-        <h2 className="mb-m">{t('home.projects.title')}</h2>
+      <Section title={t('home.projects.title')}>
         <Projects />
       </Section>
 

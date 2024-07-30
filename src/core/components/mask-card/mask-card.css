@@ -1,12 +1,3 @@
-.grid {
-  display: grid;
-  margin: 10vh 0;
-  grid-template-columns: 1fr;
-  border: 1px solid #2a2b3a;
-  background: #2a2b3a;
-  gap: 1px;
-}
-
 .grid__item {
   padding: 1.5rem 1.5rem 2rem;
   display: grid;

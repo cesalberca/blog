@@ -1,12 +1,3 @@
-.grid__item {
-  padding: 1.5rem 1.5rem 2rem;
-  display: grid;
-  gap: 1.5rem;
-  background: var(--color-bg);
-  align-content: start;
-  grid-template-rows: auto 1fr auto;
-}
-
 .grid__item-img {
   width: 100%;
   aspect-ratio: 1;

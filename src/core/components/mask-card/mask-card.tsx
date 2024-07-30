@@ -96,7 +96,7 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
 export const MaskCard: FC<PropsWithChildren<{ icon: ReactNode }>> = ({ children, icon }) => {
   return (
     <div className="grid grid-col-1 border bg-background">
-      <div className="grid__item">
+      <div className="grid p-m gap-4 bg-background">
         <Item>{icon}</Item>
         {children}
       </div>

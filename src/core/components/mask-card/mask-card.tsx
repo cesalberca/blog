@@ -16,7 +16,8 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
   const y = useMotionValue(0)
   const controls = useAnimation()
   const [scrollVal, setScrollVal] = useState({ x: window.scrollX, y: window.scrollY })
-  const [rect, setRect] = useState<DOMRect | null>(null)
+
+  const { top, left } = itemRef.current?.getBoundingClientRect() ?? { top: 0, left: 0 }
 
   useEffect(() => {
     if (decoRef.current) {
@@ -29,7 +30,6 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
     const handleResize = () => {
       if (currentRef) {
         setScrollVal({ x: window.scrollX, y: window.scrollY })
-        setRect(currentRef.getBoundingClientRect())
       }
     }
 
@@ -65,27 +65,25 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     const updatePosition = () => {
-      if (rect) {
-        const scrollDiff = {
-          x: scrollVal.x - window.scrollX,
-          y: scrollVal.y - window.scrollY,
-        }
+      const scrollDiff = {
+        x: scrollVal.x - window.scrollX,
+        y: scrollVal.y - window.scrollY,
+      }
 
-        const newX = mousePosition.x - (scrollDiff.x + rect.left)
-        const newY = mousePosition.y - (scrollDiff.y + rect.top)
+      const newX = mousePosition.x - (scrollDiff.x + left)
+      const newY = mousePosition.y - (scrollDiff.y + top)
 
-        x.set(linearInterpolation(x.get(), newX, 0.1))
-        y.set(linearInterpolation(y.get(), newY, 0.1))
+      x.set(linearInterpolation(x.get(), newX, 0.1))
+      y.set(linearInterpolation(y.get(), newY, 0.1))
 
-        if (itemRef.current) {
-          itemRef.current.style.setProperty('--x', `${x.get()}px`)
-          itemRef.current.style.setProperty('--y', `${y.get()}px`)
-        }
+      if (itemRef.current) {
+        itemRef.current.style.setProperty('--x', `${x.get()}px`)
+        itemRef.current.style.setProperty('--y', `${y.get()}px`)
       }
     }
 
     updatePosition()
-  }, [mousePosition, randomString, rect, scrollVal, x, y])
+  }, [mousePosition, randomString, left, top, scrollVal, x, y])
 
   return (
     <div className="grid__item-img" ref={itemRef}>

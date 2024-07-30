@@ -35,6 +35,7 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
     }
 
     if (itemRef.current) {
+      console.log('handleResize')
       window.addEventListener('resize', handleResize)
       itemRef.current.addEventListener('mouseenter', handleMouseEnter)
       itemRef.current.addEventListener('mouseleave', handleMouseLeave)
@@ -69,10 +70,9 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
         }
 
         if (decoRef.current) {
+          console.log('updatePosition')
           decoRef.current.innerHTML = randomString
         }
-
-        requestAnimationFrame(updatePosition)
       }
     }
 
@@ -83,17 +83,19 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
     const handleMouseMove = () => {
       setRandomString(getRandomString(2000))
     }
+    const currentRef = itemRef.current
 
-    if (itemRef.current) {
-      itemRef.current.addEventListener('mousemove', handleMouseMove)
+    if (currentRef) {
+      console.log('mouseMove')
+      currentRef.addEventListener('mousemove', handleMouseMove)
     }
 
     return () => {
-      if (itemRef.current) {
-        itemRef.current.removeEventListener('mousemove', handleMouseMove)
+      if (currentRef) {
+        currentRef.removeEventListener('mousemove', handleMouseMove)
       }
     }
-  }, [])
+  }, [itemRef])
 
   return (
     <div className="grid__item-img" ref={itemRef}>

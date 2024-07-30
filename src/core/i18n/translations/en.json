@@ -27,14 +27,19 @@
       "title": "Projects",
       "code": "See the code",
       "live": "Live version",
-      "katasTitle": "Katas",
-      "katasDescription": "Multiple TypeScript Katas to practice TDD and testing.",
+      "katasTitle": "TypeScript Katas",
+      "katasDescription": "TDD and testing are very important to me. Whenever I was teaching a course about programming I needed to create the same exercises over and over again. So I decided to create this instead.\n\nIt's a project to practise TDD, testing and TypeScript through simple and useful Katas.",
       "whoAmITitle": "Who Am I",
       "whoAmIDescription": "Simple Who Am I game implemented using RxJs, React and Firebase.",
       "frontendReformsTitle": "WordleJS",
       "frontendReformsDescription": "Code for the talk Frontend Reforms where we build a Wordle for frontend frameworks"
+    },
+    "services": {
+      "title": "Services",
+      "description": "I offer a wide range of services, from consulting to training, and from architecture to development. I can help you with your project, no matter the size or the technology stack. I have experience in different industries and I can adapt to your needs. I'm a freelancer, so I can work with you in a flexible way."
     }
   },
+
   "article": {
     "title": "Articles",
     "shareArticle": "Share article",

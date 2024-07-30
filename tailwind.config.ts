@@ -14,12 +14,12 @@ const config = {
     },
     extend: {
       spacing: {
-        xss: '4px',
-        xs: '8x',
-        m: '12px',
-        l: '16px',
-        xl: '24px',
-        xxl: '32px',
+        xss: '12px',
+        xs: '16x',
+        m: '24px',
+        l: '32px',
+        xl: '48px',
+        xxl: '56px',
       },
       colors: {
         border: 'hsl(var(--border))',

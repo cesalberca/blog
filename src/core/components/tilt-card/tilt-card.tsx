@@ -3,6 +3,7 @@
 import React, { type FC, type PropsWithChildren, useRef } from 'react'
 import { motion, useMotionTemplate, useMotionValue, useSpring } from 'framer-motion'
 import { MouseIcon } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 const RATIO = 32.5
 const ROTATION_RANGE = RATIO
@@ -12,8 +13,9 @@ export const TiltCard: FC<
   PropsWithChildren<{
     defaultTiltX?: number
     defaultTiltY?: number
+    className?: string
   }>
-> = ({ children, defaultTiltY = 0, defaultTiltX = 0 }) => {
+> = ({ children, defaultTiltY = 0, defaultTiltX = 0, className }) => {
   const ref = useRef<HTMLDivElement | null>(null)
 
   const x = useMotionValue(defaultTiltX)
@@ -56,7 +58,7 @@ export const TiltCard: FC<
         transformStyle: 'preserve-3d',
         transform,
       }}
-      className="relative rounded-xl bg-accent"
+      className={cn('relative rounded-xl bg-accent', className)}
     >
       <MouseIcon
         style={{

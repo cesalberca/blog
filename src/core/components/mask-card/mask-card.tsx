@@ -86,7 +86,10 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
   }, [mousePosition, randomString, left, top, scrollVal, x, y, updatePosition])
 
   return (
-    <div className="grid__item-img" ref={itemRef}>
+    <div
+      className="w-full h-full [aspect-ratio:1] relative overflow-hidden grid place-items-center [--x:0] [--y:0] rounded after:content[''] after:top-0  after:absolute after:left-0 after:w-full after:h-full radial-background"
+      ref={itemRef}
+    >
       <motion.div ref={decoRef} animate={controls} className="grid__item-img-deco"></motion.div>
       <span className="relative z-10">{children}</span>
     </div>

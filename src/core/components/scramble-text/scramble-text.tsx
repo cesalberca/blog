@@ -10,9 +10,10 @@ const SHUFFLE_TIME = 50
 
 type Props = {
   text: string
+  repeat?: boolean
 }
 
-export const ScrambleText: FC<Props> = ({ text }) => {
+export const ScrambleText: FC<Props> = ({ text, repeat = false }) => {
   const [stateText, setStateText] = useState(text)
   const [position, setPosition] = useState(0)
 
@@ -48,9 +49,9 @@ export const ScrambleText: FC<Props> = ({ text }) => {
   }, [text])
 
   return (
-    <motion.div className="relative overflow-hidden">
+    <motion.div className="relative">
       <div className="relative z-10 flex items-center gap-2">
-        <span>{stateText}</span>
+        <span className="absolute">{stateText}</span>
       </div>
     </motion.div>
   )

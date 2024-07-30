@@ -16,7 +16,7 @@ export const HeroHome: FC<
 
   useInterval(() => {
     setIndex((index + 1) % texts.length)
-  }, 3000)
+  }, 5000)
 
   return (
     <Hero image="/assets/images/me.png">

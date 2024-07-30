@@ -32,7 +32,6 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
   return (
     <Page>
       <HeroHome texts={texts}>
-        <h1 className="uppercase">{t.rich('home.heroTitle')}</h1>
         <h6 className="mt-m">{t.rich('home.heroCaption')}</h6>
         <section className="pt-l text-xs">
           <SocialMedia />

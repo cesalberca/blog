@@ -21,7 +21,7 @@ export const HeroHome: FC<
   return (
     <Hero image="/assets/images/me.png">
       <header>
-        <h2>
+        <h2 className="uppercase">
           <ScrambleText text={texts[index]}></ScrambleText>
         </h2>
         {children}

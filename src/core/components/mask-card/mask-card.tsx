@@ -15,7 +15,7 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const controls = useAnimation()
-  const [scrollVal, setScrollVal] = useState({ x: window.scrollX, y: window.scrollY })
+  const [scrollVal, setScrollVal] = useState({ x: 0, y: 0 })
 
   const { top, left } = itemRef.current?.getBoundingClientRect() ?? { top: 0, left: 0 }
 
@@ -46,11 +46,11 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
     }
 
     if (currentRef) {
+      setScrollVal({ x: window.scrollX, y: window.scrollY })
       window.addEventListener('resize', handleResize)
       currentRef.addEventListener('mouseenter', handleMouseEnter)
       currentRef.addEventListener('mouseleave', handleMouseLeave)
       currentRef.addEventListener('mousemove', handleMouseMove)
-      handleResize()
     }
 
     return () => {

@@ -19,10 +19,17 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
   const [rect, setRect] = useState<DOMRect | null>(null)
 
   useEffect(() => {
+    if (decoRef.current) {
+      decoRef.current.innerHTML = randomString
+    }
+  }, [decoRef, randomString])
+
+  useEffect(() => {
+    const currentRef = itemRef.current
     const handleResize = () => {
-      if (itemRef.current) {
+      if (currentRef) {
         setScrollVal({ x: window.scrollX, y: window.scrollY })
-        setRect(itemRef.current.getBoundingClientRect())
+        setRect(currentRef.getBoundingClientRect())
       }
     }
 
@@ -34,18 +41,24 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
       controls.start({ opacity: 0, transition: { duration: 0.5, ease: 'easeInOut' } })
     }
 
-    if (itemRef.current) {
-      console.log('handleResize')
+    const handleMouseMove = () => {
+      setRandomString(getRandomString(2000))
+    }
+
+    if (currentRef) {
       window.addEventListener('resize', handleResize)
-      itemRef.current.addEventListener('mouseenter', handleMouseEnter)
-      itemRef.current.addEventListener('mouseleave', handleMouseLeave)
+      currentRef.addEventListener('mouseenter', handleMouseEnter)
+      currentRef.addEventListener('mouseleave', handleMouseLeave)
+      currentRef.addEventListener('mousemove', handleMouseMove)
+      handleResize()
     }
 
     return () => {
-      if (itemRef.current) {
+      if (currentRef) {
         window.removeEventListener('resize', handleResize)
-        itemRef.current.removeEventListener('mouseenter', handleMouseEnter)
-        itemRef.current.removeEventListener('mouseleave', handleMouseLeave)
+        currentRef.removeEventListener('mouseenter', handleMouseEnter)
+        currentRef.removeEventListener('mouseleave', handleMouseLeave)
+        currentRef.removeEventListener('mousemove', handleMouseMove)
       }
     }
   }, [controls])
@@ -68,34 +81,11 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
           itemRef.current.style.setProperty('--x', `${x.get()}px`)
           itemRef.current.style.setProperty('--y', `${y.get()}px`)
         }
-
-        if (decoRef.current) {
-          console.log('updatePosition')
-          decoRef.current.innerHTML = randomString
-        }
       }
     }
 
     updatePosition()
   }, [mousePosition, randomString, rect, scrollVal, x, y])
-
-  useEffect(() => {
-    const handleMouseMove = () => {
-      setRandomString(getRandomString(2000))
-    }
-    const currentRef = itemRef.current
-
-    if (currentRef) {
-      console.log('mouseMove')
-      currentRef.addEventListener('mousemove', handleMouseMove)
-    }
-
-    return () => {
-      if (currentRef) {
-        currentRef.removeEventListener('mousemove', handleMouseMove)
-      }
-    }
-  }, [itemRef])
 
   return (
     <div className="grid__item-img" ref={itemRef}>

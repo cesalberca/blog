@@ -1,5 +1,3 @@
-'use client'
-
 import React, { type FC, useState } from 'react'
 import { motion } from 'framer-motion'
 import { getRandomString } from '@/core/utils/get-random-string'
@@ -12,9 +10,10 @@ const DELAY_TIME = 1000
 interface Props {
   text: string
   repeat?: boolean
+  onComplete: () => void
 }
 
-export const ScrambleText: FC<Props> = ({ text, repeat = false }) => {
+export const ScrambleText: FC<Props> = ({ text, onComplete, repeat = false }) => {
   const [stateText, setStateText] = useState(text)
   const [position, setPosition] = useState(0)
   const [stopInterval, setStopInterval] = useState(false)
@@ -45,6 +44,7 @@ export const ScrambleText: FC<Props> = ({ text, repeat = false }) => {
         setPosition(0)
         if (!repeat) {
           setStopInterval(true)
+          onComplete()
         } else {
           setDelay(true)
           setTimeout(() => {

@@ -18,9 +18,12 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
   const controls = useAnimation()
   const [scrollVal, setScrollVal] = useState({ x: 0, y: 0 })
 
-  const { top, left } = itemRef.current?.getBoundingClientRect() ?? { top: 0, left: 0 }
+  console.log('Item')
 
   const updatePosition = useCallback(() => {
+    if (!itemRef.current) return
+
+    const { top, left } = itemRef.current.getBoundingClientRect()
     const scrollDiff = {
       x: scrollVal.x - window.scrollX,
       y: scrollVal.y - window.scrollY,
@@ -32,24 +35,19 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
     x.set(linearInterpolation(x.get(), newX, 0.1))
     y.set(linearInterpolation(y.get(), newY, 0.1))
 
-    if (itemRef.current) {
-      itemRef.current.style.setProperty('--x', `${x.get()}px`)
-      itemRef.current.style.setProperty('--y', `${y.get()}px`)
-    }
-  }, [left, mousePosition, scrollVal, top, x, y])
+    itemRef.current.style.setProperty('--x', `${x.get()}px`)
+    itemRef.current.style.setProperty('--y', `${y.get()}px`)
+  }, [mousePosition, scrollVal, x, y])
 
   useEffect(() => {
     if (decoRef.current) {
       decoRef.current.innerHTML = randomString
     }
-  }, [decoRef, randomString])
+  }, [randomString])
 
   useEffect(() => {
-    const currentRef = itemRef.current
     const handleResize = () => {
-      if (currentRef) {
-        setScrollVal({ x: window.scrollX, y: window.scrollY })
-      }
+      setScrollVal({ x: window.scrollX, y: window.scrollY })
     }
 
     const handleMouseEnter = () => {
@@ -64,27 +62,27 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
       setRandomString(getRandomString(2000))
     }
 
-    if (currentRef) {
+    if (itemRef.current) {
       setScrollVal({ x: window.scrollX, y: window.scrollY })
       window.addEventListener('resize', handleResize)
-      currentRef.addEventListener('mouseenter', handleMouseEnter)
-      currentRef.addEventListener('mouseleave', handleMouseLeave)
-      currentRef.addEventListener('mousemove', handleMouseMove)
+      itemRef.current.addEventListener('mouseenter', handleMouseEnter)
+      itemRef.current.addEventListener('mouseleave', handleMouseLeave)
+      itemRef.current.addEventListener('mousemove', handleMouseMove)
     }
 
     return () => {
-      if (currentRef) {
-        window.removeEventListener('resize', handleResize)
-        currentRef.removeEventListener('mouseenter', handleMouseEnter)
-        currentRef.removeEventListener('mouseleave', handleMouseLeave)
-        currentRef.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('resize', handleResize)
+      if (itemRef.current) {
+        itemRef.current.removeEventListener('mouseenter', handleMouseEnter)
+        itemRef.current.removeEventListener('mouseleave', handleMouseLeave)
+        itemRef.current.removeEventListener('mousemove', handleMouseMove)
       }
     }
   }, [controls])
 
   useEffect(() => {
     updatePosition()
-  }, [mousePosition, randomString, left, top, scrollVal, x, y, updatePosition])
+  }, [mousePosition, scrollVal, updatePosition])
 
   return (
     <div

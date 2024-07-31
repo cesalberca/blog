@@ -7,6 +7,7 @@ import { useInterval } from '@/core/hooks/use-interval'
 
 const CYCLES_PER_LETTER = 2
 const SHUFFLE_TIME = 50
+const DELAY_TIME = 1000
 
 interface Props {
   text: string
@@ -17,9 +18,14 @@ export const ScrambleText: FC<Props> = ({ text, repeat = false }) => {
   const [stateText, setStateText] = useState(text)
   const [position, setPosition] = useState(0)
   const [stopInterval, setStopInterval] = useState(false)
+  const [delay, setDelay] = useState(false)
 
   useInterval(
     () => {
+      if (delay) {
+        return
+      }
+
       const newPos = position + 1
       const scrambled = text
         .split('')
@@ -39,10 +45,15 @@ export const ScrambleText: FC<Props> = ({ text, repeat = false }) => {
         setPosition(0)
         if (!repeat) {
           setStopInterval(true)
+        } else {
+          setDelay(true)
+          setTimeout(() => {
+            setDelay(false)
+          }, DELAY_TIME)
         }
       }
     },
-    stopInterval ? null : SHUFFLE_TIME,
+    stopInterval || delay ? null : SHUFFLE_TIME,
   )
 
   return <motion.span className="relative">{stateText}</motion.span>

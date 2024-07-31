@@ -1,6 +1,6 @@
 'use client'
 
-import React, { type FC, useEffect, useState } from 'react'
+import React, { type FC, useState } from 'react'
 import { motion } from 'framer-motion'
 import { getRandomString } from '@/core/utils/get-random-string'
 import { useInterval } from '@/core/hooks/use-interval'
@@ -8,7 +8,7 @@ import { useInterval } from '@/core/hooks/use-interval'
 const CYCLES_PER_LETTER = 2
 const SHUFFLE_TIME = 50
 
-type Props = {
+interface Props {
   text: string
   repeat?: boolean
 }
@@ -16,8 +16,7 @@ type Props = {
 export const ScrambleText: FC<Props> = ({ text, repeat = false }) => {
   const [stateText, setStateText] = useState(text)
   const [position, setPosition] = useState(0)
-
-  const shouldStopInterval = position < text.length * CYCLES_PER_LETTER
+  const [stopInterval, setStopInterval] = useState(false)
 
   useInterval(
     () => {
@@ -38,21 +37,11 @@ export const ScrambleText: FC<Props> = ({ text, repeat = false }) => {
       if (newPos >= text.length * CYCLES_PER_LETTER) {
         setStateText(text)
         setPosition(0)
+        setStopInterval(true)
       }
     },
-    shouldStopInterval ? SHUFFLE_TIME : null,
+    stopInterval ? null : SHUFFLE_TIME,
   )
 
-  useEffect(() => {
-    setStateText(text)
-    setPosition(0)
-  }, [text])
-
-  return (
-    <motion.div className="relative">
-      <div className="relative z-10 flex items-center gap-2">
-        <span className="absolute">{stateText}</span>
-      </div>
-    </motion.div>
-  )
+  return <motion.span className="relative">{stateText}</motion.span>
 }

@@ -14,8 +14,9 @@ const config = {
     },
     extend: {
       spacing: {
-        xss: '12px',
-        xs: '16x',
+        xss: '8px',
+        xs: '12px',
+        s: '16px',
         m: '24px',
         l: '32px',
         xl: '48px',

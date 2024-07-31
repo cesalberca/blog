@@ -28,17 +28,23 @@ export const Section: FC<
 export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
   const t = useTranslations()
 
-  const texts = [t('home.architect'), t('home.digitalNomad'), t('home.internationalSpeaker')]
+  const texts = [
+    t('home.labels.architect'),
+    t('home.labels.digitalNomad'),
+    t('home.labels.internationalSpeaker'),
+    t('home.labels.freelancer'),
+    t('home.labels.podcastHost'),
+  ]
 
   return (
     <Page>
       <Hero image="/assets/images/me.png">
-        <header>
+        <header className="absolute left-0">
           <h2 className="uppercase">
             <ScrambleList texts={texts}></ScrambleList>
           </h2>
-          <h6 className="mt-m">{t.rich('home.heroCaption')}</h6>
-          <section className="pt-l text-xs">
+          <h6 className="mt-xs">{t.rich('home.heroCaption')}</h6>
+          <section className="mt-xs text-xs">
             <SocialMedia />
           </section>
         </header>

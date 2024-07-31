@@ -1,3 +1,5 @@
+'use client'
+
 import React, { type FC, useState } from 'react'
 import { motion } from 'framer-motion'
 import { getRandomString } from '@/core/utils/get-random-string'
@@ -56,5 +58,10 @@ export const ScrambleText: FC<Props> = ({ text, onComplete, repeat = false }) =>
     stopInterval || delay ? null : SHUFFLE_TIME,
   )
 
-  return <motion.span className="relative">{stateText}</motion.span>
+  return (
+    <motion.span className="relative whitespace-nowrap">
+      <span className="relative whitespace-nowrap invisible">{text}</span>
+      <span className="absolute top-0 left-0">{stateText}</span>
+    </motion.span>
+  )
 }

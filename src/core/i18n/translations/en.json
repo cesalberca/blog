@@ -21,11 +21,15 @@
     "latestArticles": "Latest articles",
     "viewAllArticles": "View all articles",
     "heroTitle": "Digital Nomad.\n\nFrontend Architect.\n\nInternational Speaker.",
-    "architect": "Frontend Architect",
-    "internationalSpeaker": "International Speaker",
-    "digitalNomad": "Digital Nomad",
+    "labels": {
+      "architect": "Frontend Architect",
+      "internationalSpeaker": "International Speaker",
+      "digitalNomad": "Digital Nomad",
+      "freelancer": "Freelancer",
+      "podcastHost": "Podcast Host"
+    },
     "heroCaption": "Passionate about <strong>learning</strong> and <strong>sharing</strong>.",
-    "whoAmI": "Digital Nomad & Code Enthusiast from Spain with a love for life beyond the keyboard. Freelancer **crafting innovative** solutions. As an [international speaker](https://www.cesalberca.com/talks), I share my tech adventures.\n\n Active in the [Codemotion](https://www.codemotion.com/) community as a committee member and [ambassador](https://community-en.codemotion.it/community/ambassador-program). Podcast host for [Colivers Club](https://coliversclub.com/).",
+    "whoAmI": "**Senior Frontend Architect** & **Software Crafter** from Spain. Freelancer _obsessed_ with **best practices**, **architecture** and **testing**.\n\nAs an [international speaker](https://www.cesalberca.com/talks) and Digital Nomad, I share my tech adventures around the world.\n\n Active in the [Codemotion](https://www.codemotion.com/) community as a committee member and [ambassador](https://community-en.codemotion.it/community/ambassador-program).",
     "projects": {
       "title": "Projects",
       "code": "See the code",

@@ -9,7 +9,7 @@ export const Services: FC = () => {
   return (
     <div>
       <p>After 10 years of experience in Frontend Development . I can provide </p>
-      <div className="full-width-section grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-4">
         <MaskCard icon={<SearchIcon />}>
           <p>Architecture</p>
         </MaskCard>

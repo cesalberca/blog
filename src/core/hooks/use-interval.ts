@@ -9,11 +9,15 @@ export function useInterval(callback: () => void, delay: number | null) {
 
   useEffect(() => {
     function tick() {
+      console.log('tick')
       savedCallback.current?.()
     }
     if (delay !== null) {
       let id = setInterval(tick, delay)
-      return () => clearInterval(id)
+      return () => {
+        console.log('clearing interval')
+        return clearInterval(id)
+      }
     }
   }, [delay])
 }

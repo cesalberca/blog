@@ -8,8 +8,9 @@ import { Projects } from './projects'
 import { Link } from '../../../core/components/link/link'
 import { Markdown } from '../../../core/components/markdown/markdown'
 import { Services } from './services'
-import { HeroHome } from '@/features/home/ui/hero-home'
 import { SocialMedia } from '@/core/components/social-media/social-media'
+import { Hero } from '@/core/components/hero/hero'
+import { ScrambleList } from '@/core/components/scramble-list/scramble-list'
 
 export const Section: FC<
   PropsWithChildren<{
@@ -31,12 +32,18 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
 
   return (
     <Page>
-      <HeroHome texts={texts}>
-        <h6 className="mt-m">{t.rich('home.heroCaption')}</h6>
-        <section className="pt-l text-xs">
-          <SocialMedia />
-        </section>
-      </HeroHome>
+      <Hero image="/assets/images/me.png">
+        <header>
+          <h2 className="uppercase">
+            <ScrambleList texts={texts}></ScrambleList>
+          </h2>
+          <h6 className="mt-m">{t.rich('home.heroCaption')}</h6>
+          <section className="pt-l text-xs">
+            <SocialMedia />
+          </section>
+        </header>
+      </Hero>
+
       <Section>
         <Markdown value={t('home.whoAmI')} />
       </Section>

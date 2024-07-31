@@ -37,7 +37,9 @@ export const ScrambleText: FC<Props> = ({ text, repeat = false }) => {
       if (newPos >= text.length * CYCLES_PER_LETTER) {
         setStateText(text)
         setPosition(0)
-        setStopInterval(true)
+        if (!repeat) {
+          setStopInterval(true)
+        }
       }
     },
     stopInterval ? null : SHUFFLE_TIME,

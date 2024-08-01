@@ -1,7 +1,8 @@
 import type { FC } from 'react'
 import { useTranslations } from 'next-intl'
-import { MaskCard } from '@/core/components/mask-card/mask-card'
+import { LeetCard } from '@/core/components/leet-card/leet-card'
 import { SearchIcon } from 'lucide-react'
+import { LeetBackground } from '@/core/components/leet-card/leet-background'
 
 export const Services: FC = () => {
   const t = useTranslations()
@@ -10,9 +11,9 @@ export const Services: FC = () => {
     <div>
       <p>After 10 years of experience in Frontend Development . I can provide </p>
       <div className="full-width-section grid grid-cols-3 gap-4">
-        <MaskCard icon={<SearchIcon />}>
+        <LeetBackground>
           <p>Architecture</p>
-        </MaskCard>
+        </LeetBackground>
       </div>
     </div>
   )

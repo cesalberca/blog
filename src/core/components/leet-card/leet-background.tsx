@@ -1,25 +1,15 @@
 'use client'
 
-import React, {
-  type FC,
-  type PropsWithChildren,
-  type ReactNode,
-  type MouseEvent,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
-import styles from './mask-card.module.css'
+import React, { type FC, type MouseEvent, type PropsWithChildren, useEffect, useRef, useState } from 'react'
 import { motion, useAnimation, useMotionValue } from 'framer-motion'
 import { linearInterpolation } from '@/core/3d/linear-interpolation'
 import { getRandomString } from '@/core/utils/get-random-string'
 import { cn } from '@/lib/utils'
+import styles from '@/core/components/leet-card/leet-card.module.css'
 
-const Item: FC<PropsWithChildren> = ({ children }) => {
+export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
   const itemRef = useRef<HTMLDivElement | null>(null)
   const decoRef = useRef<HTMLDivElement | null>(null)
-
-  const [unoptimizedRandomString, setRandomString] = useState(getRandomString(2000))
 
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -96,16 +86,5 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
       ></motion.div>
       <span className="relative z-10">{children}</span>
     </motion.div>
-  )
-}
-
-export const MaskCard: FC<PropsWithChildren<{ icon: ReactNode }>> = ({ children, icon }) => {
-  return (
-    <div className="grid grid-col-1 border bg-background">
-      <div className="grid p-m gap-4 bg-background">
-        <Item>{icon}</Item>
-        {children}
-      </div>
-    </div>
   )
 }

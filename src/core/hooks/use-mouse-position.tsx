@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 
-// Gets the mouse position
-const getMousePos = (e: MouseEvent) => {
+const getMousePosition = (e: MouseEvent) => {
   return {
     x: e.clientX,
     y: e.clientY,
@@ -13,7 +12,7 @@ export const useMousePosition = () => {
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition(getMousePos(event))
+      setMousePosition(getMousePosition(event))
     }
 
     window.addEventListener('mousemove', handleMouseMove)

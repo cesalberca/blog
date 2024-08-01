@@ -13,9 +13,11 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
   const itemRef = useRef<HTMLDivElement | null>(null)
   const decoRef = useRef<HTMLDivElement | null>(null)
 
-  const mousePosition = useThrottle(useMousePosition(), 100)
+  const throttledMousePosition = useThrottle(useMousePosition(), 100)
+
   const [unoptimizedRandomString, setRandomString] = useState(getRandomString(2000))
   const randomString = useThrottle(unoptimizedRandomString, 50)
+
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const controls = useAnimation()
@@ -30,15 +32,15 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
       y: scroll.y - window.scrollY,
     }
 
-    const newX = mousePosition.x - (scrollDiff.x + left)
-    const newY = mousePosition.y - (scrollDiff.y + top)
+    const newX = throttledMousePosition.x - (scrollDiff.x + left)
+    const newY = throttledMousePosition.y - (scrollDiff.y + top)
 
     x.set(linearInterpolation(x.get(), newX, 0.1))
     y.set(linearInterpolation(y.get(), newY, 0.1))
 
     itemRef.current.style.setProperty('--x', `${x.get()}px`)
     itemRef.current.style.setProperty('--y', `${y.get()}px`)
-  }, [mousePosition, scroll, x, y])
+  }, [throttledMousePosition, scroll, x, y])
 
   useEffect(() => {
     if (decoRef.current) {
@@ -83,7 +85,7 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     updatePosition()
-  }, [mousePosition, scroll, updatePosition])
+  }, [throttledMousePosition, scroll, updatePosition])
 
   return (
     <div

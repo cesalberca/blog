@@ -1,30 +1,38 @@
 'use client'
 
-import React, { type FC, type PropsWithChildren, type ReactNode, useCallback, useEffect, useRef, useState } from 'react'
+import React, {
+  type FC,
+  type PropsWithChildren,
+  type ReactNode,
+  type MouseEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import styles from './mask-card.module.css'
 import { motion, useAnimation, useMotionValue } from 'framer-motion'
 import { linearInterpolation } from '@/core/3d/linear-interpolation'
-import { useMousePosition } from '@/core/hooks/use-mouse-position'
 import { getRandomString } from '@/core/utils/get-random-string'
 import { cn } from '@/lib/utils'
-import { useThrottle } from '@uidotdev/usehooks'
 
 const Item: FC<PropsWithChildren> = ({ children }) => {
   const itemRef = useRef<HTMLDivElement | null>(null)
   const decoRef = useRef<HTMLDivElement | null>(null)
 
-  const throttledMousePosition = useThrottle(useMousePosition(), 100)
-
   const [unoptimizedRandomString, setRandomString] = useState(getRandomString(2000))
-  const randomString = useThrottle(unoptimizedRandomString, 50)
 
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const controls = useAnimation()
   const [scroll, setScroll] = useState({ x: 0, y: 0 })
 
-  const updatePosition = useCallback(() => {
-    if (!itemRef.current) return
+  const updatePosition = (e: MouseEvent<HTMLDivElement>) => {
+    if (!itemRef.current || !decoRef.current) return
+
+    const mousePosition = {
+      x: e.clientX,
+      y: e.clientY,
+    }
 
     const { top, left } = itemRef.current.getBoundingClientRect()
     const scrollDiff = {
@@ -32,68 +40,51 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
       y: scroll.y - window.scrollY,
     }
 
-    const newX = throttledMousePosition.x - (scrollDiff.x + left)
-    const newY = throttledMousePosition.y - (scrollDiff.y + top)
+    const newX = mousePosition.x - (scrollDiff.x + left)
+    const newY = mousePosition.y - (scrollDiff.y + top)
 
     x.set(linearInterpolation(x.get(), newX, 0.1))
     y.set(linearInterpolation(y.get(), newY, 0.1))
 
     itemRef.current.style.setProperty('--x', `${x.get()}px`)
     itemRef.current.style.setProperty('--y', `${y.get()}px`)
-  }, [throttledMousePosition, scroll, x, y])
 
-  useEffect(() => {
-    if (decoRef.current) {
-      decoRef.current.innerHTML = randomString
-    }
-  }, [randomString])
+    decoRef.current.innerHTML = getRandomString(2000)
+  }
+
+  const handleMouseEnter = () => {
+    controls.start({ opacity: 1, transition: { duration: 0.5, ease: 'easeInOut' } })
+  }
+
+  const handleMouseLeave = () => {
+    controls.start({ opacity: 0, transition: { duration: 0.5, ease: 'easeInOut' } })
+  }
 
   useEffect(() => {
     const handleResize = () => {
       setScroll({ x: window.scrollX, y: window.scrollY })
     }
 
-    const handleMouseEnter = () => {
-      controls.start({ opacity: 1, transition: { duration: 0.5, ease: 'easeInOut' } })
-    }
-
-    const handleMouseLeave = () => {
-      controls.start({ opacity: 0, transition: { duration: 0.5, ease: 'easeInOut' } })
-    }
-
-    const handleMouseMove = () => {
-      setRandomString(getRandomString(2000))
-    }
-
     if (itemRef.current) {
       handleResize()
       window.addEventListener('resize', handleResize)
-      itemRef.current.addEventListener('mouseenter', handleMouseEnter)
-      itemRef.current.addEventListener('mouseleave', handleMouseLeave)
-      itemRef.current.addEventListener('mousemove', handleMouseMove)
     }
 
     return () => {
       window.removeEventListener('resize', handleResize)
-      if (itemRef.current) {
-        itemRef.current.removeEventListener('mouseenter', handleMouseEnter)
-        itemRef.current.removeEventListener('mouseleave', handleMouseLeave)
-        itemRef.current.removeEventListener('mousemove', handleMouseMove)
-      }
     }
   }, [controls])
 
-  useEffect(() => {
-    updatePosition()
-  }, [throttledMousePosition, scroll, updatePosition])
-
   return (
-    <div
+    <motion.div
       className={cn(
         "w-full h-full [aspect-ratio:1] relative overflow-hidden grid place-items-center [--x:0] [--y:0] rounded after:content[''] after:top-0  after:absolute after:left-0 after:w-full after:h-full",
         styles['radial-background'],
       )}
       ref={itemRef}
+      onMouseMove={updatePosition}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <motion.div
         ref={decoRef}
@@ -104,7 +95,7 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
         )}
       ></motion.div>
       <span className="relative z-10">{children}</span>
-    </div>
+    </motion.div>
   )
 }
 

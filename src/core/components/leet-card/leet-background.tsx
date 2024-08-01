@@ -1,7 +1,7 @@
 'use client'
 
 import React, { type FC, type MouseEvent, type PropsWithChildren, useEffect, useRef, useState } from 'react'
-import { motion, useAnimation, useMotionValue } from 'framer-motion'
+import { motion, useAnimation, useMotionValue, useScroll } from 'framer-motion'
 import { linearInterpolation } from '@/core/3d/linear-interpolation'
 import { getRandomString } from '@/core/utils/get-random-string'
 import { cn } from '@/lib/utils'
@@ -14,7 +14,7 @@ export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const controls = useAnimation()
-  const [scroll, setScroll] = useState({ x: 0, y: 0 })
+  const scroll = useScroll()
 
   const updatePosition = (e: MouseEvent<HTMLDivElement>) => {
     if (!itemRef.current || !decoRef.current) return
@@ -26,8 +26,8 @@ export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
 
     const { top, left } = itemRef.current.getBoundingClientRect()
     const scrollDiff = {
-      x: scroll.x - window.scrollX,
-      y: scroll.y - window.scrollY,
+      x: scroll.scrollX.get() - window.scrollX,
+      y: scroll.scrollY.get() - window.scrollY,
     }
 
     const newX = mousePosition.x - (scrollDiff.x + left)
@@ -49,21 +49,6 @@ export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
   const handleMouseLeave = () => {
     controls.start({ opacity: 0, transition: { duration: 0.5, ease: 'easeInOut' } })
   }
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScroll({ x: window.scrollX, y: window.scrollY })
-    }
-
-    if (itemRef.current) {
-      handleResize()
-      window.addEventListener('resize', handleResize)
-    }
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [controls])
 
   return (
     <motion.div

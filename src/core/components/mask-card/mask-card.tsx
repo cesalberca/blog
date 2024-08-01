@@ -7,26 +7,27 @@ import { linearInterpolation } from '@/core/3d/linear-interpolation'
 import { useMousePosition } from '@/core/hooks/use-mouse-position'
 import { getRandomString } from '@/core/utils/get-random-string'
 import { cn } from '@/lib/utils'
+import { useThrottle } from '@uidotdev/usehooks'
 
 const Item: FC<PropsWithChildren> = ({ children }) => {
   const itemRef = useRef<HTMLDivElement | null>(null)
-  const mousePosition = useMousePosition()
   const decoRef = useRef<HTMLDivElement | null>(null)
-  const [randomString, setRandomString] = useState(getRandomString(2000))
+
+  const mousePosition = useThrottle(useMousePosition(), 100)
+  const [unoptimizedRandomString, setRandomString] = useState(getRandomString(2000))
+  const randomString = useThrottle(unoptimizedRandomString, 50)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const controls = useAnimation()
-  const [scrollVal, setScrollVal] = useState({ x: 0, y: 0 })
-
-  console.log('Item')
+  const [scroll, setScroll] = useState({ x: 0, y: 0 })
 
   const updatePosition = useCallback(() => {
     if (!itemRef.current) return
 
     const { top, left } = itemRef.current.getBoundingClientRect()
     const scrollDiff = {
-      x: scrollVal.x - window.scrollX,
-      y: scrollVal.y - window.scrollY,
+      x: scroll.x - window.scrollX,
+      y: scroll.y - window.scrollY,
     }
 
     const newX = mousePosition.x - (scrollDiff.x + left)
@@ -37,7 +38,7 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
 
     itemRef.current.style.setProperty('--x', `${x.get()}px`)
     itemRef.current.style.setProperty('--y', `${y.get()}px`)
-  }, [mousePosition, scrollVal, x, y])
+  }, [mousePosition, scroll, x, y])
 
   useEffect(() => {
     if (decoRef.current) {
@@ -47,7 +48,7 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setScrollVal({ x: window.scrollX, y: window.scrollY })
+      setScroll({ x: window.scrollX, y: window.scrollY })
     }
 
     const handleMouseEnter = () => {
@@ -63,7 +64,7 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
     }
 
     if (itemRef.current) {
-      setScrollVal({ x: window.scrollX, y: window.scrollY })
+      handleResize()
       window.addEventListener('resize', handleResize)
       itemRef.current.addEventListener('mouseenter', handleMouseEnter)
       itemRef.current.addEventListener('mouseleave', handleMouseLeave)
@@ -82,7 +83,7 @@ const Item: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     updatePosition()
-  }, [mousePosition, scrollVal, updatePosition])
+  }, [mousePosition, scroll, updatePosition])
 
   return (
     <div

@@ -2,11 +2,12 @@ import type { FC } from 'react'
 import { Prism as SyntaxHighlighter, type SyntaxHighlighterProps } from 'react-syntax-highlighter'
 import dark from 'react-syntax-highlighter/dist/esm/styles/prism/synthwave84'
 import ReactMarkdown from 'react-markdown'
+import { cn } from '@/lib/utils'
 
-export const Markdown: FC<{ value: string }> = async ({ value }) => {
+export const Markdown: FC<{ value: string; className?: string }> = async ({ value, className }) => {
   return (
     <ReactMarkdown
-      className="prose prose-zinc dark:prose-invert"
+      className={cn('prose prose-zinc dark:prose-invert', className)}
       components={{
         code(props) {
           const { children, className, node, ...rest } = props

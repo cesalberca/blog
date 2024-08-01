@@ -11,6 +11,7 @@ import { Services } from './services'
 import { SocialMedia } from '@/core/components/social-media/social-media'
 import { Hero } from '@/core/components/hero/hero'
 import { ScrambleList } from '@/core/components/scramble-list/scramble-list'
+import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
 
 export const Section: FC<
   PropsWithChildren<{
@@ -19,7 +20,11 @@ export const Section: FC<
 > = ({ children, title }) => {
   return (
     <section className="mt-xxl">
-      {title && <h2 className="mt-m">{title}</h2>}
+      {title && (
+        <h2 className="my-m wrapper">
+          <ScrambleText>{title}</ScrambleText>
+        </h2>
+      )}
       {children}
     </section>
   )
@@ -51,7 +56,7 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
       </Hero>
 
       <Section>
-        <Markdown value={t('home.whoAmI')} />
+        <Markdown className="wrapper" value={t('home.whoAmI')} />
       </Section>
 
       <Section title={t('home.services.title')}>
@@ -63,7 +68,9 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
       </Section>
 
       <Section title={t('home.technologies')}>
-        <Technologies />
+        <div className="wrapper">
+          <Technologies />
+        </div>
       </Section>
 
       <Section title={t('home.latestArticles')}>

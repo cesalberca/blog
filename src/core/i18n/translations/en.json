@@ -32,21 +32,27 @@
     "whoAmI": "**Senior Frontend Architect** & **Software Crafter** from Spain. Freelancer _obsessed_ with **best practices**, **architecture** and **testing**.\n\nAs an [international speaker](https://www.cesalberca.com/talks) and Digital Nomad, I share my tech adventures around the world.\n\n Active in the [Codemotion](https://www.codemotion.com/) community as a committee member and [ambassador](https://community-en.codemotion.it/community/ambassador-program).",
     "projects": {
       "title": "Projects",
+      "description": "I love to create projects to learn new technologies and to share knowledge. Here are some of the projects I've created.",
       "code": "See the code",
       "live": "Live version",
       "katasTitle": "TypeScript Katas",
       "katasDescription": "TDD and testing are very important to me. Whenever I was teaching a course about programming I needed to create the same exercises over and over again. So I decided to create this instead.\n\nIt's a project to practise TDD, testing and TypeScript through simple and useful Katas.",
-      "whoAmITitle": "Who Am I",
-      "whoAmIDescription": "Simple Who Am I game implemented using RxJs, React and Firebase.",
-      "frontendReformsTitle": "WordleJS",
-      "frontendReformsDescription": "Code for the talk Frontend Reforms where we build a Wordle for frontend frameworks"
+      "blog": "Personal blog",
+      "blogDescription": "I write about software architecture, testing and frontend development. I also write about my experiences as a Digital Nomad and my trips around the world.",
+      "archimedesJs": "ArchimedesJS",
+      "archimedesJsDescription": "Archimedes is a series of architectural concepts that are implemented in different languages. Using a given Archimedes implementation provides a set of solid and flexible architectural pieces."
     },
     "services": {
       "title": "Services",
-      "description": "I offer a wide range of services, from consulting to training, and from architecture to development. I can help you with your project, no matter the size or the technology stack. I have experience in different industries and I can adapt to your needs. I'm a freelancer, so I can work with you in a flexible way."
+      "description": "After <leet>10 years</leet> of experience in Frontend Development and after having deployed to production projects using <leet>React</leet>, <leet>Angular</leet> and <leet>Vue</leet>, I can help you to improve your team's skills in best practices, testing and architecture.",
+      "consultancy": "Consultancy",
+      "consultancyDescription": "I can help you to improve your team's skills in best practices, testing and architecture. I can provide consultancy in different formats, from code reviews to architecture design.",
+      "training": "Training",
+      "trainingDescription": "I will help you to improve your team's skills in best practices, testing and architecture. I can provide training in different formats, from workshops to online courses.",
+      "mentoring": "Mentoring",
+      "mentoringDescription": "I can help you to improve your skills in frontend development, architecture and testing. I can provide mentoring in different formats, from pair programming to code reviews."
     }
   },
-
   "article": {
     "title": "Articles",
     "shareArticle": "Share article",

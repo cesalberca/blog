@@ -6,7 +6,7 @@ import { MouseIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const RATIO = 32.5
-const ROTATION_RANGE = RATIO
+const ROTATION_RANGE = 20
 const HALF_ROTATION_RANGE = RATIO / 2
 
 export const TiltCard: FC<
@@ -60,12 +60,14 @@ export const TiltCard: FC<
       }}
       className={cn('relative rounded-xl bg-accent', className)}
     >
-      <MouseIcon
+      <div
+        className="mx-auto drop-shadow absolute top-0 left-[50%]"
         style={{
           transform: 'translateZ(75px) translateY(40px)',
         }}
-        className="mx-auto text-4xl"
-      />
+      >
+        <MouseIcon className="text-4xl" />
+      </div>
       <div
         style={{
           transform: 'translateZ(50px)',

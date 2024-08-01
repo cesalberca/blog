@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 
 export const Hero: FC<PropsWithChildren<{ image?: string; className?: string }>> = ({ image, className, children }) => {
   return (
-    <div className={cn('full-width-section h-[80vh]', className)}>
+    <div className={cn('full-width-section h-[60vh]', className)}>
       {image && (
         <Image
           className="w-full h-full object-cover overflow-hidden object-top md:object-contain"

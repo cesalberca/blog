@@ -1,19 +1,34 @@
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import { LeetCard } from '@/core/components/leet-card/leet-card'
-import { SearchIcon } from 'lucide-react'
-import { LeetBackground } from '@/core/components/leet-card/leet-background'
+import { GraduationCap, Signpost, Users } from 'lucide-react'
+
+const Title: FC<{
+  value: string
+  icon: ReactNode
+}> = ({ value, icon }) => (
+  <div className="flex flex-col justify-center">
+    {icon}
+    <h3>{value}</h3>
+  </div>
+)
 
 export const Services: FC = () => {
   const t = useTranslations()
 
   return (
-    <div>
-      <p>After 10 years of experience in Frontend Development . I can provide </p>
-      <div className="full-width-section grid grid-cols-3 gap-4">
-        <LeetBackground>
-          <p>Architecture</p>
-        </LeetBackground>
+    <div className="flex flex-col gap-4">
+      <p className="mb-m wrapper">{t.rich('home.services.description')}</p>
+      <div className="bleed-width-section grid grid-cols-3 gap-1">
+        <LeetCard center={<Title value={t('home.services.consultancy')} icon={<Signpost size={72} />} />}>
+          <p>{t('home.services.consultancyDescription')}</p>
+        </LeetCard>
+        <LeetCard center={<Title value={t('home.services.training')} icon={<GraduationCap size={72} />} />}>
+          <p>{t('home.services.trainingDescription')}</p>
+        </LeetCard>
+        <LeetCard center={<Title value={t('home.services.mentoring')} icon={<Users size={72} />} />}>
+          <p>{t('home.services.mentoringDescription')}</p>
+        </LeetCard>
       </div>
     </div>
   )

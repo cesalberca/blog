@@ -6,7 +6,7 @@ export const Page: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div>
       <Navbar className="w-full" />
-      <main className="mx-auto max-w-xl">{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   )

@@ -101,6 +101,10 @@
   h6 {
     @apply text-lg;
   }
+
+  .wrapper {
+    @apply mx-auto max-w-xl;
+  }
 }
 
 .full-width-section {
@@ -110,4 +114,14 @@
   position: relative;
   margin-left: -50vw;
   margin-right: -50vw;
+}
+
+@screen lg {
+  .full-width-section {
+    @apply max-w-xl m-auto w-full relative left-0 right-0;
+  }
+}
+
+.bleed-width-section {
+  @apply max-w-screen-xl m-auto;
 }

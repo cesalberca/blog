@@ -47,7 +47,7 @@ export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
   }
 
   const handleMouseLeave = () => {
-    controls.start({ opacity: 0, transition: { duration: 0.5, ease: 'easeInOut' } })
+    controls.start({ opacity: 0.25, transition: { duration: 0.5, ease: 'easeInOut' } })
   }
 
   return (
@@ -64,6 +64,16 @@ export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
       <motion.div
         ref={decoRef}
         animate={controls}
+        onViewportEnter={() => {
+          if (decoRef.current && itemRef.current) {
+            controls.start({ opacity: 1, transition: { duration: 0.5, ease: 'easeInOut' } })
+            itemRef.current.style.setProperty('--x', `${0}px`)
+            itemRef.current.style.setProperty('--y', `${0}px`)
+            x.set(linearInterpolation(x.get(), 0, 0.1))
+            y.set(linearInterpolation(y.get(), 0, 0.1))
+            decoRef.current.innerHTML = getRandomString(2000)
+          }
+        }}
         className={cn(
           'absolute top-0 left-0 h-full w-full font-mono text-xs break-words leading-4 text-white opacity-0',
           styles.mask,

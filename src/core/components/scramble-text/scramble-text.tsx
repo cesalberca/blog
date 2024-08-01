@@ -4,6 +4,7 @@ import React, { type FC, useState } from 'react'
 import { motion } from 'framer-motion'
 import { getRandomString } from '@/core/utils/get-random-string'
 import { useInterval } from '@/core/hooks/use-interval'
+import { cn } from '@/lib/utils'
 
 const CYCLES_PER_LETTER = 2
 const SHUFFLE_TIME = 50
@@ -12,18 +13,20 @@ const DELAY_TIME = 1000
 interface Props {
   text: string
   repeat?: boolean
-  onComplete: () => void
+  onComplete?: () => void
+  fixedWidth?: boolean
 }
 
-export const ScrambleText: FC<Props> = ({ text, onComplete, repeat = false }) => {
+export const ScrambleText: FC<Props> = ({ text, onComplete, repeat = false, fixedWidth = false }) => {
   const [stateText, setStateText] = useState(text)
   const [position, setPosition] = useState(0)
   const [stopInterval, setStopInterval] = useState(false)
   const [delay, setDelay] = useState(false)
+  const [startAnimation, setStartAnimation] = useState(false)
 
   useInterval(
     () => {
-      if (delay) {
+      if (delay || !startAnimation) {
         return
       }
 
@@ -46,7 +49,7 @@ export const ScrambleText: FC<Props> = ({ text, onComplete, repeat = false }) =>
         setPosition(0)
         if (!repeat) {
           setStopInterval(true)
-          onComplete()
+          onComplete?.()
         } else {
           setDelay(true)
           setTimeout(() => {
@@ -59,9 +62,9 @@ export const ScrambleText: FC<Props> = ({ text, onComplete, repeat = false }) =>
   )
 
   return (
-    <motion.span className="relative whitespace-nowrap">
-      <span className="relative whitespace-nowrap invisible">{text}</span>
-      <span className="absolute top-0 left-0">{stateText}</span>
+    <motion.span className="relative whitespace-nowrap" onViewportEnter={() => setStartAnimation(true)}>
+      {fixedWidth && <span className="relative whitespace-nowrap invisible">{text}</span>}
+      <span className={cn(fixedWidth ? 'absolute top-0 left-0' : '')}>{stateText}</span>
     </motion.span>
   )
 }

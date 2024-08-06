@@ -51,6 +51,17 @@
       "trainingDescription": "I will help you to improve your team's skills in best practices, testing and architecture. I can provide training in different formats, from workshops to online courses.",
       "mentoring": "Mentoring",
       "mentoringDescription": "I can help you to improve your skills in frontend development, architecture and testing. I can provide mentoring in different formats, from pair programming to code reviews."
+    },
+    "contact": {
+      "title": "Contact",
+      "name": "Name",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "message": "Message",
+      "messageDescription": "Want to work together? Have an idea you want to share? Just want to say hi?",
+      "submit": "Submit",
+      "submitting": "Submitting",
+      "sent": "Thanks for contacting me!"
     }
   },
   "article": {

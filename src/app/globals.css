@@ -103,7 +103,7 @@
   }
 
   .wrapper {
-    @apply mx-auto max-w-xl;
+    @apply mx-auto max-w-screen-sm;
   }
 }
 

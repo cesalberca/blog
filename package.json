@@ -14,8 +14,11 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@formspree/react": "2.5.1",
+    "@hookform/resolvers": "3.9.0",
     "@icons-pack/react-simple-icons": "9.6.0",
     "@radix-ui/react-dropdown-menu": "2.1.1",
+    "@radix-ui/react-label": "2.1.0",
     "@radix-ui/react-popover": "1.1.1",
     "@radix-ui/react-slot": "1.1.0",
     "@tailwindcss/typography": "0.5.13",
@@ -34,6 +37,7 @@
     "postcss": "8.4.39",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "react-hook-form": "7.52.1",
     "react-markdown": "9.0.1",
     "react-syntax-highlighter": "15.5.0",
     "reflect-metadata": "0.2.2",
@@ -41,7 +45,8 @@
     "tailwind-merge": "2.4.0",
     "tailwindcss": "3.4.4",
     "tailwindcss-animate": "1.0.7",
-    "tsyringe": "4.8.0"
+    "tsyringe": "4.8.0",
+    "zod": "3.23.8"
   },
   "devDependencies": {
     "@types/jest": "29.5.12",

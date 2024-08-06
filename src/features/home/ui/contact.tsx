@@ -1,0 +1,113 @@
+'use client'
+
+import { zodResolver } from '@hookform/resolvers/zod'
+import { type SubmitHandler, useForm } from 'react-hook-form'
+import { z } from 'zod'
+
+import { Button } from '@/components/ui/button'
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { useSubmit } from '@formspree/react'
+import { useTranslations } from 'next-intl'
+import type { FC } from 'react'
+
+const formSchema = z.object({
+  email: z.string().email({ message: 'Invalid email address.' }),
+  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
+  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+})
+
+type FormData = z.infer<typeof formSchema>
+
+export const ContactForm: FC = () => {
+  const t = useTranslations()
+
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+    },
+  })
+
+  const submit = useSubmit<FormData>(process.env.NEXT_PUBLIC_FORMSPREE_API_KEY as string, {
+    onError(errs) {
+      const formErrs = errs.getFormErrors()
+      for (const { code, message } of formErrs) {
+        form.setError(`root.${code}`, {
+          type: code,
+          message,
+        })
+      }
+
+      const fieldErrs = errs.getAllFieldErrors()
+      for (const [field, errs] of fieldErrs) {
+        form.setError(field as keyof FormData, {
+          message: errs.map(e => e.message).join(', '),
+        })
+      }
+    },
+  })
+
+  const onSubmit: SubmitHandler<FormData> = data => {
+    submit(data)
+  }
+
+  return (
+    <div>
+      {form.formState.isSubmitSuccessful ? (
+        <h2>{t('home.contact.sent')}</h2>
+      ) : (
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('home.contact.name')}</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage>{form.formState.errors.name?.message}</FormMessage>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('home.contact.email')}</FormLabel>
+                  <FormControl>
+                    <Input placeholder={t('home.contact.emailPlaceholder')} {...field} />
+                  </FormControl>
+                  <FormMessage>{form.formState.errors.email?.message}</FormMessage>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('home.contact.message')}</FormLabel>
+                  <FormControl>
+                    <Textarea {...field} rows={5} />
+                  </FormControl>
+                  <FormDescription>{t('home.contact.messageDescription')}</FormDescription>
+                  <FormMessage>{form.formState.errors.message?.message}</FormMessage>
+                </FormItem>
+              )}
+            />
+            <Button type="submit" disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? t('home.contact.submitting') : t('home.contact.submit')}
+            </Button>
+          </form>
+        </Form>
+      )}
+    </div>
+  )
+}

@@ -12,6 +12,9 @@ import { SocialMedia } from '@/core/components/social-media/social-media'
 import { Hero } from '@/core/components/hero/hero'
 import { ScrambleList } from '@/core/components/scramble-list/scramble-list'
 import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
+import { Button } from '@/components/ui/button'
+import { Contact } from 'lucide-react'
+import { ContactForm } from '@/features/home/ui/contact'
 
 export const Section: FC<
   PropsWithChildren<{
@@ -49,6 +52,7 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
             <ScrambleList texts={texts}></ScrambleList>
           </h2>
           <h6 className="mt-xs">{t.rich('home.heroCaption')}</h6>
+          <Button variant="outline">Contact me</Button>
           <section className="mt-xs text-xs">
             <SocialMedia />
           </section>
@@ -56,7 +60,9 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
       </Hero>
 
       <Section>
-        <Markdown className="wrapper" value={t('home.whoAmI')} />
+        <div className="wrapper">
+          <Markdown value={t('home.whoAmI')} />
+        </div>
       </Section>
 
       <Section title={t('home.services.title')}>
@@ -70,6 +76,12 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
       <Section title={t('home.technologies')}>
         <div className="wrapper">
           <Technologies />
+        </div>
+      </Section>
+
+      <Section title={t('home.contact.title')}>
+        <div className="wrapper">
+          <ContactForm />
         </div>
       </Section>
 

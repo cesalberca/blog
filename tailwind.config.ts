@@ -13,6 +13,7 @@ const config = {
       },
     },
     extend: {
+      scrollBehavior: ['responsive'],
       spacing: {
         xss: '8px',
         xs: '12px',

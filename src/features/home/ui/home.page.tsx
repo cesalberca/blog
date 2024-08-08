@@ -13,8 +13,8 @@ import { Hero } from '@/core/components/hero/hero'
 import { ScrambleList } from '@/core/components/scramble-list/scramble-list'
 import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
 import { Button } from '@/components/ui/button'
-import { Contact } from 'lucide-react'
 import { ContactForm } from '@/features/home/ui/contact'
+import { OpenToWork } from '@/core/components/open-to-work/open-to-work'
 
 export const Section: FC<
   PropsWithChildren<{
@@ -46,13 +46,16 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
 
   return (
     <Page>
+      <OpenToWork />
       <Hero image="/assets/images/me.png">
         <header className="absolute left-0">
           <h2 className="uppercase">
             <ScrambleList texts={texts}></ScrambleList>
           </h2>
           <h6 className="mt-xs">{t.rich('home.heroCaption')}</h6>
-          <Button variant="outline">Contact me</Button>
+          <Button className="mb-xs mt-s" asChild variant="outline">
+            <a href="#contact-form">Contact me</a>
+          </Button>
           <section className="mt-xs text-xs">
             <SocialMedia />
           </section>
@@ -80,7 +83,7 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
       </Section>
 
       <Section title={t('home.contact.title')}>
-        <div className="wrapper">
+        <div className="wrapper" id="contact-form">
           <ContactForm />
         </div>
       </Section>

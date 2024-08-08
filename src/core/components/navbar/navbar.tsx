@@ -37,7 +37,6 @@ const Links = () => {
   return (
     <>
       <MenuLink to={'/talks'}>{t('talks.title')}</MenuLink>
-      <MenuLink to={'/about'}>{t('about.title')}</MenuLink>
     </>
   )
 }

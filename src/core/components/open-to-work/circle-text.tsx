@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Button } from '@/components/ui/button'
 
 interface Props {
   text: string
@@ -8,8 +9,8 @@ interface Props {
 
 export const CircleText: React.FC<Props> = ({ text }) => {
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="relative w-72 h-72 flex justify-center items-center">
+    <div className="flex justify-center items-center">
+      <div className="relative w-28 h-28 flex justify-center items-center">
         <motion.div
           className="absolute inset-0 flex items-center justify-center"
           animate={{ rotate: 360 }}
@@ -118,7 +119,9 @@ export const CircleText: React.FC<Props> = ({ text }) => {
             />
           </svg>
         </motion.div>
-        <div className="absolute text-2xl font-bold">{text}</div>
+        <a className="absolute text-xs font-bold" href="#contact-form">
+          {text}
+        </a>
       </div>
     </div>
   )

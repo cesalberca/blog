@@ -43,6 +43,11 @@ export const ScrambleText: FC<PropsWithChildren<Props>> = ({
           if (newPos / CYCLES_PER_LETTER > index) {
             return char
           }
+
+          if (char === ' ') {
+            return ' '
+          }
+
           return getRandomString(1)
         })
         .join('')
@@ -68,9 +73,8 @@ export const ScrambleText: FC<PropsWithChildren<Props>> = ({
   )
 
   return (
-    <motion.span className="relative whitespace-nowrap" onViewportEnter={() => setStartAnimation(true)}>
-      {fixedWidth && <span className="relative whitespace-nowrap invisible">{text}</span>}
-      <span className={cn(fixedWidth ? 'absolute top-0 left-0' : '')}>{stateText}</span>
+    <motion.span className="relative" onViewportEnter={() => setStartAnimation(true)}>
+      {stateText}
     </motion.span>
   )
 }

@@ -14,7 +14,7 @@ export const CircleText: React.FC<Props> = ({ text }) => {
         <motion.div
           className="absolute inset-0 flex items-center justify-center"
           animate={{ rotate: 360 }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           style={{ transformOrigin: 'center' }}
         >
           <svg

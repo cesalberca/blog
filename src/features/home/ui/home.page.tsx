@@ -48,11 +48,11 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
     <Page>
       <OpenToWork />
       <Hero image="/assets/images/me.png">
-        <header className="absolute left-0">
-          <h2 className="uppercase">
-            <ScrambleList texts={texts}></ScrambleList>
+        <header className="absolute inset-0 p-m flex flex-col justify-center">
+          <h2 className="uppercase text-4xl leading-tight min-h-[6rem] flex items-end">
+            <ScrambleList texts={texts} />
           </h2>
-          <h6 className="mt-xs">{t.rich('home.heroCaption')}</h6>
+          <h6>{t.rich('home.heroCaption')}</h6>
           <section className="mt-xs text-xs">
             <SocialMedia />
           </section>

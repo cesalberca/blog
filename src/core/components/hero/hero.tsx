@@ -12,6 +12,7 @@ export const Hero: FC<PropsWithChildren<{ image?: string; className?: string }>>
           height={720}
           src={image}
           alt={''}
+          layout="responsive"
         />
       )}
       <div className="mx-auto max-w-xl inset-0 absolute flex items-center justify-center">{children}</div>

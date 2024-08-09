@@ -48,16 +48,16 @@ export const Projects: FC = () => {
   ]
 
   return (
-    <div className="flex flex-col gap-20">
+    <div className="flex flex-col gap-20 mb-xxl">
       <p className="wrapper">{t('home.projects.description')}</p>
       <section className="mt-xxl flex flex-col gap-20 bleed-width-section">
         {projects.map((x, i) => (
           <div
             key={x.title}
-            className={cn('flex flex-col md:flex-row gap-m items-center', { 'flex-row-reverse': i % 2 !== 0 })}
+            className={cn('flex flex-col md:flex-row gap-m items-center', { 'md:flex-row-reverse': i % 2 !== 0 })}
           >
-            <TiltCard className="flex-2" defaultTiltX={i % 2 !== 0 ? 5 : 5} defaultTiltY={i % 2 === 0 ? 30 : -30}>
-              <Image src={x.image} alt={x.title} width={300} height={200} layout="responsive" />
+            <TiltCard className="flex-1" defaultTiltX={i % 2 !== 0 ? 5 : 5} defaultTiltY={i % 2 === 0 ? 30 : -30}>
+              <Image src={x.image} alt={x.title} width={300} height={200} className="w-full h-auto" />
               <footer
                 className="flex gap-4 justify-center"
                 style={{
@@ -75,8 +75,8 @@ export const Projects: FC = () => {
                 )}
               </footer>
             </TiltCard>
-            <aside className="flex-1">
-              <h3>{x.title}</h3>
+            <aside className="flex-1 wrapper">
+              <h3 className="mb-m">{x.title}</h3>
               <Markdown value={x.description}></Markdown>
               <div className="pt-m">
                 <Technologies technologies={x.technologies} />

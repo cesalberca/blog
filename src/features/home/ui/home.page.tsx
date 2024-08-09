@@ -22,7 +22,7 @@ export const Section: FC<
   }>
 > = ({ children, title }) => {
   return (
-    <section className="mt-xxl">
+    <section className="mt-m md:mt-xxl">
       {title && (
         <h2 className="my-m wrapper">
           <ScrambleText>{title}</ScrambleText>

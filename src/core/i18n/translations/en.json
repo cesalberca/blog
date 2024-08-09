@@ -45,13 +45,13 @@
     },
     "services": {
       "title": "Services",
-      "description": "After <leet>10 years</leet> of experience in Frontend Development and after having deployed to production projects using <leet>React</leet>, <leet>Angular</leet> and <leet>Vue</leet>, I can help you to improve your team's skills in best practices, testing and architecture.",
+      "description": "I have <strong>10 years</strong> of experience in Frontend Development.\n\nI've deployed to production full-fledged enterprise applications using <strong>React</strong>, <strong>Angular</strong> and <strong>Vue</strong>.",
       "consultancy": "Consultancy",
-      "consultancyDescription": "I can help you to improve your team's skills in best practices, testing and architecture. I can provide consultancy in different formats, from code reviews to architecture design.",
+      "consultancyDescription": "I can provide consultancy in different formats, from code reviews to architecture design. I specialise in greenfield projects, setting up the right architecture and best practices from the beginning.",
       "training": "Training",
-      "trainingDescription": "I will help you to improve your team's skills in best practices, testing and architecture. I can provide training in different formats, from workshops to online courses.",
-      "mentoring": "Mentoring",
-      "mentoringDescription": "I can help you to improve your skills in frontend development, architecture and testing. I can provide mentoring in different formats, from pair programming to code reviews."
+      "trainingDescription": "I will help you refine your team's skills in best practices, testing and architecture. I can provide training in different formats, from workshops to online courses.",
+      "development": "Software<br/>Development",
+      "developmentDescription": "I can develop your project from scratch, from the architecture to the deployment. I specialise in frontend development, but I can also provide frontend full-stack development."
     },
     "contact": {
       "title": "Contact",

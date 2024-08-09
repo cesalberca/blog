@@ -57,7 +57,7 @@ export const Technologies: FC<{ technologies?: string[] }> = ({ technologies }) 
     }) || allTechnologies
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 w-full">
+    <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 w-full">
       {renderedTechnologies.map(tech => (
         <div key={tech.label} className="flex flex-col items-center">
           {tech.image ? (

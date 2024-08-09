@@ -20,14 +20,23 @@ export const Services: FC = () => {
     <div className="flex flex-col gap-4">
       <p className="mb-m wrapper">{t.rich('home.services.description')}</p>
       <div className="bleed-width-section grid md:grid-cols-3 gap-1">
-        <LeetCard center={<Title value={t('home.services.consultancy')} icon={<Signpost size={72} />} />}>
+        <LeetCard
+          className="items-end"
+          center={<Title value={t('home.services.consultancy')} icon={<Signpost size={72} />} />}
+        >
           <p>{t('home.services.consultancyDescription')}</p>
         </LeetCard>
-        <LeetCard center={<Title value={t('home.services.training')} icon={<GraduationCap size={72} />} />}>
+        <LeetCard
+          className="items-end"
+          center={<Title value={t('home.services.training')} icon={<GraduationCap size={72} />} />}
+        >
           <p>{t('home.services.trainingDescription')}</p>
         </LeetCard>
-        <LeetCard center={<Title value={t('home.services.mentoring')} icon={<Users size={72} />} />}>
-          <p>{t('home.services.mentoringDescription')}</p>
+        <LeetCard
+          className="items-end"
+          center={<Title value={t('home.services.development')} icon={<Users size={72} />} />}
+        >
+          <p>{t('home.services.developmentDescription')}</p>
         </LeetCard>
       </div>
     </div>

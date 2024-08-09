@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 export const Markdown: FC<{ value: string; className?: string }> = async ({ value, className }) => {
   return (
     <ReactMarkdown
-      className={cn('prose prose-zinc dark:prose-invert', className)}
+      className={cn('prose prose-zinc dark:prose-invert text-current', className)}
       components={{
         code(props) {
           const { children, className, node, ...rest } = props

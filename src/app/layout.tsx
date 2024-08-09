@@ -8,6 +8,7 @@ import { baseUrl } from './sitemap'
 import { getLocale, getMessages } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 import { ThemeProvider } from '@/core/components/theme/theme-provider'
+import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -39,15 +40,13 @@ export const metadata: Metadata = {
   },
 }
 
-const cx = (...classes: string[]) => classes.filter(Boolean).join(' ')
-
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const locale = await getLocale()
   const messages = await getMessages()
 
   return (
-    <html lang={locale} className={cx('text-black bg-white dark:text-white dark:bg-black')} suppressHydrationWarning>
-      <body className={`antialiased font-medium lg:mx-auto ${inter.className}`}>
+    <html lang={locale} suppressHydrationWarning>
+      <body className={`antialiased font-medium lg:mx-auto sm:text-lg text-base ${inter.className}`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
           <Analytics />

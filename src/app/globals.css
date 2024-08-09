@@ -107,7 +107,7 @@ html {
   }
 
   .wrapper {
-    @apply mx-auto max-w-screen-sm;
+    @apply mx-4 md:mx-auto md:max-w-screen-sm;
   }
 }
 
@@ -127,5 +127,5 @@ html {
 }
 
 .bleed-width-section {
-  @apply max-w-screen-xl m-auto;
+  @apply md:max-w-screen-xl md:m-auto;
 }

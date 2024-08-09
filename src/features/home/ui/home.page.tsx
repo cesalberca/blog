@@ -53,9 +53,6 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
             <ScrambleList texts={texts}></ScrambleList>
           </h2>
           <h6 className="mt-xs">{t.rich('home.heroCaption')}</h6>
-          <Button className="mb-xs mt-s" asChild variant="outline">
-            <a href="#contact-form">Contact me</a>
-          </Button>
           <section className="mt-xs text-xs">
             <SocialMedia />
           </section>
@@ -86,13 +83,6 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
         <div className="wrapper" id="contact-form">
           <ContactForm />
         </div>
-      </Section>
-
-      <Section title={t('home.latestArticles')}>
-        {articles.map(article => (
-          <ArticleExcerpt key={article.id.value} excerpt={article.getExcerpt()} />
-        ))}
-        <Link to={'/articles'}>{t('home.viewAllArticles')}</Link>
       </Section>
     </Page>
   )

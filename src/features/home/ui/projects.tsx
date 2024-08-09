@@ -52,9 +52,12 @@ export const Projects: FC = () => {
       <p className="wrapper">{t('home.projects.description')}</p>
       <section className="mt-xxl flex flex-col gap-20 bleed-width-section">
         {projects.map((x, i) => (
-          <div key={x.title} className={cn('flex gap-m items-center', { 'flex-row-reverse': i % 2 !== 0 })}>
+          <div
+            key={x.title}
+            className={cn('flex flex-col md:flex-row gap-m items-center', { 'flex-row-reverse': i % 2 !== 0 })}
+          >
             <TiltCard className="flex-2" defaultTiltX={i % 2 !== 0 ? 5 : 5} defaultTiltY={i % 2 === 0 ? 30 : -30}>
-              <Image src={x.image} alt={x.title} width={600} height={400} />
+              <Image src={x.image} alt={x.title} width={300} height={200} layout="responsive" />
               <footer
                 className="flex gap-4 justify-center"
                 style={{

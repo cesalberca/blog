@@ -19,7 +19,7 @@ export const Services: FC = () => {
   return (
     <div className="flex flex-col gap-4">
       <p className="mb-m wrapper">{t.rich('home.services.description')}</p>
-      <div className="bleed-width-section grid grid-cols-3 gap-1">
+      <div className="bleed-width-section grid md:grid-cols-3 gap-1">
         <LeetCard center={<Title value={t('home.services.consultancy')} icon={<Signpost size={72} />} />}>
           <p>{t('home.services.consultancyDescription')}</p>
         </LeetCard>

@@ -43,6 +43,45 @@
       "archimedesJs": "ArchimedesJS",
       "archimedesJsDescription": "Archimedes is a series of architectural concepts that are implemented in different languages. Using a given Archimedes implementation provides a set of solid and flexible architectural pieces."
     },
+    "experience": {
+      "title": "Software Development Journey",
+      "cv": "Download full resume.",
+      "freelancer": {
+        "title": "Freelancer",
+        "dates": "2024 - Currently",
+        "description": "Branding, client outreach, project management, and development of frontend applications for multiple clients."
+      },
+      "autentia": {
+        "title": "Autentia",
+        "dates": "2017 - 2024",
+        "description": "* __Front-end Architect Lead__. I designed and implemented Design Systems in different frameworks, modular architectures following Hexagonal and Domain Driven Design principles and created robust Testing Strategies.\n* Software developer of different stacks, including JavaScript, TypeScript, Angular, Vue and React.\n* Open Source developer: Created an [architectural framework](https://www.archimedesfw.io/docs/js/) in TypeScript that makes your application more robust.\n* Trainer in different technologies, such as: JavaScript, TypeScript, Vue, Angular, React, testing, CSS, architecture, good practices and more.\n* Onboarding: I was part of designing the frontend onboarding process in the company\n* Mentor: I’ve been a mentor for the most junior members of the company and had 1:1 where we would set goals and track them.\n* Interviewer: I interviewed prominent tech people for the [company’s YouTube channel](https://www.youtube.com/watch?v=iThFgLmD96E&list=PLKxa4AIfm4pVyeMpU0QkV4gzaFDaa_RFW&index=10)"
+      },
+      "codemotion": {
+        "title": "Codemotion Committee Member",
+        "dates": "2019 - Currently",
+        "description": "Help contact speakers and design the event agenda. Participate in different webinars about different technologies."
+      },
+      "cice": {
+        "title": "Full Stack Development Masters Teacher at CICE",
+        "dates": "2020 - 2021",
+        "description": "Designed the curriculum, teach the students, and evaluate their progress. I taught HTML, CSS, JavaScript, TypeScript, React, NextJS, testing, architecture, good practices, and more. Here you can check the [open curriculum](https://github.com/cice-classroom/cice-playground)."
+      },
+      "escuelaIt": {
+        "title": "Frontend Development Teacher at EscuelaIT",
+        "dates": "Sporadic",
+        "description": "Trainer for the following courses: [Deno](https://escuela.it/cursos/curso-de-deno), [TypeScript](https://escuela.it/cursos/curso-typescript), [React](https://escuela.it/cursos/curso-desarrollo-aplicaciones-spa-react) and [Advanced JavaScript](https://escuela.it/cursos/curso-avanzado-javascript)."
+      },
+      "pensemos": {
+        "title": "Pensemos",
+        "dates": "2016 - 2017",
+        "description": "Web developer with Wordpress and React."
+      },
+      "comercialTalk": {
+        "title": "Comercial Talk",
+        "dates": "2013 - 2015",
+        "description": "Graphic designer and web developer. Poster, flyers, business cards and visual identity."
+      }
+    },
     "services": {
       "title": "Services",
       "description": "I have <strong>10 years</strong> of experience in Frontend Development.\n\nI've deployed to production full-fledged enterprise applications using <strong>React</strong>, <strong>Angular</strong> and <strong>Vue</strong>.",

@@ -15,6 +15,7 @@ import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
 import { Button } from '@/components/ui/button'
 import { ContactForm } from '@/features/home/ui/contact'
 import { OpenToWork } from '@/core/components/open-to-work/open-to-work'
+import { Experience } from '@/features/home/ui/experience'
 
 export const Section: FC<
   PropsWithChildren<{
@@ -62,6 +63,12 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
       <Section>
         <div className="wrapper">
           <Markdown value={t('home.whoAmI')} />
+        </div>
+      </Section>
+
+      <Section title={t('home.experience.title')}>
+        <div className="wrapper">
+          <Experience />
         </div>
       </Section>
 

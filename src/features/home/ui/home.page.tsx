@@ -49,7 +49,7 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
     <Page>
       <OpenToWork />
       <Hero image="/assets/images/me-no-bg.png">
-        <header className="absolute inset-0 p-m flex flex-col justify-center">
+        <header className="absolute inset-0 p-m md:pt-[100px] flex flex-col justify-center">
           <h2 className="uppercase text-4xl leading-tight min-h-[6rem] flex items-end">
             <ScrambleList texts={texts} />
           </h2>
@@ -88,6 +88,9 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
 
       <Section title={t('home.contact.title')}>
         <div className="wrapper" id="contact-form">
+          <div className="mb-s">
+            <SocialMedia />
+          </div>
           <ContactForm />
         </div>
       </Section>

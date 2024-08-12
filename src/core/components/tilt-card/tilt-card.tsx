@@ -72,7 +72,6 @@ export const TiltCard: FC<
         style={{
           transform: 'translateZ(50px)',
         }}
-        className="text-center"
       >
         {children}
       </div>

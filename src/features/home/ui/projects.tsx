@@ -27,7 +27,7 @@ export const Projects: FC = () => {
       description: t('home.projects.katasDescription'),
       code: Url.fromValue('https://github.com/cesalberca/katas'),
       image: '/assets/images/katas.png',
-      technologies: ['React', 'TypeScript', 'Jest', 'TDD', 'Testing'],
+      technologies: ['React', 'TypeScript', 'Jest'],
     },
     {
       title: t('home.projects.archimedesJs'),
@@ -35,7 +35,7 @@ export const Projects: FC = () => {
       link: Url.fromValue('https://archimedesfw.io/'),
       code: Url.fromValue('https://github.com/archimedes-projects/archimedes-js/'),
       image: '/assets/images/archimedesjs.png',
-      technologies: ['TypeScript', 'Jest', 'Architecture', 'Isomorphic'],
+      technologies: ['TypeScript', 'Jest'],
     },
     {
       title: t('home.projects.blog'),
@@ -54,7 +54,9 @@ export const Projects: FC = () => {
         {projects.map((x, i) => (
           <div
             key={x.title}
-            className={cn('flex flex-col md:flex-row gap-m items-center', { 'md:flex-row-reverse': i % 2 !== 0 })}
+            className={cn('flex flex-col md:flex-row gap-xl items-center', {
+              'md:flex-row-reverse': i % 2 !== 0,
+            })}
           >
             <TiltCard className="flex-1" defaultTiltX={i % 2 !== 0 ? 5 : 5} defaultTiltY={i % 2 === 0 ? 30 : -30}>
               <Image src={x.image} alt={x.title} width={300} height={200} className="w-full h-auto" />

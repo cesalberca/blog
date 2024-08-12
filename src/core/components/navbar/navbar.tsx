@@ -34,11 +34,7 @@ const MenuLink: FC<
 
 const Links = () => {
   const t = useTranslations()
-  return (
-    <>
-      <MenuLink to={'/talks'}>{t('talks.title')}</MenuLink>
-    </>
-  )
+  return <>{/*<MenuLink to={'/talks'}>{t('talks.title')}</MenuLink>*/}</>
 }
 
 export const Navbar: FC<{

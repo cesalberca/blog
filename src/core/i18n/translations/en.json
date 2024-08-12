@@ -37,11 +37,11 @@
       "code": "See the code",
       "live": "Live version",
       "katasTitle": "TypeScript Katas",
-      "katasDescription": "TDD and testing are very important to me. Whenever I was teaching a course about programming I needed to create the same exercises over and over again. So I decided to create this instead.\n\nIt's a project to practise TDD, testing and TypeScript through simple and useful Katas.",
+      "katasDescription": "**TDD** and **testing** are very important to me. Whenever I taught a course about programming, I needed to create the same exercises over and over again. So, I decided to abstract it into a project where my students could practice **TDD**, **testing**, and **TypeScript** through simple and useful **Katas**.",
       "blog": "Personal blog",
-      "blogDescription": "I write about software architecture, testing and frontend development. I also write about my experiences as a Digital Nomad and my trips around the world.",
+      "blogDescription": "My personal site, crafted with the latest technologies and best practices. It's built with **NextJS**, **React**, **TypeScript**, **TailwindCSS** and **Framer Motion**.",
       "archimedesJs": "ArchimedesJS",
-      "archimedesJsDescription": "Archimedes is a series of architectural concepts that are implemented in different languages. Using a given Archimedes implementation provides a set of solid and flexible architectural pieces."
+      "archimedesJsDescription": "A **TypeScript** library I created that helps you create robust applications by leveraging use cases. It helps you create **modular architectures** following **hexagonal** and **domain-driven design** principles."
     },
     "experience": {
       "title": "Software Development Journey",
@@ -94,13 +94,13 @@
     },
     "services": {
       "title": "Services",
-      "description": "I have <strong>10 years</strong> of experience in Frontend Development.\n\nI've deployed to production full-fledged enterprise applications using <strong>React</strong>, <strong>Angular</strong> and <strong>Vue</strong>.",
+      "description": "I have over **10 years** of experience in **Frontend Development**. I've deployed to production full-fledged enterprise web applications using **React**, **Angular** and **Vue**.",
       "consultancy": "Consultancy",
-      "consultancyDescription": "I can provide consultancy in different formats, from code reviews to architecture design. I specialise in greenfield projects, setting up the right architecture and best practices from the beginning.",
+      "consultancyDescription": "I will guide you in **architecture**, crafting a **testing strategy**, and implementing **best practices**.",
       "training": "Training",
-      "trainingDescription": "I will help you refine your team's skills in best practices, testing and architecture. I can provide training in different formats, from workshops to online courses.",
-      "development": "Software<br/>Development",
-      "developmentDescription": "I can develop your project from scratch, from the architecture to the deployment. I specialise in frontend development, but I can also provide frontend full-stack development."
+      "trainingDescription": "I will help you refine your team's skills in **best practices**, **testing** and **architecture**.",
+      "development": "Software Development",
+      "developmentDescription": "I will develop your project from **design** through **development** to **deployment**."
     },
     "contact": {
       "title": "Contact",
@@ -154,8 +154,5 @@
     "talkCode": "Code",
     "talkVideo": "Video",
     "talkDemo": "Demo"
-  },
-  "footer": {
-    "madeWith": "© {currentYear} – Made with love"
   }
 }

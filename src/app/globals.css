@@ -106,6 +106,10 @@ html {
     @apply text-lg;
   }
 
+  p {
+    @apply text-base;
+  }
+
   .wrapper {
     @apply mx-4 md:mx-auto md:max-w-screen-sm;
   }

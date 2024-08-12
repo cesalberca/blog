@@ -17,6 +17,16 @@ export const Experience: FC = () => {
       description: t('home.experience.autentia.description'),
     },
     {
+      title: t('home.experience.writer.title'),
+      dates: t('home.experience.writer.dates'),
+      description: t('home.experience.writer.description'),
+    },
+    {
+      title: t('home.experience.codemotionAmbassador.title'),
+      dates: t('home.experience.codemotionAmbassador.dates'),
+      description: t('home.experience.codemotionAmbassador.description'),
+    },
+    {
       title: t('home.experience.codemotion.title'),
       dates: t('home.experience.codemotion.dates'),
       description: t('home.experience.codemotion.description'),

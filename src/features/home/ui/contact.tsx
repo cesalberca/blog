@@ -11,6 +11,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { useSubmit } from '@formspree/react'
 import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
+import { Link } from '@/core/components/link/link'
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -57,6 +58,13 @@ export const ContactForm: FC = () => {
 
   return (
     <div>
+      <p
+        className="
+      mb-m"
+      >
+        {t('home.contact.appointmentDescription')}{' '}
+        <Link to="https://calendar.app.google/KvZAYd9okNjiY7iBA">{t('home.contact.appointmentLink')}</Link>
+      </p>
       {form.formState.isSubmitSuccessful ? (
         <h2>{t('home.contact.sent')}</h2>
       ) : (

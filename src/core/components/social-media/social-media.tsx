@@ -4,11 +4,11 @@ import Link from 'next/link'
 
 export const SocialMedia: FC = () => {
   const socialMedia = [
-    { name: 'Instagram', url: 'https://instagram.com/cesalberca', icon: SiInstagram },
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/cesalberca', icon: SiLinkedin },
+    { name: 'GitHub', url: 'https://github.com/cesalberca', icon: SiGithub },
     { name: 'StackOverflow', url: 'https://stackoverflow.com/users/6475656/césar-alberca', icon: SiStackoverflow },
     { name: 'X', url: 'https://x.com/cesalberca', icon: SiX },
-    { name: 'GitHub', url: 'https://github.com/cesalberca', icon: SiGithub },
+    { name: 'Instagram', url: 'https://instagram.com/cesalberca', icon: SiInstagram },
     { name: 'YouTube', url: 'https://www.youtube.com/@cesalberca', icon: SiYoutube },
   ]
 

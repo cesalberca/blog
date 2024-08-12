@@ -3,7 +3,6 @@
 import type { FC, PropsWithChildren, SVGProps } from 'react'
 import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
-import { ThemeToggle } from '@/core/components/theme/theme-toggle'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
@@ -69,9 +68,7 @@ export const Navbar: FC<{
             </PopoverContent>
           </Popover>
         </div>
-        <div>
-          <ThemeToggle />
-        </div>
+        <div>{/*<ThemeToggle />*/}</div>
       </div>
     </header>
   )

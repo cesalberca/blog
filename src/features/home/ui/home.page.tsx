@@ -48,7 +48,7 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
   return (
     <Page>
       <OpenToWork />
-      <Hero image="/assets/images/me.png">
+      <Hero image="/assets/images/me-no-bg.png">
         <header className="absolute inset-0 p-m flex flex-col justify-center">
           <h2 className="uppercase text-4xl leading-tight min-h-[6rem] flex items-end">
             <ScrambleList texts={texts} />

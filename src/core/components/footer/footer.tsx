@@ -6,23 +6,21 @@ import { useTranslations } from 'next-intl'
 export const Footer: FC = () => {
   const t = useTranslations()
   return (
-    <footer className="py-m md:py-xxl backdrop-blur flex flex-col items-center">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="flex flex-col items-start space-y-4">
-          <div className="flex items-center space-x-2">
-            <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
-            <span className="text-lg font-bold">{t('home.title')}</span>
-          </div>
-          <p className="mt-8 text-neutral-600 dark:text-neutral-300">© {new Date().getFullYear()} MIT Licensed</p>
+    <footer className="py-m md:py-xxl flex flex-col items-center gap-m">
+      <div className="flex flex-col items-start space-y-4">
+        <div className="flex items-center space-x-2">
+          <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
+          <span className="text-lg font-bold">{t('home.title')}</span>
         </div>
-        <div className="flex flex-col items-end space-y-4">
-          {/*<Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>*/}
-          {/*  {t('talks.title')}*/}
-          {/*</Link>*/}
-        </div>
-        <div className="flex items-center justify-end space-x-4">
-          <SocialMedia />
-        </div>
+        <p className="mt-8 text-neutral-600 dark:text-neutral-300">© {new Date().getFullYear()} MIT Licensed</p>
+      </div>
+      <div className="flex flex-col items-end space-y-4">
+        {/*<Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>*/}
+        {/*  {t('talks.title')}*/}
+        {/*</Link>*/}
+      </div>
+      <div className="flex items-center justify-end space-x-4">
+        <SocialMedia />
       </div>
     </footer>
   )

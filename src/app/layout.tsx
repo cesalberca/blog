@@ -47,7 +47,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`antialiased font-medium lg:mx-auto sm:text-lg text-base ${inter.className}`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" enableSystem={false} forcedTheme="dark" disableTransitionOnChange>
           <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
           <Analytics />
           <SpeedInsights />

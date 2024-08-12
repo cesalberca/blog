@@ -63,7 +63,9 @@ export const ContactForm: FC = () => {
       mb-m"
       >
         {t('home.contact.appointmentDescription')}{' '}
-        <Link to="https://calendar.app.google/KvZAYd9okNjiY7iBA">{t('home.contact.appointmentLink')}</Link>
+        <Link className="underline" to="https://calendar.app.google/KvZAYd9okNjiY7iBA">
+          {t('home.contact.appointmentLink')}
+        </Link>
       </p>
       {form.formState.isSubmitSuccessful ? (
         <h2>{t('home.contact.sent')}</h2>

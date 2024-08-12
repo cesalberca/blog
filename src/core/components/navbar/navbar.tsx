@@ -53,21 +53,21 @@ export const Navbar: FC<{
         <Links></Links>
       </nav>
       <div className="flex gap-2 items-center">
-        <div className="ml-auto lg:hidden">
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline">
-                <MenuIcon className="h-6 w-6" />
-                <span className="sr-only">{t('common.toggleNavigation')}</span>
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-40">
-              <div className="flex flex-col">
-                <Links></Links>
-              </div>
-            </PopoverContent>
-          </Popover>
-        </div>
+        {/*<div className="ml-auto lg:hidden">*/}
+        {/*  <Popover>*/}
+        {/*    <PopoverTrigger asChild>*/}
+        {/*      <Button variant="outline">*/}
+        {/*        <MenuIcon className="h-6 w-6" />*/}
+        {/*        <span className="sr-only">{t('common.toggleNavigation')}</span>*/}
+        {/*      </Button>*/}
+        {/*    </PopoverTrigger>*/}
+        {/*    <PopoverContent className="w-40">*/}
+        {/*      <div className="flex flex-col">*/}
+        {/*        <Links></Links>*/}
+        {/*      </div>*/}
+        {/*    </PopoverContent>*/}
+        {/*  </Popover>*/}
+        {/*</div>*/}
         <div>{/*<ThemeToggle />*/}</div>
       </div>
     </header>

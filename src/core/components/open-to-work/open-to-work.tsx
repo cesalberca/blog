@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 export const OpenToWork: FC = () => {
   const t = useTranslations()
   return (
-    <div className="fixed z-10 bottom-0 left-0 m-xs">
+    <div className="fixed z-10 bottom-0 left-0 mx-xs my-m">
       <CircleText text={t('common.openToWork')} />
     </div>
   )

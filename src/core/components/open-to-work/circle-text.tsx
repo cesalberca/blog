@@ -10,7 +10,7 @@ interface Props {
 export const CircleText: React.FC<Props> = ({ text }) => {
   return (
     <div className="flex justify-center items-center">
-      <div className="relative w-28 h-28 flex justify-center items-center">
+      <div className="relative w-14 h-14 md:w-28 md:h-28 flex justify-center items-center">
         <motion.div
           className="absolute inset-0 flex items-center justify-center backdrop-blur rounded-full"
           animate={{ rotate: 360 }}
@@ -108,7 +108,7 @@ export const CircleText: React.FC<Props> = ({ text }) => {
             />
           </svg>
         </motion.div>
-        <a className="absolute text-xs font-bold" href="#contact-form">
+        <a className="absolute text-[6px] md:text-xs font-bold" href="#contact-form">
           {text}
         </a>
       </div>

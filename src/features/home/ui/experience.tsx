@@ -70,11 +70,12 @@ export const Experience: FC = () => {
           ))}
         </div>
         <div className="mt-m">
-          <small>
-            <Link to="https://drive.google.com/file/d/1t92bJEKGwYaepUlZT7JrJd7zIWly6XqK/view?usp=drive_link">
-              {t('home.experience.cv')}
-            </Link>
-          </small>
+          <Link
+            className="text-xs"
+            to="https://drive.google.com/file/d/1t92bJEKGwYaepUlZT7JrJd7zIWly6XqK/view?usp=drive_link"
+          >
+            {t('home.experience.cv')}
+          </Link>
         </div>
       </div>
     </div>

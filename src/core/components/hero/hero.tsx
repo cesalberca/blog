@@ -8,10 +8,11 @@ export const Hero: FC<PropsWithChildren<{ image?: string; className?: string }>>
       {image && (
         <Image
           className="w-full h-auto object-cover overflow-hidden object-top md:object-contain pt-16"
-          width={1024}
-          height={720}
+          width={720}
+          height={405}
           src={image}
           alt={''}
+          loading="eager"
         />
       )}
       <div className="mx-auto max-w-xl inset-0 absolute flex items-center justify-center">{children}</div>

@@ -13,7 +13,8 @@
     "toggleNavigation": "Toggle navigation",
     "toggleTheme": "Toggle theme",
     "logo": "Logo",
-    "openToWork": "Contact me!"
+    "openToWork": "Contact me!",
+    "email": "dev@cesalberca.com"
   },
   "home": {
     "title": "César Alberca",
@@ -48,7 +49,7 @@
       "moreProjects": "You can also [check out my Github](https://github.com/cesalberca/), where I have more than 70 open source projects."
     },
     "experience": {
-      "title": "Software Development Journey",
+      "title": "Journey",
       "cv": "Download full resume.",
       "freelancer": {
         "title": "Freelancer",

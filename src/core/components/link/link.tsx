@@ -1,5 +1,6 @@
 import type { FC, PropsWithChildren } from 'react'
 import NextLink from 'next/link'
+import { cn } from '@/lib/utils'
 
 interface Props {
   to: string
@@ -13,7 +14,7 @@ export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, ty
   if (type === 'invisible') {
     return (
       <NextLink href={to} legacyBehavior passHref className={className}>
-        <button>{children}</button>
+        <button className="text-base">{children}</button>
       </NextLink>
     )
   }
@@ -22,9 +23,8 @@ export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, ty
     <NextLink
       href={to}
       passHref
-      tabIndex={1}
       {...(isExternal && { target: '_blank', rel: 'noreferrer' })}
-      className={className}
+      className={cn('underline', className)}
     >
       {children}
     </NextLink>

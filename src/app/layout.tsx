@@ -17,10 +17,12 @@ export const metadata: Metadata = {
     default: 'César Alberca',
     template: '%s | Blog',
   },
-  description: 'This is my portfolio.',
+  description:
+    'César Alberca is a Senior Frontend Architect with over 10 years of experience in React, Angular, and Vue. Dedicated to best practices, architecture, and testing, César is also an international speaker, digital nomad, and podcast host. Explore his projects, talks, and insights on modern web development.',
   openGraph: {
-    title: 'My blog',
-    description: 'César Alberca blog.',
+    title: 'César Alberca | Front-end Software Architect',
+    description:
+      'Explore the world of César Alberca, a Senior Frontend Architect with over 10 years of experience in React, Angular, and Vue. Passionate about best practices, architecture, and testing, César shares his knowledge as an international speaker, freelancer, and podcast host. Discover his projects, talks, and more on his personal site.',
     url: baseUrl,
     siteName: 'cesalberca',
     locale: 'en_US',

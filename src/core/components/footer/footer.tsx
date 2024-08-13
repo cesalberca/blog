@@ -2,6 +2,7 @@ import type { FC } from 'react'
 import { SocialMedia } from '@/core/components/social-media/social-media'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { Link } from '@/core/components/link/link'
 
 export const Footer: FC = () => {
   const t = useTranslations()
@@ -15,9 +16,9 @@ export const Footer: FC = () => {
         <p className="mt-8 text-neutral-600 dark:text-neutral-300">© {new Date().getFullYear()} MIT Licensed</p>
       </div>
       <div className="flex flex-col items-end space-y-4">
-        {/*<Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>*/}
-        {/*  {t('talks.title')}*/}
-        {/*</Link>*/}
+        <Link to="mailto:dev@cesalberca.com" type="invisible">
+          {t('common.email')}
+        </Link>
       </div>
       <div className="flex items-center justify-end space-x-4">
         <SocialMedia />

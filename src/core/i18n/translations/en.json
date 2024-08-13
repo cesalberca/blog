@@ -106,7 +106,7 @@
     "contact": {
       "title": "Contact",
       "appointmentDescription": "Would you rather jump on a quick call to discuss your business needs?",
-      "appointmentLink": "Book an appointment here",
+      "appointmentLink": "Book an appointment here.",
       "name": "Name",
       "email": "Email",
       "emailPlaceholder": "you@example.com",

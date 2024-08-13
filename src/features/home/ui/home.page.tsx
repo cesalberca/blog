@@ -66,18 +66,18 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
         </div>
       </Section>
 
-      <Section title={t('home.experience.title')}>
-        <div className="wrapper">
-          <Experience />
-        </div>
+      <Section title={t('home.projects.title')}>
+        <Projects />
       </Section>
 
       <Section title={t('home.services.title')}>
         <Services />
       </Section>
 
-      <Section title={t('home.projects.title')}>
-        <Projects />
+      <Section title={t('home.experience.title')}>
+        <div className="wrapper">
+          <Experience />
+        </div>
       </Section>
 
       <Section title={t('home.technologies.title')}>

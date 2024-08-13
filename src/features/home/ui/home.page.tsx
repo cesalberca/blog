@@ -80,8 +80,9 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
         <Projects />
       </Section>
 
-      <Section title={t('home.technologies')}>
+      <Section title={t('home.technologies.title')}>
         <div className="wrapper">
+          <Markdown value={t('home.technologies.description')} className="mb-m" />
           <Technologies />
         </div>
       </Section>

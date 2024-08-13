@@ -18,7 +18,10 @@
   "home": {
     "title": "César Alberca",
     "meAlt": "Picture of César Alberca",
-    "technologies": "Technologies",
+    "technologies": {
+      "title": "Technologies",
+      "description": "With over **5 years in ReactJS**, **4 in Angular**, and **2 in VueJS**, I've consistently used **TypeScript**, **Testing**, and architectural patterns like **DDD** and **Hexagonal** to enhance project maintainability.\n\nI stay current with new technologies, prioritizing best practices for long-term success. Here are some technologies I'm competent with:"
+    },
     "latestArticles": "Latest articles",
     "viewAllArticles": "View all articles",
     "heroTitle": "Digital Nomad.\n\nFrontend Architect.\n\nInternational Speaker.",

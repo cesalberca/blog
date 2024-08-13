@@ -1,7 +1,6 @@
 import type { FC } from 'react'
 import Image from 'next/image'
 
-// Consolidate icon imports into a single object for easier management and access
 import javascript from '../../../../public/assets/icons/javascript.svg'
 import react from '../../../../public/assets/icons/react.svg'
 import css from '../../../../public/assets/icons/css.svg'
@@ -13,13 +12,13 @@ import vue from '../../../../public/assets/icons/vue.svg'
 import node from '../../../../public/assets/icons/node.svg'
 import deno from '../../../../public/assets/icons/deno.svg'
 import playwright from '../../../../public/assets/icons/playwright.svg'
-import capacitor from '../../../../public/assets/icons/capacitor.svg'
 import docker from '../../../../public/assets/icons/docker.svg'
-import intellij from '../../../../public/assets/icons/intellij.svg'
+import webstorm from '../../../../public/assets/icons/webstorm.svg'
 import lit from '../../../../public/assets/icons/lit.svg'
 import nextjs from '../../../../public/assets/icons/nextjs.svg'
 import storybook from '../../../../public/assets/icons/storybook.svg'
 import typescript from '../../../../public/assets/icons/typescript.svg'
+import figma from '../../../../public/assets/icons/figma.svg'
 import sass from '../../../../public/assets/icons/sass.svg'
 import { Badge } from '@/components/ui/badge'
 
@@ -45,8 +44,9 @@ const allTechnologies: Technology[] = [
   { image: node, label: 'Node' },
   { image: deno, label: 'Deno' },
   { image: docker, label: 'Docker' },
-  { image: intellij, label: 'Intellij' },
+  { image: webstorm, label: 'Webstorm' },
   { image: storybook, label: 'Storybook' },
+  { image: figma, label: 'Figma' },
 ]
 
 export const Technologies: FC<{ technologies?: string[] }> = ({ technologies }) => {

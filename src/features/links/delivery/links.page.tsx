@@ -1,68 +1,74 @@
 import type { FC } from 'react'
-import { useTranslations } from 'next-intl'
 import { Page } from '../../../core/components/page/page'
 import { Link } from '../../../core/components/link/link'
-import Image from 'next/image'
-import instagram from '../../../../public/assets/icons/instagram.svg'
-import x from '../../../../public/assets/icons/x.svg'
-import youtube from '../../../../public/assets/icons/youtube.svg'
-import github from '../../../../public/assets/icons/github.svg'
-import tiktok from '../../../../public/assets/icons/tiktok.svg'
-import linkedin from '../../../../public/assets/icons/linkedin.svg'
-import email from '../../../../public/assets/icons/email.svg'
+import {
+  SiGithub,
+  SiInstagram,
+  SiLinkedin,
+  SiStackoverflow,
+  SiTiktok,
+  SiX,
+  SiYoutube,
+} from '@icons-pack/react-simple-icons'
+import { Mail } from 'lucide-react'
+import { Card } from '@/components/ui/card'
 
 const links = [
   {
     title: 'Instagram',
     url: 'https://instagram.com/cesalberca',
-    icon: instagram,
+    icon: SiInstagram,
   },
   {
     title: 'X',
     url: 'https://x.com/cesalberca',
-    icon: x,
+    icon: SiX,
   },
   {
     title: 'TikTok',
     url: 'https://www.tiktok.com/@cesalberca',
-    icon: tiktok,
+    icon: SiTiktok,
   },
   {
     title: 'Youtube',
     url: 'https://www.youtube.com/@cesalberca',
-    icon: youtube,
+    icon: SiYoutube,
   },
   {
     title: 'LinkedIn',
     url: 'https://www.linkedin.com/in/cesalberca',
-    icon: linkedin,
+    icon: SiLinkedin,
   },
   {
     title: 'Github',
     url: 'https://github.com/cesalberca',
-    icon: github,
+    icon: SiGithub,
+  },
+  {
+    title: 'StackOverflow',
+    url: 'https://stackoverflow.com/users/6475656/césar-alberca',
+    icon: SiStackoverflow,
+  },
+  {
+    title: 'Email',
+    url: 'mailto:cesar@cesalberca.com',
+    icon: Mail,
   },
 ]
 
 export const LinksPage: FC = () => {
-  const t = useTranslations()
   return (
     <Page>
-      <h1>{t('links.title')}</h1>
-      <section>
-        {links.map(x => (
-          <div key={x.title}>
-            <Image src={x.icon} alt={x.title} height={20} />
-            <Link type={'navigation'} to={x.url}>
-              {x.title}
-            </Link>
-          </div>
-        ))}
-        <div>
-          <Image src={email} alt={'Email'} height={20} />
-          <Link type={'navigation'} to={'mailto:cesar@cesalberca.com'}>
-            Email
-          </Link>
+      <section className="wrapper flex flex-col gap-m items-center my-l">
+        <div className="flex flex-col gap-m">
+          {links.map(x => (
+            <Card key={x.title} className="flex gap-s py-s px-l">
+              <x.icon />
+              <Link type={'invisible'} to={x.url}>
+                {x.title}
+              </Link>
+            </Card>
+          ))}
         </div>
       </section>
     </Page>

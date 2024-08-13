@@ -8,7 +8,6 @@ import { baseUrl } from './sitemap'
 import { getLocale, getMessages } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 import { ThemeProvider } from '@/core/components/theme/theme-provider'
-import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 

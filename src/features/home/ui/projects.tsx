@@ -87,6 +87,7 @@ export const Projects: FC = () => {
           </div>
         ))}
       </section>
+      <Markdown value={t('home.projects.moreProjects')} className="wrapper"></Markdown>
     </div>
   )
 }

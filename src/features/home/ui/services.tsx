@@ -19,7 +19,9 @@ export const Services: FC = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <Markdown className="mb-m wrapper" value={t('home.services.description')}></Markdown>
+      <div className="wrapper">
+        <Markdown className="mb-m" value={t('home.services.description')}></Markdown>
+      </div>
       <div className="bleed-width-section grid md:grid-cols-3 gap-1">
         <LeetCard
           className="items-end"

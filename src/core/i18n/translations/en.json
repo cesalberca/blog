@@ -25,16 +25,16 @@
     },
     "latestArticles": "Latest articles",
     "viewAllArticles": "View all articles",
-    "heroTitle": "Digital Nomad.\n\nFrontend Architect.\n\nInternational Speaker.",
+    "heroTitle": "Digital Nomad.\n\nFront-end Architect.\n\nInternational Speaker.",
     "labels": {
-      "architect": "Frontend Architect",
+      "architect": "Front-end Architect",
       "internationalSpeaker": "International Speaker",
       "digitalNomad": "Digital Nomad",
       "freelancer": "Freelancer",
       "podcastHost": "Podcast Host"
     },
     "heroCaption": "Passionate about <strong>learning</strong> and <strong>sharing</strong>.",
-    "whoAmI": "**Senior Frontend Architect** & **Software Crafter** from Spain with over **10 years of experience**. Freelancer _obsessed_ with **best practices**, **architecture** and **testing**.\n\nAs an [international speaker](https://www.cesalberca.com/talks) and Digital Nomad. I share my tech adventures around the world. Active in the [Codemotion](https://www.codemotion.com/) community as a committee member and [ambassador](https://community-en.codemotion.it/community/ambassador-program). Host of [Colivers Club Podcast](https://coliversclub.com/).",
+    "whoAmI": "**Senior Front-end Architect** & **Software Crafter** from Spain with over **10 years of experience**. Freelancer _obsessed_ with **best practices**, **architecture** and **testing**.\n\nAs an [international speaker](https://www.cesalberca.com/talks) and Digital Nomad. I share my tech adventures around the world. Active in the [Codemotion](https://www.codemotion.com/) community as a committee member and [ambassador](https://community-en.codemotion.it/community/ambassador-program). Host of [Colivers Club Podcast](https://coliversclub.com/).",
     "projects": {
       "title": "Projects",
       "description": "I love to create projects to learn new technologies and to share knowledge. Here are some of the projects I've created.",
@@ -82,7 +82,7 @@
         "description": "Designed the lessons from scratch, taught the students, and evaluated their progress. I taught **Web Development** with React. **Testing**, **Architecture** and **Good Practices** were a focal point of the lessons. Here you can check the [open curriculum](https://github.com/cice-classroom/cice-playground)."
       },
       "escuelaIt": {
-        "title": "Frontend Development Teacher at EscuelaIT",
+        "title": "Front-end Development Teacher at EscuelaIT",
         "dates": "Sporadic",
         "description": "**Trainer** for the following courses: [Deno](https://escuela.it/cursos/curso-de-deno), [TypeScript](https://escuela.it/cursos/curso-typescript), [React](https://escuela.it/cursos/curso-desarrollo-aplicaciones-spa-react) and [Advanced JavaScript](https://escuela.it/cursos/curso-avanzado-javascript)."
       },
@@ -99,7 +99,7 @@
     },
     "services": {
       "title": "Services",
-      "description": "I have over **10 years** of experience in **Frontend Development**. I've deployed to production full-fledged enterprise web applications using **React**, **Angular** and **Vue**.",
+      "description": "I have over **10 years** of experience in **Front-end Development**. I've deployed to production full-fledged enterprise web applications using **React**, **Angular** and **Vue**.",
       "consultancy": "Consultancy",
       "consultancyDescription": "I will guide you in **architecture**, crafting a **testing strategy**, and implementing **best practices**.",
       "training": "Training",

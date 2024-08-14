@@ -34,7 +34,7 @@
       "podcastHost": "Podcast Host"
     },
     "heroCaption": "Passionate about <strong>learning</strong> and <strong>sharing</strong>.",
-    "whoAmI": "**Senior Front-end Architect** & **Software Crafter** from Spain with over **10 years of experience**. Freelancer _obsessed_ with **best practices**, **architecture** and **testing**.\n\nAs an [international speaker](https://www.cesalberca.com/talks) and Digital Nomad. I share my tech adventures around the world. Active in the [Codemotion](https://www.codemotion.com/) community as a committee member and [ambassador](https://community-en.codemotion.it/community/ambassador-program). Host of [Colivers Club Podcast](https://coliversclub.com/).",
+    "whoAmI": "**Senior Front-end Architect** & **Software Crafter** from Spain with over **10 years of experience**. Freelancer _obsessed_ with **best practices**, **architecture** and **testing**.\n\nAs an [international speaker](https://www.cesalberca.com/talks) and Digital Nomad, I share my tech adventures around the world. Active in the [Codemotion](https://www.codemotion.com/) community as a committee member and [ambassador](https://community-en.codemotion.it/community/ambassador-program). Host of [Colivers Club Podcast](https://coliversclub.com/).",
     "projects": {
       "title": "Projects",
       "description": "I love to create projects to learn new technologies and to share knowledge. Here are some of the projects I've created.",
@@ -54,7 +54,7 @@
       "freelancer": {
         "title": "Freelancer",
         "dates": "2024 - Currently",
-        "description": "**Workshops**, **mentorship** and **consultancy** for best practises oriented projects, with a focus in **architecture**, **testing** and **design patterns** of frontend applications."
+        "description": "**Workshops**, **mentorship** and **consultancy** for best practices oriented projects, with a focus in **architecture**, **testing** and **design patterns** of frontend applications."
       },
       "writer": {
         "title": "Book writer",
@@ -64,12 +64,12 @@
       "autentia": {
         "title": "Autentia",
         "dates": "2017 - 2024",
-        "description": "* **Front-end Architect Lead**. I designed and implemented **Design Systems** in different frameworks, **modular architectures** following **Hexagonal** and **Domain Driven Design** principles and created robust **Testing Strategies**.\n* **Software developer** of different stacks, including JavaScript, TypeScript, Angular, Vue and React.\n* **Open Source Developer**: Created an [architectural framework](https://www.archimedesfw.io/docs/js/) in TypeScript that makes your application more robust by leveraging use cases.\n* **Teacher**: I've given more than a hundred talks and workshops of different technologies, such as: JavaScript, TypeScript, Vue, Angular, React, testing, CSS, architecture, good practices and more.\n* **Onboarding Link**: I was part of designing the Front-end onboarding process in the company. I interviewed potential coworkers\n* **Mentor**: I’ve been a mentor for the most junior members of the company and had 1:1 where we would set goals and track them.\n* **Interviewer**: I interviewed prominent tech people for the [company’s YouTube channel](https://www.youtube.com/watch?v=iThFgLmD96E&list=PLKxa4AIfm4pVyeMpU0QkV4gzaFDaa_RFW&index=10)"
+        "description": "* **Front-end Architect Lead**. I designed and implemented **Design Systems** in different frameworks, **modular architectures** following **Hexagonal** and **Domain Driven Design** principles and created robust **Testing Strategies**.\n* **Software developer** of different stacks, including JavaScript, TypeScript, Angular, Vue and React.\n* **Open Source Developer**: Created an [architectural framework](https://www.archimedesfw.io/docs/js/) in TypeScript that makes your application more robust by leveraging use cases.\n* **Teacher**: I've given more than a hundred talks and workshops of different technologies, such as: JavaScript, TypeScript, Vue, Angular, React, testing, CSS, architecture, good practices and more.\n* **Onboarding Link**: I was part of designing the Front-end onboarding process in the company. I interviewed potential coworkers.\n* **Mentor**: I’ve been a mentor for the most junior members of the company and had 1:1 where we would set goals and track them.\n* **Interviewer**: I interviewed prominent tech people for the [company’s YouTube channel](https://www.youtube.com/watch?v=iThFgLmD96E&list=PLKxa4AIfm4pVyeMpU0QkV4gzaFDaa_RFW&index=10)."
       },
       "codemotionAmbassador": {
         "title": "Codemotion Ambassador",
         "dates": "2022 - Currently",
-        "description": "Represent [Codemotion's](https://www.codemotion.com/) values and help the community grow as part of it's [ambassadors program](https://community-en.codemotion.it/community/ambassador-program)."
+        "description": "Represent [Codemotion's](https://www.codemotion.com/) values and help the community grow as part of its [ambassadors program](https://community-en.codemotion.it/community/ambassador-program)."
       },
       "codemotion": {
         "title": "Codemotion Madrid Committee Member",
@@ -115,7 +115,7 @@
       "email": "Email",
       "emailPlaceholder": "you@example.com",
       "message": "Message",
-      "messageDescription": "Want to work together? Have an idea you want to share? Just want to say hi?",
+      "messageDescription": "Want to work together? Have an idea to share? Just want to say hi?",
       "submit": "Submit",
       "submitting": "Submitting",
       "sent": "Thanks for contacting me!"
@@ -131,7 +131,7 @@
   },
   "about": {
     "title": "About me",
-    "description": "I’m a self-learning, creative, enthusiast and passionate person. I have a mixed profile, divided between my love for programming, software architecture and design. I truly care about sharing knowledge with my peers, that being as a speaker in different technological events, as a teacher or throughout my social networks.\n\nI believe that Software should be robust yet flexible, and the way to achieve it is to –regardless of the framework– create the right abstractions and apply architectural patterns. Testing is very important to me, the Software we build should be reliable in order to provide the maximum value."
+    "description": "I’m a self-learner, creative, enthusiastic, and passionate person. I have a mixed profile, divided between my love for programming, software architecture, and design. I truly care about sharing knowledge with my peers, whether as a speaker at various technological events, as a teacher, or through my social networks.\n\nI believe that Software should be robust yet flexible, and the way to achieve it is – regardless of the framework – to create the right abstractions and apply architectural patterns. Testing is very important to me; the Software we build should be reliable in order to provide the maximum value."
   },
   "links": {
     "title": "Links",

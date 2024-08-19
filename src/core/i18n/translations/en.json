@@ -16,6 +16,9 @@
     "openToWork": "Contact me!",
     "email": "dev@cesalberca.com"
   },
+  "blog": {
+    "title": "Blog"
+  },
   "home": {
     "title": "César Alberca",
     "meAlt": "Picture of César Alberca",

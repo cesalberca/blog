@@ -3,12 +3,12 @@
 import type { FC, PropsWithChildren, SVGProps } from 'react'
 import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import styles from './navbar.module.css'
 import Link from 'next/link'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Button } from '@/components/ui/button'
 
 const MenuLink: FC<
   PropsWithChildren<{
@@ -33,7 +33,12 @@ const MenuLink: FC<
 
 const Links = () => {
   const t = useTranslations()
-  return <>{/*<MenuLink to={'/talks'}>{t('talks.title')}</MenuLink>*/}</>
+  return (
+    <>
+      <MenuLink to={'/talks'}>{t('talks.title')}</MenuLink>
+      <MenuLink to={'/blog'}>{t('blog.title')}</MenuLink>
+    </>
+  )
 }
 
 export const Navbar: FC<{
@@ -53,21 +58,21 @@ export const Navbar: FC<{
         <Links></Links>
       </nav>
       <div className="flex gap-2 items-center">
-        {/*<div className="ml-auto lg:hidden">*/}
-        {/*  <Popover>*/}
-        {/*    <PopoverTrigger asChild>*/}
-        {/*      <Button variant="outline">*/}
-        {/*        <MenuIcon className="h-6 w-6" />*/}
-        {/*        <span className="sr-only">{t('common.toggleNavigation')}</span>*/}
-        {/*      </Button>*/}
-        {/*    </PopoverTrigger>*/}
-        {/*    <PopoverContent className="w-40">*/}
-        {/*      <div className="flex flex-col">*/}
-        {/*        <Links></Links>*/}
-        {/*      </div>*/}
-        {/*    </PopoverContent>*/}
-        {/*  </Popover>*/}
-        {/*</div>*/}
+        <div className="ml-auto lg:hidden">
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline">
+                <MenuIcon className="h-6 w-6" />
+                <span className="sr-only">{t('common.toggleNavigation')}</span>
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-40">
+              <div className="flex flex-col">
+                <Links></Links>
+              </div>
+            </PopoverContent>
+          </Popover>
+        </div>
         <div>{/*<ThemeToggle />*/}</div>
       </div>
     </header>

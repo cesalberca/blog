@@ -8,6 +8,7 @@ import { Page } from '@/core/components/page/page'
 import { Datetime } from '@/core/datetime'
 import { useTranslations } from 'next-intl'
 import { LeetBackground } from '@/core/components/leet-card/leet-background'
+import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
 
 interface Params {
   params: {
@@ -107,7 +108,9 @@ export default function Blog({ params }: Params) {
                 <small> - </small>
                 <small>{t('blog.articleDuration', { minutes: calculateReadTime(post.content) })}</small>
               </header>
-              <h1>{post.metadata.title}</h1>
+              <h1>
+                <ScrambleText>{post.metadata.title}</ScrambleText>
+              </h1>
             </div>
           </LeetBackground>
         </div>

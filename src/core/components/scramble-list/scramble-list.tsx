@@ -30,9 +30,7 @@ export const ScrambleList: FC<Props> = ({ texts }) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <ScrambleText fixedWidth onComplete={handleComplete}>
-        {texts[currentIndex]}
-      </ScrambleText>
+      <ScrambleText onComplete={handleComplete}>{texts[currentIndex]}</ScrambleText>
     </motion.span>
   )
 }

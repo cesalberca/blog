@@ -1,10 +1,9 @@
 'use client'
 
-import { type FC, useState, type PropsWithChildren, Children } from 'react'
+import { Children, type FC, type PropsWithChildren, useState } from 'react'
 import { motion } from 'framer-motion'
 import { getRandomString } from '@/core/utils/get-random-string'
 import { useInterval } from '@/core/hooks/use-interval'
-import { cn } from '@/lib/utils'
 
 const CYCLES_PER_LETTER = 2
 const SHUFFLE_TIME = 50
@@ -13,15 +12,9 @@ const DELAY_TIME = 1000
 interface Props {
   repeat?: boolean
   onComplete?: () => void
-  fixedWidth?: boolean
 }
 
-export const ScrambleText: FC<PropsWithChildren<Props>> = ({
-  children,
-  onComplete,
-  repeat = false,
-  fixedWidth = false,
-}) => {
+export const ScrambleText: FC<PropsWithChildren<Props>> = ({ children, onComplete, repeat = false }) => {
   const text = Children.toArray(children).join('')
 
   const [stateText, setStateText] = useState(text)
@@ -73,7 +66,7 @@ export const ScrambleText: FC<PropsWithChildren<Props>> = ({
   )
 
   return (
-    <motion.span className="relative" onViewportEnter={() => setStartAnimation(true)}>
+    <motion.span className="relative font-mono" onViewportEnter={() => setStartAnimation(true)}>
       {stateText}
     </motion.span>
   )

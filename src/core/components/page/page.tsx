@@ -6,7 +6,7 @@ export const Page: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar className="w-full" />
-      <main className="pt-16 flex-grow">{children}</main>
+      <main className="flex-grow">{children}</main>
       <Footer />
     </div>
   )

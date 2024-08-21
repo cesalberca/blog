@@ -3,6 +3,11 @@ import { getBlogPosts } from '../../utils'
 import { baseUrl } from '../../sitemap'
 import { CustomMDX } from '../../../core/components/mdx/mdx'
 import type { Metadata } from 'next'
+import { Hero } from '@/core/components/hero/hero'
+import { Page } from '@/core/components/page/page'
+import { Datetime } from '@/core/datetime'
+import { useTranslations } from 'next-intl'
+import { LeetBackground } from '@/core/components/leet-card/leet-background'
 
 interface Params {
   params: {
@@ -51,15 +56,26 @@ export function generateMetadata({ params }: Params): Metadata | void {
   }
 }
 
+function calculateReadTime(text: string, wordsPerMinute: number = 225): number {
+  const words = text.split(/\s+/)
+  const numWords = words.length
+  const readTimeMinutes = numWords / wordsPerMinute
+
+  const totalSeconds = Math.round(readTimeMinutes * 60)
+
+  return Math.floor(totalSeconds / 60)
+}
+
 export default function Blog({ params }: Params) {
   let post = getBlogPosts().find(post => post.slug === params.slug)
+  const t = useTranslations()
 
   if (!post) {
     notFound()
   }
 
   return (
-    <section>
+    <Page>
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -76,19 +92,29 @@ export default function Blog({ params }: Params) {
               : `/og?title=${encodeURIComponent(post.metadata.title)}`,
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
-              '@type': 'Person',
+              '@type': 'César Alberca',
               name: 'My Portfolio',
             },
           }),
         }}
       />
-      <h1 className="title font-semibold text-2xl tracking-tighter">{post.metadata.title}</h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">{post.metadata.date}</p>
-      </div>
-      <article className="prose">
+      <Hero image={`/assets/images/articles/${post.metadata.image}`}>
+        <div className="flex backdrop-blur p-xl flex-col">
+          <LeetBackground>
+            <div className="p-xl">
+              <header className="flex gap-xxs">
+                <small>{Datetime.fromIso(post.metadata.date).format()}</small>
+                <small> - </small>
+                <small>{t('blog.articleDuration', { minutes: calculateReadTime(post.content) })}</small>
+              </header>
+              <h1>{post.metadata.title}</h1>
+            </div>
+          </LeetBackground>
+        </div>
+      </Hero>
+      <article className="wrapper mt-m">
         <CustomMDX source={post.content} />
       </article>
-    </section>
+    </Page>
   )
 }

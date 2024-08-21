@@ -5,7 +5,7 @@ import { motion, useAnimation, useMotionValue, useScroll } from 'framer-motion'
 import { linearInterpolation } from '@/core/3d/linear-interpolation'
 import { getRandomString } from '@/core/utils/get-random-string'
 import { cn } from '@/lib/utils'
-import styles from '@/core/components/leet-card/leet-card.module.css'
+import styles from '@/core/components/leet-card/leet-background.module.css'
 
 export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
   const itemRef = useRef<HTMLDivElement | null>(null)
@@ -53,7 +53,7 @@ export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
   return (
     <motion.div
       className={cn(
-        "w-full h-full [aspect-ratio:1] relative overflow-hidden grid place-items-center [--x:0] [--y:0] rounded after:content[''] after:top-0  after:absolute after:left-0 after:w-full after:h-full",
+        "w-full h-full relative overflow-hidden grid place-items-center [--x:0] [--y:0] rounded after:content[''] after:top-0 after:absolute after:left-0 after:w-full after:h-full bg-background",
         styles['radial-background'],
       )}
       ref={itemRef}
@@ -69,6 +69,7 @@ export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
             controls.start({ opacity: 1, transition: { duration: 0.5, ease: 'easeInOut' } })
             itemRef.current.style.setProperty('--x', `${0}px`)
             itemRef.current.style.setProperty('--y', `${0}px`)
+            itemRef.current.style.setProperty('--size', `${itemRef.current.clientWidth}px`)
             x.set(linearInterpolation(x.get(), 0, 0.1))
             y.set(linearInterpolation(y.get(), 0, 0.1))
             decoRef.current.innerHTML = getRandomString(2000)

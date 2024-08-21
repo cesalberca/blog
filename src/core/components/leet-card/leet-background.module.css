@@ -1,0 +1,18 @@
+.radial-background {
+  transition: all 0.5s ease-in-out;
+}
+
+.radial-background::after {
+  background: radial-gradient(rgb(102, 51, 238) 50%, rgb(142, 100, 255), rgb(249, 38, 114));
+  mix-blend-mode: darken;
+}
+
+.mask {
+  -webkit-mask-image: radial-gradient(
+    var(--size) circle at var(--x) var(--y),
+    black 20%,
+    rgba(0, 0, 0, 0.25),
+    transparent
+  );
+  mask-image: radial-gradient(var(--size) circle at var(--x) var(--y), black 20%, rgba(0, 0, 0, 0.25), transparent);
+}

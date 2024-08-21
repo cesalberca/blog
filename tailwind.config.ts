@@ -15,7 +15,7 @@ const config = {
     extend: {
       scrollBehavior: ['responsive'],
       spacing: {
-        xss: '8px',
+        xxs: '8px',
         xs: '12px',
         s: '16px',
         m: '24px',

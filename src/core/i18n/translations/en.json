@@ -17,7 +17,8 @@
     "email": "dev@cesalberca.com"
   },
   "blog": {
-    "title": "Blog"
+    "title": "Blog",
+    "articleDuration": "{minutes} minutes"
   },
   "home": {
     "title": "César Alberca",

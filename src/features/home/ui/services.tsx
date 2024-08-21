@@ -8,7 +8,7 @@ const Title: FC<{
   value: string
   icon: ReactNode
 }> = ({ value, icon }) => (
-  <div className="flex flex-col justify-center">
+  <div className="flex flex-col items-center justify-center">
     {icon}
     <h3>{value}</h3>
   </div>

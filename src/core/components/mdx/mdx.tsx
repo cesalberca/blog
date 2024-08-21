@@ -68,5 +68,9 @@ const components: ComponentProps<any>['components'] = {
 }
 
 export function CustomMDX(props: MDXRemoteProps) {
-  return <MDXRemote {...props} components={{ ...components, ...(props.components ?? {}) }} />
+  return (
+    <div className="text-current prose dark:prose-invert">
+      <MDXRemote {...props} components={{ ...components, ...(props.components ?? {}) }} />
+    </div>
+  )
 }

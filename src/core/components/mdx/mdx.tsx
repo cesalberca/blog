@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import type { MDXRemoteProps } from 'next-mdx-remote/rsc'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { highlight } from 'sugar-high'
 import React, { type ComponentProps, createElement } from 'react'
+import { Prism as SyntaxHighlighter, type SyntaxHighlighterProps } from 'react-syntax-highlighter'
+import dark from 'react-syntax-highlighter/dist/esm/styles/prism/synthwave84'
+import { cn } from '@/lib/utils'
 
 function CustomLink(props: React.LinkHTMLAttributes<HTMLAnchorElement> & React.PropsWithChildren<{ href: string }>) {
   let href = props.href
@@ -18,9 +20,21 @@ function CustomLink(props: React.LinkHTMLAttributes<HTMLAnchorElement> & React.P
   return <a target="_blank" rel="noopener noreferrer" {...props} />
 }
 
-function Code({ children, ...props }: { children: string; props: unknown }) {
-  let codeHTML = highlight(children)
-  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
+function Code({ children, ...props }: { children: string; className: string }) {
+  const className = props?.className ?? ''
+  const match = /language-(\w+)/.exec(className ?? '')
+  return match ? (
+    <SyntaxHighlighter {...props} language={match[1]} PreTag="div" style={dark}>
+      {children}
+    </SyntaxHighlighter>
+  ) : (
+    <code
+      {...props}
+      className={cn(className, 'bg-muted px-[4px] py-[2px] mx-[2px] rounded not-prose text-base font-mono')}
+    >
+      {children}
+    </code>
+  )
 }
 
 function slugify(str: string) {
@@ -65,6 +79,7 @@ const components: ComponentProps<any>['components'] = {
   h6: createHeading(6),
   a: CustomLink,
   code: Code,
+  pre: ({ children }: { children: React.ReactNode }) => <pre className="p-0">{children}</pre>,
 }
 
 export function CustomMDX(props: MDXRemoteProps) {

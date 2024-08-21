@@ -1,6 +1,6 @@
 'use client'
 
-import React, { type FC, type MouseEvent, type PropsWithChildren, useEffect, useRef, useState } from 'react'
+import React, { type FC, type MouseEvent, type PropsWithChildren, useRef } from 'react'
 import { motion, useAnimation, useMotionValue, useScroll } from 'framer-motion'
 import { linearInterpolation } from '@/core/3d/linear-interpolation'
 import { getRandomString } from '@/core/utils/get-random-string'
@@ -42,31 +42,20 @@ export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
     decoRef.current.innerHTML = getRandomString(2000)
   }
 
-  const handleMouseEnter = () => {
-    controls.start({ opacity: 1, transition: { duration: 0.5, ease: 'easeInOut' } })
-  }
-
-  const handleMouseLeave = () => {
-    controls.start({ opacity: 0.25, transition: { duration: 0.5, ease: 'easeInOut' } })
-  }
-
   return (
     <motion.div
       className={cn(
         "w-full h-full relative overflow-hidden grid place-items-center [--x:0] [--y:0] rounded after:content[''] after:top-0 after:absolute after:left-0 after:w-full after:h-full bg-background",
-        styles['radial-background'],
       )}
       ref={itemRef}
       onMouseMove={updatePosition}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
       <motion.div
         ref={decoRef}
         animate={controls}
         onViewportEnter={() => {
           if (decoRef.current && itemRef.current) {
-            controls.start({ opacity: 1, transition: { duration: 0.5, ease: 'easeInOut' } })
+            controls.start({ opacity: 0.25, transition: { duration: 0.5, ease: 'easeInOut' } })
             itemRef.current.style.setProperty('--x', `${0}px`)
             itemRef.current.style.setProperty('--y', `${0}px`)
             itemRef.current.style.setProperty('--size', `${itemRef.current.clientWidth}px`)

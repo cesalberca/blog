@@ -100,7 +100,7 @@ export default function Blog({ params }: Params) {
         }}
       />
       <Hero image={`/assets/images/articles/${post.metadata.image}`}>
-        <LeetBackground>
+        <LeetBackground className="w-screen">
           <div className="p-xl">
             <header className="flex gap-xxs">
               <small>{Datetime.fromIso(post.metadata.date).format()}</small>

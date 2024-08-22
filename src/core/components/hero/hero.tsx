@@ -20,7 +20,7 @@ export const Hero: FC<PropsWithChildren<{ image?: string; className?: string; im
           loading="eager"
         />
       )}
-      <div className="mx-auto max-w-xl inset-0 absolute flex items-center justify-center">{children}</div>
+      <div className="inset-0 absolute flex items-center justify-center">{children}</div>
     </div>
   )
 }

@@ -7,7 +7,7 @@ import { getRandomString } from '@/core/utils/get-random-string'
 import { cn } from '@/lib/utils'
 import styles from '@/core/components/leet-card/leet-background.module.css'
 
-export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
+export const LeetBackground: FC<PropsWithChildren<{ className?: string }>> = ({ children, className }) => {
   const itemRef = useRef<HTMLDivElement | null>(null)
   const decoRef = useRef<HTMLDivElement | null>(null)
 
@@ -57,6 +57,7 @@ export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
     <motion.div
       className={cn(
         "w-full h-full relative overflow-hidden grid place-items-center [--x:0] [--y:0] rounded after:content[''] after:top-0 after:absolute after:left-0 after:w-full after:h-full",
+        className,
       )}
       ref={itemRef}
       onMouseMove={updatePosition}

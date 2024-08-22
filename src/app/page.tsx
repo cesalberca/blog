@@ -1,5 +1,5 @@
-import { HomePage } from '../features/home/ui/home.page'
+import { HomePage } from '@/features/home/delivery/home.page'
 
-export default function Home() {
-  return <HomePage articles={[]} />
+export default function Page() {
+  return <HomePage />
 }

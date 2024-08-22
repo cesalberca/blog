@@ -1,11 +1,9 @@
-import { baseUrl } from '../sitemap'
 import { Page } from '@/core/components/page/page'
-import { Datetime } from '@/core/datetime'
 import { LeetBackground } from '@/core/components/leet-card/leet-background'
 import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
-import { getTranslations } from 'next-intl/server'
 import type { ReactNode } from 'react'
-import type { PostMetadata } from '@/posts'
+import type { TalkMetadata } from '@/talks'
+import { baseUrl } from '@/app/sitemap'
 
 /*
 export async function generateMetadata({ params }: Params): Promise<Metadata | void> {
@@ -38,8 +36,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata | v
 */
 
 export default async function MdxLayout({ children, slug }: { children: ReactNode; slug: string }) {
-  const t = await getTranslations()
-  const { metadata } = (await import(`./(posts)/${slug}/page.mdx`)) as { metadata: PostMetadata }
+  const { metadata } = (await import(`./(talks)/${slug}/page.mdx`)) as { metadata: TalkMetadata }
 
   return (
     <Page top>
@@ -49,27 +46,19 @@ export default async function MdxLayout({ children, slug }: { children: ReactNod
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
+            '@type': 'Talk',
             headline: metadata.title,
-            datePublished: metadata.date,
-            dateModified: metadata.date,
-            description: metadata.summary,
             image: metadata.image ? `${baseUrl}${metadata.image}` : `/og?title=${encodeURIComponent(metadata.title)}`,
             url: `${baseUrl}/blog/${slug}`,
             author: {
               '@type': 'César Alberca',
-              name: 'My Portfolio',
+              name: 'Talk',
             },
           }),
         }}
       />
-      <LeetBackground className="w-screen h-[60vh]" image={`/assets/images/articles/${metadata.image}`}>
+      <LeetBackground className="w-screen h-[60vh]" image={`/assets/images/talks/${metadata.image}`}>
         <div className="p-xl">
-          <header className="flex gap-xxs">
-            <small>{Datetime.fromIso(metadata.date).format()}</small>
-            <small> - </small>
-            <small>{t('blog.articleDuration', { minutes: metadata.readTime })}</small>
-          </header>
           <h1>
             <ScrambleText>{metadata.title}</ScrambleText>
           </h1>

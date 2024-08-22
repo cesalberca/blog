@@ -1,0 +1,35 @@
+import MdxLayout from '../../mdx-layout'
+
+export const metadata = {
+  title: "Reactive architectures",
+  length: 45,
+  difficulty: "Advanced",
+  language: "es",
+  image: "reactive-architectures.png",
+  topics: [
+    "JavaScript",
+    "SOLID",
+    "Architecture"
+  ],
+  references: [
+    "https://github.com/cesalberca/who-am-i",
+    "https://www.reactivemanifesto.org/",
+    "https://www.youtube.com/watch?v=NpjecaAgcVQ",
+    "https://www.youtube.com/watch?v=zRyaGkv3mEg",
+    "https://rxjs-dev.firebaseapp.com/operator-decision-tree",
+    "https://www.learnrxjs.io/learn-rxjs/recipes/type-ahead"
+  ],
+  events: [
+    {
+      name: "Autentia",
+      date: "2020-05-07",
+      slides: "https://docs.google.com/presentation/d/1AHygd3fhyI-5tMK70gxcVnUiJlFU8UQh3Nq1d-2gY9Y/edit?usp=sharing"
+    }
+  ]
+}
+
+How can we apply RxJS to incorporate it into a highly reactive application? In this talk we'll see the main pain points and general pitfalls while providing concrete examples to create a truly reactive architecture.
+
+export default function MDXPage({ children }) {
+  return <MdxLayout slug="reactive-architectures">{children}</MdxLayout>
+}

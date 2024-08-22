@@ -14,11 +14,8 @@ export async function getPosts(): Promise<PostMetadata[]> {
     dirent.isDirectory(),
   )
 
-  console.log({ slugs })
-
   const posts: PostMetadata[] = await Promise.all(
     slugs.map(async ({ name }) => {
-      console.log({ name })
       const { metadata } = await import(`./app/blog/(posts)/${name}/page.mdx`)
       return metadata
     }),

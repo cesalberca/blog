@@ -1,0 +1,26 @@
+import MdxLayout from '../../mdx-layout'
+
+export const metadata = {
+  title: "TypeScript round table",
+  length: 45,
+  difficulty: "Beginner",
+  language: "es",
+  image: "typescript-round-table.png",
+  topics: [
+    "TypeScript",
+    "JavaScript"
+  ],
+  events: [
+    {
+      name: "Codemotion",
+      date: "2022-05-12",
+      video: "https://talks.codemotion.com/mesa-redonda-typescript?view=true"
+    }
+  ]
+}
+
+TypeScript is a superset of JavaScript which adds a typing system to the language. It has gained more and more popularity due to the reliability that it provides for us in our applications, the living documentation it gives us and the numerous refactors it gives us. A static type system has become a very important part of the tools we use to increase our productivity. It being that important the TC39 committee has launched a proposal which would add tpye annotations to JavaScript with a very similar API to TypeScript. In this round table we'll talk about the pros and cons of TypeScript, the implications of the new proposal and mucho more!
+
+export default function MDXPage({ children }) {
+  return <MdxLayout slug="typescript-round-table">{children}</MdxLayout>
+}

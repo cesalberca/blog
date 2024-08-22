@@ -76,7 +76,7 @@ export default function Blog({ params }: Params) {
   }
 
   return (
-    <Page>
+    <Page top>
       <script
         type="application/ld+json"
         suppressHydrationWarning

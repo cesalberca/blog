@@ -46,7 +46,7 @@ export const HomePage: FC<{ articles: Article[] }> = ({ articles }) => {
   ]
 
   return (
-    <Page>
+    <Page top>
       <OpenToWork />
       <Hero image="/assets/images/me-no-bg.png" imageClassName="object-top md:object-contain pt-16 mx-auto max-w-xl">
         <header className="absolute inset-0 md:pt-[100px] flex flex-col justify-center wrapper">

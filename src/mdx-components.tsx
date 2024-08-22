@@ -1,6 +1,6 @@
+import type { MDXComponents } from 'mdx/types'
+
 import Link from 'next/link'
-import type { MDXRemoteProps } from 'next-mdx-remote/rsc'
-import { MDXRemote } from 'next-mdx-remote/rsc'
 import React, { type ComponentProps, createElement } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import dark from 'react-syntax-highlighter/dist/esm/styles/prism/synthwave84'
@@ -81,7 +81,7 @@ function createHeading(level: number) {
   return Heading
 }
 
-const components: ComponentProps<any>['components'] = {
+const customComponents: ComponentProps<any>['components'] = {
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
@@ -93,10 +93,9 @@ const components: ComponentProps<any>['components'] = {
   pre: ({ children }: { children: React.ReactNode }) => <pre className="p-0">{children}</pre>,
 }
 
-export function CustomMDX(props: MDXRemoteProps) {
-  return (
-    <div className="text-current prose dark:prose-invert">
-      <MDXRemote {...props} components={{ ...components, ...(props.components ?? {}) }} />
-    </div>
-  )
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    ...customComponents,
+    ...components,
+  }
 }

@@ -1,10 +1,14 @@
----
-title: My twelve favorite problems
-date: 2023-09-13
-locale: en
-image: my-twelve-favorite-problems/leaf.jpg
-summary: 'I concocted my own list of my favorite problems, which I want to share with you.'
----
+import MdxLayout from '../../mdx-layout'
+
+export const metadata = {
+  title: 'My twelve favorite problems',
+  slug: 'my-twelve-favorite-problems',
+  readTime: 5,
+  date: '2023-09-13',
+  locale: 'en',
+  image: 'my-twelve-favorite-problems/leaf.jpg',
+  summary: 'I concocted my own list of my favorite problems, which I want to share with you.',
+}
 
 > The first principle is that you must not fool yourself and you are the easiest person to fool.
 > Richard Feynman
@@ -44,3 +48,7 @@ I concocted my own list of my favorite problems, which I want to share with you.
 12. How can I improve my **nutrition**?
 
 I also would like to invite you to create your own list, so you can always come back to them in case of need. I would love to hear about your list, so please share it with me!
+
+export default function MDXPage({ children }) {
+  return <MdxLayout slug="my-twelve-favorite-problems">{children}</MdxLayout>
+}

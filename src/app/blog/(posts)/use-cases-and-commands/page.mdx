@@ -1,10 +1,11 @@
----
-title: Use Cases and Command Pattern
-date: 2019-04-17
-locale: en
-image: abstract-dark-design.jpg
-summary: Use cases are the heart of our application, they are the actions that our users can perform. The command pattern helps us encapsulate requests.
----
+export const metadata = {
+  title: "Use Cases and Command Pattern",
+  date: "2019-04-17",
+  locale: "en",
+  readTime: 7,
+  image: "abstract-dark-design.jpg",
+  summary: "Use cases are the heart of our application, they are the actions that our users can perform. The command pattern helps us encapsulate requests."
+}
 
 The [command pattern](https://sourcemaking.com/design_patterns/command) helps us encapsulate requests in order to perform certain operations, like logging, queuing and filtering.
 
@@ -139,3 +140,7 @@ export class GetArticle implements Command<Article> {
 ```
 
 And we could create as many decorators as we want and use composition to give more behaviour to our commands.
+
+export default function MDXPage({ children }) {
+  return <MdxLayout slug="use-cases-and-commands">{children}</MdxLayout>
+}

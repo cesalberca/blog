@@ -1,6 +1,6 @@
-import { BlogPosts } from '../components/posts'
 import { useTranslations } from 'next-intl'
 import { Page } from '@/core/components/page/page'
+import { BlogPosts } from '@/app/components/posts'
 
 export const metadata = {
   title: 'Blog',

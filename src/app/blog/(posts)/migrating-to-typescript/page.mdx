@@ -1,10 +1,15 @@
----
-title: Migrating to TypeScript
-date: 2019-11-19
-locale: en
-image: rainbow.jpeg
-summary: In this tutorial we will see how to migrate a codebase from JavaScript to TypeScript. We will migrate the code of my talk Advanced JavaScript Pattern. Let's start!
----
+import MdxLayout from '../../mdx-layout'
+
+export const metadata = {
+  slug: 'migrating-to-typescript',
+  readTime: 15,
+  title: 'Migrating to TypeScript',
+  date: '2019-11-19',
+  locale: 'en',
+  image: 'rainbow.jpeg',
+  summary:
+    "In this tutorial we will see how to migrate a codebase from JavaScript to TypeScript. We will migrate the code of my talk Advanced JavaScript Pattern. Let's start!",
+}
 
 In this tutorial we will see how to migrate a codebase from JavaScript to [TypeScript](https://www.typescriptlang.org/). We will migrate the code of my talk Advanced JavaScript Pattern (oh the irony, right?). [Here you have the repository](https://github.com/cesalberca/advanced-javascript-patterns). You can also watch [my talk here in Spanish](https://www.youtube.com/watch?v=3nPPRvRcoo0&feature=youtu.be). Let's start!
 
@@ -429,3 +434,7 @@ And we run the tests!
 If you want to see all the code that I migrated checkout this [pull request](https://github.com/cesalberca/advanced-javascript-patterns/pull/8/files). If you still have some doubts you can check this other [Spanish article I wrote](https://www.adictosaltrabajo.com/2018/08/01/typescript-vs-javascript/).
 
 And now _what_? Well, you'll see the great advantages that TypeScript provides us like fewer bugs, be able to make a simple refactor as renaming a symbol, or a program that has a living documentation. This and many other advantages just by using TypeScript.
+
+export default function MDXPage({ children }) {
+  return <MdxLayout slug="migrating-to-typescript">{children}</MdxLayout>
+}

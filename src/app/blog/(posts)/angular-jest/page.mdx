@@ -1,12 +1,14 @@
-import MdxLayout from '../../components/mdx-layout'
+import MdxLayout from '../../mdx-layout'
 
----
-title: Jest Angular
-date: 2019-11-03
-locale: en
-image: desert.jpg
-summary: You want to change Karma in an Angular application to a better test runner like Jest? Then this tutorial is the one you were looking for!
----
+export const metadata = {
+  slug: 'angular-jest',
+  title: 'Jest Angular',
+  date: '2019-11-03',
+  image: 'desert.jpg',
+  readTime: 10,
+  summary:
+    'You want to change Karma in an Angular application to a better test runner like Jest? Then this tutorial is the one you were looking for!',
+}
 
 [Jest](https://jestjs.io/) is a test runner created by Facebook based in Node. Is this last bit which makes it so fast compared to Karma, given that you don't need a browser to execute the tests. Even if you launch Karma headless, Jest still beats Karma running the same test suite for up to **3 times**.
 
@@ -95,7 +97,6 @@ In conclusion, not only did we manage to run our tests faster, we also make the 
 
 And if you have already started a project, and you want to migrate to Jest I recommend that you checkout out [this codemod](https://github.com/skovhus/jest-codemods) which will migrate most of the code to Jest.
 
-
 export default function MDXPage({ children }) {
-  return <MdxLayout>{children}</MdxLayout>
+  return <MdxLayout slug="angular-jest">{children}</MdxLayout>
 }

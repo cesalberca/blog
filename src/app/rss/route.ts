@@ -1,4 +1,4 @@
-import { getBlogPosts } from '../utils'
+import { getBlogPosts } from '../../posts'
 import { baseUrl } from '../sitemap'
 
 export async function GET() {

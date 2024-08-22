@@ -1,10 +1,14 @@
----
-title: Create an Angular 17 project
-date: 2024-04-25
-locale: en
-image: create-angular-17-project/project-creation.png
-summary: In this article, we will explore setting up a new Angular project with SSR (Server-Side Rendering) and see what new configurations it brings.
----
+import MdxLayout from '../../mdx-layout'
+
+export const metadata = {
+  slug: 'create-angular-17-project',
+  title: 'Create an Angular 17 project',
+  date: '2024-04-25',
+  readTime: 5,
+  image: 'create-angular-17-project/project-creation.png',
+  summary:
+    'In this article, we will explore setting up a new Angular project with SSR (Server-Side Rendering) and see what new configurations it brings.',
+}
 
 ## Project Creation
 
@@ -169,3 +173,7 @@ Angular encourages developers to avoid using modules, a decision that I believe 
 ## Conclusion
 
 As we've seen in this tutorial, there are new configurations compared to previous versions, simplifying and reducing the number of files created with the Angular CLI when starting a new project.
+
+export default function MDXPage({ children }) {
+  return <MdxLayout slug="create-angular-17-project">{children}</MdxLayout>
+}

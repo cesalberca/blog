@@ -1,11 +1,11 @@
-import { getBlogPosts } from './utils'
+import { getPosts } from '@/posts'
 
 export const baseUrl = 'https://cesalberca.com'
 
 export default async function sitemap() {
-  let blogs = getBlogPosts().map(post => ({
+  let blogs = (await getPosts()).map(post => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.metadata.date,
+    lastModified: post.date,
   }))
 
   let routes = ['', '/blog'].map(route => ({

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { type FC, type MouseEvent, type PropsWithChildren, useRef } from 'react'
-import { motion, useAnimation, useMotionValue, useScroll } from 'framer-motion'
+import { motion, useAnimation, useMotionValue, useMotionValueEvent, useScroll } from 'framer-motion'
 import { linearInterpolation } from '@/core/3d/linear-interpolation'
 import { getRandomString } from '@/core/utils/get-random-string'
 import { cn } from '@/lib/utils'
@@ -15,6 +15,10 @@ export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
   const y = useMotionValue(0)
   const controls = useAnimation()
   const scroll = useScroll()
+  const { scrollYProgress } = useScroll({
+    target: itemRef,
+    offset: ['start end', 'end start'],
+  })
 
   const updatePosition = (e: MouseEvent<HTMLDivElement>) => {
     if (!itemRef.current || !decoRef.current) return
@@ -39,13 +43,20 @@ export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
     itemRef.current.style.setProperty('--x', `${x.get()}px`)
     itemRef.current.style.setProperty('--y', `${y.get()}px`)
 
-    decoRef.current.innerHTML = getRandomString(2000)
+    decoRef.current.innerHTML = getRandomString((itemRef.current.clientWidth * itemRef.current.clientHeight) / 50)
   }
+
+  useMotionValueEvent(scrollYProgress, 'change', latest => {
+    if (!itemRef.current || !decoRef.current) return
+    const { height, width } = itemRef.current.getBoundingClientRect()
+    itemRef.current.style.setProperty('--y', `${latest * height}px`)
+    itemRef.current.style.setProperty('--x', `${latest * width}px`)
+  })
 
   return (
     <motion.div
       className={cn(
-        "w-full h-full relative overflow-hidden grid place-items-center [--x:0] [--y:0] rounded after:content[''] after:top-0 after:absolute after:left-0 after:w-full after:h-full bg-background",
+        "w-full h-full relative overflow-hidden grid place-items-center [--x:0] [--y:0] rounded after:content[''] after:top-0 after:absolute after:left-0 after:w-full after:h-full",
       )}
       ref={itemRef}
       onMouseMove={updatePosition}
@@ -58,10 +69,12 @@ export const LeetBackground: FC<PropsWithChildren> = ({ children }) => {
             controls.start({ opacity: 0.25, transition: { duration: 0.5, ease: 'easeInOut' } })
             itemRef.current.style.setProperty('--x', `${0}px`)
             itemRef.current.style.setProperty('--y', `${0}px`)
-            itemRef.current.style.setProperty('--size', `${itemRef.current.clientWidth}px`)
+            itemRef.current.style.setProperty('--size', `${itemRef.current.clientWidth * 0.75}px`)
             x.set(linearInterpolation(x.get(), 0, 0.1))
             y.set(linearInterpolation(y.get(), 0, 0.1))
-            decoRef.current.innerHTML = getRandomString(2000)
+            decoRef.current.innerHTML = getRandomString(
+              (itemRef.current.clientWidth * itemRef.current.clientHeight) / 50,
+            )
           }
         }}
         className={cn(

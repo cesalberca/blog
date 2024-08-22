@@ -11,7 +11,7 @@ export const LeetCard: FC<PropsWithChildren<{ center: ReactNode; className?: str
 }) => {
   return (
     <div className={cn('grid p-m gap-4', className)}>
-      <div className="[aspect-ratio:1]">
+      <div className="[aspect-ratio:1] bg-background">
         <LeetBackground>{center}</LeetBackground>
       </div>
       {children}

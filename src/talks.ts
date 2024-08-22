@@ -3,6 +3,7 @@ import { readdir } from 'node:fs/promises'
 export interface TalkMetadata {
   title: string
   length: string
+  slug: string
   difficulty: string
   language: string
   topics: string[]

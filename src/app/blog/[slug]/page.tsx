@@ -99,20 +99,18 @@ export default function Blog({ params }: Params) {
           }),
         }}
       />
-      <Hero image={`/assets/images/articles/${post.metadata.image}`}>
-        <LeetBackground className="w-screen">
-          <div className="p-xl">
-            <header className="flex gap-xxs">
-              <small>{Datetime.fromIso(post.metadata.date).format()}</small>
-              <small> - </small>
-              <small>{t('blog.articleDuration', { minutes: calculateReadTime(post.content) })}</small>
-            </header>
-            <h1>
-              <ScrambleText>{post.metadata.title}</ScrambleText>
-            </h1>
-          </div>
-        </LeetBackground>
-      </Hero>
+      <LeetBackground className="w-screen h-[60vh]" image={`/assets/images/articles/${post.metadata.image}`}>
+        <div className="p-xl">
+          <header className="flex gap-xxs">
+            <small>{Datetime.fromIso(post.metadata.date).format()}</small>
+            <small> - </small>
+            <small>{t('blog.articleDuration', { minutes: calculateReadTime(post.content) })}</small>
+          </header>
+          <h1>
+            <ScrambleText>{post.metadata.title}</ScrambleText>
+          </h1>
+        </div>
+      </LeetBackground>
       <article className="wrapper mt-m">
         <CustomMDX source={post.content} />
       </article>

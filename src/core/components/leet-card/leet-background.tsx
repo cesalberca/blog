@@ -7,7 +7,11 @@ import { getRandomString } from '@/core/utils/get-random-string'
 import { cn } from '@/lib/utils'
 import styles from '@/core/components/leet-card/leet-background.module.css'
 
-export const LeetBackground: FC<PropsWithChildren<{ className?: string }>> = ({ children, className }) => {
+export const LeetBackground: FC<PropsWithChildren<{ className?: string; image?: string }>> = ({
+  children,
+  className,
+  image,
+}) => {
   const itemRef = useRef<HTMLDivElement | null>(null)
   const decoRef = useRef<HTMLDivElement | null>(null)
 
@@ -67,9 +71,11 @@ export const LeetBackground: FC<PropsWithChildren<{ className?: string }>> = ({ 
         animate={controls}
         onViewportEnter={() => {
           if (decoRef.current && itemRef.current) {
-            controls.start({ opacity: 0.25, transition: { duration: 0.5, ease: 'easeInOut' } })
-            itemRef.current.style.setProperty('--x', `${0}px`)
-            itemRef.current.style.setProperty('--y', `${0}px`)
+            controls.start({ opacity: image ? 1 : 0.25, transition: { duration: 0.5, ease: 'easeInOut' } })
+            const xPosition = itemRef.current.clientWidth / 2
+            const yPosition = itemRef.current.clientHeight / 2
+            itemRef.current.style.setProperty('--x', `${image ? xPosition : 0}px`)
+            itemRef.current.style.setProperty('--y', `${image ? yPosition : 0}px`)
             itemRef.current.style.setProperty('--size', `${itemRef.current.clientWidth * 0.75}px`)
             x.set(linearInterpolation(x.get(), 0, 0.1))
             y.set(linearInterpolation(y.get(), 0, 0.1))
@@ -78,9 +84,12 @@ export const LeetBackground: FC<PropsWithChildren<{ className?: string }>> = ({ 
             )
           }
         }}
+        style={{ backgroundImage: `url(${image})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
         className={cn(
-          'absolute top-0 left-0 h-full w-full font-mono text-xs break-words leading-4 text-white opacity-0',
+          'absolute top-0 left-0 h-full w-full font-mono text-xs break-words leading-4 opacity-0',
           styles.mask,
+          image ? 'text-transparent' : 'text-white',
+          '[background-clip:text] [-webkit-background-clip:text]',
         )}
       ></motion.div>
       <span className="relative z-10">{children}</span>

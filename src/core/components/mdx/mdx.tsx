@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { MDXRemoteProps } from 'next-mdx-remote/rsc'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import React, { type ComponentProps, createElement } from 'react'
-import { Prism as SyntaxHighlighter, type SyntaxHighlighterProps } from 'react-syntax-highlighter'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import dark from 'react-syntax-highlighter/dist/esm/styles/prism/synthwave84'
 import { cn } from '@/lib/utils'
 
@@ -24,7 +24,18 @@ function Code({ children, ...props }: { children: string; className: string }) {
   const className = props?.className ?? ''
   const match = /language-(\w+)/.exec(className ?? '')
   return match ? (
-    <SyntaxHighlighter {...props} language={match[1]} PreTag="div" style={dark}>
+    <SyntaxHighlighter
+      {...props}
+      language={match[1]}
+      PreTag="div"
+      style={dark}
+      codeTagProps={{
+        style: {
+          fontFamily:
+            'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+        },
+      }}
+    >
       {children}
     </SyntaxHighlighter>
   ) : (

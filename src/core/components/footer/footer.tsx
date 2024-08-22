@@ -11,9 +11,11 @@ export const Footer: FC = () => {
       <div className="flex flex-col items-start space-y-4">
         <div className="flex items-center space-x-2">
           <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
-          <span className="text-lg font-bold">{t('home.title')}</span>
+          <span className="text-lg">{t('home.title')}</span>
         </div>
-        <p className="mt-8 text-neutral-600 dark:text-neutral-300">© {new Date().getFullYear()} MIT Licensed</p>
+        <p className="mt-8 text-neutral-600 dark:text-neutral-300">
+          {t('common.license', { date: new Date().getFullYear() })}
+        </p>
       </div>
       <div className="flex flex-col items-end space-y-4">
         <Link to="mailto:dev@cesalberca.com" type="invisible">

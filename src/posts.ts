@@ -1,4 +1,5 @@
 import { readdir } from 'node:fs/promises'
+import type { Category } from '@/app/category'
 
 export interface PostMetadata {
   slug: string
@@ -7,6 +8,7 @@ export interface PostMetadata {
   readTime: number
   image: string
   summary: string
+  categories: Category[]
 }
 
 export async function getPosts(): Promise<PostMetadata[]> {
@@ -22,6 +24,14 @@ export async function getPosts(): Promise<PostMetadata[]> {
   )
 
   posts.sort((a, b) => +new Date(b.date) - +new Date(a.date))
+
+  return posts
+}
+
+export async function getPostsByCategory({ category }: { category: Category }): Promise<PostMetadata[]> {
+  const allPosts = await getPosts()
+
+  const posts = allPosts.filter(post => post.categories.indexOf(category) !== -1)
 
   return posts
 }

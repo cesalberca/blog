@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl'
 import { BlogPostsPage } from '@/features/posts/delivery/posts.page'
 
 export const metadata = {

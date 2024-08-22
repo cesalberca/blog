@@ -1,0 +1,13 @@
+export const categories = [
+  'angular',
+  'react',
+  'testing',
+  'software-development',
+  'javascript',
+  'typescript',
+  'software-architecture',
+  'design-patterns',
+  'css',
+  'personal-development',
+  'writing',
+] as const

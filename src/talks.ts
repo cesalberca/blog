@@ -6,7 +6,7 @@ export interface TalkMetadata {
   slug: string
   difficulty: string
   language: string
-  topics: string[]
+  categories: string[]
   image: string
   events: {
     name: string

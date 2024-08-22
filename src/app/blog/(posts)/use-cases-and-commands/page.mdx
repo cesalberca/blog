@@ -4,8 +4,8 @@ export const metadata = {
   title: 'Use Cases and Command Pattern',
   slug: 'use-cases-and-commands',
   date: '2019-04-17',
-  locale: 'en',
   readTime: 7,
+  categories: ['design-patterns', 'software-architecture'],
   image: 'abstract-dark-design.jpg',
   summary:
     'Use cases are the heart of our application, they are the actions that our users can perform. The command pattern helps us encapsulate requests.',
@@ -24,12 +24,12 @@ export interface Command<T> {
 And then we can look at a specific command, for example the one used to retrieve this article:
 
 ```typescript
-import { Command } from '../../infraestructure/Command'
+import { Command } from '../../infrastructure/Command'
 import { Article, ArticlesRepository } from '../../domain/articles'
 import { Id } from '../../domain'
 import { Locale, Translator } from '../../domain/language'
-import { ArticlesFileRepository } from '../../infraestructure/articles/ArticlesFileRepository'
-import { FileLoader } from '../../infraestructure/FileLoader'
+import { ArticlesFileRepository } from '../../infrastructure/articles/ArticlesFileRepository'
+import { FileLoader } from '../../infrastructure/FileLoader'
 import { TranslationService } from '../../domain/TranslationService'
 
 export class GetArticle implements Command<Article> {
@@ -92,9 +92,9 @@ export class LoggerCommandDecorator<T> implements Command<T> {
 Then, using a `UserCaseDecorator` I specify which decorators I want for **all my use cases**:
 
 ```typescript
-import { Command } from '../../infraestructure/Command'
-import { LoggerCommandDecorator } from '../../infraestructure/LoggerCommandDecorator'
-import { Logger } from '../../infraestructure/Logger'
+import { Command } from '../../infrastructure/Command'
+import { LoggerCommandDecorator } from '../../infrastructure/LoggerCommandDecorator'
+import { Logger } from '../../infrastructure/Logger'
 
 export class UseCaseDecorator {
   private static readonly logger = Logger.create({
@@ -111,13 +111,13 @@ export class UseCaseDecorator {
 And then in each use case we use the `UseCaseDecorator` like so:
 
 ```typescript
-import { Command } from '../../infraestructure/Command'
+import { Command } from '../../infrastructure/Command'
 import { Article, ArticlesRepository } from '../../domain/articles'
 import { Id } from '../../domain'
 import { Locale, Translator } from '../../domain/language'
 import { UseCaseDecorator } from './UseCaseDecorator'
-import { ArticlesFileRepository } from '../../infraestructure/articles/ArticlesFileRepository'
-import { FileLoader } from '../../infraestructure/FileLoader'
+import { ArticlesFileRepository } from '../../infrastructure/articles/ArticlesFileRepository'
+import { FileLoader } from '../../infrastructure/FileLoader'
 import { TranslationService } from '../../domain/TranslationService'
 
 export class GetArticle implements Command<Article> {

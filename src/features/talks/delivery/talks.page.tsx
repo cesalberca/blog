@@ -28,7 +28,7 @@ export const TalksPage: FC = async () => {
                     className="w-full h-auto"
                   />
                   <section className="p-m">
-                    <h2 className="mb-s">{talk.title}</h2>
+                    <h4 className="mb-s">{talk.title}</h4>
                     <Markdown value={''}></Markdown>
                   </section>
                 </TiltCard>

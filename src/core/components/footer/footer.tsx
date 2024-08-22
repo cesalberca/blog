@@ -3,6 +3,7 @@ import { SocialMedia } from '@/core/components/social-media/social-media'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/core/components/link/link'
+import { Datetime } from '@/core/datetime'
 
 export const Footer: FC = () => {
   const t = useTranslations()
@@ -14,7 +15,7 @@ export const Footer: FC = () => {
           <span className="text-lg">{t('home.title')}</span>
         </div>
         <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-          {t('common.license', { date: new Date().getFullYear() })}
+          {t('common.license', { date: Datetime.fromNow().year })}
         </p>
       </div>
       <div className="flex flex-col items-end space-y-4">

@@ -54,7 +54,7 @@ export const Navbar: FC<{
         <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
         <span className="text-lg">{t('home.title')}</span>
       </Link>
-      <nav className="hidden lg:flex items-center justify-end gap-4">
+      <nav className="hidden lg:flex -ml-[155px] items-center justify-end gap-4">
         <Links></Links>
       </nav>
       <div className="flex gap-2 items-center">

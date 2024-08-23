@@ -19,10 +19,6 @@ export const LeetBackground: FC<PropsWithChildren<{ className?: string; image?: 
   const y = useMotionValue(0)
   const controls = useAnimation()
   const scroll = useScroll()
-  const { scrollYProgress } = useScroll({
-    target: itemRef,
-    offset: ['start end', 'end start'],
-  })
 
   const updatePosition = (e: MouseEvent<HTMLDivElement>) => {
     if (!itemRef.current || !decoRef.current) return
@@ -49,13 +45,6 @@ export const LeetBackground: FC<PropsWithChildren<{ className?: string; image?: 
 
     decoRef.current.innerHTML = getRandomString((itemRef.current.clientWidth * itemRef.current.clientHeight) / 50)
   }
-
-  useMotionValueEvent(scrollYProgress, 'change', latest => {
-    if (!itemRef.current || !decoRef.current) return
-    const { height, width } = itemRef.current.getBoundingClientRect()
-    itemRef.current.style.setProperty('--y', `${latest * height}px`)
-    itemRef.current.style.setProperty('--x', `${latest * width}px`)
-  })
 
   return (
     <motion.div

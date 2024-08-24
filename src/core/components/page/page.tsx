@@ -7,7 +7,7 @@ export const Page: FC<PropsWithChildren<{ top?: boolean }>> = ({ children, top =
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar className="w-full" />
-      <main className={cn('flex-grow', { 'md:mt-[100px]': !top })}>{children}</main>
+      <main className={cn('flex-grow', { 'mt-[100px]': !top })}>{children}</main>
       <Footer />
     </div>
   )

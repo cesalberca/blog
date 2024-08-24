@@ -31,7 +31,7 @@ const allTechnologies: Technology[] = [
   { image: javascript, label: 'JavaScript' },
   { image: typescript, label: 'TypeScript' },
   { image: react, label: 'React' },
-  { image: nextjs, label: 'NextJS' },
+  { image: nextjs, label: 'Next.js' },
   { image: angular, label: 'Angular' },
   { image: vue, label: 'Vue' },
   { image: lit, label: 'Lit' },

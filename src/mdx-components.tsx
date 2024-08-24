@@ -90,7 +90,7 @@ const customComponents: ComponentProps<any>['components'] = {
   h6: createHeading(6),
   a: CustomLink,
   code: Code,
-  pre: ({ children }: { children: React.ReactNode }) => <pre className="p-0">{children}</pre>,
+  pre: ({ children }: { children: React.ReactNode }) => <pre className="p-0 font-mono">{children}</pre>,
 }
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {

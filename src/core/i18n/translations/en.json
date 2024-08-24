@@ -48,7 +48,7 @@
       "katasTitle": "TypeScript Katas",
       "katasDescription": "**TDD** and **testing** are very important to me. Whenever I taught a course about programming, I needed to create the same exercises over and over again. So, I decided to abstract it into a project where my students could practice **TDD**, **testing**, and **TypeScript** through simple and useful **Katas**.",
       "blog": "Personal blog",
-      "blogDescription": "My personal site, crafted with the latest technologies and best practices. It's built with **NextJS**, **React**, **TypeScript**, **TailwindCSS** and **Framer Motion**.",
+      "blogDescription": "My personal site, crafted with the latest technologies and best practices. It's built with **Next.js**, **React**, **TypeScript**, **TailwindCSS** and **Framer Motion**.",
       "archimedesJs": "ArchimedesJS",
       "archimedesJsDescription": "A **TypeScript** library I created that helps you create robust applications by leveraging use cases. It helps you create **modular architectures** following **hexagonal** and **domain-driven design** principles.",
       "moreProjects": "You can also [check out my Github](https://github.com/cesalberca/), where I have more than 70 open source projects."

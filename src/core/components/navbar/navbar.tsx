@@ -48,7 +48,7 @@ export const Navbar: FC<{
 
   return (
     <header
-      className={cn('flex backdrop-blur fixed z-10 h-16 w-full items-center justify-between px-4 md:px-6', className)}
+      className={cn('flex backdrop-blur fixed z-20 h-16 w-full items-center justify-between px-4 md:px-6', className)}
     >
       <Link href={'/'} className="flex items-center gap-2">
         <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
@@ -66,14 +66,13 @@ export const Navbar: FC<{
                 <span className="sr-only">{t('common.toggleNavigation')}</span>
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-40">
-              <div className="flex flex-col">
+            <PopoverContent className="w-40 mx-m">
+              <div className="flex flex-col gap-m w-min">
                 <Links></Links>
               </div>
             </PopoverContent>
           </Popover>
         </div>
-        <div>{/*<ThemeToggle />*/}</div>
       </div>
     </header>
   )

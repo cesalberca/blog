@@ -43,7 +43,7 @@ export const Projects: FC = () => {
       code: Url.fromValue('https://github.com/cesalberca/blog'),
       link: Url.fromValue('https://cesalberca.com/'),
       image: '/assets/images/blog.png',
-      technologies: ['React', 'TypeScript', 'Jest', 'NextJS'],
+      technologies: ['React', 'TypeScript', 'Jest', 'Next.js'],
     },
   ]
 

@@ -2,6 +2,7 @@ import { Page } from '@/core/components/page/page'
 import type { ReactNode } from 'react'
 import type { PostMetadata } from '@/posts'
 import { PostPage } from '@/features/posts/delivery/post.page'
+import { LeetBackground } from '@/core/components/leet-background/leet-background'
 
 /*
 export async function generateMetadata({ params }: Params): Promise<Metadata | void> {

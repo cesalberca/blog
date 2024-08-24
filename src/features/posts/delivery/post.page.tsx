@@ -2,11 +2,12 @@ import type { FC, PropsWithChildren } from 'react'
 import type { PostMetadata } from '@/posts'
 import { useTranslations } from 'next-intl'
 import { baseUrl } from '@/app/sitemap'
-import { LeetBackground } from '@/core/components/leet-card/leet-background'
+import { LeetBackground } from '@/core/components/leet-background/leet-background'
 import { Datetime } from '@/core/datetime'
 import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
 import { Badge, badgeVariants } from '@/components/ui/badge'
 import { Link } from '@/core/components/link/link'
+import { cn } from '@/lib/utils'
 
 export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: string }>> = ({
   metadata,
@@ -53,7 +54,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
                 key={category}
                 type="invisible"
                 to={`/blog/category/${category}`}
-                className={badgeVariants({ variant: 'outline' })}
+                className={cn(badgeVariants({ variant: 'outline' }), 'p-0')}
               >
                 <Badge>{category}</Badge>
               </Link>

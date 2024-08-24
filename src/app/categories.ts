@@ -2,6 +2,8 @@ export const categories = [
   'angular',
   'react',
   'testing',
+  'branding',
+  'design',
   'software-development',
   'javascript',
   'typescript',

@@ -5,7 +5,7 @@ import { motion, useAnimation, useMotionValue, useMotionValueEvent, useScroll } 
 import { linearInterpolation } from '@/core/3d/linear-interpolation'
 import { getRandomString } from '@/core/utils/get-random-string'
 import { cn } from '@/lib/utils'
-import styles from '@/core/components/leet-card/leet-background.module.css'
+import styles from '@/core/components/leet-background/leet-background.module.css'
 
 export const LeetBackground: FC<PropsWithChildren<{ className?: string; image?: string }>> = ({
   children,

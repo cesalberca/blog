@@ -66,7 +66,7 @@ export const ScrambleText: FC<PropsWithChildren<Props>> = ({ children, onComplet
   )
 
   return (
-    <motion.span className="relative font-mono" onViewportEnter={() => setStartAnimation(true)}>
+    <motion.span className="relative" onViewportEnter={() => setStartAnimation(true)}>
       {stateText}
     </motion.span>
   )

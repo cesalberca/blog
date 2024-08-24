@@ -13,8 +13,8 @@ export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, ty
 
   if (type === 'invisible') {
     return (
-      <NextLink href={to} legacyBehavior passHref className={className}>
-        <button className="text-base">{children}</button>
+      <NextLink href={to} passHref>
+        <button className={cn('text-base', className)}>{children}</button>
       </NextLink>
     )
   }

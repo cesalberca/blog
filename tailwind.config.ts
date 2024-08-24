@@ -14,6 +14,15 @@ const config = {
     },
     extend: {
       scrollBehavior: ['responsive'],
+      fontSize: {
+        sm: '0.64rem',
+        base: '1rem',
+        xl: '1.10rem',
+        '2xl': '1.25rem',
+        '3xl': '1.562rem',
+        '4xl': '1.953rem',
+        '5xl': '2.442rem',
+      },
       spacing: {
         xxs: '8px',
         xs: '12px',

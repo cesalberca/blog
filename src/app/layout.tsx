@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Azeret_Mono } from 'next/font/google'
 import './globals.css'
 import type { ReactNode } from 'react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -10,6 +10,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { ThemeProvider } from '@/core/components/theme/theme-provider'
 
 const inter = Inter({ subsets: ['latin'] })
+const azeret = Azeret_Mono({ subsets: ['latin'], weight: '400', variable: '--font-azeret-mono' })
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -47,7 +48,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`antialiased font-medium lg:mx-auto sm:text-lg text-base ${inter.className}`}>
+      <body className={`antialiased font-medium lg:mx-auto sm:text-lg text-base ${inter.className} ${azeret.variable}`}>
         <ThemeProvider attribute="class" enableSystem={false} forcedTheme="dark" disableTransitionOnChange>
           <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
           <Analytics />

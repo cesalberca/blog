@@ -46,10 +46,10 @@ export const HomePage: FC = () => {
       <OpenToWork />
       <Hero image="/assets/images/me-no-bg.png" imageClassName="object-top md:object-contain pt-16 mx-auto max-w-xl">
         <header className="absolute inset-0 md:pt-[100px] flex flex-col justify-center wrapper">
-          <h2 className="uppercase text-4xl leading-tight min-h-[6rem] flex items-end">
+          <h1 className="uppercase min-h-[6rem] flex items-end">
             <ScrambleList texts={texts} />
-          </h2>
-          <h6>{t.rich('home.heroCaption')}</h6>
+          </h1>
+          <p>{t.rich('home.heroCaption')}</p>
           <section className="mt-xs text-xs">
             <SocialMedia />
           </section>

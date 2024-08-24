@@ -80,6 +80,7 @@ html {
   h5,
   h6 {
     @apply leading-tight;
+    font-family: var(--font-azeret-mono);
   }
 
   h1 {

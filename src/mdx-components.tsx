@@ -1,12 +1,18 @@
 import type { MDXComponents } from 'mdx/types'
 
 import Link from 'next/link'
-import React, { type ComponentProps, createElement } from 'react'
+import {
+  type ComponentProps,
+  createElement,
+  type LinkHTMLAttributes,
+  type PropsWithChildren,
+  type ReactNode,
+} from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import dark from 'react-syntax-highlighter/dist/esm/styles/prism/synthwave84'
 import { cn } from '@/lib/utils'
 
-function CustomLink(props: React.LinkHTMLAttributes<HTMLAnchorElement> & React.PropsWithChildren<{ href: string }>) {
+function CustomLink(props: LinkHTMLAttributes<HTMLAnchorElement> & PropsWithChildren<{ href: string }>) {
   let href = props.href
 
   if (href.startsWith('/')) {
@@ -90,7 +96,7 @@ const customComponents: ComponentProps<any>['components'] = {
   h6: createHeading(6),
   a: CustomLink,
   code: Code,
-  pre: ({ children }: { children: React.ReactNode }) => <pre className="p-0 font-mono">{children}</pre>,
+  pre: ({ children }: { children: ReactNode }) => <pre className="p-0 font-mono">{children}</pre>,
 }
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {

@@ -1,0 +1,418 @@
+import MdxLayout from '../../mdx-layout'
+import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
+import { LeetBackground } from '@/core/components/leet-background/leet-background'
+import { Link } from '@/core/components/link/link'
+import { MenuLink } from '@/core/components/menu-link/menu-link'
+import { TiltCard } from '@/core/components/tilt-card/tilt-card'
+
+export const metadata = {
+  slug: 'blog-redesign',
+  title: 'Blog Redesign',
+  date: '2024-08-23',
+  image: 'blog-redesign/medusa.jpg',
+  categories: ['software-development', 'branding', 'design'],
+  readTime: 10,
+  summary: 'After quitting my job, I decided to redesign my blog. This is the story of how I did it.',
+}
+
+I recently became a **Freelancer as a Digital Nomad traveling the world**. This milestone could only be celebrated by revamping my website.
+
+> You are not a true Web Developer if you don't redesign your blog every year
+
+Being a Freelancer means that I need not only to be technically proficient but also to think about how effectively communicate what I offer so people can actually book my services.
+
+As **Front-end Software Architect** I need to showcase what I'm capable of doing. I wanted a site that would do so by reflecting professionalism and minimalism, with a sleek and tech look.
+
+In order to do that I've used the following technologies:
+
+
+- <Link to="https://nextjs.org/">
+    <ScrambleText>Next.js</ScrambleText>
+  </Link>
+- <Link to="https://react.dev/">
+    <ScrambleText>React</ScrambleText>
+  </Link>
+- <Link to="https://www.typescriptlang.org/">
+    <ScrambleText>TypeScript</ScrambleText>
+  </Link>
+- <Link to="https://tailwindcss.com/">
+    <ScrambleText>TaildwindCSS</ScrambleText>
+  </Link>
+- <Link to="https://ui.shadcn.com/">
+    <ScrambleText>ShadcnUI</ScrambleText>
+  </Link>
+- <Link to="https://www.framer.com/motion/">
+    <ScrambleText>Framer Motion</ScrambleText>
+  </Link>
+- <Link to="https://mdxjs.com/">
+    <ScrambleText>MDX</ScrambleText>
+  </Link>
+- <Link to="https://figma.com/">
+    <ScrambleText>Figma</ScrambleText>
+  </Link>
+
+I used [Next.js starter porfolio](https://vercel.com/templates/next.js/portfolio-starter-kit) to have a decent SEO base. I tweaked the architecture and configured the project as I usually do, with [Prettier](https://prettier.io/), [ESLint](https://eslint.org/) and [Husky](https://typicode.github.io/husky/).
+
+I made a conscious choice of not to delve too deep in best practises, testing and architecture. Why? Because I want to create a blog series where I go and improve a base of code bit by bit. However, I did decide to focus on creating a clean design with a big focus on content and some animations. Can you guess which ones I'm referring to?
+
+<LeetBackground>
+  <div className="p-xl">This animation for example (hover over me if you can)</div>
+</LeetBackground>
+
+Or perhaps this one:
+
+<MenuLink to="#">Menu link</MenuLink>
+
+Also this one:
+
+<TiltCard className="flex items-center justify-center">
+<div className="p-xl">with 3d effects when you hover over it</div>
+</TiltCard>
+
+Some great places I looked for inspiration were [Codrops](https://tympanus.net/codrops/) and [Awwwards](https://www.awwwards.com/).
+
+## MDX
+
+As you can see, all the components that I'm developing for the website I can reuse them in the blog posts and that's thanks to [MDX](https://mdxjs.com/). In MDX you can import React components, which is a powerful thing to do. The posts are written using [Markdown](https://www.markdownguide.org/) format, which uses some keywords to render plain text into HTML. With MDX, the twist is that you can also use React components. For example:
+
+```jsx
+**Some Markdown over here**
+
+<LeetBackground><div className="p-xl">Some component over here</div></LeetBackground>
+
+And _we continue with the markdown_
+```
+
+And this will render this:
+
+**Some Markdown over here**
+
+<LeetBackground><div className="p-xl">Some component over here</div></LeetBackground>
+
+And _we continue with the markdown_
+
+Cool, right?
+
+Next.js come with support for MDX using some extra libraries. I started configuring the project following the [Next.js MDX guide](https://Next.js.org/docs/pages/building-your-application/configuring/mdx), which at some point suggests using [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote). I found it a little bit overcomplicated and that it provides functionality that I don't really need.
+
+After trying to find other simpler solutions I stumbled upon [this amazing post](https://www.alexchantastic.com/building-a-blog-with-next-and-mdx) which showed how to simplify the setup using just [next-mdx](https://www.npmjs.com/package/@next/mdx).
+
+The only thing I still need to figure out is how to generate SEO compliant metadata from each article and talk. But that would be another `POST`.
+
+In the end each article is
+
+```text
+src/
+└── app/
+    └── blog/
+        └── (posts)/
+            └── blog-redesign/
+                └── page.mdx
+```
+
+And then it's just a matter of create a file under `src` called `mdx-components`:
+
+```tsx
+import type { MDXComponents } from 'mdx/types'
+
+import Link from 'next/link'
+import {
+  type ComponentProps,
+  createElement,
+  type LinkHTMLAttributes,
+  type PropsWithChildren,
+  type ReactNode,
+} from 'react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import dark from 'react-syntax-highlighter/dist/esm/styles/prism/synthwave84'
+import { cn } from '@/lib/utils'
+
+function CustomLink(props: LinkHTMLAttributes<HTMLAnchorElement> & PropsWithChildren<{ href: string }>) {
+  let href = props.href
+
+  if (href.startsWith('/')) {
+    return <Link {...props}>{props.children}</Link>
+  }
+
+  if (href.startsWith('#')) {
+    return <a {...props} />
+  }
+
+  return <a target="_blank" rel="noopener noreferrer" {...props} />
+}
+
+function Code({ children, ...props }: { children: string; className: string }) {
+  const className = props?.className ?? ''
+  const match = /language-(\w+)/.exec(className ?? '')
+  return match ? (
+    <SyntaxHighlighter
+      {...props}
+      language={match[1]}
+      PreTag="div"
+      style={dark}
+      codeTagProps={{
+        style: {
+          fontFamily:
+            'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+        },
+      }}
+    >
+      {children}
+    </SyntaxHighlighter>
+  ) : (
+    <code
+      {...props}
+      className={cn(className, 'bg-muted px-[4px] py-[2px] mx-[2px] rounded not-prose text-base font-mono')}
+    >
+      {children}
+    </code>
+  )
+}
+
+function slugify(str: string) {
+  return str
+    .toString()
+    .toLowerCase()
+    .trim() // Remove whitespace from both ends of a string
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/&/g, '-and-') // Replace & with 'and'
+    .replace(/[^\w\-]+/g, '') // Remove all non-word characters except for -
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+}
+
+function createHeading(level: number) {
+  const Heading = ({ children }: { children: string }) => {
+    const slug = slugify(children)
+    return createElement(
+      `h${level}`,
+      { id: slug },
+      [
+        createElement('a', {
+          href: `#${slug}`,
+          key: `link-${slug}`,
+          className: 'anchor',
+        }),
+      ],
+      children,
+    )
+  }
+
+  Heading.displayName = `Heading${level}`
+
+  return Heading
+}
+
+const customComponents: ComponentProps<any>['components'] = {
+  h1: createHeading(1),
+  h2: createHeading(2),
+  h3: createHeading(3),
+  h4: createHeading(4),
+  h5: createHeading(5),
+  h6: createHeading(6),
+  a: CustomLink,
+  code: Code,
+  pre: ({ children }: { children: ReactNode }) => <pre className="p-0 font-mono">{children}</pre>,
+}
+
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    ...customComponents,
+    ...components,
+  }
+}
+```
+
+As you can see you even configure your own components for the MDX files. This way you can have a consistent look and feel across the whole blog.
+
+One more tip, each article should also keep the same layout as the website, and to do that each article should be wrapped in a `MdxLayout` component:
+
+```tsx
+
+import MdxLayout from '../../mdx-layout'
+
+# My blog content
+
+export default function MDXPage({ children }) {
+  return <MdxLayout slug="blog-redesign">{children}</MdxLayout>
+}
+```
+
+The `MdxLayout` component has the following content:
+
+```tsx
+import { Page } from '@/core/components/page/page'
+import type { ReactNode } from 'react'
+import { PostPage } from '@/features/posts/delivery/post.page'
+import type { PostMetadata } from '@/post-metadata'
+
+export default async function MdxLayout({ children, slug }: { children: ReactNode; slug: string }) {
+  const { metadata } = (await import(`./(posts)/${slug}/page.mdx`)) as { metadata: PostMetadata }
+
+  return (
+    <Page top>
+      <PostPage metadata={metadata} slug={slug}>
+        {children}
+      </PostPage>
+    </Page>
+  )
+}
+```
+
+There's some metadata in each article that is used to generate the SEO metadata. This metadata is exported as a const, for example, the metadata for this very article is:
+
+```tsx
+export const metadata = {
+  slug: 'blog-redesign',
+  title: 'Blog Redesign',
+  date: '2024-08-25',
+  image: 'blog-redesign/medusa.jpg',
+  categories: ['software-development', 'branding', 'design'],
+  readTime: 15,
+  summary: 'After quitting my job, I decided to redesign my blog. This is the story of how I did it.',
+}
+```
+
+## TaildwindCSS
+
+I've been trying to use more and more [TaildwindCSS](https://tailwindcss.com/). Since I only used in short lived projects I wanted to see how would it fare in a long lived one. To me, CSS is part of the Front-end Architecture and it's something I don't overlook. I wanted to incorporate this technology to check if it's scalable and provides a good framework for development. Conclusion: **it does**.
+
+Although I see that there's some tweaking to be done:
+
+```typescript
+import type { Config } from 'tailwindcss'
+
+const config = {
+  theme: {
+    extend: {
+      spacing: {
+        xxs: '8px',
+        xs: '12px',
+        s: '16px',
+        m: '24px',
+        l: '32px',
+        xl: '48px',
+        xxl: '56px',
+      },
+      colors: {
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+      },
+    },
+  },
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+} satisfies Config
+
+export default config
+```
+
+To me it's important to abstract the spacing units. I don't want to use numbers such as `p-2`, `m-8` or `w-4`. I want to use `p-s`, `m-m` or `w-xl`. This way I can change the spacing units in one place and it will be reflected in the whole project.
+
+The same goes with colors. You won't typically see in the code specific colors (only unless I want to invariable invariably use a specific color) but instead you'll see `text-primary`, `bg-secondary`, `border-destructive`, etc. This provides more flexibility and maintainability to the project.
+
+I also added some plugins to the configuration. I wanted to use the `@tailwindcss/typography` plugin to have a better typography out of the box. I also added the `tailwindcss-animate` plugin to have some animations ready to use.
+
+
+## ShadcnUI
+
+This library it's a new concept where you don't actually install the components as a dependency, but generate them the project. Why would I want that? Well, it serves me as a base for lightweight components and from there I can customize them as much as I want. The code is mine after all. Whenever I need a new component I head [over to their documentation](https://ui.shadcn.com/docs) and find the component I need. Then I generate using the CLI:
+
+```bash
+npx shadcn-ui@latest add button
+```
+
+The button will be generated in `src/components/ui/button.tsx` and will look something similar to this:
+
+```tsx
+import * as React from 'react'
+import { Slot } from '@radix-ui/react-slot'
+import { cva, type VariantProps } from 'class-variance-authority'
+
+import { cn } from '@/lib/utils'
+
+const buttonVariants = cva(
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  {
+    variants: {
+      variant: {
+        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+        outline: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
+        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+        ghost: 'hover:bg-accent hover:text-accent-foreground',
+        link: 'text-primary underline-offset-4 hover:underline',
+      },
+      size: {
+        default: 'h-10 px-4 py-2',
+        sm: 'h-9 rounded-md px-3',
+        lg: 'h-11 rounded-md px-8',
+        icon: 'h-10 w-10',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'default',
+    },
+  },
+)
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : 'button'
+    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+  },
+)
+Button.displayName = 'Button'
+
+export { Button, buttonVariants }
+```
+
+As you can see it uses TaildwindCSS and RadixUI under the hood to do all the heavy lifting. `class-variance-authority` is a library to create variants of a component easily.
+
+Another reason why I chose shadcn is because of it's integration with `https://v0.dev/`, which is a Vercel project to generate UI using AI, which is a concept I'm very interested in.
+
+## What's next?
+
+Well, I want to really go back to writing online, from technical stuff to more personal. I want share my projects, my experiences as a Digital Nomad, or even what's my recipe to make my deodorant. I want to create a blog that you went to learn something you wouldn't have expected to learn.
+
+
+
+export default function MDXPage({ children }) {
+  return <MdxLayout slug="blog-redesign">{children}</MdxLayout>
+}

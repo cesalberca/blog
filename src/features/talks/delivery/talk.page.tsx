@@ -1,8 +1,8 @@
 import { type FC, type PropsWithChildren } from 'react'
-import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
+import { AccentText } from '@/core/components/accent-text/accent-text'
 import { Page } from '@/core/components/page/page'
 import { baseUrl } from '@/app/sitemap'
-import { LeetBackground } from '@/core/components/leet-background/leet-background'
+import { Background } from '@/core/components/background/background'
 import { Badge } from '@/components/ui/badge'
 import type { TalkMetadata } from '@/talk-metadata'
 
@@ -30,10 +30,10 @@ export const TalkPage: FC<PropsWithChildren<{ slug: string; metadata: TalkMetada
           }),
         }}
       />
-      <LeetBackground className="w-full h-[60vh]" image={`/assets/images/talks/${metadata.image}`}>
+      <Background className="w-full h-[60vh]" image={`/assets/images/talks/${metadata.image}`}>
         <div className="p-xl">
           <h1>
-            <ScrambleText>{metadata.title}</ScrambleText>
+            <AccentText>{metadata.title}</AccentText>
           </h1>
           <div className="mt-xxs flex gap-xxs">
             {metadata.categories.map(category => (
@@ -41,7 +41,7 @@ export const TalkPage: FC<PropsWithChildren<{ slug: string; metadata: TalkMetada
             ))}
           </div>
         </div>
-      </LeetBackground>
+      </Background>
       <article className="wrapper mt-m prose dark:prose-invert text-current">{children}</article>
     </Page>
   )

@@ -1,30 +1,32 @@
 import type { FC, PropsWithChildren } from 'react'
 import NextLink from 'next/link'
 import { cn } from '@/lib/utils'
+import { cva } from 'class-variance-authority'
 
 interface Props {
   to: string
-  type?: 'regular' | 'navigation' | 'invisible'
+  type?: 'navigation' | 'invisible'
   className?: string
 }
 
-export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, type = 'regular' }) => {
-  const isExternal = to !== undefined && /^http/.test(to)
+const linkVariants = cva('underline', {
+  variants: {
+    type: {
+      invisible: 'no-underline',
+      navigation: 'no-underline',
+    },
+  },
+})
 
-  if (type === 'invisible') {
-    return (
-      <NextLink href={to} passHref>
-        <button className={cn('text-base', className)}>{children}</button>
-      </NextLink>
-    )
-  }
+export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, type }) => {
+  const isExternal = to !== undefined && /^http/.test(to)
 
   return (
     <NextLink
       href={to}
       passHref
       {...(isExternal && { target: '_blank', rel: 'noreferrer' })}
-      className={cn('underline', className)}
+      className={cn(linkVariants({ type }), className)}
     >
       {children}
     </NextLink>

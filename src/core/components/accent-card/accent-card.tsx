@@ -9,7 +9,7 @@ const RATIO = 32.5
 const ROTATION_RANGE = 20
 const HALF_ROTATION_RANGE = RATIO / 2
 
-export const TiltCard: FC<
+export const AccentCard: FC<
   PropsWithChildren<{
     defaultTiltX?: number
     defaultTiltY?: number

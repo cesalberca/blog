@@ -14,7 +14,7 @@ interface Props {
   onComplete?: () => void
 }
 
-export const ScrambleText: FC<PropsWithChildren<Props>> = ({ children, onComplete, repeat = false }) => {
+export const AccentText: FC<PropsWithChildren<Props>> = ({ children, onComplete, repeat = false }) => {
   const text = Children.toArray(children).join('')
 
   const [stateText, setStateText] = useState(text)

@@ -1,9 +1,9 @@
 import type { FC, PropsWithChildren } from 'react'
 import { useTranslations } from 'next-intl'
 import { baseUrl } from '@/app/sitemap'
-import { LeetBackground } from '@/core/components/leet-background/leet-background'
+import { Background } from '@/core/components/background/background'
 import { Datetime } from '@/core/datetime'
-import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
+import { AccentText } from '@/core/components/accent-text/accent-text'
 import { Badge, badgeVariants } from '@/components/ui/badge'
 import { Link } from '@/core/components/link/link'
 import { cn } from '@/lib/utils'
@@ -38,7 +38,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
           }),
         }}
       />
-      <LeetBackground className="w-full h-[60vh]" image={`/assets/images/articles/${metadata.image}`}>
+      <Background className="w-full h-[60vh]" image={`/assets/images/articles/${metadata.image}`}>
         <div className="p-xl">
           <header className="flex gap-xxs">
             <small>{Datetime.fromIso(metadata.date).format()}</small>
@@ -46,7 +46,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
             <small>{t('blog.articleDuration', { minutes: metadata.readTime })}</small>
           </header>
           <h1>
-            <ScrambleText>{metadata.title}</ScrambleText>
+            <AccentText>{metadata.title}</AccentText>
           </h1>
           <div className="mt-xxs flex gap-xxs">
             {metadata.categories.map(category => (
@@ -61,7 +61,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
             ))}
           </div>
         </div>
-      </LeetBackground>
+      </Background>
       <article className="wrapper mt-m prose dark:prose-invert text-current">{children}</article>
     </>
   )

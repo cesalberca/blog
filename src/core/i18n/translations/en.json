@@ -15,7 +15,12 @@
     "logo": "Logo",
     "openToWork": "Contact me!",
     "email": "dev@cesalberca.com",
-    "license": "© {date} MIT Licensed"
+    "license": "© {date} MIT Licensed",
+    "notFound": {
+      "title": "The page you are looking for does not exist <em>yet</em>.",
+      "caption": "<leet>Wait patiently until AI generates it.</leet>",
+      "back": "Go back to human generated content"
+    }
   },
   "blog": {
     "title": "Blog",

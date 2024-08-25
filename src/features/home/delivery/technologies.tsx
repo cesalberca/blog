@@ -53,8 +53,8 @@ export const Technologies: FC<{ technologies?: string[] }> = ({ technologies }) 
   const renderedTechnologies =
     technologies?.map(technology => {
       const matchedTechnology = allTechnologies.find(t => t.label.toLowerCase() === technology.toLowerCase())
-      return matchedTechnology || { label: technology }
-    }) || allTechnologies
+      return matchedTechnology ?? { label: technology }
+    }) ?? allTechnologies
 
   return (
     <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 w-full">

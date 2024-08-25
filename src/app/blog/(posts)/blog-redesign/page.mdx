@@ -1,9 +1,10 @@
 import MdxLayout from '../../mdx-layout'
-import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
-import { LeetBackground } from '@/core/components/leet-background/leet-background'
+import { AccentText } from '@/core/components/accent-text/accent-text'
+import { Background } from '@/core/components/background/background'
 import { Link } from '@/core/components/link/link'
-import { MenuLink } from '@/core/components/menu-link/menu-link'
-import { TiltCard } from '@/core/components/tilt-card/tilt-card'
+import { NavLink } from '@/core/components/nav-link/nav-link'
+import { AccentCard } from '@/core/components/accent-card/accent-card'
+import { AccentList } from '@/core/components/accent-list/accent-list'
 
 export const metadata = {
   slug: 'blog-redesign',
@@ -12,94 +13,109 @@ export const metadata = {
   image: 'blog-redesign/medusa.jpg',
   categories: ['software-development', 'branding', 'design'],
   readTime: 10,
-  summary: 'After quitting my job, I decided to redesign my blog. This is the story of how I did it.',
+  summary: 'After quitting my job, I decided to redesign my blog. This is the story of how I did it (the blog).',
 }
 
-I recently became a **Freelancer as a Digital Nomad traveling the world**. This milestone could only be celebrated by revamping my website.
+I recently became a **Freelancer as a Digital Nomad traveling the world**. This kilometerstone could only be celebrated by **redesigning my blog**.
 
 > You are not a true Web Developer if you don't redesign your blog every year
 
-Being a Freelancer means that I need not only to be technically proficient but also to think about how effectively communicate what I offer so people can actually book my services.
+Being a Freelancer means that I not only need to be technically proficient but also to think about how I can **effectively communicate** what I offer so people will want to book my services.
 
-As **Front-end Software Architect** I need to showcase what I'm capable of doing. I wanted a site that would do so by reflecting professionalism and minimalism, with a sleek and tech look.
+A powerful way of conveying your message –whatever that might be– is to make sure the **medium in which your message is transmitted is attractive enough**. Designing is something that we humans do quite often, we design our outfits, we design how we talk and me as web designer, I designed this very same site you are experiencing.
 
-In order to do that I've used the following technologies:
+## Technologies
 
+Technology _needs_ to serve a purpose. Sometimes –most times, let's be honest– us web developers we focus too much in the technologies and frameworks we use. We should, but only to a _certain_ extent. I'm mentioning some of the technologies I've used, what I've learned from then and how they empowered me to focus on what matters; the message.
 
 - <Link to="https://nextjs.org/">
-    <ScrambleText>Next.js</ScrambleText>
+    <AccentText>Next.js</AccentText>
   </Link>
 - <Link to="https://react.dev/">
-    <ScrambleText>React</ScrambleText>
+    <AccentText>React</AccentText>
   </Link>
 - <Link to="https://www.typescriptlang.org/">
-    <ScrambleText>TypeScript</ScrambleText>
+    <AccentText>TypeScript</AccentText>
   </Link>
 - <Link to="https://tailwindcss.com/">
-    <ScrambleText>TaildwindCSS</ScrambleText>
+    <AccentText>TaildwindCSS</AccentText>
   </Link>
 - <Link to="https://ui.shadcn.com/">
-    <ScrambleText>ShadcnUI</ScrambleText>
+    <AccentText>ShadcnUI</AccentText>
   </Link>
 - <Link to="https://www.framer.com/motion/">
-    <ScrambleText>Framer Motion</ScrambleText>
+    <AccentText>Framer Motion</AccentText>
   </Link>
 - <Link to="https://mdxjs.com/">
-    <ScrambleText>MDX</ScrambleText>
+    <AccentText>MDX</AccentText>
   </Link>
 - <Link to="https://figma.com/">
-    <ScrambleText>Figma</ScrambleText>
+    <AccentText>Figma</AccentText>
   </Link>
 
-I used [Next.js starter porfolio](https://vercel.com/templates/next.js/portfolio-starter-kit) to have a decent SEO base. I tweaked the architecture and configured the project as I usually do, with [Prettier](https://prettier.io/), [ESLint](https://eslint.org/) and [Husky](https://typicode.github.io/husky/).
+A good starting point is to use starting points. I used [Next.js starter porfolio](https://vercel.com/templates/next.js/portfolio-starter-kit). It provided me with some configuration, specifically about SEO so I wouldn't worry initially about it. For instance it provided `sitemap.ts`, `robots.ts`, `rss/route.ts` and `og/route.ts.`. What I usually do is I generate in a temporal folder the template and then I choose what to copy over to the project. This ensures that I don't take more than I need to and that I can check exactly what I want to bring over.
 
-I made a conscious choice of not to delve too deep in best practises, testing and architecture. Why? Because I want to create a blog series where I go and improve a base of code bit by bit. However, I did decide to focus on creating a clean design with a big focus on content and some animations. Can you guess which ones I'm referring to?
+I also configured the project as I usually do, with [Prettier](https://prettier.io/), [ESLint](https://eslint.org/), [Husky](https://typicode.github.io/husky/) and [Lint Staged](). How I configure the projects I work on for sure would be another post at some point.
 
-<LeetBackground>
-  <div className="p-xl">This animation for example (hover over me if you can)</div>
-</LeetBackground>
+I made a conscious –perhaps also debatable?– choice of not to delve too deep in **best practices**, **testing** and **architecture**. _Why_? Because I want to create a blog series where I can improve the codebase of code bit by byte. But hey, it's not like I coded it with my eyes closed (which could be an interesting challenge, to be honest). You can check the source code here at the time of publishing of this post.
 
-Or perhaps this one:
+However, I did decide to focus on creating a clean design with a big focus on content and some subtle animations that would make the site b·e·a·u·t·i·f·u·l.
 
-<MenuLink to="#">Menu link</MenuLink>
+<div className="grid grid-columns-3 gap-m">
+  <Background>
+    <div className="p-xl">Background</div>
+  </Background>
+  <div><NavLink to="#">Navbar link</NavLink></div>
+  <div><AccentText repeat>Accent text</AccentText></div>
+  <div><AccentList texts={['One', 'Two', 'Forty two']}></AccentList></div>
+  <AccentCard className="flex items-center justify-center">
+    <div className="p-xl">You can't really print this interaction</div>
+  </AccentCard>
+</div>
 
-Also this one:
-
-<TiltCard className="flex items-center justify-center">
-<div className="p-xl">with 3d effects when you hover over it</div>
-</TiltCard>
-
-Some great places I looked for inspiration were [Codrops](https://tympanus.net/codrops/) and [Awwwards](https://www.awwwards.com/).
+I'm always on the lookout for inspiration. Seeing how others have tackled similar problems reassures me that I'm not alone for my quest for _my solution_. Some great places I ~~stole ideas from~~ looked for inspiration were [Codrops](https://tympanus.net/codrops/) and [Awwwards](https://www.awwwards.com/).
 
 ## MDX
 
-As you can see, all the components that I'm developing for the website I can reuse them in the blog posts and that's thanks to [MDX](https://mdxjs.com/). In MDX you can import React components, which is a powerful thing to do. The posts are written using [Markdown](https://www.markdownguide.org/) format, which uses some keywords to render plain text into HTML. With MDX, the twist is that you can also use React components. For example:
+As you can see, all the components that I'm developing for the website I can reuse them in the blog posts and that's thanks to [MDX](https://mdxjs.com/). MDX is Markdown on Kombucha (meaning super powerful). Why? Because in **MDX you can import React components**, which is a powerful thing to do.
 
-```jsx
-**Some Markdown over here**
+```mdx
+**Foo**
 
-<LeetBackground><div className="p-xl">Some component over here</div></LeetBackground>
+<Background><div className="p-xl">Bar</div></Background>
 
-And _we continue with the markdown_
+> Baz
 ```
 
-And this will render this:
+Which will render this:
 
-**Some Markdown over here**
+**Foo**
 
-<LeetBackground><div className="p-xl">Some component over here</div></LeetBackground>
+<Background><div className="p-xl">Bar</div></Background>
 
-And _we continue with the markdown_
+> Baz
 
 Cool, right?
 
-Next.js come with support for MDX using some extra libraries. I started configuring the project following the [Next.js MDX guide](https://Next.js.org/docs/pages/building-your-application/configuring/mdx), which at some point suggests using [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote). I found it a little bit overcomplicated and that it provides functionality that I don't really need.
+Next.js come with support for MDX using some extra libraries. I started configuring the project following the [Next.js MDX guide](https://Next.js.org/docs/pages/building-your-application/configuring/mdx), which at some point suggests using [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote). I found it a little bit cumbersome and that it provided some functionality that I don't really need (YAGNI).
 
-After trying to find other simpler solutions I stumbled upon [this amazing post](https://www.alexchantastic.com/building-a-blog-with-next-and-mdx) which showed how to simplify the setup using just [next-mdx](https://www.npmjs.com/package/@next/mdx).
+After trying to find simpler solutions I stumbled upon [this fantastic post](https://www.alexchantastic.com/building-a-blog-with-next-and-mdx) which showed how to simplify the setup using just [next-mdx](https://www.npmjs.com/package/@next/mdx).
 
 The only thing I still need to figure out is how to generate SEO compliant metadata from each article and talk. But that would be another `POST`.
 
-In the end each article is
+The structure for the posts it's quite simple. We just tell Next.js, please, render `.mdx` files when asked to:
+```typescript
+import withMDX from '@next/mdx'
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+}
+
+export default withMDX()(nextConfig)
+```
+
+And then it's a matter of specifying in what route would the post be rendered.
 
 ```text
 src/
@@ -110,7 +126,7 @@ src/
                 └── page.mdx
 ```
 
-And then it's just a matter of create a file under `src` called `mdx-components`:
+Since we want to customize the components in what MDX get rendered to, we can create a file under `src` called `mdx-components` to do so:
 
 ```tsx
 import type { MDXComponents } from 'mdx/types'
@@ -222,8 +238,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 }
 ```
 
-As you can see you even configure your own components for the MDX files. This way you can have a consistent look and feel across the whole blog.
-
 One more tip, each article should also keep the same layout as the website, and to do that each article should be wrapped in a `MdxLayout` component:
 
 ```tsx
@@ -232,7 +246,7 @@ import MdxLayout from '../../mdx-layout'
 
 # My blog content
 
-export default function MDXPage({ children }) {
+export default function Page({ children }) {
   return <MdxLayout slug="blog-redesign">{children}</MdxLayout>
 }
 ```
@@ -342,7 +356,6 @@ The same goes with colors. You won't typically see in the code specific colors (
 
 I also added some plugins to the configuration. I wanted to use the `@tailwindcss/typography` plugin to have a better typography out of the box. I also added the `tailwindcss-animate` plugin to have some animations ready to use.
 
-
 ## ShadcnUI
 
 This library it's a new concept where you don't actually install the components as a dependency, but generate them the project. Why would I want that? Well, it serves me as a base for lightweight components and from there I can customize them as much as I want. The code is mine after all. Whenever I need a new component I head [over to their documentation](https://ui.shadcn.com/docs) and find the component I need. Then I generate using the CLI:
@@ -411,8 +424,6 @@ Another reason why I chose shadcn is because of it's integration with `https://v
 
 Well, I want to really go back to writing online, from technical stuff to more personal. I want share my projects, my experiences as a Digital Nomad, or even what's my recipe to make my deodorant. I want to create a blog that you went to learn something you wouldn't have expected to learn.
 
-
-
-export default function MDXPage({ children }) {
+export default function Page({ children }) {
   return <MdxLayout slug="blog-redesign">{children}</MdxLayout>
 }

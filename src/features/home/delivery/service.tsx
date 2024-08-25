@@ -1,10 +1,8 @@
-'use client'
-
 import React, { type FC, type PropsWithChildren, type ReactNode } from 'react'
-import { LeetBackground } from '@/core/components/leet-background/leet-background'
 import { cn } from '@/lib/utils'
+import { Background } from '@/core/components/background/background'
 
-export const LeetCard: FC<PropsWithChildren<{ center: ReactNode; className?: string }>> = ({
+export const Service: FC<PropsWithChildren<{ center: ReactNode; className?: string }>> = ({
   children,
   center,
   className,
@@ -12,7 +10,7 @@ export const LeetCard: FC<PropsWithChildren<{ center: ReactNode; className?: str
   return (
     <div className={cn('grid p-m gap-4', className)}>
       <div className="[aspect-ratio:1] bg-background">
-        <LeetBackground>{center}</LeetBackground>
+        <Background>{center}</Background>
       </div>
       {children}
     </div>

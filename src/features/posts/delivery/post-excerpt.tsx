@@ -1,13 +1,13 @@
 import type { FC } from 'react'
 import Link from 'next/link'
-import { TiltCard } from '@/core/components/tilt-card/tilt-card'
+import { AccentCard } from '@/core/components/accent-card/accent-card'
 import Image from 'next/image'
 import { Markdown } from '@/core/components/markdown/markdown'
 import type { PostMetadata } from '@/post-metadata'
 
 export const PostExcerpt: FC<{ post: PostMetadata }> = ({ post }) => (
   <Link href={`/blog/${post.slug}`}>
-    <TiltCard className="break-inside-avoid mb-4">
+    <AccentCard className="break-inside-avoid mb-4">
       <Image
         src={`/assets/images/articles/${post.image}`}
         alt={post.title}
@@ -19,6 +19,6 @@ export const PostExcerpt: FC<{ post: PostMetadata }> = ({ post }) => (
         <h4 className="mb-xs">{post.title}</h4>
         <Markdown value={post.summary}></Markdown>
       </section>
-    </TiltCard>
+    </AccentCard>
   </Link>
 )

@@ -3,7 +3,7 @@ import { Url } from '../../../core/types/url'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
-import { TiltCard } from '@/core/components/tilt-card/tilt-card'
+import { AccentCard } from '@/core/components/accent-card/accent-card'
 import { Markdown } from '@/core/components/markdown/markdown'
 import { Technologies } from '@/features/home/delivery/technologies'
 import { Button } from '@/components/ui/button'
@@ -58,7 +58,7 @@ export const Projects: FC = () => {
               'md:flex-row-reverse': i % 2 !== 0,
             })}
           >
-            <TiltCard className="flex-1" defaultTiltX={i % 2 !== 0 ? 5 : 5} defaultTiltY={i % 2 === 0 ? 30 : -30}>
+            <AccentCard className="flex-1" defaultTiltX={i % 2 !== 0 ? 5 : 5} defaultTiltY={i % 2 === 0 ? 30 : -30}>
               <Image src={x.image} alt={x.title} width={300} height={200} className="w-full h-auto" />
               <footer
                 className="flex gap-4 justify-center"
@@ -76,7 +76,7 @@ export const Projects: FC = () => {
                   </Button>
                 )}
               </footer>
-            </TiltCard>
+            </AccentCard>
             <aside className="flex-1 wrapper">
               <h3 className="mb-m">{x.title}</h3>
               <Markdown value={x.description}></Markdown>

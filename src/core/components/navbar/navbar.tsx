@@ -5,14 +5,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Button } from '@/components/ui/button'
-import { MenuLink } from '@/core/components/menu-link/menu-link'
+import { NavLink } from '@/core/components/nav-link/nav-link'
 
 const Links = () => {
   const t = useTranslations()
   return (
     <>
-      <MenuLink to={'/talks'}>{t('talks.title')}</MenuLink>
-      <MenuLink to={'/blog'}>{t('blog.title')}</MenuLink>
+      <NavLink to={'/blog'}>{t('blog.title')}</NavLink>
+      <NavLink to={'/talks'}>{t('talks.title')}</NavLink>
     </>
   )
 }

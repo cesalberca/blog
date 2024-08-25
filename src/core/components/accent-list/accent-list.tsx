@@ -1,14 +1,14 @@
 'use client'
 
 import React, { type FC, useState } from 'react'
-import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
+import { AccentText } from '@/core/components/accent-text/accent-text'
 import { motion } from 'framer-motion'
 
 interface Props {
   texts: string[]
 }
 
-export const ScrambleList: FC<Props> = ({ texts }) => {
+export const AccentList: FC<Props> = ({ texts }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [key, setKey] = useState(0)
 
@@ -30,7 +30,7 @@ export const ScrambleList: FC<Props> = ({ texts }) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <ScrambleText onComplete={handleComplete}>{texts[currentIndex]}</ScrambleText>
+      <AccentText onComplete={handleComplete}>{texts[currentIndex]}</AccentText>
     </motion.span>
   )
 }

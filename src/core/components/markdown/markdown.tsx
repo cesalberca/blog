@@ -11,7 +11,7 @@ export const Markdown: FC<{ value: string; className?: string }> = async ({ valu
       components={{
         code(props) {
           const { children, className, node, ...rest } = props
-          const match = /language-(\w+)/.exec(className || '')
+          const match = /language-(\w+)/.exec(className ?? '')
           return match ? (
             <SyntaxHighlighter {...(rest as SyntaxHighlighterProps)} PreTag="div" language={match[1]} style={dark}>
               {String(children).replace(/\n$/, '')}

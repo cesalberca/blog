@@ -1,6 +1,6 @@
 import { getTalks } from '../../../talks'
 import type { FC } from 'react'
-import { TiltCard } from '@/core/components/tilt-card/tilt-card'
+import { AccentCard } from '@/core/components/accent-card/accent-card'
 import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { Page } from '@/core/components/page/page'
@@ -19,7 +19,7 @@ export const TalksPage: FC = async () => {
         {allTalks.map(talk => (
           <Link type="invisible" className="w-full" key={talk.slug} to={`/talks/${talk.slug}`}>
             <div className="mb-4 break-inside-avoid">
-              <TiltCard>
+              <AccentCard>
                 <Image
                   src={`/assets/images/talks/${talk.image}`}
                   width={300}
@@ -35,7 +35,7 @@ export const TalksPage: FC = async () => {
                     </Badge>
                   ))}
                 </section>
-              </TiltCard>
+              </AccentCard>
             </div>
           </Link>
         ))}

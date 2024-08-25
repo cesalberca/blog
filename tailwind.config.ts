@@ -3,8 +3,12 @@ import type { Config } from 'tailwindcss'
 const config = {
   darkMode: ['class'],
   content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
-  prefix: '',
   theme: {
+    fontFamily: {
+      body: ['Inter', 'sans-serif'],
+      display: ['Azeret', 'monospace'],
+      mono: ['Azeret', 'monospace'],
+    },
     container: {
       center: true,
       padding: '2rem',

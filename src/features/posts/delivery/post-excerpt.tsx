@@ -1,9 +1,9 @@
 import type { FC } from 'react'
-import type { PostMetadata } from '@/posts'
 import Link from 'next/link'
 import { TiltCard } from '@/core/components/tilt-card/tilt-card'
 import Image from 'next/image'
 import { Markdown } from '@/core/components/markdown/markdown'
+import type { PostMetadata } from '@/post-metadata'
 
 export const PostExcerpt: FC<{ post: PostMetadata }> = ({ post }) => (
   <Link href={`/blog/${post.slug}`}>

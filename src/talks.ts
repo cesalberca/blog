@@ -1,25 +1,8 @@
-import { readdir } from 'node:fs/promises'
-
-export interface TalkMetadata {
-  title: string
-  length: string
-  slug: string
-  difficulty: string
-  language: string
-  categories: string[]
-  image: string
-  events: {
-    name: string
-    date: string
-    slides: string
-    video: string
-  }[]
-}
+import type { TalkMetadata } from '@/talk-metadata'
+import { getSlugs } from '@/lib/get-slugs'
 
 export async function getTalks(): Promise<TalkMetadata[]> {
-  const slugs = (await readdir('./src/app/talks/(talks)', { withFileTypes: true })).filter(dirent =>
-    dirent.isDirectory(),
-  )
+  const slugs = await getSlugs('./src/app/talks/(talks)')
 
   return await Promise.all(
     slugs.map(async ({ name }) => {

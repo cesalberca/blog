@@ -1,11 +1,10 @@
 import { type FC, type PropsWithChildren } from 'react'
 import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
-import type { TalkMetadata } from '@/talks'
 import { Page } from '@/core/components/page/page'
 import { baseUrl } from '@/app/sitemap'
 import { LeetBackground } from '@/core/components/leet-background/leet-background'
-import { Link } from '@/core/components/link/link'
-import { Badge, badgeVariants } from '@/components/ui/badge'
+import { Badge } from '@/components/ui/badge'
+import type { TalkMetadata } from '@/talk-metadata'
 
 export const TalkPage: FC<PropsWithChildren<{ slug: string; metadata: TalkMetadata }>> = async ({
   slug,

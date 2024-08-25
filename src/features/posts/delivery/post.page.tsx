@@ -1,5 +1,4 @@
 import type { FC, PropsWithChildren } from 'react'
-import type { PostMetadata } from '@/posts'
 import { useTranslations } from 'next-intl'
 import { baseUrl } from '@/app/sitemap'
 import { LeetBackground } from '@/core/components/leet-background/leet-background'
@@ -8,6 +7,7 @@ import { ScrambleText } from '@/core/components/scramble-text/scramble-text'
 import { Badge, badgeVariants } from '@/components/ui/badge'
 import { Link } from '@/core/components/link/link'
 import { cn } from '@/lib/utils'
+import type { PostMetadata } from '@/post-metadata'
 
 export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: string }>> = ({
   metadata,

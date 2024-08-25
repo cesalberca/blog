@@ -1,35 +1,11 @@
-'use client'
-
-import type { FC, PropsWithChildren, SVGProps } from 'react'
+import type { FC, SVGProps } from 'react'
 import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import styles from './navbar.module.css'
 import Link from 'next/link'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Button } from '@/components/ui/button'
-
-const MenuLink: FC<
-  PropsWithChildren<{
-    to: string
-  }>
-> = ({ to, children }) => {
-  const currentPath = usePathname()
-
-  return (
-    <Link
-      href={to}
-      className={cn(
-        styles['menu-link'],
-        'font-medium  relative',
-        `${currentPath === to ? 'font-bold text-foreground' : ''}`,
-      )}
-    >
-      <span className="inline-block">{children}</span>
-    </Link>
-  )
-}
+import { MenuLink } from '@/core/components/menu-link/menu-link'
 
 const Links = () => {
   const t = useTranslations()

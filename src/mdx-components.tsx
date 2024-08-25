@@ -13,7 +13,7 @@ import dark from 'react-syntax-highlighter/dist/esm/styles/prism/synthwave84'
 import { cn } from '@/lib/utils'
 
 function CustomLink(props: LinkHTMLAttributes<HTMLAnchorElement> & PropsWithChildren<{ href: string }>) {
-  let href = props.href
+  const href = props.href
 
   if (href.startsWith('/')) {
     return <Link {...props}>{props.children}</Link>
@@ -36,10 +36,7 @@ function Code({ children, ...props }: { children: string; className: string }) {
       PreTag="div"
       style={dark}
       codeTagProps={{
-        style: {
-          fontFamily:
-            'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-        },
+        className: 'font-mono',
       }}
     >
       {children}
@@ -67,7 +64,7 @@ function slugify(str: string) {
 
 function createHeading(level: number) {
   const Heading = ({ children }: { children: string }) => {
-    let slug = slugify(children)
+    const slug = slugify(children)
     return createElement(
       `h${level}`,
       { id: slug },

@@ -46,6 +46,20 @@ export const LeetBackground: FC<PropsWithChildren<{ className?: string; image?: 
     decoRef.current.innerHTML = getRandomString((itemRef.current.clientWidth * itemRef.current.clientHeight) / 50)
   }
 
+  function setBackground() {
+    if (decoRef.current && itemRef.current) {
+      controls.start({ opacity: image ? 1 : 0.25, transition: { duration: 0.5, ease: 'easeInOut' } })
+      const xPosition = itemRef.current.clientWidth / 2
+      const yPosition = itemRef.current.clientHeight / 2
+      itemRef.current.style.setProperty('--x', `${image ? xPosition : 0}px`)
+      itemRef.current.style.setProperty('--y', `${image ? yPosition : 0}px`)
+      itemRef.current.style.setProperty('--size', `${itemRef.current.clientWidth * 0.75}px`)
+      x.set(linearInterpolation(x.get(), 0, 0.1))
+      y.set(linearInterpolation(y.get(), 0, 0.1))
+      decoRef.current.innerHTML = getRandomString((itemRef.current.clientWidth * itemRef.current.clientHeight) / 50)
+    }
+  }
+
   return (
     <motion.div
       className={cn(
@@ -59,19 +73,7 @@ export const LeetBackground: FC<PropsWithChildren<{ className?: string; image?: 
         ref={decoRef}
         animate={controls}
         onViewportEnter={() => {
-          if (decoRef.current && itemRef.current) {
-            controls.start({ opacity: image ? 1 : 0.25, transition: { duration: 0.5, ease: 'easeInOut' } })
-            const xPosition = itemRef.current.clientWidth / 2
-            const yPosition = itemRef.current.clientHeight / 2
-            itemRef.current.style.setProperty('--x', `${image ? xPosition : 0}px`)
-            itemRef.current.style.setProperty('--y', `${image ? yPosition : 0}px`)
-            itemRef.current.style.setProperty('--size', `${itemRef.current.clientWidth * 0.75}px`)
-            x.set(linearInterpolation(x.get(), 0, 0.1))
-            y.set(linearInterpolation(y.get(), 0, 0.1))
-            decoRef.current.innerHTML = getRandomString(
-              (itemRef.current.clientWidth * itemRef.current.clientHeight) / 50,
-            )
-          }
+          setBackground()
         }}
         style={{ backgroundImage: `url(${image})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
         className={cn(

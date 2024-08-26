@@ -1,4 +1,4 @@
-import MdxLayout from '../../mdx-layout'
+import { PostLayout } from '@/features/posts/delivery/post-layout'
 
 export const metadata = {
   slug: 'create-angular-17-project',
@@ -174,5 +174,5 @@ Angular encourages developers to avoid using modules, a decision that I believe 
 As we've seen in this tutorial, there are new configurations compared to previous versions, simplifying and reducing the number of files created with the Angular CLI when starting a new project.
 
 export default function Page({ children }) {
-  return <MdxLayout slug="create-angular-17-project">{children}</MdxLayout>
+  return <PostLayout slug="create-angular-17-project">{children}</PostLayout>
 }

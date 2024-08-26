@@ -26,7 +26,7 @@ export const Projects: FC = () => {
       title: t('home.projects.katasTitle'),
       description: t('home.projects.katasDescription'),
       code: Url.fromValue('https://github.com/cesalberca/katas'),
-      image: '/assets/images/katas.png',
+      image: '/assets/images/projects/katas.png',
       technologies: ['React', 'TypeScript', 'Jest'],
     },
     {
@@ -34,7 +34,7 @@ export const Projects: FC = () => {
       description: t('home.projects.archimedesJsDescription'),
       link: Url.fromValue('https://archimedesfw.io/'),
       code: Url.fromValue('https://github.com/archimedes-projects/archimedes-js/'),
-      image: '/assets/images/archimedesjs.png',
+      image: '/assets/images/projects/archimedesjs.png',
       technologies: ['TypeScript', 'Jest'],
     },
     {
@@ -42,7 +42,7 @@ export const Projects: FC = () => {
       description: t('home.projects.blogDescription'),
       code: Url.fromValue('https://github.com/cesalberca/blog'),
       link: Url.fromValue('https://cesalberca.com/'),
-      image: '/assets/images/blog.png',
+      image: '/assets/images/projects/blog.png',
       technologies: ['React', 'TypeScript', 'Jest', 'Next.js'],
     },
   ]

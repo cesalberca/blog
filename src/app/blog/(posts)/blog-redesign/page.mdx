@@ -1,4 +1,4 @@
-import MdxLayout from '../../mdx-layout'
+import { PostLayout } from '@/features/posts/delivery/post-layout'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { Background } from '@/core/components/background/background'
 import { Link } from '@/core/components/link/link'
@@ -20,13 +20,13 @@ I recently became a **Freelancer as a Digital Nomad traveling the world**. This 
 
 > You are not a true Web Developer if you don't redesign your blog every year
 
-Being a Freelancer means that I not only need to be technically proficient but also to think about how I can **effectively communicate** what I offer so people will want to book my services.
+Being a Freelancer means that I not only need to be technically proficient, but also to think about how I can **effectively communicate** what I offer so people will want to book my services.
 
-A powerful way of conveying your message –whatever that might be– is to make sure the **medium in which your message is transmitted is attractive enough**. Designing is something that we humans do quite often, we design our outfits, we design how we talk and me as web designer, I designed this very same site you are experiencing.
+A powerful way of conveying your message –whatever that might be– is to make sure the **medium in which your message is transmitted is attractive enough**. Designing is something that we humans do quite often, we design our outfits, we design how we talk and me as web designer, I designed and built this very same site you are experiencing.
 
 ## Technologies
 
-Technology _needs_ to serve a purpose. Sometimes –most times, let's be honest– us web developers we focus too much in the technologies and frameworks we use. We should, but only to a _certain_ extent. I'm mentioning some of the technologies I've used, what I've learned from then and how they empowered me to focus on what matters; the message.
+Technology _needs_ to serve a purpose. Sometimes –most times, let's be honest– us web developers we focus too much in the technologies and frameworks we use. We should talk about them, be proud of what we use and try to make others' feel bad about their choice of technology, but only to a _certain_ extent. I'm mentioning some of the technologies I've used, what I've learned from then and how they empowered me to focus on what really matters: **the message**.
 
 - <Link to="https://nextjs.org/">
     <AccentText>Next.js</AccentText>
@@ -53,24 +53,45 @@ Technology _needs_ to serve a purpose. Sometimes –most times, let's be honest�
     <AccentText>Figma</AccentText>
   </Link>
 
-A good starting point is to use starting points. I used [Next.js starter porfolio](https://vercel.com/templates/next.js/portfolio-starter-kit). It provided me with some configuration, specifically about SEO so I wouldn't worry initially about it. For instance it provided `sitemap.ts`, `robots.ts`, `rss/route.ts` and `og/route.ts.`. What I usually do is I generate in a temporal folder the template and then I choose what to copy over to the project. This ensures that I don't take more than I need to and that I can check exactly what I want to bring over.
+A good starting point is to use starters. I used [Next.js starter porfolio](https://vercel.com/templates/next.js/portfolio-starter-kit). It provided me with some initial configuration about SEO so I wouldn't worry about it (for now). For instance it provided `sitemap.ts`, `robots.ts`, `rss/route.ts` and `og/route.ts.`.
+
+When using a start, what I do is generate in a temporal folder the template and then I choose what to copy over to my project. This ensures that I don't take more than I need to and that I can check exactly what I want to bring over.
 
 I also configured the project as I usually do, with [Prettier](https://prettier.io/), [ESLint](https://eslint.org/), [Husky](https://typicode.github.io/husky/) and [Lint Staged](). How I configure the projects I work on for sure would be another post at some point.
 
-I made a conscious –perhaps also debatable?– choice of not to delve too deep in **best practices**, **testing** and **architecture**. _Why_? Because I want to create a blog series where I can improve the codebase of code bit by byte. But hey, it's not like I coded it with my eyes closed (which could be an interesting challenge, to be honest). You can check the source code here at the time of publishing of this post.
+I made a conscious –perhaps also debatable?– choice of not to delve too deep in **best practices**, **testing** and **architecture**. _Why_? Because I want to create a blog series where I can improve the codebase of code bit by _byte_. But hey, it's not like I coded the _thing_ with my eyes closed (which could be an interesting challenge, to be honest). You can check the source code here at the time of publishing of this post. I think is pretty neat.
 
-However, I did decide to focus on creating a clean design with a big focus on content and some subtle animations that would make the site b·e·a·u·t·i·f·u·l.
+What I did decide to focus instead was on creating a clean design with a big focus on content and some subtle animations that would make the site b·e·a·u·t·i·f·u·l. Here are some:
 
-<div className="grid grid-columns-3 gap-m">
-  <Background>
-    <div className="p-xl">Background</div>
-  </Background>
-  <div><NavLink to="#">Navbar link</NavLink></div>
-  <div><AccentText repeat>Accent text</AccentText></div>
-  <div><AccentList texts={['One', 'Two', 'Forty two']}></AccentList></div>
-  <AccentCard className="flex items-center justify-center">
-    <div className="p-xl">You can't really print this interaction</div>
-  </AccentCard>
+<div className="grid grid-cols-3 grid-rows-3 gap-m">
+  <h3>Animations</h3>
+  <div className="flex flex-col">
+    <div>
+      <NavLink to="#">Navbar link (hover over me!)</NavLink>
+    </div>
+    <div>
+      <AccentText repeat>Accent text</AccentText>
+    </div>
+    <div>
+      <AccentList texts={['One', 'Two', 'Forty two']}></AccentList>
+    </div>
+  </div>
+
+    <div>
+      <div><Background>
+        <div className="p-xl">Background (more hover!)</div>
+      </Background></div>
+
+      <div><Background image="/assets/images/articles/blog-redesign/medusa.jpg">
+        <div className="p-xl">Background with image (still hover!)</div>
+      </Background></div>
+
+      <div><AccentCard className="flex items-center justify-center">
+        <div className="p-xl">3D card (you guessed it, hover!)</div>
+      </AccentCard>
+
+    </div>
+  </div>
 </div>
 
 I'm always on the lookout for inspiration. Seeing how others have tackled similar problems reassures me that I'm not alone for my quest for _my solution_. Some great places I ~~stole ideas from~~ looked for inspiration were [Codrops](https://tympanus.net/codrops/) and [Awwwards](https://www.awwwards.com/).
@@ -82,7 +103,9 @@ As you can see, all the components that I'm developing for the website I can reu
 ```mdx
 **Foo**
 
-<Background><div className="p-xl">Bar</div></Background>
+<Background>
+  <div className="p-xl">Bar</div>
+</Background>
 
 > Baz
 ```
@@ -91,7 +114,9 @@ Which will render this:
 
 **Foo**
 
-<Background><div className="p-xl">Bar</div></Background>
+<Background>
+  <div className="p-xl">Bar</div>
+</Background>
 
 > Baz
 
@@ -104,6 +129,7 @@ After trying to find simpler solutions I stumbled upon [this fantastic post](htt
 The only thing I still need to figure out is how to generate SEO compliant metadata from each article and talk. But that would be another `POST`.
 
 The structure for the posts it's quite simple. We just tell Next.js, please, render `.mdx` files when asked to:
+
 ```typescript
 import withMDX from '@next/mdx'
 
@@ -238,20 +264,20 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 }
 ```
 
-One more tip, each article should also keep the same layout as the website, and to do that each article should be wrapped in a `MdxLayout` component:
+Each article should also have the same layout as the website, and to do that you can export a default function which uses a custom component. I would have liked if this was integrated under Next.js layout system. Maybe in the future?
 
 ```tsx
 
-import MdxLayout from '../../mdx-layout'
+import { PostLayout } from '@/features/posts/delivery/post-layout'
 
 # My blog content
 
 export default function Page({ children }) {
-  return <MdxLayout slug="blog-redesign">{children}</MdxLayout>
+  return <PostLayout slug="blog-redesign">{children}</PostLayout>
 }
 ```
 
-The `MdxLayout` component has the following content:
+The `PostLayout` component has the following content:
 
 ```tsx
 import { Page } from '@/core/components/page/page'
@@ -259,7 +285,7 @@ import type { ReactNode } from 'react'
 import { PostPage } from '@/features/posts/delivery/post.page'
 import type { PostMetadata } from '@/post-metadata'
 
-export default async function MdxLayout({ children, slug }: { children: ReactNode; slug: string }) {
+export async function PostLayout({ children, slug }: { children: ReactNode; slug: string }) {
   const { metadata } = (await import(`./(posts)/${slug}/page.mdx`)) as { metadata: PostMetadata }
 
   return (
@@ -286,11 +312,28 @@ export const metadata = {
 }
 ```
 
+This removes the need of adding `front-matter` and a subsequent parser. **Simpler is better**.
+
 ## TaildwindCSS
 
-I've been trying to use more and more [TaildwindCSS](https://tailwindcss.com/). Since I only used in short lived projects I wanted to see how would it fare in a long lived one. To me, CSS is part of the Front-end Architecture and it's something I don't overlook. I wanted to incorporate this technology to check if it's scalable and provides a good framework for development. Conclusion: **it does**.
+In case you missed it, there's some code that might initially look aberrant. If so, it's because you haven't tried _yet_ [TaildwindCSS](https://tailwindcss.com/):
 
-Although I see that there's some tweaking to be done:
+```tsx
+<code {...props} className={cn(className, 'bg-muted px-[4px] py-[2px] mx-[2px] rounded not-prose text-base font-mono')}>
+  {children}
+</code>
+```
+
+To me, CSS is part of the Front-end Architecture and it's something I don't overlook nor hate. I wanted to incorporate TaildwindCSS to check if it's scalable and provides a good framework for development. Conclusion: **it does**.
+
+Although there's two changes I made:
+
+1. Use named spacing units instead of arbitrary numbers
+2. Use theme oriented names instead of specific colors
+
+To me it's important to abstract the spacing units. I don't want to use numbers such as `p-2`, `m-8` or `w-4`. I want to use `p-s`, `m-m` or `w-xl`. This way I can change the spacing units in one place and it will be reflected in the whole project.
+
+The same goes with colors. You won't typically see in the code specific colors (only unless I want to invariably use a specific color) but instead you'll see `text-primary`, `bg-secondary`, `border-destructive`, etc. This provides more flexibility and maintainability to the project in case you want to change the primary color.
 
 ```typescript
 import type { Config } from 'tailwindcss'
@@ -344,21 +387,14 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
 } satisfies Config
 
 export default config
 ```
 
-To me it's important to abstract the spacing units. I don't want to use numbers such as `p-2`, `m-8` or `w-4`. I want to use `p-s`, `m-m` or `w-xl`. This way I can change the spacing units in one place and it will be reflected in the whole project.
-
-The same goes with colors. You won't typically see in the code specific colors (only unless I want to invariable invariably use a specific color) but instead you'll see `text-primary`, `bg-secondary`, `border-destructive`, etc. This provides more flexibility and maintainability to the project.
-
-I also added some plugins to the configuration. I wanted to use the `@tailwindcss/typography` plugin to have a better typography out of the box. I also added the `tailwindcss-animate` plugin to have some animations ready to use.
-
 ## ShadcnUI
 
-This library it's a new concept where you don't actually install the components as a dependency, but generate them the project. Why would I want that? Well, it serves me as a base for lightweight components and from there I can customize them as much as I want. The code is mine after all. Whenever I need a new component I head [over to their documentation](https://ui.shadcn.com/docs) and find the component I need. Then I generate using the CLI:
+ShadcnUI brings a new concept which might initially makes us shudder in fear. And that is to copy and paste code. It does so by generating code for your components. Why would I want that? Well, it serves me as a base for lightweight components and from there I can customize them as much as I want. The code is "mine" after all. Whenever I need a new component I head [over to their documentation](https://ui.shadcn.com/docs) and find the component I need. Then I generate it using the CLI:
 
 ```bash
 npx shadcn-ui@latest add button
@@ -418,12 +454,12 @@ export { Button, buttonVariants }
 
 As you can see it uses TaildwindCSS and RadixUI under the hood to do all the heavy lifting. `class-variance-authority` is a library to create variants of a component easily.
 
-Another reason why I chose shadcn is because of it's integration with `https://v0.dev/`, which is a Vercel project to generate UI using AI, which is a concept I'm very interested in.
+Another reason why I chose ShadcnUI is because of it's integration with Vercel's new AI tool to generate pieces of UI: [v0](https://v0.dev/). Is web design already doomed? Well, when wasn't it?
 
 ## What's next?
 
-Well, I want to really go back to writing online, from technical stuff to more personal. I want share my projects, my experiences as a Digital Nomad, or even what's my recipe to make my deodorant. I want to create a blog that you went to learn something you wouldn't have expected to learn.
+I ~~need~~ want to really go back to blog writing, from technical stuff to more personal. I want share my projects, my experiences as a Digital Nomad, or even the recipe I use to make my deodorant. I want to create a site that I cherish to visit and I enjoy reading. And if you do too, then, that would be amazing!
 
 export default function Page({ children }) {
-  return <MdxLayout slug="blog-redesign">{children}</MdxLayout>
+  return <PostLayout slug="blog-redesign">{children}</PostLayout>
 }

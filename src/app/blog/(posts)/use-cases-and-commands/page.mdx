@@ -1,4 +1,4 @@
-import MdxLayout from '../../mdx-layout'
+import { PostLayout } from '@/features/posts/delivery/post-layout'
 
 export const metadata = {
   title: 'Use Cases and Command Pattern',
@@ -146,5 +146,5 @@ export class GetArticle implements Command<Article> {
 And we could create as many decorators as we want and use composition to give more behaviour to our commands.
 
 export default function Page({ children }) {
-  return <MdxLayout slug="use-cases-and-commands">{children}</MdxLayout>
+  return <PostLayout slug="use-cases-and-commands">{children}</PostLayout>
 }

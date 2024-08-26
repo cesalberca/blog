@@ -1,4 +1,4 @@
-import MdxLayout from '../../mdx-layout'
+import { PostLayout } from '@/features/posts/delivery/post-layout'
 
 export const metadata = {
   slug: 'migrating-to-typescript',
@@ -436,5 +436,5 @@ If you want to see all the code that I migrated checkout this [pull request](htt
 And now _what_? Well, you'll see the great advantages that TypeScript provides us like fewer bugs, be able to make a simple refactor as renaming a symbol, or a program that has a living documentation. This and many other advantages just by using TypeScript.
 
 export default function Page({ children }) {
-  return <MdxLayout slug="migrating-to-typescript">{children}</MdxLayout>
+  return <PostLayout slug="migrating-to-typescript">{children}</PostLayout>
 }

@@ -3,8 +3,8 @@ import type { ReactNode } from 'react'
 import { PostPage } from '@/features/posts/delivery/post.page'
 import type { PostMetadata } from '@/post-metadata'
 
-export default async function MdxLayout({ children, slug }: { children: ReactNode; slug: string }) {
-  const { metadata } = (await import(`./(posts)/${slug}/page.mdx`)) as { metadata: PostMetadata }
+export async function PostLayout({ children, slug }: { children: ReactNode; slug: string }) {
+  const { metadata } = (await import(`@/app/blog/(posts)/${slug}/page.mdx`)) as { metadata: PostMetadata }
 
   return (
     <Page top>

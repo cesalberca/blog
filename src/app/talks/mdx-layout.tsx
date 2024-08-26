@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { TalkPage } from '@/features/talks/delivery/talk.page'
 import type { TalkMetadata } from '@/talk-metadata'
 
-export default async function MdxLayout({ children, slug }: { children: ReactNode; slug: string }) {
+export default async function Layout({ children, slug }: { children: ReactNode; slug: string }) {
   const { metadata } = (await import(`./(talks)/${slug}/page.mdx`)) as { metadata: TalkMetadata }
 
   return (

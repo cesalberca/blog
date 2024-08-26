@@ -1,4 +1,4 @@
-import MdxLayout from '../../mdx-layout'
+import { PostLayout } from '@/features/posts/delivery/post-layout'
 
 export const metadata = {
   title: 'My twelve favorite problems',
@@ -50,5 +50,5 @@ I concocted my own list of my favorite problems, which I want to share with you.
 I also would like to invite you to create your own list, so you can always come back to them in case of need. I would love to hear about your list, so please share it with me!
 
 export default function Page({ children }) {
-  return <MdxLayout slug="my-twelve-favorite-problems">{children}</MdxLayout>
+  return <PostLayout slug="my-twelve-favorite-problems">{children}</PostLayout>
 }

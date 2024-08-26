@@ -1,6 +1,6 @@
 import { Datetime } from './datetime'
 
-describe.skip('Datetime', () => {
+describe('Datetime', () => {
   it('should get the value', () => {
     const datetime = Datetime.fromDate(new Date(2019, 3, 4, 0, 0, 0))
 

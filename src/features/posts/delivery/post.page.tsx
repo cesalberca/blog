@@ -38,7 +38,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
           }),
         }}
       />
-      <Background className="w-full h-[60vh]" image={`/assets/images/articles/${metadata.image}`}>
+      <Background className="w-full h-[60vh]" image={`/assets/images/posts/${metadata.image}`}>
         <div className="p-xl">
           <header className="flex gap-xxs">
             <small>{Datetime.fromIso(metadata.date).format()}</small>
@@ -54,7 +54,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
                 key={category}
                 type="invisible"
                 to={`/blog/category/${category}`}
-                className={cn(badgeVariants({ variant: 'outline' }), 'p-0')}
+                className={cn(badgeVariants({ variant: 'outline' }), 'p-0 h-min')}
               >
                 <Badge>{category}</Badge>
               </Link>

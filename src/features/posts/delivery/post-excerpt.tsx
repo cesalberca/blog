@@ -9,7 +9,7 @@ export const PostExcerpt: FC<{ post: PostMetadata }> = ({ post }) => (
   <Link href={`/blog/${post.slug}`}>
     <AccentCard className="break-inside-avoid mb-4">
       <Image
-        src={`/assets/images/articles/${post.image}`}
+        src={`/assets/images/posts/${post.image}`}
         alt={post.title}
         width={200}
         height={200}

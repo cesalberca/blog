@@ -16,17 +16,17 @@ export const metadata = {
   summary: 'After quitting my job, I decided to redesign my blog. This is the story of how I did it (the blog).',
 }
 
-I recently became a **Freelancer as a Digital Nomad traveling the world**. This kilometerstone could only be celebrated by **redesigning my blog**.
+I recently became a **Freelancer and Digital Nomad traveling the world**. This kilometerstone could only be celebrated by **redesigning my blog**.
 
-> You are not a true Web Developer if you don't redesign your blog every year
+> You are not a true Web Developer if you don't redesign your blog every year.
 
-Being a Freelancer means that I not only need to be technically proficient, but also to think about how I can **effectively communicate** what I offer so people will want to book my services.
+Being a freelancer means that I not only need to be technically proficient, but also need to think about how I can **effectively communicate** what I offer so people will want to book my services.
 
-A powerful way of conveying your message –whatever that might be– is to make sure the **medium in which your message is transmitted is attractive enough**. Designing is something that we humans do quite often, we design our outfits, we design how we talk and me as web designer, I designed and built this very same site you are experiencing.
+A powerful way of conveying your message—whatever that might be—is to make sure the **medium in which your message is transmitted is attractive enough**. Designing is something that we humans do quite often: we design our outfits, we design how we talk, and as a web designer, I designed and built this very same site you are experiencing.
 
 ## Technologies
 
-Technology _needs_ to serve a purpose. Sometimes –most times, let's be honest– us web developers we focus too much in the technologies and frameworks we use. We should talk about them, be proud of what we use and try to make others' feel bad about their choice of technology, but only to a _certain_ extent. I'm mentioning some of the technologies I've used, what I've learned from then and how they empowered me to focus on what really matters: **the message**.
+Technology *needs* to serve a purpose. Sometimes—most times, let's be honest—we web developers focus too much on the technologies and frameworks we use. We should talk about them, be proud of what we use, and maybe even poke fun at others' choices, but only to a *certain* extent. Here, I'm mentioning some of the technologies I've used, what I've learned from them, and how they've empowered me to focus on what really matters: **the message**.
 
 - <Link to="https://nextjs.org/">
     <AccentText>Next.js</AccentText>
@@ -53,15 +53,15 @@ Technology _needs_ to serve a purpose. Sometimes –most times, let's be honest�
     <AccentText>Figma</AccentText>
   </Link>
 
-A good starting point is to use starters. I used [Next.js starter porfolio](https://vercel.com/templates/next.js/portfolio-starter-kit). It provided me with some initial configuration about SEO so I wouldn't worry about it (for now). For instance it provided `sitemap.ts`, `robots.ts`, `rss/route.ts` and `og/route.ts.`.
+A good starting point is to use starters. I used the [Next.js starter portfolio](https://vercel.com/templates/next.js/portfolio-starter-kit). It provided me with some initial configuration for SEO, so I wouldn't have to worry about it (for now). For instance, it included `sitemap.ts`, `robots.ts`, `rss/route.ts`, and `og/route.ts`.
 
-When using a start, what I do is generate in a temporal folder the template and then I choose what to copy over to my project. This ensures that I don't take more than I need to and that I can check exactly what I want to bring over.
+When using a starter, what I do is generate the template in a temporary folder and then choose what to copy over to my project. This ensures that I don't take more than I need and that I can check exactly what I want to bring over.
 
-I also configured the project as I usually do, with [Prettier](https://prettier.io/), [ESLint](https://eslint.org/), [Husky](https://typicode.github.io/husky/) and [Lint Staged](). How I configure the projects I work on for sure would be another post at some point.
+I also configured the project as I usually do, with [Prettier](https://prettier.io/), [ESLint](https://eslint.org/), [Husky](https://typicode.github.io/husky/), and [Lint Staged](https://github.com/lint-staged/lint-staged). How I configure the projects I work on could definitely be another post at some point.
 
-I made a conscious –perhaps also debatable?– choice of not to delve too deep in **best practices**, **testing** and **architecture**. _Why_? Because I want to create a blog series where I can improve the codebase of code bit by _byte_. But hey, it's not like I coded the _thing_ with my eyes closed (which could be an interesting challenge, to be honest). You can check the source code here at the time of publishing of this post. I think is pretty neat.
+I made a conscious—perhaps also debatable—choice not to delve too deep into **best practices**, **testing**, and **architecture**. _Why_? Because I want to create a blog series where I can improve the codebase bit by *byte*. But hey, it's not like I coded the *thing* with my eyes closed (which could be an interesting challenge, to be honest). You can check the source code [here](#) at the time of publishing this post. I think it's pretty neat.
 
-What I did decide to focus instead was on creating a clean design with a big focus on content and some subtle animations that would make the site b·e·a·u·t·i·f·u·l. Here are some:
+What I decided to focus on instead was creating a clean design with a big focus on content and some subtle animations that would make the site b·e·a·u·t·i·f·u·l. Here are some:
 
 <div className="grid grid-cols-3 grid-rows-3 gap-m">
   <h3>Animations</h3>
@@ -94,11 +94,11 @@ What I did decide to focus instead was on creating a clean design with a big foc
   </div>
 </div>
 
-I'm always on the lookout for inspiration. Seeing how others have tackled similar problems reassures me that I'm not alone for my quest for _my solution_. Some great places I ~~stole ideas from~~ looked for inspiration were [Codrops](https://tympanus.net/codrops/) and [Awwwards](https://www.awwwards.com/).
+I'm always on the lookout for inspiration. Seeing how others have tackled similar problems reassures me that I'm not alone in my quest for *my solution*. Some great places I ~~stole ideas from~~ looked for inspiration were [Codrops](https://tympanus.net/codrops/) and [Awwwards](https://www.awwwards.com/).
 
 ## MDX
 
-As you can see, all the components that I'm developing for the website I can reuse them in the blog posts and that's thanks to [MDX](https://mdxjs.com/). MDX is Markdown on Kombucha (meaning super powerful). Why? Because in **MDX you can import React components**, which is a powerful thing to do.
+As you can see, all the components I'm developing for the website can be reused in blog posts, and that's thanks to [MDX](https://mdxjs.com/). MDX is like Markdown on Kombucha (meaning *super powerful*). Why? Because in **MDX, you can import React components**, which is a crazy thing to do.
 
 ```mdx
 **Foo**
@@ -122,13 +122,13 @@ Which will render this:
 
 Cool, right?
 
-Next.js come with support for MDX using some extra libraries. I started configuring the project following the [Next.js MDX guide](https://Next.js.org/docs/pages/building-your-application/configuring/mdx), which at some point suggests using [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote). I found it a little bit cumbersome and that it provided some functionality that I don't really need (YAGNI).
+Next.js comes with support for MDX using some extra libraries. I started configuring the project following the [Next.js MDX guide](https://nextjs.org/docs/pages/building-your-application/configuring/mdx), which at some point suggests using [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote). I found it a little cumbersome and noticed that it provided some functionality I don't really need (*YAGNI*).
 
-After trying to find simpler solutions I stumbled upon [this fantastic post](https://www.alexchantastic.com/building-a-blog-with-next-and-mdx) which showed how to simplify the setup using just [next-mdx](https://www.npmjs.com/package/@next/mdx).
+After searching for simpler solutions, I stumbled upon [this fantastic post](https://www.alexchantastic.com/building-a-blog-with-next-and-mdx), which showed how to simplify the setup using just [next-mdx](https://www.npmjs.com/package/@next/mdx).
 
-The only thing I still need to figure out is how to generate SEO compliant metadata from each article and talk. But that would be another `POST`.
+The only thing I still need to figure out is how to generate SEO-compliant metadata for each article and talk. But that will be another `POST`.
 
-The structure for the posts it's quite simple. We just tell Next.js, please, render `.mdx` files when asked to:
+The structure for the posts is quite simple. We just tell Next.js, "please, render `.mdx` files when asked to":
 
 ```typescript
 import withMDX from '@next/mdx'
@@ -152,7 +152,7 @@ src/
                 └── page.mdx
 ```
 
-Since we want to customize the components in what MDX get rendered to, we can create a file under `src` called `mdx-components` to do so:
+Since we want to customize the components that MDX renders, we can create a file under `src` called `mdx-components` to do so:
 
 ```tsx
 import type { MDXComponents } from 'mdx/types'
@@ -264,7 +264,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 }
 ```
 
-Each article should also have the same layout as the website, and to do that you can export a default function which uses a custom component. I would have liked if this was integrated under Next.js layout system. Maybe in the future?
+Each article should also have the same layout as the website. To achieve this, you can export a default function that uses a custom component. I would have liked it if this were integrated into the Next.js layout system. Maybe in the future?
 
 ```tsx
 
@@ -298,7 +298,7 @@ export async function PostLayout({ children, slug }: { children: ReactNode; slug
 }
 ```
 
-There's some metadata in each article that is used to generate the SEO metadata. This metadata is exported as a const, for example, the metadata for this very article is:
+There's some metadata in each article that is used to generate the SEO metadata. This metadata is exported as a `const`. For example, the metadata for this very article is:
 
 ```tsx
 export const metadata = {
@@ -316,7 +316,7 @@ This removes the need of adding `front-matter` and a subsequent parser. **Simple
 
 ## TaildwindCSS
 
-In case you missed it, there's some code that might initially look aberrant. If so, it's because you haven't tried _yet_ [TaildwindCSS](https://tailwindcss.com/):
+In case you missed it, there's some code that might initially look **aberrant**. If so, it's because you haven't tried *yet* [TailwindCSS](https://tailwindcss.com/):
 
 ```tsx
 <code {...props} className={cn(className, 'bg-muted px-[4px] py-[2px] mx-[2px] rounded not-prose text-base font-mono')}>
@@ -324,16 +324,16 @@ In case you missed it, there's some code that might initially look aberrant. If 
 </code>
 ```
 
-To me, CSS is part of the Front-end Architecture and it's something I don't overlook nor hate. I wanted to incorporate TaildwindCSS to check if it's scalable and provides a good framework for development. Conclusion: **it does**.
+To me, CSS is part of the front-end architecture, and it's something I don't overlook nor hate. I wanted to incorporate TailwindCSS to see if it's scalable and provides a good framework for development. Conclusion: **it does**.
 
-Although there's two changes I made:
+However, there are two changes I made:
 
-1. Use named spacing units instead of arbitrary numbers
-2. Use theme oriented names instead of specific colors
+1. Use named spacing units instead of arbitrary numbers.
+2. Use theme-oriented names instead of specific colors.
 
-To me it's important to abstract the spacing units. I don't want to use numbers such as `p-2`, `m-8` or `w-4`. I want to use `p-s`, `m-m` or `w-xl`. This way I can change the spacing units in one place and it will be reflected in the whole project.
+It's important to me to abstract the spacing units. I don't want to use numbers such as `p-2`, `m-8`, or `w-4`. Instead, I prefer using `p-s`, `m-m`, or `w-xl`. This way, I can change the spacing units in one place, and it will be reflected throughout the entire project.
 
-The same goes with colors. You won't typically see in the code specific colors (only unless I want to invariably use a specific color) but instead you'll see `text-primary`, `bg-secondary`, `border-destructive`, etc. This provides more flexibility and maintainability to the project in case you want to change the primary color.
+The same goes for colors. You typically won't see specific colors in the code (unless I want to invariably use a particular color). Instead, you'll see `text-primary`, `bg-secondary`, `border-destructive`, etc. This approach provides more flexibility and maintainability to the project, especially if you want to change the primary color down the line.
 
 ```typescript
 import type { Config } from 'tailwindcss'
@@ -394,13 +394,15 @@ export default config
 
 ## ShadcnUI
 
-ShadcnUI brings a new concept which might initially makes us shudder in fear. And that is to copy and paste code. It does so by generating code for your components. Why would I want that? Well, it serves me as a base for lightweight components and from there I can customize them as much as I want. The code is "mine" after all. Whenever I need a new component I head [over to their documentation](https://ui.shadcn.com/docs) and find the component I need. Then I generate it using the CLI:
+ShadcnUI introduces a concept that might initially make us shudder in fear: copying and pasting code. It does this by generating code for your components. But why would I want that? Well, it serves as a base for lightweight components, and from there, I can customize them as much as I want. The code is *mine* after all.
+
+Whenever I need a new component, I head [over to their documentation](https://ui.shadcn.com/docs) and find the component I need. Then, I generate it using the CLI:
 
 ```bash
 npx shadcn-ui@latest add button
 ```
 
-The button will be generated in `src/components/ui/button.tsx` and will look something similar to this:
+The button will be generated in `src/components/ui/button.tsx` and will look something like this:
 
 ```tsx
 import * as React from 'react'
@@ -452,13 +454,13 @@ Button.displayName = 'Button'
 export { Button, buttonVariants }
 ```
 
-As you can see it uses TaildwindCSS and RadixUI under the hood to do all the heavy lifting. `class-variance-authority` is a library to create variants of a component easily.
+As you can see, it uses TailwindCSS and RadixUI under the hood to do all the heavy lifting. `class-variance-authority` is a library that makes it easy to create variants of a component.
 
-Another reason why I chose ShadcnUI is because of it's integration with Vercel's new AI tool to generate pieces of UI: [v0](https://v0.dev/). Is web design already doomed? Well, when wasn't it?
+Another reason I chose ShadcnUI is its integration with Vercel's new AI tool to generate pieces of UI: [v0](https://v0.dev/). Is web design already doomed? Well, when wasn't it?
 
-## What's next?
+## What's Next?
 
-I ~~need~~ want to really go back to blog writing, from technical stuff to more personal. I want share my projects, my experiences as a Digital Nomad, or even the recipe I use to make my deodorant. I want to create a site that I cherish to visit and I enjoy reading. And if you do too, then, that would be amazing!
+I ~~need~~ want to get back to blog writing, covering everything from technical topics to more personal stories. I want to share my projects, my experiences as a Digital Nomad, and even the recipe I use to make my deodorant. My goal is to create a site that I cherish visiting and enjoy reading. And if you do too, well, that would be amazing!
 
 export default function Page({ children }) {
   return <PostLayout slug="blog-redesign">{children}</PostLayout>

@@ -10,7 +10,7 @@ import {
   SiX,
   SiYoutube,
 } from '@icons-pack/react-simple-icons'
-import { Mail } from 'lucide-react'
+import { Mail, Mic } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 
 const links = [
@@ -23,6 +23,11 @@ const links = [
     title: 'X',
     url: 'https://x.com/cesalberca',
     icon: SiX,
+  },
+  {
+    title: 'Podcast',
+    url: 'https://coliversclub.com/',
+    icon: Mic,
   },
   {
     title: 'TikTok',

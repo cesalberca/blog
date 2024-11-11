@@ -3,6 +3,7 @@ import { Page } from '../../../core/components/page/page'
 import { Link } from '../../../core/components/link/link'
 import {
   SiGithub,
+  SiGooglecalendar,
   SiInstagram,
   SiLinkedin,
   SiStackoverflow,
@@ -53,6 +54,11 @@ const links = [
     title: 'StackOverflow',
     url: 'https://stackoverflow.com/users/6475656/césar-alberca',
     icon: SiStackoverflow,
+  },
+  {
+    title: 'Have a Chat',
+    url: 'https://cesalberca.com/chat',
+    icon: SiGooglecalendar,
   },
   {
     title: 'Email',

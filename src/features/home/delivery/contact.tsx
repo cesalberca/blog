@@ -63,7 +63,7 @@ export const ContactForm: FC = () => {
       mb-m"
       >
         {t('home.contact.appointmentDescription')}{' '}
-        <Link className="underline" to="https://calendar.app.google/KvZAYd9okNjiY7iBA">
+        <Link className="underline" to="https://cesalberca.com/chat">
           {t('home.contact.appointmentLink')}
         </Link>
       </p>

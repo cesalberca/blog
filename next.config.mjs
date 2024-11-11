@@ -11,6 +11,7 @@ const nextConfig = {
       {
         source: '/chat',
         destination: 'https://calendar.app.google/KvZAYd9okNjiY7iBA',
+        permanent: true,
       },
       {
         source: '/articles/:path*',

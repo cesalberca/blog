@@ -58,55 +58,6 @@
       "archimedesJsDescription": "A **TypeScript** library I created that helps you create robust applications by leveraging use cases. It helps you create **modular architectures** following **hexagonal** and **domain-driven design** principles.",
       "moreProjects": "You can also [check out my Github](https://github.com/cesalberca/), where I have more than 70 open source projects."
     },
-    "experience": {
-      "title": "Journey",
-      "cv": "Download full resume.",
-      "freelancer": {
-        "title": "Freelancer",
-        "dates": "2024 - Currently",
-        "description": "**Workshops**, **mentorship** and **consultancy** for best practices oriented projects, with a focus in **architecture**, **testing** and **design patterns** of frontend applications."
-      },
-      "writer": {
-        "title": "Book writer",
-        "dates": "2023 - Currently",
-        "description": "I'm writing a book about **Comedy** and **Front-end Software Development**. It will be published in Spanish by [Savvily Editorial](https://savvily.es/) later this year."
-      },
-      "autentia": {
-        "title": "Autentia",
-        "dates": "2017 - 2024",
-        "description": "* **Front-end Architect Lead**. I designed and implemented **Design Systems** in different frameworks, **modular architectures** following **Hexagonal** and **Domain Driven Design** principles and created robust **Testing Strategies**.\n* **Software developer** of different stacks, including JavaScript, TypeScript, Angular, Vue and React.\n* **Open Source Developer**: Created an [architectural framework](https://www.archimedesfw.io/docs/js/) in TypeScript that makes your application more robust by leveraging use cases.\n* **Teacher**: I've given more than a hundred talks and workshops of different technologies, such as: JavaScript, TypeScript, Vue, Angular, React, testing, CSS, architecture, good practices and more.\n* **Onboarding Link**: I was part of designing the Front-end onboarding process in the company. I interviewed potential coworkers.\n* **Mentor**: I’ve been a mentor for the most junior members of the company and had 1:1 where we would set goals and track them.\n* **Interviewer**: I interviewed prominent tech people for the [company’s YouTube channel](https://www.youtube.com/watch?v=iThFgLmD96E&list=PLKxa4AIfm4pVyeMpU0QkV4gzaFDaa_RFW&index=10)."
-      },
-      "codemotionAmbassador": {
-        "title": "Codemotion Ambassador",
-        "dates": "2022 - Currently",
-        "description": "Represent [Codemotion's](https://www.codemotion.com/) values and help the community grow as part of its [ambassadors program](https://community-en.codemotion.it/community/ambassador-program)."
-      },
-      "codemotion": {
-        "title": "Codemotion Madrid Committee Member",
-        "dates": "2019 - Currently",
-        "description": "**Contact speakers**, **review the C4P** and **design the event agenda** for one of the **biggest tech events** in Spain: [Codemotion Madrid](https://conferences.codemotion.com/madrid2024/en/home/)."
-      },
-      "cice": {
-        "title": "Full Stack Development Masters Teacher at CICE",
-        "dates": "2020 - 2021",
-        "description": "Designed the lessons from scratch, taught the students, and evaluated their progress. I taught **Web Development** with React. **Testing**, **Architecture** and **Good Practices** were a focal point of the lessons. Here you can check the [open curriculum](https://github.com/cice-classroom/cice-playground)."
-      },
-      "escuelaIt": {
-        "title": "Front-end Development Teacher at EscuelaIT",
-        "dates": "Sporadic",
-        "description": "**Trainer** for the following courses: [Deno](https://escuela.it/cursos/curso-de-deno), [TypeScript](https://escuela.it/cursos/curso-typescript), [React](https://escuela.it/cursos/curso-desarrollo-aplicaciones-spa-react) and [Advanced JavaScript](https://escuela.it/cursos/curso-avanzado-javascript)."
-      },
-      "pensemos": {
-        "title": "Pensemos",
-        "dates": "2016 - 2017",
-        "description": "**Web Developer** for multiple small businesses using **CMSs**. Self-taught in React, I created a SPA using React and Firebase without any prior experience."
-      },
-      "comercialTalk": {
-        "title": "Comercial Talk",
-        "dates": "2013 - 2015",
-        "description": "Self-taught **Graphic Designer** using **Photoshop** and **Illustrator**. I designed posters, flyers, business cards and the visual identity."
-      }
-    },
     "services": {
       "title": "Services",
       "description": "I have over **10 years** of experience in **Front-end Development**. I've deployed to production full-fledged enterprise web applications using **React**, **Angular** and **Vue**.",
@@ -132,6 +83,55 @@
       "submit": "Submit",
       "submitting": "Submitting",
       "sent": "Thanks for contacting me!"
+    }
+  },
+  "experience": {
+    "title": "Journey",
+    "cv": "Download full resume.",
+    "freelancer": {
+      "title": "Freelancer",
+      "dates": "2024 - Currently",
+      "description": "**Workshops**, **mentorship** and **consultancy** for best practices oriented projects, with a focus in **architecture**, **testing** and **design patterns** of frontend applications."
+    },
+    "writer": {
+      "title": "Book writer",
+      "dates": "2023 - Currently",
+      "description": "I'm writing a book about **Comedy** and **Front-end Software Development**. It will be published in Spanish by [Savvily Editorial](https://savvily.es/) later this year."
+    },
+    "autentia": {
+      "title": "Autentia",
+      "dates": "2017 - 2024",
+      "description": "* **Front-end Architect Lead**. I designed and implemented **Design Systems** in different frameworks, **modular architectures** following **Hexagonal** and **Domain Driven Design** principles and created robust **Testing Strategies**.\n* **Software developer** of different stacks, including JavaScript, TypeScript, Angular, Vue and React.\n* **Open Source Developer**: Created an [architectural framework](https://www.archimedesfw.io/docs/js/) in TypeScript that makes your application more robust by leveraging use cases.\n* **Teacher**: I've given more than a hundred talks and workshops of different technologies, such as: JavaScript, TypeScript, Vue, Angular, React, testing, CSS, architecture, good practices and more.\n* **Onboarding Link**: I was part of designing the Front-end onboarding process in the company. I interviewed potential coworkers.\n* **Mentor**: I’ve been a mentor for the most junior members of the company and had 1:1 where we would set goals and track them.\n* **Interviewer**: I interviewed prominent tech people for the [company’s YouTube channel](https://www.youtube.com/watch?v=iThFgLmD96E&list=PLKxa4AIfm4pVyeMpU0QkV4gzaFDaa_RFW&index=10)."
+    },
+    "codemotionAmbassador": {
+      "title": "Codemotion Ambassador",
+      "dates": "2022 - Currently",
+      "description": "Represent [Codemotion's](https://www.codemotion.com/) values and help the community grow as part of its [ambassadors program](https://community-en.codemotion.it/community/ambassador-program)."
+    },
+    "codemotion": {
+      "title": "Codemotion Madrid Committee Member",
+      "dates": "2019 - Currently",
+      "description": "**Contact speakers**, **review the C4P** and **design the event agenda** for one of the **biggest tech events** in Spain: [Codemotion Madrid](https://conferences.codemotion.com/madrid2024/en/home/)."
+    },
+    "cice": {
+      "title": "Full Stack Development Masters Teacher at CICE",
+      "dates": "2020 - 2021",
+      "description": "Designed the lessons from scratch, taught the students, and evaluated their progress. I taught **Web Development** with React. **Testing**, **Architecture** and **Good Practices** were a focal point of the lessons. Here you can check the [open curriculum](https://github.com/cice-classroom/cice-playground)."
+    },
+    "escuelaIt": {
+      "title": "Front-end Development Teacher at EscuelaIT",
+      "dates": "Sporadic",
+      "description": "**Trainer** for the following courses: [Deno](https://escuela.it/cursos/curso-de-deno), [TypeScript](https://escuela.it/cursos/curso-typescript), [React](https://escuela.it/cursos/curso-desarrollo-aplicaciones-spa-react) and [Advanced JavaScript](https://escuela.it/cursos/curso-avanzado-javascript)."
+    },
+    "pensemos": {
+      "title": "Pensemos",
+      "dates": "2016 - 2017",
+      "description": "**Web Developer** for multiple small businesses using **CMSs**. Self-taught in React, I created a SPA using React and Firebase without any prior experience."
+    },
+    "comercialTalk": {
+      "title": "Comercial Talk",
+      "dates": "2013 - 2015",
+      "description": "Self-taught **Graphic Designer** using **Photoshop** and **Illustrator**. I designed posters, flyers, business cards and the visual identity."
     }
   },
   "article": {

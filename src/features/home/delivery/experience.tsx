@@ -7,49 +7,49 @@ export const Experience: FC = () => {
   const t = useTranslations()
   const experiences = [
     {
-      title: t('home.experience.freelancer.title'),
-      dates: t('home.experience.freelancer.dates'),
-      description: t('home.experience.freelancer.description'),
+      title: t('experience.freelancer.title'),
+      dates: t('experience.freelancer.dates'),
+      description: t('experience.freelancer.description'),
     },
     {
-      title: t('home.experience.autentia.title'),
-      dates: t('home.experience.autentia.dates'),
-      description: t('home.experience.autentia.description'),
+      title: t('experience.autentia.title'),
+      dates: t('experience.autentia.dates'),
+      description: t('experience.autentia.description'),
     },
     {
-      title: t('home.experience.writer.title'),
-      dates: t('home.experience.writer.dates'),
-      description: t('home.experience.writer.description'),
+      title: t('experience.writer.title'),
+      dates: t('experience.writer.dates'),
+      description: t('experience.writer.description'),
     },
     {
-      title: t('home.experience.codemotionAmbassador.title'),
-      dates: t('home.experience.codemotionAmbassador.dates'),
-      description: t('home.experience.codemotionAmbassador.description'),
+      title: t('experience.codemotionAmbassador.title'),
+      dates: t('experience.codemotionAmbassador.dates'),
+      description: t('experience.codemotionAmbassador.description'),
     },
     {
-      title: t('home.experience.codemotion.title'),
-      dates: t('home.experience.codemotion.dates'),
-      description: t('home.experience.codemotion.description'),
+      title: t('experience.codemotion.title'),
+      dates: t('experience.codemotion.dates'),
+      description: t('experience.codemotion.description'),
     },
     {
-      title: t('home.experience.cice.title'),
-      dates: t('home.experience.cice.dates'),
-      description: t('home.experience.cice.description'),
+      title: t('experience.cice.title'),
+      dates: t('experience.cice.dates'),
+      description: t('experience.cice.description'),
     },
     {
-      title: t('home.experience.escuelaIt.title'),
-      dates: t('home.experience.escuelaIt.dates'),
-      description: t('home.experience.escuelaIt.description'),
+      title: t('experience.escuelaIt.title'),
+      dates: t('experience.escuelaIt.dates'),
+      description: t('experience.escuelaIt.description'),
     },
     {
-      title: t('home.experience.pensemos.title'),
-      dates: t('home.experience.pensemos.dates'),
-      description: t('home.experience.pensemos.description'),
+      title: t('experience.pensemos.title'),
+      dates: t('experience.pensemos.dates'),
+      description: t('experience.pensemos.description'),
     },
     {
-      title: t('home.experience.comercialTalk.title'),
-      dates: t('home.experience.comercialTalk.dates'),
-      description: t('home.experience.comercialTalk.description'),
+      title: t('experience.comercialTalk.title'),
+      dates: t('experience.comercialTalk.dates'),
+      description: t('experience.comercialTalk.description'),
     },
   ]
 
@@ -74,7 +74,7 @@ export const Experience: FC = () => {
             className="text-xs"
             to="https://drive.google.com/file/d/1t92bJEKGwYaepUlZT7JrJd7zIWly6XqK/view?usp=drive_link"
           >
-            {t('home.experience.cv')}
+            {t('experience.cv')}
           </Link>
         </div>
       </div>

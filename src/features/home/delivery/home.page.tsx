@@ -11,7 +11,6 @@ import { AccentList } from '@/core/components/accent-list/accent-list'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { ContactForm } from '@/features/home/delivery/contact'
 import { OpenToWork } from '@/core/components/open-to-work/open-to-work'
-import { Experience } from '@/features/home/delivery/experience'
 import { Testimonials } from '@/core/components/testimonials/testimonials'
 import { cn } from '@/lib/utils'
 
@@ -72,12 +71,6 @@ export const HomePage: FC = () => {
 
       <Section title={t('home.services.title')} id="services">
         <Services />
-      </Section>
-
-      <Section title={t('home.experience.title')} id="experience">
-        <div className="wrapper">
-          <Experience />
-        </div>
       </Section>
 
       <Section title={t('home.technologies.title')} id="technologies">

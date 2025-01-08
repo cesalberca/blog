@@ -11,13 +11,13 @@ const Links = () => {
   const t = useTranslations()
   return (
     <>
-      <NavLink to={'#projects'}>{t('home.projects.title')}</NavLink>
-      <NavLink to={'#services'}>{t('home.services.title')}</NavLink>
-      <NavLink to={'#experience'}>{t('home.experience.title')}</NavLink>
+      <NavLink to={'/#projects'}>{t('home.projects.title')}</NavLink>
+      <NavLink to={'/#services'}>{t('home.services.title')}</NavLink>
+      <NavLink to={'/experience'}>{t('experience.title')}</NavLink>
       <NavLink to={'/blog'}>{t('blog.title')}</NavLink>
       <NavLink to={'/talks'}>{t('talks.title')}</NavLink>
-      <NavLink to={'#testimonials'}>{t('home.testimonials.title')}</NavLink>
-      <NavLink to={'#contact'}>{t('home.contact.title')}</NavLink>
+      <NavLink to={'/#testimonials'}>{t('home.testimonials.title')}</NavLink>
+      <NavLink to={'/#contact'}>{t('home.contact.title')}</NavLink>
     </>
   )
 }

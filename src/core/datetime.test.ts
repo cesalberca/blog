@@ -35,7 +35,7 @@ describe.skip('Datetime', () => {
 
   it('should get now datetime', () => {
     const date = new Date(2019, 3, 3, 3, 3, 3, 3)
-    ;(global.Date as any) = jest.fn(() => date)
+    ;(global.Date as unknown) = jest.fn(() => date)
     const datetime = Datetime.fromNow()
 
     const actual = datetime.value

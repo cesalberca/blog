@@ -1,5 +1,3 @@
-import type { Locale } from './i18n/locale'
-
 export class Datetime {
   private constructor(private readonly _value: Date) {}
 
@@ -23,8 +21,7 @@ export class Datetime {
     return this._value.getFullYear()
   }
 
-  // TODO: Receive locale
-  format(_locale?: Locale) {
+  format() {
     return this._value.toLocaleDateString('en', {
       day: 'numeric',
       month: 'long',

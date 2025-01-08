@@ -46,6 +46,7 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "3.2.0",
     "@types/jest": "29.5.14",
     "@types/mdx": "2.0.13",
     "@types/node": "22.9.0",

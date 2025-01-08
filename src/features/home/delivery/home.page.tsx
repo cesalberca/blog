@@ -12,16 +12,20 @@ import { AccentText } from '@/core/components/accent-text/accent-text'
 import { ContactForm } from '@/features/home/delivery/contact'
 import { OpenToWork } from '@/core/components/open-to-work/open-to-work'
 import { Experience } from '@/features/home/delivery/experience'
+import { Testimonials } from '@/core/components/testimonials/testimonials'
+import { cn } from '@/lib/utils'
 
 export const Section: FC<
   PropsWithChildren<{
     title?: string
+    id?: string
+    fullWidth?: boolean
   }>
-> = ({ children, title }) => {
+> = ({ children, title, id, fullWidth = false }) => {
   return (
     <section className="mt-m md:mt-xxl">
       {title && (
-        <h2 className="my-m wrapper">
+        <h2 id={id} className={cn('my-m', fullWidth ? 'full-width-section' : 'wrapper')}>
           <AccentText>{title}</AccentText>
         </h2>
       )}
@@ -62,28 +66,32 @@ export const HomePage: FC = () => {
         </div>
       </Section>
 
-      <Section title={t('home.projects.title')}>
+      <Section title={t('home.projects.title')} id="projects">
         <Projects />
       </Section>
 
-      <Section title={t('home.services.title')}>
+      <Section title={t('home.services.title')} id="services">
         <Services />
       </Section>
 
-      <Section title={t('home.experience.title')}>
+      <Section title={t('home.experience.title')} id="experience">
         <div className="wrapper">
           <Experience />
         </div>
       </Section>
 
-      <Section title={t('home.technologies.title')}>
+      <Section title={t('home.technologies.title')} id="technologies">
         <div className="wrapper">
           <Markdown value={t('home.technologies.description')} className="mb-m" />
           <Technologies />
         </div>
       </Section>
 
-      <Section title={t('home.contact.title')}>
+      <Section title={t('home.testimonials.title')} id="testimonials">
+        <Testimonials itemsPerPage={1} />
+      </Section>
+
+      <Section title={t('home.contact.title')} id="contact">
         <div className="wrapper" id="contact-form">
           <div className="mb-s">
             <SocialMedia />

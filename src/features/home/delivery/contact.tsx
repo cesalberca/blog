@@ -71,7 +71,7 @@ export const ContactForm: FC = () => {
         <h2>{t('home.contact.sent')}</h2>
       ) : (
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 text-base">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 text-base">
             <FormField
               control={form.control}
               name="name"

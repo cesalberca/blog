@@ -81,6 +81,7 @@ html {
   h6 {
     @apply leading-tight;
     font-family: var(--font-azeret-mono);
+    scroll-margin-top: 5rem;
   }
 
   h1 {

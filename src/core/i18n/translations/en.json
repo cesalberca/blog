@@ -31,7 +31,7 @@
     "meAlt": "Picture of César Alberca",
     "technologies": {
       "title": "Technologies",
-      "description": "With over **5 years in ReactJS**, **4 in Angular**, and **2 in VueJS**, I've consistently used **TypeScript**, **Testing**, and architectural patterns like **DDD** and **Hexagonal** to enhance project maintainability.\n\nI stay current with new technologies, prioritizing best practices for long-term success. Here are some technologies I'm competent with:"
+      "description": "With over **5 years in ReactJS**, **4 in Angular**, and **2 in VueJS**, I've consistently used **TypeScript**, **Testing**, and architectural patterns like **DDD** and **Hexagonal** to enhance project maintainability."
     },
     "latestArticles": "Latest articles",
     "viewAllArticles": "View all articles",
@@ -116,6 +116,9 @@
       "trainingDescription": "I will help you refine your team's skills in **best practices**, **testing** and **architecture**.",
       "development": "Software Development",
       "developmentDescription": "I will develop your project from **design** through **development** to **deployment**."
+    },
+    "testimonials": {
+      "title": "Testimonials"
     },
     "contact": {
       "title": "Contact",

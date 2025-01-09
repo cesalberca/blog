@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { useSubmit } from '@formspree/react'
 import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 import { Link } from '@/core/components/link/link'
@@ -33,27 +32,38 @@ export const ContactForm: FC = () => {
     },
   })
 
-  const submit = useSubmit<FormData>(process.env.NEXT_PUBLIC_FORMSPREE_API_KEY as string, {
-    onError(errs) {
-      const formErrs = errs.getFormErrors()
-      for (const { code, message } of formErrs) {
-        form.setError(`root.${code}`, {
-          type: code,
-          message,
-        })
+  const onSubmit: SubmitHandler<FormData> = async data => {
+    const response = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_API_KEY}`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        Accept: 'application/json',
+      },
+    })
+
+    if (!response.ok) {
+      const result = await response.json()
+      const { errors } = result
+
+      if (errors?.form) {
+        for (const { code, message } of errors.form) {
+          form.setError(`root.${code}`, {
+            type: code,
+            message,
+          })
+        }
       }
 
-      const fieldErrs = errs.getAllFieldErrors()
-      for (const [field, errs] of fieldErrs) {
-        form.setError(field as keyof FormData, {
-          message: errs.map(e => e.message).join(', '),
-        })
+      if (errors?.fields) {
+        for (const [field, errs] of Object.entries(errors.fields)) {
+          form.setError(field as keyof FormData, {
+            message: (errs as { message: string }[]).map(e => e.message).join(', '),
+          })
+        }
       }
-    },
-  })
-
-  const onSubmit: SubmitHandler<FormData> = data => {
-    submit(data)
+    } else {
+      console.log('Form submitted successfully!')
+    }
   }
 
   return (

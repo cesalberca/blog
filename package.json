@@ -14,7 +14,6 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@formspree/react": "2.5.1",
     "@hookform/resolvers": "3.9.1",
     "@icons-pack/react-simple-icons": "10.1.0",
     "@mdx-js/loader": "3.1.0",

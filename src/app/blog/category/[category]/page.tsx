@@ -6,7 +6,7 @@ export default async function Index({ params }: { params: { category: Category }
   return <CategoryPage category={params.category} />
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return categories.map(category => ({
     category,
   }))

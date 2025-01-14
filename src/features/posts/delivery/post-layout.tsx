@@ -1,5 +1,5 @@
 import { Page } from '@/core/components/page/page'
-import type { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import { PostPage } from '@/features/posts/delivery/post.page'
 import type { PostMetadata } from '@/post-metadata'
 

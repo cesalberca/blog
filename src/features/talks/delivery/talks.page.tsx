@@ -17,7 +17,7 @@ export const TalksPage: FC = async () => {
       <h1 className="wrapper mb-m">{t('talks.title')}</h1>
       <Masonry>
         {allTalks.map(talk => (
-          <Link type="invisible" className="w-full" key={talk.slug} to={`/talks/${talk.slug}`}>
+          <Link type="invisible" className="w-full" key={talk.slug} to={`/src/app/%5Blocale%5D/talks/${talk.slug}`}>
             <div className="mb-4 break-inside-avoid">
               <AccentCard>
                 <Image

@@ -53,7 +53,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
               <Link
                 key={category}
                 type="invisible"
-                to={`/blog/category/${category}`}
+                to={`/src/app/%5Blocale%5D/blog/category/${category}`}
                 className={cn(badgeVariants({ variant: 'outline' }), 'p-0 h-min')}
               >
                 <Badge>{category}</Badge>

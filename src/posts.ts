@@ -3,11 +3,11 @@ import type { PostMetadata } from '@/post-metadata'
 import { getSlugs } from '@/lib/get-slugs'
 
 export async function getPosts(): Promise<PostMetadata[]> {
-  const slugs = await getSlugs('./src/app/blog/(posts)')
+  const slugs = await getSlugs('./src/app/[locale]/blog/(posts)')
 
   const posts: PostMetadata[] = await Promise.all(
     slugs.map(async ({ name }) => {
-      const { metadata } = await import(`./app/blog/(posts)/${name}/page.mdx`)
+      const { metadata } = await import(`./app/[locale]/blog/(posts)/${name}/page.mdx`)
       return metadata
     }),
   )

@@ -1,7 +1,7 @@
 import type { FC, PropsWithChildren } from 'react'
-import NextLink from 'next/link'
 import { cn } from '@/lib/utils'
 import { cva } from 'class-variance-authority'
+import { Link as LocaleLink } from '@/core/i18n/routing'
 
 interface Props {
   to: string
@@ -22,13 +22,13 @@ export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, ty
   const isExternal = to !== undefined && /^http/.test(to)
 
   return (
-    <NextLink
+    <LocaleLink
       href={to}
       passHref
       {...(isExternal && { target: '_blank', rel: 'noreferrer' })}
       className={cn(linkVariants({ type }), className)}
     >
       {children}
-    </NextLink>
+    </LocaleLink>
   )
 }

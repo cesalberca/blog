@@ -8,6 +8,9 @@ import { baseUrl } from './sitemap'
 import { getLocale, getMessages } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 import { ThemeProvider } from '@/core/components/theme/theme-provider'
+import { routing } from '@/core/i18n/routing'
+import { notFound } from 'next/navigation'
+import { Locales } from '@/core/i18n/locales'
 
 const inter = Inter({ subsets: ['latin'] })
 const azeret = Azeret_Mono({ subsets: ['latin'], weight: '400', variable: '--font-azeret-mono' })
@@ -44,6 +47,11 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const locale = await getLocale()
+
+  if (!routing.locales.includes(locale as Locales)) {
+    notFound()
+  }
+
   const messages = await getMessages()
 
   return (

@@ -1,4 +1,4 @@
-import { TalksPage } from '../../features/talks/delivery/talks.page'
+import { TalksPage } from '../../../features/talks/delivery/talks.page'
 
 export const metadata = {
   title: 'Talks',

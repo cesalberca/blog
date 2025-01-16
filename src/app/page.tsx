@@ -1,5 +1,6 @@
-import { HomePage } from '@/features/home/delivery/home.page'
+import { redirect } from 'next/navigation'
 
-export default function Page() {
-  return <HomePage />
+// This page only renders when the app is built statically (output: 'export')
+export default function RootPage() {
+  redirect('/en')
 }

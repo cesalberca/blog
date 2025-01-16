@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { AccentCard } from '@/core/components/accent-card/accent-card'
 import Image from 'next/image'
 import { Markdown } from '@/core/components/markdown/markdown'
-import type { PostMetadata } from '@/post-metadata'
+import type { PostMetadata } from '@/features/posts/domain/post-metadata'
 
 export const PostExcerpt: FC<{ post: PostMetadata }> = ({ post }) => (
   <Link href={`/src/app/%5Blocale%5D/blog/${post.slug}`}>

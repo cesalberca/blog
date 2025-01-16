@@ -61,8 +61,6 @@ export const ContactForm: FC = () => {
           })
         }
       }
-    } else {
-      console.log('Form submitted successfully!')
     }
   }
 

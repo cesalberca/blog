@@ -4,7 +4,7 @@ import { Page } from '@/core/components/page/page'
 import { baseUrl } from '@/app/sitemap'
 import { Background } from '@/core/components/background/background'
 import { Badge } from '@/components/ui/badge'
-import type { TalkMetadata } from '@/talk-metadata'
+import type { TalkMetadata } from '@/features/talks/domain/talk-metadata'
 
 export const TalkPage: FC<PropsWithChildren<{ slug: string; metadata: TalkMetadata }>> = async ({
   slug,

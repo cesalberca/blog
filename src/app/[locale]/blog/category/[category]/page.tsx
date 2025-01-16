@@ -1,18 +1,19 @@
-import type { Category } from '@/app/category'
-import { categories } from '@/app/categories'
+import type { Category } from '@/features/posts/domain/category'
+import { categories } from '@/features/posts/domain/categories'
 import { CategoryPage } from '@/features/posts/delivery/category.page'
 import { notFound } from 'next/navigation'
+import { setRequestLocale } from 'next-intl/server'
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type Params = {
   params: {
     category: Category
+    locale: string
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function Index({ params }: any) {
-  const { category } = params
+export default function Index({ params }: Params) {
+  const { category, locale } = params
+  setRequestLocale(locale)
 
   if (categories.indexOf(category) == -1) notFound()
 

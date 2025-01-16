@@ -1,4 +1,4 @@
-import { getTalks } from '../../../talks'
+import { getTalks } from '../domain/talks'
 import type { FC } from 'react'
 import { AccentCard } from '@/core/components/accent-card/accent-card'
 import Image from 'next/image'

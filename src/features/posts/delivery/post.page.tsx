@@ -7,7 +7,7 @@ import { AccentText } from '@/core/components/accent-text/accent-text'
 import { Badge, badgeVariants } from '@/components/ui/badge'
 import { Link } from '@/core/components/link/link'
 import { cn } from '@/lib/utils'
-import type { PostMetadata } from '@/post-metadata'
+import type { PostMetadata } from '@/features/posts/domain/post-metadata'
 
 export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: string }>> = ({
   metadata,

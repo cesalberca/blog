@@ -1,5 +1,5 @@
-import type { Category } from '@/app/category'
-import type { PostMetadata } from '@/post-metadata'
+import type { Category } from '@/features/posts/domain/category'
+import type { PostMetadata } from '@/features/posts/domain/post-metadata'
 import { getSlugs } from '@/lib/get-slugs'
 
 export async function getPosts(): Promise<PostMetadata[]> {
@@ -7,7 +7,7 @@ export async function getPosts(): Promise<PostMetadata[]> {
 
   const posts: PostMetadata[] = await Promise.all(
     slugs.map(async ({ name }) => {
-      const { metadata } = await import(`./app/[locale]/blog/(posts)/${name}/page.mdx`)
+      const { metadata } = await import(`../../../app/[locale]/blog/(posts)/${name}/page.mdx`)
       return metadata
     }),
   )

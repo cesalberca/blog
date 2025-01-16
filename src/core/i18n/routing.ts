@@ -5,7 +5,16 @@ import { locales } from '@/core/i18n/locales'
 
 export const routing = defineRouting({
   locales,
-  defaultLocale: Locale.ES,
+  defaultLocale: Locale.EN,
+  localePrefix: 'as-needed',
+  localeDetection: false,
+  pathnames: {
+    '/': '/',
+    '/2024-review': {
+      en: '/pathnames',
+      es: '/pfadnamen',
+    },
+  },
 })
 
 export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation(routing)

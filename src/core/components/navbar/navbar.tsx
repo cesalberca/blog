@@ -1,14 +1,18 @@
 import type { FC, SVGProps } from 'react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Button } from '@/components/ui/button'
 import { NavLink } from '@/core/components/nav-link/nav-link'
+import LocaleSwitcher from '@/core/components/locale-switcher/locale-switcher'
+import { Locale } from '@/core/i18n/locale'
 
 const Links = () => {
   const t = useTranslations()
+  const locale = useLocale() as Locale
+
   return (
     <>
       <NavLink to={'/#projects'}>{t('home.projects.title')}</NavLink>
@@ -18,6 +22,7 @@ const Links = () => {
       <NavLink to={'/talks'}>{t('talks.title')}</NavLink>
       <NavLink to={'/#testimonials'}>{t('home.testimonials.title')}</NavLink>
       <NavLink to={'/#contact'}>{t('home.contact.title')}</NavLink>
+      <LocaleSwitcher locale={locale} />
     </>
   )
 }

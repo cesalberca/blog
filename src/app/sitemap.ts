@@ -1,4 +1,4 @@
-import { getPosts } from '@/posts'
+import { getPosts } from '@/features/posts/domain/posts'
 
 export const baseUrl = 'https://cesalberca.com'
 

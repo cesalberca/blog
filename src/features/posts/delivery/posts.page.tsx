@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { getPosts } from '@/posts'
+import { getPosts } from '@/features/posts/domain/posts'
 import { Page } from '@/core/components/page/page'
 import { getTranslations } from 'next-intl/server'
 import { PostExcerpt } from '@/features/posts/delivery/post-excerpt'

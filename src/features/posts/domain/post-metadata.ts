@@ -1,4 +1,4 @@
-import type { Category } from '@/app/category'
+import type { Category } from '@/features/posts/domain/category'
 
 export interface PostMetadata {
   slug: string

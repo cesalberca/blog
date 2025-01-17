@@ -1,26 +1,27 @@
 {
   "common": {
+    "coverage": "Test coverage",
+    "dark": "Dark",
+    "email": "dev@cesalberca.com",
     "en": "EN",
     "es": "ES",
-    "dark": "Dark",
-    "light": "Light",
-    "system": "System",
-    "coverage": "Test coverage",
-    "minutes": "minutes",
     "language": "Language",
-    "theme": "Theme",
-    "loading": "Loading",
-    "toggleNavigation": "Toggle navigation",
-    "toggleTheme": "Toggle theme",
-    "logo": "Logo",
-    "openToWork": "Contact me!",
-    "email": "dev@cesalberca.com",
     "license": "© {date} MIT Licensed",
+    "light": "Light",
+    "loading": "Loading",
+    "logo": "Logo",
+    "minutes": "minutes",
+    "more": "More",
     "notFound": {
-      "title": "The page you are looking for does not exist <em>yet</em>.",
+      "back": "Go back to human generated content",
       "caption": "<leet>Wait patiently until AI generates it.</leet>",
-      "back": "Go back to human generated content"
-    }
+      "title": "The page you are looking for does not exist <em>yet</em>."
+    },
+    "openToWork": "Contact me!",
+    "system": "System",
+    "theme": "Theme",
+    "toggleNavigation": "Toggle navigation",
+    "toggleTheme": "Toggle theme"
   },
   "blog": {
     "title": "Blog",

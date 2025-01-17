@@ -1,26 +1,27 @@
 {
   "common": {
+    "coverage": "Cobertura de pruebas",
+    "dark": "Oscuro",
+    "email": "dev@cesalberca.com",
     "en": "EN",
     "es": "ES",
-    "dark": "Oscuro",
-    "light": "Claro",
-    "system": "Sistema",
-    "coverage": "Cobertura de pruebas",
-    "minutes": "minutos",
     "language": "Idioma",
-    "theme": "Tema",
-    "loading": "Cargando",
-    "toggleNavigation": "Alternar navegación",
-    "toggleTheme": "Alternar tema",
-    "logo": "Logo",
-    "openToWork": "¡Contáctame!",
-    "email": "dev@cesalberca.com",
     "license": "© {date} Licencia MIT",
+    "light": "Claro",
+    "loading": "Cargando",
+    "logo": "Logo",
+    "minutes": "minutos",
+    "more": "Más",
     "notFound": {
-      "title": "La página que buscas no existe <em>todavía</em>.",
+      "back": "Volver al contenido generado por humanos",
       "caption": "<leet>Espera pacientemente hasta que la IA la genere.</leet>",
-      "back": "Volver al contenido generado por humanos"
-    }
+      "title": "La página que buscas no existe <em>todavía</em>."
+    },
+    "openToWork": "¡Contáctame!",
+    "system": "Sistema",
+    "theme": "Tema",
+    "toggleNavigation": "Alternar navegación",
+    "toggleTheme": "Alternar tema"
   },
   "blog": {
     "title": "Blog",

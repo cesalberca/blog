@@ -6,7 +6,7 @@ export async function getTalks(): Promise<TalkMetadata[]> {
 
   return await Promise.all(
     slugs.map(async ({ name }) => {
-      const { metadata } = await import(`@/app/[locale]/talks/(talks)/${name}/page.mdx`)
+      const { metadata } = await import(`../../../../src/app/[locale]/talks/(talks)/${name}/page.mdx`)
       return metadata
     }),
   )

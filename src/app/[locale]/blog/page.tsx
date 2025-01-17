@@ -1,14 +1,16 @@
 import { BlogPostsPage } from '@/features/posts/delivery/posts.page'
 import { setRequestLocale } from 'next-intl/server'
 import { NextPage } from 'next'
+import { Locale } from '@/core/i18n/locale'
 
 export const metadata = {
   title: 'Blog',
   description: 'Read my blog.',
 }
 
-const Page: NextPage<{ params: { locale: string } }> = ({ params: { locale } }) => {
+const Page: NextPage<Promise<{ locale: Locale }>> = async ({ params }) => {
+  const { locale } = await params
   setRequestLocale(locale)
-  return <BlogPostsPage />
+  return <BlogPostsPage locale={locale} />
 }
 export default Page

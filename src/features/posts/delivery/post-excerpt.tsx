@@ -1,12 +1,12 @@
 import type { FC } from 'react'
-import Link from 'next/link'
 import { AccentCard } from '@/core/components/accent-card/accent-card'
 import Image from 'next/image'
 import { Markdown } from '@/core/components/markdown/markdown'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
+import { Link } from '@/core/components/link/link'
 
 export const PostExcerpt: FC<{ post: PostMetadata }> = ({ post }) => (
-  <Link href={`/src/app/%5Blocale%5D/blog/${post.slug}`}>
+  <Link type="invisible" to={`/blog/${post.slug}`}>
     <AccentCard className="break-inside-avoid mb-4">
       <Image
         src={`/assets/images/posts/${post.image}`}

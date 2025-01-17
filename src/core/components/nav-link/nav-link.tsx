@@ -1,10 +1,10 @@
 'use client'
 
 import type { FC, PropsWithChildren } from 'react'
-import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import styles from './nav-link.module.css'
 import { Link } from '@/core/components/link/link'
+import { usePathname } from '@/core/i18n/routing'
 
 export const NavLink: FC<
   PropsWithChildren<{

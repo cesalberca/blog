@@ -9,7 +9,7 @@ import { ThemeProvider } from '@/core/components/theme/theme-provider'
 import { locales } from '@/core/i18n/locales'
 import { baseUrl } from '@/app/sitemap'
 
-export async function generateMetadata<>({ params }: Promise<{ params: { locale: string } }>) {
+export async function generateMetadata(params: Promise<{ locale: string }>) {
   const { locale } = await params
 
   const t = await getTranslations({

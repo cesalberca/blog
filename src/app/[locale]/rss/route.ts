@@ -1,5 +1,5 @@
 import { baseUrl } from '../../sitemap'
-import { getPosts } from '@/features/posts/domain/posts'
+import { getPosts } from '@/posts'
 import { getLocale } from 'next-intl/server'
 import { Locale } from '@/core/i18n/locale'
 

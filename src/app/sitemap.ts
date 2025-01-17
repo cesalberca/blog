@@ -1,5 +1,5 @@
-import { getPosts } from '@/features/posts/domain/posts'
 import { Locale } from '@/core/i18n/locale'
+import { getPosts } from '../posts'
 
 export const baseUrl = 'https://cesalberca.com'
 

@@ -1,4 +1,4 @@
-import { getTalks } from '../domain/talks'
+import { getTalks } from '../../../talks'
 import type { FC } from 'react'
 import { AccentCard } from '@/core/components/accent-card/accent-card'
 import Image from 'next/image'
@@ -7,9 +7,10 @@ import { Page } from '@/core/components/page/page'
 import { Link } from '@/core/components/link/link'
 import { Masonry } from '@/core/components/masonry/masonry'
 import { Badge } from '@/components/ui/badge'
+import { Locale } from '@/core/i18n/locale'
 
-export const TalksPage: FC = async () => {
-  const allTalks = await getTalks()
+export const TalksPage: FC<{ locale: Locale }> = async ({ locale }) => {
+  const allTalks = await getTalks({ locale })
   const t = await getTranslations()
 
   return (

@@ -12,6 +12,8 @@ import dark from 'react-syntax-highlighter/dist/esm/styles/prism/synthwave84'
 import { cn } from '@/lib/utils'
 import { Link } from '@/core/i18n/routing'
 
+// This file needs to be here
+
 function CustomLink(props: LinkHTMLAttributes<HTMLAnchorElement> & PropsWithChildren<{ href: string }>) {
   const href = props.href
 

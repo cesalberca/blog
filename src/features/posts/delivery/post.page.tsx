@@ -33,7 +33,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
             url: `${baseUrl}/blog/${slug}`,
             author: {
               '@type': 'César Alberca',
-              name: 'My Portfolio',
+              name: 'César Alberca | Blog',
             },
           }),
         }}
@@ -53,7 +53,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
               <Link
                 key={category}
                 type="invisible"
-                to={`/src/app/%5Blocale%5D/blog/category/${category}`}
+                to={`/blog/category/${category}`}
                 className={cn(badgeVariants({ variant: 'outline' }), 'p-0 h-min')}
               >
                 <Badge>{category}</Badge>

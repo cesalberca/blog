@@ -9,7 +9,11 @@ import { ThemeProvider } from '@/core/components/theme/theme-provider'
 import { locales } from '@/core/i18n/locales'
 import { baseUrl } from '@/app/sitemap'
 
-export async function generateMetadata(params: Promise<{ locale: string }>) {
+type Props = {
+  params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props) {
   const { locale } = await params
 
   const t = await getTranslations({
@@ -19,7 +23,7 @@ export async function generateMetadata(params: Promise<{ locale: string }>) {
   return {
     metadataBase: new URL(baseUrl),
     title: {
-      default: t('common.dark'),
+      default: t('home.title'),
       template: '%s | Blog',
     },
     description:

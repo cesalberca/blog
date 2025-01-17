@@ -1,6 +1,6 @@
 import { type FC } from 'react'
 import { SiGithub, SiInstagram, SiLinkedin, SiStackoverflow, SiX, SiYoutube } from '@icons-pack/react-simple-icons'
-import Link from 'next/link'
+import { Link } from '@/core/components/link/link'
 
 export const SocialMedia: FC = () => {
   const socialMedia = [
@@ -15,7 +15,7 @@ export const SocialMedia: FC = () => {
   return (
     <div className="flex gap-m">
       {socialMedia.map(({ name, url, icon: Icon }) => (
-        <Link key={name} target="_blank" href={url}>
+        <Link key={name} to={url}>
           <Icon size={16} aria-label={name} title={name}></Icon>
         </Link>
       ))}

@@ -2,21 +2,19 @@ import type { FC } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
-import Link from 'next/link'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Button } from '@/components/ui/button'
 import { NavLink } from '@/core/components/nav-link/nav-link'
 import LocaleSwitcher from '@/core/components/locale-switcher/locale-switcher'
 import { Locale } from '@/core/i18n/locale'
 import { ChevronDown, Menu } from 'lucide-react'
+import { Link } from '@/core/components/link/link'
 
 const MainLinks = () => {
   const t = useTranslations()
 
   return (
     <>
-      <NavLink to={'/talks'}>{t('talks.title')}</NavLink>
-      <NavLink to={'/experience'}>{t('experience.title')}</NavLink>
       <NavLink to={'/blog'}>{t('blog.title')}</NavLink>
       <NavLink to={'/#contact'}>{t('home.contact.title')}</NavLink>
     </>
@@ -37,6 +35,15 @@ const MoreLinks = () => {
       <NavLink type="menu" to={'/#testimonials'}>
         {t('home.testimonials.title')}
       </NavLink>
+      <NavLink type="menu" to={'/talks'}>
+        {t('talks.title')}
+      </NavLink>
+      <NavLink type="menu" to={'/experience'}>
+        {t('experience.title')}
+      </NavLink>
+      <NavLink type="menu" to={'/links'}>
+        {t('links.title')}
+      </NavLink>
     </>
   )
 }
@@ -51,7 +58,7 @@ export const Navbar: FC<{
     <header
       className={cn('flex backdrop-blur fixed z-20 h-16 w-full items-center justify-between px-4 md:px-6', className)}
     >
-      <Link href={'/'} className="flex items-center gap-2">
+      <Link type="invisible" to={'/'} className="flex items-center gap-2">
         <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
         <span className="text-lg font-semibold">{t('home.title')}</span>
       </Link>

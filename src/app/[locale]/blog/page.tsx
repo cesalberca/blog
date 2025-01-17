@@ -8,7 +8,11 @@ export const metadata = {
   description: 'Read my blog.',
 }
 
-const Page: NextPage<Promise<{ locale: Locale }>> = async ({ params }) => {
+const Page: NextPage<{
+  params: Promise<{
+    locale: Locale
+  }>
+}> = async ({ params }) => {
   const { locale } = await params
   setRequestLocale(locale)
   return <BlogPostsPage locale={locale} />

@@ -7,7 +7,7 @@ import { AccentCard } from '@/core/components/accent-card/accent-card'
 import { Markdown } from '@/core/components/markdown/markdown'
 import { Technologies } from '@/features/home/delivery/technologies'
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
+import { Link } from '@/core/components/link/link'
 
 interface Project {
   title: string
@@ -68,11 +68,11 @@ export const Projects: FC = () => {
                 }}
               >
                 <Button asChild className="drop-shadow">
-                  <Link href={x.code.value}>{t('home.projects.live')}</Link>
+                  <Link to={x.code.value}>{t('home.projects.live')}</Link>
                 </Button>
                 {x.link?.value && (
                   <Button asChild className="drop-shadow">
-                    <Link href={x.code.value}>{t('home.projects.code')}</Link>
+                    <Link to={x.code.value}>{t('home.projects.code')}</Link>
                   </Button>
                 )}
               </footer>

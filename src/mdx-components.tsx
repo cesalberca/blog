@@ -1,6 +1,5 @@
 import type { MDXComponents } from 'mdx/types'
 
-import Link from 'next/link'
 import {
   type ComponentProps,
   createElement,
@@ -11,6 +10,7 @@ import {
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import dark from 'react-syntax-highlighter/dist/esm/styles/prism/synthwave84'
 import { cn } from '@/lib/utils'
+import { Link } from '@/core/i18n/routing'
 
 function CustomLink(props: LinkHTMLAttributes<HTMLAnchorElement> & PropsWithChildren<{ href: string }>) {
   const href = props.href

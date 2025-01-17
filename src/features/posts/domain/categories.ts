@@ -11,5 +11,6 @@ export const categories = [
   'design-patterns',
   'css',
   'personal-development',
+  'yearly-review',
   'writing',
 ] as const

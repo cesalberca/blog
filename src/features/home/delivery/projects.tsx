@@ -68,11 +68,15 @@ export const Projects: FC = () => {
                 }}
               >
                 <Button asChild className="drop-shadow">
-                  <Link to={x.code.value}>{t('home.projects.live')}</Link>
+                  <Link type="invisible" to={x.code.value}>
+                    {t('home.projects.live')}
+                  </Link>
                 </Button>
                 {x.link?.value && (
                   <Button asChild className="drop-shadow">
-                    <Link to={x.code.value}>{t('home.projects.code')}</Link>
+                    <Link type="invisible" to={x.code.value}>
+                      {t('home.projects.code')}
+                    </Link>
                   </Button>
                 )}
               </footer>

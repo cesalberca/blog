@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { Check, ChevronDown, Globe } from 'lucide-react'
 import { Locale } from '@/core/i18n/locale'
-import { usePathname, useRouter } from '@/core/i18n/routing'
+import { useRouter } from '@/core/i18n/routing'
 import { locales } from '@/core/i18n/locales'
 import { localeNames } from '@/core/i18n/locale-names'
 
@@ -12,19 +12,17 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { cn } from '@/lib/utils'
 
 export default function LocaleSwitcher({ locale }: { locale: Locale }) {
-  const pathname = usePathname()
   const router = useRouter()
 
   const changeLocale = (newLocale: Locale) => {
-    router.replace(pathname, { locale: newLocale })
+    router.push('/', { locale: newLocale })
   }
 
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="w-40 justify-between">
+        <Button variant="outline" className="justify-between">
           <Globe className="mr-2 h-4 w-4" />
-          {localeNames[locale]}
           <ChevronDown className="ml-auto h-4 w-4 opacity-50" />
         </Button>
       </DropdownMenuTrigger>

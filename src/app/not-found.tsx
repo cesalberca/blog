@@ -1,5 +1,13 @@
-import { NotFound } from '@/core/components/not-found/not-found'
+'use client'
 
-export default function Index() {
-  return <NotFound />
+import Error from 'next/error'
+
+export default function NotFound() {
+  return (
+    <html lang="en">
+      <body>
+        <Error statusCode={404} />
+      </body>
+    </html>
+  )
 }

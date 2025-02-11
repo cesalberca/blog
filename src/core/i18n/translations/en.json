@@ -102,7 +102,7 @@
     "autentia": {
       "title": "Autentia",
       "dates": "2017 - 2024",
-      "description": "* **Front-end Architect Lead**. I designed and implemented **Design Systems** in different frameworks, **modular architectures** following **Hexagonal** and **Domain Driven Design** principles and created robust **Testing Strategies**.\n* **Software developer** of different stacks, including JavaScript, TypeScript, Angular, Vue and React.\n* **Open Source Developer**: Created an [architectural framework](https://www.archimedesfw.io/docs/js/) in TypeScript that makes your application more robust by leveraging use cases.\n* **Teacher**: I've given more than a hundred talks and workshops of different technologies, such as: JavaScript, TypeScript, Vue, Angular, React, testing, CSS, architecture, good practices and more.\n* **Onboarding Link**: I was part of designing the Front-end onboarding process in the company. I interviewed potential coworkers.\n* **Mentor**: I’ve been a mentor for the most junior members of the company and had 1:1 where we would set goals and track them.\n* **Interviewer**: I interviewed prominent tech people for the [company’s YouTube channel](https://www.youtube.com/watch?v=iThFgLmD96E&list=PLKxa4AIfm4pVyeMpU0QkV4gzaFDaa_RFW&index=10)."
+      "description": "* **Front-end Architect Lead**. I designed and implemented **Design Systems** in different frameworks, **modular architectures** following **Hexagonal** and **Domain Driven Design** principles and created robust **Testing Strategies**.\n* **Software developer** of different stacks, including JavaScript, TypeScript, Angular, Vue and React.\n* **Open Source Developer**: Created an [architectural framework](https://www.archimedesfw.io/docs/js/) in TypeScript that makes your application more robust by leveraging use cases.\n* **Teacher**: I've given more than a hundred talks and workshops of different technologies, such as: JavaScript, TypeScript, Vue, Angular, React, testing, CSS, architecture, good practices and more.\n* **Onboarding Link**: I was part of designing the Front-end onboarding process in the company. I interviewed potential coworkers.\n* **Mentor**: I've been a mentor for the most junior members of the company and had 1:1 where we would set goals and track them.\n* **Interviewer**: I interviewed prominent tech people for the [company's YouTube channel](https://www.youtube.com/watch?v=iThFgLmD96E&list=PLKxa4AIfm4pVyeMpU0QkV4gzaFDaa_RFW&index=10)."
     },
     "codemotionAmbassador": {
       "title": "Codemotion Ambassador",
@@ -145,7 +145,7 @@
   },
   "about": {
     "title": "About me",
-    "description": "I’m a self-learner, creative, enthusiastic, and passionate person. I have a mixed profile, divided between my love for programming, software architecture, and design. I truly care about sharing knowledge with my peers, whether as a speaker at various technological events, as a teacher, or through my social networks.\n\nI believe that Software should be robust yet flexible, and the way to achieve it is – regardless of the framework – to create the right abstractions and apply architectural patterns. Testing is very important to me; the Software we build should be reliable in order to provide the maximum value."
+    "description": "I'm a self-learner, creative, enthusiastic, and passionate person. I have a mixed profile, divided between my love for programming, software architecture, and design. I truly care about sharing knowledge with my peers, whether as a speaker at various technological events, as a teacher, or through my social networks.\n\nI believe that Software should be robust yet flexible, and the way to achieve it is – regardless of the framework – to create the right abstractions and apply architectural patterns. Testing is very important to me; the Software we build should be reliable in order to provide the maximum value."
   },
   "links": {
     "title": "Links",
@@ -173,5 +173,8 @@
     "talkCode": "Code",
     "talkVideo": "Video",
     "talkDemo": "Demo"
+  },
+  "photography": {
+    "title": "Photography"
   }
 }

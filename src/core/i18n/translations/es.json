@@ -173,5 +173,8 @@
     "talkCode": "Código",
     "talkVideo": "Video",
     "talkDemo": "Demo"
+  },
+  "photography": {
+    "title": "Fotografía"
   }
 }

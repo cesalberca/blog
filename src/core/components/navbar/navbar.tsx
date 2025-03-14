@@ -15,6 +15,21 @@ const MainLinks = () => {
 
   return (
     <>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="ghost" className="p-1">
+            <span>{t('caseStudies.title')}</span>
+            <ChevronDown className="ml-1 h-4 w-4" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-40">
+          <div className="flex flex-col gap-2">
+            <NavLink type="menu" to={'/case-studies/tabaiba'}>
+              {t('caseStudies.tabaiba.title')}
+            </NavLink>
+          </div>
+        </PopoverContent>
+      </Popover>
       <NavLink to={'/blog'}>{t('blog.title')}</NavLink>
       <NavLink to={'/#contact'}>{t('home.contact.title')}</NavLink>
     </>

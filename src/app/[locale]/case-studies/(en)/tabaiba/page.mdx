@@ -1,0 +1,271 @@
+import { CaseStudyLayout } from '@/features/case-studies/delivery/case-study-layout'
+
+export const metadata = {
+  title: 'Tabaiba Case Study',
+  slug: 'tabaiba',
+  date: '2024-01-01',
+  readTime: 15,
+  categories: ['case-study', 'software-development'],
+  image: 'tabaiba/tabaiba.jpg',
+  summary: 'A mobile app that delivers three carefully curated connections every Friday, focusing on authentic and intentional social connections.',
+}
+
+## The Story Behind Tabaiba
+
+In a world where social connections often feel **superficial** and **algorithm-driven**, [Tabaiba](https://tabaiba.me) emerged as a breath of fresh air. The concept was simple yet powerful: instead of endless swiping through profiles, users would receive three carefully curated connections every Friday. This approach resonated deeply with me—it felt **authentic**, **intentional**, and **human**.
+
+## The Challenge
+
+Building a mobile app that could deliver this experience required more than just coding skills. It needed a **thoughtful approach** to architecture, a deep understanding of user psychology, and a commitment to clean, maintainable code. The challenge wasn't just about implementing features; it was about creating an experience that felt **natural** and **effortless**.
+
+## The Technical Journey
+
+### Finding the Right Architecture
+
+I've always been passionate about clean architecture and domain-driven design. For Tabaiba, I wanted to create something that would **scale gracefully** while remaining **easy to understand**. The solution emerged in a modular, feature-based architecture:
+
+```typescript
+// Core domain structure
+core/
+  ├── onboarding/           # Onboarding feature
+  │   ├── application/      # Use cases and hooks
+  │   ├── domain/          # Domain models and interfaces
+  │   ├── infrastructure/  # Repository implementations
+  │   └── delivery/        # UI components
+  ├── auth/                # Authentication feature
+  └── i18n/               # Internationalization
+```
+
+This structure wasn't just about organization—it was about creating a **clear mental model** that would guide us through the development process.
+
+### Making Key Decisions
+
+The technology choices were **intentional** and **purposeful**:
+
+1. **[React Native](https://reactnative.dev/) with [Expo](https://expo.dev/)**
+
+   - For cross-platform development without compromising on native feel
+   - Leveraging Expo's ecosystem for faster development
+   - Ensuring a consistent experience across devices
+
+2. **[TypeScript](https://www.typescriptlang.org/)**
+
+   - Not just for type safety, but for better developer experience
+   - Helping us catch errors early and maintain code quality
+   - Making the codebase more maintainable and self-documenting
+
+3. **[Nativewind](https://www.nativewind.dev/)**
+   - Bringing the power of [Tailwind CSS](https://tailwindcss.com/) to React Native
+   - Enabling rapid UI development without sacrificing performance
+   - Creating a consistent design system
+
+### Crafting the User Experience
+
+The onboarding flow became a particular focus. It needed to feel **welcoming** yet **efficient**, **guided** yet **flexible**. We implemented a multi-step process that respected the user's time while gathering essential information.
+
+#### Design Patterns in Action
+
+The onboarding flow leverages several key design patterns to create a maintainable and scalable solution:
+
+1. **[Template Method Pattern](https://refactoring.guru/design-patterns/template-method)**
+
+   - Our `BaseStep` component serves as the template, defining the skeleton of the onboarding flow
+   - Each specific step (Name, Interests, Location, Gender) provides its own implementation while maintaining the common structure
+   - This ensures consistency across all steps while allowing for customization
+
+2. **[Strategy Pattern](https://refactoring.guru/design-patterns/strategy)**
+
+   - The `OnboardingStatus` class uses different strategies for determining the next step
+   - The `getNextStep` method encapsulates the algorithm for step progression
+   - This makes it easy to modify the flow without changing the component structure
+
+3. **[Repository Pattern](https://refactoring.guru/design-patterns/repository)**
+
+   - The `OnboardingRepository` interface abstracts the data persistence layer
+   - This separation allows us to easily switch between different storage implementations
+   - It also keeps our domain logic clean and independent of data access concerns
+
+4. **[Observer Pattern](https://refactoring.guru/design-patterns/observer)**
+
+   - The `useOnboarding` hook acts as an observer, reacting to changes in the onboarding status
+   - Components subscribe to status updates through the hook
+   - This creates a loose coupling between the UI and the business logic
+
+5. **[Factory Method Pattern](https://refactoring.guru/design-patterns/factory-method)**
+   - The step component mapping in `OnboardingScreen` creates specific step components
+   - This encapsulation of component creation makes it easy to add new steps
+   - It also ensures consistent initialization of step components
+
+#### The Domain Model
+
+First, we defined our domain model with clear boundaries:
+
+```typescript
+interface OnboardingStatus {
+  completedSteps: StepId[];
+  isFullyCompleted: boolean;
+  getNextStep: () => StepId | null;
+}
+
+interface OnboardingRepository {
+  getOnboardingStatus: () => Promise<OnboardingStatus>;
+  completeStep: (stepId: StepId) => Promise<void>;
+  skipOptional: () => Promise<void>;
+}
+```
+
+#### The Application Layer
+
+The application layer handled the business logic through a custom hook:
+
+```typescript
+export function useOnboarding() {
+  const [status, setStatus] = useState<OnboardingStatus | null>(null);
+  const isInitialLoad = useRef(true);
+
+  useEffect(() => {
+    if (isInitialLoad.current) {
+      loadOnboardingStatus();
+      isInitialLoad.current = false;
+    }
+  }, []);
+
+  async function loadOnboardingStatus() {
+    try {
+      const status = await onboardingRepository.getOnboardingStatus();
+      setStatus(status);
+
+      if (status.isFullyCompleted) {
+        router.replace('/tabs');
+      } else if (isInitialLoad.current) {
+        const nextStep = status.getNextStep();
+        if (nextStep) {
+          router.replace(`/onboarding/${nextStep}`);
+        }
+      }
+    } catch (error) {
+      console.error('Failed to load onboarding status:', error);
+    }
+  }
+
+  async function completeStep(stepId: StepId) {
+    try {
+      await onboardingRepository.completeStep(stepId);
+      await loadOnboardingStatus();
+    } catch (error) {
+      console.error('Failed to complete step:', error);
+    }
+  }
+
+  async function skipOptional() {
+    try {
+      await onboardingRepository.skipOptional();
+      router.replace('/tabs');
+    } catch (error) {
+      console.error('Failed to skip optional steps:', error);
+    }
+  }
+
+  return { status, completeStep, skipOptional };
+}
+```
+
+#### The UI Layer
+
+The UI layer was built with reusable components and clear separation of concerns:
+
+```typescript
+// Base step component with common functionality
+export const BaseStep: FC<PropsWithChildren<StepProps>> = ({
+  title,
+  description,
+  children,
+  onNext,
+  onBack,
+  onSkip,
+  isOptional = false,
+}) => {
+  return (
+    <View className="flex-1 justify-between p-4">
+      <View className="flex-1">
+        <Text className="text-2xl font-bold">{title}</Text>
+        <Text className="text-gray-600 mt-2">{description}</Text>
+        <View className="mt-8">{children}</View>
+      </View>
+
+      <View className="flex-row justify-between items-center">
+        <Button onPress={onBack} variant="ghost">
+          {t('common.back')}
+        </Button>
+
+        <View className="flex-row gap-2">
+          {isOptional && (
+            <Button onPress={onSkip} variant="ghost">
+              {t('common.skip')}
+            </Button>
+          )}
+          <Button onPress={onNext}>
+            {t('common.next')}
+          </Button>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+// Example of a specific step implementation
+export const NameStep: FC = () => {
+  const { completeStep } = useOnboarding();
+  const [name, setName] = useState('');
+  const [error, setError] = useState<string | null>(null);
+
+  const handleNext = () => {
+    if (!name.trim()) {
+      setError(t('onboarding.steps.name.validation.required'));
+      return;
+    }
+    completeStep(STEP_IDS.NAME);
+  };
+
+  return (
+    <BaseStep
+      title={t('onboarding.steps.name.title')}
+      description={t('onboarding.steps.name.description')}
+      onNext={handleNext}
+      onBack={() => router.back()}
+    >
+      <TextInput
+        value={name}
+        onChangeText={setName}
+        placeholder={t('onboarding.steps.name.placeholder')}
+        className="border rounded-lg p-4"
+      />
+      {error && (
+        <Text className="text-red-500 mt-2">{error}</Text>
+      )}
+    </BaseStep>
+  );
+};
+```
+
+This architecture wasn't just about code organization—it was about creating a **fluid**, **intuitive** experience that guided users through the onboarding process without feeling overwhelming. Each layer had its clear responsibility:
+
+- **Domain Layer**: Defined the core business rules and interfaces
+- **Application Layer**: Orchestrated the flow and handled side effects
+- **UI Layer**: Focused on presentation and user interaction
+
+## The Results
+
+What emerged was more than just a mobile app—it was a **well-crafted** solution that balanced technical excellence with user experience. The codebase became a **joy to work with**, the architecture proved **flexible** and **maintainable**, and the user experience felt **natural** and **engaging**.
+
+## Looking Forward
+
+The journey doesn't end here. There are always improvements to make, features to add, and experiences to refine. But what we've built provides a **solid foundation** for future growth. Whether it's implementing push notifications, adding offline support, or optimizing performance, we're ready to evolve while maintaining the **high standards** we've set.
+
+## Conclusion
+
+[Tabaiba](https://tabaiba.me) represents more than just another mobile app—it's a testament to the power of **clean architecture**, **thoughtful design**, and **user-centric development**. It's about creating something that not only works well but feels **right** to use.
+
+export default function Page({ children }) {
+  return <CaseStudyLayout title={metadata.title}>{children}</CaseStudyLayout>
+} 

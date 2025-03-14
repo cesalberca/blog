@@ -176,5 +176,13 @@
   },
   "photography": {
     "title": "Fotografía"
+  },
+  "caseStudies": {
+    "title": "Casos de Estudio de Clientes",
+    "description": "Explora soluciones reales que he desarrollado para clientes, mostrando cómo abordo desafíos complejos y entrego resultados impactantes a través de una arquitectura limpia y un diseño reflexivo.",
+    "tabaiba": {
+      "title": "Tabaiba",
+      "description": "Cómo ayudé a una startup a construir una aplicación de citas moderna desde cero, enfocándome en conexiones auténticas y entregando una solución pulida y escalable que encanta a los usuarios."
+    }
   }
 }

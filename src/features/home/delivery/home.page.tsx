@@ -1,37 +1,19 @@
-import { type FC, type PropsWithChildren } from 'react'
+import type { FC } from 'react'
 import { useTranslations } from 'next-intl'
-import { Page } from '../../../core/components/page/page'
-import { Technologies } from './technologies'
-import { Projects } from './projects'
-import { Markdown } from '../../../core/components/markdown/markdown'
-import { Services } from './services'
-import { SocialMedia } from '@/core/components/social-media/social-media'
+import { Page } from '@/core/components/page/page'
 import { Hero } from '@/core/components/hero/hero'
 import { AccentList } from '@/core/components/accent-list/accent-list'
-import { AccentText } from '@/core/components/accent-text/accent-text'
+import { SocialMedia } from '@/core/components/social-media/social-media'
+import { Section } from '@/features/home/delivery/section'
+import { Markdown } from '@/core/components/markdown/markdown'
+import { Projects } from '@/features/home/delivery/projects'
+import { Services } from '@/features/home/delivery/services'
+import { Technologies } from '@/features/home/delivery/technologies'
 import { ContactForm } from '@/features/home/delivery/contact'
 import { OpenToWork } from '@/core/components/open-to-work/open-to-work'
 import { Testimonials } from '@/core/components/testimonials/testimonials'
-import { cn } from '@/lib/utils'
-
-export const Section: FC<
-  PropsWithChildren<{
-    title?: string
-    id?: string
-    fullWidth?: boolean
-  }>
-> = ({ children, title, id, fullWidth = false }) => {
-  return (
-    <section className="mt-m md:mt-xxl">
-      {title && (
-        <h2 id={id} className={cn('my-m', fullWidth ? 'full-width-section' : 'wrapper')}>
-          <AccentText>{title}</AccentText>
-        </h2>
-      )}
-      {children}
-    </section>
-  )
-}
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { Link } from '@/core/components/link/link'
 
 export const HomePage: FC = () => {
   const t = useTranslations()
@@ -67,6 +49,26 @@ export const HomePage: FC = () => {
 
       <Section title={t('home.projects.title')} id="projects">
         <Projects />
+      </Section>
+
+      <Section title={t('caseStudies.title')} id="case-studies">
+        <div className="flex flex-col gap-4">
+          <div className="wrapper">
+            <p className="mb-m text-lg">{t('caseStudies.description')}</p>
+          </div>
+          <div className="bleed-width-section grid md:grid-cols-3 gap-1">
+            <Link to="/case-studies/tabaiba" type="invisible">
+              <Card className="h-full hover:shadow-lg transition-shadow p-8 group">
+                <CardHeader>
+                  <CardTitle className="text-2xl mb-4 group-hover:text-accent transition-colors">
+                    {t('caseStudies.tabaiba.title')}
+                  </CardTitle>
+                  <CardDescription className="text-lg">{t('caseStudies.tabaiba.description')}</CardDescription>
+                </CardHeader>
+              </Card>
+            </Link>
+          </div>
+        </div>
       </Section>
 
       <Section title={t('home.services.title')} id="services">

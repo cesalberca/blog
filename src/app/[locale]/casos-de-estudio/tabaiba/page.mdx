@@ -1,0 +1,21 @@
+import { CaseStudyLayout } from '@/features/case-studies/delivery/case-study-layout'
+
+export const metadata = {
+  title: 'Caso de Estudio: Tabaiba',
+  slug: 'tabaiba',
+  date: '2024-01-01',
+  readTime: 15,
+  categories: ['case-study', 'software-development'],
+  image: 'tabaiba/tabaiba.jpg',
+  summary: 'Una aplicación móvil que ofrece tres conexiones cuidadosamente seleccionadas cada viernes, centrándose en conexiones sociales auténticas e intencionales.',
+}
+
+## La Historia Detrás de Tabaiba
+
+En un mundo donde las conexiones sociales a menudo se sienten **superficiales** y **dirigidas por algoritmos**, [Tabaiba](https://tabaiba.me) surgió como un soplo de aire fresco. El concepto era simple pero poderoso: en lugar de deslizar sin fin a través de perfiles, los usuarios recibirían tres conexiones cuidadosamente seleccionadas cada viernes. Este enfoque resonó profundamente conmigo—se sentía **auténtico**, **intencional** y **humano**.
+
+[Rest of the Spanish content...]
+
+export default function Page({ children }) {
+  return <CaseStudyLayout title={metadata.title}>{children}</CaseStudyLayout>
+} 

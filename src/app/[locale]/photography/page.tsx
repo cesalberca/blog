@@ -6,11 +6,6 @@ import { Photo } from '@/features/photography/domain/photo'
 function getPhotos(): Photo[] {
   const photosDir = path.join(process.cwd(), 'public/assets/images/photography')
 
-  // Create directory if it doesn't exist
-  if (!fs.existsSync(photosDir)) {
-    fs.mkdirSync(photosDir, { recursive: true })
-  }
-
   const files = fs.readdirSync(photosDir)
 
   return files

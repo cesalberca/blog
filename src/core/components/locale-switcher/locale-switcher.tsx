@@ -31,21 +31,24 @@ export default function LocaleSwitcher({ locale }: { locale: Locale }) {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild disabled={isPending}>
-        <Button variant="outline" className="justify-between">
-          <Globe className="mr-2 h-4 w-4" />
-          <ChevronDown className="ml-auto h-4 w-4 opacity-50" />
+        <Button variant="outline" className="justify-between min-w-[4rem]">
+          <Globe className="mr-2 h-5 w-5" />
+          <ChevronDown className="ml-auto h-5 w-5 opacity-50" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-40">
+      <DropdownMenuContent className="w-48">
         {locales.map(loc => (
           <DropdownMenuItem
             key={loc}
             disabled={isPending}
             onClick={() => changeLocale(loc)}
-            className={cn('cursor-pointer', locale === loc && 'bg-accent')}
+            className={cn(
+              'cursor-pointer py-3 px-4 text-base font-medium hover:bg-accent/10',
+              locale === loc && 'bg-accent text-accent-foreground',
+            )}
           >
             {localeNames[loc]}
-            {locale === loc && <Check className="ml-auto h-4 w-4" />}
+            {locale === loc && <Check className="ml-auto h-5 w-5" />}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

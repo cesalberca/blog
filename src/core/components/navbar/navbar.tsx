@@ -12,6 +12,9 @@ import { Link } from '@/core/components/link/link'
 
 const MainLinks = () => {
   const t = useTranslations()
+  const locale = useLocale() as Locale
+
+  const caseStudyPath = locale === 'es' ? '/casos-de-estudio/tabaiba' : '/case-studies/tabaiba'
 
   return (
     <>
@@ -24,7 +27,7 @@ const MainLinks = () => {
         </PopoverTrigger>
         <PopoverContent className="w-40">
           <div className="flex flex-col gap-2">
-            <NavLink type="menu" to={'/case-studies/tabaiba'}>
+            <NavLink type="menu" to={caseStudyPath}>
               {t('caseStudies.tabaiba.title')}
             </NavLink>
           </div>

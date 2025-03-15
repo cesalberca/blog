@@ -12,8 +12,7 @@ import { Technologies } from '@/features/home/delivery/technologies'
 import { ContactForm } from '@/features/home/delivery/contact'
 import { OpenToWork } from '@/core/components/open-to-work/open-to-work'
 import { Testimonials } from '@/core/components/testimonials/testimonials'
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { Link } from '@/core/components/link/link'
+import { CaseStudyCard } from '@/features/case-studies/delivery/case-study-card'
 
 export const HomePage: FC = () => {
   const t = useTranslations()
@@ -57,16 +56,11 @@ export const HomePage: FC = () => {
             <p className="mb-m text-lg">{t('caseStudies.description')}</p>
           </div>
           <div className="bleed-width-section grid md:grid-cols-3 gap-1">
-            <Link to="/case-studies/tabaiba" type="invisible">
-              <Card className="h-full hover:shadow-lg transition-shadow p-8 group">
-                <CardHeader>
-                  <CardTitle className="text-2xl mb-4 group-hover:text-accent transition-colors">
-                    {t('caseStudies.tabaiba.title')}
-                  </CardTitle>
-                  <CardDescription className="text-lg">{t('caseStudies.tabaiba.description')}</CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
+            <CaseStudyCard
+              title={t('caseStudies.tabaiba.title')}
+              description={t('caseStudies.tabaiba.description')}
+              href="/case-studies/tabaiba"
+            />
           </div>
         </div>
       </Section>

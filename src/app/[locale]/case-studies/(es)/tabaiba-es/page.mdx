@@ -1,0 +1,382 @@
+import { CaseStudyLayout } from '@/features/case-studies/delivery/case-study-layout'
+
+export const metadata = {
+  title: 'Caso de Estudio: Tabaiba',
+  slug: 'tabaiba',
+  date: '2025-03-15',
+  image: 'tabaiba.png',
+  summary: 'Una aplicación móvil que ofrece tres personas nuevas a conocer cuidadosamente seleccionadas cada viernes, centrándose en conexiones sociales auténticas e intencionales.',
+}
+
+## La Historia Detrás de Tabaiba
+
+En un mundo donde las conexiones sociales a menudo se sienten **superficiales** y **dirigidas por la dopaminergia**, [Tabaiba](https://tabaiba.me) surge como un soplo de aire fresco. El concepto es simple pero poderoso: en lugar de deslizar sin fin a través de perfiles, los usuarios recibirían tres conexiones cuidadosamente seleccionadas por algoritmos de matching cada viernes. Este enfoque resonó profundamente conmigo—se sentía **auténtico**, **intencional** y **humano**.
+
+## El Desafío
+
+Construir una aplicación móvil que pudiera ofrecer esta experiencia requería más que solo habilidades de programación. Necesitaba un enfoque basado en [Domain-Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html) y una [arquitectura basada en features](https://www.youtube.com/watch?v=PRns0rqPonA).
+
+## El Viaje Técnico
+
+### Arquitectura y Estructura
+
+La implementación se centró en crear una estructura que reflejara el dominio del problema. Organizamos el código en módulos independientes, cada uno representando una capacidad específica de la aplicación:
+
+```typescript
+core/
+  ├── onboarding/           # Característica del onboarding
+  │   ├── application/      # Casos de uso y gestión de estado
+  │   ├── domain/          # Modelos e interfaces de dominio
+  │   ├── infrastructure/  # Implementaciones de repositorio y código acoplado
+  │   └── delivery/        # Componentes de UI
+  ├── auth/                # Característica de autenticación
+  └── i18n/               # Internacionalización
+```
+
+Esta estructura no era solo sobre organización—era sobre crear un **modelo mental claro** que nos guiaría a través del proceso de desarrollo.
+
+### Stack Tecnológico
+
+Las elecciones tecnológicas fueron **intencionales** y **con propósito**:
+
+1. **[React Native](https://reactnative.dev/) con [Expo](https://expo.dev/)**
+   - Desarrollo multiplataforma manteniendo la sensación nativa
+   - Ecosistema de Expo para desarrollo más rápido
+   - Asegurando una experiencia consistente en todos los dispositivos
+
+2. **[TypeScript](https://www.typescriptlang.org/)**
+   - Seguridad de tipos y mejor experiencia de desarrollo
+   - Detección temprana de errores
+   - Base de código mantenible y auto-documentada
+
+3. **[Nativewind](https://www.nativewind.dev/)**
+   - Sistema de diseño consistente con Tailwind
+   - Desarrollo rápido de UI sin sacrificar rendimiento
+   - Creando un sistema de diseño consistente
+
+4. **[i18n-js](https://github.com/fnando/i18n)**
+   - Internacionalización completa con soporte multilenguaje
+   - Detección automática del idioma del dispositivo
+   - Pluralización y formateo de fechas por región
+   - Interpolación de variables en traducciones
+
+5. **[Supabase](https://supabase.com/)**
+   - PostgreSQL con Row Level Security
+   - Sistema de autenticación con múltiples proveedores
+   - Políticas de seguridad granulares
+   - Suscripciones en tiempo real
+   - Generación automática de tipos TypeScript
+
+6. **[Zod](https://zod.dev/)**
+   - Validación de datos en tiempo de ejecución
+   - Inferencia de tipos automática
+   - Transformación y normalización de datos
+   - Validación de formularios y peticiones API
+
+### Patrones de Diseño
+
+El onboarding es uno de los momentos más críticos en la experiencia de usuario. Necesitábamos resolver varios desafíos:
+
+- **Complejidad del Flujo**: El proceso debía recopilar información esencial del usuario pero sin resultar abrumador
+- **Flexibilidad**: Algunos pasos debían ser obligatorios mientras que otros opcionales, permitiendo al usuario personalizar su experiencia
+- **Mantenibilidad**: El flujo debía ser fácil de modificar, ya que esperábamos iterar basándonos en el feedback de los usuarios
+- **Estado**: Necesitábamos gestionar el progreso del usuario de forma robusta, permitiendo retomar el proceso donde lo dejó
+- **Experiencia de Usuario**: La navegación debía ser intuitiva, con opciones claras para avanzar, retroceder o saltar pasos
+
+Para abordar estos retos, implementamos varios [patrones de diseño](https://refactoring.guru/es/design-patterns) que nos proporcionaron una solución elegante y escalable:
+
+#### [Template Method Pattern](https://refactoring.guru/es/design-patterns/template-method)
+
+Este patrón nos permite definir el "esqueleto" de un algoritmo en un método, delegando algunos pasos a las subclases. En nuestro caso, el componente base del onboarding proporciona una estructura común para todos los pasos, lo que nos da varias ventajas:
+
+- **Consistencia Visual**: Todos los pasos mantienen la misma estructura y estilo
+- **DRY (Don't Repeat Yourself)**: La lógica común de navegación y layout se define una sola vez
+- **Flexibilidad**: Cada paso puede personalizar su contenido mientras mantiene la estructura común
+- **Mantenibilidad**: Los cambios en la estructura base se aplican automáticamente a todos los pasos
+
+```typescript
+interface StepProps extends PropsWithChildren {
+  title: string;
+  description: string;
+  className?: string;
+  onNext: () => void;
+  onBack?: () => void;
+  onSkip?: () => void;
+  isOptional?: boolean;
+}
+
+export const BaseStep: FC<StepProps> = ({
+  title,
+  description,
+  children,
+  onNext,
+  onBack,
+  onSkip,
+  isOptional = false,
+}) => {
+  return (
+    <View className="flex-1 justify-between p-4">
+      <View className="flex-1">
+        <Text className="text-2xl font-bold">{title}</Text>
+        <Text className="text-gray-600 mt-2">{description}</Text>
+        <View className="mt-8">{children}</View>
+      </View>
+
+      <View className="flex-row justify-between items-center">
+        <Button onPress={onBack} variant="ghost">
+          {t('common.back')}
+        </Button>
+
+        <View className="flex-row gap-2">
+          {isOptional && (
+            <Button onPress={onSkip} variant="ghost">
+              {t('common.skip')}
+            </Button>
+          )}
+          <Button onPress={onNext}>
+            {t('common.next')}
+          </Button>
+        </View>
+      </View>
+    </View>
+  );
+};
+```
+
+#### [Domain Model Pattern](https://martinfowler.com/eaaCatalog/domainModel.html)
+
+El modelo de dominio es el corazón de nuestra aplicación. Siguiendo los principios de DDD y el [patrón Repository](https://refactoring.guru/es/design-patterns/repository), encapsulamos toda la lógica de negocio en objetos de dominio ricos que:
+
+- **Garantizan la Integridad**: Las reglas de negocio se aplican de manera consistente
+- **Son Auto-Validantes**: El propio modelo asegura que los datos son válidos
+- **Proporcionan una API Clara**: Los métodos expresan claramente las operaciones permitidas
+- **Son Inmutables**: Previniendo efectos secundarios no deseados
+
+```typescript
+interface OnboardingStatus {
+  completedSteps: StepId[]
+  isFullyCompleted: boolean
+  getNextStep(): StepId | null
+}
+
+interface OnboardingStatusValue {
+  data: OnboardingData;
+  completedSteps: StepId[];
+  skippedSkippableSteps: boolean;
+  requiredStepsCompleted: boolean;
+  skippableStepsCompleted: boolean;
+  lastCompletedStep: StepId | null;
+}
+
+export class OnboardingStatus extends ValueObject<OnboardingStatusValue> {
+  static create(params: OnboardingStatusValue): OnboardingStatus {
+    return new OnboardingStatus(params);
+  }
+
+  toPrimitives(): OnboardingStatusValue {
+    return {
+      data: this.value.data,
+      completedSteps: this.value.completedSteps,
+      skippedSkippableSteps: this.value.skippedSkippableSteps,
+      requiredStepsCompleted: this.value.requiredStepsCompleted,
+      skippableStepsCompleted: this.value.skippableStepsCompleted,
+      lastCompletedStep: this.value.lastCompletedStep,
+    };
+  }
+
+  isFullyCompleted(): boolean {
+    return this.value.requiredStepsCompleted && this.value.skippableStepsCompleted;
+  }
+
+  isRequiredCompleted(): boolean {
+    return this.value.requiredStepsCompleted;
+  }
+
+  hasSkippedSkippableSteps(): boolean {
+    return this.value.skippedSkippableSteps;
+  }
+
+  getCompletedSteps(): StepId[] {
+    return this.value.completedSteps;
+  }
+
+  getData(): OnboardingData {
+    return this.value.data;
+  }
+}
+```
+
+#### [Command Pattern](https://refactoring.guru/es/design-patterns/command) y [Observer Pattern](https://refactoring.guru/es/design-patterns/observer)
+
+La capa de aplicación actúa como un orquestador entre la UI y el dominio. Utilizamos hooks personalizados y el patrón Command para:
+
+- **Separar Responsabilidades**: La lógica de negocio está separada de la UI
+- **Mejorar la Testeabilidad**: Cada comando puede probarse de forma aislada
+- **Facilitar la Reutilización**: Los hooks encapsulan lógica compleja que puede reutilizarse
+- **Gestionar el Estado**: De forma predecible y centralizada
+
+```typescript
+export function useOnboarding() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const onboardingRepository = container.resolve<OnboardingRepository>(
+    InjectionTokens.ONBOARDING_REPOSITORY
+  );
+  const [onboardingStatus, setOnboardingStatus] = useState<OnboardingStatus | null>(null);
+
+  useEffect(() => {
+    loadOnboardingStatus();
+  }, []);
+
+  const loadOnboardingStatus = async () => {
+    const status = await onboardingRepository.getOnboardingStatus();
+    setOnboardingStatus(status);
+
+    if (!pathname?.includes('onboarding')) {
+      if (!status.isRequiredCompleted()) {
+        router.push('/onboarding/required');
+      } else if (status.isFullyCompleted()) {
+        router.push('/(tabs)');
+      }
+    }
+  };
+
+  const completeRequiredOnboarding = useCallback(async () => {
+    await onboardingRepository.completeRequiredOnboarding();
+  }, [onboardingRepository]);
+
+  const completeOptionalOnboarding = useCallback(async () => {
+    await onboardingRepository.completeOnboarding();
+    router.push('/(tabs)');
+  }, [onboardingRepository, router]);
+
+  return {
+    onboardingStatus,
+    completeRequiredOnboarding,
+    completeOptionalOnboarding,
+  };
+}
+
+@injectable()
+export class SetNameCommand implements Command<SetNameParams, void> {
+  constructor(
+    @inject(InjectionTokens.ONBOARDING_REPOSITORY)
+    private readonly onboardingRepository: OnboardingRepository
+  ) {}
+
+  async handle(params: SetNameParams): Promise<void> {
+    await this.onboardingRepository.updateOnboardingStep(STEP_IDS.NAME, { name: params.name });
+  }
+}
+```
+
+#### [Composite Pattern](https://refactoring.guru/es/design-patterns/composite)
+
+Los componentes de UI se construyen siguiendo el principio de componentes controlados y desacoplados, utilizando el patrón Composite para crear estructuras de componentes jerárquicas. Esta aproximación nos proporciona:
+
+- **Componentes Reutilizables**: Cada componente tiene una responsabilidad única
+- **Flujo de Datos Unidireccional**: Hace el código más predecible y fácil de debuggear
+- **Separación de Preocupaciones**: La lógica de presentación está separada de la lógica de negocio
+- **Mejor Experiencia de Desarrollo**: Los componentes son fáciles de entender y modificar
+
+```typescript
+export const RequiredOnboarding: FC = () => {
+  const { completeRequiredOnboarding } = useOnboarding();
+  const [currentStepIndex, setCurrentStepIndex] = useState(0);
+
+  const handleNext = () => {
+    if (currentStepIndex === 0) {
+      completeRequiredOnboarding();
+      setCurrentStepIndex(currentStepIndex + 1);
+    }
+  };
+
+  const handleBack = () => {
+    setCurrentStepIndex(currentStepIndex - 1);
+  };
+
+  const steps = [<NameStep key="name" />, <ContinueOrSkipStep key="continueOrSkip" />];
+
+  return (
+    <Page>
+      <Wizard
+        currentStepIndex={currentStepIndex}
+        onNext={handleNext}
+        onBack={handleBack}
+        nextLabel={t(currentStepIndex === 0 ? 'common.next' : 'common.complete')}
+        backLabel={t('common.back')}
+        showBackButton={!isTransitionStep}
+        hideDefaultButtons={isTransitionStep}>
+        {steps}
+      </Wizard>
+    </Page>
+  );
+};
+
+export const NameStep: FC = () => {
+  const [name, setName] = useState('');
+  const useCase = container.resolve(UseCaseService);
+
+  const handleNameChange = async (value: string) => {
+    setName(value);
+    await updateProfile(value);
+  };
+
+  const updateProfile = async (name: string) => {
+    useCase.execute(SetNameCommand, { name });
+  };
+
+  return (
+    <BaseStep title="What's your name?" description="Let us know how we should call you">
+      <View className="space-y-4">
+        <TextInput
+          className="bg-gray-100 p-4 rounded-lg"
+          placeholder="Your name"
+          value={name}
+          onChangeText={handleNameChange}
+        />
+      </View>
+    </BaseStep>
+  );
+};
+```
+
+### Implementación de Features
+
+Cada característica sigue una arquitectura en capas que proporciona varios beneficios:
+
+1. **Capa de Dominio**
+   - Aislamiento de la lógica de negocio
+   - Reglas de negocio centralizadas y consistentes
+   - Modelo de dominio rico y expresivo
+   - Validación y encapsulamiento de datos
+
+2. **Capa de Aplicación**
+   - Orquestación de casos de uso
+   - Gestión de estado predecible
+   - Manejo de efectos secundarios controlado
+   - Separación clara de responsabilidades
+
+3. **Capa de UI**
+   - Componentes reutilizables y mantenibles
+   - Separación de lógica de presentación
+   - Experiencia de usuario consistente
+   - Testing simplificado
+
+Esta arquitectura en capas nos permite:
+- Evolucionar cada capa de forma independiente
+- Facilitar el testing automatizado
+- Mantener un código base sostenible
+- Escalar el equipo de desarrollo eficientemente
+
+## Los Resultados
+
+Lo que emergió fue más que solo una aplicación móvil—fue una solución **bien elaborada** que equilibraba la excelencia técnica con la experiencia del usuario. La base de código se convirtió en un **placer para trabajar**, la arquitectura demostró ser **flexible** y **mantenible**, y la experiencia del usuario se sentía **natural** y **atractiva**.
+
+## Conclusión
+
+[Tabaiba](https://tabaiba.me) representa más que solo otra aplicación móvil—es un testimonio del poder de la **arquitectura limpia**, el **diseño reflexivo** y el **desarrollo centrado en el usuario**. Se trata de crear algo que no solo funcione bien sino que se sienta **correcto** al usar. Estoy muy contento de haber podido colaborar desarrollando parte de esta aplicación y quiero agradecer a [Gorka Mañana](https://www.linkedin.com/in/gorkamagana/) por la oportunidad.
+
+export default function Page({ children }) {
+  return <CaseStudyLayout slug="tabaiba-es">{children}</CaseStudyLayout>
+}

@@ -16,10 +16,10 @@ const MainLinks = () => {
 
   const CASE_STUDY_URLS = {
     [Locale.EN]: {
-      tabaiba: '/case-studies/tabaiba-en',
+      tabaiba: '/case-studies/tabaiba-mobile-app-ddd-architecture',
     },
     [Locale.ES]: {
-      tabaiba: '/case-studies/tabaiba-es',
+      tabaiba: '/casos-de-estudio/tabaiba-app-movil-arquitectura-ddd',
     },
   }
 

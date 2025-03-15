@@ -7,6 +7,12 @@ export const routing = defineRouting({
   locales,
   defaultLocale: Locale.EN,
   localePrefix: 'as-needed',
+  pathnames: {
+    '/case-studies/tabaiba-en': {
+      [Locale.EN]: '/case-studies/tabaiba-en',
+      [Locale.ES]: '/case-studies/tabaiba-es',
+    },
+  },
 })
 
 export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation(routing)

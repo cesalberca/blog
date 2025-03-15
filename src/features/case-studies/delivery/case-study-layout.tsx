@@ -8,7 +8,9 @@ import { CaseStudyMetadata } from '../domain/case-study'
 export async function CaseStudyLayout({ children, slug }: { children: ReactNode; slug: string }) {
   const locale = await getLocale()
 
-  const { metadata } = (await import(`@/app/[locale]/case-studies/(${locale})/${slug}/page.mdx`)) as {
+  const { metadata } = (await import(
+    `@/app/[locale]/${locale === 'en' ? 'case-studies' : 'casos-de-estudio'}/(${locale})/${slug}/page.mdx`
+  )) as {
     metadata: CaseStudyMetadata
   }
 

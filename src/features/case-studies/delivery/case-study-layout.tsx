@@ -2,14 +2,27 @@ import { Page } from '@/core/components/page/page'
 import type { ReactNode } from 'react'
 import { Background } from '@/core/components/background/background'
 import { AccentText } from '@/core/components/accent-text/accent-text'
+import { getLocale } from 'next-intl/server'
+import { CaseStudyMetadata } from '../domain/case-study'
 
-export function CaseStudyLayout({ children, title }: { children: ReactNode; title: string }) {
+export async function CaseStudyLayout({ children, slug }: { children: ReactNode; slug: string }) {
+  const locale = await getLocale()
+  let route = ''
+  if (locale === 'en') {
+    route = 'case-studies'
+  } else if (locale === 'es') {
+    route = 'casos-de-estudio'
+  }
+  const { metadata } = (await import(`@/app/[locale]/${route}/(${locale})/${slug}/page.mdx`)) as {
+    metadata: CaseStudyMetadata
+  }
+
   return (
     <Page>
-      <Background className="w-full h-[60vh]">
+      <Background className="w-full h-[60vh]" image={`/assets/images/case-studies/${metadata.image}`}>
         <div className="p-xl flex items-center justify-center h-full">
           <h1 className="text-center">
-            <AccentText>{title}</AccentText>
+            <AccentText>{metadata.title}</AccentText>
           </h1>
         </div>
       </Background>

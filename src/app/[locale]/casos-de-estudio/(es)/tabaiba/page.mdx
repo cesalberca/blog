@@ -3,10 +3,8 @@ import { CaseStudyLayout } from '@/features/case-studies/delivery/case-study-lay
 export const metadata = {
   title: 'Caso de Estudio: Tabaiba',
   slug: 'tabaiba',
-  date: '2024-01-01',
-  readTime: 15,
-  categories: ['case-study', 'software-development'],
-  image: 'tabaiba/tabaiba.jpg',
+  date: '2025-03-15',
+  image: 'tabaiba.png',
   summary: 'Una aplicación móvil que ofrece tres conexiones cuidadosamente seleccionadas cada viernes, centrándose en conexiones sociales auténticas e intencionales.',
 }
 
@@ -14,8 +12,258 @@ export const metadata = {
 
 En un mundo donde las conexiones sociales a menudo se sienten **superficiales** y **dirigidas por algoritmos**, [Tabaiba](https://tabaiba.me) surgió como un soplo de aire fresco. El concepto era simple pero poderoso: en lugar de deslizar sin fin a través de perfiles, los usuarios recibirían tres conexiones cuidadosamente seleccionadas cada viernes. Este enfoque resonó profundamente conmigo—se sentía **auténtico**, **intencional** y **humano**.
 
-[Rest of the Spanish content...]
+## El Desafío
+
+Construir una aplicación móvil que pudiera ofrecer esta experiencia requería más que solo habilidades de programación. Necesitaba un **enfoque reflexivo** de la arquitectura, una comprensión profunda de la psicología del usuario y un compromiso con el código limpio y mantenible. El desafío no era solo implementar funcionalidades; era crear una experiencia que se sintiera **natural** y **sin esfuerzo**.
+
+## El Viaje Técnico
+
+### Encontrando la Arquitectura Correcta
+
+Siempre he sido apasionado de la arquitectura limpia y el diseño dirigido por el dominio. Para Tabaiba, quería crear algo que pudiera **escalar elegantemente** mientras se mantuviera **fácil de entender**. La solución emergió en una arquitectura modular basada en características:
+
+```typescript
+// Estructura del dominio principal
+core/
+  ├── onboarding/           # Característica de incorporación
+  │   ├── application/      # Casos de uso y hooks
+  │   ├── domain/          # Modelos e interfaces de dominio
+  │   ├── infrastructure/  # Implementaciones de repositorio
+  │   └── delivery/        # Componentes de UI
+  ├── auth/                # Característica de autenticación
+  └── i18n/               # Internacionalización
+```
+
+Esta estructura no era solo sobre organización—era sobre crear un **modelo mental claro** que nos guiaría a través del proceso de desarrollo.
+
+### Tomando Decisiones Clave
+
+Las elecciones tecnológicas fueron **intencionales** y **con propósito**:
+
+1. **[React Native](https://reactnative.dev/) con [Expo](https://expo.dev/)**
+
+   - Para desarrollo multiplataforma sin comprometer la sensación nativa
+   - Aprovechando el ecosistema de Expo para un desarrollo más rápido
+   - Asegurando una experiencia consistente en todos los dispositivos
+
+2. **[TypeScript](https://www.typescriptlang.org/)**
+
+   - No solo por la seguridad de tipos, sino por una mejor experiencia de desarrollo
+   - Ayudando a detectar errores temprano y mantener la calidad del código
+   - Haciendo la base de código más mantenible y auto-documentada
+
+3. **[Nativewind](https://www.nativewind.dev/)**
+   - Trayendo el poder de [Tailwind CSS](https://tailwindcss.com/) a React Native
+   - Permitiendo un desarrollo rápido de UI sin sacrificar rendimiento
+   - Creando un sistema de diseño consistente
+
+### Diseñando la Experiencia de Usuario
+
+El flujo de incorporación se convirtió en un foco particular. Necesitaba sentirse **acogedor** pero **eficiente**, **guiado** pero **flexible**. Implementamos un proceso de múltiples pasos que respetaba el tiempo del usuario mientras recopilaba información esencial.
+
+#### Patrones de Diseño en Acción
+
+El flujo de incorporación aprovecha varios patrones de diseño clave para crear una solución mantenible y escalable:
+
+1. **[Patrón Template Method](https://refactoring.guru/design-patterns/template-method)**
+
+   - Nuestro componente `BaseStep` sirve como plantilla, definiendo el esqueleto del flujo de incorporación
+   - Cada paso específico (Nombre, Intereses, Ubicación, Género) proporciona su propia implementación mientras mantiene la estructura común
+   - Esto asegura consistencia en todos los pasos mientras permite la personalización
+
+2. **[Patrón Strategy](https://refactoring.guru/design-patterns/strategy)**
+
+   - La clase `OnboardingStatus` utiliza diferentes estrategias para determinar el siguiente paso
+   - El método `getNextStep` encapsula el algoritmo para la progresión de pasos
+   - Esto facilita la modificación del flujo sin cambiar la estructura del componente
+
+3. **[Patrón Repository](https://refactoring.guru/design-patterns/repository)**
+
+   - La interfaz `OnboardingRepository` abstrae la capa de persistencia de datos
+   - Esta separación nos permite cambiar fácilmente entre diferentes implementaciones de almacenamiento
+   - También mantiene nuestra lógica de dominio limpia e independiente de las preocupaciones de acceso a datos
+
+4. **[Patrón Observer](https://refactoring.guru/design-patterns/observer)**
+
+   - El hook `useOnboarding` actúa como un observador, reaccionando a los cambios en el estado de incorporación
+   - Los componentes se suscriben a las actualizaciones de estado a través del hook
+   - Esto crea un acoplamiento flexible entre la UI y la lógica de negocio
+
+5. **[Patrón Factory Method](https://refactoring.guru/design-patterns/factory-method)**
+   - El mapeo de componentes de paso en `OnboardingScreen` crea componentes de paso específicos
+   - Esta encapsulación de la creación de componentes facilita la adición de nuevos pasos
+   - También asegura una inicialización consistente de los componentes de paso
+
+#### El Modelo de Dominio
+
+Primero, definimos nuestro modelo de dominio con límites claros:
+
+```typescript
+interface OnboardingStatus {
+  completedSteps: StepId[];
+  isFullyCompleted: boolean;
+  getNextStep: () => StepId | null;
+}
+
+interface OnboardingRepository {
+  getOnboardingStatus: () => Promise<OnboardingStatus>;
+  completeStep: (stepId: StepId) => Promise<void>;
+  skipOptional: () => Promise<void>;
+}
+```
+
+#### La Capa de Aplicación
+
+La capa de aplicación manejó la lógica de negocio a través de un hook personalizado:
+
+```typescript
+export function useOnboarding() {
+  const [status, setStatus] = useState<OnboardingStatus | null>(null);
+  const isInitialLoad = useRef(true);
+
+  useEffect(() => {
+    if (isInitialLoad.current) {
+      loadOnboardingStatus();
+      isInitialLoad.current = false;
+    }
+  }, []);
+
+  async function loadOnboardingStatus() {
+    try {
+      const status = await onboardingRepository.getOnboardingStatus();
+      setStatus(status);
+
+      if (status.isFullyCompleted) {
+        router.replace('/tabs');
+      } else if (isInitialLoad.current) {
+        const nextStep = status.getNextStep();
+        if (nextStep) {
+          router.replace(`/onboarding/${nextStep}`);
+        }
+      }
+    } catch (error) {
+      console.error('Error al cargar el estado de incorporación:', error);
+    }
+  }
+
+  async function completeStep(stepId: StepId) {
+    try {
+      await onboardingRepository.completeStep(stepId);
+      await loadOnboardingStatus();
+    } catch (error) {
+      console.error('Error al completar el paso:', error);
+    }
+  }
+
+  async function skipOptional() {
+    try {
+      await onboardingRepository.skipOptional();
+      router.replace('/tabs');
+    } catch (error) {
+      console.error('Error al saltar pasos opcionales:', error);
+    }
+  }
+
+  return { status, completeStep, skipOptional };
+}
+```
+
+#### La Capa de UI
+
+La capa de UI se construyó con componentes reutilizables y una clara separación de responsabilidades:
+
+```typescript
+// Componente base de paso con funcionalidad común
+export const BaseStep: FC<PropsWithChildren<StepProps>> = ({
+  title,
+  description,
+  children,
+  onNext,
+  onBack,
+  onSkip,
+  isOptional = false,
+}) => {
+  return (
+    <View className="flex-1 justify-between p-4">
+      <View className="flex-1">
+        <Text className="text-2xl font-bold">{title}</Text>
+        <Text className="text-gray-600 mt-2">{description}</Text>
+        <View className="mt-8">{children}</View>
+      </View>
+
+      <View className="flex-row justify-between items-center">
+        <Button onPress={onBack} variant="ghost">
+          {t('common.back')}
+        </Button>
+
+        <View className="flex-row gap-2">
+          {isOptional && (
+            <Button onPress={onSkip} variant="ghost">
+              {t('common.skip')}
+            </Button>
+          )}
+          <Button onPress={onNext}>
+            {t('common.next')}
+          </Button>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+// Ejemplo de implementación de un paso específico
+export const NameStep: FC = () => {
+  const { completeStep } = useOnboarding();
+  const [name, setName] = useState('');
+  const [error, setError] = useState<string | null>(null);
+
+  const handleNext = () => {
+    if (!name.trim()) {
+      setError(t('onboarding.steps.name.validation.required'));
+      return;
+    }
+    completeStep(STEP_IDS.NAME);
+  };
+
+  return (
+    <BaseStep
+      title={t('onboarding.steps.name.title')}
+      description={t('onboarding.steps.name.description')}
+      onNext={handleNext}
+      onBack={() => router.back()}
+    >
+      <TextInput
+        value={name}
+        onChangeText={setName}
+        placeholder={t('onboarding.steps.name.placeholder')}
+        className="border rounded-lg p-4"
+      />
+      {error && (
+        <Text className="text-red-500 mt-2">{error}</Text>
+      )}
+    </BaseStep>
+  );
+};
+```
+
+Esta arquitectura no era solo sobre organización de código—era sobre crear una experiencia **fluida** e **intuitiva** que guiara a los usuarios a través del proceso de incorporación sin sentirse abrumador. Cada capa tenía su responsabilidad clara:
+
+- **Capa de Dominio**: Definía las reglas de negocio principales e interfaces
+- **Capa de Aplicación**: Orquestaba el flujo y manejaba los efectos secundarios
+- **Capa de UI**: Se centraba en la presentación e interacción del usuario
+
+## Los Resultados
+
+Lo que emergió fue más que solo una aplicación móvil—fue una solución **bien elaborada** que equilibraba la excelencia técnica con la experiencia del usuario. La base de código se convirtió en un **placer para trabajar**, la arquitectura demostró ser **flexible** y **mantenible**, y la experiencia del usuario se sentía **natural** y **atractiva**.
+
+## Mirando Hacia Adelante
+
+El viaje no termina aquí. Siempre hay mejoras que hacer, características que agregar y experiencias que refinar. Pero lo que hemos construido proporciona una **base sólida** para el crecimiento futuro. Ya sea implementando notificaciones push, agregando soporte sin conexión u optimizando el rendimiento, estamos listos para evolucionar mientras mantenemos los **altos estándares** que hemos establecido.
+
+## Conclusión
+
+[Tabaiba](https://tabaiba.me) representa más que solo otra aplicación móvil—es un testimonio del poder de la **arquitectura limpia**, el **diseño reflexivo** y el **desarrollo centrado en el usuario**. Se trata de crear algo que no solo funcione bien sino que se sienta **correcto** al usar.
 
 export default function Page({ children }) {
   return <CaseStudyLayout title={metadata.title}>{children}</CaseStudyLayout>
-} 
+}

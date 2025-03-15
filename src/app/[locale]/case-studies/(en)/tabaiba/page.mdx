@@ -3,10 +3,8 @@ import { CaseStudyLayout } from '@/features/case-studies/delivery/case-study-lay
 export const metadata = {
   title: 'Tabaiba Case Study',
   slug: 'tabaiba',
-  date: '2024-01-01',
-  readTime: 15,
-  categories: ['case-study', 'software-development'],
-  image: 'tabaiba/tabaiba.jpg',
+  date: '2025-03-15',
+  image: 'tabaiba.png',
   summary: 'A mobile app that delivers three carefully curated connections every Friday, focusing on authentic and intentional social connections.',
 }
 
@@ -267,5 +265,5 @@ The journey doesn't end here. There are always improvements to make, features to
 [Tabaiba](https://tabaiba.me) represents more than just another mobile app—it's a testament to the power of **clean architecture**, **thoughtful design**, and **user-centric development**. It's about creating something that not only works well but feels **right** to use.
 
 export default function Page({ children }) {
-  return <CaseStudyLayout title={metadata.title}>{children}</CaseStudyLayout>
-} 
+  return <CaseStudyLayout title="tabaiba">{children}</CaseStudyLayout>
+}

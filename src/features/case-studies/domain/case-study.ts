@@ -1,5 +1,7 @@
-export interface CaseStudy {
+export interface CaseStudyMetadata {
+  title: string
   slug: string
-  titleKey: string
-  descriptionKey: string
+  date: string
+  image: string
+  summary: string
 }

@@ -9,19 +9,11 @@ import LocaleSwitcher from '@/core/components/locale-switcher/locale-switcher'
 import { Locale } from '@/core/i18n/locale'
 import { ChevronDown, Menu } from 'lucide-react'
 import { Link } from '@/core/components/link/link'
+import { CASE_STUDY_URLS } from '@/core/i18n/paths'
 
 const MainLinks = () => {
   const t = useTranslations()
   const locale = useLocale() as Locale
-
-  const CASE_STUDY_URLS = {
-    [Locale.EN]: {
-      tabaiba: '/case-studies/tabaiba-mobile-app-ddd-architecture',
-    },
-    [Locale.ES]: {
-      tabaiba: '/casos-de-estudio/tabaiba-app-movil-arquitectura-ddd',
-    },
-  }
 
   return (
     <>

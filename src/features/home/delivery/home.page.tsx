@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { Page } from '@/core/components/page/page'
 import { Hero } from '@/core/components/hero/hero'
 import { AccentList } from '@/core/components/accent-list/accent-list'
@@ -13,9 +13,12 @@ import { ContactForm } from '@/features/home/delivery/contact'
 import { OpenToWork } from '@/core/components/open-to-work/open-to-work'
 import { Testimonials } from '@/core/components/testimonials/testimonials'
 import { CaseStudyCard } from '@/features/case-studies/delivery/case-study-card'
+import { CASE_STUDY_URLS } from '@/core/i18n/paths'
+import { Locale } from '@/core/i18n/locale'
 
 export const HomePage: FC = () => {
   const t = useTranslations()
+  const locale = useLocale() as Locale
 
   const texts = [
     t('home.labels.architect'),
@@ -59,7 +62,7 @@ export const HomePage: FC = () => {
             <CaseStudyCard
               title={t('caseStudies.tabaiba.title')}
               description={t('caseStudies.tabaiba.description')}
-              href="/case-studies/tabaiba"
+              href={CASE_STUDY_URLS[locale].tabaiba}
             />
           </div>
         </div>

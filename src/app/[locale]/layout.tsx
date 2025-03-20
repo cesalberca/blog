@@ -9,7 +9,7 @@ import { ThemeProvider } from '@/core/components/theme/theme-provider'
 import { locales } from '@/core/i18n/locales'
 import { baseUrl } from '@/app/sitemap'
 
-type Props = {
+interface Props {
   params: Promise<{ locale: string }>
 }
 

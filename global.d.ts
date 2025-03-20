@@ -1,6 +1,7 @@
 type Messages = typeof import('./src/core/i18n/translations/en.json')
 
 declare global {
+  // eslint-disable-next-line
   interface IntlMessages extends Messages {}
 }
 

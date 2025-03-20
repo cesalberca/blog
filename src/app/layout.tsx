@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-type Props = {
+interface Props {
   children: ReactNode
 }
 

@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 const nextJest = require('next/jest')
 
 const createJestConfig = nextJest({

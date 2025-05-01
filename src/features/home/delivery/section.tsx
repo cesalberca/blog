@@ -4,13 +4,14 @@ import { cn } from '@/lib/utils'
 
 export const Section: FC<
   PropsWithChildren<{
+    className?: string
     title?: string
     id?: string
     fullWidth?: boolean
   }>
-> = ({ children, title, id, fullWidth = false }) => {
+> = ({ children, title, id, className, fullWidth = false }) => {
   return (
-    <section className="mt-m md:mt-xxl">
+    <section className={cn('mt-m md:mt-xxl', className)}>
       {title && (
         <h2 id={id} className={cn('my-m', fullWidth ? 'full-width-section' : 'wrapper')}>
           <AccentText>{title}</AccentText>

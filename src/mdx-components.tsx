@@ -86,7 +86,6 @@ function createHeading(level: number) {
   return Heading
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const customComponents: ComponentProps<any>['components'] = {
   h1: createHeading(1),
   h2: createHeading(2),

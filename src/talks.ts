@@ -2,7 +2,6 @@ import type { TalkMetadata } from '@/features/talks/domain/talk-metadata'
 import { getSlugs } from '@/lib/get-slugs'
 import { Locale } from '@/core/i18n/locale'
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function getTalks({ locale: _locale }: { locale: Locale }): Promise<TalkMetadata[]> {
   const slugs = await getSlugs(`./src/app/[locale]/talks/(talks)`)
 

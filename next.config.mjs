@@ -6,6 +6,9 @@ const withNextIntl = createNextIntlPlugin('./src/core/i18n/i18n.tsx')
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  images: {
+    domains: ['sxvlta3onkp6zlqr.public.blob.vercel-storage.com'],
+  },
   async rewrites() {
     return [
       {

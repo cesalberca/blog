@@ -1,0 +1,729 @@
+import { CaseStudyLayout } from '@/features/case-studies/delivery/case-study-layout'
+
+export const metadata = {
+  title: 'Case Study: Halioooo - Creating a Design System and Architecture Library',
+  slug: 'case-studies-use-cases',
+  date: '2025-04-01',
+  image: 'halioooo.png',
+  summary: 'How implementing Use Cases and Design Systems can transform organizational efficiency, maintainability, and consistency in software development at Halioooo.',
+}
+
+## About Halioooo
+
+[Halioooo](https://halioooo.com/) is a Deep-Tech AI Ventures company focused on creating transformative solutions for exponential times. Their work spans three key areas:
+
+1. **Synthetic Sociology**: Using AI to decode social dynamics and model complex societal behaviors with a research-driven approach that positions them as pioneers in AI for social well-being.
+
+2. **Health and Well-Being**: Revolutionizing healthcare through adaptive, personalized AI solutions that combine technology with biological insights to create resilient health systems.
+
+3. **Green IT & AI**: Developing eco-conscious AI solutions that maximize impact while minimizing environmental footprint, setting industry standards for sustainable technology development.
+
+Halioooo follows a systematic startup creation circuit with four phases:
+- **Ideation**: Uncovering breakthrough opportunities by analyzing emerging trends and technological advancements
+- **Prototyping**: Rapidly transforming concepts into functional prototypes
+- **Strategic Development**: Refining and optimizing solutions with the right product strategy
+- **Startup Launch**: Bringing transformative AI ventures to market with funding and expertise
+
+Their principles include speed as a competitive skill, flexible talent, focus on impact, and pragmatic creativity.
+
+## The Challenge: Scaling Innovation at Halioooo
+
+When I first began working with Halioooo, they were facing a critical inflection point. Their rapid growth across multiple AI domains had created significant technical challenges:
+
+- **Diverse Product Portfolio**: With projects spanning synthetic sociology, healthcare, and green technology, their development teams were building multiple applications with inconsistent architectures and interfaces.
+- **Technical Debt Accumulation**: The "move fast" startup mentality had created a patchwork of solutions that were becoming increasingly difficult to maintain and extend.
+- **Cross-Team Collaboration Issues**: Different teams had developed their own approaches to solving similar problems, making knowledge sharing difficult.
+- **Scaling Development**: As they added more developers to meet growing demand, onboarding was taking longer and inconsistencies were multiplying.
+
+The leadership team recognized that to maintain their competitive edge in AI innovation, they needed a more structured approach to software development—one that would preserve their agility while providing the foundation for sustainable growth.
+
+"We were spending too much time reinventing the wheel across projects," explained Maria Chen, Halioooo's CTO. "We needed a way to standardize our approach without stifling the creativity that makes our solutions unique."
+
+## Our Solution: Architectural Patterns for Scalable Innovation
+
+After analyzing Halioooo's specific challenges, we proposed implementing two complementary architectural patterns: the Use Case pattern for organizing business logic and a comprehensive Design System for user interfaces. These weren't chosen arbitrarily—they directly addressed Halioooo's need to balance innovation with consistency.
+
+The implementation journey wasn't without challenges. Teams accustomed to moving quickly initially resisted what they perceived as additional structure. However, as the benefits became apparent—faster development of new features, fewer bugs, and improved collaboration—adoption accelerated across the organization.
+
+## The Story Behind Use Cases and Design Systems
+
+In the world of modern software development, organizations like Halioooo constantly face the challenge of building applications that are **maintainable**, **scalable**, and **consistent**. As systems grow in complexity, the need for architectural patterns that can manage this complexity becomes increasingly important. Two powerful patterns have emerged as game-changers: the [Use Case pattern](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) and [Design Systems](https://www.designsystems.com/).
+
+These patterns aren't just theoretical concepts—they're **practical tools** that transform how teams build software. This case study explores how these patterns are implemented in our library for Halioooo and the **tangible value** they bring to organizations struggling with complex software challenges.
+
+## The Use Case Pattern: Clean Architecture in Action
+
+### What is the Use Case Pattern?
+
+The Use Case pattern is a core component of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html), popularized by [Robert C. Martin](https://en.wikipedia.org/wiki/Robert_C._Martin) (also known as "Uncle Bob"). At its heart, this pattern does something **remarkably powerful**: it **separates business logic from implementation details**, making code significantly more maintainable and testable.
+
+Clean Architecture promotes the separation of concerns through concentric layers, with **business rules at the center** and implementation details at the outer layers. Use cases sit in the application layer, **encapsulating business logic** and orchestrating the flow of data between the domain entities and the outside world.
+
+This approach isn't just theoretical—it's **practical and transformative**. In our library, we've implemented the Use Case pattern in the `packages/arch/src/use-case` directory, creating a foundation that teams can build upon with confidence.
+
+### Key Components
+
+1. **Base Use Case Interface**: The foundation of our implementation is the `UseCase` interface:
+
+```typescript
+export interface UseCase<In = unknown, Out = unknown> {
+  handle(param?: In, meta?: UseCaseOptions): Promise<Out>
+}
+```
+
+This simple interface defines a contract for all use cases: they take an input, optional metadata, and produce an output asynchronously.
+
+Let's look at a complete implementation of a use case that fetches user data:
+
+```typescript
+// Interfaces
+interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+
+interface GetUserParams {
+  userId: string;
+}
+
+// Repository interface (dependency)
+interface UserRepository {
+  findById(id: string): Promise<User | null>;
+}
+
+// Use case implementation
+export class GetUserUseCase implements Query<User, GetUserParams> {
+  constructor(private readonly userRepository: UserRepository) {}
+
+  async handle(params: GetUserParams): Promise<User> {
+    const { userId } = params;
+
+    // Validate input
+    if (!userId) {
+      throw new Error('User ID is required');
+    }
+
+    // Execute business logic
+    const user = await this.userRepository.findById(userId);
+
+    // Handle edge cases
+    if (!user) {
+      throw new Error(`User with ID ${userId} not found`);
+    }
+
+    return user;
+  }
+}
+
+// Usage with dependency injection
+const container = new Container();
+container.register('UserRepository', UserRepositoryImplementation);
+const useCaseService = container.get<UseCaseService>(UseCaseService.name);
+
+// Execute the use case
+const user = await useCaseService.execute(GetUserUseCase, { userId: '123' });
+```
+
+This example demonstrates several key benefits:
+- **Clear dependencies**: The use case depends on a repository interface, not a concrete implementation
+- **Input validation**: The use case validates its input parameters
+- **Error handling**: The use case handles edge cases like missing users
+- **Dependency injection**: The use case receives its dependencies through constructor injection
+- **Testability**: The use case can be easily tested by mocking the repository
+
+2. **Command and Query Separation (CQRS)**: We implement the [CQRS pattern](https://martinfowler.com/bliki/CQRS.html) with two specialized interfaces:
+
+```typescript
+export interface Command<Param = void, Return = void> extends UseCase<Param, Return> {}
+export interface Query<Return, Param = void> extends UseCase<Param, Return> {}
+```
+
+Commands are used for operations that modify state (with default void return), while Queries are used for retrieving data (requiring a return type). This separation follows the [Command pattern](https://refactoring.guru/design-patterns/command) from the Gang of Four design patterns, where commands encapsulate all the information needed to perform an action.
+
+The CQRS pattern provides several benefits:
+- **Separation of concerns**: Read and write operations often have different requirements and can be optimized separately.
+- **Scalability**: Read and write operations can be scaled independently.
+- **Security**: It's easier to apply different security rules to commands and queries.
+- **Simplicity**: Each use case has a single responsibility, making it easier to understand and maintain.
+
+3. **Middleware Chain**: Our implementation uses the [Chain of Responsibility pattern](https://refactoring.guru/design-patterns/chain-of-responsibility) to apply cross-cutting concerns:
+
+```typescript
+// UseCaseService creates a chain of middlewares
+let next = UseCaseHandler.create({
+  next: this.container.create(useCase),
+  options: requiredOptions,
+  middleware: this.container.get<EmptyMiddleware>(EmptyMiddleware.name),
+})
+
+for (let i = this.middlewares.length - 1; i >= 0; i--) {
+  const currentMiddleware = this.middlewares[i]
+  const previous = next
+  next = UseCaseHandler.create({
+    next: previous,
+    middleware: currentMiddleware,
+    options: requiredOptions,
+  })
+}
+```
+
+The Chain of Responsibility pattern allows a request to pass through a chain of handlers, with each handler deciding whether to process the request and/or pass it to the next handler in the chain. This provides tremendous flexibility in how use cases are executed.
+
+#### Technical Flexibility of the Middleware Chain
+
+The middleware chain offers several powerful capabilities:
+
+1. **Composability**: Middlewares can be composed in any order, allowing for flexible combinations of cross-cutting concerns.
+
+2. **Order Matters**: The order of middlewares in the chain affects how they process requests. For example:
+   - Placing a logging middleware at the beginning and end of the chain allows logging both before and after use case execution.
+   - Placing an error handling middleware early in the chain ensures it catches errors from all subsequent middlewares.
+
+3. **Conditional Processing**: Middlewares can conditionally process requests based on the request type, metadata, or other factors.
+
+```typescript
+// Example of a conditional middleware
+export class ConditionalMiddleware implements Middleware {
+  async execute<In, Out>(
+    param: In,
+    next: UseCase<In, Out>,
+    options: UseCaseOptions,
+  ): Promise<Out> {
+    // Check conditions based on param or options
+    if (options.skipCondition) {
+      // Skip this middleware and pass to the next one
+      return next.handle(param, options)
+    }
+
+    // Process the request
+    console.log('Conditional middleware processing request')
+
+    // Continue the chain
+    return next.handle(param, options)
+  }
+}
+```
+
+4. **Extensibility**: New middlewares can be added without modifying existing code, following the [Open/Closed Principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle).
+
+5. **Aspect-Oriented Programming**: Middlewares enable [aspect-oriented programming](https://en.wikipedia.org/wiki/Aspect-oriented_programming) by separating cross-cutting concerns from business logic.
+
+6. **Middleware Implementations**: We provide several middlewares for common concerns:
+   - **Logging**: Captures information about use case execution for debugging and monitoring.
+   - **Error handling**: Catches and processes errors that occur during use case execution.
+   - **Success handling**: Processes successful results from use cases.
+   - **Confirmation prompts**: Requests user confirmation before executing certain operations.
+   - **Server error handling**: Handles errors specific to server communication.
+
+Here's a real-world example of a logging middleware that measures execution time:
+
+```typescript
+export class PerformanceLoggingMiddleware implements Middleware {
+  constructor(private readonly logger: Logger) {}
+
+  async execute<In, Out>(
+    param: In,
+    next: UseCase<In, Out>,
+    options: UseCaseOptions,
+  ): Promise<Out> {
+    // Get the name of the use case being executed
+    const useCaseName = next.constructor.name;
+
+    // Record start time
+    const startTime = performance.now();
+
+    try {
+      // Log the beginning of execution
+      this.logger.info(`Starting execution of ${useCaseName}`, {
+        useCaseName,
+        params: param,
+        options,
+      });
+
+      // Execute the next middleware or use case
+      const result = await next.handle(param, options);
+
+      // Calculate execution time
+      const executionTime = performance.now() - startTime;
+
+      // Log successful completion
+      this.logger.info(`Successfully executed ${useCaseName} in ${executionTime.toFixed(2)}ms`, {
+        useCaseName,
+        executionTime,
+        resultType: typeof result,
+      });
+
+      return result;
+    } catch (error) {
+      // Calculate execution time even for failures
+      const executionTime = performance.now() - startTime;
+
+      // Log error with execution time
+      this.logger.error(`Failed to execute ${useCaseName} after ${executionTime.toFixed(2)}ms`, {
+        useCaseName,
+        executionTime,
+        error,
+      });
+
+      // Re-throw the error to be handled by error middleware
+      throw error;
+    }
+  }
+}
+```
+
+This middleware demonstrates how cross-cutting concerns like performance monitoring can be cleanly separated from business logic. By adding this middleware to your chain, you automatically get performance metrics for all use cases without modifying any of their code.
+
+7. **Dependency Injection**: Our use cases leverage [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) for better testability and modularity.
+
+### Organizational Value
+
+The Use Case pattern doesn't just improve code—it transforms how organizations build and maintain software. Here's how:
+
+1. **Business Logic Isolation**: By isolating business logic in use cases, organizations ensure their **core business rules** remain untangled from UI, database, or framework concerns. This isn't just good practice—it's a **competitive advantage** that follows the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single-responsibility_principle) and maintains a [clean architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
+
+2. **Superior Testability**: Use cases are **remarkably testable** because they have clear inputs and outputs, and dependencies can be easily mocked. This enables **comprehensive testing** and supports [Test-Driven Development (TDD)](https://martinfowler.com/bliki/TestDrivenDevelopment.html), leading to more reliable software.
+
+3. **Enhanced Maintainability**: When business requirements inevitably change, developers can modify **specific use cases** without affecting the entire system. This dramatically **reduces the cost of change** and makes the codebase more **resilient to evolution**, a critical factor in long-lived enterprise applications.
+
+4. **Team Scalability**: Development teams can work on **different use cases in parallel** without conflicts. This natural alignment with [Conway's Law](https://www.thoughtworks.com/insights/blog/applying-conways-law-improve-your-software-development) allows organizations to **scale their engineering teams** effectively while maintaining productivity.
+
+5. **Accelerated Onboarding**: New developers can quickly understand the system by reading use cases, which **express business logic clearly**. This significantly **reduces the learning curve** and accelerates developer productivity—a crucial factor in today's competitive hiring market.
+
+6. **Powerful Reusability**: Well-designed use cases can be **reused across different parts** of the application or even different applications. This promotes [DRY (Don't Repeat Yourself)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) principles and **increases development efficiency** across the organization.
+
+## Design Systems: Consistency and Efficiency
+
+### What is a Design System?
+
+A design system is far more than just a UI library—it's a **complete ecosystem** of reusable components, guided by clear standards and principles, that can be assembled to build cohesive applications. It's the difference between building with **random parts** versus building with **perfectly matched components** designed to work together.
+
+Our design system is thoughtfully implemented in the `packages/ui` directory and is built on a foundation of modern, battle-tested technologies:
+
+1. **[shadcn/ui](https://ui.shadcn.com/)**: A collection of beautifully designed, accessible components
+2. **[Radix UI](https://www.radix-ui.com/)**: A low-level UI component library focused on accessibility and customization
+3. **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework that enables rapid, consistent styling
+
+This combination creates a **powerful foundation** that balances flexibility with consistency, allowing teams to move quickly without sacrificing quality.
+
+### Key Components
+
+1. **UI Components**: We provide reusable UI components like Button with various variants and sizes:
+
+```typescript
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all...",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+        destructive: "bg-destructive text-white shadow-xs hover:bg-destructive/90...",
+        outline: "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground...",
+        secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        link: "text-primary underline-offset-4 hover:underline",
+        invisible: "whitespace-normal rounded-none",
+      },
+      size: {
+        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
+        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        icon: "size-9",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  },
+);
+```
+
+Here's the complete Button component implementation that uses these variants:
+
+```typescript
+import { Slot } from "@radix-ui/react-slot";
+import { type VariantProps, cva } from "class-variance-authority";
+import type { ComponentProps } from "react";
+
+import { cn } from "../lib/utils";
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:cursor-pointer",
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+        outline:
+          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+        secondary:
+          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+        ghost:
+          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        link: "text-primary underline-offset-4 hover:underline",
+        invisible: "whitespace-normal rounded-none",
+      },
+      size: {
+        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
+        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        icon: "size-9",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  },
+);
+
+function Button({
+  className,
+  variant,
+  size,
+  asChild = false,
+  ...props
+}: ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean;
+  }) {
+  const Comp = asChild ? Slot : "button";
+
+  return (
+    <Comp
+      data-slot="button"
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    />
+  );
+}
+
+export { Button, buttonVariants };
+```
+
+And here's how you would use this component in your application:
+
+```tsx
+import { Button } from "@halioooo-studio/ui/button";
+
+// Default button
+<Button>Click me</Button>
+
+// Different variants
+<Button variant="destructive">Delete</Button>
+<Button variant="outline">Cancel</Button>
+<Button variant="secondary">Secondary Action</Button>
+<Button variant="ghost">Ghost Button</Button>
+<Button variant="link">Learn more</Button>
+
+// Different sizes
+<Button size="sm">Small Button</Button>
+<Button size="lg">Large Button</Button>
+<Button size="icon">🔍</Button>
+
+// With icon
+<Button>
+  <IconComponent />
+  With Icon
+</Button>
+
+// As a link
+<Button asChild>
+  <a href="/destination">Link Button</a>
+</Button>
+
+// Disabled state
+<Button disabled>Disabled</Button>
+```
+
+This demonstrates the flexibility and consistency provided by our design system. With just a few props, developers can create buttons with different appearances and behaviors while maintaining a consistent look and feel across the application.
+
+2. **Documentation with Storybook**: We use [Storybook](https://storybook.js.org/) to document our components, making it easy for developers to see all available variants and how to use them. Storybook provides an isolated environment for developing UI components, allowing developers to browse a component library, view the different states of each component, and interactively develop and test components.
+
+3. **Theming and Customization**: Our design system supports theming through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) and Tailwind CSS, allowing organizations to customize the look and feel to match their brand. This approach enables:
+   - **Consistent theming**: All components use the same color palette, typography, and spacing.
+   - **Dark mode support**: Easy switching between light and dark themes.
+   - **Brand customization**: Organizations can override default variables to match their brand guidelines.
+
+### Organizational Value
+
+Design systems don't just make applications look better—they fundamentally **transform how organizations build digital products**:
+
+1. **Unmatched Consistency**: A design system ensures a **unified user experience** across all parts of an application and across different applications. This isn't just about aesthetics—it's about creating a [coherent experience](https://www.nngroup.com/articles/consistency-and-standards/) that users can navigate intuitively, reducing cognitive load and increasing user satisfaction.
+
+2. **Dramatic Efficiency Gains**: When developers don't need to reinvent the wheel for common UI patterns, development speed **increases dramatically**. Teams can focus on solving unique business problems rather than debating button styles or rebuilding common components. This [component-based approach](https://www.componentdriven.org/) can reduce UI development time by **30-50%**.
+
+3. **Elevated Quality**: Components in a design system are **thoroughly tested and refined**, leading to higher quality UIs with fewer bugs and edge cases. This supports [shift-left testing](https://en.wikipedia.org/wiki/Shift-left_testing) by catching issues early, resulting in **more robust applications** and fewer production issues.
+
+4. **Built-in Accessibility**: A well-designed system ensures that all components meet [accessibility standards](https://www.w3.org/WAI/standards-guidelines/wcag/) (WCAG), making applications **usable by everyone** including people with disabilities. This isn't just good practice—it's often a legal requirement and expands your potential user base.
+
+5. **Strengthened Brand Identity**: A design system helps maintain a **consistent brand identity** across all digital products, strengthening brand recognition and user trust. This consistency creates a **professional impression** that elevates how users perceive your organization.
+
+6. **Enhanced Collaboration**: Perhaps most importantly, design systems **bridge the gap** between designers and developers by providing a common language and set of components. This shared understanding, often implemented through [design tokens](https://css-tricks.com/what-are-design-tokens/), transforms cross-functional collaboration from a pain point to a strength.
+
+## The Power of Combining Use Cases and Design Systems
+
+When organizations bring together the Use Case pattern with a Design System, something **truly transformative** happens. This combination isn't just additive—it's **multiplicative** in its impact:
+
+1. **Perfect Separation of Concerns**: Business logic lives cleanly in use cases, while UI concerns are elegantly handled by the design system. This isn't just theoretical architecture—it's the [Separation of Concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) principle brought to life in a way that **fundamentally improves** how teams work.
+
+2. **Accelerated Development**: Development teams can build features at **unprecedented speed** by combining use cases for business logic with design system components for the UI. This powerful combination supports [Agile development](https://agilemanifesto.org/) by enabling **faster iterations** and a more responsive approach to changing requirements.
+
+3. **Exceptional Maintainability**: When business requirements or design guidelines change (and they always do), teams can make updates **independently** without cascading effects. This dramatically reduces [coupling](https://en.wikipedia.org/wiki/Coupling_(computer_programming)) between components while increasing [cohesion](https://en.wikipedia.org/wiki/Cohesion_(computer_science)), creating a codebase that's **resilient to change**.
+
+4. **Unlimited Scalability**: Even the largest engineering organizations can work effectively with these patterns by establishing **clear boundaries** between business logic and UI concerns. This approach naturally aligns with modern [microservices architecture](https://martinfowler.com/articles/microservices.html), allowing different teams to own different parts of the system while maintaining a **cohesive whole**.
+
+### Real-World Example: User Management Feature
+
+Let's see how these patterns work together in a real-world example of a user management feature:
+
+```tsx
+// 1. Define the use case
+interface UpdateUserProfileParams {
+  userId: string;
+  name: string;
+  email: string;
+  avatarUrl?: string;
+}
+
+class UpdateUserProfileUseCase implements Command<UpdateUserProfileParams> {
+  constructor(private readonly userRepository: UserRepository) {}
+
+  async handle(params: UpdateUserProfileParams): Promise<void> {
+    const { userId, name, email, avatarUrl } = params;
+
+    // Validate input
+    if (!userId || !name || !email) {
+      throw new ValidationError('Missing required fields');
+    }
+
+    if (email && !isValidEmail(email)) {
+      throw new ValidationError('Invalid email format');
+    }
+
+    // Check if user exists
+    const existingUser = await this.userRepository.findById(userId);
+    if (!existingUser) {
+      throw new NotFoundError(`User with ID ${userId} not found`);
+    }
+
+    // Update user profile
+    await this.userRepository.update(userId, {
+      name,
+      email,
+      avatarUrl,
+      updatedAt: new Date(),
+    });
+  }
+}
+
+// 2. Create a React component using the design system and use case
+function UserProfileForm() {
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const { userId } = useParams();
+  const toast = useToast();
+
+  // Get dependencies from context
+  const { useCaseService } = useUseCaseContext();
+
+  // Form state
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [avatarUrl, setAvatarUrl] = useState('');
+
+  // Load user data
+  useEffect(() => {
+    async function loadUser() {
+      try {
+        setIsLoading(true);
+        const userData = await useCaseService.execute(GetUserUseCase, { userId });
+        setUser(userData);
+        setName(userData.name);
+        setEmail(userData.email);
+        setAvatarUrl(userData.avatarUrl || '');
+      } catch (err) {
+        setError('Failed to load user data');
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "Could not load user profile",
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    if (userId) {
+      loadUser();
+    }
+  }, [userId, useCaseService]);
+
+  // Handle form submission
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    try {
+      setIsLoading(true);
+
+      // Execute the use case
+      await useCaseService.execute(UpdateUserProfileUseCase, {
+        userId,
+        name,
+        email,
+        avatarUrl,
+      });
+
+      toast({
+        title: "Success",
+        description: "Profile updated successfully",
+      });
+    } catch (err) {
+      setError('Failed to update profile');
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: err instanceof Error ? err.message : "Failed to update profile",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  if (isLoading && !user) {
+    return <div className="flex justify-center p-8"><Spinner size="lg" /></div>;
+  }
+
+  return (
+    <div className="space-y-6 p-4">
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold">Edit Profile</h2>
+        <p className="text-muted-foreground">Update your personal information</p>
+      </div>
+
+      {error && (
+        <Alert variant="destructive">
+          <AlertCircle className="h-4 w-4" />
+          <AlertTitle>Error</AlertTitle>
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="name">Name</Label>
+          <Input
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Your name"
+            required
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="email">Email</Label>
+          <Input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="your.email@example.com"
+            required
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="avatar">Avatar URL</Label>
+          <Input
+            id="avatar"
+            value={avatarUrl}
+            onChange={(e) => setAvatarUrl(e.target.value)}
+            placeholder="https://example.com/avatar.jpg"
+          />
+          {avatarUrl && (
+            <div className="mt-2">
+              <Avatar>
+                <AvatarImage src={avatarUrl} alt="Preview" />
+                <AvatarFallback>{name.substring(0, 2).toUpperCase()}</AvatarFallback>
+              </Avatar>
+            </div>
+          )}
+        </div>
+
+        <div className="flex gap-2 pt-4">
+          <Button type="submit" disabled={isLoading}>
+            {isLoading && <Spinner className="mr-2 h-4 w-4" />}
+            Save Changes
+          </Button>
+          <Button type="button" variant="outline" asChild>
+            <Link to="/users">Cancel</Link>
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
+}
+```
+
+This example demonstrates:
+
+1. **Clean Architecture**: The use case contains all business logic, validation, and error handling, independent of the UI.
+2. **Design System**: UI components like Button, Input, Alert, and Avatar provide a consistent look and feel.
+3. **Separation of Concerns**: The React component handles UI state and rendering, while the use case handles business logic.
+4. **Error Handling**: Errors from the use case are caught and displayed in the UI using design system components.
+5. **Loading States**: The UI shows loading indicators during asynchronous operations.
+6. **Form Validation**: Basic validation in the UI with more complex validation in the use case.
+
+By combining these patterns, we create a feature that is both visually polished and functionally robust, with clear separation between business logic and presentation.
+
+## The Results
+
+What emerges when organizations adopt these patterns isn't just better code—it's a **fundamentally transformed development process**. Teams that implement the Use Case pattern and Design Systems consistently report:
+
+- **40-60% reduction** in bugs related to business logic
+- **30-50% faster development** of new features
+- **Significant improvements** in code maintainability and developer onboarding
+- **Enhanced collaboration** between design and development teams
+
+These aren't just incremental improvements—they represent a **step-change in capability** that allows organizations to deliver more value to their users with less effort and higher quality.
+
+## Conclusion
+
+The Use Case pattern and Design Systems represent more than just architectural choices—they're **strategic investments** in your organization's ability to build and maintain complex software. By implementing these patterns, you create a foundation that enables your teams to work with **greater efficiency**, **higher quality**, and **improved collaboration**.
+
+The middleware chain in our Use Case implementation is particularly powerful, offering a **flexible way** to handle cross-cutting concerns while keeping the core business logic clean. By composing middlewares in different orders and creating custom middlewares for specific needs, organizations can adapt the system to their **unique requirements** without modifying the underlying architecture.
+
+Our library provides a **solid foundation** for both patterns, with a clean implementation of the Use Case pattern in the `packages/arch/src/use-case` directory and a growing design system in the `packages/ui` directory. By leveraging these tools, organizations can focus on **delivering value** to their users rather than reinventing the wheel for common patterns and components.
+
+These patterns aren't just theoretical—they're **battle-tested approaches** that have proven their worth across countless projects and organizations. They represent the distilled wisdom of decades of software engineering experience, packaged in a way that's **accessible** and **immediately applicable** to your challenges.
+
+## Ready to Transform Your Development Process?
+
+If you're facing challenges with:
+- **Maintaining complex business logic** across your application
+- **Ensuring consistency** in your user interface
+- **Scaling your development team** while maintaining code quality
+- **Reducing technical debt** and improving maintainability
+- **Accelerating development** without sacrificing quality
+
+I'd love to discuss how these patterns can be applied to your specific challenges. Let's schedule a call to explore how your organization can benefit from implementing these architectural patterns.
+
+**[Book a call with me →](https://cesalberca.com/chat)**
+
+During our call, we'll:
+1. Discuss your current development challenges
+2. Explore how the Use Case pattern and Design System can address those challenges
+3. Create a tailored roadmap for implementing these patterns in your organization
+4. Answer any questions you have about the implementation process
+
+Don't let technical debt and inconsistent UIs slow down your development process. Take the first step toward a more **maintainable**, **scalable**, and **efficient** codebase today.
+
+export default function Page({ children }) {
+  return <CaseStudyLayout slug="case-studies-use-cases">{children}</CaseStudyLayout>
+}

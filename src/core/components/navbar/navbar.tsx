@@ -29,6 +29,9 @@ const MainLinks = () => {
             <NavLink type="menu" to={CASE_STUDY_URLS[locale].tabaiba}>
               {t('caseStudies.tabaiba.title')}
             </NavLink>
+            <NavLink type="menu" to={CASE_STUDY_URLS[locale].useCases}>
+              {t('caseStudies.useCases.title')}
+            </NavLink>
           </div>
         </PopoverContent>
       </Popover>

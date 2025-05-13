@@ -64,6 +64,11 @@ export const HomePage: FC = () => {
               description={t('caseStudies.tabaiba.description')}
               href={CASE_STUDY_URLS[locale].tabaiba}
             />
+            <CaseStudyCard
+              title={t('caseStudies.useCases.title')}
+              description={t('caseStudies.useCases.description')}
+              href={CASE_STUDY_URLS[locale].useCases}
+            />
           </div>
         </div>
       </Section>

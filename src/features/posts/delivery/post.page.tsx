@@ -8,6 +8,7 @@ import { Badge, badgeVariants } from '@/components/ui/badge'
 import { Link } from '@/core/components/link/link'
 import { cn } from '@/lib/utils'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
+import { WithKoFiButton } from '@/core/components/ko-fi-button/with-ko-fi-button'
 
 export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: string }>> = ({
   metadata,
@@ -62,7 +63,9 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
           </div>
         </div>
       </Background>
-      <article className="wrapper mt-m prose dark:prose-invert text-current">{children}</article>
+      <article className="wrapper mt-m prose dark:prose-invert text-current">
+        <WithKoFiButton>{children}</WithKoFiButton>
+      </article>
     </>
   )
 }

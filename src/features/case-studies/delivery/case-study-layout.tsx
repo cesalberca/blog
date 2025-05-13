@@ -4,6 +4,7 @@ import { Background } from '@/core/components/background/background'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { getLocale } from 'next-intl/server'
 import { CaseStudyMetadata } from '../domain/case-study'
+import { WithKoFiButton } from '@/core/components/ko-fi-button/with-ko-fi-button'
 
 export async function CaseStudyLayout({ children, slug }: { children: ReactNode; slug: string }) {
   const locale = await getLocale()
@@ -23,7 +24,9 @@ export async function CaseStudyLayout({ children, slug }: { children: ReactNode;
           </h1>
         </div>
       </Background>
-      <article className="wrapper my-l prose dark:prose-invert max-w-3xl mx-auto">{children}</article>
+      <article className="wrapper my-l prose dark:prose-invert max-w-3xl mx-auto">
+        <WithKoFiButton>{children}</WithKoFiButton>
+      </article>
     </Page>
   )
 }

@@ -12,6 +12,7 @@
     "logo": "Logo",
     "minutes": "minutes",
     "more": "More",
+    "kofi": "Pay what you like",
     "notFound": {
       "back": "Go back to human generated content",
       "caption": "<leet>Wait patiently until AI generates it.</leet>",
@@ -183,6 +184,10 @@
     "tabaiba": {
       "title": "Tabaiba",
       "description": "How I helped a startup build a dating app from scratch focused on authentic connections and delivering a solution based on best practices and design patterns."
+    },
+    "useCases": {
+      "title": "Halioooo",
+      "description": "How implementing Use Cases and Design Systems can transform organizational efficiency, maintainability, and consistency in software development at Halioooo."
     }
   }
 }

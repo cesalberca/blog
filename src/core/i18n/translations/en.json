@@ -13,6 +13,7 @@
     "minutes": "minutes",
     "more": "More",
     "kofi": "Pay what you like",
+    "kofiTooltip": "Your donation helps me create more free content and continue improving this blog",
     "notFound": {
       "back": "Go back to human generated content",
       "caption": "<leet>Wait patiently until AI generates it.</leet>",

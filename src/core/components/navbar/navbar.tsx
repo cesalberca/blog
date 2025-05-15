@@ -29,7 +29,7 @@ const MainLinks = () => {
             <NavLink type="menu" to={CASE_STUDY_URLS[locale].tabaiba}>
               {t('caseStudies.tabaiba.title')}
             </NavLink>
-            <NavLink type="menu" to={CASE_STUDY_URLS[locale].useCases}>
+            <NavLink type="menu" to={CASE_STUDY_URLS[locale].halioooo}>
               {t('caseStudies.useCases.title')}
             </NavLink>
           </div>

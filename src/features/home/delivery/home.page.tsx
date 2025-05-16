@@ -4,6 +4,7 @@ import { Page } from '@/core/components/page/page'
 import { Hero } from '@/core/components/hero/hero'
 import { AccentList } from '@/core/components/accent-list/accent-list'
 import { SocialMedia } from '@/core/components/social-media/social-media'
+import { RichText } from '@/core/components/rich-text/rich-text'
 import { Section } from '@/features/home/delivery/section'
 import { Markdown } from '@/core/components/markdown/markdown'
 import { Projects } from '@/features/home/delivery/projects'
@@ -36,7 +37,7 @@ export const HomePage: FC = () => {
           <h1 className="uppercase min-h-[6rem] flex items-end">
             <AccentList texts={texts} />
           </h1>
-          <p>{t.rich('home.heroCaption')}</p>
+          <RichText>{tags => t.rich('home.heroCaption', tags)}</RichText>
           <section className="mt-xs text-xs">
             <SocialMedia />
           </section>
@@ -67,7 +68,7 @@ export const HomePage: FC = () => {
             <CaseStudyCard
               title={t('caseStudies.useCases.title')}
               description={t('caseStudies.useCases.description')}
-              href={CASE_STUDY_URLS[locale].useCases}
+              href={CASE_STUDY_URLS[locale].halioooo}
             />
           </div>
         </div>

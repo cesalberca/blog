@@ -8,6 +8,9 @@ import { NextIntlClientProvider } from 'next-intl'
 import { ThemeProvider } from '@/core/components/theme/theme-provider'
 import { locales } from '@/core/i18n/locales'
 import { baseUrl } from '@/app/sitemap'
+import { hasLocale } from 'use-intl'
+import { routing } from '@/core/i18n/routing'
+import { notFound } from 'next/navigation'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -55,7 +58,7 @@ const inter = Inter({ subsets: ['latin'] })
 const azeret = Azeret_Mono({ subsets: ['latin'], weight: '400', variable: '--font-azeret-mono' })
 
 export function generateStaticParams() {
-  return locales.map(locale => ({ locale }))
+  return routing.locales.map(locale => ({ locale }))
 }
 
 export default async function Layout({
@@ -66,14 +69,15 @@ export default async function Layout({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  setRequestLocale(locale)
-  const messages = await getMessages()
+  if (!hasLocale(routing.locales, locale)) {
+    notFound()
+  }
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`antialiased font-medium lg:mx-auto sm:text-lg text-base ${inter.className} ${azeret.variable}`}>
         <ThemeProvider attribute="class" enableSystem={false} forcedTheme="dark" disableTransitionOnChange>
-          <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>

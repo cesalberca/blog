@@ -4,6 +4,7 @@ import { Background } from '@/core/components/background/background'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/core/components/link/link'
 import { ArrowLeft } from 'lucide-react'
+import { RichText } from '@/core/components/rich-text/rich-text'
 
 export const NotFound: FC = () => {
   const t = useTranslations()
@@ -11,8 +12,12 @@ export const NotFound: FC = () => {
   return (
     <Background className="w-screen h-screen">
       <div className="wrapper">
-        <h1 className="mb-4">{t.rich('common.notFound.title')}</h1>
-        <p className="mb-4">{t.rich('common.notFound.caption')}</p>
+        <h1 className="mb-4">
+          <RichText>{tags => t.rich('common.notFound.title', tags)}</RichText>
+        </h1>
+        <div className="mb-4">
+          <RichText>{tags => t.rich('common.notFound.caption', tags)}</RichText>
+        </div>
         <Link type="invisible" to="/">
           <Button className="mb-4">
             <ArrowLeft />

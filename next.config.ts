@@ -1,13 +1,13 @@
 import createNextIntlPlugin from 'next-intl/plugin'
 import withMDX from '@next/mdx'
+import type { NextConfig } from 'next'
 
 const withNextIntl = createNextIntlPlugin('./src/core/i18n/i18n.tsx')
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   images: {
-    domains: ['sxvlta3onkp6zlqr.public.blob.vercel-storage.com'],
+    remotePatterns: [new URL('https://sxvlta3onkp6zlqr.public.blob.vercel-storage.com')],
   },
   async rewrites() {
     return [

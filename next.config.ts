@@ -7,7 +7,7 @@ const withNextIntl = createNextIntlPlugin('./src/core/i18n/i18n.tsx')
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   images: {
-    remotePatterns: [new URL('https://sxvlta3onkp6zlqr.public.blob.vercel-storage.com')],
+    remotePatterns: [{ protocol: 'https', port: '', hostname: 'sxvlta3onkp6zlqr.public.blob.vercel-storage.com' }],
   },
   async rewrites() {
     return [

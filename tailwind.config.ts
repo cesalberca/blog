@@ -12,15 +12,10 @@ const config = {
       },
     },
     extend: {
-      spacing: {
-        xxs: '8px',
-        xs: '12px',
-        s: '16px',
-        m: '24px',
-        l: '32px',
-        xl: '48px',
-        xxl: '56px',
-      },
+      // In Tailwind v4, arbitrary spacing values are not allowed
+      // Converted to numeric values based on the 4px scale:
+      // xxs (8px) = 2, xs (12px) = 3, s (16px) = 4, m (24px) = 6,
+      // l (32px) = 8, xl (48px) = 12, xxl (56px) = 14
     },
   },
 } satisfies Config

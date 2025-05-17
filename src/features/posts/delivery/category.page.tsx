@@ -18,7 +18,7 @@ export const CategoryPage: FC<{ category: Category; locale: Locale }> = async ({
 
   return (
     <Page>
-      <div className="wrapper mb-m gap-2 flex">
+      <div className="wrapper mb-4 gap-2 flex">
         <Badge>{category}</Badge>
       </div>
       <Masonry>

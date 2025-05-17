@@ -69,7 +69,7 @@ export const Experience: FC = () => {
             </div>
           ))}
         </div>
-        <div className="mt-m">
+        <div className="mt-6">
           <Link
             className="text-xs"
             to="https://drive.google.com/file/d/1t92bJEKGwYaepUlZT7JrJd7zIWly6XqK/view?usp=drive_link"

@@ -24,7 +24,7 @@ export async function CaseStudyLayout({ children, slug }: { children: ReactNode;
           </h1>
         </div>
       </Background>
-      <article className="wrapper my-l prose dark:prose-invert max-w-3xl mx-auto">
+      <article className="wrapper my-8 prose dark:prose-invert max-w-3xl mx-auto">
         <WithKoFiButton>{children}</WithKoFiButton>
       </article>
     </Page>

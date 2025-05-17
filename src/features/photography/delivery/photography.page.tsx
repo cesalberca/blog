@@ -20,7 +20,7 @@ export const PhotographyPage: FC<Props> = ({ photos }) => {
 
   return (
     <Page>
-      <h1 className="wrapper my-m">
+      <h1 className="wrapper my-4">
         <AccentText>{t('photography.title')}</AccentText>
       </h1>
 

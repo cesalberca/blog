@@ -38,7 +38,7 @@ export const HomePage: FC = () => {
             <AccentList texts={texts} />
           </h1>
           <RichText>{tags => t.rich('home.heroCaption', tags)}</RichText>
-          <section className="mt-xs text-xs">
+          <section className="mt-2 text-xs">
             <SocialMedia />
           </section>
         </header>
@@ -57,9 +57,9 @@ export const HomePage: FC = () => {
       <Section title={t('caseStudies.title')} id="case-studies">
         <div className="flex flex-col gap-4">
           <div className="wrapper">
-            <p className="mb-m text-lg">{t('caseStudies.description')}</p>
+            <p className="mb-4 text-lg">{t('caseStudies.description')}</p>
           </div>
-          <div className="bleed-width-section grid md:grid-cols-3 gap-1">
+          <div className="bleed-width-section grid md:grid-cols-3 gap-2">
             <CaseStudyCard
               title={t('caseStudies.tabaiba.title')}
               description={t('caseStudies.tabaiba.description')}
@@ -80,7 +80,7 @@ export const HomePage: FC = () => {
 
       <Section title={t('home.technologies.title')} id="technologies">
         <div className="wrapper">
-          <Markdown value={t('home.technologies.description')} className="mb-m" />
+          <Markdown value={t('home.technologies.description')} className="mb-4" />
           <Technologies />
         </div>
       </Section>
@@ -91,7 +91,7 @@ export const HomePage: FC = () => {
 
       <Section title={t('home.contact.title')} id="contact">
         <div className="wrapper" id="contact-form">
-          <div className="mb-s">
+          <div className="mb-4">
             <SocialMedia />
           </div>
           <ContactForm />

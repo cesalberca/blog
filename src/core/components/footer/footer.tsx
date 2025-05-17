@@ -8,7 +8,7 @@ import { Datetime } from '@/core/datetime'
 export const Footer: FC = () => {
   const t = useTranslations()
   return (
-    <footer className="py-m md:py-xxl flex flex-col items-center gap-m">
+    <footer className="py-6 md:py-14 flex flex-col items-center gap-6">
       <div className="flex flex-col items-start space-y-4">
         <div className="flex items-center space-x-2">
           <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />

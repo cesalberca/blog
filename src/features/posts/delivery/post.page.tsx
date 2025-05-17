@@ -40,8 +40,8 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
         }}
       />
       <Background className="w-full h-[60vh]" image={`/assets/images/posts/${metadata.image}`}>
-        <div className="p-xl">
-          <header className="flex gap-xxs">
+        <div className="p-12">
+          <header className="flex gap-2">
             <small>{Datetime.fromIso(metadata.date).format()}</small>
             <small> - </small>
             <small>{t('blog.articleDuration', { minutes: metadata.readTime })}</small>
@@ -49,7 +49,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
           <h1>
             <AccentText>{metadata.title}</AccentText>
           </h1>
-          <div className="mt-xxs flex gap-xxs">
+          <div className="mt-2 flex gap-2">
             {metadata.categories.map(category => (
               <Link
                 key={category}
@@ -63,7 +63,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
           </div>
         </div>
       </Background>
-      <article className="wrapper mt-m prose dark:prose-invert text-current">
+      <article className="wrapper mt-6 prose dark:prose-invert text-current">
         <WithKoFiButton>{children}</WithKoFiButton>
       </article>
     </>

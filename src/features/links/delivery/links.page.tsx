@@ -70,10 +70,10 @@ const links = [
 export const LinksPage: FC = () => {
   return (
     <Page>
-      <section className="wrapper flex flex-col gap-m items-center my-l">
-        <div className="flex flex-col gap-m">
+      <section className="wrapper flex flex-col gap-6 items-center my-8">
+        <div className="flex flex-col gap-6">
           {links.map(x => (
-            <Card key={x.title} className="flex gap-s py-s px-l">
+            <Card key={x.title} className="flex gap-4 py-4 px-8">
               <x.icon />
               <Link type={'invisible'} to={x.url}>
                 {x.title}

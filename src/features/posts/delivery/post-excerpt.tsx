@@ -15,8 +15,8 @@ export const PostExcerpt: FC<{ post: PostMetadata }> = ({ post }) => (
         height={200}
         className="w-full h-48 object-cover rounded-lg"
       />
-      <section className="flex flex-col p-m">
-        <h4 className="mb-xs">{post.title}</h4>
+      <section className="flex flex-col p-6">
+        <h4 className="mb-3">{post.title}</h4>
         <Markdown value={post.summary}></Markdown>
       </section>
     </AccentCard>

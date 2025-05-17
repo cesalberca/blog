@@ -8,7 +8,7 @@ export const Service: FC<PropsWithChildren<{ center: ReactNode; className?: stri
   className,
 }) => {
   return (
-    <div className={cn('grid p-m gap-4', className)}>
+    <div className={cn('grid p-6 gap-4', className)}>
       <div className="[aspect-ratio:1] bg-background">
         <Background>{center}</Background>
       </div>

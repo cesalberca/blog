@@ -68,7 +68,7 @@ export const ContactForm: FC = () => {
     <div>
       <p
         className="
-      mb-m"
+      mb-5"
       >
         {t('home.contact.appointmentDescription')}{' '}
         <Link className="underline" to="https://cesalberca.com/chat">

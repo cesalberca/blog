@@ -54,7 +54,7 @@ export const Projects: FC = () => {
         {projects.map((x, i) => (
           <div
             key={x.title}
-            className={cn('flex flex-col md:flex-row gap-xl items-center', {
+            className={cn('flex flex-col md:flex-row gap-8 items-center', {
               'md:flex-row-reverse': i % 2 !== 0,
             })}
           >
@@ -82,9 +82,9 @@ export const Projects: FC = () => {
               </footer>
             </AccentCard>
             <aside className="flex-1 wrapper">
-              <h3 className="mb-m">{x.title}</h3>
+              <h3 className="mb-4">{x.title}</h3>
               <Markdown value={x.description}></Markdown>
-              <div className="pt-m">
+              <div className="pt-4">
                 <Technologies technologies={x.technologies} />
               </div>
             </aside>

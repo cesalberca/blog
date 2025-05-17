@@ -15,7 +15,7 @@ export const TalksPage: FC<{ locale: Locale }> = async ({ locale }) => {
 
   return (
     <Page>
-      <h1 className="wrapper mb-m">{t('talks.title')}</h1>
+      <h1 className="wrapper mb-4">{t('talks.title')}</h1>
       <Masonry>
         {allTalks.map(talk => (
           <Link type="invisible" className="w-full" key={talk.slug} to={`/talks/${talk.slug}`}>
@@ -29,7 +29,7 @@ export const TalksPage: FC<{ locale: Locale }> = async ({ locale }) => {
                   className="w-full h-auto"
                 />
                 <section className="p-m">
-                  <h4 className="mb-s">{talk.title}</h4>
+                  <h4 className="mb-2">{talk.title}</h4>
                   {talk.categories.map(category => (
                     <Badge key={category} className="mr-xxs">
                       {category}

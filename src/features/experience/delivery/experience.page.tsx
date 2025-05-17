@@ -9,7 +9,7 @@ export const ExperiencePage: FC = () => {
   return (
     <Page>
       <div className="wrapper">
-        <h1 className="my-m">
+        <h1 className="my-4">
           <AccentText>{t('experience.title')}</AccentText>
         </h1>
         <Experience />

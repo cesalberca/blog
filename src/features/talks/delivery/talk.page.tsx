@@ -31,18 +31,18 @@ export const TalkPage: FC<PropsWithChildren<{ slug: string; metadata: TalkMetada
         }}
       />
       <Background className="w-full h-[60vh]" image={`/assets/images/talks/${metadata.image}`}>
-        <div className="p-xl">
+        <div className="p-12">
           <h1>
             <AccentText>{metadata.title}</AccentText>
           </h1>
-          <div className="mt-xxs flex gap-xxs">
+          <div className="mt-2 flex gap-2">
             {metadata.categories.map(category => (
               <Badge key={category}>{category}</Badge>
             ))}
           </div>
         </div>
       </Background>
-      <article className="wrapper mt-m prose dark:prose-invert text-current">{children}</article>
+      <article className="wrapper mt-6 prose dark:prose-invert text-current">{children}</article>
     </Page>
   )
 }

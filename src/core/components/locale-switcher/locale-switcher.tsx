@@ -6,6 +6,7 @@ import { Locale } from '@/core/i18n/locale'
 import { usePathname, useRouter } from '@/core/i18n/routing'
 import { locales } from '@/core/i18n/locales'
 import { localeNames } from '@/core/i18n/locale-names'
+import { CASE_STUDY_URLS } from '@/core/i18n/paths'
 
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'

@@ -20,7 +20,7 @@ jobs:
       - name: Configure npm
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPMRC_GITHUB_TOKEN }}" > ~/.npmrc
-          echo "@halioooo-studio:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo "@cesalberca:registry=https://npm.pkg.github.com" >> ~/.npmrc
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
       - name: Build Project Artifacts

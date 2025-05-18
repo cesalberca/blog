@@ -13,7 +13,7 @@ jobs:
       - name: Configure npm
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPMRC_GITHUB_TOKEN }}" > ~/.npmrc
-          echo "@halioooo-studio:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo "@cesalberca:registry=https://npm.pkg.github.com" >> ~/.npmrc
       - name: install
         run: npm ci
       - name: lint

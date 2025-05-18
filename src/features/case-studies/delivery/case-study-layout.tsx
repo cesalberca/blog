@@ -18,15 +18,13 @@ export async function CaseStudyLayout({ children, slug }: { children: ReactNode;
   return (
     <Page>
       <Background className="w-full h-[60vh]" image={`/assets/images/case-studies/${metadata.image}`}>
-        <div className="p-xl flex items-center justify-center h-full">
+        <div className="p-xl flex items-center justify-center h-full p-4">
           <h1 className="text-center">
             <AccentText>{metadata.title}</AccentText>
           </h1>
         </div>
       </Background>
-      <article className="wrapper my-8 prose dark:prose-invert max-w-3xl mx-auto">
-        <WithKoFiButton>{children}</WithKoFiButton>
-      </article>
+      <article className="wrapper my-8 prose dark:prose-invert max-w-3xl mx-auto">{children}</article>
     </Page>
   )
 }

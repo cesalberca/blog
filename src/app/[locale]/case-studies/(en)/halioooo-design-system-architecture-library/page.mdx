@@ -18,15 +18,17 @@ export const metadata = {
 
 3. **Green IT & AI**: They create AI tools that are both powerful and environmentally friendly, setting new standards for sustainable tech.
 
-The team is very focused on delivering fast without compromising the scalability of the systems, which is why it was a great fit working together.
+The team is very focused on delivering fast without compromising the scalability of the systems, which is why collaborating together was a great fit.
 
 ## The Challenge: Scaling Innovation at Halioooo
 
-When I first began working with Halioooo they were just starting to build their first product of many and they wanted to optimize the team's efforts by creating a common architecture with reusable components. Implementing this from the beggining would mean that the cost saved from having to reimplement components or different common patterns across the projects would be far too expensive than investing in the beggining in a library of components and architecture.
+When I first began working with Halioooo they were just starting to build the first of many products and they needed to optimize the team's efforts by creating a **solid foundation** for their architecture and a set of **reusable components**.
+
+Implementing this from the very beginning would mean that the cost saved from having to reimplement components or different common patterns across the projects would be far too expensive than investing in the from the start in a library of components and architecture.
 
 ## The Solution: Architectural Patterns for Scalable Innovation
 
-After analyzing Halioooo's specific challenges, we proposed implementing two complementary architectural patterns: the Use Case pattern for organizing business logic and a Design System for user interfaces. These were chosen to address Halioooo's need to balance speed and innovation with consistency.
+After analyzing Halioooo's specific challenges, we implemented two complementary architectural patterns: the Use Case pattern for organizing business logic and a Design System for user interfaces. These were chosen to address Halioooo's need to balance speed and innovation with consistency.
 
 ## The Story Behind Use Cases and Design Systems
 
@@ -78,7 +80,7 @@ interface UserRepository {
 }
 
 // Use case implementation
-export class GetUserUseCase implements UseCase<User, GetUserParams> {
+export class GetUserUseCase implements UseCase<GetUserParams, User> {
   constructor(private readonly userRepository: UserRepository) {}
 
   async handle(params: GetUserParams): Promise<User> {

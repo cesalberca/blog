@@ -2,7 +2,7 @@ import { CaseStudyLayout } from '@/features/case-studies/delivery/case-study-lay
 
 export const metadata = {
   title: 'Caso de Estudio: Halioooo - Creando un Sistema de Diseño y Biblioteca de Arquitectura',
-  slug: 'casos-de-estudio-casos-de-uso',
+  slug: 'halioooo-sistema-de-diseno-biblioteca-de-arquitectura',
   date: '2025-04-01',
   image: 'halioooo.png',
   summary: 'Cómo la implementación de Casos de Uso y Sistemas de Diseño puede transformar la eficiencia organizacional, la mantenibilidad y la consistencia en el desarrollo de software en Halioooo.',
@@ -12,46 +12,486 @@ export const metadata = {
 
 [Halioooo](https://halioooo.com/) es una empresa de Deep-Tech AI Ventures enfocada en crear soluciones transformadoras para tiempos exponenciales. Su trabajo abarca tres áreas clave:
 
-1. **Sociología Sintética**: Utilizando IA para decodificar dinámicas sociales y modelar comportamientos sociales complejos con un enfoque basado en investigación que los posiciona como pioneros en IA para el bienestar social.
+1. **Sociología Sintética**: Utilizando IA para generar personas sintéticas con historias de vida completas con el fin de interactuar con estas personas para fines de investigación.
 
-2. **Salud y Bienestar**: Revolucionando la atención médica a través de soluciones de IA personalizadas y adaptativas que combinan tecnología con conocimientos biológicos para crear sistemas de salud resilientes.
+2. **Salud y Bienestar**: Están transformando la atención médica con IA que se adapta a cada persona, combinando tecnología y biología para construir sistemas más fuertes e inteligentes.
 
-3. **Green IT & IA**: Desarrollando soluciones de IA eco-conscientes que maximizan el impacto mientras minimizan la huella ambiental, estableciendo estándares de la industria para el desarrollo de tecnología sostenible.
+3. **Green IT & IA**: Desarrollan herramientas de IA que son tanto potentes como respetuosas con el medio ambiente, estableciendo nuevos estándares para la tecnología sostenible.
 
-Halioooo sigue un circuito sistemático de creación de startups con cuatro fases:
-- **Ideación**: Descubrir oportunidades revolucionarias analizando tendencias emergentes y avances tecnológicos
-- **Prototipado**: Transformar rápidamente conceptos en prototipos funcionales
-- **Desarrollo Estratégico**: Refinar y optimizar soluciones con la estrategia de producto adecuada
-- **Lanzamiento de Startup**: Llevar al mercado empresas de IA transformadoras con financiación y experiencia
-
-Sus principios incluyen la velocidad como habilidad competitiva, talento flexible, enfoque en el impacto y creatividad pragmática.
+El equipo está muy enfocado en entregar rápidamente sin comprometer la escalabilidad de los sistemas, por lo que colaborar juntos fue un gran acierto.
 
 ## El Desafío: Escalando la Innovación en Halioooo
 
-Cuando comencé a trabajar con Halioooo, se encontraban en un punto de inflexión crítico. Su rápido crecimiento en múltiples dominios de IA había creado desafíos técnicos significativos:
+Cuando comencé a colaborar con Halioooo, estaban comenzando a construir el primero de muchos productos y necesitaban optimizar los esfuerzos del equipo creando una **base sólida** para su arquitectura y un conjunto de **componentes reutilizables**.
 
-- **Portafolio de Productos Diverso**: Con proyectos que abarcan sociología sintética, salud y tecnología verde, sus equipos de desarrollo estaban construyendo múltiples aplicaciones con arquitecturas e interfaces inconsistentes.
-- **Acumulación de Deuda Técnica**: La mentalidad de startup de "moverse rápido" había creado un conjunto heterogéneo de soluciones que se volvían cada vez más difíciles de mantener y extender.
-- **Problemas de Colaboración Entre Equipos**: Diferentes equipos habían desarrollado sus propios enfoques para resolver problemas similares, dificultando el intercambio de conocimientos.
-- **Escalado del Desarrollo**: A medida que añadían más desarrolladores para satisfacer la creciente demanda, la incorporación llevaba más tiempo y las inconsistencias se multiplicaban.
-
-El equipo directivo reconoció que para mantener su ventaja competitiva en innovación de IA, necesitaban un enfoque más estructurado para el desarrollo de software—uno que preservara su agilidad mientras proporcionaba la base para un crecimiento sostenible.
-
-"Estábamos gastando demasiado tiempo reinventando la rueda en diferentes proyectos", explicó María Chen, CTO de Halioooo. "Necesitábamos una forma de estandarizar nuestro enfoque sin ahogar la creatividad que hace que nuestras soluciones sean únicas".
+Implementar esto desde el principio significaría que el costo ahorrado de tener que reimplementar componentes o diferentes patrones comunes en los proyectos sería demasiado caro en comparación con invertir desde el inicio en una biblioteca de componentes y arquitectura.
 
 ## Nuestra Solución: Patrones Arquitectónicos para una Innovación Escalable
 
-Después de analizar los desafíos específicos de Halioooo, propusimos implementar dos patrones arquitectónicos complementarios: el patrón de Caso de Uso para organizar la lógica de negocio y un Sistema de Diseño integral para las interfaces de usuario. Estos no fueron elegidos arbitrariamente—abordaban directamente la necesidad de Halioooo de equilibrar innovación con consistencia.
-
-El viaje de implementación no estuvo exento de desafíos. Los equipos acostumbrados a moverse rápidamente inicialmente se resistieron a lo que percibían como estructura adicional. Sin embargo, a medida que los beneficios se hicieron evidentes—desarrollo más rápido de nuevas funcionalidades, menos errores y mejor colaboración—la adopción se aceleró en toda la organización.
+Después de analizar los desafíos específicos de Halioooo, implementamos dos patrones arquitectónicos complementarios: el patrón de Caso de Uso para organizar la lógica de negocio y un Sistema de Diseño para las interfaces de usuario. Estos fueron elegidos para abordar la necesidad de Halioooo de equilibrar velocidad e innovación con consistencia.
 
 ## La Historia Detrás de los Casos de Uso y Sistemas de Diseño
 
-En el mundo del desarrollo de software moderno, organizaciones como Halioooo se enfrentan constantemente al desafío de construir aplicaciones que sean **mantenibles**, **escalables** y **consistentes**. A medida que los sistemas crecen en complejidad, la necesidad de patrones arquitectónicos que puedan gestionar esta complejidad se vuelve cada vez más importante. Dos patrones poderosos han emergido como transformadores: el [patrón de Caso de Uso](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) y los [Sistemas de Diseño](https://www.designsystems.com/).
+En el desarrollo de software, organizaciones como Halioooo se enfrentan constantemente al desafío de construir aplicaciones que sean **mantenibles**, **escalables** y **consistentes**. A medida que los sistemas crecen en complejidad, la necesidad de patrones arquitectónicos que puedan gestionar esta complejidad se vuelve cada vez más importante. Me gusta aplicar dos patrones poderosos que veo clave: el [patrón de Caso de Uso](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) y los [Sistemas de Diseño](https://www.designsystems.com/).
 
 Estos patrones no son solo conceptos teóricos—son **herramientas prácticas** que transforman la forma en que los equipos construyen software. Este caso de estudio explora cómo estos patrones se implementan en nuestra biblioteca para Halioooo y el **valor tangible** que aportan a las organizaciones que luchan con desafíos complejos de software.
 
-> Nota: Esta traducción está en progreso. Por favor, consulta la versión en inglés para ver el contenido completo.
+## El Patrón de Caso de Uso: Clean Architecture en Acción
+
+### ¿Qué es el Patrón de Caso de Uso?
+
+El patrón de Caso de Uso es un componente central de la [Arquitectura Limpia](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html), popularizada por [Robert C. Martin](https://en.wikipedia.org/wiki/Robert_C._Martin) (también conocido como "Uncle Bob"). En su esencia, este patrón hace algo **notablemente poderoso**: **separa la lógica de negocio de los detalles de implementación**, haciendo que el código sea significativamente más mantenible y testeable.
+
+La Arquitectura Limpia promueve la separación de preocupaciones a través de capas concéntricas, con **reglas de negocio en el centro** y detalles de implementación en las capas externas. Los casos de uso se sitúan en la capa de aplicación, **encapsulando la lógica de negocio** y orquestando el flujo de datos entre las entidades del dominio y el mundo exterior.
+
+> Un caso de uso representa cómo un usuario puede interactuar con la aplicación
+
+Este enfoque no es solo teórico—es **práctico y transformador**.
+
+### Componentes Clave
+
+1. **Interfaz Base de Caso de Uso**: La base de nuestra implementación es la interfaz `UseCase`:
+
+```typescript
+export interface UseCase<In = unknown, Out = unknown> {
+  handle(param?: In, meta?: UseCaseOptions): Promise<Out>
+}
+```
+
+Esta simple interfaz define un contrato para todos los casos de uso: toman una entrada, metadatos opcionales y producen una salida de forma asíncrona.
+
+Veamos una implementación completa de un caso de uso que obtiene datos de usuario:
+
+```typescript
+// Interfaces
+interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+
+interface GetUserParams {
+  userId: string;
+}
+
+// Interfaz del repositorio (dependencia)
+interface UserRepository {
+  findById(id: string): Promise<User | null>;
+}
+
+// Implementación del caso de uso
+export class GetUserUseCase implements UseCase<GetUserParams, User> {
+  constructor(private readonly userRepository: UserRepository) {}
+
+  async handle(params: GetUserParams): Promise<User> {
+    const { userId } = params;
+
+    // Validar entrada
+    if (!userId) {
+      // Los errores pueden ser reemplazados en el futuro con DomainErrors
+      throw new Error('El ID de usuario es requerido');
+    }
+
+    // Ejecutar lógica de negocio
+    const user = await this.userRepository.findById(userId);
+
+    // Manejar casos extremos
+    if (!user) {
+      throw new Error(`Usuario con ID ${userId} no encontrado`);
+    }
+
+    return user;
+  }
+}
+
+// Uso con inyección de dependencias
+const container = new Container();
+container.register('UserRepository', UserRepositoryImplementation);
+const useCaseService = container.get<UseCaseService>(UseCaseService.name);
+
+// Ejecutar el caso de uso
+const user = await useCaseService.execute(GetUserUseCase, { userId: '123' });
+```
+
+Este ejemplo demuestra varios beneficios clave:
+- **Dependencias claras**: El caso de uso depende de una interfaz de repositorio, no de una implementación concreta que puede cambiarse fácilmente en tiempo de compilación o incluso en tiempo de ejecución
+- **Validación de entrada**: El caso de uso valida sus parámetros de entrada
+- **Manejo de errores**: El caso de uso maneja casos extremos como usuarios no encontrados
+- **Inyección de dependencias**: El caso de uso recibe sus dependencias a través de inyección por constructor, lo que hace que el código sea más fácil de cambiar y probar
+- **Testabilidad**: El caso de uso puede ser fácilmente probado mediante el uso de mocks del repositorio
+
+2. **Separación de Comandos y Consultas (CQRS)**: Implementamos el [patrón CQRS](https://martinfowler.com/bliki/CQRS.html) con dos interfaces especializadas:
+
+```typescript
+export interface Command<Param = void, Return = void> extends UseCase<Param, Return> {}
+export interface Query<Return, Param = void> extends UseCase<Param, Return> {}
+```
+
+Los Comandos se utilizan para operaciones que modifican el estado (con retorno void por defecto), mientras que las Consultas se utilizan para recuperar datos (requiriendo un tipo de retorno). Esta separación sigue el [patrón Command](https://refactoring.guru/design-patterns/command) de los patrones de diseño Gang of Four, donde los comandos encapsulan toda la información necesaria para realizar una acción.
+
+El patrón CQRS proporciona varios beneficios:
+- **Separación de preocupaciones**: Las operaciones de lectura y escritura a menudo tienen requisitos diferentes y pueden optimizarse por separado.
+- **Escalabilidad**: Las operaciones de lectura y escritura pueden escalarse independientemente.
+- **Seguridad**: Es más fácil aplicar diferentes reglas de seguridad a comandos y consultas.
+- **Simplicidad**: Cada caso de uso tiene una única responsabilidad, lo que lo hace más fácil de entender y mantener.
+
+3. **Cadena de Middleware**: Nuestra implementación utiliza el [patrón Cadena de Responsabilidad](https://refactoring.guru/design-patterns/chain-of-responsibility) para aplicar preocupaciones transversales. Esto, en mi opinión, es lo que distingue al sistema, ya que hace que la aplicación sea inmensamente robusta y flexible. Permíteme mostrarte:
+
+```typescript
+// UseCaseService crea una cadena de middlewares
+let next = UseCaseHandler.create({
+  next: this.container.create(useCase),
+  options: requiredOptions,
+  middleware: this.container.get<EmptyMiddleware>(EmptyMiddleware.name),
+})
+
+for (let i = this.middlewares.length - 1; i >= 0; i--) {
+  const currentMiddleware = this.middlewares[i]
+  const previous = next
+  next = UseCaseHandler.create({
+    next: previous,
+    middleware: currentMiddleware,
+    options: requiredOptions,
+  })
+}
+```
+
+El patrón Cadena de Responsabilidad permite que una solicitud pase a través de una cadena de handlers, con cada handler decidiendo si procesar la solicitud y/o pasarla al siguiente handler en la cadena. Esto proporciona una tremenda versatilidad en cómo se ejecutan los casos de uso.
+
+#### Flexibilidad Técnica de la Cadena de Middleware
+
+La cadena de middleware ofrece varias capacidades poderosas:
+
+1. **Composición**: Los middlewares pueden componerse en cualquier orden, permitiendo combinaciones flexibles de preocupaciones transversales.
+
+2. **El Orden Importa**: El orden de los middlewares en la cadena afecta cómo procesan las solicitudes. Por ejemplo:
+   - Colocar un middleware de registro al principio y al final de la cadena permite registrar tanto antes como después de la ejecución del caso de uso.
+   - Colocar un middleware de manejo de errores temprano en la cadena asegura que capture errores de todos los middlewares subsiguientes.
+
+3. **Procesamiento Condicional**: Los middlewares pueden procesar condicionalmente las solicitudes basándose en el tipo de solicitud, metadatos u otros factores.
+
+```typescript
+// Ejemplo de un middleware condicional
+export class ConditionalMiddleware implements Middleware {
+  async execute<In, Out>(
+    param: In,
+    next: UseCase<In, Out>,
+    options: UseCaseOptions,
+  ): Promise<Out> {
+    // Verificar condiciones basadas en param u options
+    if (options.skipCondition) {
+      // Saltar este middleware y pasar al siguiente
+      return next.handle(param, options)
+    }
+
+    // Procesar la solicitud
+    console.log('Middleware condicional procesando solicitud')
+
+    // Continuar la cadena
+    return next.handle(param, options)
+  }
+}
+```
+
+4. **Extensibilidad**: Se pueden añadir nuevos middlewares sin modificar el código existente, siguiendo el [Principio Abierto/Cerrado](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle).
+
+5. **Programación Orientada a Aspectos**: Los middlewares permiten la [programación orientada a aspectos](https://en.wikipedia.org/wiki/Aspect-oriented_programming) al separar las preocupaciones transversales de la lógica de negocio.
+
+6. **Implementaciones de Middleware**: Proporcionamos varios middlewares para preocupaciones comunes:
+   - **Registro**: Captura información sobre la ejecución del caso de uso para depuración y monitoreo.
+   - **Manejo de errores**: Captura y procesa errores que ocurren durante la ejecución del caso de uso.
+   - **Manejo de éxito**: Procesa resultados exitosos de los casos de uso.
+   - **Solicitudes de confirmación**: Solicita confirmación del usuario antes de ejecutar ciertas operaciones.
+   - **Manejo de errores del servidor**: Maneja errores específicos de la comunicación con el servidor.
+
+Aquí hay un ejemplo del mundo real de un middleware de registro que mide el tiempo de ejecución:
+
+```typescript
+export class PerformanceLoggingMiddleware implements Middleware {
+  constructor(private readonly logger: Logger) {}
+
+  async execute<In, Out>(
+    param: In,
+    next: UseCase<In, Out>,
+    options: UseCaseOptions,
+  ): Promise<Out> {
+    // Obtener el nombre del caso de uso que se está ejecutando
+    const useCaseName = next.constructor.name;
+
+    // Registrar tiempo de inicio
+    const startTime = performance.now();
+
+    try {
+      // Registrar el inicio de la ejecución
+      this.logger.info(`Iniciando ejecución de ${useCaseName}`, {
+        useCaseName,
+        params: param,
+        options,
+      });
+
+      // Ejecutar el siguiente middleware o caso de uso
+      const result = await next.handle(param, options);
+
+      // Calcular tiempo de ejecución
+      const executionTime = performance.now() - startTime;
+
+      // Registrar finalización exitosa
+      this.logger.info(`Ejecutado con éxito ${useCaseName} en ${executionTime.toFixed(2)}ms`, {
+        useCaseName,
+        executionTime,
+        resultType: typeof result,
+      });
+
+      return result;
+    } catch (error) {
+      // Calcular tiempo de ejecución incluso para fallos
+      const executionTime = performance.now() - startTime;
+
+      // Registrar error con tiempo de ejecución
+      this.logger.error(`Fallo al ejecutar ${useCaseName} después de ${executionTime.toFixed(2)}ms`, {
+        useCaseName,
+        executionTime,
+        error,
+      });
+
+      // Re-lanzar el error para ser manejado por el middleware de error
+      throw error;
+    }
+  }
+}
+```
+
+Este middleware demuestra cómo las preocupaciones transversales como el monitoreo de rendimiento pueden separarse limpiamente de la lógica de negocio. Al añadir este middleware a tu cadena, obtienes automáticamente métricas de rendimiento para todos los casos de uso sin modificar ninguno de su código.
+
+### Valor Organizacional
+
+El patrón de Caso de Uso no solo mejora el código—transforma cómo las organizaciones construyen y mantienen software. Así es cómo:
+
+1. **Aislamiento de la Lógica de Negocio**: Al aislar la lógica de negocio en casos de uso, las organizaciones aseguran que sus **reglas de negocio centrales** permanezcan desvinculadas de preocupaciones de UI, base de datos o framework. Esto no es solo una buena práctica—es una **ventaja competitiva** que sigue el [Principio de Responsabilidad Única](https://en.wikipedia.org/wiki/Single-responsibility_principle) y mantiene una [arquitectura limpia](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
+
+2. **Testabilidad Superior**: Los casos de uso son **notablemente testeables** porque tienen entradas y salidas claras, y las dependencias pueden ser fácilmente simuladas. Esto permite **pruebas exhaustivas** y apoya el [Desarrollo Dirigido por Pruebas (TDD)](https://martinfowler.com/bliki/TestDrivenDevelopment.html), llevando a software más confiable.
+
+3. **Mantenibilidad Mejorada**: Cuando los requisitos de negocio inevitablemente cambian, los desarrolladores pueden modificar **casos de uso específicos** sin afectar a todo el sistema. Esto reduce dramáticamente **el costo del cambio** y hace que la base de código sea más **resistente a la evolución**, un factor crítico en aplicaciones empresariales de larga duración.
+
+4. **Escalabilidad del Equipo**: Los equipos de desarrollo pueden trabajar en **diferentes casos de uso en paralelo** sin conflictos. Esta alineación natural con la [Ley de Conway](https://www.thoughtworks.com/insights/blog/applying-conways-law-improve-your-software-development) permite a las organizaciones **escalar sus equipos de ingeniería** efectivamente mientras mantienen la productividad.
+
+5. **Incorporación Acelerada**: Los nuevos desarrolladores pueden entender rápidamente el sistema leyendo casos de uso, que **expresan la lógica de negocio claramente**. Esto reduce significativamente **la curva de aprendizaje** y acelera la productividad del desarrollador—un factor crucial en el mercado de contratación competitivo de hoy.
+
+6. **Poderosa Reutilización**: Los casos de uso bien diseñados pueden ser **reutilizados a través de diferentes partes** de la aplicación o incluso diferentes aplicaciones. Esto promueve los principios [DRY (No Te Repitas)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) y **aumenta la eficiencia del desarrollo** en toda la organización.
+
+## Sistemas de Diseño: Consistencia y Eficiencia
+
+### ¿Qué es un Sistema de Diseño?
+
+Un sistema de diseño es mucho más que solo una biblioteca de UI—es un **ecosistema completo** de componentes reutilizables, guiados por estándares y principios claros, que pueden ensamblarse para construir aplicaciones cohesivas. Es la diferencia entre construir con **partes aleatorias** versus construir con **componentes perfectamente combinados** diseñados para trabajar juntos.
+
+Nuestro sistema de diseño está implementado cuidadosamente usando una base de tecnologías modernas y probadas en batalla:
+
+1. **[shadcn/ui](https://ui.shadcn.com/)**: Una colección de componentes bellamente diseñados y accesibles
+2. **[Radix UI](https://www.radix-ui.com/)**: Una biblioteca de componentes UI de bajo nivel enfocada en accesibilidad y personalización
+3. **[Tailwind CSS](https://tailwindcss.com/)**: Un framework CSS de utilidades que permite un estilo rápido y consistente
+
+Esta combinación crea una **base poderosa** que equilibra flexibilidad con consistencia, permitiendo a los equipos moverse rápidamente sin sacrificar calidad.
+
+### Componentes Clave
+
+1. **Componentes UI**: Proporcionamos componentes UI reutilizables como Button con varias variantes y tamaños que se generan con shadcn:
+
+```typescript
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all...",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+        destructive: "bg-destructive text-white shadow-xs hover:bg-destructive/90...",
+        outline: "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground...",
+        secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        link: "text-primary underline-offset-4 hover:underline",
+        invisible: "whitespace-normal rounded-none",
+      },
+      size: {
+        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
+        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        icon: "size-9",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  },
+);
+```
+
+Aquí está la implementación completa del componente Button que usa estas variantes:
+
+```typescript
+import { Slot } from "@radix-ui/react-slot";
+import { type VariantProps, cva } from "class-variance-authority";
+import type { ComponentProps } from "react";
+
+import { cn } from "../lib/utils";
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:cursor-pointer",
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+        outline:
+          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+        secondary:
+          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+        ghost:
+          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        link: "text-primary underline-offset-4 hover:underline",
+        invisible: "whitespace-normal rounded-none",
+      },
+      size: {
+        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
+        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        icon: "size-9",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  },
+);
+
+function Button({
+  className,
+  variant,
+  size,
+  asChild = false,
+  ...props
+}: ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean;
+  }) {
+  const Comp = asChild ? Slot : "button";
+
+  return (
+    <Comp
+      data-slot="button"
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    />
+  );
+}
+
+export { Button, buttonVariants };
+```
+
+Y así es como usarías este componente en tu aplicación:
+
+```tsx
+import { Button } from "@halioooo-studio/ui/button";
+
+// Botón por defecto
+<Button>Haz clic</Button>
+
+// Diferentes variantes
+<Button variant="destructive">Eliminar</Button>
+<Button variant="outline">Cancelar</Button>
+<Button variant="secondary">Acción Secundaria</Button>
+<Button variant="ghost">Botón Fantasma</Button>
+<Button variant="link">Saber más</Button>
+
+// Diferentes tamaños
+<Button size="sm">Botón Pequeño</Button>
+<Button size="lg">Botón Grande</Button>
+<Button size="icon">🔍</Button>
+
+// Con icono
+<Button>
+  <IconComponent />
+  Con Icono
+</Button>
+
+// Como un enlace
+<Button asChild>
+  <a href="/destino">Botón Enlace</a>
+</Button>
+
+// Estado deshabilitado
+<Button disabled>Deshabilitado</Button>
+```
+
+Esto demuestra la flexibilidad y consistencia proporcionada por nuestro sistema de diseño. Con solo unas pocas propiedades, los desarrolladores pueden crear botones con diferentes apariencias y comportamientos mientras mantienen un aspecto y sensación consistentes en toda la aplicación.
+
+2. **Documentación con Storybook**: Utilizamos [Storybook](https://storybook.js.org/) para documentar nuestros componentes, facilitando a los desarrolladores ver todas las variantes disponibles y cómo usarlas. Storybook proporciona un entorno aislado para desarrollar componentes de UI, permitiendo a los desarrolladores navegar por una biblioteca de componentes, ver los diferentes estados de cada componente, y desarrollar y probar componentes de manera interactiva.
+
+3. **Temas y Personalización**: Nuestro sistema de diseño soporta temas a través de [variables CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) y Tailwind CSS, permitiendo a las organizaciones personalizar la apariencia para que coincida con su marca. Este enfoque permite:
+   - **Temas consistentes**: Todos los componentes utilizan la misma paleta de colores, tipografía y espaciado.
+   - **Soporte para modo oscuro**: Fácil cambio entre temas claros y oscuros.
+   - **Personalización de marca**: Las organizaciones pueden sobrescribir las variables predeterminadas para que coincidan con sus directrices de marca.
+
+### Valor Organizacional
+
+Los sistemas de diseño no solo hacen que las aplicaciones se vean mejor—transforman fundamentalmente **cómo las organizaciones construyen productos digitales**:
+
+1. **Consistencia Inigualable**: Un sistema de diseño asegura una **experiencia de usuario unificada** en todas las partes de una aplicación y a través de diferentes aplicaciones. Esto no es solo sobre estética—se trata de crear una [experiencia coherente](https://www.nngroup.com/articles/consistency-and-standards/) que los usuarios puedan navegar intuitivamente, reduciendo la carga cognitiva y aumentando la satisfacción del usuario.
+
+2. **Ganancias Dramáticas en Eficiencia**: Cuando los desarrolladores no necesitan reinventar la rueda para patrones de UI comunes, la velocidad de desarrollo **aumenta dramáticamente**. Los equipos pueden enfocarse en resolver problemas de negocio únicos en lugar de debatir estilos de botones o reconstruir componentes comunes. Este [enfoque basado en componentes](https://www.componentdriven.org/) puede reducir el tiempo de desarrollo de UI en un **30-50%**.
+
+3. **Calidad Elevada**: Los componentes en un sistema de diseño son **probados y refinados minuciosamente**, llevando a UIs de mayor calidad con menos errores y casos extremos. Esto apoya las [pruebas shift-left](https://en.wikipedia.org/wiki/Shift-left_testing) al detectar problemas temprano, resultando en **aplicaciones más robustas** y menos problemas en producción.
+
+4. **Accesibilidad Incorporada**: Un sistema bien diseñado asegura que todos los componentes cumplan con los [estándares de accesibilidad](https://www.w3.org/WAI/standards-guidelines/wcag/) (WCAG), haciendo que las aplicaciones sean **utilizables por todos**, incluidas las personas con discapacidades. Esto no es solo una buena práctica—a menudo es un requisito legal y amplía tu base de usuarios potencial.
+
+5. **Identidad de Marca Fortalecida**: Un sistema de diseño ayuda a mantener una **identidad de marca consistente** en todos los productos digitales, fortaleciendo el reconocimiento de marca y la confianza del usuario. Esta consistencia crea una **impresión profesional** que eleva cómo los usuarios perciben tu organización.
+
+6. **Colaboración Mejorada**: Quizás lo más importante, los sistemas de diseño **cierran la brecha** entre diseñadores y desarrolladores al proporcionar un lenguaje común y un conjunto de componentes. Este entendimiento compartido, a menudo implementado a través de [tokens de diseño](https://css-tricks.com/what-are-design-tokens/), transforma la colaboración multifuncional de un punto de dolor a una fortaleza.
+
+## Los Resultados
+
+Lo que emerge cuando las organizaciones adoptan estos patrones no es solo mejor código—es un **proceso de desarrollo fundamentalmente transformado**. Los equipos que implementan el patrón de Caso de Uso y Sistemas de Diseño consistentemente reportan:
+
+- **Reducción** en errores relacionados con la lógica de negocio
+- **Desarrollo más rápido** de nuevas funcionalidades
+- **Mejoras significativas** en la mantenibilidad del código y la incorporación de desarrolladores
+- **Colaboración mejorada** entre equipos de diseño y desarrollo
+
+Estas no son solo mejoras incrementales—representan un **cambio de nivel en capacidad** que permite a las organizaciones entregar más valor a sus usuarios con menos esfuerzo y mayor calidad.
+
+## Conclusión
+
+El patrón de Caso de Uso y los Sistemas de Diseño representan más que solo elecciones arquitectónicas—son **inversiones estratégicas** en la capacidad de tu organización para construir y mantener software complejo. Al implementar estos patrones, creas una base que permite a tus equipos trabajar con **mayor eficiencia**, **mayor calidad** y **mejor colaboración**.
+
+La cadena de middleware en nuestra implementación de Caso de Uso es particularmente poderosa, ofreciendo una **forma flexible** de manejar preocupaciones transversales mientras mantiene limpia la lógica de negocio central. Al componer middlewares en diferentes órdenes y crear middlewares personalizados para necesidades específicas, las organizaciones pueden adaptar el sistema a sus **requisitos únicos** sin modificar la arquitectura subyacente.
+
+Nuestra biblioteca proporciona una **base sólida** para ambos patrones, con una implementación limpia del patrón de Caso de Uso y un sistema de diseño en crecimiento. Al aprovechar estas herramientas, las organizaciones pueden enfocarse en **entregar valor** a sus usuarios en lugar de reinventar la rueda para patrones y componentes comunes.
+
+Estos patrones no son solo teóricos—son **enfoques probados en batalla** que han demostrado su valor en innumerables proyectos y organizaciones. Representan la sabiduría destilada de décadas de experiencia en ingeniería de software, empaquetada de una manera que es **accesible** e **inmediatamente aplicable** a tus desafíos.
+
+## ¿Listo para Transformar tu Proceso de Desarrollo?
+
+Si estás enfrentando desafíos con:
+- **Mantener lógica de negocio compleja** a través de tu aplicación
+- **Asegurar consistencia** en tu interfaz de usuario
+- **Escalar tu equipo de desarrollo** mientras mantienes la calidad del código
+- **Reducir la deuda técnica** y mejorar la mantenibilidad
+- **Acelerar el desarrollo** sin sacrificar calidad
+
+Me encantaría discutir cómo estos patrones pueden aplicarse a tus desafíos específicos. Programemos una llamada para explorar cómo tu organización puede beneficiarse de implementar estos patrones arquitectónicos.
+
+**[Programa una llamada conmigo →](https://cesalberca.com/chat)**
+
+Durante nuestra llamada:
+1. Discutiremos tus desafíos actuales de desarrollo
+2. Exploraremos cómo el patrón de Caso de Uso y el Sistema de Diseño pueden abordar esos desafíos
+3. Crearemos una hoja de ruta personalizada para implementar estos patrones en tu organización
+4. Responderemos cualquier pregunta que tengas sobre el proceso de implementación
+
+No dejes que la deuda técnica y las UIs inconsistentes ralenticen tu proceso de desarrollo. Da el primer paso hacia una base de código más **mantenible**, **escalable** y **eficiente** hoy.
 
 export default function Page({ children }) {
   return <CaseStudyLayout slug="halioooo-sistema-de-diseno-biblioteca-de-arquitectura">{children}</CaseStudyLayout>

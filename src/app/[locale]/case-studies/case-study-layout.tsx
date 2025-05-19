@@ -1,17 +1,15 @@
 import { Page } from '@/core/components/page/page'
-import type { ReactNode } from 'react'
+import type { FC, PropsWithChildren, ReactNode } from 'react'
 import { Background } from '@/core/components/background/background'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { getLocale } from 'next-intl/server'
-import { CaseStudyMetadata } from '../domain/case-study'
+import { CaseStudyMetadata } from '../../../features/case-studies/domain/case-study'
 import { WithKoFiButton } from '@/core/components/ko-fi-button/with-ko-fi-button'
 
-export async function CaseStudyLayout({ children, slug }: { children: ReactNode; slug: string }) {
+export const CaseStudyLayout: FC<PropsWithChildren<{ slug: string }>> = async ({ children, slug }) => {
   const locale = await getLocale()
 
-  const { metadata } = (await import(
-    `@/app/[locale]/${locale === 'en' ? 'case-studies' : 'casos-de-estudio'}/(${locale})/${slug}/page.mdx`
-  )) as {
+  const { metadata } = (await import(`./${slug}/${locale}.mdx`)) as {
     metadata: CaseStudyMetadata
   }
 

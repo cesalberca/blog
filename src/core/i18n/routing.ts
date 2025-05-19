@@ -6,7 +6,14 @@ import { locales } from '@/core/i18n/locales'
 export const routing = defineRouting({
   locales,
   defaultLocale: Locale.EN,
-  localePrefix: 'as-needed',
+  pathnames: {
+    '/case-studies/tabaiba-mobile-app-ddd-architecture': {
+      es: '/casos-de-estudio/tabaiba-app-movil-arquitectura-ddd',
+    },
+    '/case-studies/halioooo-design-system-architecture-library': {
+      es: '/casos-de-estudio/halioooo-sistema-de-diseno-biblioteca-de-arquitectura',
+    },
+  },
 })
 
 export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation(routing)

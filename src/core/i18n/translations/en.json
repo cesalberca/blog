@@ -190,5 +190,17 @@
       "title": "Halioooo",
       "description": "How implementing Use Cases and Design Systems can transform organizational efficiency, maintainability, and consistency in software development at Halioooo."
     }
+  },
+  "newsletter": {
+    "title": "Subscribe to my newsletter",
+    "description": "Get notified about new articles, talks, and updates directly to your inbox.",
+    "nameLabel": "Name",
+    "namePlaceholder": "Enter your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "submit": "Subscribe",
+    "submitting": "Subscribing...",
+    "success": "Thanks for subscribing! You'll receive updates soon.",
+    "error": "Error"
   }
 }

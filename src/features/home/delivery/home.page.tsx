@@ -16,6 +16,7 @@ import { Testimonials } from '@/core/components/testimonials/testimonials'
 import { CaseStudyCard } from '@/features/case-studies/delivery/case-study-card'
 import { CASE_STUDY_URLS } from '@/core/i18n/paths'
 import { Locale } from '@/core/i18n/locale'
+import { Newsletter } from '@/core/components/newsletter/newsletter'
 
 export const HomePage: FC = () => {
   const t = useTranslations()
@@ -47,6 +48,12 @@ export const HomePage: FC = () => {
       <Section>
         <div className="wrapper">
           <Markdown value={t('home.whoAmI')} />
+        </div>
+      </Section>
+
+      <Section>
+        <div className="wrapper">
+          <Newsletter />
         </div>
       </Section>
 

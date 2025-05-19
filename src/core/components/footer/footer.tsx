@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/core/components/link/link'
 import { Datetime } from '@/core/datetime'
+import { Newsletter } from '@/core/components/newsletter/newsletter'
 
 export const Footer: FC = () => {
   const t = useTranslations()
@@ -22,6 +23,9 @@ export const Footer: FC = () => {
         <Link to="mailto:dev@cesalberca.com" type="invisible">
           {t('common.email')}
         </Link>
+      </div>
+      <div className="w-full max-w-md">
+        <Newsletter />
       </div>
       <div className="flex items-center justify-end space-x-4">
         <SocialMedia />

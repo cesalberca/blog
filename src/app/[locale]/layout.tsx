@@ -3,14 +3,14 @@ import '../globals.css'
 import type { ReactNode } from 'react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
-import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 import { ThemeProvider } from '@/core/components/theme/theme-provider'
-import { locales } from '@/core/i18n/locales'
 import { baseUrl } from '@/app/sitemap'
 import { hasLocale } from 'use-intl'
 import { routing } from '@/core/i18n/routing'
 import { notFound } from 'next/navigation'
+import { Toaster } from '@/components/ui/sonner'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -80,6 +80,7 @@ export default async function Layout({
           <NextIntlClientProvider>{children}</NextIntlClientProvider>
           <Analytics />
           <SpeedInsights />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

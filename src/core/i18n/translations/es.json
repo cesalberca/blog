@@ -190,5 +190,17 @@
       "title": "Halioooo",
       "description": "Cómo la implementación de Casos de Uso y Sistemas de Diseño puede transformar la eficiencia organizacional, la mantenibilidad y la consistencia en el desarrollo de software en Halioooo."
     }
+  },
+  "newsletter": {
+    "title": "Suscríbete a mi newsletter",
+    "description": "Recibe notificaciones sobre nuevos artículos, charlas y actualizaciones directamente en tu bandeja de entrada.",
+    "nameLabel": "Nombre",
+    "namePlaceholder": "Introduce tu nombre",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "direccion@correo.com",
+    "submit": "Suscribirse",
+    "submitting": "Suscribiendo...",
+    "success": "¡Gracias por suscribirte! Pronto recibirás actualizaciones.",
+    "error": "Error"
   }
 }

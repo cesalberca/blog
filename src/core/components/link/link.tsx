@@ -23,7 +23,7 @@ export const Link: FC<PropsWithChildren<Props>> = ({ to, children, className, ty
 
   return (
     <LocaleLink
-      href={to}
+      href={to as any}
       passHref
       {...(isExternal && { target: '_blank', rel: 'noreferrer' })}
       className={cn(linkVariants({ type }), className)}

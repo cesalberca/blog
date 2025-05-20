@@ -72,7 +72,43 @@
       "developmentDescription": "Desarrollaré tu proyecto desde el **diseño**, pasando por el **desarrollo**, hasta el **despliegue**."
     },
     "testimonials": {
-      "title": "Testimonios"
+      "title": "Testimonios",
+      "isabel": {
+        "name": "Isabel Rodríguez",
+        "role": "Directora de Negocio, Next Digital",
+        "link": "https://www.linkedin.com/in/isabel-rodriguez-olivar-573124b/",
+        "content": "Tuve el placer de conocer a César cuando estaba comenzando su carrera—muy joven pero lleno de energía y con ganas de aprender. Desde el principio, destacó por su compromiso y entusiasmo por compartir sus conocimientos con los demás, cualidades que siempre han sido sus mayores fortalezas.\n\nCon el tiempo, César se ha convertido en una figura respetada en la industria, gracias a su formación continua y dedicación al desarrollo de software de alta calidad. Siempre ha estado dispuesto a asumir cada tarea y proyecto que le propuse, abordándolos con una actitud proactiva y colaborativa. Su capacidad para asumir desafíos, junto con su generosidad para compartir lo que sabe, lo convierten en un profesional valioso y un excelente compañero."
+      },
+      "german": {
+        "name": "Germán Delgado García",
+        "role": "Desarrollador de Software, Autentia",
+        "link": "https://www.linkedin.com/in/germandelgadogarcia/",
+        "content": "He tenido el privilegio de trabajar con César, quien es una referencia en el desarrollo de software. Su profundo conocimiento de la arquitectura y el diseño de software es impresionante. Estoy muy agradecido de haber tenido la oportunidad de aprender mucho de él, tanto en el trabajo como en las conferencias que ha dado.\n\nCésar es curioso, divertido e inteligente. Lo que más destaca de él es su generosidad para compartir su conocimiento y experiencia con los demás. No solo es un profesional altamente cualificado, sino también una persona que inspira crecimiento y mejora continua.\n\nSi estás buscando a alguien que combine grandes habilidades técnicas con la capacidad de comunicar y enseñar de manera clara y efectiva, César es la persona para ti. Estoy seguro de que será una valiosa incorporación a cualquier equipo."
+      },
+      "francisco": {
+        "name": "Francisco Picolini",
+        "role": "Gestor de Comunidad Open Source, OpenNebula",
+        "link": "https://www.linkedin.com/in/francjp/",
+        "content": "Tuve el placer de colaborar con César durante mi tiempo gestionando el contenido de la Conferencia para Codemotion Madrid. César jugó un papel crucial en la configuración de la agenda, particularmente seleccionando propuestas frontend de primera categoría, que es su área de especialización. También contribuyó más allá de esto sugiriendo temas innovadores y recomendando ponentes talentosos.\n\nNo solo es César un orador altamente atractivo y hábil, sino que también es un jugador de equipo dedicado que constantemente va más allá para asegurar el éxito del proyecto. Su profundo conocimiento de los frameworks modernos y las tecnologías emergentes es impresionante, y tiene una pasión genuina por compartir esa experiencia con otros.\n\nCésar es un desarrollador completo—siempre bien informado, con visión de futuro y ansioso por contribuir al éxito del equipo. Es un verdadero activo para cualquier proyecto u organización."
+      },
+      "alberto": {
+        "name": "Alberto Chamorro",
+        "role": "Desarrollador Móvil Flutter, Calisteniapp",
+        "link": "https://www.linkedin.com/in/alberto-chamorro/",
+        "content": "César es una gran persona, desarrollador y colega con quien tuve el placer de trabajar en Autentia. Durante el tiempo que trabajé con él, demostró fuertes capacidades para enfrentar diversos desafíos técnicos, creando consistentemente soluciones efectivas y creativas que siempre agregaron un valor significativo para el cliente.\n\nPuedo decir con confianza que César posee un conocimiento sólido no solo en el campo tecnológico sino también en arquitectura y diseño de software. Además, su hambre de conocimiento, combinada con su afán por compartirlo, hace de César un activo muy valioso para cualquier equipo o desafío que asuma."
+      },
+      "carlos": {
+        "name": "Carlos Blé",
+        "role": "Coach de Vida y Ejecutivo, LeanMind",
+        "link": "https://www.linkedin.com/in/carlosble/",
+        "content": "César es una persona amable y amistosa con un gran sentido del humor y, por supuesto, es un excelente profesional. Altamente inteligente, muy capaz y extremadamente trabajador. Hace años, tuve la oportunidad de tenerlo como un estudiante destacado en varios de mis cursos, y quedé impresionado por su capacidad y afán de aprender. César es un profesional con sentido común y una calidad técnica excepcional."
+      },
+      "antonio": {
+        "name": "Antonio Cobo Cuenca",
+        "role": "Coach Ágil, Cognizant",
+        "link": "https://www.linkedin.com/in/antoniocobocuenca/",
+        "content": "César y yo servimos juntos en un comité de programa de conferencias durante varios años. Constantemente confié en su profunda comprensión de las últimas tendencias en el mundo Front End. Durante nuestras discusiones sobre cómo mejorar la conferencia, quedé impresionado por sus habilidades de pensamiento crítico y su capacidad para ver el panorama general. César considera cada ángulo de un problema y encuentra consistentemente la solución correcta."
+      }
     },
     "contact": {
       "title": "Contacto",

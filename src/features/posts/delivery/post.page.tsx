@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
 import { WithKoFiButton } from '@/core/components/ko-fi-button/with-ko-fi-button'
 import { Newsletter } from '@/core/components/newsletter/newsletter'
+import { KoFiButton } from '@/core/components/ko-fi-button/ko-fi-button'
 
 export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: string }>> = ({
   metadata,
@@ -65,12 +66,13 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
         </div>
       </Background>
       <article className="wrapper mt-6 prose dark:prose-invert text-current">
-        <div className="mb-8">
+        <div className="mb-10">
           <Newsletter />
+          <KoFiButton />
         </div>
-        <WithKoFiButton>{children}</WithKoFiButton>
-        <div className="mt-8">
-          <Newsletter />
+        {children}
+        <div className="mt-10">
+          <KoFiButton />
         </div>
       </article>
     </>

@@ -201,6 +201,9 @@
     "submit": "Suscribirse",
     "submitting": "Suscribiendo...",
     "success": "¡Gracias por suscribirte! Pronto recibirás actualizaciones.",
-    "error": "Error"
+    "error": "Error",
+    "signupTitle": "Suscripción a la Newsletter",
+    "signupQuestion": "¿Quieres estar al día con las últimas tendencias en desarrollo front-end, arquitectura y buenas prácticas?",
+    "signupDescription": "Suscríbete a mi newsletter y recibe contenido exclusivo, tutoriales, consejos y noticias sobre arquitectura de frontend directamente en tu bandeja de entrada. ¡No te pierdas ninguna actualización!"
   }
 }

@@ -24,9 +24,6 @@ export const Footer: FC = () => {
           {t('common.email')}
         </Link>
       </div>
-      <div className="w-full max-w-md">
-        <Newsletter />
-      </div>
       <div className="flex items-center justify-end space-x-4">
         <SocialMedia />
       </div>

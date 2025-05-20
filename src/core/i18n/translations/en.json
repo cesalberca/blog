@@ -201,6 +201,9 @@
     "submit": "Subscribe",
     "submitting": "Subscribing...",
     "success": "Thanks for subscribing! You'll receive updates soon.",
-    "error": "Error"
+    "error": "Error",
+    "signupTitle": "Newsletter Signup",
+    "signupQuestion": "Want to stay up to date with the latest trends in front-end development, architecture, and best practices?",
+    "signupDescription": "Subscribe to my newsletter and receive exclusive content, tutorials, tips, and news about web development directly in your inbox. Don't miss any updates!"
   }
 }

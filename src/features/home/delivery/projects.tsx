@@ -32,7 +32,6 @@ export const Projects: FC = () => {
     {
       title: t('home.projects.archimedesJs'),
       description: t('home.projects.archimedesJsDescription'),
-      link: Url.fromValue('https://archimedesfw.io/'),
       code: Url.fromValue('https://github.com/archimedes-projects/archimedes-js/'),
       image: '/assets/images/projects/archimedesjs.png',
       technologies: ['TypeScript', 'Jest'],
@@ -41,7 +40,6 @@ export const Projects: FC = () => {
       title: t('home.projects.blog'),
       description: t('home.projects.blogDescription'),
       code: Url.fromValue('https://github.com/cesalberca/blog'),
-      link: Url.fromValue('https://cesalberca.com/'),
       image: '/assets/images/projects/blog.png',
       technologies: ['React', 'TypeScript', 'Jest', 'Next.js'],
     },
@@ -67,15 +65,15 @@ export const Projects: FC = () => {
                   transform: 'translateZ(100px) translateY(-10px)',
                 }}
               >
-                <Button asChild className="drop-shadow">
+                <Button className="drop-shadow">
                   <Link type="invisible" to={x.code.value}>
-                    {t('home.projects.live')}
+                    {t('home.projects.code')}
                   </Link>
                 </Button>
                 {x.link?.value && (
-                  <Button asChild className="drop-shadow">
-                    <Link type="invisible" to={x.code.value}>
-                      {t('home.projects.code')}
+                  <Button className="drop-shadow">
+                    <Link type="invisible" to={x.link.value}>
+                      {t('home.projects.live')}
                     </Link>
                   </Button>
                 )}

@@ -1,6 +1,5 @@
 'use client'
 
-import * as React from 'react'
 import { useTransition } from 'react'
 import { Check, ChevronDown, Globe } from 'lucide-react'
 import { Locale } from '@/core/i18n/locale'

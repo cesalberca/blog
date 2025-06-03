@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 import { getTranslations } from 'next-intl/server'
 import { Page } from '@/core/components/page/page'
 import { Locale } from '@/core/i18n/locale'
@@ -25,10 +25,11 @@ import { Testimonials } from '@/core/components/testimonials/testimonials'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/core/components/link/link'
+import { OpenToWork } from '@/core/components/open-to-work/open-to-work'
 
 const Title: FC<{
   value: string
-  icon: React.ReactNode
+  icon: ReactNode
 }> = ({ value, icon }) => (
   <div className="flex flex-col items-center justify-center">
     {icon}
@@ -41,7 +42,7 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
 
   return (
     <Page>
-      {/* Hero Section with compelling value proposition */}
+      <OpenToWork />
       <Hero
         image="/assets/images/me-no-bg.png"
         className="bg-gradient-to-r from-accent/20 to-background mb-16"
@@ -50,15 +51,15 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
         <div className="wrapper text-center max-w-4xl">
           <Badge className="mb-4 text-sm px-4 py-1">Front-end Architecture Expert</Badge>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Transform Your Front-end Development with Expert Architecture Solutions
+            <AccentText>Transform Your Front-end Development with Expert Architecture Solutions</AccentText>
           </h1>
           <p className="text-xl mb-8">
             Elevate your web applications with scalable, maintainable architecture from a specialist with over 10 years
             of experience
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-background">
-              <Link to="/#contact" className="flex items-center">
+            <Button size="lg">
+              <Link type="invisible" to="/#contact" className="flex items-center">
                 Get Started <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -71,17 +72,16 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
         </div>
       </Hero>
 
-      {/* Problem/Solution Section */}
-      <section className="wrapper mb-16">
+      <section className="container mb-16">
         <div className="grid md:grid-cols-2 gap-12">
           <div>
             <h2 className="text-3xl font-bold mb-6">
               <AccentText>The Challenge</AccentText>
             </h2>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
+            <div className="flex-col space-y-10">
+              <div className="flex items-start gap-6">
                 <div className="mt-1 text-accent">
-                  <BarChart size={24} />
+                  <BarChart className="text-foreground" size={48} />
                 </div>
                 <div>
                   <h3 className="font-semibold text-xl">Scaling Difficulties</h3>
@@ -91,9 +91,9 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
                   </p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-6">
                 <div className="mt-1 text-accent">
-                  <Clock size={24} />
+                  <Clock className="text-foreground" size={48} />
                 </div>
                 <div>
                   <h3 className="font-semibold text-xl">Technical Debt</h3>
@@ -102,9 +102,9 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
                   </p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-6">
                 <div className="mt-1 text-accent">
-                  <Users size={24} />
+                  <Users className="text-foreground" size={48} />
                 </div>
                 <div>
                   <h3 className="font-semibold text-xl">Team Alignment</h3>
@@ -117,28 +117,28 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
             <h2 className="text-3xl font-bold mb-6">
               <AccentText>My Approach</AccentText>
             </h2>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
+            <div className="flex-col space-y-10">
+              <div className="flex items-start gap-6">
                 <div className="mt-1 text-accent">
-                  <Zap size={24} />
+                  <Zap className="text-foreground" size={48} />
                 </div>
                 <div>
                   <h3 className="font-semibold text-xl">Architectural Excellence</h3>
                   <p>Implementing proven patterns like DDD and Hexagonal Architecture that scale with your business</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-6">
                 <div className="mt-1 text-accent">
-                  <Award size={24} />
+                  <Award className="text-foreground" size={48} />
                 </div>
                 <div>
                   <h3 className="font-semibold text-xl">Best Practices</h3>
                   <p>Leveraging 10+ years of experience to establish maintainable, testable code standards</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-6">
                 <div className="mt-1 text-accent">
-                  <GraduationCap size={24} />
+                  <GraduationCap className="text-foreground" size={48} />
                 </div>
                 <div>
                   <h3 className="font-semibold text-xl">Knowledge Transfer</h3>
@@ -150,106 +150,84 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
         </div>
       </section>
 
-      {/* Specialization Section */}
-      <section className="bg-accent/10 py-16 mb-16">
-        <div className="wrapper">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            <AccentText>{t('home.services.architectureSpecialization')}</AccentText>
-          </h2>
-          <div className="mb-8 max-w-3xl mx-auto text-center">
-            <Markdown value={t('home.services.architectureSpecializationDescription')} />
-          </div>
+      <section className="container bg-accent/10 py-16 mb-16">
+        <h2 className="text-3xl font-bold mb-8 text-center">
+          <AccentText>{t('home.services.architectureSpecialization')}</AccentText>
+        </h2>
+        <div className="mb-8 max-w-3xl mx-auto text-center">
+          <Markdown value={t('home.services.architectureSpecializationDescription')} />
+        </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
-            <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle className="text-accent" size={20} />
-                  Domain-Driven Design
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  Structuring complex business domains into maintainable, scalable code that accurately reflects your
-                  business needs
-                </p>
-              </CardContent>
-            </Card>
+        <div className="grid md:grid-cols-3 gap-6 mt-12">
+          <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">Domain-Driven Design</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>
+                Structuring complex business domains into maintainable, scalable code that accurately reflects your
+                business needs
+              </p>
+            </CardContent>
+          </Card>
 
-            <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle className="text-accent" size={20} />
-                  Hexagonal Architecture
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Creating adaptable systems with clear boundaries between business logic and external dependencies</p>
-              </CardContent>
-            </Card>
+          <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">Hexagonal Architecture</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>Creating adaptable systems with clear boundaries between business logic and external dependencies</p>
+            </CardContent>
+          </Card>
 
-            <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle className="text-accent" size={20} />
-                  Modular Front-end
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Building component-based systems that enable parallel development and easier maintenance</p>
-              </CardContent>
-            </Card>
+          <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">Modular Front-end</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>Building component-based systems that enable parallel development and easier maintenance</p>
+            </CardContent>
+          </Card>
 
-            <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle className="text-accent" size={20} />
-                  Design Systems
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Developing scalable component libraries that ensure consistency across your applications</p>
-              </CardContent>
-            </Card>
+          <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">Design Systems</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>Developing scalable component libraries that ensure consistency across your applications</p>
+            </CardContent>
+          </Card>
 
-            <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle className="text-accent" size={20} />
-                  Performance Optimization
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Implementing best practices to ensure your applications are fast, responsive, and efficient</p>
-              </CardContent>
-            </Card>
+          <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">Performance Optimization</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>Implementing best practices to ensure your applications are fast, responsive, and efficient</p>
+            </CardContent>
+          </Card>
 
-            <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle className="text-accent" size={20} />
-                  Testing Strategies
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Creating comprehensive testing approaches that catch issues early and ensure code quality</p>
-              </CardContent>
-            </Card>
-          </div>
+          <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">Testing Strategies</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>Creating comprehensive testing approaches that catch issues early and ensure code quality</p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="wrapper mb-16" id="services">
+      <section className="container mb-16" id="services">
         <h2 className="text-3xl font-bold mb-8 text-center">
           <AccentText>Services Offered</AccentText>
         </h2>
 
-        <div className="bleed-width-section grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="bleed-width-section grid md:grid-cols-1 lg:grid-cols-3 gap-6">
           <Service
             className="items-end bg-background shadow-lg hover:shadow-xl transition-shadow"
             center={
-              <Title value={t('home.services.consultancy')} icon={<Signpost size={72} className="text-accent" />} />
+              <Title value={t('home.services.consultancy')} icon={<Signpost size={72} className="text-foreground" />} />
             }
           >
             <Markdown value={t('home.services.consultancyDescription')}></Markdown>
@@ -272,7 +250,10 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
           <Service
             className="items-end bg-background shadow-lg hover:shadow-xl transition-shadow"
             center={
-              <Title value={t('home.services.training')} icon={<GraduationCap size={72} className="text-accent" />} />
+              <Title
+                value={t('home.services.training')}
+                icon={<GraduationCap size={72} className="text-foreground" />}
+              />
             }
           >
             <Markdown value={t('home.services.trainingDescription')}></Markdown>
@@ -294,7 +275,9 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
 
           <Service
             className="items-end bg-background shadow-lg hover:shadow-xl transition-shadow"
-            center={<Title value={t('home.services.development')} icon={<Users size={72} className="text-accent" />} />}
+            center={
+              <Title value={t('home.services.development')} icon={<Users size={72} className="text-foreground" />} />
+            }
           >
             <Markdown value={t('home.services.developmentDescription')}></Markdown>
             <ul className="mt-4 space-y-2">
@@ -312,72 +295,6 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
               </li>
             </ul>
           </Service>
-
-          <Service
-            className="items-end bg-background shadow-lg hover:shadow-xl transition-shadow"
-            center={
-              <Title value={t('home.services.corporateTraining')} icon={<Laptop size={72} className="text-accent" />} />
-            }
-          >
-            <Markdown value={t('home.services.corporateTrainingDescription')}></Markdown>
-            <ul className="mt-4 space-y-2">
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-accent shrink-0 mt-1" size={16} />
-                <span>Tailored training programs for companies</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-accent shrink-0 mt-1" size={16} />
-                <span>Framework-specific deep dives</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-accent shrink-0 mt-1" size={16} />
-                <span>Architecture and testing best practices</span>
-              </li>
-            </ul>
-          </Service>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="bg-accent/10 py-16 mb-16">
-        <div className="wrapper">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            <AccentText>My Working Process</AccentText>
-          </h2>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-accent text-background flex items-center justify-center mx-auto mb-4">
-                1
-              </div>
-              <h3 className="font-bold text-xl mb-2">Discovery</h3>
-              <p>Understanding your business needs, technical challenges, and team dynamics</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-accent text-background flex items-center justify-center mx-auto mb-4">
-                2
-              </div>
-              <h3 className="font-bold text-xl mb-2">Strategy</h3>
-              <p>Developing a tailored approach to address your specific architectural challenges</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-accent text-background flex items-center justify-center mx-auto mb-4">
-                3
-              </div>
-              <h3 className="font-bold text-xl mb-2">Implementation</h3>
-              <p>Executing the plan with regular check-ins and adjustments as needed</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-accent text-background flex items-center justify-center mx-auto mb-4">
-                4
-              </div>
-              <h3 className="font-bold text-xl mb-2">Knowledge Transfer</h3>
-              <p>Ensuring your team can maintain and build upon the implemented solutions</p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -404,11 +321,11 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
 
       {/* Testimonials Section */}
       <section className="bg-accent/10 py-16 mb-16">
-        <div className="wrapper">
+        <div className="container">
           <h2 className="text-3xl font-bold mb-8 text-center">
             <AccentText>{t('home.testimonials.title')}</AccentText>
           </h2>
-          <Testimonials itemsPerPage={2} />
+          <Testimonials itemsPerPage={1} />
         </div>
       </section>
 

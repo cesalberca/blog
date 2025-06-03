@@ -1,13 +1,13 @@
 'use client'
 
-import React from 'react'
+import { FC } from 'react'
 import { motion } from 'framer-motion'
 
 interface Props {
   text: string
 }
 
-export const CircleText: React.FC<Props> = ({ text }) => {
+export const CircleText: FC<Props> = ({ text }) => {
   return (
     <div className="flex justify-center items-center">
       <div className="relative w-14 h-14 md:w-28 md:h-28 flex justify-center items-center">
@@ -108,7 +108,7 @@ export const CircleText: React.FC<Props> = ({ text }) => {
             />
           </svg>
         </motion.div>
-        <a className="absolute text-[6px] md:text-xs font-bold" href="#contact-form">
+        <a className="absolute text-[6px] md:text-xs font-bold" href={'/#contact-form'}>
           {text}
         </a>
       </div>

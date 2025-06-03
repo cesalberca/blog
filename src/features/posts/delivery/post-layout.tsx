@@ -1,5 +1,5 @@
 import { Page } from '@/core/components/page/page'
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { PostPage } from '@/features/posts/delivery/post.page'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
 import { getLocale } from 'next-intl/server'

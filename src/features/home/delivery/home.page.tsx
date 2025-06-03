@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { useTranslations, useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { Page } from '@/core/components/page/page'
 import { Hero } from '@/core/components/hero/hero'
 import { AccentList } from '@/core/components/accent-list/accent-list'
@@ -19,8 +19,10 @@ import { Locale } from '@/core/i18n/locale'
 import { Newsletter } from '@/core/components/newsletter/newsletter'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/core/components/link/link'
+import { PostExcerpt } from '@/features/posts/delivery/post-excerpt'
+import { PostMetadata } from '@/features/posts/domain/post-metadata'
 
-export const HomePage: FC = () => {
+export const HomePage: FC<{ latestPost: PostMetadata }> = ({ latestPost }) => {
   const t = useTranslations()
   const locale = useLocale() as Locale
 
@@ -63,7 +65,7 @@ export const HomePage: FC = () => {
         <div className="flex flex-col gap-8">
           <Services />
           <div className="wrapper mt-8">
-            <Button size="lg">
+            <Button size="lg" className="mb-12">
               <Link to="/services" type="invisible">
                 {t('home.services.readyToWork')}
               </Link>
@@ -74,6 +76,19 @@ export const HomePage: FC = () => {
 
       <Section title={t('home.projects.title')} id="projects">
         <Projects />
+      </Section>
+
+      <Section title={t('home.latestArticles')}>
+        <div className="wrapper">
+          <PostExcerpt post={latestPost} />
+          <div className="mt-4 flex justify-center">
+            <Button size="lg">
+              <Link to="/blog" type="invisible">
+                {t('home.viewAllArticles')}
+              </Link>
+            </Button>
+          </div>
+        </div>
       </Section>
 
       <Section title={t('caseStudies.title')} id="case-studies">

@@ -17,6 +17,8 @@ import { CaseStudyCard } from '@/features/case-studies/delivery/case-study-card'
 import { CASE_STUDY_URLS } from '@/core/i18n/paths'
 import { Locale } from '@/core/i18n/locale'
 import { Newsletter } from '@/core/components/newsletter/newsletter'
+import { Button } from '@/components/ui/button'
+import { Link } from '@/core/components/link/link'
 
 export const HomePage: FC = () => {
   const t = useTranslations()
@@ -58,15 +60,14 @@ export const HomePage: FC = () => {
       </Section>
 
       <Section title={t('home.services.title')} id="services">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-8">
           <Services />
-          <div className="wrapper mt-4 text-center">
-            <a
-              href={'/services'}
-              className="inline-block px-6 py-3 bg-accent text-background font-bold rounded-md hover:bg-accent/90 transition-colors"
-            >
-              {t('home.services.readyToWork')}
-            </a>
+          <div className="wrapper mt-8">
+            <Button size="lg">
+              <Link to="/services" type="invisible">
+                {t('home.services.readyToWork')}
+              </Link>
+            </Button>
           </div>
         </div>
       </Section>

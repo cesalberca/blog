@@ -47,7 +47,7 @@
       "freelancer": "Freelancer",
       "podcastHost": "Presentador de Podcast"
     },
-    "heroCaption": "Apasionado por <strong>aprender</strong> y <strong>compartir</strong>.",
+    "heroCaption": "Arquitectura frontend escalable y lista para IA",
     "whoAmI": "**Arquitecto Front-end Senior** y **Desarrollador de Software** de España con más de **10 años de experiencia**. Freelancer _obsesionado_ con las **buenas prácticas**, **arquitectura** y **pruebas automáticas**.\n\nComo [ponente internacional](https://www.cesalberca.com/talks) y Nómada Digital, comparto mis aventuras tecnológicas por todo el mundo. Activo en la comunidad de [Codemotion](https://www.codemotion.com/) como miembro del comité y [embajador](https://community-en.codemotion.it/community/ambassador-program). Presentador del [Podcast Colivers Club](https://coliversclub.com/).",
     "projects": {
       "title": "Proyectos",
@@ -76,7 +76,7 @@
       "architectureSpecialization": "Especialización en Arquitectura de Software",
       "architectureSpecializationDescription": "Con más de 10 años de experiencia en desarrollo front-end, me especializo en crear arquitecturas de software robustas y mantenibles que escalan con las necesidades de tu negocio.",
       "caseStudiesIntro": "Mis servicios se basan en experiencia del mundo real. Consulta estos casos de estudio para ver mi enfoque en acción:",
-      "readyToWork": "¿Listo para trabajar juntos?",
+      "readyToWork": "¿Quieres explorar cómo te puedo ayudar?",
       "readyToWorkDescription": "Contáctame para discutir cómo puedo ayudar a tu equipo a construir mejor software con sólidos principios de arquitectura."
     },
     "testimonials": {
@@ -222,6 +222,127 @@
   },
   "photography": {
     "title": "Fotografía"
+  },
+  "services": {
+    "title": "Servicios",
+    "hero": {
+      "badge": "Experto en Arquitectura Front-end",
+      "title": "Transforma tu Desarrollo Front-end con Soluciones de Arquitectura Expertas",
+      "subtitle": "Eleva tus aplicaciones web con arquitectura escalable y mantenible de un especialista con más de 10 años de experiencia",
+      "getStarted": "Comenzar",
+      "exploreServices": "Explorar Servicios"
+    },
+    "challenge": {
+      "title": "El Desafío",
+      "scalingDifficulties": {
+        "title": "Dificultades de Escalabilidad",
+        "description": "Bases de código que se vuelven inmantenibles a medida que crecen, ralentizando el desarrollo"
+      },
+      "technicalDebt": {
+        "title": "Deuda Técnica",
+        "description": "Patrones y prácticas inconsistentes que se acumulan con el tiempo, dificultando cambios futuros"
+      },
+      "teamAlignment": {
+        "title": "Alineación del Equipo",
+        "description": "Dificultad para mantener enfoques y estándares consistentes en equipos de desarrollo en crecimiento"
+      }
+    },
+    "approach": {
+      "title": "Mi Enfoque",
+      "architecturalExcellence": {
+        "title": "Excelencia Arquitectónica",
+        "description": "Implementación de patrones arquitectónicos probados que escalan efectivamente con las necesidades de tu negocio"
+      },
+      "bestPractices": {
+        "title": "Mejores Prácticas",
+        "description": "Aprovechando años de experiencia para establecer estándares de código mantenibles y comprobables"
+      },
+      "knowledgeTransfer": {
+        "title": "Transferencia de Conocimiento",
+        "description": "Asegurando que tu equipo comprenda y pueda mantener los principios arquitectónicos de manera efectiva"
+      }
+    },
+    "architectureSpecialization": {
+      "domainDrivenDesign": {
+        "title": "Diseño Dirigido por el Dominio",
+        "description": "Estructuración de dominios de negocio complejos en código mantenible que refleja con precisión las necesidades de tu negocio"
+      },
+      "hexagonalArchitecture": {
+        "title": "Arquitectura Hexagonal",
+        "description": "Creación de sistemas adaptables con límites claros entre la lógica de negocio central y las dependencias externas"
+      },
+      "modularFrontend": {
+        "title": "Front-end Modular",
+        "description": "Construcción de sistemas basados en componentes que permiten desarrollo paralelo, mejor reutilización de código y mantenimiento más sencillo"
+      },
+      "designSystems": {
+        "title": "Sistemas de Diseño",
+        "description": "Desarrollo de bibliotecas de componentes escalables que aseguran consistencia visual y funcional en todas tus aplicaciones"
+      },
+      "performanceOptimization": {
+        "title": "Optimización de Rendimiento",
+        "description": "Implementación de mejores prácticas probadas para asegurar que tus aplicaciones sean rápidas, responsivas y eficientes en recursos"
+      },
+      "testingStrategies": {
+        "title": "Estrategias de Pruebas",
+        "description": "Creación de enfoques de pruebas integrales que detectan problemas temprano, previenen regresiones y aseguran la calidad del código"
+      }
+    },
+    "servicesOffered": {
+      "title": "Servicios Ofrecidos",
+      "consultancy": {
+        "features": {
+          "architectureAssessment": "Evaluación y recomendaciones de arquitectura",
+          "codeQuality": "Revisión de calidad de código y mejores prácticas",
+          "performanceOptimization": "Estrategias de optimización de rendimiento"
+        }
+      },
+      "training": {
+        "features": {
+          "workshops": "Talleres prácticos para tu equipo",
+          "customizedCurriculum": "Currículum personalizado basado en necesidades",
+          "mentorship": "Opciones de mentoría continua"
+        }
+      },
+      "development": {
+        "features": {
+          "fullStack": "Desarrollo full-stack con frameworks modernos",
+          "scalableArchitecture": "Implementación de arquitectura escalable",
+          "testing": "Pruebas y documentación integrales"
+        }
+      }
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "cost": {
+        "question": "¿Cuánto cuesta?",
+        "answer": "¿Cuánto dinero estás dispuesto a perder por no implementar las mejores prácticas?"
+      },
+      "remoteWork": {
+        "question": "¿Trabajas con equipos remotos?",
+        "answer": "¡Absolutamente! Como nómada digital, tengo experiencia trabajando con equipos distribuidos en diferentes zonas horarias. Utilizo herramientas colaborativas y comunicación regular para asegurar una entrega fluida del proyecto independientemente de la ubicación."
+      },
+      "frameworks": {
+        "question": "¿En qué frameworks te especializas?",
+        "answer": "Tengo amplia experiencia con React (más de 5 años), Angular (más de 4 años) y Vue (más de 2 años). Sin embargo, mi experiencia arquitectónica trasciende frameworks específicos, centrándose en patrones y prácticas que pueden aplicarse a través de diferentes tecnologías."
+      },
+      "knowledgeTransfer": {
+        "question": "¿Cómo manejas la transferencia de conocimiento?",
+        "answer": "La transferencia de conocimiento está integrada en mi proceso. Proporciono documentación completa, realizo sesiones de formación y ofrezco soporte post-proyecto para asegurar que tu equipo comprenda completamente la arquitectura implementada y pueda mantenerla de forma independiente."
+      },
+      "approach": {
+        "question": "¿Qué hace diferente tu enfoque arquitectónico?",
+        "answer": "Mi enfoque combina Diseño Dirigido por el Dominio con Arquitectura Hexagonal para crear sistemas que estén alineados con el negocio y sean técnicamente robustos. Me centro en crear límites claros entre tu dominio central y las dependencias externas, haciendo que tu base de código sea más mantenible y adaptable al cambio."
+      },
+      "existingCodebase": {
+        "question": "¿Puedes ayudar con una base de código existente?",
+        "answer": "Absolutamente. Me especializo en refactorizar y mejorar bases de código existentes. Analizaré tu arquitectura actual, identificaré puntos problemáticos y crearé un plan estratégico para mejorar incrementalmente tu sistema sin interrumpir el desarrollo en curso. Este enfoque te permite adoptar gradualmente mejores prácticas mientras continúas entregando valor al negocio."
+      },
+      "ongoingSupport": {
+        "question": "¿Ofreces soporte continuo después de completar el proyecto?",
+        "answer": "Sí, ofrezco opciones de soporte flexibles después del compromiso inicial. Esto puede incluir revisiones de código, orientación arquitectónica para nuevas funcionalidades o verificaciones regulares para asegurar que tu equipo esté siguiendo los patrones establecidos. Mi objetivo es asegurar el éxito a largo plazo, no solo entregar una solución y marcharme."
+      }
+    }
   },
   "caseStudies": {
     "title": "Casos de Estudio",

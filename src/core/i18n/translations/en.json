@@ -65,9 +65,9 @@
     "services": {
       "title": "Services",
       "description": "I have over **10 years** of experience in **Front-end Development**. I've deployed to production full-fledged enterprise web applications using **React**, **Angular** and **Vue**.",
-      "consultancy": "Consultancy",
+      "consultancy": "Consulting Services",
       "consultancyDescription": "I will guide you in **architecture** and implementing **best practices**.",
-      "training": "Training",
+      "training": "Training Programs",
       "trainingDescription": "I will help you refine your team's skills in **best practices**, **testing** and **architecture**.",
       "development": "Software Development",
       "developmentDescription": "I will develop your project from **design** through **development** to **deployment**.",
@@ -76,7 +76,7 @@
       "architectureSpecialization": "Software Architecture Specialization",
       "architectureSpecializationDescription": "With over 10 years of experience in front-end development, I specialize in creating robust, maintainable software architectures that scale with your business needs.",
       "caseStudiesIntro": "My services are based on real-world experience. Check out these case studies to see my approach in action:",
-      "readyToWork": "Ready to work together?",
+      "readyToWork": "Want to explore how I can help you?",
       "readyToWorkDescription": "Contact me to discuss how I can help your team build better software with solid architecture principles.",
       "faq": {
         "title": "Frequently Asked Questions",
@@ -355,6 +355,127 @@
   },
   "photography": {
     "title": "Photography"
+  },
+  "services": {
+    "title": "Services",
+    "hero": {
+      "badge": "Front-end Architecture Expert",
+      "title": "Transform Your Front-end Development with Expert Architecture Solutions",
+      "subtitle": "Elevate your web applications with scalable, maintainable architecture from a specialist with over 10 years of experience",
+      "getStarted": "Get Started",
+      "exploreServices": "Explore Services"
+    },
+    "challenge": {
+      "title": "The Challenge",
+      "scalingDifficulties": {
+        "title": "Scaling Difficulties",
+        "description": "Codebases that become unmaintainable as they grow, slowing down development"
+      },
+      "technicalDebt": {
+        "title": "Technical Debt",
+        "description": "Inconsistent patterns and practices that accumulate over time, hindering future changes"
+      },
+      "teamAlignment": {
+        "title": "Team Alignment",
+        "description": "Difficulty maintaining consistent approaches and standards across growing development teams"
+      }
+    },
+    "approach": {
+      "title": "My Approach",
+      "architecturalExcellence": {
+        "title": "Architectural Excellence",
+        "description": "Implementing proven architectural patterns that scale effectively with your business needs"
+      },
+      "bestPractices": {
+        "title": "Best Practices",
+        "description": "Leveraging years of experience to establish maintainable and testable code standards"
+      },
+      "knowledgeTransfer": {
+        "title": "Knowledge Transfer",
+        "description": "Ensuring your team understands and can maintain the architectural principles effectively"
+      }
+    },
+    "architectureSpecialization": {
+      "domainDrivenDesign": {
+        "title": "Domain-Driven Design",
+        "description": "Structuring complex business domains into maintainable code that accurately reflects your business needs"
+      },
+      "hexagonalArchitecture": {
+        "title": "Hexagonal Architecture",
+        "description": "Creating adaptable systems with clear boundaries between core business logic and external dependencies"
+      },
+      "modularFrontend": {
+        "title": "Modular Front-end",
+        "description": "Building component-based systems that enable parallel development, better code reuse, and easier maintenance"
+      },
+      "designSystems": {
+        "title": "Design Systems",
+        "description": "Developing scalable component libraries that ensure visual and functional consistency across your applications"
+      },
+      "performanceOptimization": {
+        "title": "Performance Optimization",
+        "description": "Implementing proven best practices to ensure your applications are fast, responsive, and resource-efficient"
+      },
+      "testingStrategies": {
+        "title": "Testing Strategies",
+        "description": "Creating comprehensive testing approaches that catch issues early, prevent regressions, and ensure code quality"
+      }
+    },
+    "servicesOffered": {
+      "title": "Services Offered",
+      "consultancy": {
+        "features": {
+          "architectureAssessment": "Architecture assessment and recommendations",
+          "codeQuality": "Code quality and best practices review",
+          "performanceOptimization": "Performance optimization strategies"
+        }
+      },
+      "training": {
+        "features": {
+          "workshops": "Hands-on workshops for your team",
+          "customizedCurriculum": "Customized curriculum based on needs",
+          "mentorship": "Ongoing mentorship options"
+        }
+      },
+      "development": {
+        "features": {
+          "fullStack": "Full-stack development with modern frameworks",
+          "scalableArchitecture": "Scalable architecture implementation",
+          "testing": "Best practices"
+        }
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "cost": {
+        "question": "How much does it cost?",
+        "answer": "How much money are you willing to lose by not implementing best practices?"
+      },
+      "remoteWork": {
+        "question": "Do you work with remote teams?",
+        "answer": "Absolutely! As a digital nomad, I'm experienced in working with distributed teams across different time zones. I use collaborative tools and regular communication to ensure smooth project delivery regardless of location."
+      },
+      "frameworks": {
+        "question": "What frameworks do you specialize in?",
+        "answer": "I have extensive experience with React (5+ years), Angular (4+ years), and Vue (2+ years). However, my architectural expertise transcends specific frameworks, focusing on patterns and practices that can be applied across technologies."
+      },
+      "knowledgeTransfer": {
+        "question": "How do you handle knowledge transfer?",
+        "answer": "Knowledge transfer is built into my process. I provide comprehensive documentation, conduct training sessions, and offer post-project support to ensure your team fully understands the implemented architecture and can maintain it independently."
+      },
+      "approach": {
+        "question": "What makes your architectural approach different?",
+        "answer": "My approach combines Domain-Driven Design with Hexagonal Architecture to create systems that are both business-aligned and technically robust. I focus on creating clear boundaries between your core domain and external dependencies, making your codebase more maintainable and adaptable to change."
+      },
+      "existingCodebase": {
+        "question": "Can you help with an existing codebase?",
+        "answer": "Absolutely. I specialize in refactoring and improving existing codebases. I'll analyze your current architecture, identify pain points, and create a strategic plan to incrementally improve your system without disrupting ongoing development. This approach allows you to gradually adopt better practices while continuing to deliver business value."
+      },
+      "ongoingSupport": {
+        "question": "Do you offer ongoing support after project completion?",
+        "answer": "Yes, I offer flexible support options after the initial engagement. This can include code reviews, architecture guidance for new features, or regular check-ins to ensure your team is following the established patterns. My goal is to ensure long-term success, not just deliver a solution and walk away."
+      }
+    }
   },
   "caseStudies": {
     "title": "Case Studies",

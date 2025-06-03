@@ -6,7 +6,8 @@ import { getRandomString } from '@/core/utils/get-random-string'
 import { useInterval } from '@/core/hooks/use-interval'
 
 const CYCLES_PER_LETTER = 2
-const SHUFFLE_TIME = 50
+const BASE_SHUFFLE_TIME = 50
+const MIN_SHUFFLE_TIME = 5
 const DELAY_TIME = 1000
 
 interface Props {
@@ -16,6 +17,16 @@ interface Props {
 
 export const AccentText: FC<PropsWithChildren<Props>> = ({ children, onComplete, repeat = false }) => {
   const text = Children.toArray(children).join('')
+
+  const getDynamicShuffleTime = () => {
+    if (text.length <= 10) return BASE_SHUFFLE_TIME
+
+    const dynamicTime = Math.max(MIN_SHUFFLE_TIME, BASE_SHUFFLE_TIME - text.length / 2)
+
+    return Math.round(dynamicTime)
+  }
+
+  const shuffleTime = getDynamicShuffleTime()
 
   const [stateText, setStateText] = useState(text)
   const [position, setPosition] = useState(0)
@@ -62,7 +73,7 @@ export const AccentText: FC<PropsWithChildren<Props>> = ({ children, onComplete,
         }
       }
     },
-    stopInterval || delay ? null : SHUFFLE_TIME,
+    stopInterval || delay ? null : shuffleTime,
   )
 
   return (

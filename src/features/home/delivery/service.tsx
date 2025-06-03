@@ -8,11 +8,16 @@ export const Service: FC<PropsWithChildren<{ center: ReactNode; className?: stri
   className,
 }) => {
   return (
-    <div className={cn('grid p-6 gap-4', className)}>
-      <div className="[aspect-ratio:1] bg-background">
-        <Background>{center}</Background>
+    <div
+      className={cn(
+        'grid p-6 gap-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1',
+        className,
+      )}
+    >
+      <div className="[aspect-ratio:1] bg-background rounded-lg overflow-hidden">
+        <Background className="h-full flex items-center justify-center">{center}</Background>
       </div>
-      {children}
+      <div className="space-y-4">{children}</div>
     </div>
   )
 }

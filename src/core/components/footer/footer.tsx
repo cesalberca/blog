@@ -13,7 +13,7 @@ export const Footer: FC = () => {
   const locale = useLocale() as Locale
 
   return (
-    <footer className="py-12 md:py-16 bg-muted/20">
+    <footer className="mt-12 py-12 md:py-16 bg-muted/20">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           {/* Column 1: Logo and Info */}

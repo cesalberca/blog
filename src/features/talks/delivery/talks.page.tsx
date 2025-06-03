@@ -28,10 +28,10 @@ export const TalksPage: FC<{ locale: Locale }> = async ({ locale }) => {
                   alt=""
                   className="w-full h-auto"
                 />
-                <section className="p-m">
+                <section className="p-4">
                   <h4 className="mb-2">{talk.title}</h4>
                   {talk.categories.map(category => (
-                    <Badge key={category} className="mr-xxs">
+                    <Badge key={category} className="mr-1">
                       {category}
                     </Badge>
                   ))}

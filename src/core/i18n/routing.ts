@@ -13,6 +13,9 @@ export const routing = defineRouting({
     '/case-studies/halioooo-design-system-architecture-library': {
       es: '/casos-de-estudio/halioooo-sistema-de-diseno-biblioteca-de-arquitectura',
     },
+    '/services': {
+      es: '/servicios',
+    },
   },
 })
 

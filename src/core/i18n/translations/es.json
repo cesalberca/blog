@@ -69,7 +69,14 @@
       "training": "Formación",
       "trainingDescription": "Te ayudaré a perfeccionar las habilidades de tu equipo en **buenas prácticas**, **pruebas** y **arquitectura**.",
       "development": "Desarrollo de Software",
-      "developmentDescription": "Desarrollaré tu proyecto desde el **diseño**, pasando por el **desarrollo**, hasta el **despliegue**."
+      "developmentDescription": "Desarrollaré tu proyecto desde el **diseño**, pasando por el **desarrollo**, hasta el **despliegue**.",
+      "corporateTraining": "Formación Corporativa",
+      "corporateTrainingDescription": "Cursos de formación personalizados para tu empresa sobre arquitectura front-end, estrategias de pruebas, JavaScript/TypeScript moderno y mejores prácticas de frameworks.",
+      "architectureSpecialization": "Especialización en Arquitectura de Software",
+      "architectureSpecializationDescription": "Con más de 10 años de experiencia en desarrollo front-end, me especializo en crear arquitecturas de software robustas y mantenibles que escalan con las necesidades de tu negocio.",
+      "caseStudiesIntro": "Mis servicios se basan en experiencia del mundo real. Consulta estos casos de estudio para ver mi enfoque en acción:",
+      "readyToWork": "¿Listo para trabajar juntos?",
+      "readyToWorkDescription": "Contáctame para discutir cómo puedo ayudar a tu equipo a construir mejor software con sólidos principios de arquitectura."
     },
     "testimonials": {
       "title": "Testimonios",

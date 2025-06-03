@@ -49,7 +49,7 @@ const MoreLinks = () => {
       <NavLink type="menu" to={'/#projects'}>
         {t('home.projects.title')}
       </NavLink>
-      <NavLink type="menu" to={'/#services'}>
+      <NavLink type="menu" to={'/services'}>
         {t('home.services.title')}
       </NavLink>
       <NavLink type="menu" to={'/#testimonials'}>

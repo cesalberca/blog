@@ -57,6 +57,20 @@ export const HomePage: FC = () => {
         </div>
       </Section>
 
+      <Section title={t('home.services.title')} id="services">
+        <div className="flex flex-col gap-4">
+          <Services />
+          <div className="wrapper mt-4 text-center">
+            <a
+              href={'/services'}
+              className="inline-block px-6 py-3 bg-accent text-background font-bold rounded-md hover:bg-accent/90 transition-colors"
+            >
+              {t('home.services.readyToWork')}
+            </a>
+          </div>
+        </div>
+      </Section>
+
       <Section title={t('home.projects.title')} id="projects">
         <Projects />
       </Section>
@@ -79,10 +93,6 @@ export const HomePage: FC = () => {
             />
           </div>
         </div>
-      </Section>
-
-      <Section title={t('home.services.title')} id="services">
-        <Services />
       </Section>
 
       <Section title={t('home.technologies.title')} id="technologies">

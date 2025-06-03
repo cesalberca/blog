@@ -1,31 +1,109 @@
 import type { FC } from 'react'
 import { SocialMedia } from '@/core/components/social-media/social-media'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { Link } from '@/core/components/link/link'
 import { Datetime } from '@/core/datetime'
 import { Newsletter } from '@/core/components/newsletter/newsletter'
+import { CASE_STUDY_URLS } from '@/core/i18n/paths'
+import { Locale } from '@/core/i18n/locale'
 
 export const Footer: FC = () => {
   const t = useTranslations()
+  const locale = useLocale() as Locale
+
   return (
-    <footer className="py-6 md:py-14 flex flex-col items-center gap-6">
-      <div className="flex flex-col items-start space-y-4">
-        <div className="flex items-center space-x-2">
-          <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
-          <span className="text-lg">{t('home.title')}</span>
+    <footer className="py-12 md:py-16 bg-muted/20">
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+          {/* Column 1: Logo and Info */}
+          <div className="flex flex-col space-y-4">
+            <div className="flex items-center space-x-2">
+              <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
+              <span className="text-lg font-semibold">{t('home.title')}</span>
+            </div>
+            <p className="text-sm text-muted-foreground">{t('home.heroCaption')}</p>
+            <div className="flex items-center space-x-4 mt-4">
+              <SocialMedia />
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-base font-semibold mb-4">{t('common.sitemap')}</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/" type="invisible" className="text-sm hover:underline">
+                  {t('home.title')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" type="invisible" className="text-sm hover:underline">
+                  {t('blog.title')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" type="invisible" className="text-sm hover:underline">
+                  {t('home.services.title')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/#contact" type="invisible" className="text-sm hover:underline">
+                  {t('home.contact.title')}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: More Links */}
+          <div>
+            <h3 className="text-base font-semibold mb-4">{t('common.more')}</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/talks" type="invisible" className="text-sm hover:underline">
+                  {t('talks.title')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/experience" type="invisible" className="text-sm hover:underline">
+                  {t('experience.title')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/photography" type="invisible" className="text-sm hover:underline">
+                  {t('photography.title')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/links" type="invisible" className="text-sm hover:underline">
+                  {t('links.title')}
+                </Link>
+              </li>
+              <li>
+                <Link to={CASE_STUDY_URLS[locale].tabaiba} type="invisible" className="text-sm hover:underline">
+                  {t('caseStudies.tabaiba.title')}
+                </Link>
+              </li>
+              <li>
+                <Link to={CASE_STUDY_URLS[locale].halioooo} type="invisible" className="text-sm hover:underline">
+                  {t('caseStudies.useCases.title')}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Newsletter (spans 2 columns) */}
+          <div className="md:col-span-2 lg:col-span-2">
+            <Newsletter defaultExpanded={false} />
+          </div>
         </div>
-        <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-          {t('common.license', { date: Datetime.fromNow().year })}
-        </p>
-      </div>
-      <div className="flex flex-col items-end space-y-4">
-        <Link to="mailto:dev@cesalberca.com" type="invisible">
-          {t('common.email')}
-        </Link>
-      </div>
-      <div className="flex items-center justify-end space-x-4">
-        <SocialMedia />
+
+        {/* Bottom section with copyright and email */}
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
+          <p className="text-sm text-muted-foreground">{t('common.license', { date: Datetime.fromNow().year })}</p>
+          <Link to="mailto:dev@cesalberca.com" type="invisible" className="text-sm mt-4 md:mt-0">
+            {t('common.email')}
+          </Link>
+        </div>
       </div>
     </footer>
   )

@@ -12,6 +12,7 @@
     "logo": "Logo",
     "minutes": "minutes",
     "more": "More",
+    "sitemap": "Sitemap",
     "kofi": "Pay what you like",
     "kofiTooltip": "Your donation helps me create more free content and continue improving this blog",
     "notFound": {
@@ -46,7 +47,7 @@
       "freelancer": "Freelancer",
       "podcastHost": "Podcast Host"
     },
-    "heroCaption": "Passionate about <strong>learning</strong> and <strong>sharing</strong>.",
+    "heroCaption": "Helping You Build Scalable, AI-Ready Frontend Architecture",
     "whoAmI": "**Senior Front-end Architect** & **Software Crafter** from Spain with over **10 years of experience**. Freelancer _obsessed_ with **best practices**, **architecture** and **testing**.\n\nAs an [international speaker](https://www.cesalberca.com/talks) and Digital Nomad, I share my tech adventures around the world. Active in the [Codemotion](https://www.codemotion.com/) community as a committee member and [ambassador](https://community-en.codemotion.it/community/ambassador-program). Host of [Colivers Club Podcast](https://coliversclub.com/).",
     "projects": {
       "title": "Projects",

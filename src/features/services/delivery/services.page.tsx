@@ -3,24 +3,14 @@ import { getTranslations } from 'next-intl/server'
 import { Page } from '@/core/components/page/page'
 import { Locale } from '@/core/i18n/locale'
 import { Service } from '@/features/home/delivery/service'
-import {
-  ArrowRight,
-  Award,
-  BarChart,
-  CheckCircle,
-  Clock,
-  GraduationCap,
-  Laptop,
-  Signpost,
-  Users,
-  Zap,
-} from 'lucide-react'
+import { ArrowRight, Award, BarChart, CheckCircle, Clock, GraduationCap, Signpost, Users, Zap } from 'lucide-react'
 import { Markdown } from '@/core/components/markdown/markdown'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { CaseStudyCard } from '@/features/case-studies/delivery/case-study-card'
 import { CASE_STUDY_URLS } from '@/core/i18n/paths'
 import { Hero } from '@/core/components/hero/hero'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Testimonials } from '@/core/components/testimonials/testimonials'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -75,7 +65,7 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
       <section className="container mb-16">
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-3xl font-bold mb-6">
+            <h2 className="text-3xl font-bold mb-10">
               <AccentText>The Challenge</AccentText>
             </h2>
             <div className="flex-col space-y-10">
@@ -84,11 +74,8 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
                   <BarChart className="text-foreground" size={48} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-xl">Scaling Difficulties</h3>
-                  <p>
-                    Front-end codebases that become unmaintainable as they grow, slowing down development and increasing
-                    bugs
-                  </p>
+                  <h3 className="font-semibold text-xl mb-2">Scaling Difficulties</h3>
+                  <p>Codebases that become unmaintainable as they grow, slowing down development</p>
                 </div>
               </div>
               <div className="flex items-start gap-6">
@@ -96,10 +83,8 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
                   <Clock className="text-foreground" size={48} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-xl">Technical Debt</h3>
-                  <p>
-                    Inconsistent patterns and practices that accumulate over time, making changes increasingly difficult
-                  </p>
+                  <h3 className="font-semibold text-xl mb-2">Technical Debt</h3>
+                  <p>Inconsistent patterns and practices that accumulate over time, hindering future changes</p>
                 </div>
               </div>
               <div className="flex items-start gap-6">
@@ -107,14 +92,14 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
                   <Users className="text-foreground" size={48} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-xl">Team Alignment</h3>
-                  <p>Difficulty maintaining consistent approaches across growing development teams</p>
+                  <h3 className="font-semibold text-xl mb-2">Team Alignment</h3>
+                  <p>Difficulty maintaining consistent approaches and standards across growing development teams</p>
                 </div>
               </div>
             </div>
           </div>
           <div>
-            <h2 className="text-3xl font-bold mb-6">
+            <h2 className="text-3xl font-bold mb-10">
               <AccentText>My Approach</AccentText>
             </h2>
             <div className="flex-col space-y-10">
@@ -123,8 +108,8 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
                   <Zap className="text-foreground" size={48} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-xl">Architectural Excellence</h3>
-                  <p>Implementing proven patterns like DDD and Hexagonal Architecture that scale with your business</p>
+                  <h3 className="font-semibold text-xl mb-2">Architectural Excellence</h3>
+                  <p>Implementing proven architectural patterns that scale effectively with your business needs</p>
                 </div>
               </div>
               <div className="flex items-start gap-6">
@@ -132,8 +117,8 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
                   <Award className="text-foreground" size={48} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-xl">Best Practices</h3>
-                  <p>Leveraging 10+ years of experience to establish maintainable, testable code standards</p>
+                  <h3 className="font-semibold text-xl mb-2">Best Practices</h3>
+                  <p>Leveraging years of experience to establish maintainable and testable code standards</p>
                 </div>
               </div>
               <div className="flex items-start gap-6">
@@ -141,8 +126,8 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
                   <GraduationCap className="text-foreground" size={48} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-xl">Knowledge Transfer</h3>
-                  <p>Ensuring your team understands and can maintain the architectural principles long-term</p>
+                  <h3 className="font-semibold text-xl mb-2">Knowledge Transfer</h3>
+                  <p>Ensuring your team understands and can maintain the architectural principles effectively</p>
                 </div>
               </div>
             </div>
@@ -150,71 +135,87 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
         </div>
       </section>
 
-      <section className="container bg-accent/10 py-16 mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">
-          <AccentText>{t('home.services.architectureSpecialization')}</AccentText>
-        </h2>
-        <div className="mb-8 max-w-3xl mx-auto text-center">
-          <Markdown value={t('home.services.architectureSpecializationDescription')} />
-        </div>
+      <section className="bg-accent/10 py-16 mb-16">
+        <div className="container">
+          <h2 className="text-3xl font-bold mb-8 text-center">
+            <AccentText>{t('home.services.architectureSpecialization')}</AccentText>
+          </h2>
+          <div className="mb-8 max-w-3xl mx-auto text-center">
+            <Markdown value={t('home.services.architectureSpecializationDescription')} />
+          </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mt-12">
-          <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">Domain-Driven Design</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>
-                Structuring complex business domains into maintainable, scalable code that accurately reflects your
-                business needs
-              </p>
-            </CardContent>
-          </Card>
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">Domain-Driven Design</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>
+                  Structuring complex business domains into maintainable code that accurately reflects your business
+                  needs
+                </p>
+              </CardContent>
+            </Card>
 
-          <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">Hexagonal Architecture</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>Creating adaptable systems with clear boundaries between business logic and external dependencies</p>
-            </CardContent>
-          </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">Hexagonal Architecture</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>
+                  Creating adaptable systems with clear boundaries between core business logic and external dependencies
+                </p>
+              </CardContent>
+            </Card>
 
-          <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">Modular Front-end</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>Building component-based systems that enable parallel development and easier maintenance</p>
-            </CardContent>
-          </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">Modular Front-end</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>
+                  Building component-based systems that enable parallel development, better code reuse, and easier
+                  maintenance
+                </p>
+              </CardContent>
+            </Card>
 
-          <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">Design Systems</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>Developing scalable component libraries that ensure consistency across your applications</p>
-            </CardContent>
-          </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">Design Systems</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>
+                  Developing scalable component libraries that ensure visual and functional consistency across your
+                  applications
+                </p>
+              </CardContent>
+            </Card>
 
-          <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">Performance Optimization</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>Implementing best practices to ensure your applications are fast, responsive, and efficient</p>
-            </CardContent>
-          </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">Performance Optimization</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>
+                  Implementing proven best practices to ensure your applications are fast, responsive, and
+                  resource-efficient
+                </p>
+              </CardContent>
+            </Card>
 
-          <Card className="bg-background border-accent/20 shadow-lg hover:shadow-xl transition-shadow">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">Testing Strategies</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>Creating comprehensive testing approaches that catch issues early and ensure code quality</p>
-            </CardContent>
-          </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">Testing Strategies</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>
+                  Creating comprehensive testing approaches that catch issues early, prevent regressions, and ensure
+                  code quality
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
@@ -335,68 +336,98 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
           <AccentText>Frequently Asked Questions</AccentText>
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <Card className="bg-background border-accent/20">
-            <CardHeader>
-              <CardTitle>How long does a typical project take?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>
-                Project timelines vary based on scope and complexity. Consultations typically range from 2-4 weeks,
-                while full development projects may take 3-6 months. I&#39;ll provide a detailed timeline during our
-                initial consultation.
-              </p>
-            </CardContent>
-          </Card>
+        <div className="max-w-4xl mx-auto">
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1" className="border border-accent/20 rounded-md mb-4 px-4">
+              <AccordionTrigger className="text-lg font-medium">How much does it cost?</AccordionTrigger>
+              <AccordionContent>
+                <p>How much money are you willing to lose by not implementing best practices?</p>
+              </AccordionContent>
+            </AccordionItem>
 
-          <Card className="bg-background border-accent/20">
-            <CardHeader>
-              <CardTitle>Do you work with remote teams?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>
-                Absolutely! As a digital nomad, I&#39;m experienced in working with distributed teams across different
-                time zones. I use collaborative tools and regular communication to ensure smooth project delivery
-                regardless of location.
-              </p>
-            </CardContent>
-          </Card>
+            <AccordionItem value="item-2" className="border border-accent/20 rounded-md mb-4 px-4">
+              <AccordionTrigger className="text-lg font-medium">Do you work with remote teams?</AccordionTrigger>
+              <AccordionContent>
+                <p>
+                  Absolutely! As a digital nomad, I&#39;m experienced in working with distributed teams across different
+                  time zones. I use collaborative tools and regular communication to ensure smooth project delivery
+                  regardless of location.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
 
-          <Card className="bg-background border-accent/20">
-            <CardHeader>
-              <CardTitle>What frameworks do you specialize in?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>
-                I have extensive experience with React (5+ years), Angular (4+ years), and Vue (2+ years). However, my
-                architectural expertise transcends specific frameworks, focusing on patterns and practices that can be
-                applied across technologies.
-              </p>
-            </CardContent>
-          </Card>
+            <AccordionItem value="item-3" className="border border-accent/20 rounded-md mb-4 px-4">
+              <AccordionTrigger className="text-lg font-medium">What frameworks do you specialize in?</AccordionTrigger>
+              <AccordionContent>
+                <p>
+                  I have extensive experience with React (5+ years), Angular (4+ years), and Vue (2+ years). However, my
+                  architectural expertise transcends specific frameworks, focusing on patterns and practices that can be
+                  applied across technologies.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
 
-          <Card className="bg-background border-accent/20">
-            <CardHeader>
-              <CardTitle>How do you handle knowledge transfer?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>
-                Knowledge transfer is built into my process. I provide comprehensive documentation, conduct training
-                sessions, and offer post-project support to ensure your team fully understands the implemented
-                architecture and can maintain it independently.
-              </p>
-            </CardContent>
-          </Card>
+            <AccordionItem value="item-4" className="border border-accent/20 rounded-md mb-4 px-4">
+              <AccordionTrigger className="text-lg font-medium">How do you handle knowledge transfer?</AccordionTrigger>
+              <AccordionContent>
+                <p>
+                  Knowledge transfer is built into my process. I provide comprehensive documentation, conduct training
+                  sessions, and offer post-project support to ensure your team fully understands the implemented
+                  architecture and can maintain it independently.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-5" className="border border-accent/20 rounded-md mb-4 px-4">
+              <AccordionTrigger className="text-lg font-medium">
+                What makes your architectural approach different?
+              </AccordionTrigger>
+              <AccordionContent>
+                <p>
+                  My approach combines Domain-Driven Design with Hexagonal Architecture to create systems that are both
+                  business-aligned and technically robust. I focus on creating clear boundaries between your core domain
+                  and external dependencies, making your codebase more maintainable and adaptable to change.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-6" className="border border-accent/20 rounded-md mb-4 px-4">
+              <AccordionTrigger className="text-lg font-medium">
+                Can you help with an existing codebase?
+              </AccordionTrigger>
+              <AccordionContent>
+                <p>
+                  Absolutely. I specialize in refactoring and improving existing codebases. I&#39;ll analyze your
+                  current architecture, identify pain points, and create a strategic plan to incrementally improve your
+                  system without disrupting ongoing development. This approach allows you to gradually adopt better
+                  practices while continuing to deliver business value.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-7" className="border border-accent/20 rounded-md mb-4 px-4">
+              <AccordionTrigger className="text-lg font-medium">
+                Do you offer ongoing support after project completion?
+              </AccordionTrigger>
+              <AccordionContent>
+                <p>
+                  Yes, I offer flexible support options after the initial engagement. This can include code reviews,
+                  architecture guidance for new features, or regular check-ins to ensure your team is following the
+                  established patterns. My goal is to ensure long-term success, not just deliver a solution and walk
+                  away.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-accent text-background py-16 mb-16">
+      <section className="py-16 mb-16 bg-accent/10">
         <div className="wrapper text-center">
           <h2 className="text-3xl font-bold mb-4">{t('home.services.readyToWork')}</h2>
           <p className="mb-8 max-w-2xl mx-auto">{t('home.services.readyToWorkDescription')}</p>
-          <Button size="lg" variant="outline" className="bg-background text-accent hover:bg-background/90">
-            <Link to="/#contact" className="flex items-center">
+          <Button size="lg" variant="outline" className="bg-background hover:bg-background/90">
+            <Link to="/#contact" type="invisible" className="flex items-center">
               {t('home.contact.title')} <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

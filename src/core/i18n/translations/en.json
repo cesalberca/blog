@@ -49,6 +49,18 @@
     },
     "heroCaption": "Helping You Build Scalable, AI-Ready Frontend Architecture",
     "whoAmI": "**Senior Front-end Architect** & **Software Crafter** from Spain with over **10 years of experience**. Freelancer _obsessed_ with **best practices**, **architecture** and **testing**.\n\nAs an [international speaker](https://www.cesalberca.com/talks) and Digital Nomad, I share my tech adventures around the world. Active in the [Codemotion](https://www.codemotion.com/) community as a committee member and [ambassador](https://community-en.codemotion.it/community/ambassador-program). Host of [Colivers Club Podcast](https://coliversclub.com/).",
+    "services": {
+      "title": "Services",
+      "description": "I have over **10 years** of experience in **Front-end Development**. I've deployed to production full-fledged enterprise web applications using **React**, **Angular** and **Vue**.",
+      "consultancy": "Consulting",
+      "consultancyDescription": "I will guide you in **architecture** and implementing **best practices**.",
+      "training": "Training",
+      "trainingDescription": "I will help you refine your team's skills in **best practices**, **testing** and **architecture**.",
+      "development": "Software Development",
+      "developmentDescription": "I will develop your project from **design** through **development** to **deployment**.",
+      "readyToWork": "Want to explore how I can help you?",
+      "readyToWorkDescription": "Contact me to discuss how I can help your team build better software with solid architecture principles."
+    },
     "projects": {
       "title": "Projects",
       "description": "I love to create projects to learn new technologies and to share knowledge. Here are some of the projects I've created.",
@@ -61,156 +73,6 @@
       "archimedesJs": "ArchimedesJS",
       "archimedesJsDescription": "A **TypeScript** library I created that helps you create robust applications by leveraging use cases. It helps you create **modular architectures** following **hexagonal** and **domain-driven design** principles.",
       "moreProjects": "You can also [check out my Github](https://github.com/cesalberca/), where I have more than 70 open source projects."
-    },
-    "services": {
-      "title": "Services",
-      "description": "I have over **10 years** of experience in **Front-end Development**. I've deployed to production full-fledged enterprise web applications using **React**, **Angular** and **Vue**.",
-      "consultancy": "Consulting Services",
-      "consultancyDescription": "I will guide you in **architecture** and implementing **best practices**.",
-      "training": "Training Programs",
-      "trainingDescription": "I will help you refine your team's skills in **best practices**, **testing** and **architecture**.",
-      "development": "Software Development",
-      "developmentDescription": "I will develop your project from **design** through **development** to **deployment**.",
-      "corporateTraining": "Corporate Training",
-      "corporateTrainingDescription": "Customized training courses for your company on front-end architecture, testing strategies, modern JavaScript/TypeScript, and framework best practices.",
-      "architectureSpecialization": "Software Architecture Specialization",
-      "architectureSpecializationDescription": "With over 10 years of experience in front-end development, I specialize in creating robust, maintainable software architectures that scale with your business needs.",
-      "caseStudiesIntro": "My services are based on real-world experience. Check out these case studies to see my approach in action:",
-      "readyToWork": "Want to explore how I can help you?",
-      "readyToWorkDescription": "Contact me to discuss how I can help your team build better software with solid architecture principles.",
-      "faq": {
-        "title": "Frequently Asked Questions",
-        "projectTime": {
-          "question": "How long does a typical project take?",
-          "answer": "Project timelines vary based on scope and complexity. Consultations typically range from 2-4 weeks, while full development projects may take 3-6 months. I'll provide a detailed timeline during our initial consultation."
-        },
-        "remoteWork": {
-          "question": "Do you work with remote teams?",
-          "answer": "Absolutely! As a digital nomad, I'm experienced in working with distributed teams across different time zones. I use collaborative tools and regular communication to ensure smooth project delivery regardless of location."
-        },
-        "frameworks": {
-          "question": "What frameworks do you specialize in?",
-          "answer": "I have extensive experience with React (5+ years), Angular (4+ years), and Vue (2+ years). However, my architectural expertise transcends specific frameworks, focusing on patterns and practices that can be applied across technologies."
-        },
-        "knowledgeTransfer": {
-          "question": "How do you handle knowledge transfer?",
-          "answer": "Knowledge transfer is built into my process. I provide comprehensive documentation, conduct training sessions, and offer post-project support to ensure your team fully understands the implemented architecture and can maintain it independently."
-        }
-      },
-      "process": {
-        "title": "My Working Process",
-        "discovery": {
-          "title": "Discovery",
-          "description": "Understanding your business needs, technical challenges, and team dynamics"
-        },
-        "strategy": {
-          "title": "Strategy",
-          "description": "Developing a tailored approach to address your specific architectural challenges"
-        },
-        "implementation": {
-          "title": "Implementation",
-          "description": "Executing the plan with regular check-ins and adjustments as needed"
-        },
-        "knowledgeTransfer": {
-          "title": "Knowledge Transfer",
-          "description": "Ensuring your team can maintain and build upon the implemented solutions"
-        }
-      },
-      "challenges": {
-        "title": "The Challenge",
-        "scaling": {
-          "title": "Scaling Difficulties",
-          "description": "Front-end codebases that become unmaintainable as they grow, slowing down development and increasing bugs"
-        },
-        "technicalDebt": {
-          "title": "Technical Debt",
-          "description": "Inconsistent patterns and practices that accumulate over time, making changes increasingly difficult"
-        },
-        "teamAlignment": {
-          "title": "Team Alignment",
-          "description": "Difficulty maintaining consistent approaches across growing development teams"
-        }
-      },
-      "approach": {
-        "title": "My Approach",
-        "architecture": {
-          "title": "Architectural Excellence",
-          "description": "Implementing proven patterns like DDD and Hexagonal Architecture that scale with your business"
-        },
-        "bestPractices": {
-          "title": "Best Practices",
-          "description": "Leveraging 10+ years of experience to establish maintainable, testable code standards"
-        },
-        "knowledgeTransfer": {
-          "title": "Knowledge Transfer",
-          "description": "Ensuring your team understands and can maintain the architectural principles long-term"
-        }
-      },
-      "specializations": {
-        "ddd": {
-          "title": "Domain-Driven Design",
-          "description": "Structuring complex business domains into maintainable, scalable code that accurately reflects your business needs"
-        },
-        "hexagonal": {
-          "title": "Hexagonal Architecture",
-          "description": "Creating adaptable systems with clear boundaries between business logic and external dependencies"
-        },
-        "modular": {
-          "title": "Modular Front-end",
-          "description": "Building component-based systems that enable parallel development and easier maintenance"
-        },
-        "designSystems": {
-          "title": "Design Systems",
-          "description": "Developing scalable component libraries that ensure consistency across your applications"
-        },
-        "performance": {
-          "title": "Performance Optimization",
-          "description": "Implementing best practices to ensure your applications are fast, responsive, and efficient"
-        },
-        "testing": {
-          "title": "Testing Strategies",
-          "description": "Creating comprehensive testing approaches that catch issues early and ensure code quality"
-        }
-      },
-      "serviceDetails": {
-        "consultancy": {
-          "benefits": [
-            "Architecture assessment and recommendations",
-            "Code quality and best practices review",
-            "Performance optimization strategies"
-          ]
-        },
-        "training": {
-          "benefits": [
-            "Hands-on workshops for your team",
-            "Customized curriculum based on needs",
-            "Ongoing mentorship options"
-          ]
-        },
-        "development": {
-          "benefits": [
-            "Full-stack development with modern frameworks",
-            "Scalable architecture implementation",
-            "Comprehensive testing and documentation"
-          ]
-        },
-        "corporateTraining": {
-          "benefits": [
-            "Tailored training programs for companies",
-            "Framework-specific deep dives",
-            "Architecture and testing best practices"
-          ]
-        }
-      },
-      "hero": {
-        "badge": "Front-end Architecture Expert",
-        "title": "Transform Your Front-end Development with Expert Architecture Solutions",
-        "subtitle": "Elevate your web applications with scalable, maintainable architecture from a specialist with over 10 years of experience",
-        "cta": {
-          "primary": "Get Started",
-          "secondary": "Explore Services"
-        }
-      }
     },
     "testimonials": {
       "title": "Testimonials",
@@ -358,6 +220,71 @@
   },
   "services": {
     "title": "Services",
+    "description": "I have over **10 years** of experience in **Front-end Development**. I've deployed to production full-fledged enterprise web applications using **React**, **Angular** and **Vue**.",
+    "types": {
+      "consultancy": {
+        "title": "Consulting Services",
+        "description": "I will guide you in **architecture** and implementing **best practices**.",
+        "features": {
+          "architectureAssessment": "Architecture assessment",
+          "codeQuality": "Code quality and best practices review",
+          "performanceOptimization": "Performance optimization strategies"
+        }
+      },
+      "training": {
+        "title": "Training Programs",
+        "description": "I will help you refine your team's skills in **best practices**, **testing** and **architecture**.",
+        "features": {
+          "workshops": "Hands-on workshops for your team",
+          "customizedCurriculum": "Customized curriculum based on needs",
+          "mentorship": "Ongoing mentorship options"
+        }
+      },
+      "development": {
+        "title": "Software Development",
+        "description": "I will develop your project from **design** through **development** to **deployment**.",
+        "features": {
+          "fullStack": "Full-stack development",
+          "scalableArchitecture": "Scalable architecture implementation",
+          "testing": "Best practices"
+        }
+      },
+      "corporateTraining": {
+        "title": "Corporate Training",
+        "description": "Customized training courses for your company on front-end architecture, testing strategies, modern JavaScript/TypeScript, and framework best practices."
+      },
+      "architectureSpecialization": {
+        "title": "Software Architecture Specialization",
+        "description": "With over 10 years of experience in front-end development, I specialize in creating robust, maintainable software architectures that scale with your business needs."
+      }
+    },
+    "servicesOffered": {
+      "title": "Services Offered",
+      "consultancy": {
+        "features": {
+          "architectureAssessment": "Architecture assessment",
+          "codeQuality": "Code quality and best practices review",
+          "performanceOptimization": "Performance optimization strategies"
+        }
+      },
+      "training": {
+        "features": {
+          "workshops": "Hands-on workshops for your team",
+          "customizedCurriculum": "Customized curriculum based on needs",
+          "mentorship": "Ongoing mentorship options"
+        }
+      },
+      "development": {
+        "features": {
+          "fullStack": "Full-stack development",
+          "scalableArchitecture": "Scalable architecture implementation",
+          "testing": "Best practices"
+        }
+      }
+    },
+    "caseStudiesIntro": "My services are based on real-world experience. Check out these case studies to see my approach in action:",
+    "readyToWork": "Want to explore how I can help you?",
+    "readyToWorkDescription": "Contact me to discuss how I can help your team build better software with solid architecture principles.",
     "hero": {
       "badge": "Front-end Architecture Expert",
       "title": "Transform Your Front-end Development with Expert Architecture Solutions",
@@ -421,28 +348,19 @@
         "description": "Creating comprehensive testing approaches that catch issues early, prevent regressions, and ensure code quality"
       }
     },
-    "servicesOffered": {
-      "title": "Services Offered",
-      "consultancy": {
-        "features": {
-          "architectureAssessment": "Architecture assessment and recommendations",
-          "codeQuality": "Code quality and best practices review",
-          "performanceOptimization": "Performance optimization strategies"
-        }
+    "process": {
+      "title": "My Working Process",
+      "discovery": {
+        "title": "Discovery",
+        "description": "Understanding your business needs, technical challenges, and team dynamics"
       },
-      "training": {
-        "features": {
-          "workshops": "Hands-on workshops for your team",
-          "customizedCurriculum": "Customized curriculum based on needs",
-          "mentorship": "Ongoing mentorship options"
-        }
+      "strategy": {
+        "title": "Strategy",
+        "description": "Developing a tailored approach to address your specific architectural challenges"
       },
-      "development": {
-        "features": {
-          "fullStack": "Full-stack development with modern frameworks",
-          "scalableArchitecture": "Scalable architecture implementation",
-          "testing": "Best practices"
-        }
+      "implementation": {
+        "title": "Implementation",
+        "description": "Executing the plan with regular check-ins and adjustments as needed"
       }
     },
     "faq": {
@@ -474,6 +392,10 @@
       "ongoingSupport": {
         "question": "Do you offer ongoing support after project completion?",
         "answer": "Yes, I offer flexible support options after the initial engagement. This can include code reviews, architecture guidance for new features, or regular check-ins to ensure your team is following the established patterns. My goal is to ensure long-term success, not just deliver a solution and walk away."
+      },
+      "projectTime": {
+        "question": "How long does a typical project take?",
+        "answer": "Project timelines vary based on scope and complexity. Consultations typically range from 2-4 weeks, while full development projects may take 3-6 months. I'll provide a detailed timeline during our initial consultation."
       }
     }
   },

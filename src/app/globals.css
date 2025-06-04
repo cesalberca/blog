@@ -188,7 +188,7 @@ html {
 }
 
 .bleed-width-section {
-  @apply md:max-w-screen-xl md:m-auto;
+  @apply md:max-w-screen-xl md:m-auto p-4;
 }
 
 @utility container {

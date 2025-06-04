@@ -1,4 +1,5 @@
 import { CaseStudyLayout } from '../case-study-layout'
+import { CTA } from '@/core/components/cta/cta'
 
 export const metadata = {
   title: 'Case Study: Tabaiba',
@@ -7,6 +8,14 @@ export const metadata = {
   image: 'tabaiba.jpg',
   summary: 'A mobile application that offers three carefully selected new people to meet every Friday, focusing on authentic and intentional social connections.',
 }
+
+## Summary
+
+**Problem**: Tabaiba needed to build a mobile application with a complex onboarding flow that would collect essential user information without being overwhelming, while ensuring maintainability and flexibility for future iterations.
+
+**Solution**: Implemented a Domain-Driven Design approach with a feature-based architecture, using design patterns like Template Method, Domain Model, Command, Observer, and Composite to create a clean, maintainable codebase.
+
+**Result**: Delivered a well-crafted solution with a flexible and maintainable architecture that provides a natural and engaging user experience.
 
 ## The Story Behind Tabaiba
 
@@ -341,6 +350,13 @@ export const NameStep: FC = () => {
 };
 ```
 
+<CTA
+  title="Interested in implementing these design patterns in your project?"
+  description="Let's discuss how these architectural approaches can help solve your specific mobile app development challenges."
+  buttonText="Book a call with me"
+  buttonLink="https://cesalberca.com/chat"
+/>
+
 ### Feature Implementation
 
 Each feature follows a layered architecture that provides several benefits:
@@ -376,6 +392,14 @@ What emerged was more than just a mobile application—it was a **well-crafted**
 ## Conclusion
 
 [Tabaiba](https://tabaiba.me) represents more than just another mobile application—it's a testament to the power of **clean architecture**, **thoughtful design**, and **user-centered development**. It's about creating something that not only works well but feels **right** to use. I'm very happy to have been able to collaborate in developing part of this application and want to thank [Gorka Mañana](https://www.linkedin.com/in/gorkamagana/) for the opportunity.
+
+<CTA
+  title="Need help with your mobile app architecture?"
+  description="Let's discuss how Domain-Driven Design and clean architecture can help you build a maintainable and scalable mobile application."
+  buttonText="Book a call with me"
+  buttonLink="https://cesalberca.com/chat"
+  className="my-12"
+/>
 
 export default function Page({ children }) {
   return <CaseStudyLayout slug="tabaiba-mobile-app-ddd-architecture">{children}</CaseStudyLayout>

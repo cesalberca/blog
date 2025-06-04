@@ -1,4 +1,5 @@
 import { CaseStudyLayout } from '../case-study-layout'
+import { CTA } from '@/core/components/cta/cta'
 
 export const metadata = {
   title: 'Caso de Estudio: Tabaiba',
@@ -7,6 +8,14 @@ export const metadata = {
   image: 'tabaiba.jpg',
   summary: 'Una aplicación móvil que ofrece tres personas nuevas a conocer cuidadosamente seleccionadas cada viernes, centrándose en conexiones sociales auténticas e intencionales.',
 }
+
+## Resumen
+
+**Problema**: Tabaiba necesitaba construir una aplicación móvil con un flujo de onboarding complejo que recopilara información esencial del usuario sin resultar abrumador, mientras aseguraba la mantenibilidad y flexibilidad para futuras iteraciones.
+
+**Solución**: Implementamos un enfoque de Domain-Driven Design con una arquitectura basada en features, utilizando patrones de diseño como Template Method, Domain Model, Command, Observer y Composite para crear un código base limpio y mantenible.
+
+**Resultado**: Entregamos una solución bien elaborada con una arquitectura flexible y mantenible que proporciona una experiencia de usuario natural y atractiva.
 
 ## La Historia Detrás de Tabaiba
 
@@ -341,6 +350,13 @@ export const NameStep: FC = () => {
 };
 ```
 
+<CTA
+  title="¿Interesado en implementar estos patrones de diseño en tu proyecto?"
+  description="Hablemos sobre cómo estos enfoques arquitectónicos pueden ayudar a resolver tus desafíos específicos de desarrollo de aplicaciones móviles."
+  buttonText="Agenda una llamada conmigo"
+  buttonLink="https://cesalberca.com/chat"
+/>
+
 ### Implementación de Features
 
 Cada característica sigue una arquitectura en capas que proporciona varios beneficios:
@@ -376,6 +392,14 @@ Lo que emergió fue más que solo una aplicación móvil—fue una solución **b
 ## Conclusión
 
 [Tabaiba](https://tabaiba.me) representa más que solo otra aplicación móvil—es un testimonio del poder de la **arquitectura limpia**, el **diseño reflexivo** y el **desarrollo centrado en el usuario**. Se trata de crear algo que no solo funcione bien sino que se sienta **correcto** al usar. Estoy muy contento de haber podido colaborar desarrollando parte de esta aplicación y quiero agradecer a [Gorka Mañana](https://www.linkedin.com/in/gorkamagana/) por la oportunidad.
+
+<CTA
+  title="¿Necesitas ayuda con la arquitectura de tu aplicación móvil?"
+  description="Hablemos sobre cómo Domain-Driven Design y la arquitectura limpia pueden ayudarte a construir una aplicación móvil mantenible y escalable."
+  buttonText="Agenda una llamada conmigo"
+  buttonLink="https://cesalberca.com/chat"
+  className="my-12"
+/>
 
 export default function Page({ children }) {
   return <CaseStudyLayout slug="tabaiba-mobile-app-ddd-architecture">{children}</CaseStudyLayout>

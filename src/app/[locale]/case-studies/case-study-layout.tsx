@@ -1,10 +1,9 @@
 import { Page } from '@/core/components/page/page'
-import type { FC, PropsWithChildren, ReactNode } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 import { Background } from '@/core/components/background/background'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { getLocale } from 'next-intl/server'
 import { CaseStudyMetadata } from '../../../features/case-studies/domain/case-study'
-import { WithKoFiButton } from '@/core/components/ko-fi-button/with-ko-fi-button'
 
 export const CaseStudyLayout: FC<PropsWithChildren<{ slug: string }>> = async ({ children, slug }) => {
   const locale = await getLocale()

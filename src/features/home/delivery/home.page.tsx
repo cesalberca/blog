@@ -96,7 +96,7 @@ export const HomePage: FC<{ latestPost: PostMetadata }> = ({ latestPost }) => {
           <div className="wrapper">
             <p className="mb-4 text-lg">{t('caseStudies.description')}</p>
           </div>
-          <div className="bleed-width-section grid md:grid-cols-3 gap-2">
+          <div className="bleed-width-section grid md:grid-cols-2 gap-2">
             <CaseStudyCard
               title={t('caseStudies.tabaiba.title')}
               description={t('caseStudies.tabaiba.description')}

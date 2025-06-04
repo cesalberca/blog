@@ -100,7 +100,7 @@ export const Footer: FC = () => {
         {/* Bottom section with copyright and email */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">{t('common.license', { date: Datetime.fromNow().year })}</p>
-          <Link to="mailto:dev@cesalberca.com" type="invisible" className="text-sm mt-4 md:mt-0">
+          <Link to="mailto:cesar@cesalberca.com" type="invisible" className="text-sm mt-4 md:mt-0">
             {t('common.email')}
           </Link>
         </div>

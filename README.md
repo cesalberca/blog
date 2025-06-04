@@ -117,6 +117,6 @@ Contributions are welcome! Please read the contributing guidelines before submit
 ## 📫 Contact
 
 - Website: [cesalberca.com](https://cesalberca.com)
-- Email: dev@cesalberca.com
+- Email: cesar@cesalberca.com
 - Twitter: [@cesalberca](https://twitter.com/cesalberca)
 - LinkedIn: [César Alberca](https://linkedin.com/in/cesalberca)

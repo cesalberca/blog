@@ -67,7 +67,6 @@ Testing
 
 - Write unit tests using Vitest.
 - Implement integration tests for critical user flows using Playwright.
-- Use Mock Service Worker (MSW) for API mocking in tests.
 - Write test cases for both success and failure scenarios.
 
 Security

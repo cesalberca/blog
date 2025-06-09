@@ -15,7 +15,7 @@ export const CategoryPage: FC<{ category: Category; locale: Locale }> = async ({
   }
 
   const translatedCategories = await getTranslatedCategories(locale)
-  const translatedCategory = translatedCategories.find(c => c.key === category)?.translation || category
+  const translatedCategory = translatedCategories.find(c => c.key === category)?.translation ?? category
 
   const posts = await getPostsByCategory({ category, locale })
 

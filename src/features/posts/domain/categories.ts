@@ -2,6 +2,7 @@ import { Locale } from '@/core/i18n/locale'
 import { getTranslations } from 'next-intl/server'
 
 export const categoryKeys = [
+  'ai',
   'angular',
   'react',
   'testing',

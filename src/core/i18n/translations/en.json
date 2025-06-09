@@ -30,6 +30,7 @@
     "title": "Blog",
     "articleDuration": "{minutes} minutes",
     "categories": {
+      "ai": "AI",
       "angular": "Angular",
       "react": "React",
       "testing": "Testing",

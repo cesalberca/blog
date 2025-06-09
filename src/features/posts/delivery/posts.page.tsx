@@ -5,6 +5,7 @@ import { getTranslations } from 'next-intl/server'
 import { PostExcerpt } from '@/features/posts/delivery/post-excerpt'
 import { Masonry } from '@/core/components/masonry/masonry'
 import { Locale } from '@/core/i18n/locale'
+import { CategoryCloud } from '@/features/posts/delivery/category-cloud'
 
 export const BlogPostsPage: FC<{ locale: Locale }> = async ({ locale }) => {
   const allBlogs = await getPosts({ locale })
@@ -12,7 +13,8 @@ export const BlogPostsPage: FC<{ locale: Locale }> = async ({ locale }) => {
 
   return (
     <Page>
-      <h1 className="wrapper mb-8">{t('blog.title')}</h1>
+      <h1 className="wrapper mb-4">{t('blog.title')}</h1>
+      <CategoryCloud />
       <Masonry>
         {allBlogs
           .sort((a, b) => {

@@ -4,6 +4,23 @@ import { getSlugs } from '@/lib/get-slugs'
 import { Locale } from '@/core/i18n/locale'
 import { existsSync } from 'node:fs'
 
+export async function getPost({ slug, locale }: { slug: string; locale: Locale }): Promise<PostMetadata | null> {
+  const filePath = `./src/app/[locale]/blog/(posts)/${slug}/${locale}.mdx`
+  const fileExists = existsSync(filePath)
+
+  if (!fileExists) {
+    return null
+  }
+
+  try {
+    const importPath = `./app/[locale]/blog/(posts)/${slug}/${locale}.mdx`
+    const { metadata } = await import(importPath)
+    return metadata
+  } catch (error) {
+    return null
+  }
+}
+
 export async function getPosts({ locale }: { locale: Locale }): Promise<PostMetadata[]> {
   const slugs = await getSlugs(`./src/app/[locale]/blog/(posts)`)
 

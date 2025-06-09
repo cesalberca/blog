@@ -18,12 +18,12 @@ export const NotFound: FC = () => {
         <div className="mb-4">
           <RichText>{tags => t.rich('common.notFound.caption', tags)}</RichText>
         </div>
-        <Link type="invisible" to="/">
-          <Button className="mb-4">
+        <Button className="mb-4" asChild>
+          <Link type="invisible" to="/">
             <ArrowLeft />
             {t('common.notFound.back')}
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </div>
     </Background>
   )

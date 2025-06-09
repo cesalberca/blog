@@ -16,16 +16,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/core/components/link/link'
 import { OpenToWork } from '@/core/components/open-to-work/open-to-work'
-
-const Title: FC<{
-  value: string
-  icon: ReactNode
-}> = ({ value, icon }) => (
-  <div className="flex flex-col items-center justify-center">
-    {icon}
-    <h3 className="break-words">{value}</h3>
-  </div>
-)
+import { Services } from '@/features/home/delivery/services'
 
 export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
   const t = await getTranslations()
@@ -44,18 +35,6 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
             <AccentText>{t('services.hero.title')}</AccentText>
           </h1>
           <p className="text-xl mb-8">{t('services.hero.subtitle')}</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg">
-              <Link type="invisible" to="/#contact" className="flex items-center">
-                {t('services.hero.getStarted')} <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="lg">
-              <a href="#services" className="flex items-center">
-                {t('services.hero.exploreServices')}
-              </a>
-            </Button>
-          </div>
         </div>
       </Hero>
 
@@ -216,79 +195,7 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
           <AccentText>{t('services.servicesOffered.title')}</AccentText>
         </h2>
 
-        <div className="bleed-width-section grid md:grid-cols-1 lg:grid-cols-3 gap-6">
-          <Service
-            className="items-end bg-background shadow-lg"
-            center={
-              <Title value={t('home.services.consultancy')} icon={<Signpost size={72} className="text-foreground" />} />
-            }
-          >
-            <Markdown value={t('home.services.consultancyDescription')}></Markdown>
-            <ul className="mt-4 space-y-2">
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-accent shrink-0 mt-1" size={16} />
-                <span>{t('services.servicesOffered.consultancy.features.architectureAssessment')}</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-accent shrink-0 mt-1" size={16} />
-                <span>{t('services.servicesOffered.consultancy.features.codeQuality')}</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-accent shrink-0 mt-1" size={16} />
-                <span>{t('services.servicesOffered.consultancy.features.performanceOptimization')}</span>
-              </li>
-            </ul>
-          </Service>
-
-          <Service
-            className="items-end bg-background shadow-lg"
-            center={
-              <Title
-                value={t('home.services.training')}
-                icon={<GraduationCap size={72} className="text-foreground" />}
-              />
-            }
-          >
-            <Markdown value={t('home.services.trainingDescription')}></Markdown>
-            <ul className="mt-4 space-y-2">
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-accent shrink-0 mt-1" size={16} />
-                <span>{t('services.servicesOffered.training.features.workshops')}</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-accent shrink-0 mt-1" size={16} />
-                <span>{t('services.servicesOffered.training.features.customizedCurriculum')}</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-accent shrink-0 mt-1" size={16} />
-                <span>{t('services.servicesOffered.training.features.mentorship')}</span>
-              </li>
-            </ul>
-          </Service>
-
-          <Service
-            className="items-end bg-background shadow-lg"
-            center={
-              <Title value={t('home.services.development')} icon={<Users size={72} className="text-foreground" />} />
-            }
-          >
-            <Markdown value={t('home.services.developmentDescription')}></Markdown>
-            <ul className="mt-4 space-y-2">
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-accent shrink-0 mt-1" size={16} />
-                <span>{t('services.servicesOffered.development.features.fullStack')}</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-accent shrink-0 mt-1" size={16} />
-                <span>{t('services.servicesOffered.development.features.scalableArchitecture')}</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-accent shrink-0 mt-1" size={16} />
-                <span>{t('services.servicesOffered.development.features.testing')}</span>
-              </li>
-            </ul>
-          </Service>
-        </div>
+        <Services />
       </section>
 
       {/* Case Studies Section */}

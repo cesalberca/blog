@@ -25,11 +25,11 @@ export const Services: FC = () => {
       <div className="wrapper mx-auto">
         <Markdown className="mb-4 text-lg" value={t('home.services.description')}></Markdown>
       </div>
-      <div className="bleed-width-section grid md:grid-cols-3 gap-6">
+      <div className="bleed-width-section grid grid-cols-1 md:grid-cols-3 gap-6 items-baseline">
         <Service
           className="bg-background shadow-md"
           center={
-            <Title value={t('home.services.consultancy')} icon={<Signpost className="text-foreground" size={72} />} />
+            <Title value={t('home.services.consultancy')} icon={<Signpost className="text-foreground" size={56} />} />
           }
         >
           <Markdown value={t('home.services.consultancyDescription')}></Markdown>
@@ -51,7 +51,7 @@ export const Services: FC = () => {
         <Service
           className="bg-background shadow-md"
           center={
-            <Title value={t('home.services.training')} icon={<GraduationCap className="text-foreground" size={72} />} />
+            <Title value={t('home.services.training')} icon={<GraduationCap className="text-foreground" size={56} />} />
           }
         >
           <Markdown value={t('home.services.trainingDescription')}></Markdown>
@@ -73,7 +73,7 @@ export const Services: FC = () => {
         <Service
           className="bg-background shadow-md"
           center={
-            <Title value={t('home.services.development')} icon={<Users className="text-foreground" size={72} />} />
+            <Title value={t('home.services.development')} icon={<Users className="text-foreground" size={56} />} />
           }
         >
           <Markdown value={t('home.services.developmentDescription')}></Markdown>

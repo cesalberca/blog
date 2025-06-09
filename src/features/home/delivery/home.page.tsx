@@ -82,7 +82,7 @@ export const HomePage: FC<{ latestPost: PostMetadata }> = ({ latestPost }) => {
         <div className="wrapper">
           <PostExcerpt post={latestPost} />
           <div className="mt-4 flex justify-center">
-            <Button size="lg">
+            <Button size="lg" asChild>
               <Link to="/blog" type="invisible">
                 {t('home.viewAllArticles')}
               </Link>

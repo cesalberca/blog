@@ -65,6 +65,13 @@ export const Testimonials: FC<TestimonialsProps> = ({ itemsPerPage = 1 } = { ite
       content: t('antonio.content'),
       avatar: '/assets/images/testimonials/antonio-cobo.jpeg',
     },
+    {
+      name: t('adrian.name'),
+      role: t('adrian.role'),
+      link: t('adrian.link'),
+      content: t('adrian.content'),
+      avatar: '/assets/images/testimonials/adrian-ferrera.jpeg',
+    },
   ]
 
   const getItemBasisClass = (itemsPerPage: number) => {

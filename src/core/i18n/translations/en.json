@@ -75,6 +75,9 @@
       "trainingDescription": "I will help you refine your team's skills in **best practices**, **testing** and **architecture**.",
       "development": "Software Development",
       "developmentDescription": "I will develop your project from **design** through **development** to **deployment**.",
+      "architectureSpecialization": "Software Architecture Specialization",
+      "architectureSpecializationDescription": "With over 10 years of experience in front-end development, I specialize in creating robust, maintainable software architectures that scale with your business needs.",
+      "caseStudiesIntro": "My services are based on real-world experience. Check out these case studies to see my approach in action:",
       "readyToWork": "Want to explore how I can help you?",
       "readyToWorkDescription": "Contact me to discuss how I can help your team build better software with solid architecture principles."
     },
@@ -128,6 +131,12 @@
         "role": "Agile Coach, Cognizant",
         "link": "https://www.linkedin.com/in/antoniocobocuenca/",
         "content": "César and I served on a conference program committee together for several years. I consistently relied on his deep understanding of the latest trends in the Front End world. During our discussions about improving the conference, I was impressed by his critical thinking skills and his ability to see the big picture. César considers every angle of a problem and consistently finds the right solution."
+      },
+      "adrian": {
+        "name": "Adrián Ferrera",
+        "role": "CO-CEO & Lead Developer, Lean Mind",
+        "link": "https://www.linkedin.com/in/adrianferrera/",
+        "content": "I had the privilege of meeting César Alberca years ago, and since then he has been a constant reference in my professional development. Although we have not worked together on direct projects, our collaboration in conferences, coding dojos, and debates on architecture and software design has been invaluable.\n\nHis passion for best practices, architecture, and testing is evident in every project he undertakes. Furthermore, his focus on architectural patterns such as DDD and hexagonal design demonstrates his commitment to software quality and scalability.\n\nWhat really distinguishes César is his drive for improvement and his generosity in sharing knowledge. As a speaker at conferences and an active member of the community, he has positively influenced many professionals in the field. His ability to teach and his collaborative attitude make him an exceptional learning companion.\n\nIf you are looking for someone with a solid technical foundation, a passion for continuous learning, and a positive and collaborative attitude, do not hesitate to connect with César. I am sure he will be a valuable addition to any team or project."
       }
     },
     "contact": {

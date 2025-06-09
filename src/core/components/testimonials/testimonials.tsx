@@ -24,6 +24,13 @@ export const Testimonials: FC<TestimonialsProps> = ({ itemsPerPage = 1 } = { ite
 
   const testimonials: Testimonial[] = [
     {
+      name: t('carlos.name'),
+      role: t('carlos.role'),
+      link: t('carlos.link'),
+      content: t('carlos.content'),
+      avatar: '/assets/images/testimonials/carlos-ble.jpeg',
+    },
+    {
       name: t('isabel.name'),
       role: t('isabel.role'),
       link: t('isabel.link'),
@@ -31,11 +38,11 @@ export const Testimonials: FC<TestimonialsProps> = ({ itemsPerPage = 1 } = { ite
       avatar: '/assets/images/testimonials/isabel-rodriguez.jpeg',
     },
     {
-      name: t('german.name'),
-      role: t('german.role'),
-      link: t('german.link'),
-      content: t('german.content'),
-      avatar: '/assets/images/testimonials/german-delgado.jpeg',
+      name: t('adrian.name'),
+      role: t('adrian.role'),
+      link: t('adrian.link'),
+      content: t('adrian.content'),
+      avatar: '/assets/images/testimonials/adrian-ferrera.jpeg',
     },
     {
       name: t('francisco.name'),
@@ -52,11 +59,11 @@ export const Testimonials: FC<TestimonialsProps> = ({ itemsPerPage = 1 } = { ite
       avatar: '/assets/images/testimonials/alberto-chamorro.jpeg',
     },
     {
-      name: t('carlos.name'),
-      role: t('carlos.role'),
-      link: t('carlos.link'),
-      content: t('carlos.content'),
-      avatar: '/assets/images/testimonials/carlos-ble.jpeg',
+      name: t('german.name'),
+      role: t('german.role'),
+      link: t('german.link'),
+      content: t('german.content'),
+      avatar: '/assets/images/testimonials/german-delgado.jpeg',
     },
     {
       name: t('antonio.name'),
@@ -64,13 +71,6 @@ export const Testimonials: FC<TestimonialsProps> = ({ itemsPerPage = 1 } = { ite
       link: t('antonio.link'),
       content: t('antonio.content'),
       avatar: '/assets/images/testimonials/antonio-cobo.jpeg',
-    },
-    {
-      name: t('adrian.name'),
-      role: t('adrian.role'),
-      link: t('adrian.link'),
-      content: t('adrian.content'),
-      avatar: '/assets/images/testimonials/adrian-ferrera.jpeg',
     },
   ]
 

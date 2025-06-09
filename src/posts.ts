@@ -11,12 +11,24 @@ export async function getPosts({ locale }: { locale: Locale }): Promise<PostMeta
 
   const posts: PostMetadata[] = await Promise.all(
     slugs.map(async ({ name }) => {
-      console.log(existsSync(`./app/[locale]/blog/(posts)/${name}/${locale}.mdx`), { name, locale })
-      if (!existsSync(`./app/[locale]/blog/(posts)/${name}/${locale}.mdx`)) {
+      const filePath = `./src/app/[locale]/blog/(posts)/${name}/${locale}.mdx`
+      const fileExists = existsSync(filePath)
+      console.log(`Checking file: ${filePath}, exists: ${fileExists}`)
+
+      if (!fileExists) {
         return null
       }
-      const { metadata } = await import(`./app/[locale]/blog/(posts)/${name}/${locale}.mdx`)
-      return metadata
+
+      try {
+        const importPath = `./app/[locale]/blog/(posts)/${name}/${locale}.mdx`
+        console.log(`Importing file: ${importPath}`)
+        const { metadata } = await import(importPath)
+        console.log(`Successfully imported metadata for: ${name}`)
+        return metadata
+      } catch (error) {
+        console.error(`Error importing file for ${name}:`, error)
+        return null
+      }
     }),
   )
 

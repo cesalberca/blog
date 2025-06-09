@@ -29,6 +29,8 @@
   "blog": {
     "title": "Blog",
     "articleDuration": "{minutes} minutos",
+    "noPosts": "No hay entradas de blog en esta categoría todavía.",
+    "backToList": "Volver al Blog",
     "categories": {
       "ai": "IA",
       "angular": "Angular",

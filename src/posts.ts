@@ -4,11 +4,11 @@ import { getSlugs } from '@/lib/get-slugs'
 import { Locale } from '@/core/i18n/locale'
 
 export async function getPosts({ locale }: { locale: Locale }): Promise<PostMetadata[]> {
-  const slugs = await getSlugs(`./src/app/[locale]/blog/(posts)/(${locale})`)
+  const slugs = await getSlugs(`./src/app/[locale]/blog/(posts)`)
 
   const posts: PostMetadata[] = await Promise.all(
     slugs.map(async ({ name }) => {
-      const { metadata } = await import(`./app/[locale]/blog/(posts)/(${locale})/${name}/page.mdx`)
+      const { metadata } = await import(`./app/[locale]/blog/(posts)/${name}/${locale}.mdx`)
       return metadata
     }),
   )

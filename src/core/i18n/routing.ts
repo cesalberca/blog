@@ -16,6 +16,9 @@ export const routing = defineRouting({
     '/blog/bullet-journal-method': {
       es: '/blog/metodo-bullet-journal',
     },
+    '/blog/2024-a-review-of-a-transformative-year': {
+      es: '/blog/2024-reflexiones-de-un-proceso-transformador',
+    },
     '/services': {
       es: '/servicios',
     },

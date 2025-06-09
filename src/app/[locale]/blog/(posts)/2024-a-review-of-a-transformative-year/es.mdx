@@ -1,9 +1,8 @@
-import { PostLayout } from '@/features/posts/delivery/post-layout'
+import { PostLayout } from '../../post-layout'
 import { ImageGrid } from '@/core/components/image-grid/image-grid'
 
 export const metadata = {
   title: '2024: Reflexiones de un proceso transformador',
-  slug: '2024-reflexiones-de-un-proceso-transformador',
   date: '2024-12-31',
   readTime: 15,
   categories: ['yearly-review'],
@@ -165,5 +164,5 @@ Quiero terminar dando las gracias a todas las personas que han participado en mi
 ![Yo](/assets/images/posts/2024-review/me.jpg)
 
 export default function Page({ children }) {
-  return <PostLayout slug="2024-reflexiones-de-un-proceso-transformador">{children}</PostLayout>
+  return <PostLayout slug="2024-a-review-of-a-transformative-year">{children}</PostLayout>
 }

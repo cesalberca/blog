@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from 'react'
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import { baseUrl } from '@/app/sitemap'
 import { Background } from '@/core/components/background/background'
 import { Datetime } from '@/core/datetime'
@@ -8,16 +8,26 @@ import { Badge, badgeVariants } from '@/components/ui/badge'
 import { Link } from '@/core/components/link/link'
 import { cn } from '@/lib/utils'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
-import { WithKoFiButton } from '@/core/components/ko-fi-button/with-ko-fi-button'
 import { Newsletter } from '@/core/components/newsletter/newsletter'
 import { KoFiButton } from '@/core/components/ko-fi-button/ko-fi-button'
+import { getTranslatedCategories } from '@/features/posts/domain/categories'
+import { Locale } from '@/core/i18n/locale'
 
-export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: string }>> = ({
+export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: string; locale: Locale }>> = async ({
   metadata,
   slug,
   children,
+  locale,
 }) => {
-  const t = useTranslations()
+  const t = await getTranslations({ locale })
+  const translatedCategories = await getTranslatedCategories(locale)
+  const categoryTranslations = translatedCategories.reduce(
+    (acc, { key, translation }) => {
+      acc[key] = translation
+      return acc
+    },
+    {} as Record<string, string>,
+  )
 
   return (
     <>
@@ -59,7 +69,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
                 to={`/blog/category/${category}`}
                 className={cn(badgeVariants({ variant: 'outline' }), 'p-0 h-min')}
               >
-                <Badge>{category}</Badge>
+                <Badge>{categoryTranslations[category] || category}</Badge>
               </Link>
             ))}
           </div>

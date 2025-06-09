@@ -28,7 +28,24 @@
   },
   "blog": {
     "title": "Blog",
-    "articleDuration": "{minutes} minutes"
+    "articleDuration": "{minutes} minutes",
+    "categories": {
+      "angular": "Angular",
+      "react": "React",
+      "testing": "Testing",
+      "branding": "Branding",
+      "design": "Design",
+      "software-development": "Software Development",
+      "javascript": "JavaScript",
+      "typescript": "TypeScript",
+      "software-architecture": "Software Architecture",
+      "design-patterns": "Design Patterns",
+      "css": "CSS",
+      "personal-development": "Personal Development",
+      "productivity": "Productivity",
+      "yearly-review": "Yearly Review",
+      "writing": "Writing"
+    }
   },
   "home": {
     "title": "César Alberca",

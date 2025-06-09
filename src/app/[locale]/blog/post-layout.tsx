@@ -13,7 +13,7 @@ export const PostLayout: FC<PropsWithChildren<{ slug: string }>> = async ({ chil
 
   return (
     <Page top>
-      <PostPage metadata={metadata} slug={slug}>
+      <PostPage metadata={metadata} slug={slug} locale={locale}>
         {children}
       </PostPage>
     </Page>

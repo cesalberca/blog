@@ -1,5 +1,5 @@
 import type { Category } from '@/features/posts/domain/category'
-import { categories } from '@/features/posts/domain/categories'
+import { categories, getTranslatedCategories } from '@/features/posts/domain/categories'
 import { getPostsByCategory } from '@/posts'
 import { Page } from '@/core/components/page/page'
 import { PostExcerpt } from '@/features/posts/delivery/post-excerpt'
@@ -14,12 +14,15 @@ export const CategoryPage: FC<{ category: Category; locale: Locale }> = async ({
     notFound()
   }
 
+  const translatedCategories = await getTranslatedCategories(locale)
+  const translatedCategory = translatedCategories.find(c => c.key === category)?.translation || category
+
   const posts = await getPostsByCategory({ category, locale })
 
   return (
     <Page>
       <div className="wrapper mb-4 gap-2 flex">
-        <Badge>{category}</Badge>
+        <Badge>{translatedCategory}</Badge>
       </div>
       <Masonry>
         {posts.map(x => (

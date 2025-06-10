@@ -1,4 +1,6 @@
 import { PostLayout } from '../../post-layout'
+import { Table } from '@/core/components/table/table'
+import { tableData } from './table-data'
 
 export const metadata = {
   title: 'AI-ready Frontend Architecture',
@@ -366,17 +368,17 @@ Now your architecture can support:
 
 And you don't need to touch the use case logic itself.
 
-## 🧠 End-to-End AI-Augmented Stack
+## End-to-End AI-Augmented Stack
 
-| Layer | Tooling / Pattern | AI Role |
-|-------|-------------------|---------|
-| UI Components | [shadcn/ui](https://ui.shadcn.com/), [Tailwind](https://tailwindcss.com/), [Radix](https://www.radix-ui.com/) | Generate, assemble |
-| Guidelines | `.junie`, [Storybook](https://storybook.js.org/), [Biome](https://biomejs.dev/) | Enforce standards |
-| Use Cases | Clean Architecture, CQRS, DI | Route & execute intent |
-| Middleware | Chain of Responsibility | Intercept, enrich, validate |
-| Agent Interface | [OpenAI](https://openai.com/), [V0.dev](https://v0.dev/), [Cursor](https://cursor.sh/), [Copilot](https://github.com/features/copilot) | Predict + propose actions |
-| Observability | Audit logs, tracing, test coverage | Track behavior, learn |
-| Testing | [Vitest](https://vitest.dev/), [Playwright](https://playwright.dev/), AI test generation | Verify logic and flows |
+<Table
+  className="my-6"
+  columns={[
+    { key: 'layer', header: 'Layer' },
+    { key: 'tooling', header: 'Tooling / Pattern' },
+    { key: 'aiRole', header: 'AI Role' }
+  ]}
+  rows={tableData}
+/>
 
 ## Resources
 

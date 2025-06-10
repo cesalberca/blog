@@ -8,7 +8,7 @@ export const metadata = {
   categories: ['ai', 'software-architecture', 'software-development', 'design-patterns'],
   image: 'ai-ready-frontend-architecture/ai-ready-frontend-architecture.png',
   summary:
-    'Learn how to design frontend architectures that integrate with AI tools and agents. This article explores component-driven UI, use case patterns, middleware chains, and development conventions that make your codebase AI-ready.',
+    'Learn how to design frontend architectures that integrate with AI tools and agents. This article explores component-driven UI, use case patterns, middleware chains, and development conventions that make your software architecture AI-ready.',
 }
 
 ## We're Building for More Than Just Humans
@@ -17,25 +17,57 @@ Today's software architecture must support both human creativity and machine col
 
 As software engineering enters the age of AI-assisted development, the demands on software architecture are changing. Tools like [shadcn/ui](https://ui.shadcn.com/), [V0.dev](https://v0.dev/), and intelligent IDE agents like [Junie](https://junie.io/) are reshaping how interfaces are built. But code quality, scalability, and maintainability remain non-negotiable.
 
-So, how do we design systems that are both AI-enhanced and AI-controllable?
+So, how do we design systems that are both **AI-enhanced** and **AI-controllable**?
 
 This article explores an end-to-end architecture that integrates:
 
+- **AI Guidelines** - A file describing the conventions and rules that AI IDE agents should follow when generating code
 - **AI-assisted UI generation** - Using AI to create and refine interface components
-- **Design systems with code-first foundations** - Building component libraries that both humans and AI can understand
-- **Use case-driven logic for AI agents** - Creating predictable patterns for AI to follow
-- **Middleware chains for application scalability** - Implementing flexible, composable application logic
+- **Design systems with code-first foundations** - Building component libraries that both humans and AI can
+understand
 - **Custom registries and AI-integrated component libraries** - Organizing code in ways that AI tools can effectively navigate
+- **Use case-driven logic** - Creating predictable patterns for AI to follow
+- **Middleware chains for application scalability** - Implementing flexible, composable application logic
 
-## 1. Component-Driven UI with AI Integration
+## 1. Development Conventions for AI Interpretation
+
+Context is a fundamental aspect of working effectively with AI. Without it, the quality of AI-generated results drops significantly. To save time and avoid repeating instructions on how we want code to be generated, AI-IDE integrations offer a way to define and persist a shared context.
+
+After trying [Cursor](https://www.cursor.com/) for a while, I switched back to the JetBrains suite once [Junie](https://www.jetbrains.com/junie/) was released. While it’s not the fastest code generator, it produces high-quality code that follows best practices—and that’s what matters most to me. Plus, it’s seamlessly integrated into my IDE of choice: WebStorm.
+
+You can create a `guidelines.md` file in your project in the folder `.junie` which will provide machine-readable guidelines:
+
+```
+Framework: Next.js
+Styling: Tailwind CSS 4
+Language: TypeScript
+Tests: Vitest + Playwright
+
+Architecture:
+- Use Case pattern
+- CQRS
+- Middleware chaining
+
+Standards:
+- Named exports only
+- No enums, use unions
+- One component per file
+- ?? instead of ||
+- Avoid unnecessary useEffect
+- FC with PropsWithChildren
+```
+
+This eliminates friction and accelerates development.
+
+## 2. Component-Driven UI with AI Integration
 
 AI tools like [V0.dev](https://v0.dev/) are redefining the prototyping phase. Instead of drawing wireframes or writing full boilerplate, developers can:
 
 - Describe a UI in natural language
 - Receive fully composed JSX using [shadcn/ui](https://ui.shadcn.com/) and [Tailwind CSS](https://tailwindcss.com/)
-- Modify and commit directly to their Next.js project
+- Modify and commit directly to the Github Repository
 
-For example, a prompt like "Create a dark mode signup form with two input fields and a CTA button" results in valid, accessible JSX using your existing component registry:
+For example, a prompt like "Create a dark mode signup form with two input fields and a CTA button" results in valid, accessible JSX using base components that are being imported from `@/components/ui`, which is the default for Shadcn:
 
 ```jsx
 import { Button } from "@/components/ui/button"
@@ -104,30 +136,15 @@ This code will render the following UI:
 
 ![V0.dev UI](ai-ready-frontend-architecture/v0-dev-ui.png)
 
-V0 integrates perfectly with [Shadcn](https://ui.shadcn.com/) (which are both part of [Vercel](https://vercel.com/)), which is the tool I recommend using to create custom design systems. To add your custom theme you would change TailwindCSS definitions and CSS variables, giving you a lot of flexibility and power.
+V0 integrates perfectly with [Shadcn](https://ui.shadcn.com/), since both are part of [Vercel](https://vercel.com/). I recommend using this pairing to maximize the throughput of developers and designers, and I think that in the future we'll see even better integrations to leverage the use of custom design systems.
 
-### Building a Design System with a Custom Registry
+Imagine an AI that’s fully aware of all the components in your design system—and knows exactly when and how to use them. A designer could describe a complex interface in natural language using a tool like V0, and the AI would intelligently assemble it using existing developer-built components when available, or generate new ones only when necessary. This creates a seamless collaboration between design and development, drastically accelerating UI creation while maintaining consistency and code quality.
 
-[Shadcn](https://ui.shadcn.com/) allows you to create custom registries. Your registry should:
-
-- Export components with rich TypeScript types
-- Be versioned and tested with [Storybook](https://storybook.js.org/)
-- Include AI-readable documentation in MDX
-
-#### How AI Uses It
-
-AI tools read:
+How would this work? AI tools read:
 
 - `.storybook` for examples
-- `.junie` for conventions
+- `.junie/guidelines` for conventions
 - `.mdx` files for documentation
-- Your registry structure for import paths
-
-This enables IDE agents to:
-
-- Autocomplete with styled components
-- Validate layout and accessibility
-- Suggest props and patterns
 
 **Tools generate. Design systems validate.**
 
@@ -135,7 +152,7 @@ This enables IDE agents to:
 
 Frontend generation is only half the story. AI-generated UIs need to call the right domain logic, without coupling to implementation details.
 
-This is where the Use Case pattern shines:
+This is where the [Use Case pattern](https://www.cesalberca.com/en/blog/use-cases-and-commands) shines:
 
 ```typescript
 export interface UseCase<In = unknown, Out = unknown> {
@@ -143,9 +160,9 @@ export interface UseCase<In = unknown, Out = unknown> {
 }
 ```
 
-Every action—like RegisterUser, CreatePost, SubmitFeedback—becomes an injectable use case. It's straightforward to test, extend, and expose.
+Every action like RegisterUser, CreatePost, or SubmitFeedback, becomes an injectable use case. It's straightforward to test, extend, and expose.
 
-Now imagine the agent-generated UI invokes a use case like this:
+To run use cases you would use an `UseCaseService`:
 
 ```typescript
 await useCaseService.execute(RegisterUserUseCase, {
@@ -154,24 +171,15 @@ await useCaseService.execute(RegisterUserUseCase, {
 })
 ```
 
-That execution can be:
+Why add a useCaseService? It abstracts the execution of use cases, allowing us to centralize cross-cutting concerns like logging, caching, permission checks, loading states, and error handling. This pattern becomes powerful when combined with middlewares, enabling modular and reusable behavior around every use case execution.
 
-- Logged
-- Cached
-- Guarded by permission middlewares
-- Preprocessed by agent enrichment
+Decoupling use cases from whoever calls them means that now are architecture is AI ready. How so? Well, now your code doesn't care if the use cases are being triggered by the push of a button or an AI agent. That's the power of decoupling.
 
 ### Use Cases in Practice
 
 Let's define one:
 
 ```typescript
-import { UseCase } from '@/core/use-case'
-import { PostRepository } from '@/domain/posts/post-repository'
-import { SlugGenerator } from '@/domain/services/slug-generator'
-import { Post } from '@/domain/posts/post'
-import { DomainError } from '@/core/errors/domain-error'
-
 interface CreatePostDTO {
   title: string
   body: string
@@ -186,7 +194,7 @@ export class CreatePostUseCase implements UseCase<CreatePostDTO, Post> {
 
   async handle({ title, body, authorId }: CreatePostDTO): Promise<Post> {
     if (!title || !body) {
-      throw new DomainError('MissingPostContent', 'Title and body are required')
+      throw new MissingPostContentError('Title and body are required')
     }
 
     const slug = this.slugGenerator.generate(title)
@@ -206,11 +214,7 @@ export class CreatePostUseCase implements UseCase<CreatePostDTO, Post> {
 }
 ```
 
-Then your middleware can:
-
-- Ensure the agent has post-creation rights
-- Add user ID to the context
-- Validate input schema
+Let's now see how we can add middlewares.
 
 ## 3. Middleware Chains: The Intelligent Layer
 
@@ -220,7 +224,6 @@ Inspired by the [Chain of Responsibility pattern](https://refactoring.guru/desig
 - Performance tracing
 - Error handling
 - Caching
-- Agent behavior
 
 ```typescript
 interface Middleware {
@@ -235,6 +238,8 @@ interface Middleware {
 ### Middleware Examples
 
 #### Error Middleware
+
+Tired of adding try catch around all your code? You don't need it. You can throw domain errors and let them bubble up so they can be captured automatically with an ErrorMiddleware. The event emitter will dispatch an error event and the interface listens for errors to show a toast to the user.
 
 ```typescript
 export class ErrorMiddleware implements Middleware {
@@ -258,6 +263,8 @@ export class ErrorMiddleware implements Middleware {
 ```
 
 #### Log Middleware
+
+With this middleware you can add logs to your app automatically. Since we are using a Logger interface we can run different implementations, like in development use console.log and in production use a remote logging service.
 
 ```typescript
 export class LogMiddleware implements Middleware {
@@ -285,6 +292,8 @@ export class LogMiddleware implements Middleware {
 ```
 
 #### Cache Middleware
+
+Since we can apply CQRS to divide our use cases into commands or queries we can then automatically cache queries and make commands invalidate the cache of queries.
 
 ```typescript
 import type { Middleware } from './middleware'
@@ -331,6 +340,8 @@ export class CacheMiddleware implements Middleware {
 
 ### Composing Middlewares
 
+To piece middlewares together we add them to the UseCaseService:
+
 ```typescript
 export class UseCaseService {
   constructor(
@@ -375,40 +386,6 @@ Now your architecture can support:
 - Caching
 
 And you don't need to touch the use case logic itself.
-
-## 4. Development Conventions for AI Interpretation
-
-The `.junie` file provides machine-readable guardrails:
-
-```
-# .junie
-
-Framework: Next.js
-Styling: Tailwind CSS 4
-Language: TypeScript
-Tests: Vitest + Playwright
-
-Architecture:
-- Use Case pattern
-- CQRS
-- Middleware chaining
-
-Standards:
-- Named exports only
-- No enums, use unions
-- One component per file
-- ?? instead of ||
-- Avoid unnecessary useEffect
-- FC with PropsWithChildren
-```
-
-Tools like [Cursor](https://cursor.sh/), [Copilot Workspace](https://github.com/features/copilot), and [V0.dev](https://v0.dev/) read this to:
-
-- Generate code aligned with your standards
-- Suggest correct use case invocations
-- Provide autocomplete with your components
-
-This eliminates friction and accelerates onboarding.
 
 ## 🧠 End-to-End AI-Augmented Stack
 

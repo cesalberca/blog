@@ -29,7 +29,7 @@ export const HomePage: FC<{ latestPost: PostMetadata }> = ({ latestPost }) => {
   const texts = [
     t('home.labels.architect'),
     t('home.labels.digitalNomad'),
-    t('home.labels.internationalSpeaker'),
+    t('home.labels.speaker'),
     t('home.labels.freelancer'),
     t('home.labels.podcastHost'),
   ]
@@ -39,7 +39,7 @@ export const HomePage: FC<{ latestPost: PostMetadata }> = ({ latestPost }) => {
       <OpenToWork />
       <Hero image="/assets/images/me-no-bg.png" imageClassName="object-top md:object-contain pt-16 mx-auto max-w-xl">
         <header className="absolute inset-0 md:pt-[100px] flex flex-col justify-center wrapper">
-          <h1 className="uppercase min-h-[6rem] flex items-end">
+          <h1 className="uppercase text-4xls min-h-[6rem] flex items-end">
             <AccentList texts={texts} />
           </h1>
           <RichText>{tags => t.rich('home.heroCaption', tags)}</RichText>

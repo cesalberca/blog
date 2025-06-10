@@ -5,7 +5,7 @@ import { Locale } from '@/core/i18n/locale'
 
 export async function getPost({ slug, locale }: { slug: string; locale: Locale }): Promise<PostMetadata | null> {
   try {
-    const { metadata } = await import(`./app/[locale]/blog/(posts)/${slug}/${locale}.mdx`)
+    const { metadata } = await import(`@/app/[locale]/blog/(posts)/${slug}/${locale}.mdx`)
     return metadata
   } catch (error) {
     return null
@@ -13,12 +13,15 @@ export async function getPost({ slug, locale }: { slug: string; locale: Locale }
 }
 
 export async function getPosts({ locale }: { locale: Locale }): Promise<PostMetadata[]> {
-  const slugs = await getSlugs(`./src/app/[locale]/blog/(posts)`)
+  const slugs = await getSlugs(`src/app/[locale]/blog/(posts)`)
+
+  console.log({ slugs })
 
   const posts: PostMetadata[] = await Promise.all(
     slugs.map(async ({ name }) => {
       try {
-        const { metadata } = await import(`./app/[locale]/blog/(posts)/${name}/${locale}.mdx`)
+        const { metadata } = await import(`@/app/[locale]/blog/(posts)/${name}/${locale}.mdx`)
+        console.log({ metadata })
         return metadata
       } catch (error) {
         return null

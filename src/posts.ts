@@ -2,19 +2,10 @@ import type { Category } from '@/features/posts/domain/category'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
 import { getSlugs } from '@/lib/get-slugs'
 import { Locale } from '@/core/i18n/locale'
-import { existsSync } from 'node:fs'
 
 export async function getPost({ slug, locale }: { slug: string; locale: Locale }): Promise<PostMetadata | null> {
-  const filePath = `./src/app/[locale]/blog/(posts)/${slug}/${locale}.mdx`
-  const fileExists = existsSync(filePath)
-
-  if (!fileExists) {
-    return null
-  }
-
   try {
-    const importPath = `./app/[locale]/blog/(posts)/${slug}/${locale}.mdx`
-    const { metadata } = await import(importPath)
+    const { metadata } = await import(`./app/[locale]/blog/(posts)/${slug}/${locale}.mdx`)
     return metadata
   } catch (error) {
     return null
@@ -22,20 +13,12 @@ export async function getPost({ slug, locale }: { slug: string; locale: Locale }
 }
 
 export async function getPosts({ locale }: { locale: Locale }): Promise<PostMetadata[]> {
-  const slugs = await getSlugs(`./src/app/[locale]/blog/(posts)`)
+  const slugs = await getSlugs(`src/app/[locale]/blog/(posts)`)
 
   const posts: PostMetadata[] = await Promise.all(
     slugs.map(async ({ name }) => {
-      const filePath = `./src/app/[locale]/blog/(posts)/${name}/${locale}.mdx`
-      const fileExists = existsSync(filePath)
-
-      if (!fileExists) {
-        return null
-      }
-
       try {
-        const importPath = `./app/[locale]/blog/(posts)/${name}/${locale}.mdx`
-        const { metadata } = await import(importPath)
+        const { metadata } = await import(`./app/[locale]/blog/(posts)/${name}/${locale}.mdx`)
         return metadata
       } catch (error) {
         return null

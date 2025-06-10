@@ -9,7 +9,7 @@ const Page: NextPage<{ params: Promise<{ locale: Locale }> }> = async ({ params 
 
   console.log({ allPosts, locale })
 
-  const latestPost = allPosts[0]
+  const latestPost = allPosts.at(0) ?? null
 
   return <HomePage latestPost={latestPost} />
 }

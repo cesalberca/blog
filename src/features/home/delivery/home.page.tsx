@@ -22,7 +22,7 @@ import { Link } from '@/core/components/link/link'
 import { PostExcerpt } from '@/features/posts/delivery/post-excerpt'
 import { PostMetadata } from '@/features/posts/domain/post-metadata'
 
-export const HomePage: FC<{ latestPost: PostMetadata }> = ({ latestPost }) => {
+export const HomePage: FC<{ latestPost: PostMetadata | null }> = ({ latestPost }) => {
   const t = useTranslations()
   const locale = useLocale() as Locale
 
@@ -78,18 +78,20 @@ export const HomePage: FC<{ latestPost: PostMetadata }> = ({ latestPost }) => {
         <Projects />
       </Section>
 
-      <Section title={t('home.latestArticles')}>
-        <div className="wrapper">
-          <PostExcerpt post={latestPost} />
-          <div className="mt-6 flex justify-center">
-            <Button size="lg" asChild>
-              <Link to="/blog" type="invisible">
-                {t('home.viewAllArticles')}
-              </Link>
-            </Button>
+      {latestPost !== null && (
+        <Section title={t('home.latestArticles')}>
+          <div className="wrapper">
+            <PostExcerpt post={latestPost} />
+            <div className="mt-6 flex justify-center">
+              <Button size="lg" asChild>
+                <Link to="/blog" type="invisible">
+                  {t('home.viewAllArticles')}
+                </Link>
+              </Button>
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      )}
 
       <Section title={t('caseStudies.title')} id="case-studies">
         <div className="flex flex-col gap-4">

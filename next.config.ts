@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [{ protocol: 'https', port: '', hostname: 'sxvlta3onkp6zlqr.public.blob.vercel-storage.com' }],
   },
+  experimental: {
+    mdxRs: true,
+  },
   async rewrites() {
     return [
       {

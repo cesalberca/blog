@@ -1,39 +1,52 @@
+import fs from 'fs'
+import path from 'path'
 import type { Category } from '@/features/posts/domain/category'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
-import { getSlugs } from '@/get-slugs'
 import { Locale } from '@/core/i18n/locale'
+import { getSlugs } from '@/get-slugs'
 
 export async function getPost({ slug, locale }: { slug: string; locale: Locale }): Promise<PostMetadata | null> {
   try {
     const { metadata } = await import(`@/app/[locale]/blog/(posts)/${slug}/${locale}.mdx`)
-    return metadata
+    return {
+      ...metadata,
+      slug,
+    }
   } catch (error) {
+    console.error(`Error getting post ${slug} for locale ${locale}:`, error)
     return null
   }
 }
 
 export async function getPosts({ locale }: { locale: Locale }): Promise<PostMetadata[]> {
-  const slugs = await getSlugs(`src/app/[locale]/blog/(posts)`)
+  try {
+    const slugs = getSlugs(`src/app/[locale]/blog/(posts)`)
 
-  console.log({ slugs })
+    const posts: PostMetadata[] = []
 
-  const posts: PostMetadata[] = await Promise.all(
-    slugs.map(async ({ name }) => {
-      try {
-        const { metadata } = await import(`@/app/[locale]/blog/(posts)/${name}/${locale}.mdx`)
-        console.log({ metadata })
-        return metadata
-      } catch (error) {
-        return null
+    for (const { name } of slugs) {
+      const filePath = path.join(process.cwd(), 'src', 'app', '[locale]', 'blog', '(posts)', name, `${locale}.mdx`)
+
+      if (fs.existsSync(filePath)) {
+        try {
+          const { metadata } = await import(`@/app/[locale]/blog/(posts)/${name}/${locale}.mdx`)
+          posts.push({
+            ...metadata,
+            slug: name,
+          })
+        } catch (error) {
+          console.error(`Error reading post ${name} for locale ${locale}:`, error)
+        }
       }
-    }),
-  )
+    }
 
-  const existingPosts = posts.filter(x => x !== null)
+    posts.sort((a, b) => +new Date(b.date) - +new Date(a.date))
 
-  existingPosts.sort((a, b) => +new Date(b.date) - +new Date(a.date))
-
-  return existingPosts
+    return posts
+  } catch (error) {
+    console.error(`Error getting posts for locale ${locale}:`, error)
+    return []
+  }
 }
 
 export async function getPostsByCategory({

@@ -16,16 +16,9 @@ export const BlogPostsPage: FC<{ locale: Locale }> = async ({ locale }) => {
       <h1 className="wrapper mb-4">{t('blog.title')}</h1>
       <CategoryCloud />
       <Masonry>
-        {allBlogs
-          .sort((a, b) => {
-            if (new Date(a.date) > new Date(b.date)) {
-              return -1
-            }
-            return 1
-          })
-          .map(post => (
-            <PostExcerpt key={post.slug} post={post} />
-          ))}
+        {allBlogs.map(post => (
+          <PostExcerpt key={post.slug} post={post} />
+        ))}
       </Masonry>
     </Page>
   )

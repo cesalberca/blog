@@ -7,8 +7,6 @@ const Page: NextPage<{ params: Promise<{ locale: Locale }> }> = async ({ params 
   const { locale } = await params
   const allPosts = await getPosts({ locale })
 
-  console.log({ allPosts, locale })
-
   const latestPost = allPosts.at(0) ?? null
 
   return <HomePage latestPost={latestPost} />

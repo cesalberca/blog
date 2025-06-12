@@ -79,13 +79,13 @@ export const HomePage: FC<{ latestPost: PostMetadata | null }> = ({ latestPost }
       </Section>
 
       {latestPost !== null && (
-        <Section title={t('home.latestArticles')}>
+        <Section title={t('home.latestPosts')}>
           <div className="wrapper">
             <PostExcerpt post={latestPost} />
             <div className="mt-6 flex justify-center">
               <Button size="lg" asChild>
                 <Link to="/blog" type="invisible">
-                  {t('home.viewAllArticles')}
+                  {t('home.viewAllPosts')}
                 </Link>
               </Button>
             </div>

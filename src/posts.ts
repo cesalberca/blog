@@ -7,7 +7,7 @@ import { getSlugs } from '@/get-slugs'
 
 export async function getPost({ slug, locale }: { slug: string; locale: Locale }): Promise<PostMetadata | null> {
   try {
-    const { metadata } = await import(`@/app/[locale]/blog/(posts)/${slug}/${locale}.mdx`)
+    const { metadata } = await import(`@/content/posts/${slug}/${locale}.mdx`)
     return {
       ...metadata,
       slug,
@@ -20,16 +20,16 @@ export async function getPost({ slug, locale }: { slug: string; locale: Locale }
 
 export async function getPosts({ locale }: { locale: Locale }): Promise<PostMetadata[]> {
   try {
-    const slugs = getSlugs(`src/app/[locale]/blog/(posts)`)
+    const slugs = getSlugs(path.join(process.cwd(), 'src', 'content', 'posts'))
 
     const posts: PostMetadata[] = []
 
     for (const { name } of slugs) {
-      const filePath = path.join(process.cwd(), 'src', 'app', '[locale]', 'blog', '(posts)', name, `${locale}.mdx`)
+      const filePath = path.join(process.cwd(), 'src', 'content', 'posts', name, `${locale}.mdx`)
 
       if (fs.existsSync(filePath)) {
         try {
-          const { metadata } = await import(`@/app/[locale]/blog/(posts)/${name}/${locale}.mdx`)
+          const { metadata } = await import(`@/content/posts/${name}/${locale}.mdx`)
           posts.push({
             ...metadata,
             slug: name,

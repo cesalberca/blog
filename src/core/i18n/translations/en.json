@@ -57,8 +57,8 @@
       "title": "Technologies",
       "description": "With over **5 years in ReactJS**, **4 in Angular**, and **2 in VueJS**, I've consistently used **TypeScript**, **Testing**, and architectural patterns like **DDD** and **Hexagonal** to enhance project maintainability."
     },
-    "latestArticles": "Latest article",
-    "viewAllArticles": "View all articles",
+    "latestPosts": "Latest post",
+    "viewAllPosts": "View all posts",
     "heroTitle": "Digital Nomad.\n\nFront-end Architect.\n\nInternational Speaker.",
     "labels": {
       "architect": "Front-end Architect",

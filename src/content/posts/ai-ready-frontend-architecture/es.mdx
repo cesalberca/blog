@@ -1,0 +1,424 @@
+import { Table } from '@/core/components/table/table'
+import { esTableData } from './table-data'
+
+export const metadata = {
+  title: 'Arquitectura Frontend preparada para IA',
+  slug: 'ai-ready-frontend-architecture',
+  date: '2025-06-10',
+  readTime: 15,
+  categories: ['ai', 'software-architecture', 'software-development', 'design-patterns'],
+  image: 'ai-ready-frontend-architecture/ai-ready-frontend-architecture.png',
+  summary:
+    'Aprende a diseñar arquitecturas frontend que se integren con herramientas y agentes de IA. Este artículo explora UI basada en componentes, patrones de casos de uso, cadenas de middleware y convenciones de desarrollo que hacen que tu arquitectura de software Frontend esté preparada para la IA.',
+}
+
+## Introducción
+
+### Estamos construyendo para más que solo humanos
+
+La arquitectura de software actual debe soportar tanto la **creatividad humana** como la **colaboración con máquinas**.
+
+A medida que la ingeniería de software entra en la era del desarrollo asistido por IA, las demandas sobre nuestra arquitectura están evolucionando rápidamente. Herramientas como [shadcn/ui](https://ui.shadcn.com/), [V0.dev](https://v0.dev/) y agentes IDE inteligentes como [Junie](https://junie.io/) están revolucionando la forma en que se construyen las interfaces. Sin embargo, la calidad del código, la escalabilidad y la mantenibilidad siguen siendo **no negociables**.
+
+Entonces, ¿cómo diseñamos sistemas que sean tanto **mejorados por IA** como **controlables por IA**?
+
+Este artículo explora una arquitectura integral de extremo a extremo que integra perfectamente:
+
+- **Directrices de IA** - Archivos que describen las convenciones y reglas que los agentes de IA IDE deben seguir al generar código
+- **Generación de UI asistida por IA** - Uso de IA para crear y refinar componentes de interfaz
+- **Sistemas de diseño con fundamentos basados en código** - Construcción de bibliotecas de componentes que tanto humanos como IA pueden entender
+- **Lógica basada en casos de uso** - Creación de patrones predecibles para que la IA los siga
+- **Cadenas de middleware para escalabilidad de aplicaciones** - Implementación de lógica de aplicación flexible y componible
+
+## 1. Convenciones de desarrollo para interpretación de IA
+
+### Estableciendo un contexto compartido para herramientas de IA
+
+El contexto es un aspecto fundamental para trabajar eficazmente con IA. Sin él, la calidad de los resultados generados por IA disminuye significativamente. Para ahorrar tiempo y evitar repetir instrucciones sobre cómo queremos que se genere el código, las integraciones de IA-IDE ofrecen una forma de definir y persistir un contexto compartido.
+
+Después de probar [Cursor](https://www.cursor.com/) durante un tiempo, volví a la suite de JetBrains una vez que se lanzó [Junie](https://www.jetbrains.com/junie/). Aunque no es el generador de código más rápido, produce código de alta calidad que sigue las mejores prácticas, y eso es lo que más me importa. Además, está perfectamente integrado en mi IDE de elección: WebStorm.
+
+Puedes crear un archivo `guidelines.md` en tu proyecto en la carpeta `.junie` que proporcionará directrices legibles por máquina:
+
+```
+Framework: Next.js
+Styling: Tailwind CSS 4
+Language: TypeScript
+Tests: Vitest + Playwright
+
+Architecture:
+- Use Case pattern
+- CQRS
+- Middleware chaining
+
+Standards:
+- Named exports only
+- No enums, use unions
+- One component per file
+- ?? instead of ||
+- Avoid unnecessary useEffect
+- FC with PropsWithChildren
+```
+
+> Puedes [consultar un archivo de directrices más complejo que uso para este blog aquí](https://github.com/cesalberca/blog/blob/4fd5e58595126efb1aa71ad5af8d4ee3fd46ae94/.junie/guidelines.md).
+
+Tener un archivo de directrices o algo similar para agentes de IA-IDE elimina la fricción y acelera el desarrollo.
+
+## 2. UI basada en componentes con integración de IA
+
+### Acelerando el desarrollo de UI con herramientas de IA
+
+Herramientas de IA como [V0.dev](https://v0.dev/) están redefiniendo la fase de prototipado. En lugar de dibujar wireframes o escribir todo el código base, los desarrolladores pueden:
+
+- Describir una UI en lenguaje natural
+- Recibir JSX completamente compuesto usando [shadcn/ui](https://ui.shadcn.com/) y [Tailwind CSS](https://tailwindcss.com/)
+- Modificar y confirmar directamente en el Repositorio Github
+
+Por ejemplo, un prompt como:
+
+> "Crear un formulario de registro en modo oscuro con dos campos de entrada y un botón CTA"
+
+Da como resultado JSX válido y accesible utilizando componentes base que se importan desde `@/components/ui`, que es el valor predeterminado para Shadcn:
+
+```jsx
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
+export default function Component() {
+  return (
+    <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
+      <div className="w-full max-w-md space-y-8">
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl font-bold text-white">Create Account</h1>
+          <p className="text-gray-400">Join us today and get started</p>
+        </div>
+
+        <div className="bg-gray-900 p-8 rounded-lg border border-gray-800 space-y-6">
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email" className="text-gray-200">
+                Email Address
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="Enter your email"
+                className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500"
+                required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="password" className="text-gray-200">
+                Password
+              </Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="Create a password"
+                className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500"
+                required
+              />
+            </div>
+          </div>
+
+          <Button
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 transition-colors"
+          >
+            Sign Up Now
+          </Button>
+
+          <p className="text-center text-sm text-gray-400">
+            Already have an account?{" "}
+            <a href="#" className="text-blue-400 hover:text-blue-300 underline">
+              Sign in
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+```
+
+Este código renderizará la siguiente UI:
+
+![V0.dev UI](/assets/images/posts/ai-ready-frontend-architecture/v0-dev-ui.png)
+
+V0 se integra perfectamente con [Shadcn](https://ui.shadcn.com/), ya que ambos son parte de [Vercel](https://vercel.com/). Recomiendo usar esta combinación para maximizar el rendimiento de desarrolladores y diseñadores, y creo que en el futuro veremos integraciones aún mejores para aprovechar el uso de sistemas de diseño personalizados.
+
+Imagina una IA que sea plenamente consciente de todos los componentes en tu sistema de diseño, y que sepa exactamente cuándo y cómo usarlos. Un diseñador podría describir una interfaz compleja en lenguaje natural usando una herramienta como V0, y la IA la ensamblaría inteligentemente utilizando componentes existentes construidos por desarrolladores cuando estén disponibles, o generando nuevos solo cuando sea necesario. Esto crea una colaboración perfecta entre diseño y desarrollo, acelerando drásticamente la creación de UI mientras se mantiene la consistencia y la calidad del código.
+
+¿Cómo funcionaría esto? Las herramientas de IA leen:
+
+- `.storybook` para ejemplos
+- `.junie/guidelines` para convenciones
+- `.mdx` para documentación
+
+**Las herramientas generan. Los sistemas de diseño validan.**
+
+## 3. Patrón de Caso de Uso para lógica controlada por agentes
+
+### Desacoplando la UI de la lógica de negocio
+
+La generación de frontend es solo la mitad de la historia. Las UI generadas por IA necesitan llamar a la lógica de dominio correcta, sin acoplarse a los detalles de implementación.
+
+Aquí es donde brilla el [patrón de Caso de Uso](https://www.cesalberca.com/en/blog/use-cases-and-commands):
+
+```typescript
+export interface UseCase<In = unknown, Out = unknown> {
+  handle(param?: In, meta?: UseCaseOptions): Promise<Out>
+}
+```
+
+Cada acción como RegisterUser, CreatePost o SubmitFeedback, se convierte en un caso de uso inyectable. Es sencillo de probar, extender y exponer.
+
+Para ejecutar casos de uso utilizarías un `UseCaseService`:
+
+```typescript
+await useCaseService.execute(RegisterUserUseCase, {
+  email: "test@example.com",
+  password: "secure-password",
+})
+```
+
+¿Por qué añadir un `useCaseService`? Abstrae la ejecución de casos de uso, permitiéndonos centralizar preocupaciones transversales como logging, caché, verificaciones de permisos, estados de carga, manejo de errores, y un largo etcétera. Este patrón se vuelve poderoso cuando se combina con middlewares, permitiendo un comportamiento modular y reutilizable alrededor de cada ejecución de caso de uso, lo que veremos en una sección posterior.
+
+Desacoplar los casos de uso de quien los llama significa que ahora nuestra arquitectura está lista para IA. ¿Cómo? Bueno, ahora tu código no se preocupa si los casos de uso son activados por el clic de un botón o un agente de IA. Ese es el poder del desacoplamiento.
+
+Veamos ahora cómo podemos añadir middlewares.
+
+## 4. Cadenas de Middleware: La capa inteligente
+
+### Manejando preocupaciones transversales con elegancia
+
+Inspirado en el [patrón Chain of Responsibility](https://refactoring.guru/design-patterns/chain-of-responsibility), el middleware maneja todas las preocupaciones transversales:
+
+- Logging
+- Seguimiento de rendimiento
+- Manejo de errores
+- Caché
+- etcétera
+
+```typescript
+interface Middleware {
+  execute<In, Out>(
+    param: In,
+    next: UseCase<In, Out>,
+    options: UseCaseOptions
+  ): Promise<Out>
+}
+```
+
+### Ejemplos de Middleware
+
+#### Middleware de Error
+
+¿Cansado de añadir try catch alrededor de todo tu código? Bueno, aquí está la solución. Puedes lanzar errores de dominio y dejar que suban para que sean capturados automáticamente con un ErrorMiddleware. El emisor de eventos enviará un evento de error y la interfaz escucha los errores para mostrar un toast al usuario.
+
+```typescript
+export class ErrorMiddleware implements Middleware {
+  constructor(private readonly eventEmitter: EventEmitter) {}
+
+  async intercept(
+    params: unknown,
+    next: UseCase,
+    options: UseCaseOptions,
+  ): Promise<unknown> {
+    try {
+      return await next.handle(params)
+    } catch (error) {
+      if (!options.silentError) {
+        this.eventEmitter.dispatch(EventType.ERROR, error)
+      }
+      throw error
+    }
+  }
+}
+```
+
+#### Middleware de Log
+
+Con este middleware puedes añadir logs a tu aplicación automáticamente. Como estamos usando una interfaz Logger, podemos ejecutar diferentes implementaciones, como en desarrollo usar console.log y en producción usar un servicio de logging remoto.
+
+```typescript
+export class LogMiddleware implements Middleware {
+  constructor(private readonly logger: Logger) {}
+
+  intercept(params: unknown, useCase: UseCase): Promise<unknown> {
+    this.logger.log(
+      `[${DateTime.fromNow().toISO()}] ${this.getName(useCase)} / ${this.printResult(params)}`,
+    )
+    return useCase.handle(params)
+  }
+
+  private getName(useCase: UseCase): string {
+    if (useCase instanceof UseCaseHandler) {
+      return this.getName(useCase.useCase)
+    }
+
+    return useCase.constructor.name
+  }
+
+  private printResult(result: unknown) {
+    return JSON.stringify(result, null, 2)
+  }
+}
+```
+
+#### Middleware de Caché
+
+Como podemos aplicar [CQRS](https://martinfowler.com/bliki/CQRS.html) para dividir nuestros casos de uso en comandos o consultas, podemos entonces cachear automáticamente las consultas y hacer que los comandos invaliden la caché de las consultas. Este es un ejemplo simple de un middleware de caché de consultas que automáticamente cachea todos los resultados durante 60 segundos de casos de uso con una opción cacheKey.
+
+```typescript
+type CacheEntry = {
+  value: unknown
+  expiresAt: number
+}
+
+export class CacheMiddleware implements Middleware {
+  private readonly store = new Map<string, CacheEntry>()
+
+  constructor(private readonly ttlInSeconds: number = 60) {}
+
+  async intercept<In, Out>(
+    params: In,
+    next: UseCase<In, Out>,
+    options: UseCaseOptions,
+  ): Promise<Out> {
+    const key = options.cacheKey
+    if (!key) {
+      return next.handle(params, options)
+    }
+
+    const now = Date.now()
+    const cached = this.store.get(key)
+
+    if (cached && now < cached.expiresAt) {
+      return cached.value as Out
+    }
+
+    const result = await next.handle(params, options)
+    this.store.set(key, {
+      value: result,
+      expiresAt: now + this.ttlInSeconds * 1000,
+    })
+
+    return result
+  }
+}
+```
+
+### Componiendo Middlewares
+
+Para unir los middlewares, los añadimos al `UseCaseService`:
+
+```typescript
+export class UseCaseService {
+  constructor(
+    private middlewares: Middleware[],
+    private readonly container: Container,
+  ) {}
+
+  async execute<In, Out>(
+    useCase: Type<UseCase<In, Out>>,
+    param?: In,
+    options?: UseCaseOptions,
+  ): Promise<Out> {
+    const requiredOptions = options ?? {
+      silentError: false,
+    }
+
+    // Usamos un contenedor para inyección de dependencias, lo que nos permite:
+    // 1. Resolver automáticamente dependencias para casos de uso y middlewares
+    // 2. Intercambiar fácilmente implementaciones para pruebas
+    // 3. Mantener una única fuente de verdad para instancias de servicios
+
+    let next = UseCaseHandler.create({
+      next: this.container.create(useCase),
+      options: requiredOptions,
+      // El EmptyMiddleware es un marcador de posición que no hace nada más que pasar la solicitud al siguiente manejador
+      // Es necesario para mantener la estructura de la cadena incluso cuando no se aplica ningún middleware
+      middleware: this.container.get<EmptyMiddleware>(EmptyMiddleware.name),
+    })
+
+    for (let i = this.middlewares.length - 1; i >= 0; i--) {
+      const currentMiddleware = this.middlewares[i]
+      const previous = next
+      next = UseCaseHandler.create({
+        next: previous,
+        middleware: currentMiddleware,
+        options: requiredOptions,
+      })
+    }
+
+    return next.handle(param) as Promise<Out>
+  }
+}
+```
+
+Ahora tu arquitectura puede soportar:
+
+- Manejo de errores
+- Logging
+- Caché
+
+Y no necesitas tocar la lógica del caso de uso en sí.
+
+## Stack de extremo a extremo aumentado con IA
+
+<Table
+  className="my-6"
+  columns={[
+    { key: 'layer', header: 'Capa' },
+    { key: 'tooling', header: 'Herramienta / Patrón' },
+    { key: 'aiRole', header: 'Rol de IA' }
+  ]}
+  rows={esTableData}
+/>
+
+## Recursos
+
+### Patrones de Arquitectura
+- [Clean Architecture - Uncle Bob](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+- [CQRS - Martin Fowler](https://martinfowler.com/bliki/CQRS.html)
+- [Chain of Responsibility - Refactoring Guru](https://refactoring.guru/design-patterns/chain-of-responsibility)
+- [Command Pattern - Refactoring Guru](https://refactoring.guru/design-patterns/command)
+
+### Herramientas de IA y Bibliotecas UI
+- [shadcn/ui](https://ui.shadcn.com/) - Biblioteca de componentes para construir UI de alta calidad
+- [V0.dev](https://v0.dev/) - Herramienta de generación de UI potenciada por IA
+- [Cursor](https://cursor.sh/) - Editor de código mejorado con IA
+- [Junie](https://www.jetbrains.com/junie/) - Agente de IA de JetBrains
+- [TailwindCSS](https://tailwindcss.com/) - Framework CSS funcional
+
+### Lecturas adicionales
+- [Mi caso de estudio: Arquitectura y Sistemas de Diseño](https://www.cesalberca.com/case-studies/halioooo-design-system-architecture-library)
+
+## Conclusión
+
+Ya no estamos escribiendo código solo para usuarios.
+
+Estamos construyendo sistemas para la colaboración entre humanos, herramientas y agentes autónomos.
+
+Al combinar:
+
+- Sistemas de diseño basados en componentes
+- Casos de uso basados en middleware
+- Herramientas de desarrollo con IA consciente del código
+
+Desbloqueas un futuro donde el desarrollo es:
+
+- Más rápido
+- Más mantenible
+- Profundamente integrado con agentes inteligentes
+
+El futuro no se trata de reemplazar a los desarrolladores. Se trata de aumentarlos con herramientas que respeten tu arquitectura y entiendan tus intenciones.
+
+## ¿Listo para implementar esta arquitectura?
+
+Si estás buscando implementar esta arquitectura preparada para IA en tu organización, puedo ayudarte. Con años de experiencia en arquitectura Frontend, puedo guiar a tu equipo a través del proceso de construcción de sistemas escalables y mantenibles que aprovechen el poder de la IA.
+
+**[Reserva una llamada estratégica conmigo](https://www.cesalberca.com/#contact)** para discutir cómo podemos transformar tu arquitectura frontend y preparar tu organización para el futuro del desarrollo de software impulsado por IA.

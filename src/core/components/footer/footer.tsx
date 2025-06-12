@@ -15,8 +15,7 @@ export const Footer: FC = () => {
   return (
     <footer className="mt-12 py-12 md:py-16 bg-muted/20">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
-          {/* Column 1: Logo and Info */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-8">
           <div className="flex flex-col space-y-4">
             <div className="flex items-center space-x-2">
               <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
@@ -54,7 +53,6 @@ export const Footer: FC = () => {
             </ul>
           </div>
 
-          {/* Column 3: More Links */}
           <div>
             <h3 className="text-base font-semibold mb-4">{t('common.more')}</h3>
             <ul className="space-y-2">

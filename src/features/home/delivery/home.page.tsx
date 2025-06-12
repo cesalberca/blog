@@ -64,7 +64,7 @@ export const HomePage: FC<{ latestPost: PostMetadata | null }> = ({ latestPost }
       <Section title={t('home.services.title')} id="services">
         <div className="flex flex-col gap-8">
           <Services />
-          <div className="wrapper mt-8">
+          <div className="wrapper mt-8 flex justify-center">
             <Button size="lg" className="mb-12">
               <Link to="/services" type="invisible">
                 {t('home.services.readyToWork')}

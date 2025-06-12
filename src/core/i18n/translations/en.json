@@ -6,6 +6,7 @@
     "en": "EN",
     "es": "ES",
     "language": "Language",
+    "switchLanguage": "Switch language",
     "license": "© {date} MIT Licensed",
     "light": "Light",
     "loading": "Loading",

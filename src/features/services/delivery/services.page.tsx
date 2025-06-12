@@ -1,9 +1,8 @@
-import type { FC, ReactNode } from 'react'
+import type { FC } from 'react'
 import { getTranslations } from 'next-intl/server'
 import { Page } from '@/core/components/page/page'
 import { Locale } from '@/core/i18n/locale'
-import { Service } from '@/features/home/delivery/service'
-import { ArrowRight, Award, BarChart, CheckCircle, Clock, GraduationCap, Signpost, Users, Zap } from 'lucide-react'
+import { ArrowRight, Award, BarChart, Clock, GraduationCap, Users, Zap } from 'lucide-react'
 import { Markdown } from '@/core/components/markdown/markdown'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { CaseStudyCard } from '@/features/case-studies/delivery/case-study-card'
@@ -37,6 +36,14 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
           <p className="text-xl mb-8">{t('services.hero.subtitle')}</p>
         </div>
       </Hero>
+
+      <section className="container mb-16" id="services">
+        <h2 className="text-3xl font-bold mb-8 text-center">
+          <AccentText>{t('services.servicesOffered.title')}</AccentText>
+        </h2>
+
+        <Services />
+      </section>
 
       <section className="container mb-16">
         <div className="grid md:grid-cols-2 gap-12">
@@ -188,14 +195,6 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
             </Card>
           </div>
         </div>
-      </section>
-
-      <section className="container mb-16" id="services">
-        <h2 className="text-3xl font-bold mb-8 text-center">
-          <AccentText>{t('services.servicesOffered.title')}</AccentText>
-        </h2>
-
-        <Services />
       </section>
 
       {/* Case Studies Section */}

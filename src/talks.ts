@@ -28,10 +28,20 @@ export async function getTalks({ locale }: { locale: Locale }): Promise<TalkMeta
 
       if (fs.existsSync(filePath)) {
         try {
+          // Read the file content to extract the abstract
+          const fileContent = fs.readFileSync(filePath, 'utf-8')
+
+          // Extract the content after the metadata block
+          const contentMatch = fileContent.match(/^export const metadata[\s\S]*?\}\s*\n([\s\S]*)$/m)
+          const abstract = contentMatch ? contentMatch[1].trim() : ''
+
+          // Import the metadata
           const { metadata } = await import(`@/content/talks/${name}/${locale}.mdx`)
+
           talks.push({
             ...metadata,
             slug: name,
+            abstract: abstract,
           })
         } catch (error) {
           console.error(`Error reading post ${name} for locale ${locale}:`, error)
@@ -39,7 +49,26 @@ export async function getTalks({ locale }: { locale: Locale }): Promise<TalkMeta
       }
     }
 
-    talks.sort((a, b) => +new Date(b.date) - +new Date(a.date))
+    // Sort talks by the most recent event date
+    talks.sort((a, b) => {
+      // Find the most recent event date for each talk
+      const getLatestEventDate = (talk: TalkMetadata): Date => {
+        if (!talk.events || talk.events.length === 0 || !Array.isArray(talk.events)) {
+          return new Date(0) // Return earliest possible date if no events or events is not an array
+        }
+
+        // Sort events by date (newest first) and return the first one's date
+        return new Date(
+          [...talk.events].sort((e1, e2) => new Date(e2.date).getTime() - new Date(e1.date).getTime())[0].date,
+        )
+      }
+
+      const latestDateA = getLatestEventDate(a)
+      const latestDateB = getLatestEventDate(b)
+
+      // Sort by most recent event date (newest first)
+      return latestDateB.getTime() - latestDateA.getTime()
+    })
 
     return talks
   } catch (error) {

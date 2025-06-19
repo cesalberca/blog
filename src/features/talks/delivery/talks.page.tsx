@@ -19,7 +19,7 @@ export const TalksPage: FC<{ locale: Locale }> = async ({ locale }) => {
       <Masonry>
         {allTalks.map(talk => (
           <Link type="invisible" className="w-full" key={talk.slug} to={`/talks/${talk.slug}`}>
-            <div className="mb-4 break-inside-avoid">
+            <div className="mb-4">
               <AccentCard>
                 <Image
                   src={`/assets/images/talks/${talk.image}`}
@@ -30,11 +30,22 @@ export const TalksPage: FC<{ locale: Locale }> = async ({ locale }) => {
                 />
                 <section className="p-4">
                   <h4 className="mb-2">{talk.title}</h4>
-                  {talk.categories.map(category => (
-                    <Badge key={category} className="mr-1">
-                      {category}
+
+                  <div className="flex flex-wrap gap-1 mb-2">
+                    <Badge variant="secondary" className="mr-1">
+                      {talk.length} {typeof talk.length === 'number' ? 'minutes' : ''}
                     </Badge>
-                  ))}
+                    <Badge variant="secondary" className="mr-1">
+                      {talk.difficulty}
+                    </Badge>
+                    {talk.categories.map(category => (
+                      <Badge key={category} className="mr-1">
+                        {category}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  {talk.abstract && <p className="text-sm text-muted-foreground line-clamp-3 mt-2">{talk.abstract}</p>}
                 </section>
               </AccentCard>
             </div>

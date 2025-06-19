@@ -12,7 +12,7 @@ export const PostExcerpt: FC<{ post: PostMetadata }> = async ({ post }) => {
   const t = await getTranslations('blog.categories')
 
   return (
-    <AccentCard className="break-inside-avoid mb-4">
+    <AccentCard className="mb-4">
       <Link type="invisible" to={`/blog/${post.slug}`}>
         <Image
           src={`/assets/images/posts/${post.image}`}

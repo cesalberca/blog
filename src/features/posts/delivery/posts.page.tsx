@@ -13,7 +13,7 @@ export const BlogPostsPage: FC<{ locale: Locale }> = async ({ locale }) => {
 
   return (
     <Page>
-      <h1 className="wrapper mb-4">{t('blog.title')}</h1>
+      <h1 className="wrapper text-center mb-4">{t('blog.title')}</h1>
       <CategoryCloud />
       <Masonry>
         {allBlogs.map(post => (

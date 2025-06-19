@@ -1,0 +1,126 @@
+export const metadata = {
+  title: 'AI Shortcuts: How I Supercharged ChatGPT with One-Letter Shortcuts',
+  slug: 'ai-shortcuts-chatgpt',
+  date: '2025-06-16',
+  readTime: 7,
+  categories: ['ai', 'productivity'],
+  image: 'ai-shortcuts/ai-shortcuts.jpg',
+  summary:
+    'Discover how to create a powerful system of single-letter shortcuts for ChatGPT that dramatically speeds up your workflow. Learn how to set up custom commands for rewriting, translating, summarizing, and more—all triggered with just one character.',
+}
+
+## The Productivity Problem with AI Assistants
+
+If you're like me, you use ChatGPT constantly—rewriting text, translating, summarizing, or cleaning up grammar. As a digital nomad and developer, I rely on it daily to polish my writing and communicate across languages. But typing out the same requests over and over? That gets old fast.
+
+After the hundredth time asking "Can you rewrite this to sound more professional?" or "Please summarize this paragraph," I realized I was wasting precious time repeating myself.
+
+So I asked myself:
+- What if ChatGPT worked more like a command line?
+- What if I could trigger complex actions with just a letter?
+- What if I could build a system that remembers my common requests?
+
+## Introducing: Shortcut Commands for ChatGPT
+
+I created a lightweight system of single-letter shortcuts that I now use daily. It lets me speed up my workflow dramatically by writing just one character and letting ChatGPT do the rest. The time savings add up quickly—I estimate I save 15-20 minutes every day on repetitive prompting.
+
+### Prefix Commands
+
+These commands are used at the beginning of a message, followed by the text you want to process:
+
+- **R** → Rewrite the text for better style and clarity
+- **T** → Translate between English and Spanish
+- **S** → Simplify the language for easier understanding
+- **Q** → Correct grammar and spelling without changing meaning
+- **X** → Extract key points or create bullet summaries
+- **+600** → Expand the text to about 600 characters
+- **-200** → Shorten the text to around 200 characters
+- **C** → Convert the text to code (I added this for my development work)
+
+### Standalone Commands
+
+These commands can be sent as standalone responses, making them even faster to use:
+
+- **I** → Summarize the previous message into key points
+- **E** → Explain the previous message in simpler terms
+- **A** → Give a quick answer to the last question
+- **H** → Show the list of all available commands
+- **D** → Provide more details about the previous response
+
+## Why It Works So Well
+
+ChatGPT remembers context in a conversation. That means you can tell it once how to interpret these letters, and then just use them naturally without explaining yourself every time.
+
+The beauty of this approach is in its simplicity. By leveraging ChatGPT's context window, you're essentially creating a custom interface that persists throughout your conversation. It's like creating your own mini operating system inside a chat.
+
+The technical reason this works is that the initial prompt becomes part of the conversation's context, which ChatGPT references when interpreting subsequent messages. This context window typically holds several thousand tokens, easily accommodating your custom command system.
+
+## The Setup Prompt
+
+Here's the exact setup prompt I gave ChatGPT at the start of our conversation:
+
+```
+From now on, interpret single-character or single-letter commands to perform common operations. Some will be used as **prefixes** (at the start of a message), and others as **standalone triggers**. Here's the full list:
+
+**Prefix Commands (when used at the beginning of a message):**
+R → Rewrite the text to improve style, clarity, and fluency.
+T → Translate the text into English or Spanish based on its original language.
+S → Simplify the language for easier comprehension.
+Q → Correct grammar and spelling mistakes without changing meaning.
+X → Extract key takeaways or bullet points.
+C → Convert this description into code (use context to determine language).
++ [number] → Expand the text to approximately that number of characters.
+- [number] → Shorten the text to approximately that number of characters.
+
+**Standalone Commands (when the letter is sent alone):**
+I → Summarize the last message into key ideas.
+E → Explain the previous message in simple terms.
+A → Give a quick, direct answer to the last question.
+D → Provide more details about your previous response.
+H → Help: list all available commands.
+
+If I write something that doesn't match a valid shortcut, treat it as a normal message or let me know it's not recognized.
+
+**Examples:**
+`R This text could sound more polished.` → Rewrite it.
+`+600 Here's a short paragraph I want to expand.` → Expand to ~600 characters.
+`-200 This is a long paragraph that should be shortened.` → Shorten to ~200 characters.
+Just sending `I` → Summarize the last response.
+```
+
+## Real-World Use Cases
+
+I've been using this system for months now, and it's become an essential part of my workflow:
+
+- **💬 Writing emails**: `R Can you make this email more professional while keeping it friendly?`
+- **🌍 Translating marketing copy**: `T Aquí tienes un texto que quiero en inglés para mi sitio web:`
+- **📚 Summarizing meeting notes**: Just reply with `I` after pasting lengthy notes
+- **✍️ Generating copy to fit a layout**: `-100 Rewrite this to fit in a 100-character space for a button.`
+- **🧑‍💻 Debugging code**: `C Create a function that validates email addresses in JavaScript`
+- **📱 Social media posts**: `+280 Expand this idea into a Twitter thread`
+
+The system is particularly valuable when I'm working across multiple languages. As someone who frequently switches between English and Spanish, the `T` command has saved me countless trips to translation tools.
+
+## Customizing for Your Needs
+
+The beauty of this system is how easily you can customize it. Consider what tasks you perform repeatedly with ChatGPT and assign them single-letter shortcuts. Some ideas:
+
+- **F** → Format text as a formal document
+- **B** → Brainstorm ideas related to the topic
+- **P** → Convert text into a persuasive argument
+- **M** → Create a mind map of the concepts
+
+Remember that the commands should be intuitive for you—there's no "right" way to set them up as long as they boost your productivity.
+
+## Want to Try It?
+
+If you want to experiment with this system, you can:
+
+- Copy the setup prompt above and paste it into your ChatGPT thread
+- Save it as a Custom GPT so it remembers the rules between sessions
+- Modify the commands to suit your specific workflow needs
+- Or message me and I'll send you a ready-made template to start using instantly
+
+One letter, one action. That's how I've made ChatGPT part of my creative flow—turning a powerful but sometimes verbose tool into a lightning-fast extension of my thinking process.
+
+What shortcuts would you add to make your AI interactions more efficient?

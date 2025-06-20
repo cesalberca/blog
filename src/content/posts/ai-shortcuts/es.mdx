@@ -1,0 +1,121 @@
+export const metadata = {
+  title: 'Atajos de IA: Cómo supercargué ChatGPT con comandos de una sola letra',
+  slug: 'ia-atajos-chatgpt',
+  date: '2025-06-20',
+  readTime: 7,
+  categories: ['ai', 'productivity'],
+  image: 'ai-shortcuts/ai-shortcuts.jpg',
+  summary:
+    'Descubre cómo crear un sistema potente de atajos de una sola letra para ChatGPT que acelera drásticamente tu flujo de trabajo. Aprende a configurar comandos personalizados para reescribir, traducir, resumir y más—todo con solo un carácter.',
+}
+
+## El problema de productividad con los asistentes de IA
+
+Si eres como yo, usas ChatGPT constantemente: para reescribir textos, traducir, resumir o corregir gramática. Como nómada digital y desarrollador, lo utilizo a diario para pulir mi escritura y comunicarme en varios idiomas. Pero escribir las mismas peticiones una y otra vez… se vuelve tedioso.
+
+Después de pedir por centésima vez "¿Puedes reescribir esto para que suene más profesional?" o "Resume este párrafo", me di cuenta de que estaba perdiendo un tiempo valioso.
+
+Entonces me pregunté:
+
+- ¿Y si ChatGPT funcionara como una línea de comandos?
+- ¿Y si pudiera activar acciones complejas con solo una letra?
+- ¿Y si pudiera construir un sistema que recordara mis peticiones más frecuentes?
+
+## Te presento: Comandos de atajo para ChatGPT
+
+Creé un sistema ligero de atajos de una sola letra, todos con prefijo `-`, que uso a diario. Me permite acelerar mi flujo de trabajo al escribir solo un carácter y dejar que ChatGPT se encargue del resto. El ahorro se nota: estimo que ahorro entre 15 y 20 minutos al día evitando prompts repetitivos.
+
+## Ejemplos de uso
+
+Llevo meses usando este sistema y ya es una parte esencial de mi rutina:
+
+- **💬 Emails**: `-r Haz que este correo suene más profesional pero cercano`
+- **🌍 Traducciones de copy**: `-t Aquí tienes un texto que quiero en inglés para mi sitio web:`
+- **📚 Notas de reuniones**: simplemente responde con `-i` después de pegar las notas
+- **✍️ Copy para diseño**: `--100 Reescribe esto para que encaje en un espacio de 100 caracteres`
+- **📱 Redes sociales**: `-+280 Expande esta idea como hilo de Twitter`
+
+El sistema es especialmente útil cuando trabajo en varios idiomas. Como cambio frecuentemente entre español e inglés, el comando `-t` me ha ahorrado muchísimos pasos innecesarios.
+
+### Comandos con prefijo
+
+Se escriben al principio del mensaje, seguidos del texto a procesar:
+
+- **r** → Reescribe el texto mejorando estilo y claridad
+- **t** → Traduce entre inglés y español
+- **q** → Corrige errores gramaticales y de ortografía
+- **x** → Extrae ideas clave o resumen en bullets
+- **=5** → Dame cinco versiones diferentes
+- **+600** → Expande el texto hasta unos 600 caracteres
+- **-200** → Acorta el texto a unos 200 caracteres
+
+### Comandos independientes
+
+Se envían como respuestas individuales, aún más rápidos:
+
+- **i** → Resume el mensaje anterior
+- **e** → Explica el mensaje anterior en términos simples
+- **a** → Da una respuesta directa a la última pregunta
+- **h** → Muestra todos los comandos disponibles
+- **d** → Añade más detalle a la respuesta anterior
+
+## Por qué funciona tan bien
+
+ChatGPT recuerda el contexto de la conversación. Eso significa que puedes decirle una sola vez cómo interpretar estas letras y luego simplemente usarlas, sin repetir instrucciones.
+
+La belleza de este enfoque está en su simplicidad. Aprovechando la ventana de contexto de ChatGPT, estás creando tu propia interfaz personalizada persistente. Es como tener tu propio mini sistema operativo dentro del chat.
+
+Técnicamente, esto funciona porque el prompt inicial queda en el contexto de la conversación, que ChatGPT usa para interpretar los mensajes siguientes. Esa ventana puede almacenar miles de tokens, así que tu sistema de atajos entra sin problema.
+
+## El prompt de configuración
+
+Este es el prompt exacto que le di a ChatGPT al iniciar la conversación:
+
+```
+A partir de ahora, interpreta comandos de una sola letra para realizar operaciones comunes. Algunos serán usados como prefijos (al inicio del mensaje), y otros como comandos independientes. Van precedidos por un “-” (guion). Esta es la lista completa:
+
+Comandos con prefijo:
+r → Reescribe el texto mejorando estilo, claridad y fluidez
+t → Traduce entre inglés y español según el idioma original
+q → Corrige errores ortográficos y gramaticales
+x → Extrae ideas clave o resumen en bullets
+=[número] → Dame como respuesta esa cantidad de opciones
++[número] → Expande el texto hasta ese número aproximado de caracteres
+-[número] → Acorta el texto hasta ese número aproximado de caracteres
+
+Comandos independientes (letra sola):
+i → Resume el último mensaje
+e → Explica el mensaje anterior de forma sencilla
+h → Muestra todos los comandos disponibles
+
+Si escribo algo que no coincide con un atajo válido, trátalo como un mensaje normal o avísame que no lo reconoces.
+
+Ejemplos:
+-r Este texto podría sonar mejor. → Lo reescribe
+-+600 Aquí hay un párrafo para expandir. → Lo expande a ~600 caracteres
+--200 Este texto es muy largo. → Lo reduce a ~200 caracteres
+Solo enviar -i → Resume el mensaje anterior
+```
+
+## Personalízalo a tu manera
+
+Lo mejor de este sistema es lo fácil que es adaptarlo. Piensa en las tareas que repites y asígnales letras. Algunas ideas:
+
+- **f** → Formatea el texto como documento formal
+- **b** → Haz una lluvia de ideas sobre el tema
+- **p** → Convierte el texto en un argumento persuasivo
+- **m** → Crea un mapa mental con los conceptos
+
+No hay una forma correcta—lo importante es que sea útil para ti y aumente tu productividad.
+
+## ¿Te animas a probarlo?
+
+Si quieres experimentar con este sistema:
+
+- Copia el prompt de configuración y pégalo en tus opciones personalizadas de ChatGPT (recomendado)
+- Guárdalo como un GPT personalizado para que recuerde las reglas entre sesiones
+- Crea un nuevo proyecto en ChatGPT y añade las instrucciones ahí
+
+Una letra, una acción. Así he hecho de ChatGPT una extensión ágil de mi proceso creativo—convirtiendo una herramienta potente pero a veces lenta en un sistema ultraeficiente.
+
+¿Qué atajos añadirías tú para que tus interacciones con IA sean aún más efectivas?

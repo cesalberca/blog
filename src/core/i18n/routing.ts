@@ -22,6 +22,9 @@ export const routing = defineRouting({
     '/blog/2024-a-review-of-a-transformative-year': {
       es: '/blog/2024-reflexiones-de-un-proceso-transformador',
     },
+    '/blog/ai-shortcuts-chatgpt': {
+      es: '/blog/ia-atajos-chatgpt',
+    },
     '/services': {
       es: '/servicios',
     },

@@ -61,6 +61,9 @@ export const ContactForm: FC = () => {
           })
         }
       }
+    } else {
+      // Update URL with #contacted hash after successful submission
+      window.location.hash = 'contacted'
     }
   }
 

@@ -58,7 +58,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
             <small> - </small>
             <small>{t('blog.articleDuration', { minutes: metadata.readTime })}</small>
           </header>
-          <h1>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl">
             <AccentText>{metadata.title}</AccentText>
           </h1>
           <div className="mt-2 flex gap-2">

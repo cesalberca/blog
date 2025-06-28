@@ -5,7 +5,6 @@ A modern, internationalized personal website and blog built with cutting-edge we
 ## 🚀 Features
 
 - **Blog Platform**: Write and share articles with MDX support
-- **Photography Gallery**: Showcase photos with fullscreen view
 - **Internationalization**: Full support for English and Spanish
 - **Dark Mode**: Beautiful dark mode implementation
 - **Modern Design**: Clean, responsive layout with Tailwind CSS
@@ -79,23 +78,6 @@ src/
    npm run build
    ```
 
-## 📸 Photography Gallery
-
-The photography gallery supports:
-
-- Responsive grid layout
-- Fullscreen view
-- Image optimization
-- EXIF data extraction
-- Keyboard navigation
-- Beautiful hover effects
-
-Photos should be placed in `public/assets/images/photography` following the naming convention:
-
-```
-YYYYMMDD-description-of-photo.jpg
-```
-
 ## 🌐 Internationalization
 
 The site supports multiple languages with URL-based locale switching:
@@ -117,6 +99,6 @@ Contributions are welcome! Please read the contributing guidelines before submit
 ## 📫 Contact
 
 - Website: [cesalberca.com](https://cesalberca.com)
-- Email: cesar@cesalberca.com
-- Twitter: [@cesalberca](https://twitter.com/cesalberca)
+- Email: [cesar@cesalberca.com](mailto:cesar@cesalberca.com)
+- X: [@cesalberca](https://x.com/cesalberca)
 - LinkedIn: [César Alberca](https://linkedin.com/in/cesalberca)

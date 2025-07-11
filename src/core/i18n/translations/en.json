@@ -1,5 +1,18 @@
 {
   "common": {
+    "cookies": {
+      "message": "This site uses cookies to enhance your experience.",
+      "description": "I use cookies to ensure you get the best experience on our website. Truly.",
+      "accept": "[Y]es",
+      "deny": "[N]o",
+      "close": "Close",
+      "learnMore": "Learn more",
+      "manage": "Manage Cookies",
+      "terminalPath": "~/cookies",
+      "prompt": "$ echo \"Accept cookies?\"",
+      "acceptAriaLabel": "Accept cookies",
+      "denyAriaLabel": "Deny cookies"
+    },
     "coverage": "Test coverage",
     "dark": "Dark",
     "email": "cesar@cesalberca.com",
@@ -455,5 +468,9 @@
     "signupTitle": "Newsletter Signup",
     "signupQuestion": "Want to stay up to date with the latest trends in front-end development, architecture, and best practices?",
     "signupDescription": "Subscribe to my newsletter and receive exclusive content, tutorials, tips, and news about web development directly in your inbox. Don't miss any updates!"
+  },
+  "cookies": {
+    "title": "Cookie Policy",
+    "fullContent": "This website uses cookies to enhance your browsing experience and analyze the effectiveness of our advertising campaigns. Cookies are small text files stored on your device when you visit a website. Some cookies are essential, while others require your consent.\n\n## Google Ads Cookies\n\nWe only use cookies from Google Ads for marketing and analytics purposes. These cookies help us understand how you interact with our ads and which pages you visit after clicking on an ad. This allows us to measure the performance of our advertising and optimize our campaigns.\n\nThese cookies are **only set if you provide explicit consent** via the cookie banner. They are never loaded before you make a choice.\n\nYou can learn more about Google Ads cookies by visiting [Google's Privacy & Terms](https://policies.google.com/technologies/partner-sites).\n\n## Managing Your Preferences\n\nYou can accept or reject cookies when you first visit the site. If you change your mind later, you can update your preferences by clicking the **\"Manage Cookies\"** link in the footer. This will reopen the consent banner and allow you to adjust your settings.\n\nPlease note that disabling cookies may affect the functionality and experience of our website."
   }
 }

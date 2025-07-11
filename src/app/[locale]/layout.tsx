@@ -11,6 +11,8 @@ import { hasLocale } from 'use-intl'
 import { routing } from '@/core/i18n/routing'
 import { notFound } from 'next/navigation'
 import { Toaster } from '@/components/ui/sonner'
+import { CookieBanner } from '@/core/components/cookie-banner/cookie-banner'
+import { GoogleAnalytics } from '@/core/components/google-analytics/google-analytics'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -75,9 +77,13 @@ export default async function Layout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <GoogleAnalytics measurementId="AW-17230678133" />
       <body className={`antialiased font-medium lg:mx-auto sm:text-lg text-base ${inter.className} ${azeret.variable}`}>
         <ThemeProvider attribute="class" enableSystem={false} forcedTheme="dark" disableTransitionOnChange>
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider>
+            {children}
+            <CookieBanner />
+          </NextIntlClientProvider>
           <Analytics />
           <SpeedInsights />
           <Toaster />

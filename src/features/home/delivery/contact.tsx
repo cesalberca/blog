@@ -62,7 +62,19 @@ export const ContactForm: FC = () => {
         }
       }
     } else {
-      // Update URL with #contacted hash after successful submission
+      function gtag_report_conversion(url: string) {
+        const callback = function () {
+          if (typeof url !== 'undefined') {
+            window.location = url
+          }
+        }
+        gtag('event', 'conversion', {
+          send_to: 'AW-17230678133/-FDsCKvcne8aEPWQnZhA',
+          event_callback: callback,
+        })
+        return false
+      }
+
       window.location.hash = 'contacted'
     }
   }

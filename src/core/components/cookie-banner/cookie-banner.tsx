@@ -74,7 +74,7 @@ export const CookieBanner: FC = () => {
   }
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 max-w-md w-full md:w-80 shadow-lg">
+    <div className="fixed bottom-0 right-0 z-50 max-w-md w-full p-4 md:w-80 shadow-lg">
       <div className="bg-black border border-white rounded-md overflow-hidden">
         {/* Terminal header */}
         <div className="bg-black px-4 py-2 flex items-center justify-between border-b border-white">

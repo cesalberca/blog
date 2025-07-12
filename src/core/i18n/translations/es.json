@@ -2,7 +2,7 @@
   "common": {
     "cookies": {
       "message": "Este sitio utiliza cookies para mejorar tu experiencia.",
-      "description": "Utilizo cookies para garantizar que obtengas la mejor experiencia en nuestro sitio web. De verdad.",
+      "description": "Utilizo cookies para garantizar que obtengas la mejor experiencia en este sitio web. De verdad.",
       "accept": "[S]í",
       "deny": "[N]o",
       "close": "Cerrar",

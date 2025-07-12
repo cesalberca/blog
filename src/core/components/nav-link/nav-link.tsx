@@ -19,6 +19,7 @@ export const NavLink: FC<
       to={to}
       type="invisible"
       className={cn(
+        'w-min',
         type === 'navigation' ? styles['nav-link'] : '',
         'font-medium  relative',
         `${currentPath === to ? 'font-bold text-foreground' : ''}`,

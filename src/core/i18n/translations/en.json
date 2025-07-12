@@ -2,7 +2,7 @@
   "common": {
     "cookies": {
       "message": "This site uses cookies to enhance your experience.",
-      "description": "I use cookies to ensure you get the best experience on our website. Truly.",
+      "description": "I use cookies to ensure you get the best experience on my website. Truly.",
       "accept": "[Y]es",
       "deny": "[N]o",
       "close": "Close",

@@ -11,6 +11,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 import { Link } from '@/core/components/link/link'
+import { sendGTMEvent } from '@next/third-parties/google'
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -62,19 +63,7 @@ export const ContactForm: FC = () => {
         }
       }
     } else {
-      function gtag_report_conversion(url: string) {
-        const callback = function () {
-          if (typeof url !== 'undefined') {
-            window.location = url
-          }
-        }
-        gtag('event', 'conversion', {
-          send_to: 'AW-17230678133/-FDsCKvcne8aEPWQnZhA',
-          event_callback: callback,
-        })
-        return false
-      }
-
+      sendGTMEvent({ event: 'contacted' })
       window.location.hash = 'contacted'
     }
   }

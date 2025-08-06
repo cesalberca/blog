@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 import { Link } from '@/core/components/link/link'
-import { sendGTMEvent } from '@next/third-parties/google'
+import { sendGAEvent } from '@next/third-parties/google'
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -63,7 +63,7 @@ export const ContactForm: FC = () => {
         }
       }
     } else {
-      sendGTMEvent({ event: 'contacted' })
+      sendGAEvent('event', 'contacted', { email: data.email, name: data.name })
       window.location.hash = 'contacted'
     }
   }

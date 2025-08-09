@@ -63,7 +63,7 @@ export const ContactForm: FC = () => {
         }
       }
     } else {
-      sendGAEvent('event', 'contacted', { email: data.email, name: data.name })
+      sendGAEvent('event', 'conversion', { email: data.email, name: data.name })
       window.location.hash = 'contacted'
     }
   }

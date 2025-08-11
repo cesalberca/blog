@@ -12,6 +12,7 @@ import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 import { Link } from '@/core/components/link/link'
 import { sendGAEvent } from '@next/third-parties/google'
+import { useRouter } from 'next/navigation'
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -23,6 +24,7 @@ type FormData = z.infer<typeof formSchema>
 
 export const ContactForm: FC = () => {
   const t = useTranslations()
+  const router = useRouter()
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -64,7 +66,7 @@ export const ContactForm: FC = () => {
       }
     } else {
       sendGAEvent('event', 'conversion', { email: data.email, name: data.name })
-      window.location.hash = 'contacted'
+      router.push('/thank-you')
     }
   }
 
@@ -79,57 +81,53 @@ export const ContactForm: FC = () => {
           {t('home.contact.appointmentLink')}
         </Link>
       </p>
-      {form.formState.isSubmitSuccessful ? (
-        <h2>{t('home.contact.sent')}</h2>
-      ) : (
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 text-base">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t('home.contact.name')}</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage>{form.formState.errors.name?.message}</FormMessage>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t('home.contact.email')}</FormLabel>
-                  <FormControl>
-                    <Input placeholder={t('home.contact.emailPlaceholder')} {...field} />
-                  </FormControl>
-                  <FormMessage>{form.formState.errors.email?.message}</FormMessage>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="message"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t('home.contact.message')}</FormLabel>
-                  <FormControl>
-                    <Textarea {...field} rows={5} />
-                  </FormControl>
-                  <FormDescription>{t('home.contact.messageDescription')}</FormDescription>
-                  <FormMessage>{form.formState.errors.message?.message}</FormMessage>
-                </FormItem>
-              )}
-            />
-            <Button type="submit" disabled={form.formState.isSubmitting}>
-              {form.formState.isSubmitting ? t('home.contact.submitting') : t('home.contact.submit')}
-            </Button>
-          </form>
-        </Form>
-      )}
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 text-base">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('home.contact.name')}</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage>{form.formState.errors.name?.message}</FormMessage>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('home.contact.email')}</FormLabel>
+                <FormControl>
+                  <Input placeholder={t('home.contact.emailPlaceholder')} {...field} />
+                </FormControl>
+                <FormMessage>{form.formState.errors.email?.message}</FormMessage>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('home.contact.message')}</FormLabel>
+                <FormControl>
+                  <Textarea {...field} rows={5} />
+                </FormControl>
+                <FormDescription>{t('home.contact.messageDescription')}</FormDescription>
+                <FormMessage>{form.formState.errors.message?.message}</FormMessage>
+              </FormItem>
+            )}
+          />
+          <Button type="submit" disabled={form.formState.isSubmitting}>
+            {form.formState.isSubmitting ? t('home.contact.submitting') : t('home.contact.submit')}
+          </Button>
+        </form>
+      </Form>
     </div>
   )
 }

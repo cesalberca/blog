@@ -167,7 +167,27 @@
       "messageDescription": "Want to work together? Have an idea to share? Just want to say hi?",
       "submit": "Submit",
       "submitting": "Submitting",
-      "sent": "Thanks for contacting me!"
+      "sent": "Thanks for contacting me!",
+      "thankYou": {
+        "title": "Thank You for Contacting Me!",
+        "description": "I appreciate your message and will get back to you as soon as possible. In the meantime, check out some of my work and resources below.",
+        "backToHome": "Back to Home",
+        "caseStudies": {
+          "title": "Case Studies",
+          "description": "Explore real-world projects and solutions I've worked on."
+        },
+        "videos": {
+          "title": "YouTube Videos",
+          "description": "Watch my talks and tutorials on frontend architecture and best practices.",
+          "architectureVideo": "Frontend Architecture Patterns",
+          "frontendVideo": "Building AI-Ready Frontend Applications"
+        },
+        "blogPosts": {
+          "title": "Blog Posts",
+          "description": "Read my latest articles on frontend development and architecture.",
+          "aiArchitecture": "AI-Ready Frontend Architecture"
+        }
+      }
     }
   },
   "experience": {

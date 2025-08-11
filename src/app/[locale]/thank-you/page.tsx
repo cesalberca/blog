@@ -1,90 +1,21 @@
-import { Link } from '@/core/components/link/link'
-import { getTranslations } from 'next-intl/server'
-import type { Metadata } from 'next'
-import { Page } from '@/core/components/page/page'
-import { YouTubeEmbed } from '@next/third-parties/google'
-import { CaseStudyCard } from '@/features/case-studies/delivery/case-study-card'
-import { PostExcerpt } from '@/features/posts/delivery/post-excerpt'
-import { CASE_STUDY_URLS } from '@/core/i18n/paths'
+import { NextPage } from 'next'
 import { Locale } from '@/core/i18n/locale'
-import { AccentText } from '@/core/components/accent-text/accent-text'
 import { getPost } from '@/posts'
+import { ThankYouPage } from '@/features/home/delivery/thank-you.page'
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale })
-
-  return {
-    title: t('home.contact.thankYou.title'),
-    description: t('home.contact.thankYou.description'),
-  }
-}
-
-export default async function ThankYouPage({ params }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: params.locale })
-  const locale = params.locale as Locale
+const Index: NextPage<{ params: Promise<{ locale: Locale }> }> = async ({ params }) => {
+  const { locale } = await params
 
   const post = await getPost({
     slug: 'ai-ready-frontend-architecture',
     locale,
   })
 
-  return (
-    <Page>
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
-        <div className="space-y-12">
-          <div className="text-center space-y-4">
-            <h1>
-              <AccentText>{t('home.contact.thankYou.title')}</AccentText>
-            </h1>
-            <p>{t('home.contact.thankYou.description')}</p>
-          </div>
+  if (post === null) {
+    return
+  }
 
-          <section>
-            <h2 className="mb-6">{t('home.contact.thankYou.caseStudies.title')}</h2>
-            <p className="mb-6">{t('home.contact.thankYou.caseStudies.description')}</p>
-            <div className="grid gap-6 md:grid-cols-2">
-              <CaseStudyCard
-                title={t('caseStudies.tabaiba.title')}
-                description={t('caseStudies.tabaiba.description')}
-                href={CASE_STUDY_URLS[locale].tabaiba}
-                image="/assets/images/case-studies/tabaiba.jpg"
-              />
-              <CaseStudyCard
-                title={t('caseStudies.useCases.title')}
-                description={t('caseStudies.useCases.description')}
-                href={CASE_STUDY_URLS[locale].halioooo}
-                image="/assets/images/case-studies/halioooo.png"
-              />
-            </div>
-          </section>
-
-          <section>
-            <h2 className="mb-6">{t('home.contact.thankYou.videos.title')}</h2>
-            <p className="mb-6">{t('home.contact.thankYou.videos.description')}</p>
-            <div className="grid gap-6 md:grid-cols-3">
-              <div className="aspect-video">
-                <YouTubeEmbed videoid="pbvvH0hxvdU" height={225} params="controls=1" />
-              </div>
-              <div className="aspect-video">
-                <YouTubeEmbed videoid="4gx8teA65SY" height={225} params="controls=1" />
-              </div>
-              <div className="aspect-video">
-                <YouTubeEmbed videoid="31Kf8czJsno" height={225} params="controls=1" />
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="mb-6">{t('home.contact.thankYou.blogPosts.title')}</h2>
-            <p className="mb-6">{t('home.contact.thankYou.blogPosts.description')}</p>
-            {post && <PostExcerpt post={post} />}
-          </section>
-
-          <div className="text-center mt-8">
-            <Link to="/">{t('home.contact.thankYou.backToHome')}</Link>
-          </div>
-        </div>
-      </div>
-    </Page>
-  )
+  return <ThankYouPage locale={locale} post={post} />
 }
+
+export default Index

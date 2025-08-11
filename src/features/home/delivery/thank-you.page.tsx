@@ -9,66 +9,68 @@ import { AccentText } from '@/core/components/accent-text/accent-text'
 import { FC } from 'react'
 import { PostMetadata } from '@/features/posts/domain/post-metadata'
 import { Locale } from '@/core/i18n/locale'
+import { Section } from '@/features/home/delivery/section'
 
 export const ThankYouPage: FC<{ post: PostMetadata; locale: Locale }> = async ({ post, locale }) => {
   const t = await getTranslations()
 
   return (
     <Page>
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
-        <div className="space-y-12">
-          <div className="text-center space-y-4">
-            <h1>
-              <AccentText>{t('home.contact.thankYou.title')}</AccentText>
-            </h1>
-            <p>{t('home.contact.thankYou.description')}</p>
+      <Section>
+        <div className="text-center space-y-4">
+          <h1>
+            <AccentText>{t('home.contact.thankYou.title')}</AccentText>
+          </h1>
+          <p>{t('home.contact.thankYou.description')}</p>
+        </div>
+      </Section>
+
+      <Section title={t('home.contact.thankYou.caseStudies.title')}>
+        <div className="wrapper">
+          <p className="mb-6">{t('home.contact.thankYou.caseStudies.description')}</p>
+        </div>
+        <div className="bleed-width-section grid gap-6 md:grid-cols-2">
+          <CaseStudyCard
+            title={t('caseStudies.tabaiba.title')}
+            description={t('caseStudies.tabaiba.description')}
+            href={CASE_STUDY_URLS[locale].tabaiba}
+            image="/assets/images/case-studies/tabaiba.jpg"
+          />
+          <CaseStudyCard
+            title={t('caseStudies.useCases.title')}
+            description={t('caseStudies.useCases.description')}
+            href={CASE_STUDY_URLS[locale].halioooo}
+            image="/assets/images/case-studies/halioooo.png"
+          />
+        </div>
+      </Section>
+
+      <Section title={t('home.contact.thankYou.videos.title')}>
+        <div className="wrapper">
+          <p className="mb-6">{t('home.contact.thankYou.videos.description')}</p>
+        </div>
+        <div className="bleed-width-section grid gap-6 md:grid-cols-3">
+          <div className="aspect-video">
+            <YouTubeEmbed videoid="pbvvH0hxvdU" height={225} params="controls=1" />
           </div>
-
-          <section>
-            <h2 className="mb-6">{t('home.contact.thankYou.caseStudies.title')}</h2>
-            <p className="mb-6">{t('home.contact.thankYou.caseStudies.description')}</p>
-            <div className="grid gap-6 md:grid-cols-2">
-              <CaseStudyCard
-                title={t('caseStudies.tabaiba.title')}
-                description={t('caseStudies.tabaiba.description')}
-                href={CASE_STUDY_URLS[locale].tabaiba}
-                image="/assets/images/case-studies/tabaiba.jpg"
-              />
-              <CaseStudyCard
-                title={t('caseStudies.useCases.title')}
-                description={t('caseStudies.useCases.description')}
-                href={CASE_STUDY_URLS[locale].halioooo}
-                image="/assets/images/case-studies/halioooo.png"
-              />
-            </div>
-          </section>
-
-          <section>
-            <h2 className="mb-6">{t('home.contact.thankYou.videos.title')}</h2>
-            <p className="mb-6">{t('home.contact.thankYou.videos.description')}</p>
-            <div className="grid gap-6 md:grid-cols-3">
-              <div className="aspect-video">
-                <YouTubeEmbed videoid="pbvvH0hxvdU" height={225} params="controls=1" />
-              </div>
-              <div className="aspect-video">
-                <YouTubeEmbed videoid="4gx8teA65SY" height={225} params="controls=1" />
-              </div>
-              <div className="aspect-video">
-                <YouTubeEmbed videoid="31Kf8czJsno" height={225} params="controls=1" />
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="mb-6">{t('home.contact.thankYou.blogPosts.title')}</h2>
-            <p className="mb-6">{t('home.contact.thankYou.blogPosts.description')}</p>
-            {post && <PostExcerpt post={post} />}
-          </section>
-
-          <div className="text-center mt-8">
-            <Link to="/public">{t('home.contact.thankYou.backToHome')}</Link>
+          <div className="aspect-video">
+            <YouTubeEmbed videoid="4gx8teA65SY" height={225} params="controls=1" />
+          </div>
+          <div className="aspect-video">
+            <YouTubeEmbed videoid="31Kf8czJsno" height={225} params="controls=1" />
           </div>
         </div>
+      </Section>
+
+      <Section title={t('home.contact.thankYou.blogPosts.title')}>
+        <div className="wrapper">
+          <p className="mb-6">{t('home.contact.thankYou.blogPosts.description')}</p>
+          {post && <PostExcerpt post={post} />}
+        </div>
+      </Section>
+
+      <div className="text-center mt-8">
+        <Link to="/">{t('home.contact.thankYou.backToHome')}</Link>
       </div>
     </Page>
   )

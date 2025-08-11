@@ -170,7 +170,7 @@
       "sent": "Thanks for contacting me!",
       "thankYou": {
         "title": "Thank You for Contacting Me!",
-        "description": "I appreciate your message and will get back to you as soon as possible. In the meantime, check out some of my work and resources below.",
+        "description": "I appreciate your message and will get back to you as soon as possible. In the meantime, please check out some of my work and resources below.",
         "backToHome": "Back to Home",
         "caseStudies": {
           "title": "Case Studies",
@@ -467,11 +467,11 @@
     "description": "Explore real-world solutions I've delivered for clients, showcasing how I tackle complex challenges and deliver impactful results through clean architecture and thoughtful design.",
     "tabaiba": {
       "title": "Tabaiba",
-      "description": "How I helped a startup build a dating app from scratch focused on authentic connections and delivering a solution based on best practices and design patterns."
+      "description": "How I helped a startup build a **dating app** from scratch focused on **authentic connections** and delivering a solution based on **best practices** and **design patterns**."
     },
     "useCases": {
       "title": "Halioooo",
-      "description": "How implementing Use Cases and Design Systems can transform organizational efficiency, maintainability, and consistency in software development at Halioooo."
+      "description": "How implementing **Use Cases** and **Design Systems** can transform organizational **efficiency**, **maintainability**, and **consistency** in software development at Halioooo."
     }
   },
   "newsletter": {

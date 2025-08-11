@@ -209,11 +209,13 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
             title={t('caseStudies.tabaiba.title')}
             description={t('caseStudies.tabaiba.description')}
             href={CASE_STUDY_URLS[locale].tabaiba}
+            image="/assets/images/case-studies/tabaiba.jpg"
           />
           <CaseStudyCard
             title={t('caseStudies.useCases.title')}
             description={t('caseStudies.useCases.description')}
             href={CASE_STUDY_URLS[locale].halioooo}
+            image="/assets/images/case-studies/halioooo.png"
           />
         </div>
       </section>

@@ -7,6 +7,8 @@ import { CaseStudyCard } from '@/features/case-studies/delivery/case-study-card'
 import { PostExcerpt } from '@/features/posts/delivery/post-excerpt'
 import { CASE_STUDY_URLS } from '@/core/i18n/paths'
 import { Locale } from '@/core/i18n/locale'
+import { AccentText } from '@/core/components/accent-text/accent-text'
+import { getPost } from '@/posts'
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale })
@@ -21,28 +23,24 @@ export default async function ThankYouPage({ params }: { params: { locale: strin
   const t = await getTranslations({ locale: params.locale })
   const locale = params.locale as Locale
 
-  // Mock blog post for the PostExcerpt component
-  const mockPost = {
-    title: t('home.contact.thankYou.blogPosts.aiArchitecture'),
+  const post = await getPost({
     slug: 'ai-ready-frontend-architecture',
-    date: '2025-08-10',
-    readTime: 5,
-    image: 'blog-redesign.webp', // Using an existing image
-    summary: t('home.contact.thankYou.blogPosts.description'),
-    categories: ['software-architecture', 'ai'],
-  }
+    locale,
+  })
 
   return (
     <Page>
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         <div className="space-y-12">
           <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold">{t('home.contact.thankYou.title')}</h1>
-            <p className="text-xl">{t('home.contact.thankYou.description')}</p>
+            <h1>
+              <AccentText>{t('home.contact.thankYou.title')}</AccentText>
+            </h1>
+            <p>{t('home.contact.thankYou.description')}</p>
           </div>
 
           <section>
-            <h2 className="text-3xl font-semibold mb-6">{t('home.contact.thankYou.caseStudies.title')}</h2>
+            <h2 className="mb-6">{t('home.contact.thankYou.caseStudies.title')}</h2>
             <p className="mb-6">{t('home.contact.thankYou.caseStudies.description')}</p>
             <div className="grid gap-6 md:grid-cols-2">
               <CaseStudyCard
@@ -61,7 +59,7 @@ export default async function ThankYouPage({ params }: { params: { locale: strin
           </section>
 
           <section>
-            <h2 className="text-3xl font-semibold mb-6">{t('home.contact.thankYou.videos.title')}</h2>
+            <h2 className="mb-6">{t('home.contact.thankYou.videos.title')}</h2>
             <p className="mb-6">{t('home.contact.thankYou.videos.description')}</p>
             <div className="grid gap-6 md:grid-cols-3">
               <div className="aspect-video">
@@ -77,18 +75,13 @@ export default async function ThankYouPage({ params }: { params: { locale: strin
           </section>
 
           <section>
-            <h2 className="text-3xl font-semibold mb-6">{t('home.contact.thankYou.blogPosts.title')}</h2>
+            <h2 className="mb-6">{t('home.contact.thankYou.blogPosts.title')}</h2>
             <p className="mb-6">{t('home.contact.thankYou.blogPosts.description')}</p>
-            <PostExcerpt post={mockPost} />
+            {post && <PostExcerpt post={post} />}
           </section>
 
           <div className="text-center mt-8">
-            <Link
-              to="/"
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90"
-            >
-              {t('home.contact.thankYou.backToHome')}
-            </Link>
+            <Link to="/">{t('home.contact.thankYou.backToHome')}</Link>
           </div>
         </div>
       </div>

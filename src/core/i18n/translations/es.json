@@ -260,6 +260,26 @@
     "talkVideo": "Video",
     "talkDemo": "Demo"
   },
+  "thankYou": {
+    "title": "¡Gracias por contactarme!",
+    "description": "Aprecio tu mensaje y te responderé lo antes posible. Mientras tanto, échale un vistazo a algunos de mis trabajos y recursos:",
+    "backToHome": "Volver al inicio",
+    "caseStudies": {
+      "title": "Casos de estudio",
+      "description": "Explora proyectos reales y soluciones en los que he trabajado."
+    },
+    "videos": {
+      "title": "Videos de YouTube",
+      "description": "Mira mis charlas y tutoriales sobre arquitectura frontend y buenas prácticas.",
+      "architectureVideo": "Patrones de Arquitectura Frontend",
+      "frontendVideo": "Construyendo aplicaciones Frontend listas para IA"
+    },
+    "blogPosts": {
+      "title": "Artículos del blog",
+      "description": "Lee mis últimos artículos sobre desarrollo frontend y arquitectura.",
+      "aiArchitecture": "Arquitectura frontend lista para IA"
+    }
+  },
   "photography": {
     "title": "Fotografía"
   },

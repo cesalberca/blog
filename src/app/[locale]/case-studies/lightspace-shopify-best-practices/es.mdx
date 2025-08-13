@@ -1,0 +1,220 @@
+import { CaseStudyLayout } from '../case-study-layout'
+import { CTA } from '@/core/components/cta/cta'
+
+export const metadata = {
+  title: 'Lightspace — Aplicaciones de Shopify con Mejores Prácticas',
+  slug: 'lightspace',
+  date: '2025-08-11',
+  image: 'lightspace.png',
+  summary: 'Cómo ayudé a Lightspace a desarrollar Aplicaciones y Funciones de Shopify siguiendo las mejores prácticas, creando plantillas para un desarrollo escalable e implementando pipelines CI/CD para pruebas y despliegue.',
+}
+
+## Resumen
+
+**Problema**: [Lightspace](https://www.lightspace.com/) necesitaba desarrollar aplicaciones y funciones de [Shopify](https://shopify.com/) con procesos sólidos de prueba y despliegue, asegurando el cumplimiento de las mejores prácticas en todo su flujo de desarrollo.
+
+**Solución**: Implementé procesos de QA, desarrollé aplicaciones y funciones de Shopify y creé plantillas reutilizables con pipelines CI/CD para pruebas y despliegue automatizados.
+
+**Resultado**: Entregué soluciones escalables y mantenibles que mejoraron la eficiencia de desarrollo y la calidad del código, incluyendo una [plantilla de aplicación de Shopify lista para producción](https://github.com/Lightspace-dev/shopify-remix-app-template) y pruebas automatizadas para temas.
+
+## La historia detrás de Lightspace
+
+[Lightspace](https://www.lightspace.com/) fue mi primer cliente como freelance, marcando el inicio de un emocionante viaje profesional. Conocí a [Ramez](https://www.linkedin.com/in/ramez-banoub/), el fundador, en [Burgas Coliving](https://www.mapmelon.com/blog/my-journey-through-burgas-coliving-during-a-life-transition), lo que llevó a una fructífera colaboración que abarcó múltiples proyectos e iniciativas, por lo cual estoy muy agradecido de la oportunidad de haber trabajado con Ramez y su equipo.
+
+## El reto
+
+Lightspace necesitaba mejorar sus capacidades de desarrollo en Shopify con:
+
+1. **QA**: Garantizar pruebas sólidas en sus aplicaciones
+2. **Soluciones Personalizadas de Shopify**: Desarrollar aplicaciones y funciones especializadas
+3. **Desarrollo Estandarizado**: Crear plantillas reutilizables con mejores prácticas
+4. **Pruebas Automatizadas**: Implementar CI/CD para temas y aplicaciones
+
+## El viaje técnico
+
+### Trabajo de QA
+
+Implementé procesos integrales de QA que:
+
+- Establecieron protocolos de prueba para aplicaciones de Shopify
+- Crearon casos de prueba para flujos críticos de usuario
+- Identificaron y resolvieron problemas antes del despliegue
+- Mejoraron la calidad y fiabilidad general del código
+
+### Desarrollo de aplicaciones Shopify
+
+Desarrollé aplicaciones personalizadas de Shopify que ampliaban las capacidades de la plataforma.
+
+### Desarrollo guiado por pruebas en funciones de Shopify
+
+Implementé funciones de Shopify utilizando [Desarrollo Guiado por Pruebas](https://es.wikipedia.org/wiki/Desarrollo_guiado_por_pruebas) (TDD), una metodología donde las pruebas se escriben antes del código. Este enfoque garantizó funcionalidades robustas y bien probadas desde el inicio.
+
+**¿Qué es TDD?**
+
+TDD sigue un ciclo simple:
+1. Escribir una prueba fallida que defina el comportamiento esperado
+2. Implementar el mínimo código necesario para que la prueba pase
+3. Refactorizar el código asegurando que las pruebas sigan pasando
+
+```typescript
+// First, we wrote the test for a country-based order quantity limiter
+import { describe, expect, it } from 'vitest'
+import { run } from './order-quantity-limiter'
+import { CountryCode } from '../generated/api'
+
+describe('order quantity limiter', () => {
+  it('limits orders to 5 items for Region A', () => {
+    const result = run({
+      cart: {
+        deliveryGroups: [{ deliveryAddress: { countryCode: 'REGION_A' } }],
+        lines: [{ quantity: 6 }]
+      }
+    })
+
+    expect(result.errors[0].localizedMessage).toContain('cannot order more than 5 items')
+  })
+
+  it('allows orders within limits', () => {
+    const result = run({
+      cart: {
+        deliveryGroups: [{ deliveryAddress: { countryCode: 'REGION_A' } }],
+        lines: [{ quantity: 5 }]
+      }
+    })
+
+    expect(result.errors).toHaveLength(0)
+  })
+})
+```
+
+```typescript
+// Then we implemented the function to pass the tests
+export function run(input) {
+  const regionLimits = { 'REGION_A': { limit: 5, name: 'Region A' } }
+  const totalQuantity = input.cart.lines.reduce((sum, line) => sum + line.quantity, 0)
+  const region = input.cart.deliveryGroups[0]?.deliveryAddress?.countryCode
+
+  if (region && regionLimits[region] && totalQuantity > regionLimits[region].limit) {
+    return {
+      errors: [{
+        localizedMessage: `You cannot order more than ${regionLimits[region].limit} items when shipping to ${regionLimits[region].name}.`,
+        target: '$.cart'
+      }]
+    }
+  }
+
+  return { errors: [] }
+}
+```
+
+TDD nos ayudó a:
+- Definir claramente los requisitos antes de implementar
+- Manejar correctamente casos límite
+- Crear una suite de pruebas completa que evitara regresiones
+- Producir código más limpio y modular
+
+### Funciones de Shopify con GraphQL
+
+Creé varias funciones de Shopify usando [GraphQL](https://graphql.org/) que permitieron:
+
+- Aplicaciones de descuentos personalizados
+- Recomendaciones de productos personalizadas
+- Lógica de validación y procesamiento de pedidos
+- Experiencias de pago mejoradas
+
+Estas funciones se construyeron con un fuerte enfoque en pruebas y mantenibilidad.
+
+### Creación de plantillas
+
+Una de las contribuciones más importantes fue la creación de una [plantilla de aplicación Shopify lista para producción](https://github.com/Lightspace-dev/shopify-remix-app-template) que incluía:
+
+- **[Remix Framework](https://remix.run/)**: Para aplicaciones React renderizadas en servidor
+- **[TypeScript](https://www.typescriptlang.org/)**: Para seguridad de tipos y mejor experiencia de desarrollo
+- **[Tailwind CSS](https://tailwindcss.com/)**: Para desarrollo rápido de UI
+- **Despliegue automatizado**: Configurado para [fly.io](https://fly.io/)
+- **Infraestructura de pruebas**: Configurada con mejores prácticas para pruebas unitarias e integrales ([Vitest](https://vitest.dev/) y [Playwright](https://playwright.dev/))
+- **Documentación lista para IA**: Incluyendo [cursor rules](https://github.com/Lightspace-dev/shopify-remix-app-template/blob/01fe63d736ccc49ede0d2c361c8b7a717ca5f9fa/.cursorrules) para asistir a IA
+
+Esta plantilla redujo significativamente el tiempo necesario para iniciar nuevos proyectos, asegurando calidad y consistencia.
+
+### Documentación y código listo para IA
+
+Innovamos haciendo que las bases de código fueran “listas para IA” mediante:
+
+1. **Documentación exhaustiva**: Explicando no solo el qué, sino el porqué de las decisiones
+2. **Cursor Rules**: Archivos [.cursorrules](https://github.com/Lightspace-dev/shopify-remix-app-template/blob/01fe63d736ccc49ede0d2c361c8b7a717ca5f9fa/.cursorrules) con guías específicas del proyecto
+3. **Patrones consistentes**: Estructuras predecibles para facilitar la comprensión por humanos y IA
+
+Esto mejoró la productividad al permitir a las IA dar sugerencias más relevantes.
+
+El archivo de cursor rules contenía pautas de desarrollo simplificadas que ayudaban a las herramientas de IA a comprender nuestras convenciones de proyecto, estándares de codificación y decisiones arquitectónicas. Este enfoque mejoró significativamente la productividad de los desarrolladores al permitir que los asistentes de IA ofrecieran sugerencias más relevantes según el contexto.
+
+Aquí tienes un extracto simplificado de nuestras pautas de desarrollo:
+
+```
+Development Guidelines for Remix + Shopify (Simplified)
+
+Code Style:
+- Write concise TypeScript code with accurate examples
+- Follow Remix framework conventions
+- Use descriptive variable names with auxiliary verbs
+- Ensure separation between UI, state, and business logic
+
+TypeScript Usage:
+- Prefer interfaces over types (except for utility types)
+- Avoid enums; use object maps or union types
+- Use strict mode for better type safety
+
+Performance:
+- Minimize useState and useEffect
+- Use Remix's loader functions for data fetching
+- Implement code splitting and lazy loading
+
+Testing:
+- Write unit tests with Vitest
+- Implement integration tests with Playwright
+- Test both success and failure scenarios
+```
+
+[Ver las guías completas aquí](https://github.com/Lightspace-dev/shopify-remix-app-template/blob/01fe63d736ccc49ede0d2c361c8b7a717ca5f9fa/.cursorrules)
+
+### Implementación de CI/CD
+
+También creé una plantilla para temas internos de Shopify que incluía:
+
+- Pipelines de integración continua para pruebas automatizadas
+- Formateo con [Prettier](https://prettier.io/)
+- Validación de temas antes de desplegar con [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci)
+- Actualizaciones automáticas de tareas en [ClickUp](https://clickup.com/)
+
+## Compartiendo conocimiento y comunidad
+
+Además del desarrollo, aporté a la presencia online de Lightspace:
+
+- Creación de contenido para [Codemotion Milán](https://www.instagram.com/p/DDQETgiN8Hp/?img_index=1) y [GDG Santiago de Compostela](https://www.instagram.com/p/DA6Y8-eijGc/)
+- Grabación de [entrevistas sobre Shopify](https://www.instagram.com/reel/DJUp_4RPfcm/)
+- Publicación de artículos técnicos [1](https://www.lightspace.com/post/shopify-functions-demystified)[2](https://www.lightspace.com/post/a-pilgrims-tale-from-el-camino-to-devfest-santiago)[3](https://www.lightspace.com/post/building-a-shopify-remix-app-template-a-developers-journey)
+
+## Resultados e impacto
+
+La colaboración con Lightspace dio como resultado:
+
+1. **Mayor eficiencia de desarrollo**: Las plantillas y los *pipelines* CI/CD redujeron el tiempo de configuración y garantizaron la consistencia.
+2. **Mayor calidad de código**: Las pruebas estandarizadas y los procesos de aseguramiento de calidad mejoraron la fiabilidad.
+3. **Capacidades ampliadas**: Las aplicaciones y funciones personalizadas de Shopify expandieron lo que era posible en la plataforma.
+4. **Transferencia de conocimiento**: Los miembros del equipo adquirieron experiencia a través de la documentación y pair programming
+
+<CTA
+  title="¿Quieres mejorar tus flujos de desarrollo con mejores prácticas y automatización?"
+  description="Hablemos sobre cómo puedo ayudar a tu equipo."
+  buttonText="Reserva una llamada conmigo"
+  buttonLink="https://cesalberca.com/chat"
+/>
+
+## Conclusión
+
+Trabajar con [Lightspace](https://www.lightspace.com/) fue una experiencia enriquecedora que demostró cómo la **mejores prácticas**, la **automatización** y la **arquitectura bien pensada** pueden transformar el desarrollo. Los procesos y plantillas creados siguen aportando valor como base para nuevos proyectos.
+
+export default function MDXContent({ children }) {
+  return <CaseStudyLayout slug="lightspace-shopify-buenas-practicas">{children}</CaseStudyLayout>
+}

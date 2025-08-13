@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { Link } from '@/core/components/link/link'
 import { useTranslations } from 'next-intl'
+import Autoplay from 'embla-carousel-autoplay'
 
 interface Testimonial {
   name: string
@@ -94,6 +95,13 @@ export const Testimonials: FC<TestimonialsProps> = ({ itemsPerPage = 1 } = { ite
   return (
     <div className="container">
       <Carousel
+        plugins={[
+          Autoplay({
+            delay: 2000,
+            stopOnMouseEnter: true,
+            stopOnFocusIn: true,
+          }),
+        ]}
         opts={{
           align: 'start',
           loop: true,
@@ -103,7 +111,7 @@ export const Testimonials: FC<TestimonialsProps> = ({ itemsPerPage = 1 } = { ite
         <CarouselContent className="-ml-2 md:-ml-4">
           {testimonials.map((testimonial, index) => (
             <CarouselItem key={index} className={`pl-2 md:pl-4 ${itemBasisClass}`}>
-              <Card className="h-full">
+              <Card>
                 <CardContent className="p-6 flex flex-col justify-between h-full">
                   <blockquote className="text-lg mb-4">&ldquo;{testimonial.content}&rdquo;</blockquote>
                   <div className="flex items-center mt-auto">

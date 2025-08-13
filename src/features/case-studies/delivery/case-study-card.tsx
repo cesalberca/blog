@@ -21,7 +21,7 @@ export const CaseStudyCard: FC<CaseStudyCardProps> = async ({ title, description
       <Card className={cn('h-full relative overflow-hidden')}>
         <Background image={image}>
           <CardHeader>
-            <CardTitle className="text-8xl text-center">{title}</CardTitle>
+            <CardTitle className="text-4xl text-center">{title}</CardTitle>
           </CardHeader>
           <CardContent>
             <RichText className="text-base">{tags => t.rich(descriptionKey as any, tags)}</RichText>

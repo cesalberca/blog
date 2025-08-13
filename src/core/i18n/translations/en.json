@@ -167,27 +167,7 @@
       "messageDescription": "Want to work together? Have an idea to share? Just want to say hi?",
       "submit": "Submit",
       "submitting": "Submitting",
-      "sent": "Thanks for contacting me!",
-      "thankYou": {
-        "title": "Thank You for Contacting Me!",
-        "description": "I appreciate your message and will get back to you as soon as possible. In the meantime, please check out some of my work and resources below.",
-        "backToHome": "Back to Home",
-        "caseStudies": {
-          "title": "Case Studies",
-          "description": "Explore real-world projects and solutions I've worked on."
-        },
-        "videos": {
-          "title": "YouTube Videos",
-          "description": "Watch my talks and tutorials on frontend architecture and best practices.",
-          "architectureVideo": "Frontend Architecture Patterns",
-          "frontendVideo": "Building AI-Ready Frontend Applications"
-        },
-        "blogPosts": {
-          "title": "Blog Posts",
-          "description": "Read my latest articles on frontend development and architecture.",
-          "aiArchitecture": "AI-Ready Frontend Architecture"
-        }
-      }
+      "sent": "Thanks for contacting me!"
     }
   },
   "experience": {
@@ -464,6 +444,7 @@
   },
   "caseStudies": {
     "title": "Case Studies",
+    "singleTitle": "Case Study",
     "description": "Explore real-world solutions I've delivered for clients, showcasing how I tackle complex challenges and deliver impactful results through clean architecture and thoughtful design.",
     "tabaiba": {
       "title": "Tabaiba",
@@ -496,5 +477,25 @@
   "cookies": {
     "title": "Cookie Policy",
     "fullContent": "This website uses cookies to enhance your browsing experience and analyze the effectiveness of our advertising campaigns. Cookies are small text files stored on your device when you visit a website. Some cookies are essential, while others require your consent.\n\n## Google Ads Cookies\n\nWe only use cookies from Google Ads for marketing and analytics purposes. These cookies help us understand how you interact with our ads and which pages you visit after clicking on an ad. This allows us to measure the performance of our advertising and optimize our campaigns.\n\nThese cookies are **only set if you provide explicit consent** via the cookie banner. They are never loaded before you make a choice.\n\nYou can learn more about Google Ads cookies by visiting [Google's Privacy & Terms](https://policies.google.com/technologies/partner-sites).\n\n## Managing Your Preferences\n\nYou can accept or reject cookies when you first visit the site. If you change your mind later, you can update your preferences by clicking the **\"Manage Cookies\"** link in the footer. This will reopen the consent banner and allow you to adjust your settings.\n\nPlease note that disabling cookies may affect the functionality and experience of our website."
+  },
+  "thankYou": {
+    "title": "Thank You for Contacting Me!",
+    "description": "I appreciate your message and will get back to you as soon as possible. In the meantime, please check out some of my work and resources below.",
+    "backToHome": "Back to Home",
+    "caseStudies": {
+      "title": "Case Studies",
+      "description": "Explore real-world projects and solutions I've worked on."
+    },
+    "videos": {
+      "title": "YouTube Videos",
+      "description": "Watch my talks and tutorials on frontend architecture and best practices.",
+      "architectureVideo": "Frontend Architecture Patterns",
+      "frontendVideo": "Building AI-Ready Frontend Applications"
+    },
+    "blogPosts": {
+      "title": "Blog Posts",
+      "description": "Read my latest articles on frontend development and architecture.",
+      "aiArchitecture": "AI-Ready Frontend Architecture"
+    }
   }
 }

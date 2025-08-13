@@ -10,6 +10,7 @@ import { FC } from 'react'
 import { PostMetadata } from '@/features/posts/domain/post-metadata'
 import { Locale } from '@/core/i18n/locale'
 import { Section } from '@/features/home/delivery/section'
+import { Testimonials } from '@/core/components/testimonials/testimonials'
 
 export const ThankYouPage: FC<{ post: PostMetadata; locale: Locale }> = async ({ post, locale }) => {
   const t = await getTranslations()
@@ -19,15 +20,15 @@ export const ThankYouPage: FC<{ post: PostMetadata; locale: Locale }> = async ({
       <Section>
         <div className="text-center space-y-4">
           <h1>
-            <AccentText>{t('home.contact.thankYou.title')}</AccentText>
+            <AccentText>{t('thankYou.title')}</AccentText>
           </h1>
-          <p>{t('home.contact.thankYou.description')}</p>
+          <p>{t('thankYou.description')}</p>
         </div>
       </Section>
 
-      <Section title={t('home.contact.thankYou.caseStudies.title')}>
+      <Section title={t('thankYou.caseStudies.title')}>
         <div className="wrapper">
-          <p className="mb-6">{t('home.contact.thankYou.caseStudies.description')}</p>
+          <p className="mb-6">{t('thankYou.caseStudies.description')}</p>
         </div>
         <div className="bleed-width-section grid gap-6 md:grid-cols-3">
           <CaseStudyCard
@@ -51,9 +52,9 @@ export const ThankYouPage: FC<{ post: PostMetadata; locale: Locale }> = async ({
         </div>
       </Section>
 
-      <Section title={t('home.contact.thankYou.videos.title')}>
+      <Section title={t('thankYou.videos.title')}>
         <div className="wrapper">
-          <p className="mb-6">{t('home.contact.thankYou.videos.description')}</p>
+          <p className="mb-6">{t('thankYou.videos.description')}</p>
         </div>
         <div className="bleed-width-section grid gap-6 md:grid-cols-3">
           <div className="aspect-video">
@@ -68,15 +69,21 @@ export const ThankYouPage: FC<{ post: PostMetadata; locale: Locale }> = async ({
         </div>
       </Section>
 
-      <Section title={t('home.contact.thankYou.blogPosts.title')}>
+      <Section title={t('thankYou.blogPosts.title')}>
         <div className="wrapper">
-          <p className="mb-6">{t('home.contact.thankYou.blogPosts.description')}</p>
+          <p className="mb-6">{t('thankYou.blogPosts.description')}</p>
           {post && <PostExcerpt post={post} />}
         </div>
       </Section>
 
+      <Section title={t('home.testimonials.title')}>
+        <div className="wrapper">
+          <Testimonials itemsPerPage={1} />
+        </div>
+      </Section>
+
       <div className="text-center mt-8">
-        <Link to="/">{t('home.contact.thankYou.backToHome')}</Link>
+        <Link to="/">{t('thankYou.backToHome')}</Link>
       </div>
     </Page>
   )

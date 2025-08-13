@@ -16,8 +16,8 @@ export const routing = defineRouting({
     '/case-studies/halioooo-design-system-architecture-library': {
       es: '/casos-de-estudio/halioooo-sistema-de-diseno-biblioteca-de-arquitectura',
     },
-    '/case-studies/lightspace-shopify-app-development': {
-      es: '/casos-de-estudio/lightspace-desarrollo-aplicaciones-shopify',
+    '/case-studies/lightspace-shopify-best-practices': {
+      es: '/casos-de-estudio/lightspace-shopify-buenas-practicas',
     },
     '/blog/bullet-journal-method': {
       es: '/blog/metodo-bullet-journal',

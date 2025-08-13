@@ -1,5 +1,4 @@
 import { BlogPostsPage } from '@/features/posts/delivery/posts.page'
-import { setRequestLocale } from 'next-intl/server'
 import { NextPage } from 'next'
 import { Locale } from '@/core/i18n/locale'
 

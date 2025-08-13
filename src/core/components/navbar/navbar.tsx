@@ -10,6 +10,7 @@ import { Locale } from '@/core/i18n/locale'
 import { ChevronDown, Menu } from 'lucide-react'
 import { Link } from '@/core/components/link/link'
 import { CASE_STUDY_URLS } from '@/core/i18n/paths'
+import { RichText } from '@/core/components/rich-text/rich-text'
 
 const MainLinks = () => {
   const t = useTranslations()
@@ -25,14 +26,32 @@ const MainLinks = () => {
             <ChevronDown className="ml-1 h-4 w-4" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-40">
-          <div className="flex flex-col gap-2">
-            <NavLink type="menu" to={CASE_STUDY_URLS[locale].tabaiba}>
-              {t('caseStudies.tabaiba.title')}
-            </NavLink>
-            <NavLink type="menu" to={CASE_STUDY_URLS[locale].halioooo}>
-              {t('caseStudies.useCases.title')}
-            </NavLink>
+        <PopoverContent className="w-64">
+          <div className="flex flex-col gap-3">
+            <div>
+              <NavLink type="menu" to={CASE_STUDY_URLS[locale].tabaiba}>
+                {t('caseStudies.tabaiba.title')}
+                <RichText className="pl-2 text-xs text-muted-foreground leading-snug">
+                  {tags => t.rich('caseStudies.tabaiba.description', tags)}
+                </RichText>
+              </NavLink>
+            </div>
+            <div>
+              <NavLink type="menu" to={CASE_STUDY_URLS[locale].halioooo}>
+                {t('caseStudies.halioooo.title')}
+                <RichText className="pl-2 text-xs text-muted-foreground leading-snug">
+                  {tags => t.rich('caseStudies.halioooo.description', tags)}
+                </RichText>
+              </NavLink>
+            </div>
+            <div>
+              <NavLink type="menu" to={CASE_STUDY_URLS[locale].lightspace}>
+                {t('caseStudies.lightspace.title')}
+                <RichText className="pl-2 text-xs text-muted-foreground leading-snug">
+                  {tags => t.rich('caseStudies.lightspace.description', tags)}
+                </RichText>
+              </NavLink>
+            </div>
           </div>
         </PopoverContent>
       </Popover>

@@ -7,6 +7,7 @@ import { Datetime } from '@/core/date/datetime'
 import { Newsletter } from '@/core/components/newsletter/newsletter'
 import { CASE_STUDY_URLS } from '@/core/i18n/paths'
 import { Locale } from '@/core/i18n/locale'
+import { RichText } from '@/core/components/rich-text/rich-text'
 
 export const Footer: FC = () => {
   const t = useTranslations()
@@ -21,7 +22,7 @@ export const Footer: FC = () => {
               <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
               <span className="text-lg font-semibold">{t('home.title')}</span>
             </div>
-            <p className="text-sm text-muted-foreground">{t('home.heroCaption')}</p>
+            <RichText className="text-sm text-muted-foreground">{tags => t.rich('home.heroCaption', tags)}</RichText>
             <div className="flex items-center space-x-4 mt-4">
               <SocialMedia />
             </div>
@@ -83,7 +84,12 @@ export const Footer: FC = () => {
               </li>
               <li>
                 <Link to={CASE_STUDY_URLS[locale].halioooo} type="invisible" className="text-sm hover:underline">
-                  {t('caseStudies.useCases.title')}
+                  {t('caseStudies.halioooo.title')}
+                </Link>
+              </li>
+              <li>
+                <Link to={CASE_STUDY_URLS[locale].lightspace} type="invisible" className="text-sm hover:underline">
+                  {t('caseStudies.lightspace.title')}
                 </Link>
               </li>
             </ul>

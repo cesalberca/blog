@@ -1,0 +1,222 @@
+import { CaseStudyLayout } from '../case-study-layout'
+import { CTA } from '@/core/components/cta/cta'
+
+export const metadata = {
+  title: 'Lightspace — Shopify Apps with Best Practices',
+  slug: 'lightspace',
+  date: '2025-08-11',
+  image: 'lightspace.png',
+  summary: 'How I helped Lightspace develop Shopify Apps and Functions using best practices, created templates for scalable development, and implemented CI/CD pipelines for testing and deployment.',
+}
+
+## Summary
+
+**Problem**: [Lightspace](https://www.lightspace.com/) needed to develop [Shopify](https://shopify.com/) apps and functions with robust testing and deployment processes, while ensuring best practices were followed across their development workflow.
+
+**Solution**: Implemented quality assurance processes, developed Shopify apps and functions, and created reusable templates with CI/CD pipelines for automated testing and deployment.
+
+**Result**: Delivered scalable, maintainable solutions that improved development efficiency and code quality, including a [production-ready Shopify app template](https://github.com/Lightspace-dev/shopify-remix-app-template) and automated testing for themes.
+
+## The Story Behind Lightspace
+
+[Lightspace](https://www.lightspace.com/) was my first client as a freelancer, marking the beginning of an exciting professional journey. I met [Ramez](https://www.linkedin.com/in/ramez-banoub/), the founder, at [Burgas Coliving](https://www.mapmelon.com/blog/my-journey-through-burgas-coliving-during-a-life-transition), which led to a fruitful collaboration that spanned multiple projects and initiatives, for which I'm very grateful for the opportunity to work with Ramez and his team.
+
+## The Challenge
+
+Lightspace needed to enhance their Shopify development capabilities with:
+
+1. **Quality Assurance**: Ensuring robust testing across their applications
+2. **Custom Shopify Solutions**: Developing specialized apps and functions
+3. **Standardized Development**: Creating reusable templates with best practices
+4. **Automated Testing**: Implementing CI/CD for themes and applications
+
+## The Technical Journey
+
+### Quality Assurance Work
+
+I implemented comprehensive QA processes that:
+
+- Established testing protocols for Shopify applications
+- Created test cases for critical user flows
+- Identified and resolved potential issues before deployment
+- Improved overall code quality and reliability
+
+### Shopify App Development
+
+I developed custom Shopify applications that extended the platform's capabilities:
+
+### Test-Driven Development in Shopify Functions
+
+I implemented Shopify Functions using [Test-Driven Development](https://en.wikipedia.org/wiki/Test-driven_development) (TDD), a methodology where tests are written before the actual code. This approach helped ensure robust, well-tested functionality from the start.
+
+**What is TDD?**
+
+TDD follows a simple cycle:
+1. Write a failing test that defines the expected behavior
+2. Implement the minimum code needed to make the test pass
+3. Refactor the code while ensuring tests still pass
+
+Here's a simplified example of a Shopify Function developed using TDD:
+
+```typescript
+// First, we wrote the test for a country-based order quantity limiter
+import { describe, expect, it } from 'vitest'
+import { run } from './order-quantity-limiter'
+import { CountryCode } from '../generated/api'
+
+describe('order quantity limiter', () => {
+  it('limits orders to 5 items for Region A', () => {
+    const result = run({
+      cart: {
+        deliveryGroups: [{ deliveryAddress: { countryCode: 'REGION_A' } }],
+        lines: [{ quantity: 6 }]
+      }
+    })
+
+    expect(result.errors[0].localizedMessage).toContain('cannot order more than 5 items')
+  })
+
+  it('allows orders within limits', () => {
+    const result = run({
+      cart: {
+        deliveryGroups: [{ deliveryAddress: { countryCode: 'REGION_A' } }],
+        lines: [{ quantity: 5 }]
+      }
+    })
+
+    expect(result.errors).toHaveLength(0)
+  })
+})
+```
+
+```typescript
+// Then we implemented the function to pass the tests
+export function run(input) {
+  const regionLimits = { 'REGION_A': { limit: 5, name: 'Region A' } }
+  const totalQuantity = input.cart.lines.reduce((sum, line) => sum + line.quantity, 0)
+  const region = input.cart.deliveryGroups[0]?.deliveryAddress?.countryCode
+
+  if (region && regionLimits[region] && totalQuantity > regionLimits[region].limit) {
+    return {
+      errors: [{
+        localizedMessage: `You cannot order more than ${regionLimits[region].limit} items when shipping to ${regionLimits[region].name}.`,
+        target: '$.cart'
+      }]
+    }
+  }
+
+  return { errors: [] }
+}
+```
+
+TDD helped us:
+- Clearly define requirements before implementation
+- Ensure edge cases were handled properly
+- Create a comprehensive test suite that prevented regressions
+- Produce cleaner, more modular code
+
+### Shopify Functions with GraphQL
+
+I created several Shopify Functions using [GraphQL](https://graphql.org/), which allowed for:
+
+- Custom discount applications
+- Personalized product recommendations
+- Order validation and processing logic
+- Enhanced checkout experiences
+
+These functions were built with a strong focus on testing and maintainability.
+
+### Template Creation
+
+One of the most impactful contributions was creating a [production-ready Shopify app template](https://github.com/Lightspace-dev/shopify-remix-app-template) that featured:
+
+- **[Remix Framework](https://remix.run/)**: For server-rendered React applications
+- **[TypeScript](https://www.typescriptlang.org/)**: For type safety and better developer experience
+- **[Tailwind CSS](https://tailwindcss.com/)**: For rapid UI development
+- **Automated Deployment**: Configured for easy deployment to [fly.io](https://fly.io/)
+- **Testing Infrastructure**: Set up with best practices for unit and integration tests (e.g., [Vitest](https://vitest.dev/) and [Playwright](https://playwright.dev/))
+- **AI-Ready Documentation**: Including [cursor rules](https://github.com/Lightspace-dev/shopify-remix-app-template/blob/01fe63d736ccc49ede0d2c361c8b7a717ca5f9fa/.cursorrules) to support AI coding assistants
+
+This template significantly reduced the time needed to start new projects while ensuring consistent quality and best practices.
+
+### Documentation and AI-Ready Codebases
+
+A key innovation in our development approach was making codebases "AI-ready" through:
+
+1. **Comprehensive Documentation**: Creating detailed inline documentation that explained not just what code did, but why certain decisions were made
+2. **Cursor Rules**: Implementing [.cursorrules](https://github.com/Lightspace-dev/shopify-remix-app-template/blob/01fe63d736ccc49ede0d2c361c8b7a717ca5f9fa/.cursorrules) files that provided AI coding assistants with project-specific guidelines
+3. **Consistent Patterns**: Establishing predictable code structures that made it easier for both humans and AI to understand the codebase
+
+The cursor rules file contained simplified development guidelines that helped AI tools understand our project conventions, coding standards, and architectural decisions. This approach significantly improved developer productivity by enabling AI assistants to provide more contextually relevant suggestions.
+
+Here's a simplified excerpt from our development guidelines:
+
+```
+Development Guidelines for Remix + Shopify (Simplified)
+
+Code Style:
+- Write concise TypeScript code with accurate examples
+- Follow Remix framework conventions
+- Use descriptive variable names with auxiliary verbs
+- Ensure separation between UI, state, and business logic
+
+TypeScript Usage:
+- Prefer interfaces over types (except for utility types)
+- Avoid enums; use object maps or union types
+- Use strict mode for better type safety
+
+Performance:
+- Minimize useState and useEffect
+- Use Remix's loader functions for data fetching
+- Implement code splitting and lazy loading
+
+Testing:
+- Write unit tests with Vitest
+- Implement integration tests with Playwright
+- Test both success and failure scenarios
+```
+
+[View the complete guidelines](https://github.com/Lightspace-dev/shopify-remix-app-template/blob/01fe63d736ccc49ede0d2c361c8b7a717ca5f9fa/.cursorrules)
+
+### CI/CD Implementation
+
+I also created a template for in-house Shopify themes that included:
+
+- Continuous Integration pipelines for automated testing
+- Formatting code using [Prettier](https://prettier.io/)
+- Theme validation before deployment with [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci)
+- Automated [ClickUp](https://clickup.com/) task updates
+
+## Knowledge Sharing and Community Engagement
+
+Beyond development work, I contributed to Lightspace's community presence:
+
+- Created content for [Codemotion Milan](https://www.instagram.com/p/DDQETgiN8Hp/?img_index=1) and [GDG Santiago de Compostela](https://www.instagram.com/p/DA6Y8-eijGc/) where Lightspace sponsored the trips
+- Recorded [interviews about using Shopify](https://www.instagram.com/reel/DJUp_4RPfcm/)
+- Created blogposts about Shopify development [1](https://www.lightspace.com/post/shopify-functions-demystified)[2](https://www.lightspace.com/post/a-pilgrims-tale-from-el-camino-to-devfest-santiago)[3](https://www.lightspace.com/post/building-a-shopify-remix-app-template-a-developers-journey)
+
+## Results and Impact
+
+The collaboration with Lightspace resulted in:
+
+1. **Improved Development Efficiency**: Templates and CI/CD pipelines reduced setup time and ensured consistency
+2. **Higher Code Quality**: Standardized testing and QA processes improved reliability
+3. **Enhanced Capabilities**: Custom Shopify apps and functions extended what was possible on the platform
+4. **Knowledge Transfer**: Team members gained expertise through documentation and pair programming
+
+<CTA
+  title="Want to improve your development workflows with best practices and automation?"
+  description="Let's talk about how I can help your team."
+  buttonText="Book a call with me"
+  buttonLink="https://cesalberca.com/chat"
+/>
+
+## Conclusion
+
+Working with [Lightspace](https://www.lightspace.com/) was a rewarding experience that showcased how implementing **best practices**, **automation**, and **thoughtful architecture** can transform development workflows. The collaboration brought together team members from around the world, creating a truly global development effort.
+
+The templates and processes we established continue to provide value, serving as the foundation for new projects and ensuring consistent quality across Lightspace's development initiatives. Thank you Lightspace for the opportunity to work together.
+
+export default function MDXContent({ children }) {
+  return <CaseStudyLayout slug="lightspace-shopify-app-development">{children}</CaseStudyLayout>
+}

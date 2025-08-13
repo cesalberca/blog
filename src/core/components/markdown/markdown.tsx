@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import { cn } from '@/lib/utils'
 import { Link } from '@/core/components/link/link'
 
-export const Markdown: FC<{ value: string; className?: string }> = async ({ value, className }) => {
+export const Markdown: FC<{ value: string; className?: string }> = ({ value, className }) => {
   return (
     <div className={cn('prose prose-zinc dark:prose-invert text-current', className)}>
       <ReactMarkdown

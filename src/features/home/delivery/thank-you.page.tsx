@@ -29,18 +29,24 @@ export const ThankYouPage: FC<{ post: PostMetadata; locale: Locale }> = async ({
         <div className="wrapper">
           <p className="mb-6">{t('home.contact.thankYou.caseStudies.description')}</p>
         </div>
-        <div className="bleed-width-section grid gap-6 md:grid-cols-2">
+        <div className="bleed-width-section grid gap-6 md:grid-cols-3">
           <CaseStudyCard
             title={t('caseStudies.tabaiba.title')}
-            description={t('caseStudies.tabaiba.description')}
+            descriptionKey={'caseStudies.tabaiba.description'}
             href={CASE_STUDY_URLS[locale].tabaiba}
             image="/assets/images/case-studies/tabaiba.jpg"
           />
           <CaseStudyCard
-            title={t('caseStudies.useCases.title')}
-            description={t('caseStudies.useCases.description')}
+            title={t('caseStudies.halioooo.title')}
+            descriptionKey={'caseStudies.halioooo.description'}
             href={CASE_STUDY_URLS[locale].halioooo}
             image="/assets/images/case-studies/halioooo.png"
+          />
+          <CaseStudyCard
+            title={t('caseStudies.lightspace.title')}
+            descriptionKey={'caseStudies.lightspace.description'}
+            href={CASE_STUDY_URLS[locale].lightspace}
+            image="/assets/images/case-studies/lightspace.png"
           />
         </div>
       </Section>

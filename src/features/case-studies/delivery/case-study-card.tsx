@@ -4,28 +4,29 @@ import { Link } from '@/core/components/link/link'
 import { cn } from '@/lib/utils'
 import { Background } from '@/core/components/background/background'
 import { Markdown } from '@/core/components/markdown/markdown'
+import { RichText } from '@/core/components/rich-text/rich-text'
+import { getTranslations } from 'next-intl/server'
 
 interface CaseStudyCardProps {
   title: string
-  description: string
+  descriptionKey: string
   href: string
   image: string
 }
 
-export const CaseStudyCard: FC<CaseStudyCardProps> = ({ title, description, href, image }) => {
+export const CaseStudyCard: FC<CaseStudyCardProps> = async ({ title, descriptionKey, href, image }) => {
+  const t = await getTranslations()
   return (
     <Link to={href} type="invisible">
       <Card className={cn('h-full relative overflow-hidden')}>
-        <div className="[aspect-ratio:3/2]">
-          <Background image={image}>
-            <CardHeader>
-              <CardTitle className="text-center">{title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Markdown className={cn('text-xl')} value={description} />
-            </CardContent>
-          </Background>
-        </div>
+        <Background image={image}>
+          <CardHeader>
+            <CardTitle className="text-8xl text-center">{title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <RichText className="text-base">{tags => t.rich(descriptionKey as any, tags)}</RichText>
+          </CardContent>
+        </Background>
       </Card>
     </Link>
   )

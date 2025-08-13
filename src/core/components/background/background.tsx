@@ -48,7 +48,7 @@ export const Background: FC<PropsWithChildren<{ className?: string; image?: stri
 
   function setBackground() {
     if (decoRef.current && itemRef.current) {
-      controls.start({ opacity: image ? 0.5 : 0.25, transition: { duration: 0.5, ease: 'easeInOut' } })
+      controls.start({ opacity: image ? 0.75 : 0.25, transition: { duration: 0.5, ease: 'easeInOut' } })
       const xPosition = itemRef.current.clientWidth / 2
       const yPosition = itemRef.current.clientHeight / 2
       itemRef.current.style.setProperty('--x', `${image ? xPosition : 0}px`)

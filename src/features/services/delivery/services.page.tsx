@@ -204,7 +204,7 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
         </h2>
         <p className="text-center mb-10 max-w-3xl mx-auto">{t('home.services.caseStudiesIntro')}</p>
 
-        <div className="bleed-width-section grid md:grid-cols-2 gap-8">
+        <div className="bleed-width-section grid md:grid-cols-3 gap-8">
           <CaseStudyCard
             title={t('caseStudies.tabaiba.title')}
             description={t('caseStudies.tabaiba.description')}
@@ -212,10 +212,16 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
             image="/assets/images/case-studies/tabaiba.jpg"
           />
           <CaseStudyCard
-            title={t('caseStudies.useCases.title')}
-            description={t('caseStudies.useCases.description')}
+            title={t('caseStudies.halioooo.title')}
+            description={t('caseStudies.halioooo.description')}
             href={CASE_STUDY_URLS[locale].halioooo}
             image="/assets/images/case-studies/halioooo.png"
+          />
+          <CaseStudyCard
+            title={t('caseStudies.lightspace.title')}
+            description={t('caseStudies.lightspace.description')}
+            href={CASE_STUDY_URLS[locale].lightspace}
+            image="/assets/images/case-studies/lightspace.png"
           />
         </div>
       </section>

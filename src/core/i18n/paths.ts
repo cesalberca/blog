@@ -4,9 +4,11 @@ export const CASE_STUDY_URLS = {
   [Locale.EN]: {
     tabaiba: '/case-studies/tabaiba-mobile-app-ddd-architecture',
     halioooo: '/case-studies/halioooo-design-system-architecture-library',
+    lightspace: '/case-studies/lightspace-shopify-app-development',
   },
   [Locale.ES]: {
     tabaiba: '/casos-de-estudio/tabaiba-app-movil-arquitectura-ddd',
     halioooo: '/casos-de-estudio/halioooo-sistema-de-diseno-biblioteca-de-arquitectura',
+    lightspace: '/casos-de-estudio/lightspace-desarrollo-aplicaciones-shopify',
   },
 } as const

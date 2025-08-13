@@ -81,7 +81,7 @@
       "freelancer": "Freelancer",
       "podcastHost": "Podcast Host"
     },
-    "heroCaption": "Helping You Build Scalable, AI-Ready Frontend Architecture",
+    "heroCaption": "Helping You Build <strong>Scalable</strong>, <strong>AI-Ready</strong> Frontend <strong>Architecture</strong>",
     "whoAmI": "**Senior Front-end Architect** & **Software Crafter** from Spain with over **10 years of experience**. Freelancer _obsessed_ with **best practices**, **architecture** and **testing**.\n\nAs an [international speaker](https://www.cesalberca.com/talks) and Digital Nomad, I share my tech adventures around the world. Active in the [Codemotion](https://www.codemotion.com/) community as a committee member and [ambassador](https://community-en.codemotion.it/community/ambassador-program). Host of [Colivers Club Podcast](https://coliversclub.com/).",
     "services": {
       "title": "Services",
@@ -467,11 +467,15 @@
     "description": "Explore real-world solutions I've delivered for clients, showcasing how I tackle complex challenges and deliver impactful results through clean architecture and thoughtful design.",
     "tabaiba": {
       "title": "Tabaiba",
-      "description": "How I helped a startup build a **dating app** from scratch focused on **authentic connections** and delivering a solution based on **best practices** and **design patterns**."
+      "description": "How I helped a startup build a <strong>dating app</strong> from scratch focused on <strong>authentic connections</strong> and delivering a solution based on <strong>best practices</strong> and <strong>design patterns</strong>."
     },
-    "useCases": {
+    "halioooo": {
       "title": "Halioooo",
-      "description": "How implementing **Use Cases** and **Design Systems** can transform organizational **efficiency**, **maintainability**, and **consistency** in software development at Halioooo."
+      "description": "How implementing <strong>Use Cases</strong> and <strong>Design Systems</strong> can transform organizational <strong>efficiency</strong>, <strong>maintainability</strong>, and <strong>consistency</strong> in software development at Halioooo."
+    },
+    "lightspace": {
+      "title": "Lightspace",
+      "description": "How I helped <strong>Lightspace</strong> develop <strong>Shopify apps</strong> and <strong>functions</strong> using <strong>best practices</strong>, created <strong>templates</strong> for <strong>scalable development</strong>, and implemented <strong>CI/CD pipelines</strong> for <strong>testing</strong> and <strong>deployment</strong>."
     }
   },
   "newsletter": {

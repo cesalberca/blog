@@ -26,7 +26,7 @@ export const CaseStudyLayout: FC<PropsWithChildren<{ slug: string }>> = async ({
           </h1>
         </div>
       </Background>
-      <article className="wrapper my-8 prose dark:prose-invert max-w-3xl mx-auto">{children}</article>
+      <article className="wrapper my-8 px-4 prose dark:prose-invert max-w-3xl mx-auto">{children}</article>
     </Page>
   )
 }

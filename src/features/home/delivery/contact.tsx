@@ -36,7 +36,8 @@ export const ContactForm: FC = () => {
   })
 
   const onSubmit: SubmitHandler<FormData> = async data => {
-    const response = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_API_KEY}`, {
+    const formspreeKey = process.env['NEXT_PUBLIC_FORMSPREE_API_KEY'] ?? ''
+    const response = await fetch(`https://formspree.io/f/${formspreeKey}`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {

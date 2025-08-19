@@ -12,7 +12,7 @@ const Index: NextPage<{ params: Promise<{ locale: Locale }> }> = async ({ params
   })
 
   if (post === null) {
-    return
+    return null
   }
 
   return <ThankYouPage locale={locale} post={post} />

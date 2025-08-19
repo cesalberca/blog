@@ -78,7 +78,7 @@ export const Background: FC<PropsWithChildren<{ className?: string; image?: stri
         style={{ backgroundImage: `url(${image})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
         className={cn(
           'absolute top-0 left-0 h-full w-full font-mono text-xs break-words leading-4 opacity-0',
-          styles.mask,
+          styles['mask'],
           image ? 'text-transparent' : 'text-white',
           '[background-clip:text] [-webkit-background-clip:text]',
         )}

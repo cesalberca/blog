@@ -33,7 +33,7 @@ export async function getTalks({ locale }: { locale: Locale }): Promise<TalkMeta
 
           // Extract the content after the metadata block
           const contentMatch = fileContent.match(/^export const metadata[\s\S]*?\}\s*\n([\s\S]*)$/m)
-          const abstract = contentMatch ? contentMatch[1].trim() : ''
+          const abstract = contentMatch?.[1]?.trim() ?? ''
 
           // Import the metadata
           const { metadata } = await import(`@/content/talks/${name}/${locale}.mdx`)
@@ -58,9 +58,9 @@ export async function getTalks({ locale }: { locale: Locale }): Promise<TalkMeta
         }
 
         // Sort events by date (newest first) and return the first one's date
-        return new Date(
-          [...talk.events].sort((e1, e2) => new Date(e2.date).getTime() - new Date(e1.date).getTime())[0].date,
-        )
+        const sorted = [...talk.events].sort((e1, e2) => new Date(e2.date).getTime() - new Date(e1.date).getTime())
+        const firstDate = sorted[0]?.date
+        return new Date(firstDate ?? 0)
       }
 
       const latestDateA = getLatestEventDate(a)

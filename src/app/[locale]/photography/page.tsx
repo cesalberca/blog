@@ -5,13 +5,19 @@ import { list } from '@vercel/blob'
 async function getPhotos(): Promise<Photo[]> {
   const response = await list({ prefix: 'photography' })
 
-  return response.blobs.map(blob => ({
-    src: blob.url,
-    alt: blob.pathname.split('/').pop()?.split('.')[0].replace(/-/g, ' ') || '',
-    // These will be overridden by the next/image component
-    width: 0,
-    height: 0,
-  }))
+  return response.blobs.map(blob => {
+    const filename = blob.pathname.split('/').pop() ?? ''
+    const base = filename.split('.')[0] ?? ''
+    const alt = base.replace(/-/g, ' ')
+
+    return {
+      src: blob.url,
+      alt,
+      // These will be overridden by the next/image component
+      width: 0,
+      height: 0,
+    }
+  })
 }
 
 export default async function Page() {

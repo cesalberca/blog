@@ -21,6 +21,7 @@ export const CookieBanner: FC = () => {
       }, 1000)
       return () => clearTimeout(timer)
     }
+    return
   }, [])
 
   const acceptCookies = useCallback(() => {

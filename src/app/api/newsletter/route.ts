@@ -10,9 +10,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 })
     }
 
-    const API_KEY = process.env.MAILCHIMP_API_KEY
-    const API_SERVER = process.env.MAILCHIMP_API_SERVER
-    const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID
+    const API_KEY = process.env['MAILCHIMP_API_KEY']
+    const API_SERVER = process.env['MAILCHIMP_API_SERVER']
+    const AUDIENCE_ID = process.env['MAILCHIMP_AUDIENCE_ID']
 
     if (!API_KEY || !API_SERVER || !AUDIENCE_ID) {
       return NextResponse.json({ error: 'Mailchimp configuration is missing' }, { status: 500 })

@@ -14,6 +14,10 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
+  if (images.length === 0) {
+    return null
+  }
+
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index)
     setLightboxOpen(true)
@@ -71,14 +75,16 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
             >
               <ChevronLeft size={24} />
             </button>
-            <Image
-              src={images[currentImageIndex].src}
-              alt={images[currentImageIndex].alt}
-              fill
-              sizes="100vw"
-              className="object-contain"
-              onClick={e => e.stopPropagation()}
-            />
+            {images[currentImageIndex] && (
+              <Image
+                src={images[currentImageIndex].src}
+                alt={images[currentImageIndex].alt}
+                fill
+                sizes="100vw"
+                className="object-contain"
+                onClick={e => e.stopPropagation()}
+              />
+            )}
             <button
               onClick={e => {
                 e.stopPropagation()

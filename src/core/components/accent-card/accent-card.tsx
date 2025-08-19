@@ -42,6 +42,7 @@ export const AccentCard: FC<
 
     x.set(rX)
     y.set(rY)
+    return undefined
   }
 
   const handleMouseLeave = () => {

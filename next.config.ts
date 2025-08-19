@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/cv',
+        destination: 'https://drive.google.com/file/d/1NuWgWSZWU2axtO_P8xOpTYTWfG5XptAY/view?usp=sharing',
+        permanent: true,
+      },
+      {
         source: '/articles/:path*',
         destination: '/blog/:path*',
         permanent: false,

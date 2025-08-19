@@ -177,8 +177,8 @@
     "cv": "Descargar currículum completo.",
     "freelancer": {
       "title": "Freelancer",
-      "dates": "2024 - Actualmente",
-      "description": "**Workshops**, **mentoría** y **consultoría** para proyectos orientados a buenas prácticas, con un enfoque en **arquitectura**, **pruebas** y **patrones de diseño** de aplicaciones front-end."
+      "dates": "Julio 2024 - Presente",
+      "description": "Diseño e implemento **sistemas de diseño** escalables, **librerías arquitectónicas** agnósticas de framework y **arquitecturas frontend preparadas para IA**. Imparto **workshops** sobre **testing**, **arquitectura** y **prácticas modernas de frontend**. Colaboro con agencias y startups de Europa y EE. UU. para crear **soluciones frontend** a medida y construir productos digitales escalables."
     },
     "writer": {
       "title": "Autor de libro",
@@ -187,8 +187,8 @@
     },
     "autentia": {
       "title": "Autentia",
-      "dates": "2017 - 2024",
-      "description": "* **Líder de Arquitectura Front-end**. Diseñé e implementé **Design Systems** en diferentes frameworks, arquitecturas **modulares** siguiendo principios de **Hexagonal** y **Domain Driven Design**, y estrategias robustas de **pruebas**.\n* **Desarrollador de software** con diferentes tecnologías como JavaScript, TypeScript, Angular, Vue y React.\n* **Desarrollador Open Source**: Creé un [framework de arquitectura](https://www.archimedesfw.io/docs/js/) en TypeScript que hace que las aplicaciones sean más robustas utilizando casos de uso.\n* **Docente**: He dado más de cien charlas y talleres sobre diferentes tecnologías como: JavaScript, TypeScript, Vue, Angular, React, pruebas, CSS, arquitectura, buenas prácticas y más.\n* **Onboarding Link**: Formé parte del diseño del proceso de incorporación de Front-end en la empresa e entrevisté a posibles compañeros de trabajo.\n* **Mentor**: Fui mentor de los miembros más junior de la empresa, realizando sesiones 1:1 para establecer y realizar un seguimiento de sus objetivos.\n* **Entrevistador**: Entrevisté a personas destacadas en tecnología para el [canal de YouTube de la empresa](https://www.youtube.com/watch?v=iThFgLmD96E&list=PLKxa4AIfm4pVyeMpU0QkV4gzaFDaa_RFW&index=10)."
+      "dates": "Agosto 2017 - Julio 2024",
+      "description": "Lideré esfuerzos de **sistemas de diseño** y **arquitectura** usando principios de **DDD** y **Hexagonal**. Desarrollé **estrategias de testing** robustas y **formé equipos** en JavaScript, TypeScript, Vue, Angular, React y Java. Creé **tooling de arquitectura open source** en TypeScript. Desarrollé apps Android con Kotlin. **Mentoricé** a desarrolladores junior, contribuí al **onboarding** e impartí más de una docena de workshops en diferentes tecnologías."
     },
     "codemotionAmbassador": {
       "title": "Embajador de Codemotion",
@@ -196,29 +196,29 @@
       "description": "Represento los valores de [Codemotion](https://www.codemotion.com/) y ayudo a que la comunidad crezca como parte de su [programa de embajadores](https://community-en.codemotion.it/community/ambassador-program)."
     },
     "codemotion": {
-      "title": "Miembro del Comité de Codemotion Madrid",
-      "dates": "2019 - Actualmente",
-      "description": "**Contactar ponentes**, **revisar el C4P** y **diseñar la agenda del evento** para uno de los **eventos tecnológicos más grandes** de España: [Codemotion Madrid](https://conferences.codemotion.com/madrid2024/en/home/)."
+      "title": "Miembro del comité de Codemotion",
+      "dates": "Junio 2019 - Presente",
+      "description": "Apoyo en captación de ponentes, diseño de agenda y facilitación de webinars en temas de frontend y arquitectura para [Codemotion](https://www.codemotion.com/)."
     },
     "cice": {
-      "title": "Docente del Máster de Desarrollo Full Stack en CICE",
-      "dates": "2020 - 2021",
-      "description": "Diseñé las lecciones desde cero, enseñé a los estudiantes y evalué su progreso. Impartí clases de **Desarrollo Web** con React. **Pruebas**, **arquitectura** y **buenas prácticas** fueron un punto focal de las lecciones. Aquí puedes consultar el [currículum abierto](https://github.com/cice-classroom/cice-playground)."
+      "title": "CICE",
+      "dates": "Febrero 2020 - Enero 2021",
+      "description": "Docente de Fullstack Web Developer en un máster privado. Consulta el [currículum abierto](https://github.com/cice-classroom/cice-playground)."
     },
     "escuelaIt": {
-      "title": "Profesor de Desarrollo Front-end en EscuelaIT",
+      "title": "EscuelaIT",
       "dates": "Esporádico",
-      "description": "**Formador** en los siguientes cursos: [Deno](https://escuela.it/cursos/curso-de-deno), [TypeScript](https://escuela.it/cursos/curso-typescript), [React](https://escuela.it/cursos/curso-desarrollo-aplicaciones-spa-react) y [JavaScript Avanzado](https://escuela.it/cursos/curso-avanzado-javascript)."
+      "description": "Formador en los siguientes cursos: [Deno](https://escuela.it/cursos/curso-de-deno), [TypeScript](https://escuela.it/cursos/curso-typescript), [React](https://escuela.it/cursos/curso-desarrollo-aplicaciones-spa-react) y [JavaScript Avanzado](https://escuela.it/cursos/curso-avanzado-javascript)."
     },
     "pensemos": {
       "title": "Pensemos",
-      "dates": "2016 - 2017",
-      "description": "**Desarrollador Web** para múltiples pequeñas empresas utilizando **CMSs**. De forma autodidacta en React, creé una SPA utilizando React y Firebase sin experiencia previa."
+      "dates": "Enero 2016 - Mayo 2017",
+      "description": "Desarrollador web con React."
     },
     "comercialTalk": {
       "title": "Comercial Talk",
-      "dates": "2013 - 2015",
-      "description": "Autodidacta en **Diseño Gráfico** utilizando **Photoshop** e **Illustrator**. Diseñé carteles, folletos, tarjetas de presentación y la identidad visual."
+      "dates": "Noviembre 2013 – Enero 2015",
+      "description": "Diseñador gráfico y desarrollador web autodidacta."
     }
   },
   "article": {

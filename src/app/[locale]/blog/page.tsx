@@ -1,5 +1,5 @@
 import { BlogPostsPage } from '@/features/posts/delivery/posts.page'
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
 import { Locale } from '@/core/i18n/locale'
 
 const Page: NextPage<{

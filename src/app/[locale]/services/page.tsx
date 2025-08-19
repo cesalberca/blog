@@ -1,5 +1,5 @@
 import { ServicesPage } from '../../../features/services/delivery/services.page'
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { Locale } from '@/core/i18n/locale'
 

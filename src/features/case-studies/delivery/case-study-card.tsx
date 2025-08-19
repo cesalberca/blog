@@ -1,9 +1,8 @@
-import React, { FC } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { type FC } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Link } from '@/core/components/link/link'
 import { cn } from '@/lib/utils'
 import { Background } from '@/core/components/background/background'
-import { Markdown } from '@/core/components/markdown/markdown'
 import { RichText } from '@/core/components/rich-text/rich-text'
 import { getTranslations } from 'next-intl/server'
 

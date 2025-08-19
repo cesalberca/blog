@@ -8,7 +8,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { DialogTitle } from '@radix-ui/react-dialog'
-import { Photo } from '@/features/photography/domain/photo'
+import type { Photo } from '@/features/photography/domain/photo'
 
 interface Props {
   photos: Photo[]

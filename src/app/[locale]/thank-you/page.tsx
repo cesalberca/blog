@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
 import { Locale } from '@/core/i18n/locale'
 import { getPost } from '@/posts'
 import { ThankYouPage } from '@/features/home/delivery/thank-you.page'

@@ -1,7 +1,7 @@
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
 import { NewsletterSignupPage } from '@/features/newsletter/delivery/newsletter-signup.page'
 
-const Page: NextPage<{ params: Promise<{ locale: string }> }> = async ({ params }) => {
+const Page: NextPage = async () => {
   return <NewsletterSignupPage />
 }
 

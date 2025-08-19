@@ -1,6 +1,7 @@
 'use client'
 
-import React, { FC, useState } from 'react'
+import { useState } from 'react'
+import type { FC } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 

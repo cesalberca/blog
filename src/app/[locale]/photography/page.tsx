@@ -1,5 +1,5 @@
 import { PhotographyPage } from '@/features/photography/delivery/photography.page'
-import { Photo } from '@/features/photography/domain/photo'
+import type { Photo } from '@/features/photography/domain/photo'
 import { list } from '@vercel/blob'
 
 async function getPhotos(): Promise<Photo[]> {

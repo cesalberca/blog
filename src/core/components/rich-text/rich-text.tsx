@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 
 type Tag = 'em' | 'strong' | 'leet'

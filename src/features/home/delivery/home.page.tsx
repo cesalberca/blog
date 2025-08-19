@@ -20,7 +20,7 @@ import { Newsletter } from '@/core/components/newsletter/newsletter'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/core/components/link/link'
 import { PostExcerpt } from '@/features/posts/delivery/post-excerpt'
-import { PostMetadata } from '@/features/posts/domain/post-metadata'
+import type { PostMetadata } from '@/features/posts/domain/post-metadata'
 
 export const HomePage: FC<{ latestPost: PostMetadata | null }> = ({ latestPost }) => {
   const t = useTranslations()

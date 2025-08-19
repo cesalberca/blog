@@ -3,9 +3,9 @@ import { CategoryPage } from '@/features/posts/delivery/category.page'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import { Locale } from '@/core/i18n/locale'
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
 import { spanishSlugs } from '@/features/posts/domain/category-routes'
-import { Category } from '@/features/posts/domain/category'
+import type { Category } from '@/features/posts/domain/category'
 
 const Page: NextPage<{
   params: Promise<{

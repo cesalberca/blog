@@ -3,7 +3,7 @@ import type { FC, PropsWithChildren } from 'react'
 import { Background } from '@/core/components/background/background'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { getLocale, getTranslations } from 'next-intl/server'
-import { CaseStudyMetadata } from '../../../features/case-studies/domain/case-study'
+import type { CaseStudyMetadata } from '../../../features/case-studies/domain/case-study'
 import { Badge } from '@/components/ui/badge'
 
 export const CaseStudyLayout: FC<PropsWithChildren<{ slug: string }>> = async ({ children, slug }) => {

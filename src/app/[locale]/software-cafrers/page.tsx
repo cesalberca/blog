@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { SoftwareCafrersPage } from '@/features/software-cafrers/delivery/software-cafrers.page'
 

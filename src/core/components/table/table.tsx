@@ -1,12 +1,12 @@
 'use client'
 
-import { type FC } from 'react'
 import { cn } from '@/lib/utils'
+import type { ReactNode } from 'react'
 
 export interface Column<T> {
   key: keyof T | string
   header: string
-  render?: (value: any, row: T) => React.ReactNode
+  render?: (value: any, row: T) => ReactNode
 }
 
 export interface TableProps<T> {

@@ -11,7 +11,8 @@ import {
   type FieldPath,
   type FieldValues,
 } from 'react-hook-form'
-import { ComponentProps, createContext, useContext, useId } from 'react'
+import { createContext, useContext, useId } from 'react'
+import type { ComponentProps } from 'react'
 
 import { cn } from '@/lib/utils'
 import { Label } from '@/components/ui/label'

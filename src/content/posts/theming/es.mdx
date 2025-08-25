@@ -1,0 +1,113 @@
+export const metadata = {
+  title: 'Tematización',
+  slug: 'theming',
+  readTime: 8,
+  date: '2019-06-06',
+  categories: ['css', 'software-development'],
+  image: 'theming/art-artistic-canvas.jpg',
+  summary: 'Tematizar una web con propiedades personalizadas es muy fácil como se muestra en este artículo.',
+}
+
+La tematización es un aspecto muy importante del desarrollo web, y aunque tu app o sitio web no requiera diferentes temas, deberíamos desarrollar nuestros estilos visuales como color, espaciado, fuentes y animaciones como si fueran a cambiar todos los días. ¿Por qué? Porque es lo que cambia más frecuentemente. Si se hace bien, un rebranding, introducir un "modo oscuro" o ajustar colores será súper fácil.
+
+> "deberíamos desarrollar nuestros estilos visuales como color, espaciado, fuentes y animaciones como si fueran a cambiar todos los días."
+
+## Propiedades personalizadas
+
+Las propiedades personalizadas de CSS son realmente un regalo. Abren tantas posibilidades debido a su comportamiento dinámico. Podemos crear una nueva propiedad personalizada en un elemento dado de la siguiente manera:
+
+```css
+.class {
+  --a-custom-property: 42px;
+}
+```
+
+Ahora cada hijo de ese elemento tiene acceso a esta propiedad personalizada:
+
+```css
+.class-child {
+  margin-bottom: var(--a-custom-property);
+}
+```
+
+Incluso podemos establecer valores por defecto en caso de que la propiedad no esté declarada:
+
+```css
+.class-child {
+  margin-bottom: var(--a-custom-property, 12px);
+}
+```
+
+Y lo que es aún más increíble es que podemos cambiar dinámicamente los valores de las propiedades personalizadas a través de CSS o JavaScript:
+
+```css
+@media (max-width: 800px) {
+  .class-child {
+    --a-custom-property: 56px;
+  }
+}
+```
+
+_Nota: Uno pensaría que podemos declarar variables para los valores de las media queries pero no podemos, tendremos que esperar hasta que [env](https://developer.mozilla.org/en-US/docs/Web/CSS/env) llegue a Edge e Internet Explorer para tener soporte completo (a partir de junio de 2019)._
+
+## Tematización
+
+Entonces, usando propiedades personalizadas, ¿cómo podemos tematizar una app? Bueno, primero empezamos creando un archivo `colors.css`:
+
+```css
+:root {
+  --white-color: hsla(0, 0%, 100%, 0.88);
+  --white-light-color: hsl(0, 0%, 98%);
+  --black-color: hsl(0, 1%, 15%);
+  --dark-blue: hsl(222, 14%, 18%);
+  --gray-color: hsl(150, 2%, 79%);
+  --blue-color: hsl(229, 87%, 44%);
+  --blue-light-color: hsl(206, 68%, 55%);
+  --blue-dark-color: hsl(219, 16%, 16%);
+  --teal-color: hsl(184, 97%, 37%);
+  --orange-color: hsl(32, 100%, 50%);
+}
+```
+
+_Nota: El selector `:root` apunta al elemento raíz de un documento._
+
+Ahora, si el color cambia ligeramente a otro, deberíamos cambiar este archivo. Pero, ¿deberíamos seguir referenciando esto en nuestros componentes o CSSs? La respuesta es no, deberíamos tener otra indirección. Imagina el siguiente caso. Declaramos en cada componente usar la propiedad personalizada `--orange-color`. Sin embargo, un nuevo rediseño requiere un cambio del color principal de la app (que es el `--orange-color`) a un color azul. Ahora, para que funcione podríamos hacer algo como esto:
+
+```css
+:root {
+  --orange-color: blue;
+}
+```
+
+Pero esto es muy malo en muchos niveles. Por un lado, tenemos nombres que no representan lo que significan y pueden confundir a los desarrolladores. ¿Qué pasa si creamos una nueva propiedad personalizada `--real-blue: darkblue;`? Esto seguramente provocará locura.
+
+¿Cómo podemos abordar este problema? La respuesta está en un párrafo anterior: "requiere un cambio del color principal de la app". Lo que necesitamos identificar es el color principal de la app, también conocido como **color primario**. Después de eso deberíamos identificar un **color secundario** u otros colores y qué representan. Podemos manejar todo esto en un nuevo archivo llamado `palette.css`:
+
+```css
+:root {
+  --primary-color: var(--orange-color);
+  --secondary-color: var(--teal-color);
+}
+```
+
+Otra cosa que me gusta hacer es declarar el color de primer plano y fondo, esto me permite crear en el futuro un tema oscuro o un tema claro:
+
+```css
+:root {
+  --foreground-color: var(--black-color);
+  --background-color: var(--white-color);
+}
+```
+
+Para cambiar a un modo de color oscuro simplemente podemos intercambiar los valores:
+
+```css
+:root {
+  --foreground-color: var(--white-color);
+  --background-color: var(--black-color);
+}
+```
+
+## Conclusión
+
+La tematización como se muestra en este tutorial puede ahorrarte muchos dolores de cabeza si se hace bien. Sin embargo, debemos ser precisos sobre qué propiedades personalizadas asignamos a nuestros componentes y tratar de identificar tanto como podamos conceptos de negocio. Por ejemplo, algún estado de error puede representarse hoy como rojo, así que deberíamos tener una propiedad `--error-color: var(--red-color);` y si cambia mañana podemos hacerlo fácilmente `--error-color: var(--orange-color);`.

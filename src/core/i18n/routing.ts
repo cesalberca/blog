@@ -28,6 +28,9 @@ export const routing = defineRouting({
     '/blog/ai-shortcuts-chatgpt': {
       es: '/blog/ia-atajos-chatgpt',
     },
+    '/blog/theming': {
+      es: '/blog/temas',
+    },
     '/services': {
       es: '/servicios',
     },

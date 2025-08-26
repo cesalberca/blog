@@ -12,6 +12,7 @@ import { Newsletter } from '@/core/components/newsletter/newsletter'
 import { KoFiButton } from '@/core/components/ko-fi-button/ko-fi-button'
 import { getTranslatedCategories } from '@/features/posts/domain/categories'
 import { Locale } from '@/core/i18n/locale'
+import { NewsletterCard } from '@/core/components/newsletter-card/newsletter-card'
 
 export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: string; locale: Locale }>> = async ({
   metadata,
@@ -77,7 +78,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
       </Background>
       <article className="wrapper mt-6 prose dark:prose-invert text-current">
         <div className="mb-10">
-          <Newsletter />
+          <NewsletterCard />
           <KoFiButton />
         </div>
         {children}

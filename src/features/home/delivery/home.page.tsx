@@ -21,6 +21,7 @@ import { Button } from '@/components/ui/button'
 import { Link } from '@/core/components/link/link'
 import { PostExcerpt } from '@/features/posts/delivery/post-excerpt'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
+import { NewsletterCard } from '@/core/components/newsletter-card/newsletter-card'
 
 export const HomePage: FC<{ latestPost: PostMetadata | null }> = ({ latestPost }) => {
   const t = useTranslations()
@@ -57,7 +58,7 @@ export const HomePage: FC<{ latestPost: PostMetadata | null }> = ({ latestPost }
 
       <Section>
         <div className="wrapper">
-          <Newsletter />
+          <NewsletterCard />
         </div>
       </Section>
 

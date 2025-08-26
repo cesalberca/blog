@@ -51,13 +51,15 @@ export const NewsletterPage: FC = () => {
     <Page top={true}>
       <div className="min-h-[60vh] flex items-center justify-center">
         <Background>
-          <div className="max-w-4xl mx-auto text-center px-8 py-12 mt-10">
-            <h1 className="mb-8">
-              <AccentText>Frontend Architecture Newsletter</AccentText>
-            </h1>
-            <p className="text-xl mb-4 text-muted-foreground max-w-2xl mx-auto">
-              Weekly insights on building scalable, maintainable frontend architectures
-            </p>
+          <div className="max-w-4xl mx-auto px-8 py-12 mt-10">
+            <div className="text-center">
+              <h1 className="mb-8">
+                <AccentText>Frontend Architecture Newsletter</AccentText>
+              </h1>
+              <p className="text-xl mb-4 text-muted-foreground max-w-2xl mx-auto">
+                Weekly insights on building Scalable, Maintainable Frontend Architectures.
+              </p>
+            </div>
 
             <div className="max-w-md mx-auto">
               <Newsletter />
@@ -73,8 +75,8 @@ export const NewsletterPage: FC = () => {
             <h2 className="text-3xl font-bold mb-4">
               <AccentText>Recent Newsletters</AccentText>
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Deep dives into frontend architecture patterns, best practices, and real-world implementations
+            <p className="text-muted-foreground">
+              Deep dives into frontend architecture patterns, best practices, and real-world implementations.
             </p>
           </div>
 
@@ -87,10 +89,7 @@ export const NewsletterPage: FC = () => {
                       <Calendar className="w-4 h-4" />
                       <span>{new Date(email.date).toLocaleDateString()}</span>
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 flex items-start gap-2">
-                      <Code className="w-5 h-5 mt-1 text-primary shrink-0" />
-                      {email.title}
-                    </h3>
+                    <h3 className="text-xl font-semibold mb-3 flex items-start gap-2">{email.title}</h3>
                     <p className="text-muted-foreground mb-4 leading-relaxed">{email.excerpt}</p>
                     <Link to={email.url}>
                       <Button variant="outline" className="flex items-center gap-2">
@@ -99,21 +98,9 @@ export const NewsletterPage: FC = () => {
                       </Button>
                     </Link>
                   </div>
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Layers className="w-6 h-6 text-primary" />
-                  </div>
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="text-muted-foreground mb-4">
-              Want to see more? All newsletters are available in our archive.
-            </p>
-            <Link to="/newsletter/signup">
-              <Button variant="outline">View All Newsletters</Button>
-            </Link>
           </div>
         </div>
       </div>

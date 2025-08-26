@@ -423,6 +423,10 @@
   },
   "newsletter": {
     "title": "Newsletter de Arquitectura Frontend",
+    "subtitle": "Perspectivas sobre la construcción de Arquitecturas Frontend Escalables y Mantenibles.",
+    "recentNewslettersTitle": "Newsletters Recientes",
+    "recentNewslettersDescription": "Análisis profundos sobre patrones de arquitectura frontend, mejores prácticas e implementaciones del mundo real.",
+    "readNewsletterButton": "Leer Newsletter",
     "description": "Recibe notificaciones sobre nuevos artículos, charlas y actualizaciones directamente en tu bandeja de entrada.",
     "nameLabel": "Nombre",
     "namePlaceholder": "Introduce tu nombre",
@@ -454,7 +458,7 @@
     "communityAccessDesc": "Conéctate con desarrolladores de ideas afines y comparte conocimiento.",
     "trustedBy": "De confianza para desarrolladores en todo el mundo",
     "instantDelivery": "Entrega instantánea",
-    "weeklyUpdates": "Actualizaciones semanales",
+    "weeklyUpdates": "Actualizaciones regulares",
     "noSpamGuarantee": "Garantía sin spam",
     "optional": "opcional",
     "joinNow": "Únete Ahora",
@@ -462,7 +466,7 @@
     "alreadySubscribed": "¿Ya estás suscrito?",
     "viewEmails": "Ver Lista de Correos",
     "whatYouGet": "Lo Que Recibirás",
-    "benefit1": "Perspectivas semanales sobre arquitectura frontend y buenas prácticas",
+    "benefit1": "Perspectivas sobre arquitectura frontend y buenas prácticas",
     "benefit2": "Tutoriales exclusivos y ejemplos de código",
     "benefit3": "Acceso anticipado a nuevos artículos y charlas",
     "benefit4": "Consejos de mi experiencia como desarrollador nómada digital"

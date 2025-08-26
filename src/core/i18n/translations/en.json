@@ -461,6 +461,10 @@
   },
   "newsletter": {
     "title": "Frontend Architecture Newsletter",
+    "subtitle": "Insights on building Scalable, Maintainable Frontend Architectures.",
+    "recentNewslettersTitle": "Recent Newsletters",
+    "recentNewslettersDescription": "Deep dives into frontend architecture patterns, best practices, and real-world implementations.",
+    "readNewsletterButton": "Read Newsletter",
     "description": "Get notified about new articles, talks, and updates directly to your inbox.",
     "nameLabel": "Name",
     "namePlaceholder": "Enter your name",
@@ -492,7 +496,7 @@
     "communityAccessDesc": "Connect with like-minded developers and share knowledge.",
     "trustedBy": "Trusted by developers worldwide",
     "instantDelivery": "Instant delivery",
-    "weeklyUpdates": "Weekly updates",
+    "weeklyUpdates": "Regular updates",
     "noSpamGuarantee": "No spam guarantee",
     "optional": "optional",
     "joinNow": "Join Now",
@@ -500,7 +504,7 @@
     "alreadySubscribed": "Already subscribed?",
     "viewEmails": "View Email List",
     "whatYouGet": "What You'll Get",
-    "benefit1": "Weekly insights on frontend architecture and best practices",
+    "benefit1": "Insights on frontend architecture and best practices",
     "benefit2": "Exclusive tutorials and code examples",
     "benefit3": "Early access to new articles and talks",
     "benefit4": "Tips from my experience as a digital nomad developer"

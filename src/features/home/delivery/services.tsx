@@ -22,10 +22,10 @@ export const Services: FC = () => {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="wrapper mx-auto">
+      <div className="wrapper">
         <Markdown className="mb-4 text-lg" value={t('home.services.description')}></Markdown>
       </div>
-      <div className="bleed-width-section grid grid-cols-1 md:grid-cols-3 gap-6 items-baseline">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-baseline bleed-width-section">
         <Service
           className="bg-background shadow-md"
           center={

@@ -93,7 +93,7 @@ export const Testimonials: FC<TestimonialsProps> = ({ itemsPerPage = 1 } = { ite
   const itemBasisClass = getItemBasisClass(itemsPerPage)
 
   return (
-    <div className="md:container">
+    <div className="md:wrapper">
       <Carousel
         plugins={[
           Autoplay({

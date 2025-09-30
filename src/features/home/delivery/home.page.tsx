@@ -5,7 +5,7 @@ import { Hero } from '@/core/components/hero/hero'
 import { AccentList } from '@/core/components/accent-list/accent-list'
 import { SocialMedia } from '@/core/components/social-media/social-media'
 import { RichText } from '@/core/components/rich-text/rich-text'
-import { Section } from '@/features/home/delivery/section'
+import { Section } from '@/core/components/section/section'
 import { Markdown } from '@/core/components/markdown/markdown'
 import { Projects } from '@/features/home/delivery/projects'
 import { Services } from '@/features/home/delivery/services'
@@ -49,22 +49,18 @@ export const HomePage: FC<{ latestPost: PostMetadata | null }> = ({ latestPost }
         </header>
       </Hero>
 
-      <Section>
-        <div className="wrapper">
-          <Markdown value={t('home.whoAmI')} />
-        </div>
+      <Section className="wrapper mt-16">
+        <Markdown value={t('home.whoAmI')} />
       </Section>
 
-      <Section>
-        <div className="wrapper">
-          <NewsletterCard />
-        </div>
+      <Section className="wrapper">
+        <NewsletterCard />
       </Section>
 
       <Section title={t('home.services.title')} id="services">
         <div className="flex flex-col gap-8">
           <Services />
-          <div className="wrapper mt-8 flex justify-center">
+          <div className="mt-8 flex justify-center">
             <Button size="lg" className="mb-12">
               <Link to="/services" type="invisible">
                 {t('home.services.readyToWork')}
@@ -123,7 +119,7 @@ export const HomePage: FC<{ latestPost: PostMetadata | null }> = ({ latestPost }
 
       <Section title={t('home.technologies.title')} id="technologies">
         <div className="wrapper">
-          <Markdown value={t('home.technologies.description')} className="mb-4" />
+          <Markdown value={t('home.technologies.description')} className="mb-8" />
           <Technologies />
         </div>
       </Section>

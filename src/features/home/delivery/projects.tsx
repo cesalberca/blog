@@ -79,7 +79,7 @@ export const Projects: FC = () => {
                 )}
               </footer>
             </AccentCard>
-            <aside className="flex-1 wrapper">
+            <aside className="flex-1">
               <h3 className="mb-4">{x.title}</h3>
               <Markdown value={x.description}></Markdown>
               <div className="pt-4">

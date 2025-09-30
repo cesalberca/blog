@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button'
 import { Link } from '@/core/components/link/link'
 import { OpenToWork } from '@/core/components/open-to-work/open-to-work'
 import { Services } from '@/features/home/delivery/services'
+import { Section } from '@/core/components/section/section'
 
 export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
   const t = await getTranslations()
@@ -37,13 +38,9 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
         </div>
       </Hero>
 
-      <section className="container mb-16" id="services">
-        <h2 className="text-3xl font-bold mb-8 text-center">
-          <AccentText>{t('services.servicesOffered.title')}</AccentText>
-        </h2>
-
+      <Section title={t('services.servicesOffered.title')} id="services">
         <Services />
-      </section>
+      </Section>
 
       <section className="container mb-16">
         <div className="grid md:grid-cols-2 gap-12">
@@ -119,15 +116,12 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
       </section>
 
       <section className="bg-accent/10 py-16 mb-16">
-        <div className="container">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            <AccentText>{t('home.services.architectureSpecialization')}</AccentText>
-          </h2>
-          <div className="mb-8 max-w-3xl mx-auto text-center">
+        <Section title={t('home.services.architectureSpecialization')}>
+          <div className="mb-8 wrapper">
             <Markdown value={t('home.services.architectureSpecializationDescription')} />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
+          <div className="bleed-width-section grid md:grid-cols-3 gap-6 mt-12">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -194,17 +188,12 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
               </CardContent>
             </Card>
           </div>
-        </div>
+        </Section>
       </section>
 
       {/* Case Studies Section */}
-      <section className="mb-16">
-        <div className="wrapper">
-          <h2 className="text-3xl font-bold mb-6 text-center">
-            <AccentText>{t('caseStudies.title')}</AccentText>
-          </h2>
-          <p className="text-center mb-10 max-w-3xl mx-auto">{t('home.services.caseStudiesIntro')}</p>
-        </div>
+      <Section title={t('caseStudies.title')}>
+        <p className="wrapper mb-10">{t('home.services.caseStudiesIntro')}</p>
 
         <div className=" bleed-width-section grid md:grid-cols-3 gap-8">
           <CaseStudyCard
@@ -226,87 +215,72 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
             image="/assets/images/case-studies/lightspace.png"
           />
         </div>
-      </section>
+      </Section>
 
       {/* Testimonials Section */}
-      <section className="bg-accent/10 py-16 mb-16">
-        <div className="container">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            <AccentText>{t('home.testimonials.title')}</AccentText>
-          </h2>
-          <Testimonials itemsPerPage={1} />
-        </div>
-      </section>
+      <Section title={t('home.testimonials.title')} className="bg-accent/10 py-16 mb-16 bleed-width-section">
+        <Testimonials itemsPerPage={1} />
+      </Section>
 
       {/* FAQ Section */}
-      <section className="wrapper mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">
-          <AccentText>{t('services.faq.title')}</AccentText>
-        </h2>
+      <Section title={t('services.faq.title')} className="wrapper">
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="item-1" className="border border-accent/20 rounded-md mb-4 px-4">
+            <AccordionTrigger className="text-lg font-medium">{t('services.faq.cost.question')}</AccordionTrigger>
+            <AccordionContent>
+              <p>{t('services.faq.cost.answer')}</p>
+            </AccordionContent>
+          </AccordionItem>
 
-        <div className="max-w-4xl mx-auto">
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1" className="border border-accent/20 rounded-md mb-4 px-4">
-              <AccordionTrigger className="text-lg font-medium">{t('services.faq.cost.question')}</AccordionTrigger>
-              <AccordionContent>
-                <p>{t('services.faq.cost.answer')}</p>
-              </AccordionContent>
-            </AccordionItem>
+          <AccordionItem value="item-2" className="border border-accent/20 rounded-md mb-4 px-4">
+            <AccordionTrigger className="text-lg font-medium">{t('services.faq.remoteWork.question')}</AccordionTrigger>
+            <AccordionContent>
+              <p>{t('services.faq.remoteWork.answer')}</p>
+            </AccordionContent>
+          </AccordionItem>
 
-            <AccordionItem value="item-2" className="border border-accent/20 rounded-md mb-4 px-4">
-              <AccordionTrigger className="text-lg font-medium">
-                {t('services.faq.remoteWork.question')}
-              </AccordionTrigger>
-              <AccordionContent>
-                <p>{t('services.faq.remoteWork.answer')}</p>
-              </AccordionContent>
-            </AccordionItem>
+          <AccordionItem value="item-3" className="border border-accent/20 rounded-md mb-4 px-4">
+            <AccordionTrigger className="text-lg font-medium">{t('services.faq.frameworks.question')}</AccordionTrigger>
+            <AccordionContent>
+              <p>{t('services.faq.frameworks.answer')}</p>
+            </AccordionContent>
+          </AccordionItem>
 
-            <AccordionItem value="item-3" className="border border-accent/20 rounded-md mb-4 px-4">
-              <AccordionTrigger className="text-lg font-medium">
-                {t('services.faq.frameworks.question')}
-              </AccordionTrigger>
-              <AccordionContent>
-                <p>{t('services.faq.frameworks.answer')}</p>
-              </AccordionContent>
-            </AccordionItem>
+          <AccordionItem value="item-4" className="border border-accent/20 rounded-md mb-4 px-4">
+            <AccordionTrigger className="text-lg font-medium">
+              {t('services.faq.knowledgeTransfer.question')}
+            </AccordionTrigger>
+            <AccordionContent>
+              <p>{t('services.faq.knowledgeTransfer.answer')}</p>
+            </AccordionContent>
+          </AccordionItem>
 
-            <AccordionItem value="item-4" className="border border-accent/20 rounded-md mb-4 px-4">
-              <AccordionTrigger className="text-lg font-medium">
-                {t('services.faq.knowledgeTransfer.question')}
-              </AccordionTrigger>
-              <AccordionContent>
-                <p>{t('services.faq.knowledgeTransfer.answer')}</p>
-              </AccordionContent>
-            </AccordionItem>
+          <AccordionItem value="item-5" className="border border-accent/20 rounded-md mb-4 px-4">
+            <AccordionTrigger className="text-lg font-medium">{t('services.faq.approach.question')}</AccordionTrigger>
+            <AccordionContent>
+              <p>{t('services.faq.approach.answer')}</p>
+            </AccordionContent>
+          </AccordionItem>
 
-            <AccordionItem value="item-5" className="border border-accent/20 rounded-md mb-4 px-4">
-              <AccordionTrigger className="text-lg font-medium">{t('services.faq.approach.question')}</AccordionTrigger>
-              <AccordionContent>
-                <p>{t('services.faq.approach.answer')}</p>
-              </AccordionContent>
-            </AccordionItem>
+          <AccordionItem value="item-6" className="border border-accent/20 rounded-md mb-4 px-4">
+            <AccordionTrigger className="text-lg font-medium">
+              {t('services.faq.existingCodebase.question')}
+            </AccordionTrigger>
+            <AccordionContent>
+              <p>{t('services.faq.existingCodebase.answer')}</p>
+            </AccordionContent>
+          </AccordionItem>
 
-            <AccordionItem value="item-6" className="border border-accent/20 rounded-md mb-4 px-4">
-              <AccordionTrigger className="text-lg font-medium">
-                {t('services.faq.existingCodebase.question')}
-              </AccordionTrigger>
-              <AccordionContent>
-                <p>{t('services.faq.existingCodebase.answer')}</p>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-7" className="border border-accent/20 rounded-md mb-4 px-4">
-              <AccordionTrigger className="text-lg font-medium">
-                {t('services.faq.ongoingSupport.question')}
-              </AccordionTrigger>
-              <AccordionContent>
-                <p>{t('services.faq.ongoingSupport.answer')}</p>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-      </section>
+          <AccordionItem value="item-7" className="border border-accent/20 rounded-md mb-4 px-4">
+            <AccordionTrigger className="text-lg font-medium">
+              {t('services.faq.ongoingSupport.question')}
+            </AccordionTrigger>
+            <AccordionContent>
+              <p>{t('services.faq.ongoingSupport.answer')}</p>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </Section>
 
       <section className="py-16 mb-16 bg-accent/10">
         <div className="wrapper text-center">

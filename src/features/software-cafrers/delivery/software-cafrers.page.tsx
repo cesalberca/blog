@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { Page } from '@/core/components/page/page'
 import { Link } from '@/core/components/link/link'
-import { Section } from '@/features/home/delivery/section'
+import { Section } from '@/core/components/section/section'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { Button } from '@/components/ui/button'
 

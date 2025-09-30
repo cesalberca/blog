@@ -11,7 +11,7 @@ export const Section: FC<
   }>
 > = ({ children, title, id, className, fullWidth = false }) => {
   return (
-    <section className={cn('mt-8 md:mt-14', className)}>
+    <section className={cn('mb-8 md:mb-16', className)}>
       {title && (
         <h2 id={id} className={cn('my-6', fullWidth ? 'full-width-section' : 'wrapper')}>
           <AccentText>{title}</AccentText>

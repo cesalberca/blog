@@ -166,13 +166,9 @@ html {
   p {
     @apply text-base;
   }
-
-  .wrapper {
-    @apply mx-4 md:mx-auto md:max-w-screen-sm;
-  }
 }
 
-.full-width-section {
+@utility full-width-section {
   width: 100vw;
   left: 50%;
   right: 50%;
@@ -187,10 +183,17 @@ html {
   }
 }
 
-.bleed-width-section {
+/* Represents the container of the page, which is the element that contains all the content and is the next element to full-width-section */
+@utility container {
+  @apply px-4 mx-auto;
+}
+
+/* Represent an element that bleeds through the edged of the wrapper, which is the most common element*/
+@utility bleed-width-section {
   @apply md:max-w-screen-xl md:m-auto p-4;
 }
 
-@utility container {
-  @apply px-4 mx-auto;
+/* Most common element to wrap content so that it is easy to consume */
+@utility wrapper {
+  @apply mx-4 md:mx-auto md:max-w-screen-sm;
 }

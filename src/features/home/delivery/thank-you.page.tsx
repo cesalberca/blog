@@ -9,7 +9,7 @@ import { AccentText } from '@/core/components/accent-text/accent-text'
 import type { FC } from 'react'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
 import { Locale } from '@/core/i18n/locale'
-import { Section } from '@/features/home/delivery/section'
+import { Section } from '@/core/components/section/section'
 import { Testimonials } from '@/core/components/testimonials/testimonials'
 
 export const ThankYouPage: FC<{ post: PostMetadata; locale: Locale }> = async ({ post, locale }) => {

@@ -192,6 +192,5 @@ html {
 }
 
 @utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
+  @apply px-4 mx-auto;
 }

@@ -76,8 +76,22 @@ export const AccentText: FC<PropsWithChildren<Props>> = ({ children, onComplete,
     stopInterval || delay ? null : shuffleTime,
   )
 
+  const resetAnimation = () => {
+    setStartAnimation(false)
+    setPosition(0)
+    setStateText(text)
+    setStopInterval(false)
+    setDelay(false)
+  }
+
   return (
-    <motion.span className="relative" onViewportEnter={() => setStartAnimation(true)}>
+    <motion.span
+      className="relative"
+      onViewportEnter={() => setStartAnimation(true)}
+      onViewportLeave={() => {
+        resetAnimation()
+      }}
+    >
       {stateText}
     </motion.span>
   )

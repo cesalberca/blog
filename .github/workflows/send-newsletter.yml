@@ -1,0 +1,75 @@
+name: Send Daily Newsletter
+
+on:
+  schedule:
+    - cron: '0 7 * * *' # Every day at 07:00 UTC
+  workflow_dispatch: # Allow manual trigger for testing
+
+jobs:
+  send-newsletter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Find today's newsletter
+        id: find-newsletter
+        run: |
+          # Get today's date in YYYY-MM-DD format
+          TODAY=$(date +%Y-%m-%d)
+          echo "Today's date: $TODAY"
+
+          # Look for newsletter file with today's date prefix
+          NEWSLETTER_FILE=$(find src/content/emails/newsletters -name "${TODAY}_*.tsx" | head -1)
+
+          if [ -z "$NEWSLETTER_FILE" ]; then
+            echo "No newsletter found for today ($TODAY)"
+            echo "newsletter_found=false" >> $GITHUB_OUTPUT
+          else
+            # Extract slug from filename (remove path and .tsx extension)
+            NEWSLETTER_SLUG=$(basename "$NEWSLETTER_FILE" .tsx)
+            echo "Found newsletter: $NEWSLETTER_FILE"
+            echo "Newsletter slug: $NEWSLETTER_SLUG"
+            echo "newsletter_found=true" >> $GITHUB_OUTPUT
+            echo "newsletter_slug=$NEWSLETTER_SLUG" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create and Send Broadcast
+        if: steps.find-newsletter.outputs.newsletter_found == 'true'
+        run: |
+          echo "Creating broadcast for newsletter: ${{ steps.find-newsletter.outputs.newsletter_slug }}"
+
+          # Create the broadcast first
+          BROADCAST_RESPONSE=$(curl -s -X POST "${{ secrets.NEXT_PUBLIC_URL }}/api/newsletters/broadcast" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"newsletterSlug\": \"${{ steps.find-newsletter.outputs.newsletter_slug }}\",
+              \"audienceId\": \"${{ secrets.RESEND_AUDIENCE_ID }}\",
+              \"from\": \"${{ secrets.RESEND_EMAIL_FROM }}\"
+            }")
+
+          echo "Broadcast creation response: $BROADCAST_RESPONSE"
+
+          # Extract broadcast ID from response
+          BROADCAST_ID=$(echo $BROADCAST_RESPONSE | jq -r '.broadcastId')
+
+          if [ "$BROADCAST_ID" != "null" ] && [ ! -z "$BROADCAST_ID" ]; then
+            echo "Broadcast created with ID: $BROADCAST_ID"
+
+            # Schedule the broadcast for 11:00 CEST (09:00 UTC)
+            curl -X POST "https://api.resend.com/broadcasts/$BROADCAST_ID/send" \
+              -H "Authorization: Bearer ${{ secrets.RESEND_API_KEY }}" \
+              -H "Content-Type: application/json" \
+              -d '{"scheduled_at": "11:00"}'
+
+            echo "Newsletter scheduled for 11:00 CEST"
+          else
+            echo "Failed to create broadcast"
+            exit 1
+          fi
+
+      - name: No newsletter found
+        if: steps.find-newsletter.outputs.newsletter_found == 'false'
+        run: |
+          echo "No newsletter scheduled for today. Skipping."

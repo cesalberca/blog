@@ -6,7 +6,8 @@ export const metadata = {
   slug: 'lightspace',
   date: '2025-08-11',
   image: 'lightspace.png',
-  summary: 'How I helped Lightspace develop Shopify Apps and Functions using best practices, created templates for scalable development, and implemented CI/CD pipelines for testing and deployment.',
+  summary:
+    'How I helped Lightspace develop Shopify Apps and Functions using best practices, created templates for scalable development, and implemented CI/CD pipelines for testing and deployment.',
 }
 
 ## Summary
@@ -52,6 +53,7 @@ I implemented Shopify Functions using [Test-Driven Development](https://en.wikip
 **What is TDD?**
 
 TDD follows a simple cycle:
+
 1. Write a failing test that defines the expected behavior
 2. Implement the minimum code needed to make the test pass
 3. Refactor the code while ensuring tests still pass
@@ -69,8 +71,8 @@ describe('order quantity limiter', () => {
     const result = run({
       cart: {
         deliveryGroups: [{ deliveryAddress: { countryCode: 'REGION_A' } }],
-        lines: [{ quantity: 6 }]
-      }
+        lines: [{ quantity: 6 }],
+      },
     })
 
     expect(result.errors[0].localizedMessage).toContain('cannot order more than 5 items')
@@ -80,8 +82,8 @@ describe('order quantity limiter', () => {
     const result = run({
       cart: {
         deliveryGroups: [{ deliveryAddress: { countryCode: 'REGION_A' } }],
-        lines: [{ quantity: 5 }]
-      }
+        lines: [{ quantity: 5 }],
+      },
     })
 
     expect(result.errors).toHaveLength(0)
@@ -92,16 +94,18 @@ describe('order quantity limiter', () => {
 ```typescript
 // Then we implemented the function to pass the tests
 export function run(input) {
-  const regionLimits = { 'REGION_A': { limit: 5, name: 'Region A' } }
+  const regionLimits = { REGION_A: { limit: 5, name: 'Region A' } }
   const totalQuantity = input.cart.lines.reduce((sum, line) => sum + line.quantity, 0)
   const region = input.cart.deliveryGroups[0]?.deliveryAddress?.countryCode
 
   if (region && regionLimits[region] && totalQuantity > regionLimits[region].limit) {
     return {
-      errors: [{
-        localizedMessage: `You cannot order more than ${regionLimits[region].limit} items when shipping to ${regionLimits[region].name}.`,
-        target: '$.cart'
-      }]
+      errors: [
+        {
+          localizedMessage: `You cannot order more than ${regionLimits[region].limit} items when shipping to ${regionLimits[region].name}.`,
+          target: '$.cart',
+        },
+      ],
     }
   }
 
@@ -110,6 +114,7 @@ export function run(input) {
 ```
 
 TDD helped us:
+
 - Clearly define requirements before implementation
 - Ensure edge cases were handled properly
 - Create a comprehensive test suite that prevented regressions

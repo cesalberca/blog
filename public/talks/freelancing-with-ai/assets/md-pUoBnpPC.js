@@ -7,7 +7,7 @@ const k = { class: 'slidev-layout statement' },
   x = {
     __name: 'statement',
     setup(n) {
-      return a(), (t, l) => (r(), m('div', k, [e('div', v, [p(t.$slots, 'default')])]))
+      return (a(), (t, l) => (r(), m('div', k, [e('div', v, [p(t.$slots, 'default')])])))
     },
   },
   j = {

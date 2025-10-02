@@ -6,7 +6,8 @@ export const metadata = {
   slug: 'lightspace',
   date: '2025-08-11',
   image: 'lightspace.png',
-  summary: 'Cómo ayudé a Lightspace a desarrollar Aplicaciones y Funciones de Shopify siguiendo las mejores prácticas, creando plantillas para un desarrollo escalable e implementando pipelines CI/CD para pruebas y despliegue.',
+  summary:
+    'Cómo ayudé a Lightspace a desarrollar Aplicaciones y Funciones de Shopify siguiendo las mejores prácticas, creando plantillas para un desarrollo escalable e implementando pipelines CI/CD para pruebas y despliegue.',
 }
 
 ## Resumen
@@ -52,6 +53,7 @@ Implementé funciones de Shopify utilizando [Desarrollo Guiado por Pruebas](http
 **¿Qué es TDD?**
 
 TDD sigue un ciclo simple:
+
 1. Escribir una prueba fallida que defina el comportamiento esperado
 2. Implementar el mínimo código necesario para que la prueba pase
 3. Refactorizar el código asegurando que las pruebas sigan pasando
@@ -67,8 +69,8 @@ describe('order quantity limiter', () => {
     const result = run({
       cart: {
         deliveryGroups: [{ deliveryAddress: { countryCode: 'REGION_A' } }],
-        lines: [{ quantity: 6 }]
-      }
+        lines: [{ quantity: 6 }],
+      },
     })
 
     expect(result.errors[0].localizedMessage).toContain('cannot order more than 5 items')
@@ -78,8 +80,8 @@ describe('order quantity limiter', () => {
     const result = run({
       cart: {
         deliveryGroups: [{ deliveryAddress: { countryCode: 'REGION_A' } }],
-        lines: [{ quantity: 5 }]
-      }
+        lines: [{ quantity: 5 }],
+      },
     })
 
     expect(result.errors).toHaveLength(0)
@@ -90,16 +92,18 @@ describe('order quantity limiter', () => {
 ```typescript
 // Then we implemented the function to pass the tests
 export function run(input) {
-  const regionLimits = { 'REGION_A': { limit: 5, name: 'Region A' } }
+  const regionLimits = { REGION_A: { limit: 5, name: 'Region A' } }
   const totalQuantity = input.cart.lines.reduce((sum, line) => sum + line.quantity, 0)
   const region = input.cart.deliveryGroups[0]?.deliveryAddress?.countryCode
 
   if (region && regionLimits[region] && totalQuantity > regionLimits[region].limit) {
     return {
-      errors: [{
-        localizedMessage: `You cannot order more than ${regionLimits[region].limit} items when shipping to ${regionLimits[region].name}.`,
-        target: '$.cart'
-      }]
+      errors: [
+        {
+          localizedMessage: `You cannot order more than ${regionLimits[region].limit} items when shipping to ${regionLimits[region].name}.`,
+          target: '$.cart',
+        },
+      ],
     }
   }
 
@@ -108,6 +112,7 @@ export function run(input) {
 ```
 
 TDD nos ayudó a:
+
 - Definir claramente los requisitos antes de implementar
 - Manejar correctamente casos límite
 - Crear una suite de pruebas completa que evitara regresiones
@@ -199,7 +204,7 @@ Además del desarrollo, aporté a la presencia online de Lightspace:
 
 La colaboración con Lightspace dio como resultado:
 
-1. **Mayor eficiencia de desarrollo**: Las plantillas y los *pipelines* CI/CD redujeron el tiempo de configuración y garantizaron la consistencia.
+1. **Mayor eficiencia de desarrollo**: Las plantillas y los _pipelines_ CI/CD redujeron el tiempo de configuración y garantizaron la consistencia.
 2. **Mayor calidad de código**: Las pruebas estandarizadas y los procesos de aseguramiento de calidad mejoraron la fiabilidad.
 3. **Capacidades ampliadas**: Las aplicaciones y funciones personalizadas de Shopify expandieron lo que era posible en la plataforma.
 4. **Transferencia de conocimiento**: Los miembros del equipo adquirieron experiencia a través de la documentación y pair programming

@@ -6,7 +6,8 @@ export const metadata = {
   slug: 'halioooo-sistema-de-diseno-biblioteca-de-arquitectura',
   date: '2025-04-01',
   image: 'halioooo.png',
-  summary: 'Cómo la implementación de Casos de Uso y Sistemas de Diseño puede transformar la eficiencia organizacional, la mantenibilidad y la consistencia en el desarrollo de software en Halioooo.',
+  summary:
+    'Cómo la implementación de Casos de Uso y Sistemas de Diseño puede transformar la eficiencia organizacional, la mantenibilidad y la consistencia en el desarrollo de software en Halioooo.',
 }
 
 ## Resumen
@@ -74,18 +75,18 @@ Veamos una implementación completa de un caso de uso que obtiene datos de usuar
 ```typescript
 // Interfaces
 interface User {
-  id: string;
-  name: string;
-  email: string;
+  id: string
+  name: string
+  email: string
 }
 
 interface GetUserParams {
-  userId: string;
+  userId: string
 }
 
 // Interfaz del repositorio (dependencia)
 interface UserRepository {
-  findById(id: string): Promise<User | null>;
+  findById(id: string): Promise<User | null>
 }
 
 // Implementación del caso de uso
@@ -93,36 +94,37 @@ export class GetUserUseCase implements UseCase<GetUserParams, User> {
   constructor(private readonly userRepository: UserRepository) {}
 
   async handle(params: GetUserParams): Promise<User> {
-    const { userId } = params;
+    const { userId } = params
 
     // Validar entrada
     if (!userId) {
       // Los errores pueden ser reemplazados en el futuro con DomainErrors
-      throw new Error('El ID de usuario es requerido');
+      throw new Error('El ID de usuario es requerido')
     }
 
     // Ejecutar lógica de negocio
-    const user = await this.userRepository.findById(userId);
+    const user = await this.userRepository.findById(userId)
 
     // Manejar casos extremos
     if (!user) {
-      throw new Error(`Usuario con ID ${userId} no encontrado`);
+      throw new Error(`Usuario con ID ${userId} no encontrado`)
     }
 
-    return user;
+    return user
   }
 }
 
 // Uso con inyección de dependencias
-const container = new Container();
-container.register('UserRepository', UserRepositoryImplementation);
-const useCaseService = container.get<UseCaseService>(UseCaseService.name);
+const container = new Container()
+container.register('UserRepository', UserRepositoryImplementation)
+const useCaseService = container.get<UseCaseService>(UseCaseService.name)
 
 // Ejecutar el caso de uso
-const user = await useCaseService.execute(GetUserUseCase, { userId: '123' });
+const user = await useCaseService.execute(GetUserUseCase, { userId: '123' })
 ```
 
 Este ejemplo demuestra varios beneficios clave:
+
 - **Dependencias claras**: El caso de uso depende de una interfaz de repositorio, no de una implementación concreta que puede cambiarse fácilmente en tiempo de compilación o incluso en tiempo de ejecución
 - **Validación de entrada**: El caso de uso valida sus parámetros de entrada
 - **Manejo de errores**: El caso de uso maneja casos extremos como usuarios no encontrados
@@ -139,6 +141,7 @@ export interface Query<Return, Param = void> extends UseCase<Param, Return> {}
 Los Comandos se utilizan para operaciones que modifican el estado (con retorno void por defecto), mientras que las Consultas se utilizan para recuperar datos (requiriendo un tipo de retorno). Esta separación sigue el [patrón Command](https://refactoring.guru/design-patterns/command) de los patrones de diseño Gang of Four, donde los comandos encapsulan toda la información necesaria para realizar una acción.
 
 El patrón CQRS proporciona varios beneficios:
+
 - **Separación de preocupaciones**: Las operaciones de lectura y escritura a menudo tienen requisitos diferentes y pueden optimizarse por separado.
 - **Escalabilidad**: Las operaciones de lectura y escritura pueden escalarse independientemente.
 - **Seguridad**: Es más fácil aplicar diferentes reglas de seguridad a comandos y consultas.
@@ -182,11 +185,7 @@ La cadena de middleware ofrece varias capacidades poderosas:
 ```typescript
 // Ejemplo de un middleware condicional
 export class ConditionalMiddleware implements Middleware {
-  async execute<In, Out>(
-    param: In,
-    next: UseCase<In, Out>,
-    options: UseCaseOptions,
-  ): Promise<Out> {
+  async execute<In, Out>(param: In, next: UseCase<In, Out>, options: UseCaseOptions): Promise<Out> {
     // Verificar condiciones basadas en param u options
     if (options.skipCondition) {
       // Saltar este middleware y pasar al siguiente
@@ -219,16 +218,12 @@ Aquí hay un ejemplo del mundo real de un middleware de registro que mide el tie
 export class PerformanceLoggingMiddleware implements Middleware {
   constructor(private readonly logger: Logger) {}
 
-  async execute<In, Out>(
-    param: In,
-    next: UseCase<In, Out>,
-    options: UseCaseOptions,
-  ): Promise<Out> {
+  async execute<In, Out>(param: In, next: UseCase<In, Out>, options: UseCaseOptions): Promise<Out> {
     // Obtener el nombre del caso de uso que se está ejecutando
-    const useCaseName = next.constructor.name;
+    const useCaseName = next.constructor.name
 
     // Registrar tiempo de inicio
-    const startTime = performance.now();
+    const startTime = performance.now()
 
     try {
       // Registrar el inicio de la ejecución
@@ -236,35 +231,35 @@ export class PerformanceLoggingMiddleware implements Middleware {
         useCaseName,
         params: param,
         options,
-      });
+      })
 
       // Ejecutar el siguiente middleware o caso de uso
-      const result = await next.handle(param, options);
+      const result = await next.handle(param, options)
 
       // Calcular tiempo de ejecución
-      const executionTime = performance.now() - startTime;
+      const executionTime = performance.now() - startTime
 
       // Registrar finalización exitosa
       this.logger.info(`Ejecutado con éxito ${useCaseName} en ${executionTime.toFixed(2)}ms`, {
         useCaseName,
         executionTime,
         resultType: typeof result,
-      });
+      })
 
-      return result;
+      return result
     } catch (error) {
       // Calcular tiempo de ejecución incluso para fallos
-      const executionTime = performance.now() - startTime;
+      const executionTime = performance.now() - startTime
 
       // Registrar error con tiempo de ejecución
       this.logger.error(`Fallo al ejecutar ${useCaseName} después de ${executionTime.toFixed(2)}ms`, {
         useCaseName,
         executionTime,
         error,
-      });
+      })
 
       // Re-lanzar el error para ser manejado por el middleware de error
-      throw error;
+      throw error
     }
   }
 }
@@ -315,31 +310,31 @@ Esta combinación crea una **base poderosa** que equilibra flexibilidad con cons
 
 ```typescript
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all...",
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all...',
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
-        destructive: "bg-destructive text-white shadow-xs hover:bg-destructive/90...",
-        outline: "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground...",
-        secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
-        invisible: "whitespace-normal rounded-none",
+        default: 'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',
+        destructive: 'bg-destructive text-white shadow-xs hover:bg-destructive/90...',
+        outline: 'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground...',
+        secondary: 'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
+        ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
+        link: 'text-primary underline-offset-4 hover:underline',
+        invisible: 'whitespace-normal rounded-none',
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9",
+        default: 'h-9 px-4 py-2 has-[>svg]:px-3',
+        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',
+        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
+        icon: 'size-9',
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: 'default',
+      size: 'default',
     },
   },
-);
+)
 ```
 
 Aquí está la implementación completa del componente Button que usa estas variantes:
@@ -498,6 +493,7 @@ Estos patrones no son solo teóricos—son **enfoques probados en batalla** que 
 ## ¿Listo para Transformar tu Proceso de Desarrollo?
 
 Si estás enfrentando desafíos con:
+
 - **Mantener lógica de negocio compleja** a través de tu aplicación
 - **Asegurar consistencia** en tu interfaz de usuario
 - **Escalar tu equipo de desarrollo** mientras mantienes la calidad del código
@@ -513,6 +509,7 @@ Si estás enfrentando desafíos con:
 />
 
 Durante nuestra llamada:
+
 1. Discutiremos tus desafíos actuales de desarrollo
 2. Exploraremos cómo el patrón de Caso de Uso y el Sistema de Diseño pueden abordar esos desafíos
 3. Crearemos una hoja de ruta personalizada para implementar estos patrones en tu organización

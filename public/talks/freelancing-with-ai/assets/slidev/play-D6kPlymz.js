@@ -266,7 +266,7 @@ const se = '/talks/freelancing-with-ai/assets/logo-BYkHSa_O.png',
             ((g = y.target) == null ? void 0 : g.id) === 'slide-container' &&
             (y.pageX / window.innerWidth > 0.5 ? i() : r()))
       }
-      q(d), J(), Q()
+      ;(q(d), J(), Q())
       const s = E(() => j.value || S.value),
         c = k()
       return (y, g) => (

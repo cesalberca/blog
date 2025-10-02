@@ -211,7 +211,7 @@ const J = ['title'],
           let o = i,
             e = i.parentElement
           for (; e && o !== n.value; )
-            d.has(e) || d.set(e, [[null, r]]), d.get(e).push([o, l]), (o = e), (e = e.parentElement)
+            (d.has(e) || d.set(e, [[null, r]]), d.get(e).push([o, l]), (o = e), (e = e.parentElement))
           r = l
         }
         const C = new Map()
@@ -220,14 +220,14 @@ const J = ['title'],
             e = 0
           for (const c of Array.from(i.childNodes)) {
             let w = !1
-            for (; c === (($ = l[e + 1]) == null ? void 0 : $[0]); ) (w = !0), e++
+            for (; c === (($ = l[e + 1]) == null ? void 0 : $[0]); ) ((w = !0), e++)
             if (w) continue
             let M = c
             if (c.nodeType === 3) {
               if (!((B = c.textContent) != null && B.trim())) continue
-              ;(M = document.createElement('span')), (M.textContent = c.textContent), i.insertBefore(M, c), c.remove()
+              ;((M = document.createElement('span')), (M.textContent = c.textContent), i.insertBefore(M, c), c.remove())
             }
-            o || (o = e === 0), C.set(M, l[e][1])
+            ;(o || (o = e === 0), C.set(M, l[e][1]))
           }
           o || (l[0][1] = -1)
         }
@@ -236,16 +236,16 @@ const J = ['title'],
           for (const [o, e] of d) o.classList.toggle(S, l && !e.some(([c, w]) => w === i))
           for (const [o, e] of C) o.classList.toggle(S, l && e !== i)
           for (const [o, e] of a)
-            o.classList.remove(S),
+            (o.classList.remove(S),
               o.classList.toggle(`${y}-past`, l && e < i),
               o.classList.toggle(`${y}-active`, l && e === i),
               o.classList.toggle(`${y}-next`, l && e === i + 1),
               o.classList.toggle(`${y}-future`, l && e > i + 1),
               (o.ondblclick = l
                 ? c => {
-                    g('markerDblclick', c, e),
+                    ;(g('markerDblclick', c, e),
                       !c.defaultPrevented &&
-                        ((t.clicksContext.current = e), c.stopPropagation(), c.stopImmediatePropagation())
+                        ((t.clicksContext.current = e), c.stopPropagation(), c.stopImmediatePropagation()))
                   }
                 : null),
               (o.onclick = l
@@ -253,7 +253,7 @@ const J = ['title'],
                     g('markerClick', c, e)
                   }
                 : null),
-              l && t.autoScroll && e === i && o.scrollIntoView({ block: 'center', behavior: 'smooth' })
+              l && t.autoScroll && e === i && o.scrollIntoView({ block: 'center', behavior: 'smooth' }))
         }
       }
       const x = A()

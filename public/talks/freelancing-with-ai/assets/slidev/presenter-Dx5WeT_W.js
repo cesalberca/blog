@@ -94,7 +94,7 @@ const $e = E({
     __name: 'presenter',
     setup(C) {
       const i = $()
-      _e(), fe(i), xe()
+      ;(_e(), fe(i), xe())
       const {
           clicksContext: l,
           currentSlideNo: u,
@@ -106,7 +106,7 @@ const $e = E({
           total: R,
         } = Y(),
         { isDrawing: T } = me()
-      Z({ title: `Presenter - ${ne}` }), $(!1)
+      ;(Z({ title: `Presenter - ${ne}` }), $(!1))
       const { timer: I, resetTimer: h } = ee(),
         L = b(() => P.value.map(v => te(v))),
         a = b(() => (l.value.current < l.value.total ? [p.value, l.value.current + 1] : _.value ? [f.value, 0] : null)),

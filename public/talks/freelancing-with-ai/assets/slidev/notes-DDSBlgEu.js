@@ -40,8 +40,8 @@ const K = { class: 'h-full pt-2 flex flex-col' },
         x = u(() => w.value.find(e => e.no === a.value))
       V(a, () => {
         var e
-        ;(e = v.value) == null || e.scrollTo({ left: 0, top: 0, behavior: 'smooth' }),
-          window.scrollTo({ left: 0, top: 0, behavior: 'smooth' })
+        ;((e = v.value) == null || e.scrollTo({ left: 0, top: 0, behavior: 'smooth' }),
+          window.scrollTo({ left: 0, top: 0, behavior: 'smooth' }))
       })
       function $() {
         n.value = n.value + 1

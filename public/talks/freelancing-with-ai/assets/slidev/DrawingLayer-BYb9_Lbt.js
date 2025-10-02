@@ -11,7 +11,9 @@ const k = l({
       n = u()
     return (
       c(() => {
-        e.mount(n.value, n.value.parentElement), m(r, a => (e.options.coordinateScale = 1 / a), { immediate: !0 }), s()
+        ;(e.mount(n.value, n.value.parentElement),
+          m(r, a => (e.options.coordinateScale = 1 / a), { immediate: !0 }),
+          s())
       }),
       i(() => {
         e.unmount()

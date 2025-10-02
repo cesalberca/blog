@@ -70,10 +70,10 @@ const Ee = ['placeholder'],
       const { ignoreUpdates: _ } = se(p, a => {
         if (!r.value) return
         const m = l.no
-        clearTimeout(E),
+        ;(clearTimeout(E),
           (E = setTimeout(() => {
             $({ note: a }, m)
-          }, 500))
+          }, 500)))
       })
       j(
         () => {
@@ -91,13 +91,13 @@ const Ee = ['placeholder'],
       )
       const d = B(),
         b = B()
-      ce(() => {
+      ;(ce(() => {
         var a
         r.value && ((a = d.value) == null || a.focus())
       }),
         re(d, () => {
           r.value = !1
-        })
+        }))
       function T() {
         !l.autoHeight ||
           !d.value ||
@@ -203,7 +203,7 @@ const Ee = ['placeholder'],
         _ = fe(),
         d = new WeakMap()
       function b(t) {
-        return d.has(t) || d.set(t, _e(t, G)), d.get(t)
+        return (d.has(t) || d.set(t, _e(t, G)), d.get(t))
       }
       function T(t) {
         var e, o
@@ -233,14 +233,14 @@ const Ee = ['placeholder'],
       }
       function M() {
         const t = []
-        Array.from(y.entries()).forEach(([e, o]) => {
+        ;(Array.from(y.entries()).forEach(([e, o]) => {
           m(o) && t.push(e)
         }),
-          (r.value = t)
+          (r.value = t))
       }
       function g(t) {
         const e = document.createElement('a')
-        ;(e.target = '_blank'), (e.href = ye + t.slice(1)), e.click()
+        ;((e.target = '_blank'), (e.href = ye + t.slice(1)), e.click())
       }
       function H(t) {
         const e = y.get(t)
@@ -248,7 +248,7 @@ const Ee = ['placeholder'],
       }
       function Z(t, e, o) {
         const f = b(o)
-        f.current === e ? (f.current = G) : (f.current = e), t.preventDefault()
+        ;(f.current === e ? (f.current = G) : (f.current = e), t.preventDefault())
       }
       return (
         ve(() => {

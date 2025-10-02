@@ -8,7 +8,7 @@ const h = {
   __name: 'slides.md__slidev_17',
   setup(p) {
     const { $slidev: _, $nav: l, $clicksContext: e, $clicks: f, $page: u, $renderContext: d, $frontmatter: r } = i()
-    return e.setup(), ($, x) => (o(), s(c, a(n(t(m)(t(r), 16))), null, 16))
+    return (e.setup(), ($, x) => (o(), s(c, a(n(t(m)(t(r), 16))), null, 16)))
   },
 }
 export { h as default }

@@ -6,7 +6,8 @@ export const metadata = {
   slug: 'tabaiba',
   date: '2025-03-15',
   image: 'tabaiba.jpg',
-  summary: 'Una aplicación móvil que ofrece tres personas nuevas a conocer cuidadosamente seleccionadas cada viernes, centrándose en conexiones sociales auténticas e intencionales.',
+  summary:
+    'Una aplicación móvil que ofrece tres personas nuevas a conocer cuidadosamente seleccionadas cada viernes, centrándose en conexiones sociales auténticas e intencionales.',
 }
 
 ## Resumen
@@ -169,17 +170,17 @@ interface OnboardingStatus {
 }
 
 interface OnboardingStatusValue {
-  data: OnboardingData;
-  completedSteps: StepId[];
-  skippedSkippableSteps: boolean;
-  requiredStepsCompleted: boolean;
-  skippableStepsCompleted: boolean;
-  lastCompletedStep: StepId | null;
+  data: OnboardingData
+  completedSteps: StepId[]
+  skippedSkippableSteps: boolean
+  requiredStepsCompleted: boolean
+  skippableStepsCompleted: boolean
+  lastCompletedStep: StepId | null
 }
 
 export class OnboardingStatus extends ValueObject<OnboardingStatusValue> {
   static create(params: OnboardingStatusValue): OnboardingStatus {
-    return new OnboardingStatus(params);
+    return new OnboardingStatus(params)
   }
 
   toPrimitives(): OnboardingStatusValue {
@@ -190,27 +191,27 @@ export class OnboardingStatus extends ValueObject<OnboardingStatusValue> {
       requiredStepsCompleted: this.value.requiredStepsCompleted,
       skippableStepsCompleted: this.value.skippableStepsCompleted,
       lastCompletedStep: this.value.lastCompletedStep,
-    };
+    }
   }
 
   isFullyCompleted(): boolean {
-    return this.value.requiredStepsCompleted && this.value.skippableStepsCompleted;
+    return this.value.requiredStepsCompleted && this.value.skippableStepsCompleted
   }
 
   isRequiredCompleted(): boolean {
-    return this.value.requiredStepsCompleted;
+    return this.value.requiredStepsCompleted
   }
 
   hasSkippedSkippableSteps(): boolean {
-    return this.value.skippedSkippableSteps;
+    return this.value.skippedSkippableSteps
   }
 
   getCompletedSteps(): StepId[] {
-    return this.value.completedSteps;
+    return this.value.completedSteps
   }
 
   getData(): OnboardingData {
-    return this.value.data;
+    return this.value.data
   }
 }
 ```
@@ -226,55 +227,53 @@ La capa de aplicación actúa como un orquestador entre la UI y el dominio. Util
 
 ```typescript
 export function useOnboarding() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const onboardingRepository = container.resolve<OnboardingRepository>(
-    InjectionTokens.ONBOARDING_REPOSITORY
-  );
-  const [onboardingStatus, setOnboardingStatus] = useState<OnboardingStatus | null>(null);
+  const router = useRouter()
+  const pathname = usePathname()
+  const onboardingRepository = container.resolve<OnboardingRepository>(InjectionTokens.ONBOARDING_REPOSITORY)
+  const [onboardingStatus, setOnboardingStatus] = useState<OnboardingStatus | null>(null)
 
   useEffect(() => {
-    loadOnboardingStatus();
-  }, []);
+    loadOnboardingStatus()
+  }, [])
 
   const loadOnboardingStatus = async () => {
-    const status = await onboardingRepository.getOnboardingStatus();
-    setOnboardingStatus(status);
+    const status = await onboardingRepository.getOnboardingStatus()
+    setOnboardingStatus(status)
 
     if (!pathname?.includes('onboarding')) {
       if (!status.isRequiredCompleted()) {
-        router.push('/onboarding/required');
+        router.push('/onboarding/required')
       } else if (status.isFullyCompleted()) {
-        router.push('/(tabs)');
+        router.push('/(tabs)')
       }
     }
-  };
+  }
 
   const completeRequiredOnboarding = useCallback(async () => {
-    await onboardingRepository.completeRequiredOnboarding();
-  }, [onboardingRepository]);
+    await onboardingRepository.completeRequiredOnboarding()
+  }, [onboardingRepository])
 
   const completeOptionalOnboarding = useCallback(async () => {
-    await onboardingRepository.completeOnboarding();
-    router.push('/(tabs)');
-  }, [onboardingRepository, router]);
+    await onboardingRepository.completeOnboarding()
+    router.push('/(tabs)')
+  }, [onboardingRepository, router])
 
   return {
     onboardingStatus,
     completeRequiredOnboarding,
     completeOptionalOnboarding,
-  };
+  }
 }
 
 @injectable()
 export class SetNameCommand implements Command<SetNameParams, void> {
   constructor(
     @inject(InjectionTokens.ONBOARDING_REPOSITORY)
-    private readonly onboardingRepository: OnboardingRepository
+    private readonly onboardingRepository: OnboardingRepository,
   ) {}
 
   async handle(params: SetNameParams): Promise<void> {
-    await this.onboardingRepository.updateOnboardingStep(STEP_IDS.NAME, { name: params.name });
+    await this.onboardingRepository.updateOnboardingStep(STEP_IDS.NAME, { name: params.name })
   }
 }
 ```
@@ -380,6 +379,7 @@ Cada característica sigue una arquitectura en capas que proporciona varios bene
    - Testing simplificado
 
 Esta arquitectura en capas nos permite:
+
 - Evolucionar cada capa de forma independiente
 - Facilitar el testing automatizado
 - Mantener un código base sostenible

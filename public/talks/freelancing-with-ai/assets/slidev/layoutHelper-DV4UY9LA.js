@@ -11,6 +11,6 @@ function s(e, o = !1, n = 'cover') {
       backgroundPosition: 'center',
       backgroundSize: n,
     }
-  return i.background || delete i.background, i
+  return (i.background || delete i.background, i)
 }
 export { s as h }

@@ -39,7 +39,7 @@ var d =
     }
     function r(e, t, i) {
       var n = new XMLHttpRequest()
-      n.open('GET', e),
+      ;(n.open('GET', e),
         (n.responseType = 'blob'),
         (n.onload = function () {
           p(n.response, t, i)
@@ -47,7 +47,7 @@ var d =
         (n.onerror = function () {
           console.error('could not download file')
         }),
-        n.send()
+        n.send())
     }
     function s(e) {
       var t = new XMLHttpRequest()
@@ -62,7 +62,7 @@ var d =
         e.dispatchEvent(new MouseEvent('click'))
       } catch {
         var t = document.createEvent('MouseEvents')
-        t.initMouseEvent('click', !0, !0, window, 0, 0, 0, 80, 20, !1, !1, !1, !1, 0, null), e.dispatchEvent(t)
+        ;(t.initMouseEvent('click', !0, !0, window, 0, 0, 0, 80, 20, !1, !1, !1, !1, 0, null), e.dispatchEvent(t))
       }
     }
     var a =
@@ -86,7 +86,7 @@ var d =
             ? function (e, t, i) {
                 var n = a.URL || a.webkitURL,
                   o = document.createElement('a')
-                ;(t = t || e.name || 'download'),
+                ;((t = t || e.name || 'download'),
                   (o.download = t),
                   (o.rel = 'noopener'),
                   typeof e == 'string'
@@ -98,7 +98,7 @@ var d =
                       }, 4e4),
                       setTimeout(function () {
                         c(o)
-                      }, 0))
+                      }, 0)))
               }
             : 'msSaveOrOpenBlob' in navigator
               ? function (e, t, i) {
@@ -106,11 +106,11 @@ var d =
                   else if (s(e)) r(e, t, i)
                   else {
                     var n = document.createElement('a')
-                    ;(n.href = e),
+                    ;((n.href = e),
                       (n.target = '_blank'),
                       setTimeout(function () {
                         c(n)
-                      })
+                      }))
                   }
                 }
               : function (e, t, i, n) {
@@ -125,24 +125,24 @@ var d =
                     b = /CriOS\/[\d]+/.test(navigator.userAgent)
                   if ((b || (o && j) || y) && typeof FileReader < 'u') {
                     var w = new FileReader()
-                    ;(w.onloadend = function () {
+                    ;((w.onloadend = function () {
                       var u = w.result
-                      ;(u = b ? u : u.replace(/^data:[^;]*;/, 'data:attachment/file;')),
+                      ;((u = b ? u : u.replace(/^data:[^;]*;/, 'data:attachment/file;')),
                         n ? (n.location.href = u) : (location = u),
-                        (n = null)
+                        (n = null))
                     }),
-                      w.readAsDataURL(e)
+                      w.readAsDataURL(e))
                   } else {
                     var h = a.URL || a.webkitURL,
                       m = h.createObjectURL(e)
-                    n ? (n.location = m) : (location.href = m),
+                    ;(n ? (n.location = m) : (location.href = m),
                       (n = null),
                       setTimeout(function () {
                         h.revokeObjectURL(m)
-                      }, 4e4)
+                      }, 4e4))
                   }
                 })
-    ;(a.saveAs = p.saveAs = p), (f.exports = p)
+    ;((a.saveAs = p.saveAs = p), (f.exports = p))
   })
 })(g)
 var O = g.exports

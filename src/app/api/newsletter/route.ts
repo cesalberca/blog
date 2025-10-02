@@ -1,51 +1,73 @@
-'use server'
-
+import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
+import { EmailTemplate } from '@/emails/email-template'
 
-export async function POST(request: NextRequest) {
+const resend = new Resend(process.env['RESEND_API_KEY']!)
+
+interface SubscribeRequest {
+  email: string
+  firstName: string
+  lastName: string
+}
+
+interface SubscribeResponse {
+  success: boolean
+  contactId?: string
+  error?: string
+}
+
+export async function POST(request: NextRequest): Promise<NextResponse<SubscribeResponse>> {
   try {
-    const { email } = await request.json()
+    const body: SubscribeRequest = await request.json()
+    const { email, firstName, lastName } = body
 
+    // Validate required fields
     if (!email) {
-      return NextResponse.json({ error: 'Email is required' }, { status: 400 })
+      return NextResponse.json({ success: false, error: 'Email is required' }, { status: 400 })
     }
 
-    const API_KEY = process.env['MAILCHIMP_API_KEY']
-    const API_SERVER = process.env['MAILCHIMP_API_SERVER']
-    const AUDIENCE_ID = process.env['MAILCHIMP_AUDIENCE_ID']
+    // Add contact to Resend audience
+    const audienceId = process.env['RESEND_AUDIENCE_ID']
 
-    if (!API_KEY || !API_SERVER || !AUDIENCE_ID) {
-      return NextResponse.json({ error: 'Mailchimp configuration is missing' }, { status: 500 })
+    if (audienceId === undefined) {
+      return NextResponse.json({ success: false, error: 'Audience ID is not set' }, { status: 400 })
     }
 
-    const url = `https://${API_SERVER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`
-
-    const data = {
-      email_address: email,
-      status: 'subscribed',
-    }
-
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${API_KEY}`,
-      },
-      body: JSON.stringify(data),
+    const contactResult = await resend.contacts.create({
+      email,
+      firstName,
+      lastName,
+      audienceId,
     })
 
-    const responseData = await response.json()
-
-    if (response.status >= 400) {
-      return NextResponse.json(
-        { error: responseData.title || 'Error subscribing to newsletter' },
-        { status: response.status },
-      )
+    if (contactResult.error) {
+      return NextResponse.json({ success: false, error: contactResult.error.message }, { status: 500 })
     }
 
-    return NextResponse.json({ success: true }, { status: 201 })
+    try {
+      const welcomeEmailModule = await import('@/content/emails/transactional/welcome-email')
+      const { WelcomeEmail } = welcomeEmailModule
+
+      await resend.emails.send({
+        from: process.env['EMAIL_FROM']!,
+        to: email,
+        subject: 'Welcome to the newsletter!',
+        react: await EmailTemplate({
+          title: 'Welcome to the newsletter!',
+          description: 'Thanks for subscribing to our newsletter',
+          children: await WelcomeEmail({ firstName: firstName ?? 'there' }),
+        }),
+      })
+    } catch (error) {
+      console.error('Welcome email import/send error:', error)
+      // Don't fail the subscription if welcome email fails
+    }
+
+    return NextResponse.json({
+      success: true,
+      contactId: contactResult.data?.id,
+    })
   } catch (error) {
-    console.error('Newsletter subscription error:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 })
   }
 }

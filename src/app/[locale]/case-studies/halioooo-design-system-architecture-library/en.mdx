@@ -6,7 +6,8 @@ export const metadata = {
   slug: 'case-studies-use-cases',
   date: '2025-04-01',
   image: 'halioooo.png',
-  summary: 'How implementing Use Cases and Design Systems can transform organizational efficiency, maintainability, and consistency in software development at Halioooo.',
+  summary:
+    'How implementing Use Cases and Design Systems can transform organizational efficiency, maintainability, and consistency in software development at Halioooo.',
 }
 
 ## Summary
@@ -74,18 +75,18 @@ Let's look at a complete implementation of a use case that fetches user data:
 ```typescript
 // Interfaces
 interface User {
-  id: string;
-  name: string;
-  email: string;
+  id: string
+  name: string
+  email: string
 }
 
 interface GetUserParams {
-  userId: string;
+  userId: string
 }
 
 // Repository interface (dependency)
 interface UserRepository {
-  findById(id: string): Promise<User | null>;
+  findById(id: string): Promise<User | null>
 }
 
 // Use case implementation
@@ -93,37 +94,38 @@ export class GetUserUseCase implements UseCase<GetUserParams, User> {
   constructor(private readonly userRepository: UserRepository) {}
 
   async handle(params: GetUserParams): Promise<User> {
-    const { userId } = params;
+    const { userId } = params
 
     // Validate input
     if (!userId) {
       // Errors can be replaced in the future with DomainErrors
-      throw new Error('User ID is required');
+      throw new Error('User ID is required')
     }
 
     // Execute business logic
-    const user = await this.userRepository.findById(userId);
+    const user = await this.userRepository.findById(userId)
 
     // Handle edge cases
     if (!user) {
-      throw new Error(`User with ID ${userId} not found`);
+      throw new Error(`User with ID ${userId} not found`)
     }
 
-    return user;
+    return user
   }
 }
 
 // Usage with dependency injection
-const container = new Container();
-container.register('UserRepository', UserRepositoryImplementation);
-const useCaseService = container.get<UseCaseService>(UseCaseService.name);
+const container = new Container()
+container.register('UserRepository', UserRepositoryImplementation)
+const useCaseService = container.get<UseCaseService>(UseCaseService.name)
 
 // Execute the use case
-const user = await useCaseService.execute(GetUserUseCase, { userId: '123' });
+const user = await useCaseService.execute(GetUserUseCase, { userId: '123' })
 ```
 
 This example demonstrates several key benefits:
-- **Clear dependencies**: The use case depends on a repository interface, not a concrete implementation which  can be changed easily at compile time or even at run time
+
+- **Clear dependencies**: The use case depends on a repository interface, not a concrete implementation which can be changed easily at compile time or even at run time
 - **Input validation**: The use case validates its input parameters
 - **Error handling**: The use case handles edge cases like missing users
 - **Dependency injection**: The use case receives its dependencies through constructor injection which makes the code easier to change and to test
@@ -139,6 +141,7 @@ export interface Query<Return, Param = void> extends UseCase<Param, Return> {}
 Commands are used for operations that modify state (with default void return), while Queries are used for retrieving data (requiring a return type). This separation follows the [Command pattern](https://refactoring.guru/design-patterns/command) from the Gang of Four design patterns, where commands encapsulate all the information needed to perform an action.
 
 The CQRS pattern provides several benefits:
+
 - **Separation of concerns**: Read and write operations often have different requirements and can be optimized separately.
 - **Scalability**: Read and write operations can be scaled independently.
 - **Security**: It's easier to apply different security rules to commands and queries.
@@ -182,11 +185,7 @@ The middleware chain offers several powerful capabilities:
 ```typescript
 // Example of a conditional middleware
 export class ConditionalMiddleware implements Middleware {
-  async execute<In, Out>(
-    param: In,
-    next: UseCase<In, Out>,
-    options: UseCaseOptions,
-  ): Promise<Out> {
+  async execute<In, Out>(param: In, next: UseCase<In, Out>, options: UseCaseOptions): Promise<Out> {
     // Check conditions based on param or options
     if (options.skipCondition) {
       // Skip this middleware and pass to the next one
@@ -219,16 +218,12 @@ Here's a real-world example of a logging middleware that measures execution time
 export class PerformanceLoggingMiddleware implements Middleware {
   constructor(private readonly logger: Logger) {}
 
-  async execute<In, Out>(
-    param: In,
-    next: UseCase<In, Out>,
-    options: UseCaseOptions,
-  ): Promise<Out> {
+  async execute<In, Out>(param: In, next: UseCase<In, Out>, options: UseCaseOptions): Promise<Out> {
     // Get the name of the use case being executed
-    const useCaseName = next.constructor.name;
+    const useCaseName = next.constructor.name
 
     // Record start time
-    const startTime = performance.now();
+    const startTime = performance.now()
 
     try {
       // Log the beginning of execution
@@ -236,35 +231,35 @@ export class PerformanceLoggingMiddleware implements Middleware {
         useCaseName,
         params: param,
         options,
-      });
+      })
 
       // Execute the next middleware or use case
-      const result = await next.handle(param, options);
+      const result = await next.handle(param, options)
 
       // Calculate execution time
-      const executionTime = performance.now() - startTime;
+      const executionTime = performance.now() - startTime
 
       // Log successful completion
       this.logger.info(`Successfully executed ${useCaseName} in ${executionTime.toFixed(2)}ms`, {
         useCaseName,
         executionTime,
         resultType: typeof result,
-      });
+      })
 
-      return result;
+      return result
     } catch (error) {
       // Calculate execution time even for failures
-      const executionTime = performance.now() - startTime;
+      const executionTime = performance.now() - startTime
 
       // Log error with execution time
       this.logger.error(`Failed to execute ${useCaseName} after ${executionTime.toFixed(2)}ms`, {
         useCaseName,
         executionTime,
         error,
-      });
+      })
 
       // Re-throw the error to be handled by error middleware
-      throw error;
+      throw error
     }
   }
 }
@@ -315,31 +310,31 @@ This combination creates a **powerful foundation** that balances flexibility wit
 
 ```typescript
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all...",
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all...',
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
-        destructive: "bg-destructive text-white shadow-xs hover:bg-destructive/90...",
-        outline: "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground...",
-        secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
-        invisible: "whitespace-normal rounded-none",
+        default: 'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',
+        destructive: 'bg-destructive text-white shadow-xs hover:bg-destructive/90...',
+        outline: 'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground...',
+        secondary: 'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
+        ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
+        link: 'text-primary underline-offset-4 hover:underline',
+        invisible: 'whitespace-normal rounded-none',
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9",
+        default: 'h-9 px-4 py-2 has-[>svg]:px-3',
+        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',
+        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
+        icon: 'size-9',
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: 'default',
+      size: 'default',
     },
   },
-);
+)
 ```
 
 Here's the complete Button component implementation that uses these variants:
@@ -498,6 +493,7 @@ These patterns aren't just theoretical—they're **battle-tested approaches** th
 ## Ready to Transform Your Development Process?
 
 If you're facing challenges with:
+
 - **Maintaining complex business logic** across your application
 - **Ensuring consistency** in your user interface
 - **Scaling your development team** while maintaining code quality
@@ -513,6 +509,7 @@ If you're facing challenges with:
 />
 
 During our call, we'll:
+
 1. Discuss your current development challenges
 2. Explore how the Use Case pattern and Design System can address those challenges
 3. Create a tailored roadmap for implementing these patterns in your organization

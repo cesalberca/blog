@@ -81,9 +81,9 @@ Por ejemplo, un prompt como:
 Da como resultado JSX válido y accesible utilizando componentes base que se importan desde `@/components/ui`, que es el valor predeterminado para Shadcn:
 
 ```jsx
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 export default function Component() {
   return (
@@ -131,7 +131,7 @@ export default function Component() {
           </Button>
 
           <p className="text-center text-sm text-gray-400">
-            Already have an account?{" "}
+            Already have an account?{' '}
             <a href="#" className="text-blue-400 hover:text-blue-300 underline">
               Sign in
             </a>
@@ -179,8 +179,8 @@ Para ejecutar casos de uso utilizarías un `UseCaseService`:
 
 ```typescript
 await useCaseService.execute(RegisterUserUseCase, {
-  email: "test@example.com",
-  password: "secure-password",
+  email: 'test@example.com',
+  password: 'secure-password',
 })
 ```
 
@@ -204,11 +204,7 @@ Inspirado en el [patrón Chain of Responsibility](https://refactoring.guru/desig
 
 ```typescript
 interface Middleware {
-  execute<In, Out>(
-    param: In,
-    next: UseCase<In, Out>,
-    options: UseCaseOptions
-  ): Promise<Out>
+  execute<In, Out>(param: In, next: UseCase<In, Out>, options: UseCaseOptions): Promise<Out>
 }
 ```
 
@@ -222,11 +218,7 @@ interface Middleware {
 export class ErrorMiddleware implements Middleware {
   constructor(private readonly eventEmitter: EventEmitter) {}
 
-  async intercept(
-    params: unknown,
-    next: UseCase,
-    options: UseCaseOptions,
-  ): Promise<unknown> {
+  async intercept(params: unknown, next: UseCase, options: UseCaseOptions): Promise<unknown> {
     try {
       return await next.handle(params)
     } catch (error) {
@@ -248,9 +240,7 @@ export class LogMiddleware implements Middleware {
   constructor(private readonly logger: Logger) {}
 
   intercept(params: unknown, useCase: UseCase): Promise<unknown> {
-    this.logger.log(
-      `[${DateTime.fromNow().toISO()}] ${this.getName(useCase)} / ${this.printResult(params)}`,
-    )
+    this.logger.log(`[${DateTime.fromNow().toISO()}] ${this.getName(useCase)} / ${this.printResult(params)}`)
     return useCase.handle(params)
   }
 
@@ -283,11 +273,7 @@ export class CacheMiddleware implements Middleware {
 
   constructor(private readonly ttlInSeconds: number = 60) {}
 
-  async intercept<In, Out>(
-    params: In,
-    next: UseCase<In, Out>,
-    options: UseCaseOptions,
-  ): Promise<Out> {
+  async intercept<In, Out>(params: In, next: UseCase<In, Out>, options: UseCaseOptions): Promise<Out> {
     const key = options.cacheKey
     if (!key) {
       return next.handle(params, options)
@@ -322,11 +308,7 @@ export class UseCaseService {
     private readonly container: Container,
   ) {}
 
-  async execute<In, Out>(
-    useCase: Type<UseCase<In, Out>>,
-    param?: In,
-    options?: UseCaseOptions,
-  ): Promise<Out> {
+  async execute<In, Out>(useCase: Type<UseCase<In, Out>>, param?: In, options?: UseCaseOptions): Promise<Out> {
     const requiredOptions = options ?? {
       silentError: false,
     }
@@ -374,7 +356,7 @@ Y no necesitas tocar la lógica del caso de uso en sí.
   columns={[
     { key: 'layer', header: 'Capa' },
     { key: 'tooling', header: 'Herramienta / Patrón' },
-    { key: 'aiRole', header: 'Rol de IA' }
+    { key: 'aiRole', header: 'Rol de IA' },
   ]}
   rows={esTableData}
 />
@@ -382,12 +364,14 @@ Y no necesitas tocar la lógica del caso de uso en sí.
 ## Recursos
 
 ### Patrones de Arquitectura
+
 - [Clean Architecture - Uncle Bob](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 - [CQRS - Martin Fowler](https://martinfowler.com/bliki/CQRS.html)
 - [Chain of Responsibility - Refactoring Guru](https://refactoring.guru/design-patterns/chain-of-responsibility)
 - [Command Pattern - Refactoring Guru](https://refactoring.guru/design-patterns/command)
 
 ### Herramientas de IA y Bibliotecas UI
+
 - [shadcn/ui](https://ui.shadcn.com/) - Biblioteca de componentes para construir UI de alta calidad
 - [V0.dev](https://v0.dev/) - Herramienta de generación de UI potenciada por IA
 - [Cursor](https://cursor.sh/) - Editor de código mejorado con IA
@@ -395,6 +379,7 @@ Y no necesitas tocar la lógica del caso de uso en sí.
 - [TailwindCSS](https://tailwindcss.com/) - Framework CSS funcional
 
 ### Lecturas adicionales
+
 - [Mi caso de estudio: Arquitectura y Sistemas de Diseño](https://www.cesalberca.com/case-studies/halioooo-design-system-architecture-library)
 
 ## Conclusión

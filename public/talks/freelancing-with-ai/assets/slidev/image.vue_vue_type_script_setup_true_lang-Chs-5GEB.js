@@ -7,7 +7,8 @@ const f = s({
     const e = a,
       o = l(() => m(e.image, !1, e.backgroundSize))
     return (t, p) => (
-      r(), n('div', { class: 'slidev-layout w-full h-full', style: i(o.value) }, [c(t.$slots, 'default')], 4)
+      r(),
+      n('div', { class: 'slidev-layout w-full h-full', style: i(o.value) }, [c(t.$slots, 'default')], 4)
     )
   },
 })

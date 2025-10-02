@@ -79,7 +79,7 @@ const K = N({
             let m
             e < +this.depth && Array.isArray(t.children) ? (m = n(t, {}, x(t.children, e))) : (m = n(t))
             const v = d - h
-            return (h = d), c(m, o ? (v >= 0 ? `+${v}` : `${v}`) : d)
+            return ((h = d), c(m, o ? (v >= 0 ? `+${v}` : `${v}`) : d))
           }),
         y = () => V(K, { size: +a + Math.ceil((g - 1) / l) - 1 - h })
       if (this.handleSpecialElements) {

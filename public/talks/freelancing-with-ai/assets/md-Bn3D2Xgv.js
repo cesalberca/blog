@@ -21,7 +21,7 @@ const N = { class: 'slidev-layout quote' },
   S = {
     __name: 'quote',
     setup(m) {
-      return l(), (s, _) => (n(), x('div', N, [i('div', P, [$(s.$slots, 'default')])]))
+      return (l(), (s, _) => (n(), x('div', N, [i('div', P, [$(s.$slots, 'default')])])))
     },
   },
   T = { class: 'text-[120px]' },

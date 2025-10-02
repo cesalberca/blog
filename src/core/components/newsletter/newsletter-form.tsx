@@ -1,23 +1,60 @@
 'use client'
 
-import type { FC } from 'react'
+import { type FC, type FormEvent, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Send } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { useNewsletter, type UseNewsletterOptions } from './use-newsletter'
+import { toast } from 'sonner'
 
 export interface NewsletterFormProps {
   className?: string
   showTitle?: boolean
-  onSuccess?: UseNewsletterOptions['onSuccess']
+  onSuccess?: () => void
 }
 
 export const NewsletterForm: FC<NewsletterFormProps> = ({ className, showTitle = false, onSuccess }) => {
   const t = useTranslations()
-  const { name, setName, email, setEmail, isSubmitting, handleSubmit } = useNewsletter(onSuccess ? { onSuccess } : {})
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, firstName, lastName }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error ?? 'Something went wrong')
+      }
+
+      toast(t('newsletter.success'))
+
+      setIsSubmitting(false)
+      setFirstName('')
+      setLastName('')
+      setEmail('')
+      onSuccess?.()
+    } catch (err) {
+      toast.error(t('newsletter.success'), {
+        description: err instanceof Error ? err.message : 'Something went wrong',
+      })
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit} className={cn('space-y-4', className)}>
@@ -27,17 +64,32 @@ export const NewsletterForm: FC<NewsletterFormProps> = ({ className, showTitle =
         </div>
       )}
 
-      <div className="space-y-2">
-        <Label htmlFor="name">
-          {t('newsletter.nameLabel')}{' '}
-          <span className="text-xs text-muted-foreground">({t('newsletter.optional')})</span>
-        </Label>
-        <Input
-          id="name"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          placeholder={t('newsletter.namePlaceholder')}
-        />
+      <div className="space-y-2 flex gap-4">
+        <div className="flex-1">
+          <Label htmlFor="firstName">
+            {t('newsletter.firstNameLabel')} <span className="text-xs text-red-500">*</span>
+          </Label>
+          <Input
+            id="firstName"
+            value={firstName}
+            required
+            onChange={e => setFirstName(e.target.value)}
+            placeholder={t('newsletter.firstNamePlaceholder')}
+          />
+        </div>
+
+        <div className="flex-1">
+          <Label htmlFor="lastName">
+            {t('newsletter.lastNameLabel')} <span className="text-xs text-red-500">*</span>
+          </Label>
+          <Input
+            id="lastName"
+            value={lastName}
+            required
+            onChange={e => setLastName(e.target.value)}
+            placeholder={t('newsletter.lastNamePlaceholder')}
+          />
+        </div>
       </div>
 
       <div className="space-y-2">

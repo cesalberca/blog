@@ -13,7 +13,7 @@ function m(e, s = !1) {
       backgroundPosition: 'center',
       backgroundSize: 'cover',
     }
-  return o.background || delete o.background, o
+  return (o.background || delete o.background, o)
 }
 const v = { class: 'my-auto w-full' },
   _ = a({

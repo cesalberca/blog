@@ -74,7 +74,7 @@ function ps(t) {
     update: async (s, n) => {
       const r = e(n ?? F(t)),
         i = await r.update(s)
-      return i && (r.info.value = i), i
+      return (i && (r.info.value = i), i)
     },
   }
 }
@@ -224,22 +224,22 @@ function Ae(t, e = {}) {
     if (Zt || xt) {
       let I = M(q(rt), w)
       for (let ht = 1 / 13, J = 0; J <= 1; J += ht)
-        (T = H(P(g, I), g, Y * J)), C.push(T), (z = H($(g, I), g, Y * -J)), h.push(z)
-      ;(V = T), (X = z), xt && (it = !0)
+        ((T = H(P(g, I), g, Y * J)), C.push(T), (z = H($(g, I), g, Y * -J)), h.push(z))
+      ;((V = T), (X = z), xt && (it = !0))
       continue
     }
     if (((it = !1), u === t.length - 1)) {
       let I = M(q(m), w)
-      C.push(P(g, I)), h.push($(g, I))
+      ;(C.push(P(g, I)), h.push($(g, I)))
       continue
     }
     let _t = M(q(gt(yt, m, lt)), w)
-    ;(T = P(g, _t)),
+    ;((T = P(g, _t)),
       (u <= 1 || It(V, T) > j) && (C.push(T), (V = T)),
       (z = $(g, _t)),
       (u <= 1 || It(X, z) > j) && (h.push(z), (X = z)),
       (_ = S),
-      (rt = m)
+      (rt = m))
   }
   let D = t[0].point.slice(0, 2),
     N = t.length > 1 ? t[t.length - 1].point.slice(0, 2) : $(t[0].point, [1, 1]),
@@ -307,16 +307,16 @@ function Fe(t, e = {}) {
       if (v < r) continue
       p = !0
     }
-    ;(y = {
+    ;((y = {
       point: d,
       pressure: a[f][2] >= 0 ? a[f][2] : 0.5,
       vector: Ut(P(y.point, d)),
       distance: c,
       runningLength: v,
     }),
-      l.push(y)
+      l.push(y))
   }
-  return (l[0].vector = ((s = l[1]) == null ? void 0 : s.vector) || [0, 0]), l
+  return ((l[0].vector = ((s = l[1]) == null ? void 0 : s.vector) || [0, 0]), l)
 }
 function Ke(t, e = {}) {
   return Ae(Fe(t, e), e)
@@ -338,7 +338,7 @@ var ze = 2,
   k = ze,
   U = class {
     constructor(t) {
-      ;(this.drauu = t), (this.event = void 0), (this.point = void 0), (this.start = void 0), (this.el = null)
+      ;((this.drauu = t), (this.event = void 0), (this.point = void 0), (this.start = void 0), (this.el = null))
     }
     onSelected(t) {}
     onUnselected() {}
@@ -369,7 +369,7 @@ var ze = 2,
         return { x: (t.pageX - a.left + o.x) * i, y: (t.pageY - a.top + o.y) * i, pressure: t.pressure }
       } else {
         const a = this.drauu.svgPoint
-        ;(a.x = t.clientX + o.x), (a.y = t.clientY + o.y)
+        ;((a.x = t.clientX + o.x), (a.y = t.clientY + o.y))
         const l = a.matrixTransform((n = r.getScreenCTM()) == null ? void 0 : n.inverse())
         return { x: l.x * i, y: l.y * i, pressure: t.pressure }
       }
@@ -391,21 +391,21 @@ var ze = 2,
       this.el.setAttribute(t, typeof e == 'string' ? e : e.toFixed(k))
     }
     _setEvent(t) {
-      ;(this.event = t), (this.point = this.getMousePosition(t))
+      ;((this.event = t), (this.point = this.getMousePosition(t)))
     }
     _eventDown(t) {
-      return this._setEvent(t), (this.start = this.point), this.onStart(this.point)
+      return (this._setEvent(t), (this.start = this.point), this.onStart(this.point))
     }
     _eventMove(t) {
-      return this._setEvent(t), this.onMove(this.point)
+      return (this._setEvent(t), this.onMove(this.point))
     }
     _eventUp(t) {
-      return this._setEvent(t), this.onEnd(this.point)
+      return (this._setEvent(t), this.onEnd(this.point))
     }
   },
   Re = class Gt extends U {
     constructor() {
-      super(...arguments), (this.points = [])
+      ;(super(...arguments), (this.points = []))
     }
     onStart(e) {
       return (
@@ -426,7 +426,7 @@ var ze = 2,
     }
     onEnd() {
       const e = this.el
-      return (this.el = null), !!e
+      return ((this.el = null), !!e)
     }
     getSvgData(e) {
       return Gt.getSvgData(e, this.brush)
@@ -443,16 +443,16 @@ var ze = 2,
       const r = n.reduce(
         (i, [o, a], l, p) => {
           const [v, y] = p[(l + 1) % p.length]
-          return i.push(o, a, (o + v) / 2, (a + y) / 2), i
+          return (i.push(o, a, (o + v) / 2, (a + y) / 2), i)
         },
         ['M', ...n[0], 'Q'],
       )
-      return r.push('Z'), r.map(i => (typeof i == 'number' ? i.toFixed(2) : i)).join(' ')
+      return (r.push('Z'), r.map(i => (typeof i == 'number' ? i.toFixed(2) : i)).join(' '))
     }
   },
   je = class extends U {
     onStart(t) {
-      return (this.el = this.createElement('ellipse')), this.attr('cx', t.x), this.attr('cy', t.y), this.el
+      return ((this.el = this.createElement('ellipse')), this.attr('cx', t.x), this.attr('cy', t.y), this.el)
     }
     onMove(t) {
       if (!this.el || !this.start) return !1
@@ -460,23 +460,23 @@ var ze = 2,
         [n, r] = st(t.y - this.start.y)
       if (this.shiftPressed) {
         const i = Math.min(e, n)
-        ;(e = i), (n = i)
+        ;((e = i), (n = i))
       }
       if (this.altPressed)
-        this.attr('cx', this.start.x), this.attr('cy', this.start.y), this.attr('rx', e), this.attr('ry', n)
+        (this.attr('cx', this.start.x), this.attr('cy', this.start.y), this.attr('rx', e), this.attr('ry', n))
       else {
         const [i, o] = [this.start.x, this.start.x + e * s].sort(et),
           [a, l] = [this.start.y, this.start.y + n * r].sort(et)
-        this.attr('cx', (i + o) / 2),
+        ;(this.attr('cx', (i + o) / 2),
           this.attr('cy', (a + l) / 2),
           this.attr('rx', (o - i) / 2),
-          this.attr('ry', (l - a) / 2)
+          this.attr('ry', (l - a) / 2))
       }
       return !0
     }
     onEnd() {
       const t = this.el
-      return (this.el = null), !(!t || !t.getTotalLength())
+      return ((this.el = null), !(!t || !t.getTotalLength()))
     }
   }
 function qt(t, e) {
@@ -510,7 +510,7 @@ var Oe = class extends U {
       ) {
         const e = Vt(),
           s = document.createElementNS('http://www.w3.org/2000/svg', 'g')
-        return s.append(qt(e, this.brush.color)), s.append(this.el), this.attr('marker-end', `url(#${e})`), s
+        return (s.append(qt(e, this.brush.color)), s.append(this.el), this.attr('marker-end', `url(#${e})`), s)
       }
       return this.el
     }
@@ -522,10 +522,10 @@ var Oe = class extends U {
           r = t.y - this.start.y
         if (r !== 0) {
           let i = n / r
-          ;(i = Math.round(i)),
+          ;((i = Math.round(i)),
             Math.abs(i) <= 1
               ? ((e = this.start.x + r * i), (s = this.start.y + r))
-              : ((e = this.start.x + n), (s = this.start.y))
+              : ((e = this.start.x + n), (s = this.start.y)))
         }
       }
       return (
@@ -540,7 +540,7 @@ var Oe = class extends U {
     }
     onEnd() {
       const t = this.el
-      return (this.el = null), !(!t || t.getTotalLength() < 5)
+      return ((this.el = null), !(!t || t.getTotalLength() < 5))
     }
   },
   Be = class extends U {
@@ -559,23 +559,23 @@ var Oe = class extends U {
         [n, r] = st(t.y - this.start.y)
       if (this.shiftPressed) {
         const i = Math.min(e, n)
-        ;(e = i), (n = i)
+        ;((e = i), (n = i))
       }
       if (this.altPressed)
-        this.attr('x', this.start.x - e),
+        (this.attr('x', this.start.x - e),
           this.attr('y', this.start.y - n),
           this.attr('width', e * 2),
-          this.attr('height', n * 2)
+          this.attr('height', n * 2))
       else {
         const [i, o] = [this.start.x, this.start.x + e * s].sort(et),
           [a, l] = [this.start.y, this.start.y + n * r].sort(et)
-        this.attr('x', i), this.attr('y', a), this.attr('width', o - i), this.attr('height', l - a)
+        ;(this.attr('x', i), this.attr('y', a), this.attr('width', o - i), this.attr('height', l - a))
       }
       return !0
     }
     onEnd() {
       const t = this.el
-      return (this.el = null), !(!t || !t.getTotalLength())
+      return ((this.el = null), !(!t || !t.getTotalLength()))
     }
   }
 function Ue(t, e) {
@@ -592,14 +592,14 @@ function Ve(t, e, s) {
     const a = ((t.x - n) * i + (t.y - r) * o) / (i * i + o * o)
     a > 1 ? ((n = s.x), (r = s.y)) : a > 0 && ((n += i * a), (r += o * a))
   }
-  return (i = t.x - n), (o = t.y - r), i * i + o * o
+  return ((i = t.x - n), (o = t.y - r), i * i + o * o)
 }
 function Ge(t, e) {
   let s = t[0]
   const n = [s]
   let r
-  for (let i = 1, o = t.length; i < o; i++) (r = t[i]), Ue(r, s) > e && (n.push(r), (s = r))
-  return s !== r && r && n.push(r), n
+  for (let i = 1, o = t.length; i < o; i++) ((r = t[i]), Ue(r, s) > e && (n.push(r), (s = r)))
+  return (s !== r && r && n.push(r), n)
 }
 function mt(t, e, s, n, r) {
   let i = n,
@@ -613,16 +613,16 @@ function mt(t, e, s, n, r) {
 function qe(t, e) {
   const s = t.length - 1,
     n = [t[0]]
-  return mt(t, 0, s, e, n), n.push(t[s]), n
+  return (mt(t, 0, s, e, n), n.push(t[s]), n)
 }
 function Kt(t, e, s = !1) {
   if (t.length <= 2) return t
   const n = e * e
-  return (t = s ? t : Ge(t, n)), (t = qe(t, n)), t
+  return ((t = s ? t : Ge(t, n)), (t = qe(t, n)), t)
 }
 var He = class R extends U {
     constructor() {
-      super(...arguments), (this.points = []), (this.count = 0)
+      ;(super(...arguments), (this.points = []), (this.count = 0))
     }
     onStart(e) {
       if (((this.el = this.createElement('path', { fill: 'transparent' })), (this.points = [e]), this.brush.arrowEnd)) {
@@ -647,9 +647,9 @@ var He = class R extends U {
       if ((e.setAttribute('d', R.toSvgData(Kt(this.points, 1, !0))), !e.getTotalLength())) {
         const { x: s, y: n } = this.points[0],
           r = this.brush.size / 2
-        e.setAttribute('d', `M ${s - r} ${n} a ${r},${r} 0 1,0 ${r * 2},0 a ${r},${r} 0 1,0 ${-r * 2},0`),
+        ;(e.setAttribute('d', `M ${s - r} ${n} a ${r},${r} 0 1,0 ${r * 2},0 a ${r},${r} 0 1,0 ${-r * 2},0`),
           e.setAttribute('fill', this.brush.color),
-          e.setAttribute('stroke-width', '0')
+          e.setAttribute('stroke-width', '0'))
       }
       return !0
     }
@@ -683,7 +683,7 @@ var He = class R extends U {
   },
   Ye = class extends U {
     constructor() {
-      super(...arguments), (this.pathSubFactor = 20), (this.pathFragments = []), (this._erased = [])
+      ;(super(...arguments), (this.pathSubFactor = 20), (this.pathFragments = []), (this._erased = []))
     }
     onSelected(t) {
       const e = (s, n) => {
@@ -706,19 +706,19 @@ var He = class R extends U {
       this.pathFragments = []
     }
     onStart(t) {
-      ;(this.svgPointPrevious = this.svgElement.createSVGPoint()),
+      ;((this.svgPointPrevious = this.svgElement.createSVGPoint()),
         (this.svgPointPrevious.x = t.x),
-        (this.svgPointPrevious.y = t.y)
+        (this.svgPointPrevious.y = t.y))
     }
     onMove(t) {
-      ;(this.svgPointCurrent = this.svgElement.createSVGPoint()),
+      ;((this.svgPointCurrent = this.svgElement.createSVGPoint()),
         (this.svgPointCurrent.x = t.x),
-        (this.svgPointCurrent.y = t.y)
+        (this.svgPointCurrent.y = t.y))
       const e = this.checkAndEraseElement()
-      return (this.svgPointPrevious = this.svgPointCurrent), e
+      return ((this.svgPointPrevious = this.svgPointCurrent), e)
     }
     onEnd() {
-      ;(this.svgPointPrevious = void 0), (this.svgPointCurrent = void 0)
+      ;((this.svgPointPrevious = void 0), (this.svgPointCurrent = void 0))
       const t = this._erased
       return (
         (this._erased = []),
@@ -777,7 +777,7 @@ function Ze(t) {
 }
 var Xe = class {
   constructor(t = {}) {
-    ;(this.options = t),
+    ;((this.options = t),
       (this.el = null),
       (this.svgPoint = null),
       (this.eventEl = null),
@@ -792,7 +792,7 @@ var Xe = class {
       (this._disposables = []),
       (this._elements = []),
       this.options.brush || (this.options.brush = { color: 'black', size: 3, mode: 'stylus' }),
-      t.el && this.mount(t.el, t.eventTarget, t.window)
+      t.el && this.mount(t.el, t.eventTarget, t.window))
   }
   get model() {
     return this._models[this.mode]
@@ -804,7 +804,7 @@ var Xe = class {
     return this.options.brush.mode || 'stylus'
   }
   set mode(t) {
-    this._models[this.mode].onUnselected(), (this.options.brush.mode = t), this.model.onSelected(this.el)
+    ;(this._models[this.mode].onUnselected(), (this.options.brush.mode = t), this.model.onSelected(this.el))
   }
   get brush() {
     return this.options.brush
@@ -829,28 +829,28 @@ var Xe = class {
       i = this.eventMove.bind(this),
       o = this.eventEnd.bind(this),
       a = this.eventKeyboard.bind(this)
-    n.addEventListener('pointerdown', r, { passive: !1 }),
+    ;(n.addEventListener('pointerdown', r, { passive: !1 }),
       s.addEventListener('pointermove', i, { passive: !1 }),
       s.addEventListener('pointerup', o, { passive: !1 }),
       s.addEventListener('pointercancel', o, { passive: !1 }),
       s.addEventListener('keydown', a, !1),
       s.addEventListener('keyup', a, !1),
       this._disposables.push(() => {
-        n.removeEventListener('pointerdown', r),
+        ;(n.removeEventListener('pointerdown', r),
           s.removeEventListener('pointermove', i),
           s.removeEventListener('pointerup', o),
           s.removeEventListener('pointercancel', o),
           s.removeEventListener('keydown', a, !1),
-          s.removeEventListener('keyup', a, !1)
+          s.removeEventListener('keyup', a, !1))
       }),
-      this._emitter.emit('mounted')
+      this._emitter.emit('mounted'))
   }
   unmount() {
-    this._disposables.forEach(t => t()),
+    ;(this._disposables.forEach(t => t()),
       (this._disposables.length = 0),
       (this._elements.length = 0),
       (this.el = null),
-      this._emitter.emit('unmounted')
+      this._emitter.emit('unmounted'))
   }
   on(t, e) {
     return this._emitter.on(t, e)
@@ -894,9 +894,9 @@ var Xe = class {
     if (!e) this.cancel()
     else if (e === !0) {
       const s = this._currentNode
-      this._appendNode(s), this.commit({ undo: () => this._removeNode(s), redo: () => this._restoreNode(s) })
+      ;(this._appendNode(s), this.commit({ undo: () => this._removeNode(s), redo: () => this._restoreNode(s) }))
     } else this.commit(e)
-    ;(this.drawing = !1), this._emitter.emit('end'), this._emitter.emit('changed'), (this._originalPointerId = null)
+    ;((this.drawing = !1), this._emitter.emit('end'), this._emitter.emit('changed'), (this._originalPointerId = null))
   }
   acceptsInput(t) {
     return (
@@ -911,17 +911,17 @@ var Xe = class {
       this.model.point && this.model.onMove(this.model.point) && this._emitter.emit('changed'))
   }
   commit(t) {
-    ;(this._opStack.length = this._opIndex), this._opStack.push(t), this._opIndex++
+    ;((this._opStack.length = this._opIndex), this._opStack.push(t), this._opIndex++)
     const e = this._currentNode
-    ;(this._currentNode = void 0), this._emitter.emit('committed', e)
+    ;((this._currentNode = void 0), this._emitter.emit('committed', e))
   }
   clear() {
-    ;(this._opStack.length = 0),
+    ;((this._opStack.length = 0),
       (this._opIndex = 0),
       (this._elements = []),
       this.cancel(),
       (this.el.innerHTML = ''),
-      this._emitter.emit('changed')
+      this._emitter.emit('changed'))
   }
   cancel() {
     this._currentNode &&
@@ -931,7 +931,7 @@ var Xe = class {
     return this.el.innerHTML
   }
   load(t) {
-    this.clear(), (this.el.innerHTML = t)
+    ;(this.clear(), (this.el.innerHTML = t))
   }
   _appendNode(t) {
     const e = this._elements.at(-1)
@@ -940,7 +940,7 @@ var Xe = class {
     t.dataset.drauu_index = s.toString()
   }
   _removeNode(t) {
-    t.remove(), (this._elements[+t.dataset.drauu_index] = null)
+    ;(t.remove(), (this._elements[+t.dataset.drauu_index] = null))
   }
   _restoreNode(t) {
     const e = +t.dataset.drauu_index
@@ -976,7 +976,7 @@ const Je = Xt(() => {
           return v.value
         },
         set(h) {
-          ;(v.value = h), h === 'arrow' ? ((c.mode = 'line'), (i.arrowEnd = !0)) : ((c.mode = h), (i.arrowEnd = !1))
+          ;((v.value = h), h === 'arrow' ? ((c.mode = 'line'), (i.arrowEnd = !0)) : ((c.mode = h), (i.arrowEnd = !1)))
         },
       }),
       d = zt({
@@ -986,16 +986,16 @@ const Je = Xt(() => {
       }),
       c = Jt(Qe(d))
     function E() {
-      c.clear(), y.value && Pt(t.value, '')
+      ;(c.clear(), y.value && Pt(t.value, ''))
     }
     function j() {
       var h
-      ;(l.value = c.canRedo()), (a.value = c.canUndo()), (p.value = !!((h = c.el) != null && h.children.length))
+      ;((l.value = c.canRedo()), (a.value = c.canUndo()), (p.value = !!((h = c.el) != null && h.children.length)))
     }
     function C(h) {
       x = !0
       const _ = ct[h || t.value]
-      _ != null ? c.load(_) : c.clear(), j(), (x = !1)
+      ;(_ != null ? c.load(_) : c.clear(), j(), (x = !1))
     }
     return (
       c.on('changed', () => {
@@ -1006,7 +1006,7 @@ const Je = Xt(() => {
         }
       }),
       he(h => {
-        ;(x = !0), h[t.value] != null && c.load(h[t.value] || ''), (x = !1), j()
+        ;((x = !0), h[t.value] != null && c.load(h[t.value] || ''), (x = !1), j())
       }),
       Wt(() => {
         te(
@@ -1025,7 +1025,7 @@ const Je = Xt(() => {
           if (!n.value || ue.value) return
           const _ = !h.ctrlKey && !h.altKey && !h.shiftKey && !h.metaKey
           let w = !0
-          h.code === 'KeyZ' && (h.ctrlKey || h.metaKey)
+          ;(h.code === 'KeyZ' && (h.ctrlKey || h.metaKey)
             ? h.shiftKey
               ? c.redo()
               : c.undo()
@@ -1046,7 +1046,7 @@ const Je = Xt(() => {
                           : h.code.startsWith('Digit') && _ && +h.code[5] <= s.length
                             ? (i.color = s[+h.code[5] - 1])
                             : (w = !1),
-            w && (h.preventDefault(), h.stopPropagation())
+            w && (h.preventDefault(), h.stopPropagation()))
         },
         !1,
       ),
@@ -1140,7 +1140,7 @@ const Tt = new ns(),
           '--slidev-slide-scale': l.value,
         })),
         v = b(() => (e.width ? { width: `${e.width}px`, height: `${e.width / Et.value}px` } : {}))
-      e.isMain && se(b(() => `:root { --slidev-slide-scale: ${l.value}; }`)), A(fe, l), A(pe, i)
+      ;(e.isMain && se(b(() => `:root { --slidev-slide-scale: ${l.value}; }`)), A(fe, l), A(pe, i))
       const y = b(() => {
         if (!(!e.useSnapshot || e.no == null)) return Tt.getSnapshot(e.no)
       })
@@ -1212,12 +1212,12 @@ const Tt = new ns(),
           var i, o
           return ((o = (i = e.route.meta) == null ? void 0 : i.slide) == null ? void 0 : o.frontmatter.zoom) ?? 1
         })
-      A(ge, e.route),
+      ;(A(ge, e.route),
         A(me, e.route.meta.slide.frontmatter),
         A(ve, L(e.route.no)),
         A(ye, L(e.renderContext)),
         A(xe, ie(e, 'clicksContext')),
-        A(_e, s)
+        A(_e, s))
       const n = b(() =>
           s.value === 1
             ? void 0

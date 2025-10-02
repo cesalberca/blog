@@ -27,7 +27,7 @@ const m = 2,
               .split('')
               .map((r, _) => (e / m > _ ? r : r === ' ' ? ' ' : E(1)))
               .join('')
-          ;(s.value = a),
+          ;((s.value = a),
             (l.value = e),
             e >= o.text.length * m &&
               ((s.value = o.text),
@@ -35,8 +35,8 @@ const m = 2,
               (u.value = !0),
               (c.value = !0),
               setTimeout(() => {
-                ;(c.value = !1), (u.value = !1), (i.value = !0), (t = setInterval(f, p))
-              }, T))
+                ;((c.value = !1), (u.value = !1), (i.value = !0), (t = setInterval(f, p)))
+              }, T)))
         }
       return (
         b(u, e => {

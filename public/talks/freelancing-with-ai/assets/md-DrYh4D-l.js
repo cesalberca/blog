@@ -7,7 +7,7 @@ const g = {
   __name: 'slides.md__slidev_1',
   setup(p) {
     const { $slidev: _, $nav: l, $clicksContext: t, $clicks: f, $page: u, $renderContext: d, $frontmatter: r } = i()
-    return t.setup(), ($, x) => (s(), o(c, a(n(e(m)(e(r), 0))), null, 16))
+    return (t.setup(), ($, x) => (s(), o(c, a(n(e(m)(e(r), 0))), null, 16)))
   },
 }
 export { g as default }

@@ -81,9 +81,9 @@ For example, a prompt like:
 Results in valid, accessible JSX using base components that are being imported from `@/components/ui`, which is the default for Shadcn:
 
 ```jsx
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 export default function Component() {
   return (
@@ -131,7 +131,7 @@ export default function Component() {
           </Button>
 
           <p className="text-center text-sm text-gray-400">
-            Already have an account?{" "}
+            Already have an account?{' '}
             <a href="#" className="text-blue-400 hover:text-blue-300 underline">
               Sign in
             </a>
@@ -179,8 +179,8 @@ To run use cases you would use an `UseCaseService`:
 
 ```typescript
 await useCaseService.execute(RegisterUserUseCase, {
-  email: "test@example.com",
-  password: "secure-password",
+  email: 'test@example.com',
+  password: 'secure-password',
 })
 ```
 
@@ -204,11 +204,7 @@ Inspired by the [Chain of Responsibility pattern](https://refactoring.guru/desig
 
 ```typescript
 interface Middleware {
-  execute<In, Out>(
-    param: In,
-    next: UseCase<In, Out>,
-    options: UseCaseOptions
-  ): Promise<Out>
+  execute<In, Out>(param: In, next: UseCase<In, Out>, options: UseCaseOptions): Promise<Out>
 }
 ```
 
@@ -222,11 +218,7 @@ Tired of adding try catch around all your code? Well, here is the solution. You 
 export class ErrorMiddleware implements Middleware {
   constructor(private readonly eventEmitter: EventEmitter) {}
 
-  async intercept(
-    params: unknown,
-    next: UseCase,
-    options: UseCaseOptions,
-  ): Promise<unknown> {
+  async intercept(params: unknown, next: UseCase, options: UseCaseOptions): Promise<unknown> {
     try {
       return await next.handle(params)
     } catch (error) {
@@ -248,9 +240,7 @@ export class LogMiddleware implements Middleware {
   constructor(private readonly logger: Logger) {}
 
   intercept(params: unknown, useCase: UseCase): Promise<unknown> {
-    this.logger.log(
-      `[${DateTime.fromNow().toISO()}] ${this.getName(useCase)} / ${this.printResult(params)}`,
-    )
+    this.logger.log(`[${DateTime.fromNow().toISO()}] ${this.getName(useCase)} / ${this.printResult(params)}`)
     return useCase.handle(params)
   }
 
@@ -283,11 +273,7 @@ export class CacheMiddleware implements Middleware {
 
   constructor(private readonly ttlInSeconds: number = 60) {}
 
-  async intercept<In, Out>(
-    params: In,
-    next: UseCase<In, Out>,
-    options: UseCaseOptions,
-  ): Promise<Out> {
+  async intercept<In, Out>(params: In, next: UseCase<In, Out>, options: UseCaseOptions): Promise<Out> {
     const key = options.cacheKey
     if (!key) {
       return next.handle(params, options)
@@ -322,11 +308,7 @@ export class UseCaseService {
     private readonly container: Container,
   ) {}
 
-  async execute<In, Out>(
-    useCase: Type<UseCase<In, Out>>,
-    param?: In,
-    options?: UseCaseOptions,
-  ): Promise<Out> {
+  async execute<In, Out>(useCase: Type<UseCase<In, Out>>, param?: In, options?: UseCaseOptions): Promise<Out> {
     const requiredOptions = options ?? {
       silentError: false,
     }
@@ -374,7 +356,7 @@ And you don't need to touch the use case logic itself.
   columns={[
     { key: 'layer', header: 'Layer' },
     { key: 'tooling', header: 'Tooling / Pattern' },
-    { key: 'aiRole', header: 'AI Role' }
+    { key: 'aiRole', header: 'AI Role' },
   ]}
   rows={tableData}
 />
@@ -382,12 +364,14 @@ And you don't need to touch the use case logic itself.
 ## Resources
 
 ### Architecture Patterns
+
 - [Clean Architecture - Uncle Bob](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 - [CQRS - Martin Fowler](https://martinfowler.com/bliki/CQRS.html)
 - [Chain of Responsibility - Refactoring Guru](https://refactoring.guru/design-patterns/chain-of-responsibility)
 - [Command Pattern - Refactoring Guru](https://refactoring.guru/design-patterns/command)
 
 ### AI Tools & UI Libraries
+
 - [shadcn/ui](https://ui.shadcn.com/) - Component library for building high-quality UI
 - [V0.dev](https://v0.dev/) - AI-powered UI generation tool
 - [Cursor](https://cursor.sh/) - VSCode AI-enhanced code editor
@@ -395,6 +379,7 @@ And you don't need to touch the use case logic itself.
 - [TailwindCSS](https://tailwindcss.com/) - Functional CSS framework
 
 ### Further Reading
+
 - [My Case Study: Architecture & Design Systems](https://www.cesalberca.com/case-studies/halioooo-design-system-architecture-library)
 
 ## Conclusion

@@ -49,7 +49,8 @@ const me = B({
         b = c.storageKey ? le(c.storageKey, w) : h(w),
         { style: y } = ae(f, { initialValue: b })
       return (v, d) => (
-        g(), z('div', { ref_key: 'el', ref: f, class: 'fixed', style: M(e(y)) }, [re(v.$slots, 'default')], 4)
+        g(),
+        z('div', { ref_key: 'el', ref: f, class: 'fixed', style: M(e(y)) }, [re(v.$slots, 'default')], 4)
       )
     },
   }),
@@ -79,10 +80,10 @@ const me = B({
       }
       let C = 'stylus'
       function _(p) {
-        ;(r.value = p), (d.value = !0), p !== 'eraseLine' && (C = p)
+        ;((r.value = p), (d.value = !0), p !== 'eraseLine' && (C = p))
       }
       function E(p) {
-        ;(c.color = p), (d.value = !0), (r.value = C)
+        ;((c.color = p), (d.value = !0), (r.value = C))
       }
       return (p, n) => {
         const K = q,

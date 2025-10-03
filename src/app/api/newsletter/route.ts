@@ -11,7 +11,6 @@ interface SubscribeRequest {
 }
 
 interface SubscribeResponse {
-  success: boolean
   contactId?: string
   error?: string
 }
@@ -23,14 +22,14 @@ export async function POST(request: NextRequest): Promise<NextResponse<Subscribe
 
     // Validate required fields
     if (!email) {
-      return NextResponse.json({ success: false, error: 'Email is required' }, { status: 400 })
+      return NextResponse.json({ error: 'Email is required' }, { status: 400 })
     }
 
     // Add contact to Resend audience
     const audienceId = process.env['RESEND_AUDIENCE_ID']
 
     if (audienceId === undefined) {
-      return NextResponse.json({ success: false, error: 'Audience ID is not set' }, { status: 400 })
+      return NextResponse.json({ error: 'Audience ID is not set' }, { status: 400 })
     }
 
     const contactResult = await resend.contacts.create({
@@ -41,7 +40,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<Subscribe
     })
 
     if (contactResult.error) {
-      return NextResponse.json({ success: false, error: contactResult.error.message }, { status: 500 })
+      return NextResponse.json({ error: contactResult.error.message }, { status: 500 })
     }
 
     try {
@@ -49,13 +48,14 @@ export async function POST(request: NextRequest): Promise<NextResponse<Subscribe
       const { WelcomeEmail } = welcomeEmailModule
 
       await resend.emails.send({
-        from: process.env['EMAIL_FROM']!,
+        from: process.env['RESEND_EMAIL_FROM']!,
         to: email,
         subject: 'Welcome to the newsletter!',
+        replyTo: 'cesar@cesalberca.com',
         react: await EmailTemplate({
           title: 'Welcome to the newsletter!',
           description: 'Thanks for subscribing to our newsletter',
-          children: await WelcomeEmail({ firstName: firstName ?? 'there' }),
+          children: await WelcomeEmail({ firstName }),
         }),
       })
     } catch (error) {
@@ -63,11 +63,13 @@ export async function POST(request: NextRequest): Promise<NextResponse<Subscribe
       // Don't fail the subscription if welcome email fails
     }
 
-    return NextResponse.json({
-      success: true,
-      contactId: contactResult.data?.id,
-    })
+    return NextResponse.json(
+      {
+        contactId: contactResult.data?.id,
+      },
+      { status: 200 },
+    )
   } catch (error) {
-    return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

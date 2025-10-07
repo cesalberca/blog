@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
-import { EmailTemplate } from '@/emails/email-template'
+import type { ReactElement } from 'react'
 
 const resend = new Resend(process.env['RESEND_API_KEY']!)
 
@@ -52,11 +52,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<Subscribe
         to: email,
         subject: 'Welcome to the newsletter!',
         replyTo: 'cesar@cesalberca.com',
-        react: await EmailTemplate({
-          title: 'Welcome to the newsletter!',
-          description: 'Thanks for subscribing to our newsletter',
-          children: await WelcomeEmail({ firstName }),
-        }),
+        react: WelcomeEmail({ firstName }) as ReactElement,
       })
     } catch (error) {
       console.error('Welcome email import/send error:', error)

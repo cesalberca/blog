@@ -1,31 +1,21 @@
 import type { FC } from 'react'
 import { NewsletterTemplate } from '@/emails/newsletter-template'
+import { Markdown } from '@react-email/markdown'
 
 export const WelcomeNewsletter: FC = () => {
   return (
     <NewsletterTemplate
-      title="Welcome to Our Newsletter! 📧"
+      browserUrl="https://cesalberca.com/newsletters/2025-10-01_welcome-newsletter"
+      title="Welcome to the Newsletter!"
       description="Hello there! We're excited to welcome you to our newsletter where we share the latest insights, updates, and
         stories from our blog."
     >
-      <h2>What to Expect</h2>
+      <Markdown>
+        {`## Hello, this is my email template
 
-      <p>In each newsletter, you&#39;ll find:</p>
-
-      <ul>
-        <li>
-          <strong>Latest blog posts</strong> with summaries and key insights
-        </li>
-        <li>
-          <strong>Tech insights</strong> from our development journey
-        </li>
-        <li>
-          <strong>Community highlights</strong> and interesting projects
-        </li>
-        <li>
-          <strong>Upcoming events</strong> and announcements
-        </li>
-      </ul>
+This is meant to be rendered as a paragraph. There is no way around it.
+      `}
+      </Markdown>
     </NewsletterTemplate>
   )
 }

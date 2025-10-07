@@ -2,6 +2,7 @@ import 'dotenv/config'
 
 import {
   Body,
+  Column,
   Container,
   Head,
   Heading,
@@ -10,27 +11,42 @@ import {
   Link,
   pixelBasedPreset,
   Preview,
+  Row,
   Section,
   Tailwind,
   Text,
 } from '@react-email/components'
-import type { FC, PropsWithChildren, ReactNode } from 'react'
-import { baseUrl } from '@/lib/base-url'
+import type { FC, PropsWithChildren } from 'react'
+import { emailImageBaseUrl } from '@/lib/email-image-base-url'
+import { Grid } from 'lucide-react'
 
 interface EmailTemplateProps {
-  title: ReactNode
+  title: string
   description: string
+  browserUrl?: string
 }
 
-export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({ description, title, children }) => {
+export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
+  description,
+  title,
+  children,
+  browserUrl,
+}) => {
   return (
     <Tailwind
       config={{
         presets: [pixelBasedPreset],
+        darkMode: 'class',
         theme: {
           extend: {
             colors: {
-              brand: 'oklch(0.205 0 0)',
+              primary: 'oklch(0.205 0 0)',
+              background: 'oklch(0.145 0 0)',
+              foreground: 'oklch(0.985 0 0)',
+              secondary: 'oklch(0.269 0 0)',
+              muted: '#0f0f0f',
+              'muted-foreground': 'oklch(0.708 0 0)',
+              border: 'oklch(0.269 0 0)',
             },
           },
         },
@@ -39,27 +55,71 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({ descr
       <Html>
         <Head />
         <Preview>{description}</Preview>
-        <Body className="font-sans dark">
-          <Container>
-            <Section>
-              <Img src={baseUrl('assets/logo.svg')} width="40" height="40" alt="Logo" />
-            </Section>
+        <Body className="font-sans bg-background text-foreground m-0 p-0">
+          <Container className="max-w-2xl mx-auto bg-background">
+            {browserUrl && (
+              <Section className="bg-background py-2 px-6 text-center border-b border-border">
+                <Text className="text-muted-foreground text-xs m-0">
+                  <Link
+                    href={browserUrl}
+                    className="text-muted-foreground underline hover:text-foreground transition-colors"
+                  >
+                    View this email in your browser
+                  </Link>
+                </Text>
+              </Section>
+            )}
 
-            <Section>
-              <Heading>{title}</Heading>
-              {children}
-            </Section>
-
-            <Section>
-              <Text>Hi {'{{{FIRST_NAME|there}}}'},</Text>
-              <Text>Thanks for reading</Text>
-              <Text>
-                You can <Link href="{{{RESEND_UNSUBSCRIBE_URL}}}">unsubscribe here</Link>.
+            {/* Header */}
+            <Section className="py-8 px-6 text-center border-b border-border">
+              <Img src={emailImageBaseUrl('logo.png')} width="180" height="90" alt="Logo" className="mx-auto mb-4" />
+              <Text className="text-foreground text-sm m-0 font-medium tracking-wide">César Alberca</Text>
+              <Text className="text-muted-foreground text-xs mt-2 m-0 italic">
+                Helping You Build Scalable, AI-Ready Frontend Architecture
               </Text>
-              <Text>
+            </Section>
+
+            {/* Main Content */}
+            <Section className="py-8 px-6">
+              <Row>
+                <Column>
+                  <Heading className="text-[64px] font-bold text-foreground text-left leading-tight w-2/3 my-0">
+                    {title}
+                  </Heading>
+                </Column>
+              </Row>
+              <div className="text-foreground leading-relaxed">{children}</div>
+            </Section>
+
+            {/* Footer */}
+            <Section className="bg-secondary py-8 px-6 border-t border-border">
+              <Text className="text-muted-foreground text-sm mb-4 text-center leading-relaxed">
+                You’re receiving this newsletter because you subscribed voluntarily and confirmed it by clicking a link
+                in a verification email.
+              </Text>
+
+              <Text className="text-muted-foreground text-sm mb-4 text-center">
+                <Link
+                  href="{{{RESEND_UNSUBSCRIBE_URL}}}"
+                  className="text-muted-foreground underline hover:text-foreground transition-colors"
+                >
+                  Unsubscribe
+                </Link>
+                {' · '}
+                <Link
+                  href={'https://cesalberca.com/'}
+                  className="text-muted-foreground underline hover:text-foreground transition-colors"
+                >
+                  Visit Website
+                </Link>
+              </Text>
+
+              <Text className="text-muted-foreground text-xs text-center m-0 leading-relaxed">
                 Best regards,
                 <br />
-                César Alberca
+                <strong className="text-foreground">César Alberca</strong>
+                <br />
+                Frontend Architect & Speaker
               </Text>
             </Section>
           </Container>

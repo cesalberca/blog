@@ -18,7 +18,6 @@ import {
 } from '@react-email/components'
 import type { FC, PropsWithChildren } from 'react'
 import { emailImageBaseUrl } from '@/lib/email-image-base-url'
-import { Grid } from 'lucide-react'
 
 interface EmailTemplateProps {
   title: string
@@ -71,32 +70,36 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
             )}
 
             {/* Header */}
-            <Section className="py-8 px-6 text-center border-b border-border">
-              <Img src={emailImageBaseUrl('logo.png')} width="180" height="90" alt="Logo" className="mx-auto mb-4" />
-              <Text className="text-foreground text-sm m-0 font-medium tracking-wide">César Alberca</Text>
-              <Text className="text-muted-foreground text-xs mt-2 m-0 italic">
-                Helping You Build Scalable, AI-Ready Frontend Architecture
-              </Text>
+            <Section className="py-8 px-6 pb-0 pt-4 text-center border-b border-border">
+              <Link href="https://cesalberca.com">
+                <Img src={emailImageBaseUrl('logo.png')} width="180" height="90" alt="Logo" className="mx-auto" />
+                <Text className="text-foreground text-sm m-0 font-medium tracking-wide">César Alberca</Text>
+                <Text className="text-muted-foreground text-xs mt-2 m-0 italic">
+                  Helping You Build Scalable, AI-Ready Frontend Architecture
+                </Text>
+              </Link>
             </Section>
 
             {/* Main Content */}
-            <Section className="py-8 px-6">
+            <Section className="p-6">
               <Row>
                 <Column>
-                  <Heading className="text-[64px] font-bold text-foreground text-left leading-tight w-2/3 my-0">
+                  <Heading className="text-[72px] font-bold text-foreground text-left leading-1 w-4/5 mb-2">
                     {title}
                   </Heading>
                 </Column>
               </Row>
-              <div className="text-foreground leading-relaxed">{children}</div>
+              <div className="text-muted-foreground text-xl leading-relaxed">{children}</div>
             </Section>
 
             {/* Footer */}
-            <Section className="bg-secondary py-8 px-6 border-t border-border">
-              <Text className="text-muted-foreground text-sm mb-4 text-center leading-relaxed">
-                You’re receiving this newsletter because you subscribed voluntarily and confirmed it by clicking a link
-                in a verification email.
-              </Text>
+            <Section className="bg-muted py-8 px-6 border-t border-border">
+              <Container className="w-2/3">
+                <Text className="text-muted-foreground text-xs mb-0 text-center leading-relaxed">
+                  You’re receiving this newsletter because you subscribed voluntarily and confirmed it by clicking a
+                  link in a verification email.
+                </Text>
+              </Container>
 
               <Text className="text-muted-foreground text-sm mb-4 text-center">
                 <Link
@@ -105,7 +108,7 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
                 >
                   Unsubscribe
                 </Link>
-                {' · '}
+                {' / '}
                 <Link
                   href={'https://cesalberca.com/'}
                   className="text-muted-foreground underline hover:text-foreground transition-colors"
@@ -115,11 +118,17 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
               </Text>
 
               <Text className="text-muted-foreground text-xs text-center m-0 leading-relaxed">
-                Best regards,
-                <br />
                 <strong className="text-foreground">César Alberca</strong>
                 <br />
-                Frontend Architect & Speaker
+                <em>Freelance Frontend Architect</em>
+              </Text>
+              <Text className="text-muted-foreground text-xs text-center">
+                <Link
+                  href={'https://cesalberca.com/assets/email/César Alberca.vcf'}
+                  className="text-muted-foreground underline hover:text-foreground transition-colors"
+                >
+                  Add me as a contact
+                </Link>
               </Text>
             </Section>
           </Container>

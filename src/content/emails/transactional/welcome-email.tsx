@@ -20,9 +20,9 @@ I'm thrilled you've decided to sign up to this newsletter to learn about **Front
 * Learning design patterns like Chain of responsibility, Decorator, Command and more
 * Integrating AI tools to maximize the quality of generated code
 
-If you really want to make sure you get the newsletter, I kindly ask to reply to this email with “Hey César” to make sure it doesn't end up in Spam or [add me as a contact](https://cesalberca.com/assets/email/César%20Alberca.vcf). It takes 10 seconds. Writing each newsletter takes me 4 hours.
+If you really want to make sure you get the newsletter, I kindly ask to reply to this email with “Hey César” to make sure it doesn't end up in Spam or [add me as a contact](https://cesalberca.com/assets/email/César%20Alberca.vcf). It takes 10 seconds. Writing each newsletter takes me ~4 hours.
 
-You'll be receiving recurrent emails from me. While I type away the next newsletter, you can read my [latest blogpost here](https://cesalberca.com/blog/latest).
+Great, thank you very much! You'll be now receiving recurrent emails from me about **Frontend Architecture**. While I type away the next newsletter, you can read my [latest blogpost here](https://cesalberca.com/blog/latest).
 `}</MarkdownEmail>
     </EmailTemplate>
   )

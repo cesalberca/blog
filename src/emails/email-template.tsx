@@ -72,7 +72,13 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
             {/* Header */}
             <Section className="py-8 px-6 pb-0 pt-4 text-center border-b border-border">
               <Link href="https://cesalberca.com">
-                <Img src={emailImageBaseUrl('logo.png')} width="180" height="90" alt="Logo" className="mx-auto" />
+                <Img
+                  src={emailImageBaseUrl('logo.png')}
+                  width="180"
+                  height="90"
+                  alt="Logo"
+                  className="mx-auto max-w-full h-auto"
+                />
                 <Text className="text-foreground text-sm m-0 font-medium tracking-wide">César Alberca</Text>
                 <Text className="text-muted-foreground text-xs mt-2 m-0 italic">
                   Helping You Build Scalable, AI-Ready Frontend Architecture
@@ -84,23 +90,25 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
             <Section className="p-6">
               <Row>
                 <Column>
-                  <Heading className="text-[72px] font-bold text-foreground text-left leading-1 w-4/5 my-2">
+                  <Heading className="text-[64px] md:text-[72px] font-bold text-foreground text-left leading-tight w-full sm:w-4/5 my-2">
                     {title}
                   </Heading>
                 </Column>
               </Row>
               <div className="text-muted-foreground text-xl leading-relaxed">{children}</div>
 
-              <Img
-                src={emailImageBaseUrl('signature.png')}
-                width="501"
-                height="161"
-                alt="Handwritten César Alberca"
-                className="mx-auto"
-              />
-              <Text className="text-muted-foreground text-xs text-center m-0 leading-relaxed">
-                <em>Freelance Frontend Architect</em>
-              </Text>
+              <Section className="mt-4">
+                <Img
+                  src={emailImageBaseUrl('signature.png')}
+                  width="501"
+                  height="161"
+                  alt="Handwritten César Alberca"
+                  className="mx-auto max-w-full h-auto w-full sm:w-[501px]"
+                />
+                <Text className="text-muted-foreground text-xs text-center m-0 leading-relaxed">
+                  <em>Freelance Frontend Architect</em>
+                </Text>
+              </Section>
             </Section>
 
             {/* Footer */}

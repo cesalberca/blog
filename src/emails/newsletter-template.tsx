@@ -28,11 +28,13 @@ export const NewsletterTemplate: FC<PropsWithChildren<NewsletterEmailProps>> = (
       {children}
 
       {/* Social Sharing Footer */}
-      <Section className="px-6 border-t border-border">
-        <Text className="text-foreground text-sm mb-4 text-center text-lg font-medium">Share this newsletter</Text>
+      <Section className="sm:px-6 border-t border-border">
+        <Text className="text-foreground mb-4 mt-0 sm:text-center text-lg font-medium">
+          Help me by sharing this newsletter
+        </Text>
 
-        <Container className="w-2/3">
-          <Text className="mb-0 flex justify-between">
+        <Container className="w-full sm:w-2/3">
+          <Text className="mb-0 flex flex-col justify-between sm:flex-row sm:gap-0 gap-6">
             <Link
               href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
               className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-primary hover:text-foreground transition-colors no-underline flex items-center gap-2"

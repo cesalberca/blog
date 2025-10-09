@@ -17,6 +17,7 @@ export const Hero: FC<PropsWithChildren<{ image?: string; className?: string; im
           height={405}
           src={image}
           alt={''}
+          fetchPriority="high"
           loading="eager"
         />
       )}

@@ -13,12 +13,13 @@ import { notFound } from 'next/navigation'
 import { Toaster } from '@/components/ui/sonner'
 import { CookieBanner } from '@/core/components/cookie-banner/cookie-banner'
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
+import type { Metadata } from 'next'
 
 interface Props {
   params: Promise<{ locale: string }>
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
 
   const t = await getTranslations({

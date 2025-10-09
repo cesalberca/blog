@@ -84,24 +84,35 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
             <Section className="p-6">
               <Row>
                 <Column>
-                  <Heading className="text-[72px] font-bold text-foreground text-left leading-1 w-4/5 mb-2">
+                  <Heading className="text-[72px] font-bold text-foreground text-left leading-1 w-4/5 my-2">
                     {title}
                   </Heading>
                 </Column>
               </Row>
               <div className="text-muted-foreground text-xl leading-relaxed">{children}</div>
+
+              <Img
+                src={emailImageBaseUrl('signature.png')}
+                width="501"
+                height="161"
+                alt="Handwritten César Alberca"
+                className="mx-auto"
+              />
+              <Text className="text-muted-foreground text-xs text-center m-0 leading-relaxed">
+                <em>Freelance Frontend Architect</em>
+              </Text>
             </Section>
 
             {/* Footer */}
-            <Section className="bg-muted py-8 px-6 border-t border-border">
+            <Section className="bg-muted py-8 px-6 border-t border-border text-xs">
               <Container className="w-2/3">
                 <Text className="text-muted-foreground text-xs mb-0 text-center leading-relaxed">
-                  You’re receiving this newsletter because you subscribed voluntarily and confirmed it by clicking a
-                  link in a verification email.
+                  You’re receiving this email because you subscribed voluntarily and confirmed it by clicking a link in
+                  a verification email.
                 </Text>
               </Container>
 
-              <Text className="text-muted-foreground text-sm mb-4 text-center">
+              <Text className="text-muted-foreground mb-4 text-center">
                 <Link
                   href="{{{RESEND_UNSUBSCRIBE_URL}}}"
                   className="text-muted-foreground underline hover:text-foreground transition-colors"
@@ -117,10 +128,8 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
                 </Link>
               </Text>
 
-              <Text className="text-muted-foreground text-xs text-center m-0 leading-relaxed">
-                <strong className="text-foreground">César Alberca</strong>
-                <br />
-                <em>Freelance Frontend Architect</em>
+              <Text className="text-muted-foreground text-xs text-center m-0 italic">
+                Copyright © 2025 all rights reserved.
               </Text>
               <Text className="text-muted-foreground text-xs text-center">
                 <Link

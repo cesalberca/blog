@@ -6,7 +6,7 @@
       "accept": "[Y]es",
       "deny": "[N]o",
       "close": "Close",
-      "learnMore": "Learn more",
+      "learnMore": "Learn more about how I use cookies.",
       "manage": "Manage Cookies",
       "terminalPath": "~/cookies",
       "prompt": "$ echo \"Accept cookies?\"",

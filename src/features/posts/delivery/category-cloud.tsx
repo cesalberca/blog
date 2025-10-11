@@ -20,7 +20,7 @@ export const CategoryCloud: FC = () => {
         <Link
           key={category}
           type="invisible"
-          to={
+          href={
             locale === Locale.ES
               ? `/blog/categoria/${spanishSlugs[category] || category}`
               : `/blog/category/${category}`

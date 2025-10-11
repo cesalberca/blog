@@ -13,7 +13,7 @@ export const PostExcerpt: FC<{ post: PostMetadata }> = async ({ post }) => {
 
   return (
     <AccentCard className="mb-4">
-      <Link type="invisible" to={`/blog/${post.slug}`}>
+      <Link type="invisible" href={`/blog/${post.slug}`}>
         <Image
           src={`/assets/images/posts/${post.image}`}
           alt={post.title}
@@ -32,7 +32,7 @@ export const PostExcerpt: FC<{ post: PostMetadata }> = async ({ post }) => {
             <Link
               key={category}
               type="invisible"
-              to={`/blog/category/${category}`}
+              href={`/blog/category/${category}`}
               className={cn(badgeVariants({ variant: 'outline' }), 'p-0 h-min')}
             >
               <Badge>{t(category)}</Badge>

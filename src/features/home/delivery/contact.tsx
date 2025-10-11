@@ -78,9 +78,7 @@ export const ContactForm: FC = () => {
       mb-5"
       >
         {t('home.contact.appointmentDescription')}{' '}
-        <Link className="underline" to="https://cesalberca.com/chat">
-          {t('home.contact.appointmentLink')}
-        </Link>
+        <Link href="https://cesalberca.com/chat">{t('home.contact.appointmentLink')}</Link>
       </p>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 text-base">

@@ -51,7 +51,7 @@ export const NewsletterPage: FC = () => {
                     </div>
                     <h3 className="text-xl font-semibold mb-3 flex items-start gap-2">{email.title}</h3>
                     <p className="text-muted-foreground mb-4 leading-relaxed">{email.excerpt}</p>
-                    <Link to={email.url}>
+                    <Link href={email.url}>
                       <Button variant="outline" className="flex items-center gap-2">
                         <ExternalLink className="w-4 h-4" />
                         {t('newsletter.readNewsletterButton')}

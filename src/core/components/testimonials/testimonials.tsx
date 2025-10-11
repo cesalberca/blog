@@ -126,7 +126,7 @@ export const Testimonials: FC<TestimonialsProps> = ({ itemsPerPage = 1 } = { ite
                     </Avatar>
                     <div>
                       <cite className="font-semibold not-italic">
-                        {<Link to={testimonial.link}>{testimonial.name}</Link>}
+                        {<Link href={testimonial.link}>{testimonial.name}</Link>}
                       </cite>
                       <p className="text-sm text-gray-600">{testimonial.role}</p>
                     </div>

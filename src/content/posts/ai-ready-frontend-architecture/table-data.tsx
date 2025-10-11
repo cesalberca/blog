@@ -6,8 +6,8 @@ export const tableData = [
     layer: 'UI Components',
     tooling: (
       <>
-        <Link to="https://ui.shadcn.com/">shadcn/ui</Link>, <Link to="https://tailwindcss.com/">Tailwind</Link>,{' '}
-        <Link to="https://www.radix-ui.com/">Radix</Link>
+        <Link href="https://ui.shadcn.com/">shadcn/ui</Link>, <Link href="https://tailwindcss.com/">Tailwind</Link>,{' '}
+        <Link href="https://www.radix-ui.com/">Radix</Link>
       </>
     ),
     aiRole: 'Generate, assemble',
@@ -16,8 +16,8 @@ export const tableData = [
     layer: 'Guidelines',
     tooling: (
       <>
-        <code>.junie</code>, <Link to="https://storybook.js.org/">Storybook</Link>,{' '}
-        <Link to="https://biomejs.dev/">Biome</Link>
+        <code>.junie</code>, <Link href="https://storybook.js.org/">Storybook</Link>,{' '}
+        <Link href="https://biomejs.dev/">Biome</Link>
       </>
     ),
     aiRole: 'Enforce standards',
@@ -36,8 +36,8 @@ export const tableData = [
     layer: 'Agent Interface',
     tooling: (
       <>
-        <Link to="https://openai.com/">OpenAI</Link>, <Link to="https://v0.dev/">V0.dev</Link>,{' '}
-        <Link to="https://cursor.sh/">Cursor</Link>, <Link to="https://github.com/features/copilot">Copilot</Link>
+        <Link href="https://openai.com/">OpenAI</Link>, <Link href="https://v0.dev/">V0.dev</Link>,{' '}
+        <Link href="https://cursor.sh/">Cursor</Link>, <Link href="https://github.com/features/copilot">Copilot</Link>
       </>
     ),
     aiRole: 'Predict + propose actions',
@@ -46,7 +46,7 @@ export const tableData = [
     layer: 'Testing',
     tooling: (
       <>
-        <Link to="https://vitest.dev/">Vitest</Link>, <Link to="https://playwright.dev/">Playwright</Link>, AI test
+        <Link href="https://vitest.dev/">Vitest</Link>, <Link href="https://playwright.dev/">Playwright</Link>, AI test
         generation
       </>
     ),
@@ -59,8 +59,8 @@ export const esTableData = [
     layer: 'Componentes UI',
     tooling: (
       <>
-        <Link to="https://ui.shadcn.com/">shadcn/ui</Link>, <Link to="https://tailwindcss.com/">Tailwind</Link>,{' '}
-        <Link to="https://www.radix-ui.com/">Radix</Link>
+        <Link href="https://ui.shadcn.com/">shadcn/ui</Link>, <Link href="https://tailwindcss.com/">Tailwind</Link>,{' '}
+        <Link href="https://www.radix-ui.com/">Radix</Link>
       </>
     ),
     aiRole: 'Generar, ensamblar',
@@ -69,8 +69,8 @@ export const esTableData = [
     layer: 'Directrices',
     tooling: (
       <>
-        <code>.junie</code>, <Link to="https://storybook.js.org/">Storybook</Link>,{' '}
-        <Link to="https://biomejs.dev/">Biome</Link>
+        <code>.junie</code>, <Link href="https://storybook.js.org/">Storybook</Link>,{' '}
+        <Link href="https://biomejs.dev/">Biome</Link>
       </>
     ),
     aiRole: 'Aplicar estándares',
@@ -89,8 +89,8 @@ export const esTableData = [
     layer: 'Interfaz de Agente',
     tooling: (
       <>
-        <Link to="https://openai.com/">OpenAI</Link>, <Link to="https://v0.dev/">V0.dev</Link>,{' '}
-        <Link to="https://cursor.sh/">Cursor</Link>, <Link to="https://github.com/features/copilot">Copilot</Link>
+        <Link href="https://openai.com/">OpenAI</Link>, <Link href="https://v0.dev/">V0.dev</Link>,{' '}
+        <Link href="https://cursor.sh/">Cursor</Link>, <Link href="https://github.com/features/copilot">Copilot</Link>
       </>
     ),
     aiRole: 'Predecir + proponer acciones',
@@ -99,8 +99,8 @@ export const esTableData = [
     layer: 'Testing',
     tooling: (
       <>
-        <Link to="https://vitest.dev/">Vitest</Link>, <Link to="https://playwright.dev/">Playwright</Link>, Generación
-        de tests con IA
+        <Link href="https://vitest.dev/">Vitest</Link>, <Link href="https://playwright.dev/">Playwright</Link>,
+        Generación de tests con IA
       </>
     ),
     aiRole: 'Verificar lógica y flujos',

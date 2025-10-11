@@ -1,65 +1,63 @@
+import { AccentText } from '../../../core/components/accent-text/accent-text'
+
 export const metadata = {
   slug: 'hackerdays-punto-de-agua',
   title: 'Punto de Agua en Hacker Days',
-  date: '2025-10-01',
+  date: '2025-10-11',
   categories: ['software-development'],
   readTime: 6,
   image: 'hackerdays-punto-de-agua/hackerdays-puntodeagua.jpeg',
   summary:
-    'In this article, we will explore setting up a new Angular project with SSR (Server-Side Rendering) and see what new configurations it brings.',
+    'En este artículo te explico la iniciativa de Hacker Days, una Hackathon donde participé como Tech Lead. Hacker Days es una iniciativa de Rural Hackers, que tuvo lugar en Anceu Coliving, Galicia. Durante una semana creamos Punto de Agua, una aplicación gratuita y open source para gestionar el agua en las aldeas rurales.',
 }
 
-# Punto de Agua en Hacker Days 🌊💧
+Hace unas semanas tuve la oportunidad de participar como **Tech Lead** en los [Hacker Days](https://hackerdays.org/), iniciativa de [Rural Hackers](https://ruralhackers.com/), organización que promueve la tecnología y el arte desde lo rural.
 
-Hace unas semanas tuve la oportunidad de participar como **Tech Lead** en los [Hacker Days](https://hackerdays.org/), iniciativa de Rural Hackers](https://ruralhackers.org). Fue una experiencia de esas que no solo te hacen escribir código, sino también reflexionar sobre cómo la tecnología puede estar al servicio de las comunidades, de lo común y de lo público.
+Fue una experiencia de esas que no solo te hacen escribir código, sino también reflexionar sobre cómo la tecnología puede estar al servicio de las comunidades, de lo común y de lo público.
 
-De allí nació [**Punto de Agua**](https://puntodeagua.com/): una herramienta gratuita y de código abierto pensada para facilitar la gestión del agua en los pueblos, garantizando siempre que siga siendo un bien público. El proyecto es [software libre](https://github.com/ruralhackers/puntodeagua), porque creemos que algo tan esencial como el agua no debería estar sujeto a intereses privados, sino disponible para que cualquiera pueda usarlo, mejorarlo o adaptarlo a su comunidad.
+Durante la semana que duró la iniciativa, nos juntamos más de 20 personas para crear [**Punto de Agua**](https://puntodeagua.com/): una herramienta **gratuita** y de **código abierto** pensada para facilitar la gestión del agua en los pueblos, garantizando siempre que **siga siendo un bien público**. El proyecto es [open source](https://github.com/ruralhackers/puntodeagua), porque creemos que algo tan esencial como el agua no debería estar sujeto a intereses privados, sino disponible para que cualquiera pueda usarlo, mejorarlo o adaptarlo a su comunidad.
 
----
 
 ## El lugar y la gente
 
-La estancia tuvo lugar en [Anceu Coliving](https://anceu.com/), un espacio rodeado de naturaleza gallega, donde además de tener alojamiento y comidas incluidas, nos regalamos tiempo de conversaciones, caminatas y esa energía comunitaria que hace que los proyectos florezcan. Galicia tiene algo especial: “aquí hai sitio para todos”, dicen, y esa hospitalidad se notó en cada detalle.
+La estancia tuvo lugar en [Anceu Coliving](https://anceu.com/), un espacio rodeado de naturaleza gallega, donde además de tener alojamiento y comidas incluidas, nos regalamos tiempo de conversaciones, actividades y esa energía comunitaria que hace que los proyectos florezcan. Galicia tiene algo especial: “aquí hai sitio para todos”, dicen, y esa hospitalidad se notó en cada detalle.
 
-No estuve solo en esta aventura. Coincidí con personas de **Next Digital**, y tuve la alegría de reencontrarme con antiguos compañeros de **Autentia**, como **Jesús Angulo** y **Pablo Vallés**. Entre líneas de código, cafés y debates arquitectónicos, redescubrí lo valioso que es trabajar rodeado de gente con talento, compromiso y buen humor.
-
----
+Coincidí con personas de **[Next Digital](https://www.nextdigital.es/)**, y tuve la alegría de reencontrarme con antiguos compañeros de **[Autentia](https://web.archive.org/web/20230203174902/https://www.autentia.com/)**, como **[Jesús Angulo](https://www.linkedin.com/in/jangulo/)** y **[Pablo Vallés](https://www.linkedin.com/in/pablo-vall%C3%A9s-garc%C3%ADa/)**. Entre líneas de código, naturaleza y conversaciones interesantes, redescubrí lo valioso que es trabajar rodeado de gente con talento, compromiso y buen hacer.
 
 ## El stack y la arquitectura
 
-Desde el principio quisimos que el proyecto estuviera construido sobre bases sólidas y modernas. El stack fue todo un reto, pero también un lujo:
+Desde el principio quisimos que el proyecto estuviera construido sobre **bases sólidas** y **modernas**. La dificultad principal residió en buscar un equilibrio entre una base sólida que nos permitiera poder trabajar en equipo a la vez que desarrollásemos la aplicación y conseguir desarrollar un producto complejo en una semana. El stack que elegimos fue el siguiente:
 
 - [**TypeScript**](https://www.typescriptlang.org/) para un tipado robusto
 - [**React**](https://react.dev/) y [**Next.js**](https://nextjs.org/) para la interfaz y la experiencia de usuario
 - [**Prisma**](https://www.prisma.io/) como ORM para gestionar los datos de forma eficiente
-- [**Elysia**](https://elysiajs.com/) y [**Bun**](https://bun.sh/) para levantar servicios con rendimiento y ligereza
+- [**Elysia**](https://elysiajs.com/) y [**Bun**](https://bun.sh/) para crear los servicios REST
 - [**Biome**](https://biomejs.dev/) para mantener el código limpio y consistente
 
-La arquitectura siguió el enfoque **hexagonal con Domain-Driven Design (DDD)**, dividiendo el proyecto en capas claras: **Domain, Application, Infrastructure y Delivery**. Esto nos permitió separar responsabilidades, mantener el sistema extensible y pensar en largo plazo, incluso en un hackathon.
+> Teníamos una semana para construir un producto completo
 
-El objetivo no era solo tener algo que funcionara rápido, sino construir una base que pueda crecer con el tiempo y adaptarse a las necesidades reales de los pueblos.
+La arquitectura siguió el enfoque **hexagonal con Domain-Driven Design (DDD)**, dividiendo el proyecto en capas claras: **Domain, Application, Infrastructure y Delivery**. Esto nos permitió separar responsabilidades, mantener el sistema extensible y pensar en largo plazo, incluso en una hackathon.
 
----
+El objetivo no era solo tener algo que funcionara rápido, sino construir una base que pueda crecer con el tiempo y adaptarse a las necesidades reales de los pueblos. Además, creemos que con una buena base sólida podríamos atraer contributors y gente que quisiese darle continuidad al proyecto.
 
 ## El impacto
 
-Más allá de la parte técnica, lo más emocionante fue ver cómo la idea conectó con la gente. El proyecto tuvo eco en medios locales y nacionales, con titulares como este en _El Español_:
-[“Dos gallegas veteranas inspiran una 'app' revolucionaria para la Galicia rural: el consumo de agua ya no se registrará a mano”](https://www.elespanol.com/enclave-ods/historias/20250911/gallegas-veteranas-inspiran-app-revolucionaria-galicia-rural-consumo-agua-no-registrara-mano/1003743917693_0.html?utm_source=whatsapp&utm_medium=social&utm_campaign=fixedbar).
+Más allá de la parte técnica, lo más emocionante fue ver cómo la idea conectó con la gente. El proyecto tuvo eco en medios locales y nacionales, con titulares como este en _El Español_: [“Dos gallegas veteranas inspiran una 'app' revolucionaria para la Galicia rural: el consumo de agua ya no se registrará a mano”](https://www.elespanol.com/enclave-ods/historias/20250911/gallegas-veteranas-inspiran-app-revolucionaria-galicia-rural-consumo-agua-no-registrara-mano/1003743917693_0.html?utm_source=whatsapp&utm_medium=social&utm_campaign=fixedbar).
 
 Esa visibilidad no es solo un reconocimiento al trabajo del equipo, sino también una señal de que hay un interés real en herramientas que devuelvan autonomía y cuidado a las comunidades rurales.
 
----
+Además, salimos en la [Cadena Ser](https://cadenaser.com/audio/cadenaser_pontevedra_hoyporhoypontevedra_20250903_122622_135000/), [Galicia Press](https://www.galiciapress.es/articulo/galicia-en-red/2025-09-02/5413061-hackers-garantizar-agua-aldeas-gallegas-como-anceu), [Código Cero](https://codigocero.com/20-persoas-reunense-en-Anceu-para-dixitalizar-o-seu-sistema-de-xestion) y [Vivaces](https://www.vivaces.org/blog-posts/vivaces-y-siteground-colaboramos-en-el-diseno-de-una-solucion-digital-para-transformar-la-gestion-del-agua-en-el-rural-desde-una-aldea-de-100-habitantes) entre otros.
 
 ## Gratitud
 
-Quiero dar las **gracias a Agustín Jamardo** por invitarme a esta colaboración. Su visión y su confianza hicieron posible que este proyecto echara a andar. Y gracias también a todas las personas que compartieron esos días en Anceu, porque entre risas, ideas y complicidad se generó una energía difícil de explicar con palabras.
-
----
+Quiero dar las **gracias a [Agustín Jamardo](https://www.linkedin.com/in/ajamardo/)** por invitarme a esta colaboración, a [Ignacio Márque](https://www.linkedin.com/in/ignacio-mrqz/) y a [África Rodríguez](https://www.linkedin.com/in/rodriguezafricaruralhacker/) por crear junto con Agus una iniciativa tan apasionante como importante. Su visión y su confianza hicieron posible que este proyecto echara a andar. Y gracias también a todas las personas que compartieron esos días en Anceu, porque entre risas, ideas y complicidad se generó una energía difícil de explicar con palabras.
 
 ## Lo que me llevo
 
 De Galicia siempre me llevo dos cosas: la lluvia y la gente. La primera te recuerda que la naturaleza manda, y la segunda que el calor humano es lo que realmente hace que un proyecto tenga sentido.
 
-En este caso, el agua fue el hilo conductor, pero lo que fluyó de verdad fueron las ganas de crear algo común, útil y libre.
+En este caso, el agua fue el hilo conductor, pero lo que fluyó de verdad fueron las ganas de crear algo **común**, **útil** y **libre**.
 
-**Grazas de corazón 💙**
+<strong><AccentText>Grazas de corazón.</AccentText></strong>
+
+![Foto de grupo de los integrantes de la iniciative Hacker Days](/assets/images/posts/hackerdays-punto-de-agua/hackerdays-puntodeagua.jpeg)

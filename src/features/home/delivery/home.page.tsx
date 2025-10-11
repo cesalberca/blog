@@ -62,7 +62,7 @@ export const HomePage: FC<{ latestPost: PostMetadata | null }> = ({ latestPost }
           <Services />
           <div className="mt-8 flex justify-center">
             <Button size="lg" className="mb-12">
-              <Link to="/services" type="invisible">
+              <Link href="/services" type="invisible">
                 {t('home.services.readyToWork')}
               </Link>
             </Button>
@@ -80,7 +80,7 @@ export const HomePage: FC<{ latestPost: PostMetadata | null }> = ({ latestPost }
             <PostExcerpt post={latestPost} />
             <div className="mt-6 flex justify-center">
               <Button size="lg" asChild>
-                <Link to="/blog" type="invisible">
+                <Link href="/blog" type="invisible">
                   {t('home.viewAllPosts')}
                 </Link>
               </Button>

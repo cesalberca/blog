@@ -83,7 +83,7 @@ export const ThankYouPage: FC<{ post: PostMetadata; locale: Locale }> = async ({
       </Section>
 
       <div className="text-center mt-8">
-        <Link to="/">{t('thankYou.backToHome')}</Link>
+        <Link href="/">{t('thankYou.backToHome')}</Link>
       </div>
     </Page>
   )

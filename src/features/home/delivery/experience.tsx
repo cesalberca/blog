@@ -72,7 +72,7 @@ export const Experience: FC = () => {
         <div className="mt-6">
           <Link
             className="text-xs"
-            to="https://drive.google.com/file/d/1NuWgWSZWU2axtO_P8xOpTYTWfG5XptAY/view?usp=sharing"
+            href="https://drive.google.com/file/d/1NuWgWSZWU2axtO_P8xOpTYTWfG5XptAY/view?usp=sharing"
           >
             {t('experience.cv')}
           </Link>

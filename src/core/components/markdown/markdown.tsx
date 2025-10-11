@@ -23,7 +23,7 @@ export const Markdown: FC<{ value: string; className?: string }> = ({ value, cla
             )
           },
           a({ href, children }) {
-            return <Link to={href ?? ''}>{children}</Link>
+            return <Link href={href ?? ''}>{children}</Link>
           },
         }}
       >

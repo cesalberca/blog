@@ -75,7 +75,7 @@ export const LinksPage: FC = () => {
           {links.map(x => (
             <Card key={x.title} className="flex gap-4 py-4 px-8">
               <x.icon />
-              <Link type={'invisible'} to={x.url}>
+              <Link type={'invisible'} href={x.url}>
                 {x.title}
               </Link>
             </Card>

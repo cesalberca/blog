@@ -38,7 +38,7 @@ export const SoftwareCafrersPage: FC = () => {
                   <div className="flex flex-col gap-2">
                     <p className="text-amber-500 font-bold">¡Próximamente!</p>
                     <Button asChild>
-                      <Link type="invisible" to="https://savvily.es/">
+                      <Link type="invisible" href={'https://savvily.es/'}>
                         Comprar
                       </Link>
                     </Button>

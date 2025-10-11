@@ -32,22 +32,22 @@ export const Footer: FC = () => {
             <h3 className="text-base font-semibold mb-4">{t('common.sitemap')}</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" type="invisible" className="text-sm hover:underline">
+                <Link href="/" type="invisible" className="text-sm hover:underline">
                   {t('home.title')}
                 </Link>
               </li>
               <li>
-                <Link to="/blog" type="invisible" className="text-sm hover:underline">
+                <Link href="/blog" type="invisible" className="text-sm hover:underline">
                   {t('blog.title')}
                 </Link>
               </li>
               <li>
-                <Link to="/services" type="invisible" className="text-sm hover:underline">
+                <Link href="/services" type="invisible" className="text-sm hover:underline">
                   {t('home.services.title')}
                 </Link>
               </li>
               <li>
-                <Link to="/#contact" type="invisible" className="text-sm hover:underline">
+                <Link href="/#contact" type="invisible" className="text-sm hover:underline">
                   {t('home.contact.title')}
                 </Link>
               </li>
@@ -58,37 +58,37 @@ export const Footer: FC = () => {
             <h3 className="text-base font-semibold mb-4">{t('common.more')}</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/talks" type="invisible" className="text-sm hover:underline">
+                <Link href="/talks" type="invisible" className="text-sm hover:underline">
                   {t('talks.title')}
                 </Link>
               </li>
               <li>
-                <Link to="/experience" type="invisible" className="text-sm hover:underline">
+                <Link href="/experience" type="invisible" className="text-sm hover:underline">
                   {t('experience.title')}
                 </Link>
               </li>
               <li>
-                <Link to="/photography" type="invisible" className="text-sm hover:underline">
+                <Link href="/photography" type="invisible" className="text-sm hover:underline">
                   {t('photography.title')}
                 </Link>
               </li>
               <li>
-                <Link to="/links" type="invisible" className="text-sm hover:underline">
+                <Link href="/links" type="invisible" className="text-sm hover:underline">
                   {t('links.title')}
                 </Link>
               </li>
               <li>
-                <Link to={CASE_STUDY_URLS[locale].tabaiba} type="invisible" className="text-sm hover:underline">
+                <Link href={CASE_STUDY_URLS[locale].tabaiba} type="invisible" className="text-sm hover:underline">
                   {t('caseStudies.tabaiba.title')}
                 </Link>
               </li>
               <li>
-                <Link to={CASE_STUDY_URLS[locale].halioooo} type="invisible" className="text-sm hover:underline">
+                <Link href={CASE_STUDY_URLS[locale].halioooo} type="invisible" className="text-sm hover:underline">
                   {t('caseStudies.halioooo.title')}
                 </Link>
               </li>
               <li>
-                <Link to={CASE_STUDY_URLS[locale].lightspace} type="invisible" className="text-sm hover:underline">
+                <Link href={CASE_STUDY_URLS[locale].lightspace} type="invisible" className="text-sm hover:underline">
                   {t('caseStudies.lightspace.title')}
                 </Link>
               </li>
@@ -104,7 +104,7 @@ export const Footer: FC = () => {
         {/* Bottom section with copyright and email */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">{t('common.license', { date: Datetime.fromNow().year })}</p>
-          <Link to="mailto:cesar@cesalberca.com" type="invisible" className="text-sm mt-4 md:mt-0">
+          <Link href="mailto:cesar@cesalberca.com" type="invisible" className="text-sm mt-4 md:mt-0">
             {t('common.email')}
           </Link>
         </div>

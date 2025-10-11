@@ -10,26 +10,16 @@ import {
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import dark from 'react-syntax-highlighter/dist/esm/styles/prism/synthwave84'
 import { cn } from '@/lib/utils'
-import { Link } from '@/core/i18n/routing'
+import { Link } from '@/core/components/link/link'
 
 // This file needs to be here
 
 function CustomLink(props: LinkHTMLAttributes<HTMLAnchorElement> & PropsWithChildren<{ href: string }>) {
-  const href = props.href
-
-  if (href.startsWith('/')) {
-    return (
-      <Link {...(props as any)} href={href as any}>
-        {props.children}
-      </Link>
-    )
-  }
-
-  if (href.startsWith('#')) {
-    return <a {...props} />
-  }
-
-  return <a target="_blank" rel="noopener noreferrer" {...props} />
+  return (
+    <Link href={props.href} className={props.className ?? ''}>
+      {props.children}
+    </Link>
+  )
 }
 
 function Code({ children, ...props }: { children: string; className: string }) {

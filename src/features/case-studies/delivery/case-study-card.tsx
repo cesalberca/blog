@@ -16,7 +16,7 @@ interface CaseStudyCardProps {
 export const CaseStudyCard: FC<CaseStudyCardProps> = async ({ title, descriptionKey, href, image }) => {
   const t = await getTranslations()
   return (
-    <Link to={href} type="invisible">
+    <Link href={href} type="invisible">
       <Card className={cn('h-full relative overflow-hidden')}>
         <Background image={image}>
           <CardHeader>

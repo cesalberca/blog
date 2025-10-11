@@ -18,7 +18,6 @@ const MainLinks = () => {
 
   return (
     <>
-      <NavLink to={'/services'}>{t('home.services.title')}</NavLink>
       <Popover>
         <PopoverTrigger asChild>
           <Button variant="ghost" className="p-1">
@@ -29,7 +28,7 @@ const MainLinks = () => {
         <PopoverContent className="w-64">
           <div className="flex flex-col gap-3">
             <div>
-              <NavLink type="menu" to={CASE_STUDY_URLS[locale].tabaiba}>
+              <NavLink type="menu" href={CASE_STUDY_URLS[locale].tabaiba}>
                 {t('caseStudies.tabaiba.title')}
                 <RichText className="pl-2 text-xs text-muted-foreground leading-snug">
                   {tags => t.rich('caseStudies.tabaiba.description', tags)}
@@ -37,7 +36,7 @@ const MainLinks = () => {
               </NavLink>
             </div>
             <div>
-              <NavLink type="menu" to={CASE_STUDY_URLS[locale].halioooo}>
+              <NavLink type="menu" href={CASE_STUDY_URLS[locale].halioooo}>
                 {t('caseStudies.halioooo.title')}
                 <RichText className="pl-2 text-xs text-muted-foreground leading-snug">
                   {tags => t.rich('caseStudies.halioooo.description', tags)}
@@ -45,7 +44,7 @@ const MainLinks = () => {
               </NavLink>
             </div>
             <div>
-              <NavLink type="menu" to={CASE_STUDY_URLS[locale].lightspace}>
+              <NavLink type="menu" href={CASE_STUDY_URLS[locale].lightspace}>
                 {t('caseStudies.lightspace.title')}
                 <RichText className="pl-2 text-xs text-muted-foreground leading-snug">
                   {tags => t.rich('caseStudies.lightspace.description', tags)}
@@ -55,8 +54,9 @@ const MainLinks = () => {
           </div>
         </PopoverContent>
       </Popover>
-      <NavLink to={'/blog'}>{t('blog.title')}</NavLink>
-      <NavLink to={'/#contact'}>{t('home.contact.title')}</NavLink>
+      <NavLink href={'/services'}>{t('home.services.title')}</NavLink>
+      <NavLink href={'/blog'}>{t('blog.title')}</NavLink>
+      <NavLink href={'/#contact'}>{t('home.contact.title')}</NavLink>
     </>
   )
 }
@@ -66,22 +66,22 @@ const MoreLinks = () => {
 
   return (
     <>
-      <NavLink type="menu" to={'/#projects'}>
+      <NavLink type="menu" href={'/#projects'}>
         {t('home.projects.title')}
       </NavLink>
-      <NavLink type="menu" to={'/#testimonials'}>
+      <NavLink type="menu" href={'/#testimonials'}>
         {t('home.testimonials.title')}
       </NavLink>
-      <NavLink type="menu" to={'/talks'}>
+      <NavLink type="menu" href={'/talks'}>
         {t('talks.title')}
       </NavLink>
-      <NavLink type="menu" to={'/experience'}>
+      <NavLink type="menu" href={'/experience'}>
         {t('experience.title')}
       </NavLink>
-      <NavLink type="menu" to={'/photography'}>
+      <NavLink type="menu" href={'/photography'}>
         {t('photography.title')}
       </NavLink>
-      <NavLink type="menu" to={'/links'}>
+      <NavLink type="menu" href={'/links'}>
         {t('links.title')}
       </NavLink>
     </>
@@ -98,7 +98,7 @@ export const Navbar: FC<{
     <header
       className={cn('flex backdrop-blur fixed z-20 h-16 w-full items-center justify-between px-4 md:px-6', className)}
     >
-      <Link type="invisible" to={'/'} className="flex items-center gap-2">
+      <Link type="invisible" href={'/'} className="flex items-center gap-2">
         <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
         <span className="text-lg font-semibold">{t('home.title')}</span>
       </Link>

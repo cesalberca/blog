@@ -66,7 +66,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
               <Link
                 key={category}
                 type="invisible"
-                to={`/blog/category/${category}`}
+                href={`/blog/category/${category}`}
                 className={cn(badgeVariants({ variant: 'outline' }), 'p-0 h-min')}
               >
                 <Badge>{categoryTranslations[category] || category}</Badge>
@@ -75,7 +75,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
           </div>
         </div>
       </Background>
-      <article className="wrapper mt-6 prose dark:prose-invert text-current">
+      <article className="wrapper mt-6 prose dark:prose-invert text-muted-foreground">
         <div className="mb-10">
           <NewsletterCard />
           <KoFiButton />

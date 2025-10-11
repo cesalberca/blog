@@ -8,21 +8,21 @@ import { usePathname } from '@/core/i18n/routing'
 
 export const NavLink: FC<
   PropsWithChildren<{
-    to: string
+    href: string
     type?: 'menu' | 'navigation'
   }>
-> = ({ to, type = 'navigation', children }) => {
+> = ({ href, type = 'navigation', children }) => {
   const currentPath = usePathname()
 
   return (
     <Link
-      to={to}
+      href={href}
       type="invisible"
       className={cn(
         'w-min',
         type === 'navigation' ? styles['nav-link'] : '',
         'font-medium  relative',
-        `${currentPath === to ? 'font-bold text-foreground' : ''}`,
+        `${currentPath === href ? 'font-bold text-foreground' : ''}`,
       )}
     >
       <span className="inline-block">{children}</span>

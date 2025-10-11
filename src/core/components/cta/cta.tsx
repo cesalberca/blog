@@ -16,7 +16,7 @@ export const CTA: FC<CTAProps> = ({ title, description, buttonText, buttonLink, 
       <h3 className="text-xl font-bold mb-2 mt-2">{title}</h3>
       <p className="mb-4">{description}</p>
       <Button asChild>
-        <Link type="invisible" to={buttonLink}>
+        <Link type="invisible" href={buttonLink}>
           {buttonText} →
         </Link>
       </Button>

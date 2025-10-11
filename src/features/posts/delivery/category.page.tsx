@@ -28,7 +28,7 @@ export const CategoryPage: FC<{ category: Category; locale: Locale }> = async ({
     <Page>
       <div className="wrapper mb-4 gap-2 flex items-center">
         <Button variant="ghost" size="sm" className="mr-2" asChild>
-          <Link to="/blog" type="invisible">
+          <Link href="/blog" type="invisible">
             <ChevronLeft className="mr-1" size={16} />
             {t('backToList')}
           </Link>

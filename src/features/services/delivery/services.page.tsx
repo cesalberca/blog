@@ -287,7 +287,7 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
           <h2 className="text-3xl font-bold mb-4">{t('home.services.readyToWork')}</h2>
           <p className="mb-8 max-w-2xl mx-auto">{t('home.services.readyToWorkDescription')}</p>
           <Button size="lg" variant="outline" className="bg-background hover:bg-background/90">
-            <Link to="/#contact" type="invisible" className="flex items-center">
+            <Link href="/#contact" type="invisible" className="flex items-center">
               {t('home.contact.title')} <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

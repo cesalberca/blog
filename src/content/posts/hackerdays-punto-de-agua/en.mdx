@@ -1,0 +1,63 @@
+import { AccentText } from '../../../core/components/accent-text/accent-text'
+
+export const metadata = {
+  slug: 'hackerdays-punto-de-agua',
+  title: 'Punto de Agua at Hacker Days',
+  date: '2025-10-11',
+  categories: ['software-development'],
+  readTime: 6,
+  image: 'hackerdays-punto-de-agua/hackerdays-puntodeagua.jpeg',
+  summary:
+    'In this article I explain the Hacker Days initiative, a Hackathon where I participated as Tech Lead. Hacker Days is an initiative by Rural Hackers, which took place at Anceu Coliving, Galicia. During one week we created Punto de Agua, a free and open source application for managing water in rural villages.',
+}
+
+A few weeks ago I had the opportunity to participate as **Tech Lead** in [Hacker Days](https://hackerdays.org/), an initiative by [Rural Hackers](https://ruralhackers.com/), an organization that promotes technology and art from rural areas.
+
+It was one of those experiences that not only makes you write code, but also makes you reflect on how technology can serve communities, the commons, and the public good.
+
+During the week-long initiative, more than 20 people came together to create [**Punto de Agua**](https://puntodeagua.com/): a **free** and **open source** tool designed to facilitate water management in villages, always ensuring that **it remains a public good**. The project is [open source](https://github.com/ruralhackers/puntodeagua), because we believe that something as essential as water should not be subject to private interests, but should be available for anyone to use, improve or adapt to their community.
+
+
+## The place and the people
+
+The stay took place at [Anceu Coliving](https://anceu.com/), a space surrounded by Galician nature, where in addition to having accommodation and meals included, we gave ourselves time for conversations, activities and that community energy that makes projects flourish. Galicia has something special: "aquí hai sitio para todos" (here there's room for everyone), they say, and that hospitality was noticeable in every detail.
+
+I met people from **[Next Digital](https://www.nextdigital.es/)**, and had the joy of reuniting with former colleagues from **[Autentia](https://web.archive.org/web/20230203174902/https://www.autentia.com/)**, such as **[Jesús Angulo](https://www.linkedin.com/in/jangulo/)** and **[Pablo Vallés](https://www.linkedin.com/in/pablo-vall%C3%A9s-garc%C3%ADa/)**. Between lines of code, nature and interesting conversations, I rediscovered how valuable it is to work surrounded by people with talent, commitment and good work.
+
+## The stack and architecture
+
+From the beginning we wanted the project to be built on **solid** and **modern** foundations. The main difficulty was finding a balance between a solid base that would allow us to work as a team while developing the application and managing to develop a complex product in one week. The stack we chose was the following:
+
+- [**TypeScript**](https://www.typescriptlang.org/) for robust typing
+- [**React**](https://react.dev/) and [**Next.js**](https://nextjs.org/) for the interface and user experience
+- [**Prisma**](https://www.prisma.io/) as ORM to manage data efficiently
+- [**Elysia**](https://elysiajs.com/) and [**Bun**](https://bun.sh/) to create REST services
+- [**Biome**](https://biomejs.dev/) to keep code clean and consistent
+
+> We had one week to build a complete product
+
+The architecture followed the **hexagonal approach with Domain-Driven Design (DDD)**, dividing the project into clear layers: **Domain, Application, Infrastructure and Delivery**. This allowed us to separate responsibilities, keep the system extensible and think long-term, even in a hackathon.
+
+The goal was not just to have something that worked quickly, but to build a foundation that can grow over time and adapt to the real needs of villages. Furthermore, we believe that with a good solid foundation we could attract contributors and people who wanted to give continuity to the project.
+
+## The impact
+
+Beyond the technical part, the most exciting thing was seeing how the idea connected with people. The project had an echo in local and national media, with headlines like this one in _El Español_: ["Dos gallegas veteranas inspiran una 'app' revolucionaria para la Galicia rural: el consumo de agua ya no se registrará a mano"](https://www.elespanol.com/enclave-ods/historias/20250911/gallegas-veteranas-inspiran-app-revolucionaria-galicia-rural-consumo-agua-no-registrara-mano/1003743917693_0.html?utm_source=whatsapp&utm_medium=social&utm_campaign=fixedbar).
+
+That visibility is not only recognition of the team's work, but also a signal that there is real interest in tools that return autonomy and care to rural communities.
+
+Additionally, we appeared on [Cadena Ser](https://cadenaser.com/audio/cadenaser_pontevedra_hoyporhoypontevedra_20250903_122622_135000/), [Galicia Press](https://www.galiciapress.es/articulo/galicia-en-red/2025-09-02/5413061-hackers-garantizar-agua-aldeas-gallegas-como-anceu), [Código Cero](https://codigocero.com/20-persoas-reunense-en-Anceu-para-dixitalizar-o-seu-sistema-de-xestion) and [Vivaces](https://www.vivaces.org/blog-posts/vivaces-y-siteground-colaboramos-en-el-diseno-de-una-solucion-digital-para-transformar-la-gestion-del-agua-en-el-rural-desde-una-aldea-de-100-habitantes) among others.
+
+## Gratitude
+
+I want to **thank [Agustín Jamardo](https://www.linkedin.com/in/ajamardo/)** for inviting me to this collaboration, [Ignacio Márque](https://www.linkedin.com/in/ignacio-mrqz/) and [África Rodríguez](https://www.linkedin.com/in/rodriguezafricaruralhacker/) for creating together with Agus such an exciting and important initiative. Their vision and confidence made it possible for this project to get off the ground. And thanks also to all the people who shared those days in Anceu, because between laughter, ideas and complicity an energy was generated that is difficult to explain in words.
+
+## What I take away
+
+From Galicia I always take away two things: the rain and the people. The first reminds you that nature rules, and the second that human warmth is what really makes a project meaningful.
+
+In this case, water was the connecting thread, but what really flowed was the desire to create something **common**, **useful** and **free**.
+
+<strong><AccentText>Grazas de corazón.</AccentText></strong>
+
+![Group photo of the Hacker Days initiative members](/assets/images/posts/hackerdays-punto-de-agua/hackerdays-puntodeagua.jpeg)

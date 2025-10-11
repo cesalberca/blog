@@ -2,13 +2,13 @@ import { notFound } from 'next/navigation'
 import React, { type FC } from 'react'
 
 interface NewsletterWebViewPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 const NewsletterWebViewPage: FC<NewsletterWebViewPageProps> = async ({ params }) => {
-  const { id } = params
+  const { id } = await params
 
   const newsletterModule = await import(`@/content/emails/newsletters/${id}.tsx`)
 

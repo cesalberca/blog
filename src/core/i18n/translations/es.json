@@ -437,7 +437,7 @@
     "emailPlaceholder": "direccion@correo.com",
     "submit": "Suscribirse",
     "submitting": "Suscribiendo...",
-    "success": "¡Gracias por suscribirte! Pronto recibirás actualizaciones.",
+    "success": "¡Por favor revisa tu correo para confirmar tu suscripción!",
     "error": "Error",
     "signupTitle": "Suscripción a la Newsletter",
     "signupQuestion": "¿Quieres estar al día con las últimas tendencias en desarrollo front-end, arquitectura y buenas prácticas?",
@@ -472,7 +472,12 @@
     "benefit1": "Perspectivas sobre arquitectura frontend y buenas prácticas",
     "benefit2": "Tutoriales exclusivos y ejemplos de código",
     "benefit3": "Acceso anticipado a nuevos artículos y charlas",
-    "benefit4": "Consejos de mi experiencia como desarrollador nómada digital"
+    "benefit4": "Consejos de mi experiencia como desarrollador nómada digital",
+    "confirmationSuccess": "¡Suscripción Confirmada!",
+    "confirmationSuccessMessage": "¡Bienvenido al Newsletter de Arquitectura Frontend! Ya estás suscrito y recibirás actualizaciones directamente en tu bandeja de entrada.",
+    "welcomeEmailSent": "Se ha enviado un correo de bienvenida a tu bandeja con más información.",
+    "browseBlog": "Explorar Blog",
+    "backHome": "Volver al Inicio"
   },
   "cookies": {
     "title": "Política de Cookies",

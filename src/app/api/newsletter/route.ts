@@ -1,6 +1,7 @@
 import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
 import type { ReactElement } from 'react'
+import { sign } from 'jsonwebtoken'
 
 const resend = new Resend(process.env['RESEND_API_KEY']!)
 
@@ -12,6 +13,7 @@ interface SubscribeRequest {
 
 interface SubscribeResponse {
   contactId?: string
+  message?: string
   error?: string
 }
 
@@ -25,43 +27,34 @@ export async function POST(request: NextRequest): Promise<NextResponse<Subscribe
       return NextResponse.json({ error: 'Email is required' }, { status: 400 })
     }
 
-    // Add contact to Resend audience
-    const audienceId = process.env['RESEND_AUDIENCE_ID']
-
-    if (audienceId === undefined) {
-      return NextResponse.json({ error: 'Audience ID is not set' }, { status: 400 })
+    // Create confirmation token
+    const jwtSecret = process.env['JWT_SECRET']
+    if (!jwtSecret) {
+      return NextResponse.json({ error: 'JWT secret not configured' }, { status: 500 })
     }
 
-    const contactResult = await resend.contacts.create({
-      email,
-      firstName,
-      lastName,
-      audienceId,
-    })
+    const confirmationToken = sign({ email, firstName, lastName }, jwtSecret, { expiresIn: '24h' })
 
-    if (contactResult.error) {
-      return NextResponse.json({ error: contactResult.error.message }, { status: 500 })
-    }
-
+    // Send confirmation email
     try {
-      const welcomeEmailModule = await import('@/content/emails/transactional/welcome-email')
-      const { WelcomeEmail } = welcomeEmailModule
+      const confirmationEmailModule = await import('@/content/emails/transactional/confirmation-email')
+      const { ConfirmationEmail } = confirmationEmailModule
 
       await resend.emails.send({
         from: process.env['RESEND_EMAIL_FROM']!,
         to: email,
-        subject: 'Welcome to the newsletter!',
+        subject: 'Confirm your newsletter subscription',
         replyTo: 'cesar@cesalberca.com',
-        react: WelcomeEmail({ firstName }) as ReactElement,
+        react: ConfirmationEmail({ firstName, confirmationToken }) as ReactElement,
       })
     } catch (error) {
-      console.error('Welcome email import/send error:', error)
-      // Don't fail the subscription if welcome email fails
+      console.error('Confirmation email import/send error:', error)
+      return NextResponse.json({ error: 'Failed to send confirmation email' }, { status: 500 })
     }
 
     return NextResponse.json(
       {
-        contactId: contactResult.data?.id,
+        message: 'Confirmation email sent successfully',
       },
       { status: 200 },
     )

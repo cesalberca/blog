@@ -1,0 +1,79 @@
+import { Resend } from 'resend'
+import { NextRequest, NextResponse } from 'next/server'
+import type { ReactElement } from 'react'
+import { verify } from 'jsonwebtoken'
+
+const resend = new Resend(process.env['RESEND_API_KEY']!)
+
+interface ConfirmationTokenPayload {
+  email: string
+  firstName: string
+  lastName: string
+  exp: number
+}
+
+export async function GET(request: NextRequest): Promise<NextResponse> {
+  try {
+    const { searchParams } = new URL(request.url)
+    const token = searchParams.get('token')
+
+    if (!token) {
+      return NextResponse.json({ error: 'Missing confirmation token' }, { status: 400 })
+    }
+
+    // Verify the token
+    const jwtSecret = process.env['JWT_SECRET']
+    if (!jwtSecret) {
+      return NextResponse.json({ error: 'JWT secret not configured' }, { status: 500 })
+    }
+
+    let payload: ConfirmationTokenPayload
+    try {
+      payload = verify(token, jwtSecret) as ConfirmationTokenPayload
+    } catch (error) {
+      return NextResponse.json({ error: 'Invalid or expired confirmation token' }, { status: 400 })
+    }
+
+    const { email, firstName, lastName } = payload
+
+    // Add contact to Resend audience
+    const audienceId = process.env['RESEND_AUDIENCE_ID']
+    if (!audienceId) {
+      return NextResponse.json({ error: 'Audience ID is not set' }, { status: 500 })
+    }
+
+    const contactResult = await resend.contacts.create({
+      email,
+      firstName,
+      lastName,
+      audienceId,
+    })
+
+    if (contactResult.error) {
+      return NextResponse.json({ error: contactResult.error.message }, { status: 500 })
+    }
+
+    // Send welcome email
+    try {
+      const welcomeEmailModule = await import('@/content/emails/transactional/welcome-email')
+      const { WelcomeEmail } = welcomeEmailModule
+
+      await resend.emails.send({
+        from: process.env['RESEND_EMAIL_FROM']!,
+        to: email,
+        subject: 'Welcome to the newsletter!',
+        replyTo: 'cesar@cesalberca.com',
+        react: WelcomeEmail({ firstName }) as ReactElement,
+      })
+    } catch (error) {
+      console.error('Welcome email import/send error:', error)
+      // Don't fail the confirmation if welcome email fails
+    }
+
+    // Return success response
+    return NextResponse.json({ success: true, message: 'Subscription confirmed successfully' }, { status: 200 })
+  } catch (error) {
+    console.error('Newsletter confirmation error:', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  }
+}

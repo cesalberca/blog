@@ -4,6 +4,7 @@ import type { Category } from '@/features/posts/domain/category'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
 import { Locale } from '@/core/i18n/locale'
 import { getSlugs } from '@/get-slugs'
+import { Datetime } from '@/core/date/datetime'
 
 export async function getPost({ slug, locale }: { slug: string; locale: Locale }): Promise<PostMetadata | null> {
   try {
@@ -40,7 +41,7 @@ export async function getPosts({ locale }: { locale: Locale }): Promise<PostMeta
       }
     }
 
-    posts.sort((a, b) => +new Date(b.date) - +new Date(a.date))
+    posts.sort((a, b) => Datetime.fromIso(b.date).getTime() - Datetime.fromIso(a.date).getTime())
 
     return posts
   } catch (error) {

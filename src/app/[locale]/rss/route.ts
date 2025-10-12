@@ -2,6 +2,7 @@ import { baseUrl } from '../../sitemap'
 import { getPosts } from '@/posts'
 import { getLocale } from 'next-intl/server'
 import { Locale } from '@/core/i18n/locale'
+import { Datetime } from '@/core/date/datetime'
 
 export async function GET() {
   const locale = (await getLocale()) as Locale
@@ -9,7 +10,9 @@ export async function GET() {
 
   const itemsXml = allBlogs
     .sort((a, b) => {
-      if (new Date(a.date) > new Date(b.date)) {
+      const dateA = Datetime.fromIso(a.date)
+      const dateB = Datetime.fromIso(b.date)
+      if (dateA.isAfter(dateB)) {
         return -1
       }
       return 1
@@ -20,7 +23,7 @@ export async function GET() {
           <title>${post.title}</title>
           <link>${baseUrl}/blog/${post.slug}</link>
           <description>${post.summary}</description>
-          <pubDate>${new Date(post.date).toUTCString()}</pubDate>
+          <pubDate>${Datetime.fromIso(post.date).toUTCString()}</pubDate>
         </item>`,
     )
     .join('\n')

@@ -1,7 +1,6 @@
 /**
- * HTTP Client for Next.js applications
+ * HTTP Client
  * Based on fetch wrapper best practices with automatic parameter encoding
- * Excludes cookie handling as requested
  */
 
 interface RequestConfig extends Omit<RequestInit, 'body'> {
@@ -47,15 +46,22 @@ class HttpClient {
    * Encodes parameters as URL search params
    */
   private encodeParams(params: Record<string, any>): string {
-    const searchParams = new URLSearchParams()
+    const search = new URLSearchParams()
 
-    Object.entries(params).forEach(([key, value]) => {
-      if (value !== null && value !== undefined && value !== '') {
-        searchParams.append(key, String(value))
+    const append = (key: string, value: any) => {
+      if (value == null || value === '') return
+      if (Array.isArray(value)) {
+        value.forEach(v => append(key, v))
+      } else if (typeof value === 'object') {
+        Object.entries(value).forEach(([k, v]) => append(`${key}[${k}]`, v))
+      } else {
+        search.append(key, String(value))
       }
-    })
+    }
 
-    return searchParams.toString()
+    Object.entries(params).forEach(([k, v]) => append(k, v))
+
+    return search.toString()
   }
 
   /**
@@ -167,18 +173,10 @@ class HttpClient {
   /**
    * GET request
    */
-  async get<T = any>(
-    endpoint: string,
-    params?: Record<string, any>,
-    config?: Omit<RequestConfig, 'method' | 'body' | 'params'>,
-  ): Promise<ApiResponse<T>> {
+  async get<T = any>(endpoint: string, config?: Omit<RequestConfig, 'method' | 'body'>): Promise<ApiResponse<T>> {
     const requestConfig: RequestConfig = {
       ...config,
       method: 'GET',
-    }
-
-    if (params) {
-      requestConfig.params = params
     }
 
     return this.request<T>(endpoint, requestConfig)

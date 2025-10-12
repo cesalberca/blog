@@ -26,12 +26,13 @@ Hey ${firstName}!
 
 If you didn't sign up, you don't need to worry at all, feel free to ignore this email and you won't get another email from me.
 
-**What you need to do**: If you _did_ sign up and want to join the Frontend Architecture newsletter, just click the button below to confirm.
+**What you need to do**: If you _did_ sign up and want to join the Frontend Architecture Newsletter, just click the button below to confirm.
 `}</MarkdownEmail>
       <Container className="text-center  w-2/3">
         <Button link={confirmationUrl}>Confirm the subscription</Button>
         <Text className="text-xs">
-          Or copy and paste this link in your browser: <Link href={confirmationUrl}>{confirmationUrl}</Link>
+          Or copy and paste this link in your browser:
+          <br /> <Link href={confirmationUrl}>{confirmationUrl}</Link>
         </Text>
       </Container>
 

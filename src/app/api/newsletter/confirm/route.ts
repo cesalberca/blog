@@ -2,6 +2,7 @@ import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
 import type { ReactElement } from 'react'
 import { verify } from 'jsonwebtoken'
+import NewsletterWelcomeEmail from '@/content/emails/transactional/newsletter-welcome-email'
 
 const resend = new Resend(process.env['RESEND_API_KEY']!)
 
@@ -9,21 +10,21 @@ interface ConfirmationTokenPayload {
   email: string
   firstName: string
   lastName: string
-  exp: number
-  confirmed?: boolean
 }
 
-export async function GET(request: NextRequest): Promise<NextResponse> {
+interface ConfirmRequest {
+  token: string
+  email: string
+}
+
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
-    const { searchParams } = new URL(request.url)
-    const token = searchParams.get('token')
-    const emailParam = searchParams.get('email')
+    const body: ConfirmRequest = await request.json()
+    const { token, email: emailParam } = body
 
     if (!token) {
       return NextResponse.json({ error: 'Missing confirmation token' }, { status: 400 })
     }
-
-    console.log({ emailParam })
 
     if (!emailParam) {
       return NextResponse.json({ error: 'Missing email parameter' }, { status: 400 })
@@ -46,7 +47,6 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     // Verify that the email in the token matches the email in the URL
     if (email !== emailParam) {
-      console.log({ email, emailParam })
       return NextResponse.json({ error: 'Email mismatch between token and URL parameter' }, { status: 400 })
     }
 
@@ -74,6 +74,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
         )
       }
     } catch (error) {
+      console.error('Error checking if contact already exists:', error)
       // Contact doesn't exist, which is expected for new subscriptions
       // Continue with the confirmation process
     }
@@ -84,6 +85,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       lastName,
       audienceId,
     })
+
+    console.log({ contactResult })
 
     // Handle duplicate contact gracefully - this can happen if the contact already exists
     if (contactResult.error) {
@@ -107,9 +110,6 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     // Send welcome email
     try {
-      const welcomeEmailModule = await import('@/content/emails/transactional/newsletter-welcome-email')
-      const { NewsletterWelcomeEmail } = welcomeEmailModule
-
       await resend.emails.send({
         from: process.env['RESEND_EMAIL_FROM']!,
         to: email,

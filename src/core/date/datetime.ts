@@ -17,8 +17,16 @@ export class Datetime {
     return new Datetime(new Date())
   }
 
+  static fromTimestamp(value: number) {
+    return new Datetime(new Date(value))
+  }
+
   get year() {
     return this._value.getFullYear()
+  }
+
+  getTime() {
+    return this._value.getTime()
   }
 
   format() {
@@ -31,5 +39,35 @@ export class Datetime {
 
   toIso() {
     return this._value.toISOString()
+  }
+
+  toUTCString() {
+    return this._value.toUTCString()
+  }
+
+  toLocaleDateString(locales?: string | string[], options?: Intl.DateTimeFormatOptions) {
+    return this._value.toLocaleDateString(locales, options)
+  }
+
+  toLocaleString(locales?: string | string[], options?: Intl.DateTimeFormatOptions) {
+    return this._value.toLocaleString(locales, options)
+  }
+
+  // Comparison methods
+  isAfter(other: Datetime): boolean {
+    return this._value > other._value
+  }
+
+  isBefore(other: Datetime): boolean {
+    return this._value < other._value
+  }
+
+  isEqual(other: Datetime): boolean {
+    return this._value.getTime() === other._value.getTime()
+  }
+
+  // Static comparison method for sorting
+  static compare(a: Datetime, b: Datetime): number {
+    return a.getTime() - b.getTime()
   }
 }

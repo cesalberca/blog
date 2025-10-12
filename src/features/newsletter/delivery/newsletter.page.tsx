@@ -7,6 +7,7 @@ import { Background } from '@/core/components/background/background'
 import { Link } from '@/core/components/link/link'
 import { Button } from '@/components/ui/button'
 import { Calendar, ExternalLink } from 'lucide-react'
+import { Datetime } from '@/core/date/datetime'
 
 export const NewsletterPage: FC = () => {
   const t = useTranslations()
@@ -47,7 +48,7 @@ export const NewsletterPage: FC = () => {
                   <div className="flex-1">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                       <Calendar className="w-4 h-4" />
-                      <span>{new Date(email.date).toLocaleDateString()}</span>
+                      <span>{Datetime.fromIso(email.date).toLocaleDateString()}</span>
                     </div>
                     <h3 className="text-xl font-semibold mb-3 flex items-start gap-2">{email.title}</h3>
                     <p className="text-muted-foreground mb-4 leading-relaxed">{email.excerpt}</p>

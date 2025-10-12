@@ -17,13 +17,14 @@ import {
   type TailwindConfig,
   Text,
 } from '@react-email/components'
-import type { FC, PropsWithChildren } from 'react'
+import type { FC, PropsWithChildren, ReactElement } from 'react'
 import { emailImageBaseUrl } from '@/lib/email-image-base-url'
 
 interface EmailTemplateProps {
   title: string
   description: string
   browserUrl?: string
+  footer?: ReactElement
 }
 
 const config: TailwindConfig = {
@@ -49,6 +50,7 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
   title,
   children,
   browserUrl,
+  footer,
 }) => {
   return (
     <Html className="dark">
@@ -114,12 +116,7 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
 
             {/* Footer */}
             <Section className="bg-muted py-8 px-6 border-t border-border text-xs">
-              <Container className="w-2/3">
-                <Text className="text-muted-foreground text-xs mb-0 text-center leading-relaxed">
-                  You’re receiving this email because you subscribed voluntarily and confirmed it by clicking a link in
-                  a verification email.
-                </Text>
-              </Container>
+              {footer}
 
               <Text className="text-muted-foreground mb-4 text-center">
                 <Link

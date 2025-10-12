@@ -24,7 +24,19 @@ export const NewsletterTemplate: FC<PropsWithChildren<NewsletterEmailProps>> = (
   const encodedUrl = encodeURIComponent(urlToShare)
 
   return (
-    <EmailTemplate title={title} description={description} browserUrl={browserUrl}>
+    <EmailTemplate
+      title={title}
+      description={description}
+      browserUrl={browserUrl}
+      footer={
+        <Container className="w-2/3">
+          <Text className="text-muted-foreground text-xs mb-0 text-center leading-relaxed">
+            You&#39;re receiving this email because you subscribed voluntarily and confirmed it by clicking a link in a
+            verification email.
+          </Text>
+        </Container>
+      }
+    >
       {children}
 
       {/* Social Sharing Footer */}

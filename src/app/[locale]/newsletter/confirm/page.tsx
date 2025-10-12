@@ -11,7 +11,7 @@ import { Page } from '@/core/components/page/page'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { httpClient } from '@/lib/http-client'
 
-type ConfirmationState = 'loading' | 'success' | 'error'
+type ConfirmationState = 'loading' | 'success' | 'error' | 'subscribed'
 
 const NewsletterConfirmPage: FC = () => {
   const t = useTranslations()
@@ -38,17 +38,16 @@ const NewsletterConfirmPage: FC = () => {
       }
 
       try {
-        const response = await httpClient.get('/api/newsletter/confirm', {
-          params: {
-            token,
-            email,
-          },
+        const response = await httpClient.post(`/api/newsletter/confirm`, {
+          token,
+          email,
         })
 
         setState('success')
         // Check if this was already confirmed or already subscribed
         if (response.data.alreadyConfirmed || response.data.alreadySubscribed) {
           setIsAlreadyConfirmed(true)
+          setState('subscribed')
         }
       } catch (error: any) {
         setState('error')
@@ -118,6 +117,31 @@ const NewsletterConfirmPage: FC = () => {
               <p className="text-lg text-muted-foreground">
                 {errorMessage || 'We were unable to confirm your subscription. The link may be expired or invalid.'}
               </p>
+              <p className="text-muted-foreground">
+                Please try subscribing again or contact support if the problem persists.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild>
+                <Link href="/newsletter">Try subscribing again</Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/">{t('newsletter.backHome')}</Link>
+              </Button>
+            </div>
+          </div>
+        )
+      case 'subscribed':
+        return (
+          <div className="text-center space-y-6">
+            <div className="flex justify-center">
+              <X className="h-16 w-16 text-orange-500" />
+            </div>
+            <div className="space-y-4">
+              <h1 className="text-3xl font-bold">
+                <AccentText>Email already confirmed</AccentText>
+              </h1>
+              <p className="text-lg text-muted-foreground">{errorMessage}</p>
               <p className="text-muted-foreground">
                 Please try subscribing again or contact support if the problem persists.
               </p>

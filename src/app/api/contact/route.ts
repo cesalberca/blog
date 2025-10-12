@@ -1,6 +1,7 @@
 import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
 import type { ReactElement } from 'react'
+import { Datetime } from '@/core/date/datetime'
 
 const resend = new Resend(process.env['RESEND_API_KEY']!)
 
@@ -32,7 +33,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactRe
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
     }
 
-    const currentDate = new Date().toLocaleString('en-US', {
+    const currentDate = Datetime.fromNow().toLocaleString('en-US', {
       timeZone: 'Europe/Madrid',
       year: 'numeric',
       month: 'long',

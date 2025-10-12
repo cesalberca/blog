@@ -1,5 +1,6 @@
 import { Locale } from '@/core/i18n/locale'
 import { getPosts } from '../posts'
+import { Datetime } from '@/core/date/datetime'
 
 export const baseUrl = 'https://cesalberca.com'
 
@@ -11,7 +12,7 @@ export default async function sitemap() {
 
   const routes = ['', '/blog'].map(route => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString().split('T')[0],
+    lastModified: Datetime.fromNow().toIso().split('T')[0],
   }))
 
   return [...routes, ...blogs]

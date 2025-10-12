@@ -1,6 +1,7 @@
 import type { TalkMetadata } from '@/features/talks/domain/talk-metadata'
 import { getSlugs } from '@/get-slugs'
 import { Locale } from '@/core/i18n/locale'
+import { Datetime } from '@/core/date/datetime'
 import path from 'path'
 import fs from 'fs'
 
@@ -52,15 +53,17 @@ export async function getTalks({ locale }: { locale: Locale }): Promise<TalkMeta
     // Sort talks by the most recent event date
     talks.sort((a, b) => {
       // Find the most recent event date for each talk
-      const getLatestEventDate = (talk: TalkMetadata): Date => {
+      const getLatestEventDate = (talk: TalkMetadata): Datetime => {
         if (!talk.events || talk.events.length === 0 || !Array.isArray(talk.events)) {
-          return new Date(0) // Return earliest possible date if no events or events is not an array
+          return Datetime.fromTimestamp(0) // Return earliest possible date if no events or events is not an array
         }
 
         // Sort events by date (newest first) and return the first one's date
-        const sorted = [...talk.events].sort((e1, e2) => new Date(e2.date).getTime() - new Date(e1.date).getTime())
+        const sorted = [...talk.events].sort(
+          (e1, e2) => Datetime.fromIso(e2.date).getTime() - Datetime.fromIso(e1.date).getTime(),
+        )
         const firstDate = sorted[0]?.date
-        return new Date(firstDate ?? 0)
+        return firstDate ? Datetime.fromIso(firstDate) : Datetime.fromTimestamp(0)
       }
 
       const latestDateA = getLatestEventDate(a)

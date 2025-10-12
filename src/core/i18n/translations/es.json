@@ -170,7 +170,9 @@
       "messageDescription": "¿Quieres trabajar juntos? ¿Tienes una idea para compartir? ¿Solo quieres saludar?",
       "submit": "Enviar",
       "submitting": "Enviando",
-      "sent": "¡Gracias por contactarme!"
+      "sent": "¡Gracias por contactarme!",
+      "success": "¡Tu mensaje ha sido enviado correctamente! Te responderé pronto.",
+      "error": "Hubo un error enviando tu mensaje. Por favor inténtalo de nuevo."
     }
   },
   "experience": {

@@ -32,13 +32,13 @@ const config: TailwindConfig = {
   theme: {
     extend: {
       colors: {
-        primary: 'oklch(0.205 0 0)',
-        background: 'oklch(0.145 0 0)',
-        foreground: 'oklch(0.985 0 0)',
-        secondary: 'oklch(0.269 0 0)',
+        primary: '#262626',
+        background: '#171717',
+        foreground: '#fbfbfb',
+        secondary: '#444444',
         muted: '#0f0f0f',
-        'muted-foreground': 'oklch(0.708 0 0)',
-        border: 'oklch(0.269 0 0)',
+        'muted-foreground': '#b5b5b5',
+        border: '#444444',
       },
     },
   },
@@ -51,7 +51,7 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
   browserUrl,
 }) => {
   return (
-    <Html>
+    <Html className="dark">
       <Tailwind config={config}>
         <Head />
         <Preview>{description}</Preview>

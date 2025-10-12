@@ -107,15 +107,15 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     // Send welcome email
     try {
-      const welcomeEmailModule = await import('@/content/emails/transactional/welcome-email')
-      const { WelcomeEmail } = welcomeEmailModule
+      const welcomeEmailModule = await import('@/content/emails/transactional/NewsletterWelcomeEmail')
+      const { NewsletterWelcomeEmail } = welcomeEmailModule
 
       await resend.emails.send({
         from: process.env['RESEND_EMAIL_FROM']!,
         to: email,
         subject: 'Welcome to the newsletter!',
         replyTo: 'cesar@cesalberca.com',
-        react: WelcomeEmail({ firstName }) as ReactElement,
+        react: NewsletterWelcomeEmail({ firstName }) as ReactElement,
       })
     } catch (error) {
       console.error('Welcome email import/send error:', error)

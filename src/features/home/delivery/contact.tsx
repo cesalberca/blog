@@ -37,36 +37,18 @@ export const ContactForm: FC = () => {
   })
 
   const onSubmit: SubmitHandler<FormData> = async data => {
-    const formspreeKey = process.env['NEXT_PUBLIC_FORMSPREE_API_KEY'] ?? ''
-
     try {
-      await httpClient.post(`https://formspree.io/f/${formspreeKey}`, data, {
-        headers: {
-          Accept: 'application/json',
-        },
-      })
+      await httpClient.post('/api/contact', data)
 
       sendGAEvent('event', 'conversion', { email: data.email, name: data.name })
       router.push('/thank-you')
     } catch (error: any) {
-      const { errors } = error.response?.data || {}
+      const errorMessage = error.data?.error || error.message || 'Something went wrong'
 
-      if (errors?.form) {
-        for (const { code, message } of errors.form) {
-          form.setError(`root.${code}`, {
-            type: code,
-            message,
-          })
-        }
-      }
-
-      if (errors?.fields) {
-        for (const [field, errs] of Object.entries(errors.fields)) {
-          form.setError(field as keyof FormData, {
-            message: (errs as { message: string }[]).map(e => e.message).join(', '),
-          })
-        }
-      }
+      form.setError('root.server', {
+        type: 'server',
+        message: errorMessage,
+      })
     }
   }
 

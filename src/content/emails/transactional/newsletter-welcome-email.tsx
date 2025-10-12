@@ -1,15 +1,15 @@
 import type { FC } from 'react'
-import { EmailTemplate } from '@/emails/email-template'
 import { MarkdownEmail } from '@/core/components/markdown/markdown-email'
+import { EmailTemplate } from '@/emails/email-template'
 
 interface WelcomeEmailProps {
   firstName?: string
 }
 
-export const WelcomeEmail: FC<WelcomeEmailProps> = () => {
+export const NewsletterWelcomeEmail: FC<WelcomeEmailProps> = ({ firstName }) => {
   return (
     <EmailTemplate
-      title="Welcome {{{FIRST_NAME}}} to the Newsletter!"
+      title={`Welcome ${firstName} to the Newsletter!`}
       description="I'm thrilled to welcome you to this newsletter. You've just joined a group of curious minds who are
         passionate about Frontend Architecture and continuous learning."
     >
@@ -28,4 +28,4 @@ Great, thank you very much! You'll be now receiving recurrent emails from me abo
   )
 }
 
-export default WelcomeEmail
+export default NewsletterWelcomeEmail

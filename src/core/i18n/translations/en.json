@@ -168,7 +168,9 @@
       "messageDescription": "Want to work together? Have an idea to share? Just want to say hi?",
       "submit": "Submit",
       "submitting": "Submitting",
-      "sent": "Thanks for contacting me!"
+      "sent": "Thanks for contacting me!",
+      "success": "Your message has been sent successfully! I'll get back to you soon.",
+      "error": "There was an error sending your message. Please try again."
     }
   },
   "experience": {

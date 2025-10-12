@@ -1,6 +1,11 @@
 import type { FC } from 'react'
 import { NewsletterTemplate } from '@/emails/newsletter-template'
 import { MarkdownEmail } from '@/core/components/markdown/markdown-email'
+import type { NewsletterMetadata } from '@/features/email/domain/newsletter-metadata'
+
+export const metadata: NewsletterMetadata = {
+  subject: 'The Hemingway Bridge',
+}
 
 export const WelcomeNewsletter: FC = () => {
   return (

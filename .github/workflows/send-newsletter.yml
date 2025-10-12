@@ -46,7 +46,8 @@ jobs:
             -d "{
               \"newsletterSlug\": \"${{ steps.find-newsletter.outputs.newsletter_slug }}\",
               \"audienceId\": \"${{ secrets.RESEND_AUDIENCE_ID }}\",
-              \"from\": \"${{ secrets.RESEND_EMAIL_FROM }}\"
+              \"from\": \"${{ secrets.RESEND_EMAIL_FROM }}\",
+              \"token\": \"${{ secrets.NEWSLETTER_BROADCAST_TOKEN }}\"
             }")
 
           echo "Broadcast creation response: $BROADCAST_RESPONSE"

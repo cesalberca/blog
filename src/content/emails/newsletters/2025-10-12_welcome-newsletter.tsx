@@ -12,8 +12,7 @@ export const WelcomeNewsletter: FC = () => {
     <NewsletterTemplate
       browserUrl="https://cesalberca.com/newsletters/2025-10-01_welcome-newsletter"
       title="The Hemingway Bridge"
-      description="Hello there! We're excited to welcome you to our newsletter where we share the latest insights, updates, and
-        stories from our blog."
+      description="The famous and prolific novelist Ernest Hemingway came up with a mechanism to avoid writer's block."
     >
       <MarkdownEmail>
         {`

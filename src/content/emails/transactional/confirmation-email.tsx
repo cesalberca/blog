@@ -16,23 +16,19 @@ export const ConfirmationEmail: FC<ConfirmationEmailProps> = ({ firstName, confi
       description="Just one click away from joining the Frontend Architecture newsletter community!"
     >
       <MarkdownEmail>{`
-Hey ${firstName ? firstName : 'there'}!
+Hey ${firstName ?? 'there'}!
 
-**Why you got this email**: Someone (hopefully you!) entered your email in the signup form at [cesalberca.com](https://cesalberca.com).
+**Why you got this email**: Your email has been submitted in the signup form at [cesalberca.com](https://cesalberca.com).
 
-If you didn't sign up, no worries at all – you won't get another email from me, and your email hasn't been "hacked" or anything. Some folks just like entering random emails in forms (weird, I know), but your info is totally safe.
+If you didn't sign up, no worries at all, feel free to ignore this email and you won't get another email from me.
 
-**What you need to do**: If you DID sign up and want to join the Frontend Architecture newsletter, just click the button below to confirm. If not, feel free to ignore this and move on with your awesome day.
+**What you need to do**: If you _did_ sign up and want to join the Frontend Architecture newsletter, just click the button below to confirm.
 
-[**Confirm My Subscription**](${confirmationUrl})
+[**Confirm the Subscription**](${confirmationUrl})
 
 Or copy and paste this link: ${confirmationUrl}
 
-If you really didn't sign up, you can just archive this email – you won't hear from me again. Sorry for any confusion!
-
-Looking forward to sharing some great frontend insights with you (if you want them)!
-
-César
+Looking forward to sharing some great frontend insights with you!
 `}</MarkdownEmail>
     </EmailTemplate>
   )

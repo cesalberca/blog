@@ -14,6 +14,7 @@ import {
   Row,
   Section,
   Tailwind,
+  type TailwindConfig,
   Text,
 } from '@react-email/components'
 import type { FC, PropsWithChildren } from 'react'
@@ -25,6 +26,24 @@ interface EmailTemplateProps {
   browserUrl?: string
 }
 
+const config: TailwindConfig = {
+  presets: [pixelBasedPreset],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: 'oklch(0.205 0 0)',
+        background: 'oklch(0.145 0 0)',
+        foreground: 'oklch(0.985 0 0)',
+        secondary: 'oklch(0.269 0 0)',
+        muted: '#0f0f0f',
+        'muted-foreground': 'oklch(0.708 0 0)',
+        border: 'oklch(0.269 0 0)',
+      },
+    },
+  },
+}
+
 export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
   description,
   title,
@@ -32,26 +51,8 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
   browserUrl,
 }) => {
   return (
-    <Tailwind
-      config={{
-        presets: [pixelBasedPreset],
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              primary: 'oklch(0.205 0 0)',
-              background: 'oklch(0.145 0 0)',
-              foreground: 'oklch(0.985 0 0)',
-              secondary: 'oklch(0.269 0 0)',
-              muted: '#0f0f0f',
-              'muted-foreground': 'oklch(0.708 0 0)',
-              border: 'oklch(0.269 0 0)',
-            },
-          },
-        },
-      }}
-    >
-      <Html>
+    <Html>
+      <Tailwind config={config}>
         <Head />
         <Preview>{description}</Preview>
         <Body className="font-sans bg-background text-foreground m-0 p-0">
@@ -150,7 +151,7 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
             </Section>
           </Container>
         </Body>
-      </Html>
-    </Tailwind>
+      </Tailwind>
+    </Html>
   )
 }

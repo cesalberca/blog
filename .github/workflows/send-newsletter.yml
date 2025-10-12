@@ -35,12 +35,13 @@ jobs:
             echo "newsletter_slug=$NEWSLETTER_SLUG" >> $GITHUB_OUTPUT
           fi
 
-      - name: Create and Send Broadcast
+      - name: Create Newsletter Broadcast
+        id: create-broadcast
         if: steps.find-newsletter.outputs.newsletter_found == 'true'
         run: |
           echo "Creating broadcast for newsletter: ${{ steps.find-newsletter.outputs.newsletter_slug }}"
 
-          # Create the broadcast first
+          # Create the broadcast via Next.js API
           BROADCAST_RESPONSE=$(curl -s -X POST "${{ secrets.NEXT_PUBLIC_URL }}/api/newsletters/broadcast" \
             -H "Content-Type: application/json" \
             -d "{
@@ -57,18 +58,24 @@ jobs:
 
           if [ "$BROADCAST_ID" != "null" ] && [ ! -z "$BROADCAST_ID" ]; then
             echo "Broadcast created with ID: $BROADCAST_ID"
-
-            # Schedule the broadcast for 11:00 CEST (09:00 UTC)
-            curl -X POST "https://api.resend.com/broadcasts/$BROADCAST_ID/send" \
-              -H "Authorization: Bearer ${{ secrets.RESEND_API_KEY }}" \
-              -H "Content-Type: application/json" \
-              -d '{"scheduled_at": "11:00"}'
-
-            echo "Newsletter scheduled for 11:00 CEST"
+            echo "broadcast_id=$BROADCAST_ID" >> $GITHUB_OUTPUT
           else
             echo "Failed to create broadcast"
             exit 1
           fi
+
+      - name: Send Newsletter Broadcast
+        if: steps.find-newsletter.outputs.newsletter_found == 'true' && steps.create-broadcast.outputs.broadcast_id
+        run: |
+          echo "Sending broadcast with ID: ${{ steps.create-broadcast.outputs.broadcast_id }}"
+
+          # Schedule the broadcast for 11:00 CEST (09:00 UTC)
+          curl -X POST "https://api.resend.com/broadcasts/${{ steps.create-broadcast.outputs.broadcast_id }}/send" \
+            -H "Authorization: Bearer ${{ secrets.RESEND_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{"scheduled_at": "23:00"}'
+
+          echo "Newsletter scheduled for 11:00 UTC"
 
       - name: No newsletter found
         if: steps.find-newsletter.outputs.newsletter_found == 'false'

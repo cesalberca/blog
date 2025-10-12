@@ -9,7 +9,7 @@ interface BroadcastRequest {
   newsletterSlug: string
   audienceId: string
   from: string
-  token?: string
+  token: string
 }
 
 interface BroadcastResponse {
@@ -54,12 +54,15 @@ export async function POST(request: NextRequest): Promise<NextResponse<Broadcast
         subject: metadata.subject,
         react: NewsletterComponent() as ReactElement,
         audienceId,
+        name: metadata.subject,
       })
 
       if (broadcast.error) {
         console.error('Resend broadcast creation error:', broadcast.error)
-        return NextResponse.json({ error: broadcast.error.message }, { status: 500 })
+        return NextResponse.json({ error: broadcast.error.message }, { status: 400 })
       }
+
+      await resend.broadcasts.send(broadcast.data.id)
 
       return NextResponse.json(
         {

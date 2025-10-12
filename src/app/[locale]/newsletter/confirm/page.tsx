@@ -37,9 +37,12 @@ const NewsletterConfirmPage: FC = () => {
       }
 
       try {
-        const response = await fetch(`/api/newsletter/confirm?token=${token}&email=${email}}`, {
-          method: 'GET',
-        })
+        const response = await fetch(
+          `/api/newsletter/confirm?token=${encodeURIComponent(token)}&email=${encodeURIComponent(email)}`,
+          {
+            method: 'GET',
+          },
+        )
 
         if (response.ok) {
           const data = await response.json()

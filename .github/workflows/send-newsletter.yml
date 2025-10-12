@@ -42,7 +42,7 @@ jobs:
           echo "Creating broadcast for newsletter: ${{ steps.find-newsletter.outputs.newsletter_slug }}"
 
           # Create the broadcast via Next.js API
-          BROADCAST_RESPONSE=$(curl -s -X POST "${{ secrets.NEXT_PUBLIC_URL }}/api/newsletters/broadcast" \
+          BROADCAST_RESPONSE=$(curl -s -w "HTTPSTATUS:%{http_code}" -X POST "${{ secrets.NEXT_PUBLIC_URL }}/api/newsletters/broadcast" \
             -H "Content-Type: application/json" \
             -d "{
               \"newsletterSlug\": \"${{ steps.find-newsletter.outputs.newsletter_slug }}\",
@@ -51,31 +51,34 @@ jobs:
               \"token\": \"${{ secrets.NEWSLETTER_BROADCAST_TOKEN }}\"
             }")
 
-          echo "Broadcast creation response: $BROADCAST_RESPONSE"
+          # Extract HTTP status and response body
+          HTTP_BODY=$(echo $BROADCAST_RESPONSE | sed -E 's/HTTPSTATUS\:[0-9]{3}$//')
+          HTTP_STATUS=$(echo $BROADCAST_RESPONSE | tr -d '\n' | sed -E 's/.*HTTPSTATUS:([0-9]{3})$/\1/')
 
-          # Extract broadcast ID from response
-          BROADCAST_ID=$(echo $BROADCAST_RESPONSE | jq -r '.broadcastId')
+          echo "HTTP Status: $HTTP_STATUS"
+          echo "Response Body: $HTTP_BODY"
 
-          if [ "$BROADCAST_ID" != "null" ] && [ ! -z "$BROADCAST_ID" ]; then
-            echo "Broadcast created with ID: $BROADCAST_ID"
-            echo "broadcast_id=$BROADCAST_ID" >> $GITHUB_OUTPUT
-          else
-            echo "Failed to create broadcast"
+          # Check if the request was successful
+          if [ "$HTTP_STATUS" -ne 200 ]; then
+            echo "API request failed with status $HTTP_STATUS"
+            echo "Response: $HTTP_BODY"
             exit 1
           fi
 
-      - name: Send Newsletter Broadcast
-        if: steps.find-newsletter.outputs.newsletter_found == 'true' && steps.create-broadcast.outputs.broadcast_id
-        run: |
-          echo "Sending broadcast with ID: ${{ steps.create-broadcast.outputs.broadcast_id }}"
+          # Extract broadcast ID from response
+          BROADCAST_ID=$(echo $HTTP_BODY | jq -r '.broadcastId // empty')
 
-          # Schedule the broadcast for 11:00 CEST (09:00 UTC)
-          curl -X POST "https://api.resend.com/broadcasts/${{ steps.create-broadcast.outputs.broadcast_id }}/send" \
-            -H "Authorization: Bearer ${{ secrets.RESEND_API_KEY }}" \
-            -H "Content-Type: application/json" \
-            -d '{"scheduled_at": "23:00"}'
-
-          echo "Newsletter scheduled for 11:00 UTC"
+          if [ ! -z "$BROADCAST_ID" ] && [ "$BROADCAST_ID" != "null" ]; then
+            echo "Broadcast created with ID: $BROADCAST_ID"
+            echo "broadcast_id=$BROADCAST_ID" >> $GITHUB_OUTPUT
+          else
+            echo "Failed to create broadcast - no broadcast ID in response"
+            echo "Full response: $HTTP_BODY"
+            # Check if there's an error message in the response
+            ERROR_MSG=$(echo $HTTP_BODY | jq -r '.error // "Unknown error"')
+            echo "Error message: $ERROR_MSG"
+            exit 1
+          fi
 
       - name: No newsletter found
         if: steps.find-newsletter.outputs.newsletter_found == 'false'

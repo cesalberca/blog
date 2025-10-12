@@ -17,10 +17,12 @@ const NewsletterConfirmPage: FC = () => {
   const searchParams = useSearchParams()
   const [state, setState] = useState<ConfirmationState>('loading')
   const [errorMessage, setErrorMessage] = useState<string>('')
+  const [isAlreadyConfirmed, setIsAlreadyConfirmed] = useState<boolean>(false)
 
   useEffect(() => {
     const confirmSubscription = async () => {
       const token = searchParams.get('token')
+      const email = searchParams.get('email')
 
       if (!token) {
         setState('error')
@@ -28,17 +30,23 @@ const NewsletterConfirmPage: FC = () => {
         return
       }
 
+      if (!email) {
+        setState('error')
+        setErrorMessage('Missing confirmation email')
+        return
+      }
+
       try {
-        const response = await fetch(`/api/newsletter/confirm?token=${token}`, {
+        const response = await fetch(`/api/newsletter/confirm?token=${token}&email=${email}}`, {
           method: 'GET',
         })
 
         if (response.ok) {
-          // Check if response is a redirect (the API redirects to /newsletter/confirmed)
-          if (response.redirected || response.url.includes('/newsletter/confirmed')) {
-            setState('success')
-          } else {
-            setState('success')
+          const data = await response.json()
+          setState('success')
+          // Check if this was already confirmed or already subscribed
+          if (data.alreadyConfirmed || data.alreadySubscribed) {
+            setIsAlreadyConfirmed(true)
           }
         } else {
           const data = await response.json()
@@ -81,8 +89,13 @@ const NewsletterConfirmPage: FC = () => {
               <h1 className="text-3xl font-bold">
                 <AccentText>{t('newsletter.confirmationSuccess')}</AccentText>
               </h1>
-              <p className="text-lg text-muted-foreground">{t('newsletter.confirmationSuccessMessage')}</p>
-              <p className="text-muted-foreground">{t('newsletter.welcomeEmailSent')}</p>
+              <p className="text-lg text-muted-foreground">
+                {isAlreadyConfirmed
+                  ? t('newsletter.alreadyConfirmedMessage')
+                  : t('newsletter.confirmationSuccessMessage')}
+              </p>
+              {!isAlreadyConfirmed && <p className="text-muted-foreground">{t('newsletter.welcomeEmailSent')}</p>}
+              {isAlreadyConfirmed && <p className="text-muted-foreground">{t('newsletter.noAdditionalEmails')}</p>}
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild>

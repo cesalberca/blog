@@ -476,6 +476,8 @@
     "confirmationSuccess": "¡Suscripción Confirmada!",
     "confirmationSuccessMessage": "¡Bienvenido al Newsletter de Arquitectura Frontend! Ya estás suscrito y recibirás actualizaciones directamente en tu bandeja de entrada.",
     "welcomeEmailSent": "Se ha enviado un correo de bienvenida a tu bandeja con más información.",
+    "alreadyConfirmedMessage": "Tu suscripción ya había sido confirmada. ¡Todo listo!",
+    "noAdditionalEmails": "No se enviarán correos adicionales.",
     "browseBlog": "Explorar Blog",
     "backHome": "Volver al Inicio"
   },

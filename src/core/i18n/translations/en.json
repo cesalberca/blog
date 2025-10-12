@@ -514,6 +514,8 @@
     "confirmationSuccess": "Subscription Confirmed!",
     "confirmationSuccessMessage": "Welcome to the Frontend Architecture Newsletter! You're now subscribed and will receive updates directly in your inbox.",
     "welcomeEmailSent": "A welcome email has been sent to your inbox with more information.",
+    "alreadyConfirmedMessage": "Your subscription was already confirmed. You're all set!",
+    "noAdditionalEmails": "No additional emails will be sent.",
     "browseBlog": "Browse Blog",
     "backHome": "Back to Home"
   },

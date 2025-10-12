@@ -5,10 +5,11 @@ import { MarkdownEmail } from '@/core/components/markdown/markdown-email'
 interface ConfirmationEmailProps {
   firstName?: string
   confirmationToken: string
+  email: string
 }
 
-export const ConfirmationEmail: FC<ConfirmationEmailProps> = ({ firstName, confirmationToken }) => {
-  const confirmationUrl = `${process.env['NEXT_PUBLIC_URL']}/newsletter/confirm?token=${confirmationToken}`
+export const ConfirmationEmail: FC<ConfirmationEmailProps> = ({ firstName, confirmationToken, email }) => {
+  const confirmationUrl = `${process.env['NEXT_PUBLIC_URL']}/newsletter/confirm?token=${confirmationToken}&email=${encodeURIComponent(email)}`
 
   return (
     <EmailTemplate

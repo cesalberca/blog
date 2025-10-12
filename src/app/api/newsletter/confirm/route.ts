@@ -10,15 +10,23 @@ interface ConfirmationTokenPayload {
   firstName: string
   lastName: string
   exp: number
+  confirmed?: boolean
 }
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     const { searchParams } = new URL(request.url)
     const token = searchParams.get('token')
+    const emailParam = searchParams.get('email')
 
     if (!token) {
       return NextResponse.json({ error: 'Missing confirmation token' }, { status: 400 })
+    }
+
+    console.log({ emailParam })
+
+    if (!emailParam) {
+      return NextResponse.json({ error: 'Missing email parameter' }, { status: 400 })
     }
 
     // Verify the token
@@ -36,10 +44,38 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     const { email, firstName, lastName } = payload
 
-    // Add contact to Resend audience
+    // Verify that the email in the token matches the email in the URL
+    if (email !== emailParam) {
+      console.log({ email, emailParam })
+      return NextResponse.json({ error: 'Email mismatch between token and URL parameter' }, { status: 400 })
+    }
+
+    // Check if contact already exists using Resend API
     const audienceId = process.env['RESEND_AUDIENCE_ID']
     if (!audienceId) {
       return NextResponse.json({ error: 'Audience ID is not set' }, { status: 500 })
+    }
+
+    // Check if the contact already exists
+    try {
+      const existingContact = await resend.contacts.get({
+        email,
+        audienceId,
+      })
+
+      if (existingContact.data) {
+        return NextResponse.json(
+          {
+            success: true,
+            message: 'Subscription already confirmed',
+            alreadyConfirmed: true,
+          },
+          { status: 200 },
+        )
+      }
+    } catch (error) {
+      // Contact doesn't exist, which is expected for new subscriptions
+      // Continue with the confirmation process
     }
 
     const contactResult = await resend.contacts.create({
@@ -49,7 +85,23 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       audienceId,
     })
 
+    // Handle duplicate contact gracefully - this can happen if the contact already exists
     if (contactResult.error) {
+      // If it's a duplicate contact error, continue with the flow but don't send welcome email
+      if (
+        contactResult.error.message?.toLowerCase().includes('already exists') ||
+        contactResult.error.message?.toLowerCase().includes('duplicate')
+      ) {
+        return NextResponse.json(
+          {
+            success: true,
+            message: 'Subscription confirmed (already exists)',
+            alreadySubscribed: true,
+          },
+          { status: 200 },
+        )
+      }
+      // For other errors, return error
       return NextResponse.json({ error: contactResult.error.message }, { status: 500 })
     }
 

@@ -2,6 +2,7 @@ import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
 import type { ReactElement } from 'react'
 import { sign } from 'jsonwebtoken'
+import ConfirmationEmail from '@/content/emails/transactional/confirmation-email'
 
 const resend = new Resend(process.env['RESEND_API_KEY']!)
 
@@ -37,15 +38,12 @@ export async function POST(request: NextRequest): Promise<NextResponse<Subscribe
 
     // Send confirmation email
     try {
-      const confirmationEmailModule = await import('@/content/emails/transactional/confirmation-email')
-      const { ConfirmationEmail } = confirmationEmailModule
-
       await resend.emails.send({
         from: process.env['RESEND_EMAIL_FROM']!,
         to: email,
         subject: 'Confirm your newsletter subscription',
         replyTo: 'cesar@cesalberca.com',
-        react: ConfirmationEmail({ firstName, confirmationToken }) as ReactElement,
+        react: ConfirmationEmail({ firstName, confirmationToken, email }) as ReactElement,
       })
     } catch (error) {
       console.error('Confirmation email import/send error:', error)

@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import type { ReactElement } from 'react'
 import { verify } from 'jsonwebtoken'
 import NewsletterWelcomeEmail from '@/content/emails/transactional/newsletter-welcome-email'
+import { timer } from '@/lib/timer'
 
 const resend = new Resend(process.env['RESEND_API_KEY']!)
 
@@ -86,8 +87,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       audienceId,
     })
 
-    console.log({ contactResult })
-
     // Handle duplicate contact gracefully - this can happen if the contact already exists
     if (contactResult.error) {
       // If it's a duplicate contact error, continue with the flow but don't send welcome email
@@ -108,19 +107,19 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       return NextResponse.json({ error: contactResult.error.message }, { status: 500 })
     }
 
-    // Send welcome email
-    try {
-      await resend.emails.send({
-        from: process.env['RESEND_EMAIL_FROM']!,
-        to: email,
-        subject: 'Welcome to the newsletter!',
-        replyTo: 'cesar@cesalberca.com',
-        react: NewsletterWelcomeEmail({ firstName }) as ReactElement,
-      })
-    } catch (error) {
-      console.error('Welcome email import/send error:', error)
-      // Don't fail the confirmation if welcome email fails
-    }
+    timer(async () => {
+      try {
+        await resend.emails.send({
+          from: process.env['RESEND_EMAIL_FROM']!,
+          to: email,
+          subject: 'Welcome to the newsletter!',
+          replyTo: 'cesar@cesalberca.com',
+          react: NewsletterWelcomeEmail({ firstName }) as ReactElement,
+        })
+      } catch (error) {
+        console.error('Welcome email import/send error:', error)
+      }
+    }, 3)
 
     // Return success response
     return NextResponse.json({ success: true, message: 'Subscription confirmed successfully' }, { status: 200 })

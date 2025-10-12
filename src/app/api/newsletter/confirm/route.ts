@@ -107,7 +107,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     // Send welcome email
     try {
-      const welcomeEmailModule = await import('@/content/emails/transactional/NewsletterWelcomeEmail')
+      const welcomeEmailModule = await import('@/content/emails/transactional/newsletter-welcome-email')
       const { NewsletterWelcomeEmail } = welcomeEmailModule
 
       await resend.emails.send({

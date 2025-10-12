@@ -1,4 +1,4 @@
-name: Send Daily Newsletter
+name: Send Newsletter
 
 on:
   schedule:

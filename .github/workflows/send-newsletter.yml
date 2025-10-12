@@ -42,7 +42,7 @@ jobs:
           echo "Creating broadcast for newsletter: ${{ steps.find-newsletter.outputs.newsletter_slug }}"
 
           # Create the broadcast via Next.js API
-          BROADCAST_RESPONSE=$(curl -s -w "HTTPSTATUS:%{http_code}" -X POST "${{ secrets.NEXT_PUBLIC_URL }}/api/newsletters/broadcast" \
+          BROADCAST_RESPONSE=$(curl -s -w "HTTPSTATUS:%{http_code}" -X POST "${{ secrets.NEXT_PRODUCTION_URL }}/api/newsletters/broadcast" \
             -H "Content-Type: application/json" \
             -d "{
               \"newsletterSlug\": \"${{ steps.find-newsletter.outputs.newsletter_slug }}\",

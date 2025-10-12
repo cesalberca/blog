@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label'
 import { Send } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { toast } from 'sonner'
+import { httpClient } from '@/lib/http-client'
 
 export interface NewsletterFormProps {
   className?: string
@@ -27,19 +28,11 @@ export const NewsletterForm: FC<NewsletterFormProps> = ({ className, showTitle =
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, firstName, lastName }),
+      await httpClient.post('/api/newsletter', {
+        email,
+        firstName,
+        lastName,
       })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error ?? 'Something went wrong')
-      }
 
       toast(t('newsletter.success'))
 

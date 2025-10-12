@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Page } from '@/core/components/page/page'
 import { AccentText } from '@/core/components/accent-text/accent-text'
+import { httpClient } from '@/lib/http-client'
 
 type ConfirmationState = 'loading' | 'success' | 'error'
 
@@ -37,26 +38,19 @@ const NewsletterConfirmPage: FC = () => {
       }
 
       try {
-        const response = await fetch(
-          `/api/newsletter/confirm?token=${encodeURIComponent(token)}&email=${encodeURIComponent(email)}`,
-          {
-            method: 'GET',
+        const response = await httpClient.get('/api/newsletter/confirm', {
+          params: {
+            token,
+            email,
           },
-        )
+        })
 
-        if (response.ok) {
-          const data = await response.json()
-          setState('success')
-          // Check if this was already confirmed or already subscribed
-          if (data.alreadyConfirmed || data.alreadySubscribed) {
-            setIsAlreadyConfirmed(true)
-          }
-        } else {
-          const data = await response.json()
-          setState('error')
-          setErrorMessage(data.error || 'Failed to confirm subscription')
+        setState('success')
+        // Check if this was already confirmed or already subscribed
+        if (response.data.alreadyConfirmed || response.data.alreadySubscribed) {
+          setIsAlreadyConfirmed(true)
         }
-      } catch (error) {
+      } catch (error: any) {
         setState('error')
         setErrorMessage('An unexpected error occurred')
       }

@@ -13,6 +13,7 @@ import type { FC } from 'react'
 import { Link } from '@/core/components/link/link'
 import { sendGAEvent } from '@next/third-parties/google'
 import { useRouter } from 'next/navigation'
+import { httpClient } from '@/lib/http-client'
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -37,17 +38,18 @@ export const ContactForm: FC = () => {
 
   const onSubmit: SubmitHandler<FormData> = async data => {
     const formspreeKey = process.env['NEXT_PUBLIC_FORMSPREE_API_KEY'] ?? ''
-    const response = await fetch(`https://formspree.io/f/${formspreeKey}`, {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        Accept: 'application/json',
-      },
-    })
 
-    if (!response.ok) {
-      const result = await response.json()
-      const { errors } = result
+    try {
+      await httpClient.post(`https://formspree.io/f/${formspreeKey}`, data, {
+        headers: {
+          Accept: 'application/json',
+        },
+      })
+
+      sendGAEvent('event', 'conversion', { email: data.email, name: data.name })
+      router.push('/thank-you')
+    } catch (error: any) {
+      const { errors } = error.response?.data || {}
 
       if (errors?.form) {
         for (const { code, message } of errors.form) {
@@ -65,9 +67,6 @@ export const ContactForm: FC = () => {
           })
         }
       }
-    } else {
-      sendGAEvent('event', 'conversion', { email: data.email, name: data.name })
-      router.push('/thank-you')
     }
   }
 

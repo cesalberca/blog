@@ -1,0 +1,33 @@
+import { Text } from '@react-email/components'
+
+export const metadata = {
+  subject: 'The Repository Pattern',
+  browserURl: 'https://cesalberca.com/newsletter/2025-10-13_the-use-case-pattern',
+  description: `If I had to choose only one pattern to implement as a Frontend Architect it would be the **use case pattern**. I've implemented this pattern countless times in projects **ranging from Startups** to **Multi Million and international companies**. I've perfected over a _decade_ how I implement this pattern and in this newsletter I want to show _you_.`
+}
+
+In [the previous issue of this Newsletter](https://cesalberca.com/newsletter/2025-10-13_the-use-case-pattern) we talked about Use Cases. In the example that I used you could see what it looked like a class being used:
+
+```typescript
+export class GetDestinationsQry implements UseCase<void, Destination[]> {
+  constructor(
+    private readonly destinationRepository: DestinationRepository,
+    private readonly destinationOrderer: DestinationOrderer,
+  ) {}
+
+  async handle(): Promise<Destination[]> {
+    return this.destinationOrderer.order(await this.destinationRepository.findAll())
+  }
+}
+```
+
+Well, it's not a class! Let me explain why.
+
+## The Repository Pattern
+
+Have you ever interacted with data? Perhaps getting data from a database, making an API call using fetch or maybe writing data in-memory. Well, that's a Repository!
+
+> A Repository represents a piece of code that interacts with data
+
+In some places you might have seen it called `Services`. However, for me, service is a tad too generic, everything could be a service! I prefer being more specific about the intention behind the pieces of code that I use.
+

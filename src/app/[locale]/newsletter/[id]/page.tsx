@@ -7,7 +7,7 @@ interface NewsletterWebViewPageProps {
   }>
 }
 
-const NewsletterWebViewPage: FC<NewsletterWebViewPageProps> = async ({ params }) => {
+const Page: FC<NewsletterWebViewPageProps> = async ({ params }) => {
   const { id } = await params
 
   const newsletterModule = await import(`@/content/emails/newsletters/${id}.tsx`)
@@ -25,4 +25,4 @@ const NewsletterWebViewPage: FC<NewsletterWebViewPageProps> = async ({ params })
   )
 }
 
-export default NewsletterWebViewPage
+export default Page

@@ -6,6 +6,8 @@ import * as runtime from 'react/jsx-runtime'
 import { evaluateSync, type EvaluateOptions } from '@mdx-js/mdx'
 import fs from 'node:fs'
 import { CodeBlock } from '@/features/email/delivery/code-block/code-block'
+import type { PrismLanguage } from '@react-email/code-block'
+import { CodeInline } from '@react-email/components'
 
 export const metadata: NewsletterMetadata = {
   subject: 'The Hemingway Bridge',
@@ -18,9 +20,17 @@ export const WelcomeNewsletter: FC = () => {
   const { default: Content } = evaluateSync(code, {
     ...(runtime as Readonly<EvaluateOptions>),
     useMDXComponents: () => ({
+      code: props => {
+        console.log({ props })
+        return <CodeInline>{props.children}</CodeInline>
+      },
       pre: props => {
-        console.log(props)
-        return <CodeBlock code="dada" language="typescript"></CodeBlock>
+        const codeContent = props.children?.props?.children ?? ''
+
+        const className = props.children?.props?.className ?? ''
+        const language = className.startsWith('language-') ? className.replace('language-', '') : 'typescript'
+
+        return <CodeBlock code={codeContent} language={language as PrismLanguage}></CodeBlock>
       },
     }),
   })

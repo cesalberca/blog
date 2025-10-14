@@ -1,7 +1,7 @@
 import { type FC, type PropsWithChildren } from 'react'
 import { CodeBlock as EmailCodeBlock, type PrismLanguage, synthwave84 } from '@react-email/code-block'
 import { cn } from '@/lib/utils'
-import { Row, Section } from '@react-email/components'
+import { Column, Row, Section } from '@react-email/components'
 
 export const CodeBlock: FC<PropsWithChildren<{ className?: string; code: string; language: PrismLanguage }>> = ({
   code,
@@ -9,9 +9,9 @@ export const CodeBlock: FC<PropsWithChildren<{ className?: string; code: string;
   language,
 }) => {
   return (
-    <Section className="w-xl">
-      <Row className="w-xl">
-        <div className="overflow-x-auto whitespace-nowrap w-xl">
+    <Section className="w-full">
+      <Row className="w-full">
+        <Column className="whitespace-nowrap flex w-[600px] m-0">
           <EmailCodeBlock
             className={cn('text-xs', className)}
             language={language}
@@ -19,7 +19,7 @@ export const CodeBlock: FC<PropsWithChildren<{ className?: string; code: string;
             code={code}
             theme={synthwave84}
           ></EmailCodeBlock>
-        </div>
+        </Column>
       </Row>
     </Section>
   )

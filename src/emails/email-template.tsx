@@ -2,7 +2,6 @@ import 'dotenv/config'
 
 import {
   Body,
-  Column,
   Container,
   Head,
   Heading,
@@ -11,7 +10,6 @@ import {
   Link,
   pixelBasedPreset,
   Preview,
-  Row,
   Section,
   Tailwind,
   type TailwindConfig,
@@ -29,7 +27,6 @@ interface EmailTemplateProps {
 
 const config: TailwindConfig = {
   presets: [pixelBasedPreset],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -53,14 +50,14 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
   footer,
 }) => {
   return (
-    <Html className="dark">
+    <Html>
       <Tailwind config={config}>
         <Head />
         <Preview>{description}</Preview>
-        <Body className="font-sans bg-background text-foreground m-0 p-0">
-          <Container className="max-w-2xl mx-auto bg-background">
+        <Body className="dark font-sans bg-background text-foreground m-0 p-0">
+          <Container className="max-w-2xl mx-auto">
             {browserUrl && (
-              <Section className="bg-background py-2 px-6 text-center border-b border-border">
+              <Section className="py-2 px-6 text-center border-b border-border">
                 <Text className="text-muted-foreground text-xs m-0">
                   <Link
                     href={browserUrl}
@@ -90,18 +87,12 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
             </Section>
 
             {/* Main Content */}
-            <Section className="p-6">
-              <Row>
-                <Column>
-                  <Heading className="text-[64px] md:text-[72px] font-bold text-foreground text-left leading-tight w-full sm:w-4/5 my-2">
-                    {title}
-                  </Heading>
-                </Column>
-              </Row>
+            <Section className="max-w-md p-2">
+              <Heading className="text-[54px] font-bold text-foreground text-left leading-tight w-full sm:w-4/5 my-2">
+                {title}
+              </Heading>
 
-              <Section className="text-muted-foreground text-xl leading-relaxed mx-auto max-w-screen-sm">
-                {children}
-              </Section>
+              <Section className="text-muted-foreground text-xl leading-relaxed mx-auto max-w-md">{children}</Section>
 
               <Section className="mt-4">
                 <Img

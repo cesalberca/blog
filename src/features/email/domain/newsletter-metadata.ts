@@ -1,3 +1,5 @@
 export interface NewsletterMetadata {
-  subject: string
+  title: string
+  description: string
+  browserUrl: string
 }

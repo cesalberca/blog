@@ -51,10 +51,10 @@ export async function POST(request: NextRequest): Promise<NextResponse<Broadcast
       // Create broadcast using Resend
       const broadcast = await resend.broadcasts.create({
         from,
-        subject: metadata.subject,
+        subject: metadata.title,
         react: NewsletterComponent() as ReactElement,
         audienceId,
-        name: metadata.subject,
+        name: metadata.title,
       })
 
       if (broadcast.error) {

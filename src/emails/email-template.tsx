@@ -98,7 +98,10 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
                   </Heading>
                 </Column>
               </Row>
-              <div className="text-muted-foreground text-xl leading-relaxed">{children}</div>
+
+              <Section className="text-muted-foreground text-xl leading-relaxed mx-auto max-w-screen-sm">
+                {children}
+              </Section>
 
               <Section className="mt-4">
                 <Img

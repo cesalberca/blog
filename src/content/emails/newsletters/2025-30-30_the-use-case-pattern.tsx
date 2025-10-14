@@ -14,32 +14,9 @@ export const metadata: NewsletterMetadata = {
   subject: 'The Hemingway Bridge',
 }
 
-function slugify(str: string) {
-  return str
-    .toString()
-    .toLowerCase()
-    .trim() // Remove whitespace from both ends of a string
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/&/g, '-and-') // Replace & with 'and'
-    .replace(/[^\w-]+/g, '') // Remove all non-word characters except for -
-    .replace(/--+/g, '-') // Replace multiple - with single -
-}
-
 function createHeading(level: number) {
   const Heading = ({ children }: { children: string }) => {
-    const slug = slugify(children)
-    return createElement(
-      `h${level}`,
-      { id: slug, className: 'text-white' },
-      [
-        createElement('a', {
-          href: `#${slug}`,
-          key: `link-${slug}`,
-          className: 'anchor',
-        }),
-      ],
-      children,
-    )
+    return createElement(`h${level}`, { className: 'text-white' }, children)
   }
 
   Heading.displayName = `Heading${level}`

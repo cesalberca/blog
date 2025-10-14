@@ -4,6 +4,12 @@ export const metadata = {
   description: `If I had to choose only one pattern to implement as a Frontend Architect it would be the **use case pattern**. I've implemented this pattern countless times in projects **ranging from Startups** to **Multi Million and international companies**. I've perfected over a _decade_ how I implement this pattern and in this newsletter I want to show _you_.`
 }
 
+```typescript
+export interface UseCase<In, Out> {
+  handle(input?: In): Promise<Out>
+}
+```
+
 If I had to choose only one pattern to implement as a Frontend Architect it would be the **use case pattern**. I've implemented this pattern countless times in projects **ranging from Startups** to **Multi Million and international companies**. I've perfected over a _decade_ how I implement this pattern and in this newsletter I want to show _you_.
 
 This pattern is nothing sort of new, it has been around longer than I've been alive, however the way I apply in the Frontend is something that I haven't seen (_yet_). The Use Case pattern allows you to separate your business logic in such a way that you can add different pieces of code to completely change the way your code runs in an easy and transversal way.
@@ -17,12 +23,6 @@ This pattern is nothing sort of new, it has been around longer than I've been al
 ## `UseCase` Interface
 
 Everything starts with the `UseCase` interface:
-
-```typescript
-export interface UseCase<In, Out> {
-  handle(input?: In): Promise<Out>
-}
-```
 
 An UseCase is a class (it can be a function too, but I prefer classes) that has a method called `handle()`. This method, receives an input typed as `In` and return an output typed as `Out`.
 

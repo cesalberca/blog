@@ -5,6 +5,7 @@ import path from 'path'
 import * as runtime from 'react/jsx-runtime'
 import { evaluateSync, type EvaluateOptions } from '@mdx-js/mdx'
 import fs from 'node:fs'
+import { CodeBlock } from '@/features/email/delivery/code-block/code-block'
 
 export const metadata: NewsletterMetadata = {
   subject: 'The Hemingway Bridge',
@@ -14,7 +15,15 @@ export const WelcomeNewsletter: FC = () => {
   const file = path.join(process.cwd(), 'src', 'content', 'emails', 'newsletters', `_the-use-case-pattern.mdx`)
 
   const code = fs.readFileSync(file, { encoding: 'utf8' })
-  const { default: Content } = evaluateSync(code, { ...(runtime as Readonly<EvaluateOptions>) })
+  const { default: Content } = evaluateSync(code, {
+    ...(runtime as Readonly<EvaluateOptions>),
+    useMDXComponents: () => ({
+      pre: props => {
+        console.log(props)
+        return <CodeBlock code="dada" language="typescript"></CodeBlock>
+      },
+    }),
+  })
 
   return (
     <NewsletterTemplate

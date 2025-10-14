@@ -14,7 +14,7 @@ export const CodeBlock: FC<PropsWithChildren<{ className?: string; code: string;
         className={cn('text-sm overflow-y-scroll min-w-min', className)}
         language={language}
         lineNumbers
-        code={code.trim()}
+        code={code}
         theme={synthwave84}
       ></EmailCodeBlock>
     </Container>

@@ -27,6 +27,7 @@ interface EmailTemplateProps {
 
 const config: TailwindConfig = {
   presets: [pixelBasedPreset],
+  darkMode: 'selector',
   theme: {
     extend: {
       colors: {
@@ -50,14 +51,16 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
   footer,
 }) => {
   return (
-    <Html>
+    <Html className="dark">
       <Tailwind config={config}>
-        <Head />
+        <Head>
+          <meta name="color-scheme" content="dark" />
+        </Head>
         <Preview>{description}</Preview>
-        <Body className="dark font-sans bg-background text-foreground m-0 p-0">
+        <Body className="font-sans m-0 p-0 bg-background">
           <Container className="max-w-2xl mx-auto">
             {browserUrl && (
-              <Section className="py-2 px-6 text-center border-b border-border">
+              <Section className="py-2 px-6 text-center border-b border-border bg-background">
                 <Text className="text-muted-foreground text-xs m-0">
                   <Link
                     href={browserUrl}
@@ -70,7 +73,7 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
             )}
 
             {/* Header */}
-            <Section className="py-8 px-6 pb-0 pt-4 text-center border-b border-border">
+            <Section className="py-8 px-6 pb-0 pt-4 text-center border-b border-border bg-background">
               <Link href="https://cesalberca.com">
                 <Img
                   src={emailImageBaseUrl('logo.png')}
@@ -87,14 +90,16 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
             </Section>
 
             {/* Main Content */}
-            <Section className="max-w-md p-2">
+            <Section className="max-w-md p-2 bg-background">
               <Heading className="text-[54px] font-bold text-foreground text-left leading-tight w-full sm:w-4/5 my-2">
                 {title}
               </Heading>
 
-              <Section className="text-muted-foreground text-xl leading-relaxed mx-auto max-w-md">{children}</Section>
+              <Section className="text-muted-foreground text-xl leading-relaxed mx-auto max-w-md bg-background">
+                {children}
+              </Section>
 
-              <Section className="mt-4">
+              <Section className="mt-4 bg-background">
                 <Img
                   src={emailImageBaseUrl('signature.png')}
                   width="501"

@@ -112,7 +112,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         await resend.emails.send({
           from: process.env['RESEND_EMAIL_FROM']!,
           to: email,
-          subject: 'Welcome to the newsletter!',
+          subject: 'Welcome to the Frontend Architecture Newsletter!',
           replyTo: 'cesar@cesalberca.com',
           react: NewsletterWelcomeEmail({ firstName }) as ReactElement,
         })

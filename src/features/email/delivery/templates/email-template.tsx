@@ -75,10 +75,10 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
               <Link href="https://cesalberca.com">
                 <Img
                   src={emailImageBaseUrl('logo.png')}
-                  width="180"
-                  height="90"
+                  width="45"
+                  height="30"
                   alt="Logo"
-                  className="mx-auto max-w-full h-auto"
+                  className="w-[45px] h-auto mx-auto"
                 />
                 <Text className="text-foreground text-sm m-0 font-medium tracking-wide">César Alberca</Text>
                 <Text className="text-muted-foreground text-xs mt-2 m-0 italic">

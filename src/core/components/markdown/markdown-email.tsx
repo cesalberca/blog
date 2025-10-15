@@ -7,28 +7,28 @@ export const MarkdownEmail: FC<{ children: string }> = ({ children }) => {
       <Markdown
         markdownCustomStyles={{
           link: {
-            color: 'white',
+            color: '#171717',
           },
           bold: {
-            color: 'white',
+            color: '#171717',
           },
           codeInline: {
-            color: 'white',
+            color: '#737373',
             paddingInline: '8px',
             paddingBlock: '4px',
-            background: 'oklch(0.269 0 0)',
+            background: '#f5f5f5',
             borderRadius: '4px',
           },
           blockQuote: {
-            background: 'oklch(0.269 0 0)',
-            color: 'white',
+            background: '#f5f5f5',
+            color: '#737373',
             border: 'none',
             borderLeft: '4px',
             borderRadius: '8px',
             borderBottom: '0',
             borderTop: '0',
             borderRight: '0',
-            borderColor: '#444444',
+            borderColor: '#e5e5e5',
             borderStyle: 'solid',
             padding: '8px',
             paddingLeft: '16px',

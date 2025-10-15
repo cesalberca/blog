@@ -1,9 +1,7 @@
 import { EmailTemplate } from './email-template'
-import { Container, Link, Section, Text, Row, Column } from '@react-email/components'
+import { Column, Container, Link, Row, Section, Text, Img } from '@react-email/components'
 import { type FC, type PropsWithChildren } from 'react'
 import { emailImageBaseUrl } from '@/lib/email-image-base-url'
-import { SiInstagram, SiLinkedin, SiX } from '@icons-pack/react-simple-icons'
-import { LucideMail } from 'lucide-react'
 
 interface NewsletterEmailProps {
   title: string
@@ -40,7 +38,7 @@ export const NewsletterTemplate: FC<PropsWithChildren<NewsletterEmailProps>> = (
       {children}
 
       {/* Social Sharing Footer */}
-      <Section className="sm:px-6 border-t border-border">
+      <Section className="sm:px-6 mt-6">
         <Text className="text-foreground mb-4 mt-0 sm:text-center text-lg font-medium">
           Help me by sharing this newsletter
         </Text>
@@ -49,10 +47,16 @@ export const NewsletterTemplate: FC<PropsWithChildren<NewsletterEmailProps>> = (
           <Row>
             <Column className="w-1/4 text-center">
               <Link
-                href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
+                href={`https://x.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
                 className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-block text-center"
               >
-                <SiX size={16} className="inline-block md:mr-2"></SiX>
+                <Img
+                  alt="X"
+                  src={emailImageBaseUrl('x.png')}
+                  width="16"
+                  height="16"
+                  className="inline-block md:mr-2"
+                ></Img>
                 X/Twitter
               </Link>
             </Column>
@@ -61,7 +65,13 @@ export const NewsletterTemplate: FC<PropsWithChildren<NewsletterEmailProps>> = (
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
                 className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-block text-center"
               >
-                <SiLinkedin size={16} className="inline-block md:mr-2" />
+                <Img
+                  alt="LinkedIn"
+                  src={emailImageBaseUrl('linkedin.png')}
+                  width="16"
+                  height="16"
+                  className="inline-block md:mr-2"
+                ></Img>
                 LinkedIn
               </Link>
             </Column>
@@ -70,7 +80,13 @@ export const NewsletterTemplate: FC<PropsWithChildren<NewsletterEmailProps>> = (
                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
                 className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-block text-center"
               >
-                <SiInstagram size={16} className="inline-block md:mr-2" />
+                <Img
+                  alt="Instagram"
+                  src={emailImageBaseUrl('instagram.png')}
+                  width="16"
+                  height="16"
+                  className="inline-block md:mr-2"
+                ></Img>
                 Instagram
               </Link>
             </Column>
@@ -79,7 +95,13 @@ export const NewsletterTemplate: FC<PropsWithChildren<NewsletterEmailProps>> = (
                 href={`mailto:?subject=${encodedTitle}&body=Check out this newsletter: ${encodedUrl}`}
                 className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-block text-center"
               >
-                <LucideMail size={16} className="inline-block md:mr-2" />
+                <Img
+                  alt="Email"
+                  src={emailImageBaseUrl('email.png')}
+                  width="16"
+                  height="16"
+                  className="inline-block md:mr-2"
+                ></Img>
                 Email
               </Link>
             </Column>

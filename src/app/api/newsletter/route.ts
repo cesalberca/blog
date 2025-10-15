@@ -41,7 +41,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<Subscribe
       await resend.emails.send({
         from: process.env['RESEND_EMAIL_FROM']!,
         to: email,
-        subject: 'Confirm your newsletter subscription',
+        subject: 'Confirm the Frontend Architecture Newsletter Subscription',
         replyTo: 'cesar@cesalberca.com',
         react: NewsletterConfirmationEmail({ firstName, confirmationToken, email }) as ReactElement,
       })

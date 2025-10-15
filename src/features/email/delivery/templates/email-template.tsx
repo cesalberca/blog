@@ -31,13 +31,13 @@ const config: TailwindConfig = {
   theme: {
     extend: {
       colors: {
-        primary: '#262626',
-        background: '#171717',
-        foreground: '#fbfbfb',
-        secondary: '#444444',
-        muted: '#0f0f0f',
-        'muted-foreground': '#b5b5b5',
-        border: '#444444',
+        primary: '#171717',
+        background: '#ffffff',
+        foreground: '#0a0a0a',
+        secondary: '#f5f5f5',
+        muted: '#f5f5f5',
+        'muted-foreground': '#737373',
+        border: '#e5e5e5',
       },
     },
   },
@@ -53,14 +53,12 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
   return (
     <Html className="dark">
       <Tailwind config={config}>
-        <Head>
-          <meta name="color-scheme" content="dark" />
-        </Head>
+        <Head />
         <Preview>{description}</Preview>
         <Body className="font-sans m-0 p-0">
           <Container className="max-w-2xl mx-auto">
             {browserUrl && (
-              <Section className="py-2 px-6 text-center border-b border-border bg-background">
+              <Section className="py-2 px-6 text-center border-b border-border">
                 <Text className="text-muted-foreground text-xs m-0">
                   <Link
                     href={browserUrl}
@@ -73,7 +71,7 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
             )}
 
             {/* Header */}
-            <Section className="py-8 px-6 pb-0 pt-4 text-center border-b border-border bg-background">
+            <Section className="py-8 px-6 pb-0 pt-4 text-center border-b border-border">
               <Link href="https://cesalberca.com">
                 <Img
                   src={emailImageBaseUrl('logo.png')}
@@ -90,14 +88,12 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
             </Section>
 
             {/* Main Content */}
-            <Section className="max-w-md p-2 bg-background">
+            <Section className="max-w-md p-2">
               <Heading className="text-[54px] font-bold text-foreground text-left leading-tight w-full sm:w-4/5 my-2">
                 {title}
               </Heading>
 
-              <Section className="text-muted-foreground text-xl leading-relaxed mx-auto max-w-md bg-background">
-                {children}
-              </Section>
+              <Section className="text-muted-foreground text-xl leading-relaxed mx-auto max-w-md">{children}</Section>
 
               <Section className="mt-4">
                 <Img

@@ -12,7 +12,7 @@ import { Link } from '@/features/email/delivery/components/link/link'
 
 function createHeading(level: number) {
   const Heading = ({ children }: { children: string }) => {
-    return createElement(`h${level}`, { className: 'text-white' }, children)
+    return createElement(`h${level}`, { className: 'text-primary' }, children)
   }
 
   Heading.displayName = `Heading${level}`
@@ -34,7 +34,7 @@ export const NewsletterEmailLoader: FC<{ slug: string }> = ({ slug }) => {
       h5: createHeading(5),
       h6: createHeading(6),
       strong: props => {
-        return <strong className="text-white">{props.children}</strong>
+        return <strong className="text-primary">{props.children}</strong>
       },
       a: props => {
         return <Link {...props}></Link>
@@ -43,7 +43,7 @@ export const NewsletterEmailLoader: FC<{ slug: string }> = ({ slug }) => {
         return (
           <blockquote
             {...props}
-            className="bg-muted text-white border-l-4 border-border border-solid rounded-lg p-2 pl-4 m-0 border-t-0 border-b-0 border-r-0"
+            className="bg-muted text-muted-foreground border-l-4 border-border border-solid rounded-lg p-2 pl-4 m-0 border-t-0 border-b-0 border-r-0"
           ></blockquote>
         )
       },
@@ -52,7 +52,7 @@ export const NewsletterEmailLoader: FC<{ slug: string }> = ({ slug }) => {
       },
       code: props => {
         return (
-          <CodeInline className="text-white py-1 px-2 bg-secondary rounded-md font-mono">{props.children}</CodeInline>
+          <CodeInline className="text-primary py-1 px-2 bg-secondary rounded-md font-mono">{props.children}</CodeInline>
         )
       },
       pre: props => {

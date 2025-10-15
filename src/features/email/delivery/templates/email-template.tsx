@@ -57,7 +57,7 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
           <meta name="color-scheme" content="dark" />
         </Head>
         <Preview>{description}</Preview>
-        <Body className="font-sans m-0 p-0 bg-background">
+        <Body className="font-sans m-0 p-0">
           <Container className="max-w-2xl mx-auto">
             {browserUrl && (
               <Section className="py-2 px-6 text-center border-b border-border bg-background">
@@ -99,7 +99,7 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
                 {children}
               </Section>
 
-              <Section className="mt-4 bg-background">
+              <Section className="mt-4">
                 <Img
                   src={emailImageBaseUrl('signature.png')}
                   width="501"

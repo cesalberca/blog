@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { MarkdownEmail } from '@/core/components/markdown/markdown-email'
-import { EmailTemplate } from '@/emails/email-template'
+import { EmailTemplate } from '@/features/email/delivery/templates/email-template'
 
 interface WelcomeEmailProps {
   firstName?: string

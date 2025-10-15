@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { EmailTemplate } from '@/emails/email-template'
+import { EmailTemplate } from '@/features/email/delivery/templates/email-template'
 import { MarkdownEmail } from '@/core/components/markdown/markdown-email'
 
 interface ContactNotificationEmailProps {

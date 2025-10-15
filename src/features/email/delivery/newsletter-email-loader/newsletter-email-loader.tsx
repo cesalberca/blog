@@ -1,14 +1,14 @@
 import { createElement, type FC } from 'react'
-import { NewsletterTemplate } from '@/emails/newsletter-template'
+import { NewsletterTemplate } from '@/features/email/delivery/templates/newsletter-template'
 import type { NewsletterMetadata } from '@/features/email/domain/newsletter-metadata'
 import path from 'path'
 import * as runtime from 'react/jsx-runtime'
 import { type EvaluateOptions, evaluateSync } from '@mdx-js/mdx'
 import fs from 'node:fs'
-import { CodeBlock } from '@/features/email/delivery/code-block/code-block'
+import { CodeBlock } from '@/features/email/delivery/components/code-block/code-block'
 import type { PrismLanguage } from '@react-email/code-block'
 import { CodeInline, Text } from '@react-email/components'
-import { Link } from '@/features/email/delivery/link/link'
+import { Link } from '@/features/email/delivery/components/link/link'
 
 function createHeading(level: number) {
   const Heading = ({ children }: { children: string }) => {

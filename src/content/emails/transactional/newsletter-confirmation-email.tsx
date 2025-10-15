@@ -1,9 +1,9 @@
 import type { FC } from 'react'
 import { MarkdownEmail } from '@/core/components/markdown/markdown-email'
-import { EmailTemplate } from '@/emails/email-template'
+import { EmailTemplate } from '@/features/email/delivery/templates/email-template'
 import { Container, Text } from '@react-email/components'
-import { Button } from '@/features/email/delivery/button/button'
-import { Link } from '@/features/email/delivery/link/link'
+import { Button } from '@/features/email/delivery/components/button/button'
+import { Link } from '@/features/email/delivery/components/link/link'
 
 interface ConfirmationEmailProps {
   firstName: string

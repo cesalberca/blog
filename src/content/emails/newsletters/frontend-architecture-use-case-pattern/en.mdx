@@ -1,0 +1,279 @@
+export const metadata = {
+  title: 'The "Only" Pattern you Need in Frontend Architecture',
+  slug: 'https://cesalberca.com/newsletter/2025-10-13_the-use-case-pattern',
+  description: `If I had to choose only one pattern to implement as a Frontend Architect it would be the **use case pattern**. I've implemented this pattern countless times in projects **ranging from Startups** to **Multi Million companies**. I've perfected over a _decade_ how I implement this pattern and in this newsletter I want to share it with _you_.`,
+}
+
+The Use Case pattern is nothing sort of new, it has been around longer than I've been alive, however the way I apply in the Frontend is something that I haven't seen (_yet_). The Use Case pattern allows you to separate your business logic in such a way that you can add different pieces of code to completely change the way your code runs in an easy and transversal way.
+
+> The Use Case Pattern allows you to orchestrate your business logic calls
+
+## What is a Use Case?
+
+**A Use Case represents how a user interacts with the system**. Everything a user can do, well, that's a use case. When coding a use case the idea is to encapsulate a complete set of actions, so that the use cases can be reused. Use cases orchestrate, **they know who to call** and integrate the different pieces together so we return to the UI what it needs. Let's see some code so you can get a better understanding.
+
+## The UseCase Interface
+
+Everything starts with the `UseCase` interface:
+
+```typescript
+export interface UseCase<In, Out> {
+  handle(input?: In): Promise<Out>
+}
+```
+
+A `UseCase` is a class (it can be a function too, but I prefer classes) that has a method called `handle()`. This method, receives an input typed as `In` and return an output typed as `Out`.
+
+> Functions that are defined inside classes we call them methods.
+
+As you might have noticed, the output returned is **always a Promise**. This is a conscious design choice given that most of the time in the Frontend our use cases are going to indirectly make API calls, which happen to be asynchronous.
+
+> If you need to execute a computation-heavy use case, using Promises means you can also avoid blocking the main thread.
+
+## The UseCase implementation
+
+Now we can implement the `UseCase` interface.
+
+```typescript
+export class GetDestinationsQry implements UseCase<void, Destination[]> {
+  constructor(
+    private readonly destinationRepository: DestinationRepository,
+    private readonly destinationOrderer: DestinationOrderer,
+  ) {}
+
+  async handle(): Promise<Destination[]> {
+    return this.destinationOrderer.order(await this.destinationRepository.findAll())
+  }
+}
+```
+
+Here we are using two classes:
+
+1. `DestinationRepository`: Makes an API Request using the Repository Pattern (which I'll talk about in another newsletter)
+2. `DestinationOrderer`: Orders the Destination using a Domain class
+
+Now, you ar probably asking yourself why would I add this complexity to my code? I could just call the API in the UI using `fetch` and order the `Destinations` in the component that makes the call. Well, for starters, as you can see in this code, there's no UI code, which means I can in the future change UI frameworks or call this Use Case from different places without needing to change a _lot_ of code. This has something to do with how I apply Software Architecture Layers and Domain Driven Design, which I'll explain in another issue of this Newsletter.
+
+And I can't get the benefits of abstracting how I execute the use cases to handle transversal functionality.
+
+## The `UseCaseService`
+
+The trick is how to execute the UseCase. One would think you directly create the instance and execute them as follows, from let's say your React Component:
+
+```tsx
+import { type FC } from 'react'
+
+const getDestinationsQry = new GetDestinationsQry(destinationRepository, destinationOrderer)
+
+export const Comp: FC = () => {
+  return <button onClick={() => getDestinationsQry.handle()}>Click me</button>
+}
+```
+
+However, we are missing a great opportunity. What if we want to support the following features:
+
+1. Error handling
+2. Logging
+3. Cache
+4. And many more!
+
+The way to do that is by creating the `UseCaseService`, which helps us abstract _how_ an use case is executed.
+
+```typescript
+export class UseCaseService {
+  execute<In, Out>(useCase: UseCase<In, Out>, params?: In): Promise<Out> {
+    return useCase.handle(params) as Promise<Out>
+  }
+}
+```
+
+It doesn't look like much, however, this changes, **changes everything**. What if we want to add logging to all the use cases? Well, instead of adding console.log here or there we can just do this:
+
+```typescript
+export class UseCaseService {
+  execute<In, Out>(useCase: UseCase<In, Out>, params?: In): Promise<Out> {
+    console.log(useCase.constructor.name)
+    console.log(params)
+    return useCase.handle(params) as Promise<Out>
+  }
+}
+```
+
+As easy as that!
+
+> In production since frameworks tend to mangle class names to reduce the size of the code I usually add a static field called ID with the name of the class which I use for logging and for dependency injection
+
+Let's make that change!
+
+```typescript
+export class GetDestinationsQry implements UseCase<void, Destination[]> {
+  static readonly ID = 'GetDestinationsQry'
+  ...
+}
+
+export class UseCaseService {
+  execute<In, Out>(useCase: UseCase<In, Out>, params?: In): Promise<Out> {
+    console.log(useCase.ID)
+    console.log(params)
+    return useCase.handle(params) as Promise<Out>
+  }
+}
+```
+
+Interestingly enough we can also `await` the execution of the use case to log the result:
+
+```typescript
+export class UseCaseService {
+  async execute<In, Out>(useCase: UseCase<In, Out>, params?: In): Promise<Out> {
+    console.log(useCase.ID)
+    console.log(params)
+    const result = await useCase.handle(params) as Promise<Out>
+    console.log(result)
+    return result
+  }
+}
+```
+
+> In another issue of the newsletter I'll show you how to improve the UseCaseService so as not to mix different logic in this class with Middlewares and the Chain of Responsibility Pattern.
+
+What about if I want to implement **global error handling**?
+
+```typescript
+export class UseCaseService {
+  async execute<In, Out>(useCase: UseCase<In, Out>, params?: In): Promise<Out> {
+    try {
+      console.log(useCase.ID)
+      console.log(params)
+      const result = await useCase.handle(params) as Promise<Out>
+      console.log(result)
+      return result
+    } catch (e) {
+      alert(e)
+      throw e
+    }
+
+  }
+}
+```
+
+Now I have a way to display to the user the errors in a generic way! There are endless possibilities.
+
+Let me show you how to use the `UseCaseService`
+
+## Executing the UseCaseService
+
+```tsx
+import { type FC } from 'react'
+
+const useCaseService = new UseCaseService()
+const getDestinationsQry = new GetDestinationsQry(destinationRepository, destinationOrderer)
+
+export const Comp: FC = () => {
+  return <button onClick={() => useCaseService.execute(getDestinationsQry)}>Click me</button>
+}
+```
+
+Usually to avoid creating instances here and there I have a container class that handles the instantiation of the classes and then I either just import the instances or I use a [Dependency Injection Container]() to retrieve the instance.
+
+Here is a simple example:
+
+```typescript
+export const destinationApiRepository = new DestinationApiRepository()
+export const destinationOrderer = new DestinationOrderer()
+export const getDestinationsQry = new GetDestinationsQry(destinationApiRepository, destinationOrderer)
+
+export const useCaseService = new UseCaseService()
+```
+
+## Calling UseCaseService from the UI
+
+Since I also want to probably call the use case from the UI and handle loading I create a last wrapper that handles that for me. Let me show you an example in React:
+
+```typescript file=useUseCase.tsx
+export interface UseUseCaseOptions<In> {
+  /** Whether to execute the use case immediately on mount */
+  immediate?: boolean
+  /** Default parameters to pass to the use case */
+  defaultParams?: In
+}
+
+/**
+ * State returned by the useUseCase hook.
+ */
+export interface UseCaseState<In, Out> {
+  /** Whether the use case is currently executing */
+  isLoading: boolean
+  /** The data returned by the use case, if any */
+  data: Out | null
+  /** Function to execute the use case */
+  execute: (params?: In) => Promise<Out>
+  /** Reset the state to its initial values */
+  reset: () => void
+}
+
+function useUseCase<In, Out>(useCase: UseCase<In, Out>, options: UseUseCaseOptions<In> = {}): UseCaseState<In, Out> {
+  const [isLoading, setIsLoading] = useState(!!options.immediate)
+  const [data, setData] = useState<Out | null>(null)
+
+  const execute = useCallback(
+    async (params?: In): Promise<Out> => {
+      setIsLoading(true)
+      try {
+        const result = await useCaseService.execute(useCase, params)
+
+        setData(result)
+        return result
+      } finally {
+        setIsLoading(false)
+      }
+    },
+    [useCase],
+  )
+
+  const reset = useCallback(() => {
+    setIsLoading(false)
+    setData(null)
+  }, [])
+
+  useEffect(() => {
+    if (options.immediate) {
+      execute(options.defaultParams)
+    }
+  }, [options.immediate])
+
+  return {
+    isLoading,
+    data,
+    execute,
+    reset,
+  }
+}
+```
+
+Now, in the component you can call the hook like this:
+
+```tsx
+import { type FC } from 'react'
+import { getDestinationsQry } from './container'
+import { useUseCase } from './use-use-case'
+
+export const Comp: FC = () => {
+  const { execute } = useUseCase(getDestinationsQry)
+
+  return <button onClick={() => execute()}>Click me</button>
+}
+```
+
+## Conclusion
+
+Use Cases provide 3 main benefits in Frontend Architecture:
+
+1. Provide an extension point to add transversal functionality.
+2. Makes you think on how the user interacts with your application abstracting their actions into code.
+3. Allow you to easily reuse use cases or compose bigger use cases calling smaller ones.
+
+With that I hope you enjoyed the very first issue of this newsletter! If you found it useful, please share it with others, it makes my day!
+
+Feel free to reply to this email if you've found any typos or the email is not displayed correctly, I'll make sure to fix it for the web version and take note for the next newsletter. Thank you very much for reading here!
+
+P.S: Want to learn more about use cases? [Read a more advanced post about use cases]() on my web.

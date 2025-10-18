@@ -113,7 +113,9 @@ export const Testimonials: FC<TestimonialsProps> = ({ itemsPerPage = 1 } = { ite
             <CarouselItem key={index} className={`pl-2 md:pl-4 ${itemBasisClass}`}>
               <Card>
                 <CardContent className="p-6 flex flex-col justify-between h-full">
-                  <blockquote className="text-lg mb-4">&ldquo;{testimonial.content}&rdquo;</blockquote>
+                  <blockquote className="text-lg text-muted-foreground mb-4">
+                    &ldquo;{testimonial.content}&rdquo;
+                  </blockquote>
                   <div className="flex items-center mt-auto">
                     <Avatar className="h-10 w-10 mr-4">
                       <AvatarImage src={testimonial.avatar} alt={testimonial.name} />

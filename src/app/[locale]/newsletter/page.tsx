@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
-import { NewsletterPage } from '@/features/newsletter/delivery/newsletter.page'
+import { NewslettersPage } from '@/features/newsletter/delivery/newsletters.page'
 import { Locale } from '@/core/i18n/locale'
 
 const Page: NextPage<{ params: Promise<{ locale: Locale }> }> = async ({ params }) => {
-  await params
+  const { locale } = await params
 
-  return <NewsletterPage />
+  return <NewslettersPage locale={locale} />
 }
 
 export default Page

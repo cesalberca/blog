@@ -70,7 +70,7 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
                 e.stopPropagation()
                 prevImage()
               }}
-              className="absolute left-4 text-white p-2"
+              className="absolute left-4 text-foreground p-2"
               aria-label="Previous image"
             >
               <ChevronLeft size={24} />
@@ -90,14 +90,14 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
                 e.stopPropagation()
                 nextImage()
               }}
-              className="absolute right-4 text-white p-2"
+              className="absolute right-4 text-foreground p-2"
               aria-label="Next image"
             >
               <ChevronRight size={24} />
             </button>
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 text-white p-2"
+              className="absolute top-4 right-4 text-foreground p-2"
               aria-label="Close lightbox"
             >
               <X size={24} />

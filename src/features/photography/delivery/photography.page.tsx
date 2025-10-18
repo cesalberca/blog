@@ -41,7 +41,7 @@ export const PhotographyPage: FC<Props> = ({ photos }) => {
             />
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <p className="text-white text-sm">{photo.alt}</p>
+              <p className="text-foreground text-sm">{photo.alt}</p>
             </div>
           </div>
         ))}
@@ -55,7 +55,9 @@ export const PhotographyPage: FC<Props> = ({ photos }) => {
         >
           {selectedPhoto && (
             <div className="relative w-full h-full flex items-center justify-center">
-              <DialogTitle className="absolute top-4 left-4 text-white z-10 text-lg">{selectedPhoto.alt}</DialogTitle>
+              <DialogTitle className="absolute top-4 left-4 text-foreground z-10 text-lg">
+                {selectedPhoto.alt}
+              </DialogTitle>
               <Image
                 src={selectedPhoto.src}
                 alt={selectedPhoto.alt}

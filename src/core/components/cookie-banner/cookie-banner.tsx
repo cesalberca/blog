@@ -79,7 +79,7 @@ export const CookieBanner: FC = () => {
       <div className="bg-black border border-white rounded-md overflow-hidden">
         {/* Terminal header */}
         <div className="bg-black px-4 py-2 flex items-center justify-between border-b border-white">
-          <div className="text-white font-mono text-sm">{t('cookies.terminalPath')}</div>
+          <div className="text-foreground font-mono text-sm">{t('cookies.terminalPath')}</div>
           <div className="flex space-x-2">
             <button
               onClick={closeBanner}
@@ -92,15 +92,15 @@ export const CookieBanner: FC = () => {
         </div>
 
         <div className="p-4 font-mono text-sm">
-          <div className="text-white">$ echo &#34;{t('cookies.message')}&#34;</div>
-          <div className="mt-2 text-white">{t('cookies.description')}</div>
-          <div className="mt-2 text-white">
-            <Link href="/cookies" className="text-white underline">
+          <div className="text-foreground">$ echo &#34;{t('cookies.message')}&#34;</div>
+          <div className="mt-2 text-foreground">{t('cookies.description')}</div>
+          <div className="mt-2 text-foreground">
+            <Link href="/cookies" className="text-foreground underline">
               {t('cookies.learnMore')}
             </Link>
           </div>
-          <div className="mt-2 text-white">{t('cookies.prompt')}</div>
-          <div className="mt-2 text-white flex items-center">
+          <div className="mt-2 text-foreground">{t('cookies.prompt')}</div>
+          <div className="mt-2 text-foreground flex items-center">
             $ {userInput}
             <motion.span
               className="inline-block w-[8px] h-[15px] bg-white ml-1"
@@ -114,11 +114,11 @@ export const CookieBanner: FC = () => {
               }}
             />
           </div>
-          <div className="mt-2 text-white">
+          <div className="mt-2 text-foreground">
             <span className="mr-4">
               <button
                 onClick={acceptCookies}
-                className="text-white hover:text-green-400 transition-colors focus:outline-none font-mono"
+                className="text-foreground hover:text-green-400 transition-colors focus:outline-none font-mono"
                 aria-label={t('cookies.acceptAriaLabel')}
               >
                 {t('cookies.accept')}
@@ -127,7 +127,7 @@ export const CookieBanner: FC = () => {
             <span>
               <button
                 onClick={denyCookies}
-                className="text-white hover:text-red-400 transition-colors focus:outline-none font-mono"
+                className="text-foreground hover:text-red-400 transition-colors focus:outline-none font-mono"
                 aria-label={t('cookies.denyAriaLabel')}
               >
                 {t('cookies.deny')}

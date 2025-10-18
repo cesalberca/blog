@@ -44,7 +44,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactRe
 
     // Send notification email to me
     try {
-      const { ContactNotificationEmail } = await import('@/content/emails/transactional/contact-notification-email')
+      const { ContactNotificationEmail } = await import('@/emails/transactional/contact-notification-email')
 
       await resend.emails.send({
         from: process.env['RESEND_EMAIL_FROM']!,
@@ -60,7 +60,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactRe
 
     // Send auto-reply confirmation email to the person who contacted me
     try {
-      const { ContactConfirmationEmail } = await import('@/content/emails/transactional/contact-confirmation-email')
+      const { ContactConfirmationEmail } = await import('@/emails/transactional/contact-confirmation-email')
 
       await resend.emails.send({
         from: process.env['RESEND_EMAIL_FROM']!,

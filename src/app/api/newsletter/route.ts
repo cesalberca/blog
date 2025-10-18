@@ -2,7 +2,7 @@ import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
 import type { ReactElement } from 'react'
 import { sign } from 'jsonwebtoken'
-import NewsletterConfirmationEmail from '@/content/emails/transactional/newsletter-confirmation-email'
+import NewsletterConfirmationEmail from '@/emails/transactional/newsletter-confirmation-email'
 
 const resend = new Resend(process.env['RESEND_API_KEY']!)
 

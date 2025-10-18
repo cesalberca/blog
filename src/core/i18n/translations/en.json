@@ -463,6 +463,7 @@
     }
   },
   "newsletter": {
+    "navbarTitle": "Newsletter",
     "title": "Frontend Architecture Newsletter",
     "subtitle": "Insights on building Scalable, Maintainable Frontend Architectures.",
     "recentNewslettersTitle": "Recent Newsletters",

@@ -79,7 +79,7 @@ export const Background: FC<PropsWithChildren<{ className?: string; image?: stri
         className={cn(
           'absolute top-0 left-0 h-full w-full font-mono text-xs break-words leading-4 opacity-0',
           styles['mask'],
-          image ? 'text-transparent' : 'text-white',
+          image ? 'text-transparent' : 'text-foreground',
           '[background-clip:text] [-webkit-background-clip:text]',
         )}
       ></motion.div>

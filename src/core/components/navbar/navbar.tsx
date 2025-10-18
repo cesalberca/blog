@@ -78,6 +78,9 @@ const MoreLinks = () => {
       <NavLink type="menu" href={'/experience'}>
         {t('experience.title')}
       </NavLink>
+      <NavLink type="menu" href={'/newsletter'}>
+        {t('newsletter.navbarTitle')}
+      </NavLink>
       <NavLink type="menu" href={'/photography'}>
         {t('photography.title')}
       </NavLink>

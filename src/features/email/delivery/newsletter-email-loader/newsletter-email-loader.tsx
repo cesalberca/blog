@@ -70,7 +70,7 @@ export const NewsletterEmailLoader: FC<{ slug: string }> = ({ slug }) => {
 
   return (
     <NewsletterTemplate
-      browserUrl={typedMetadata.browserUrl}
+      browserUrl={typedMetadata.slug}
       title={typedMetadata.title}
       description={typedMetadata.description}
     >

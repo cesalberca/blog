@@ -123,7 +123,7 @@ html {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-muted-foreground;
   }
 }
 
@@ -135,6 +135,7 @@ html {
   h5,
   h6 {
     @apply leading-tight;
+    @apply text-foreground;
     font-family: var(--font-azeret-mono);
     scroll-margin-top: 5rem;
   }

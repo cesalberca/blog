@@ -12,7 +12,7 @@ interface Props {
 }
 
 const linkVariants = cva(
-  'no-underline inline box-decoration-clone shadow-[inset_0_-1px_0_0_currentColor] transition-shadow duration-300 hover:shadow-[inset_0_0_0_0_currentColor]',
+  'text-foreground no-underline inline box-decoration-clone shadow-[inset_0_-1px_0_0_currentColor] transition-shadow duration-300 hover:shadow-[inset_0_0_0_0_currentColor]',
   {
     variants: {
       type: {

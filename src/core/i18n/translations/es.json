@@ -425,6 +425,7 @@
     }
   },
   "newsletter": {
+    "navbarTitle": "Newsletter",
     "title": "Newsletter de Arquitectura Frontend",
     "subtitle": "Perspectivas sobre la construcción de Arquitecturas Frontend Escalables y Mantenibles.",
     "recentNewslettersTitle": "Newsletters Recientes",

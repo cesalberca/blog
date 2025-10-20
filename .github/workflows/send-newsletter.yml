@@ -21,7 +21,7 @@ jobs:
           echo "Today's date: $TODAY"
 
           # Look for newsletter file with today's date prefix
-          NEWSLETTER_FILE=$(find src/content/emails/newsletters -name "${TODAY}_*.tsx" | head -1)
+          NEWSLETTER_FILE=$(find src/emails/newsletter -name "${TODAY}_*.tsx" | head -1)
 
           if [ -z "$NEWSLETTER_FILE" ]; then
             echo "No newsletter found for today ($TODAY)"

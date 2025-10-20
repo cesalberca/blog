@@ -48,25 +48,32 @@ export async function POST(request: NextRequest): Promise<NextResponse<Broadcast
         return NextResponse.json({ error: 'Newsletter component not found' }, { status: 404 })
       }
 
-      // Create broadcast using Resend
-      const broadcast = await resend.broadcasts.create({
+      // // Create broadcast using Resend
+      // const broadcast = await resend.broadcasts.create({
+      //   from,
+      //   subject: metadata.title,
+      //   react: NewsletterComponent() as ReactElement,
+      //   audienceId,
+      //   name: metadata.title,
+      // })
+      //
+      // if (broadcast.error) {
+      //   console.error('Resend broadcast creation error:', broadcast.error)
+      //   return NextResponse.json({ error: broadcast.error.message }, { status: 400 })
+      // }
+      //
+      // await resend.broadcasts.send(broadcast.data.id)
+
+      await resend.emails.send({
         from,
         subject: metadata.title,
         react: NewsletterComponent() as ReactElement,
-        audienceId,
-        name: metadata.title,
+        to: 'cesar@cesalberca.com',
       })
-
-      if (broadcast.error) {
-        console.error('Resend broadcast creation error:', broadcast.error)
-        return NextResponse.json({ error: broadcast.error.message }, { status: 400 })
-      }
-
-      await resend.broadcasts.send(broadcast.data.id)
 
       return NextResponse.json(
         {
-          broadcastId: broadcast.data?.id,
+          // broadcastId: broadcast.data?.id,
           message: 'Broadcast created successfully',
         },
         { status: 200 },

@@ -178,10 +178,8 @@ html {
   margin-right: -50vw;
 }
 
-@screen lg {
-  .full-width-section {
-    @apply max-w-xl m-auto w-full relative left-0 right-0;
-  }
+.full-width-section {
+  @apply max-w-xl m-auto w-full relative left-0 right-0;
 }
 
 /* Represents the container of the page, which is the element that contains all the content and is the next element to full-width-section */

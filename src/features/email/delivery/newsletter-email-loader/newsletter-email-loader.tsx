@@ -21,7 +21,7 @@ function createHeading(level: number) {
 }
 
 export const NewsletterEmailLoader: FC<{ slug: string }> = ({ slug }) => {
-  const file = path.join(process.cwd(), 'src', 'content', 'emails', 'newsletter', slug)
+  const file = path.join(process.cwd(), 'src', 'content', 'emails', 'newsletter', slug, 'en.mdx')
   const code = fs.readFileSync(file, { encoding: 'utf8' })
 
   const { default: Content, metadata } = evaluateSync(code, {

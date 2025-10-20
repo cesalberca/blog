@@ -21,7 +21,7 @@ function createHeading(level: number) {
 }
 
 export const NewsletterEmailLoader: FC<{ slug: string }> = ({ slug }) => {
-  const file = path.join(process.cwd(), 'src', 'content', 'emails', 'newsletters', slug)
+  const file = path.join(process.cwd(), 'src', 'content', 'emails', 'newsletter', slug)
   const code = fs.readFileSync(file, { encoding: 'utf8' })
 
   const { default: Content, metadata } = evaluateSync(code, {
@@ -52,7 +52,9 @@ export const NewsletterEmailLoader: FC<{ slug: string }> = ({ slug }) => {
       },
       code: props => {
         return (
-          <CodeInline className="text-primary py-1 px-2 bg-secondary rounded-md font-mono">{props.children}</CodeInline>
+          <CodeInline className="text-foreground py-1 px-2 bg-secondary rounded-md font-mono">
+            {props.children}
+          </CodeInline>
         )
       },
       pre: props => {

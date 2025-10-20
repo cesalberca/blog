@@ -70,10 +70,7 @@ export const Experience: FC = () => {
           ))}
         </div>
         <div className="mt-6">
-          <Link
-            className="text-xs"
-            href="https://drive.google.com/file/d/1NuWgWSZWU2axtO_P8xOpTYTWfG5XptAY/view?usp=sharing"
-          >
+          <Link className="text-xs" href="https://cesalberca.com/cv">
             {t('experience.cv')}
           </Link>
         </div>

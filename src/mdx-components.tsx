@@ -40,7 +40,7 @@ function Code({ children, ...props }: { children: string; className: string }) {
   ) : (
     <code
       {...props}
-      className={cn(className, 'bg-muted px-[4px] py-[2px] mx-[2px] rounded not-prose text-base font-mono')}
+      className={cn(className, 'bg-muted px-[4px] py-[2px] mx-[2px] rounded not-prose text-foreground font-mono')}
     >
       {children}
     </code>

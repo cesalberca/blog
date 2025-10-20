@@ -42,7 +42,7 @@ export const NewslettersPage: FC<{ locale: Locale }> = async ({ locale }) => {
           </div>
 
           {newsletters.map(newsletter => (
-            <Link className="min-w-min" key={newsletter.slug} href={`/newsletters/${newsletter.slug}`}>
+            <Link className="min-w-min" key={newsletter.slug} href={`/newsletter/${newsletter.slug}`}>
               <div className="mb-4">
                 <section className="p-4">
                   <h4 className="mb-2">{newsletter.title}</h4>

@@ -8,7 +8,7 @@ export const KoFiButton: FC = () => {
   const t = useTranslations()
 
   return (
-    <div className="flex items-center mt-10 mr-4">
+    <div className="flex items-center mt-10 gap-1">
       <Button asChild variant="default" className="mr-1">
         <a href="https://ko-fi.com/cesalberca" target="_blank" rel="noopener noreferrer" className="no-underline">
           {t('common.kofi')}

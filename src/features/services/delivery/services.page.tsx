@@ -218,7 +218,7 @@ export const ServicesPage: FC<{ locale: Locale }> = async ({ locale }) => {
       </Section>
 
       {/* Testimonials Section */}
-      <Section title={t('home.testimonials.title')} className="bg-accent/10 py-16 mb-16 bleed-width-section">
+      <Section title={t('home.testimonials.title')} className="py-16 mb-16 bleed-width-section">
         <Testimonials itemsPerPage={1} />
       </Section>
 

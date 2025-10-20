@@ -4,6 +4,7 @@ import { Page } from '@/core/components/page/page'
 import { baseUrl } from '@/app/sitemap'
 import { Background } from '@/core/components/background/background'
 import type { NewsletterMetadata } from '@/features/email/domain/newsletter-metadata'
+import { Badge } from '@/components/ui/badge'
 
 export const NewsletterPage: FC<PropsWithChildren<{ slug: string; metadata: NewsletterMetadata }>> = async ({
   slug,
@@ -30,10 +31,11 @@ export const NewsletterPage: FC<PropsWithChildren<{ slug: string; metadata: News
         }}
       />
       <Background className="w-full h-[60vh]">
-        <div className="p-12">
+        <div className="p-12 bleed-width-section">
           <h1>
             <AccentText>{metadata.title}</AccentText>
           </h1>
+          <Badge>{metadata.date?.toIso()}</Badge>
         </div>
       </Background>
 

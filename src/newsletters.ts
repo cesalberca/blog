@@ -3,6 +3,7 @@ import { Locale } from '@/core/i18n/locale'
 import path from 'path'
 import fs from 'fs'
 import type { NewsletterMetadata } from '@/features/email/domain/newsletter-metadata'
+import { Datetime } from '@/core/date/datetime'
 
 export async function getNewsletter({
   slug,
@@ -12,9 +13,10 @@ export async function getNewsletter({
   locale: Locale
 }): Promise<NewsletterMetadata | null> {
   try {
-    const { metadata } = await import(`@/content/email/newsletters/${slug}/${locale}.mdx`)
+    const { metadata } = await import(`@/content/emails/newsletter/${slug}/${locale}.mdx`)
     return {
       ...metadata,
+      date: Datetime.fromIso(metadata.date),
       slug,
     }
   } catch (error) {
@@ -25,7 +27,7 @@ export async function getNewsletter({
 
 export async function getNewsletters({ locale }: { locale: Locale }): Promise<NewsletterMetadata[]> {
   try {
-    const basePath = path.join(process.cwd(), 'src', 'content', 'emails', 'newsletters')
+    const basePath = path.join(process.cwd(), 'src', 'content', 'emails', 'newsletter')
     const slugs = getSlugs(basePath)
 
     const newsletters: NewsletterMetadata[] = []
@@ -33,10 +35,8 @@ export async function getNewsletters({ locale }: { locale: Locale }): Promise<Ne
     for (const { name } of slugs) {
       const filePath = path.join(basePath, name, `${locale}.mdx`)
 
-      console.log('filePath', filePath)
-
       if (fs.existsSync(filePath)) {
-        const { metadata } = await import(`@/content/emails/newsletters/${name}/${locale}.mdx`)
+        const { metadata } = await import(`@/content/emails/newsletter/${name}/${locale}.mdx`)
 
         newsletters.push(metadata)
       }

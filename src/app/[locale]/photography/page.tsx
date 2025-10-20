@@ -5,7 +5,10 @@ import { list } from '@vercel/blob'
 async function getPhotos(): Promise<Photo[]> {
   const response = await list({ prefix: 'photography' })
 
-  return response.blobs.map(blob => {
+  // @ts-ignore
+  const [ignoreFolder, ...photos] = response.blobs
+
+  return photos.map(blob => {
     const filename = blob.pathname.split('/').pop() ?? ''
     const base = filename.split('.')[0] ?? ''
     const alt = base.replace(/-/g, ' ')

@@ -27,8 +27,8 @@ export const NewsletterCard: React.FC<NewsletterCardProps> = ({ defaultExpanded 
           onClick={() => setIsExpanded(!isExpanded)}
         >
           <div>
-            <h2 className="text-xl font-semibold">{t('newsletter.title')}</h2>
-            <p className="text-sm text-muted-foreground mt-1">{t('newsletter.description')}</p>
+            <h2 className="text-xl m-0! font-semibold">{t('newsletter.title')}</h2>
+            <p className="text-sm text-muted-foreground mt-1 mb-0!">{t('newsletter.description')}</p>
           </div>
           <div className="text-primary">{isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}</div>
         </div>

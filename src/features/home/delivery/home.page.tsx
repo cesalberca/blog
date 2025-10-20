@@ -61,7 +61,7 @@ export const HomePage: FC<{ latestPost: PostMetadata | null }> = ({ latestPost }
         <div className="flex flex-col gap-8">
           <Services />
           <div className="mt-8 flex justify-center">
-            <Button size="lg" className="mb-12">
+            <Button size="lg" className="mb-12" asChild>
               <Link href="/services" type="invisible">
                 {t('home.services.readyToWork')}
               </Link>

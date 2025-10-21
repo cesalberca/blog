@@ -74,16 +74,16 @@
     },
     "latestPosts": "Último artículo",
     "viewAllPosts": "Ver todos los artículos",
-    "heroTitle": "Nómada Digital.\n\nArquitecto Front-end.\n\nPonente Internacional.",
+    "heroTitle": "Nómada Digital.\n\nArquitecto Frontend.\n\nPonente Internacional.",
     "labels": {
-      "architect": "Arquitecto Front-end",
+      "architect": "Arquitecto Frontend",
       "speaker": "Ponente",
       "digitalNomad": "Nómada Digital",
       "freelancer": "Freelancer",
       "podcastHost": "Presentador de Podcast"
     },
     "heroCaption": "Arquitectura frontend escalable y lista para IA",
-    "whoAmI": "**Arquitecto Front-end Senior** y **Desarrollador de Software** de España con más de **10 años de experiencia**. Freelancer _obsesionado_ con las **buenas prácticas**, **arquitectura** y **pruebas automáticas**.\n\nComo [ponente internacional](https://www.cesalberca.com/talks) y Nómada Digital, comparto mis aventuras tecnológicas por todo el mundo. Activo en la comunidad de [Codemotion](https://www.codemotion.com/) como miembro del comité y [embajador](https://community-en.codemotion.it/community/ambassador-program). Presentador del [Podcast Colivers Club](https://coliversclub.com/).",
+    "whoAmI": "**Arquitecto Frontend Senior** y **Desarrollador de Software** de España con más de **10 años de experiencia**. Freelancer _obsesionado_ con las **buenas prácticas**, **arquitectura** y **pruebas automáticas**.\n\nComo [ponente internacional](https://www.cesalberca.com/talks) y Nómada Digital, comparto mis aventuras tecnológicas por todo el mundo. Activo en la comunidad de [Codemotion](https://www.codemotion.com/) como miembro del comité y [embajador](https://community-en.codemotion.it/community/ambassador-program). Presentador del [Podcast Colivers Club](https://coliversclub.com/).",
     "projects": {
       "title": "Proyectos",
       "description": "Me encanta crear proyectos para aprender nuevas tecnologías y compartir conocimientos. Aquí tienes algunos de los proyectos que he creado.",
@@ -99,7 +99,7 @@
     },
     "services": {
       "title": "Servicios",
-      "description": "Tengo más de **10 años** de experiencia en **Desarrollo Front-end**. He desplegado en producción aplicaciones web empresariales completas usando **React**, **Angular** y **Vue**.",
+      "description": "Tengo más de **10 años** de experiencia en **Desarrollo Frontend**. He desplegado en producción aplicaciones web empresariales completas usando **React**, **Angular** y **Vue**.",
       "consultancy": "Consultoría",
       "consultancyDescription": "Te guiaré en **arquitectura** e implementación de **buenas prácticas**.",
       "training": "Formación",
@@ -107,9 +107,9 @@
       "development": "Desarrollo de Software",
       "developmentDescription": "Desarrollaré tu proyecto desde el **diseño**, pasando por el **desarrollo**, hasta el **despliegue**.",
       "corporateTraining": "Formación Corporativa",
-      "corporateTrainingDescription": "Cursos de formación personalizados para tu empresa sobre arquitectura front-end, estrategias de pruebas, JavaScript/TypeScript moderno y mejores prácticas de frameworks.",
+      "corporateTrainingDescription": "Cursos de formación personalizados para tu empresa sobre arquitectura frontend, estrategias de pruebas, JavaScript/TypeScript moderno y mejores prácticas de frameworks.",
       "architectureSpecialization": "Especialización en Arquitectura de Software",
-      "architectureSpecializationDescription": "Con más de 10 años de experiencia en desarrollo front-end, me especializo en crear arquitecturas de software robustas y mantenibles que escalan con las necesidades de tu negocio.",
+      "architectureSpecializationDescription": "Con más de 10 años de experiencia en desarrollo frontend, me especializo en crear arquitecturas de software robustas y mantenibles que escalan con las necesidades de tu negocio.",
       "caseStudiesIntro": "Mis servicios se basan en experiencia del mundo real. Consulta estos casos de estudio para ver mi enfoque en acción:",
       "readyToWork": "¿Quieres explorar cómo te puedo ayudar?",
       "readyToWorkDescription": "Contáctame para discutir cómo puedo ayudar a tu equipo a construir mejor software con sólidos principios de arquitectura."
@@ -186,7 +186,7 @@
     "writer": {
       "title": "Autor de libro",
       "dates": "2023 - Actualmente",
-      "description": "Estoy escribiendo un libro sobre **comedia** y **desarrollo de software Front-end**. Será publicado en español por [Savvily Editorial](https://savvily.es/) este año."
+      "description": "Estoy escribiendo un libro sobre **comedia** y **desarrollo de software Frontend**. Será publicado en español por [Savvily Editorial](https://savvily.es/) este año."
     },
     "autentia": {
       "title": "Autentia",
@@ -289,8 +289,8 @@
   "services": {
     "title": "Servicios",
     "hero": {
-      "badge": "Experto en Arquitectura Front-end",
-      "title": "Transforma tu Desarrollo Front-end con Soluciones de Arquitectura Expertas",
+      "badge": "Experto en Arquitectura Frontend",
+      "title": "Transforma tu Desarrollo Frontend con Soluciones de Arquitectura Expertas",
       "subtitle": "Eleva tus aplicaciones web con arquitectura escalable y mantenible de un especialista con más de 10 años de experiencia",
       "getStarted": "Comenzar",
       "exploreServices": "Explorar Servicios"
@@ -335,7 +335,7 @@
         "description": "Creación de sistemas adaptables con límites claros entre la lógica de negocio central y las dependencias externas"
       },
       "modularFrontend": {
-        "title": "Front-end Modular",
+        "title": "Frontend Modular",
         "description": "Construcción de sistemas basados en componentes que permiten desarrollo paralelo, mejor reutilización de código y mantenimiento más sencillo"
       },
       "designSystems": {
@@ -443,7 +443,7 @@
     "success": "¡Por favor revisa tu correo para confirmar tu suscripción!",
     "error": "Error",
     "signupTitle": "Suscripción a la Newsletter",
-    "signupQuestion": "¿Quieres estar al día con las últimas tendencias en desarrollo front-end, arquitectura y buenas prácticas?",
+    "signupQuestion": "¿Quieres estar al día con las últimas tendencias en desarrollo frontend, arquitectura y buenas prácticas?",
     "signupDescription": "Suscríbete a mi newsletter y recibe contenido exclusivo, tutoriales, consejos y noticias sobre arquitectura de frontend directamente en tu bandeja de entrada. ¡No te pierdas ninguna actualización!",
     "featuredLabel": "Newsletter",
     "subscribeNow": "Suscríbete Ahora",

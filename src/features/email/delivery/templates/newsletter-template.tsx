@@ -7,7 +7,6 @@ interface NewsletterEmailProps {
   title: string
   description: string
   browserUrl: string
-  shareUrl?: string
 }
 
 export const NewsletterTemplate: FC<PropsWithChildren<NewsletterEmailProps>> = ({
@@ -15,11 +14,11 @@ export const NewsletterTemplate: FC<PropsWithChildren<NewsletterEmailProps>> = (
   description,
   children,
   browserUrl,
-  shareUrl,
 }) => {
-  const urlToShare = shareUrl ?? browserUrl ?? emailImageBaseUrl('')
-  const encodedTitle = encodeURIComponent(typeof title === 'string' ? title : 'Newsletter')
+  const urlToShare = process.env['NEXT_PUBLIC_URL'] + '/newsletter/' + browserUrl
+  const encodedTitle = encodeURIComponent(title)
   const encodedUrl = encodeURIComponent(urlToShare)
+  const shareUrl = (by: string) => encodedTitle + ' ' + encodedUrl + ' by ' + by
 
   return (
     <EmailTemplate
@@ -38,69 +37,63 @@ export const NewsletterTemplate: FC<PropsWithChildren<NewsletterEmailProps>> = (
       {children}
 
       {/* Social Sharing Footer */}
-      <Section className="sm:px-6 mt-6">
-        <Text className="text-foreground mb-4 mt-0 sm:text-center text-lg font-medium">
+      <Section className="sm:px-6 mt-12">
+        <Text className="text-foreground mb-4 mt-0 text-center text-lg font-medium">
           Help me by sharing this newsletter
         </Text>
 
-        <Container className="w-full sm:w-2/3">
+        <Container className="w-full flex flex-col items-center sm:w-2/3">
           <Row>
             <Column className="w-1/4 text-center">
               <Link
-                href={`https://x.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
-                className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-block text-center"
+                href={`https://x.com/intent/tweet?text=${shareUrl('@cesalberca')}`}
+                className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-flex flex-col items-center text-center"
               >
-                <Img
-                  alt="X"
-                  src={emailImageBaseUrl('x.png')}
-                  width="16"
-                  height="16"
-                  className="inline-block md:mr-2"
-                ></Img>
+                <Img alt="X" src={emailImageBaseUrl('x.png')} width="16" height="16" className="inline-block"></Img>
                 X/Twitter
               </Link>
             </Column>
             <Column className="w-1/4 text-center">
               <Link
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
-                className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-block text-center"
+                href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}`}
+                className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-flex flex-col items-center text-center"
               >
                 <Img
                   alt="LinkedIn"
                   src={emailImageBaseUrl('linkedin.png')}
                   width="16"
                   height="16"
-                  className="inline-block md:mr-2"
+                  className="inline-block"
                 ></Img>
                 LinkedIn
               </Link>
             </Column>
             <Column className="w-1/4 text-center">
               <Link
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
-                className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-block text-center"
+                href={`https://bsky.app/intent/compose?text=${shareUrl('@cesalberca')}`}
+                className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-flex flex-col items-center text-center"
               >
                 <Img
-                  alt="Instagram"
-                  src={emailImageBaseUrl('instagram.png')}
+                  alt="Bluesky"
+                  src={emailImageBaseUrl('bluesky.png')}
                   width="16"
                   height="16"
-                  className="inline-block md:mr-2"
+                  className="inline-block"
                 ></Img>
-                Instagram
+                Bluesky
               </Link>
             </Column>
             <Column className="w-1/4 text-center">
               <Link
                 href={`mailto:?subject=${encodedTitle}&body=Check out this newsletter: ${encodedUrl}`}
-                className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-block text-center"
+                className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-flex flex-col items-center text-center"
               >
                 <Img
                   alt="Email"
                   src={emailImageBaseUrl('email.png')}
                   width="16"
                   height="16"
-                  className="inline-block md:mr-2"
+                  className="inline-block"
                 ></Img>
                 Email
               </Link>

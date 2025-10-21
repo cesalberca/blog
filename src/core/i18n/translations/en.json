@@ -74,19 +74,19 @@
     },
     "latestPosts": "Latest post",
     "viewAllPosts": "View all posts",
-    "heroTitle": "Digital Nomad.\n\nFront-end Architect.\n\nInternational Speaker.",
+    "heroTitle": "Digital Nomad.\n\nFrontend Architect.\n\nInternational Speaker.",
     "labels": {
-      "architect": "Front-end Architect",
+      "architect": "Frontend Architect",
       "speaker": "Speaker",
       "digitalNomad": "Digital Nomad",
       "freelancer": "Freelancer",
       "podcastHost": "Podcast Host"
     },
     "heroCaption": "Helping You Build <strong>Scalable</strong>, <strong>AI-Ready</strong> Frontend <strong>Architecture</strong>",
-    "whoAmI": "**Senior Front-end Architect** & **Software Crafter** from Spain with over **10 years of experience**. Freelancer _obsessed_ with **best practices**, **architecture** and **testing**.\n\nAs an [international speaker](https://www.cesalberca.com/talks) and Digital Nomad, I share my tech adventures around the world. Active in the [Codemotion](https://www.codemotion.com/) community as a committee member and [ambassador](https://community-en.codemotion.it/community/ambassador-program). Host of [Colivers Club Podcast](https://coliversclub.com/).",
+    "whoAmI": "**Senior Frontend Architect** & **Software Crafter** from Spain with over **10 years of experience**. Freelancer _obsessed_ with **best practices**, **architecture** and **testing**.\n\nAs an [international speaker](https://www.cesalberca.com/talks) and Digital Nomad, I share my tech adventures around the world. Active in the [Codemotion](https://www.codemotion.com/) community as a committee member and [ambassador](https://community-en.codemotion.it/community/ambassador-program). Host of [Colivers Club Podcast](https://coliversclub.com/).",
     "services": {
       "title": "Services",
-      "description": "I have over **10 years** of experience in **Front-end Development**. I've deployed to production full-fledged enterprise web applications using **React**, **Angular** and **Vue**.",
+      "description": "I have over **10 years** of experience in **Frontend Development**. I've deployed to production full-fledged enterprise web applications using **React**, **Angular** and **Vue**.",
       "consultancy": "Consulting",
       "consultancyDescription": "I will guide you in **architecture** and implementing **best practices**.",
       "training": "Training",
@@ -94,7 +94,7 @@
       "development": "Software Development",
       "developmentDescription": "I will develop your project from **design** through **development** to **deployment**.",
       "architectureSpecialization": "Software Architecture Specialization",
-      "architectureSpecializationDescription": "With over 10 years of experience in front-end development, I specialize in creating robust, maintainable software architectures that scale with your business needs.",
+      "architectureSpecializationDescription": "With over 10 years of experience in frontend development, I specialize in creating robust, maintainable software architectures that scale with your business needs.",
       "caseStudiesIntro": "My services are based on real-world experience. Check out these case studies to see my approach in action:",
       "readyToWork": "Want to explore how I can help you?",
       "readyToWorkDescription": "Contact me to discuss how I can help your team build better software with solid architecture principles."
@@ -184,7 +184,7 @@
     "writer": {
       "title": "Book writer",
       "dates": "2023 - Currently",
-      "description": "I'm writing a book about **Comedy** and **Front-end Software Development**. It will be published in Spanish by [Savvily Editorial](https://savvily.es/) later this year."
+      "description": "I'm writing a book about **Comedy** and **Frontend Software Development**. It will be published in Spanish by [Savvily Editorial](https://savvily.es/) later this year."
     },
     "autentia": {
       "title": "Autentia",
@@ -266,7 +266,7 @@
   },
   "services": {
     "title": "Services",
-    "description": "I have over **10 years** of experience in **Front-end Development**. I've deployed to production full-fledged enterprise web applications using **React**, **Angular** and **Vue**.",
+    "description": "I have over **10 years** of experience in **Frontend Development**. I've deployed to production full-fledged enterprise web applications using **React**, **Angular** and **Vue**.",
     "types": {
       "consultancy": {
         "title": "Consulting Services",
@@ -297,11 +297,11 @@
       },
       "corporateTraining": {
         "title": "Corporate Training",
-        "description": "Customized training courses for your company on front-end architecture, testing strategies, modern JavaScript/TypeScript, and framework best practices."
+        "description": "Customized training courses for your company on frontend architecture, testing strategies, modern JavaScript/TypeScript, and framework best practices."
       },
       "architectureSpecialization": {
         "title": "Software Architecture Specialization",
-        "description": "With over 10 years of experience in front-end development, I specialize in creating robust, maintainable software architectures that scale with your business needs."
+        "description": "With over 10 years of experience in frontend development, I specialize in creating robust, maintainable software architectures that scale with your business needs."
       }
     },
     "servicesOffered": {
@@ -332,8 +332,8 @@
     "readyToWork": "Want to explore how I can help you?",
     "readyToWorkDescription": "Contact me to discuss how I can help your team build better software with solid architecture principles.",
     "hero": {
-      "badge": "Front-end Architecture Expert",
-      "title": "Transform Your Front-end Development with Expert Architecture Solutions",
+      "badge": "Frontend Architecture Expert",
+      "title": "Transform Your Frontend Development with Expert Architecture Solutions",
       "subtitle": "Elevate your web applications with scalable, maintainable architecture from a specialist with over 10 years of experience",
       "getStarted": "Get Started",
       "exploreServices": "Explore Services"
@@ -378,7 +378,7 @@
         "description": "Creating adaptable systems with clear boundaries between core business logic and external dependencies"
       },
       "modularFrontend": {
-        "title": "Modular Front-end",
+        "title": "Modular Frontend",
         "description": "Building component-based systems that enable parallel development, better code reuse, and easier maintenance"
       },
       "designSystems": {
@@ -481,7 +481,7 @@
     "success": "Please check your email to confirm your subscription!",
     "error": "Error",
     "signupTitle": "Newsletter Signup",
-    "signupQuestion": "Want to stay up to date with the latest trends in front-end development, architecture, and best practices?",
+    "signupQuestion": "Want to stay up to date with the latest trends in frontend development, architecture, and best practices?",
     "signupDescription": "Subscribe to my newsletter and receive exclusive content, tutorials, tips, and news about web development directly in your inbox. Don't miss any updates!",
     "featuredLabel": "Newsletter",
     "subscribeNow": "Subscribe Now",

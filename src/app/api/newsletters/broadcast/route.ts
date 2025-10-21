@@ -1,14 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import type { ReactElement } from 'react'
-import type { NewsletterMetadata } from '@/features/email/domain/newsletter-metadata'
 
 const resend = new Resend(process.env['RESEND_API_KEY']!)
 
 interface BroadcastRequest {
   newsletterSlug: string
   audienceId: string
-  from: string
   token: string
 }
 
@@ -21,11 +19,11 @@ interface BroadcastResponse {
 export async function POST(request: NextRequest): Promise<NextResponse<BroadcastResponse>> {
   try {
     const body: BroadcastRequest = await request.json()
-    const { newsletterSlug, audienceId, from, token } = body
+    const { newsletterSlug, audienceId, token } = body
 
     // Validate required fields
-    if (!newsletterSlug || !audienceId || !from) {
-      return NextResponse.json({ error: 'Missing required fields: newsletterSlug, audienceId, from' }, { status: 400 })
+    if (!newsletterSlug || !audienceId) {
+      return NextResponse.json({ error: 'Missing required fields: newsletterSlug, audienceId' }, { status: 400 })
     }
 
     // Validate authentication token
@@ -40,9 +38,9 @@ export async function POST(request: NextRequest): Promise<NextResponse<Broadcast
 
     try {
       // Dynamically import the newsletter component
-      const newsletterModule = await import(`@/content/emails/newsletters/${newsletterSlug}.tsx`)
+      const newsletterModule = await import(`@/emails/newsletter/${newsletterSlug}.tsx`)
       const NewsletterComponent = newsletterModule.default
-      const metadata: NewsletterMetadata = newsletterModule.metadata
+      const { title } = NewsletterComponent
 
       if (!NewsletterComponent) {
         return NextResponse.json({ error: 'Newsletter component not found' }, { status: 404 })
@@ -51,10 +49,10 @@ export async function POST(request: NextRequest): Promise<NextResponse<Broadcast
       // // Create broadcast using Resend
       // const broadcast = await resend.broadcasts.create({
       //   from,
-      //   subject: metadata.title,
+      //   subject: title,
       //   react: NewsletterComponent() as ReactElement,
       //   audienceId,
-      //   name: metadata.title,
+      //   name: title,
       // })
       //
       // if (broadcast.error) {
@@ -64,12 +62,15 @@ export async function POST(request: NextRequest): Promise<NextResponse<Broadcast
       //
       // await resend.broadcasts.send(broadcast.data.id)
 
-      await resend.emails.send({
-        from,
-        subject: metadata.title,
-        react: NewsletterComponent() as ReactElement,
+      const newVar = await resend.emails.send({
+        from: process.env['RESEND_EMAIL_FROM']!,
         to: 'cesar@cesalberca.com',
+        subject: title,
+        replyTo: 'cesar@cesalberca.com',
+        react: NewsletterComponent() as ReactElement,
       })
+
+      console.log({ newVar })
 
       return NextResponse.json(
         {

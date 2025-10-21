@@ -101,7 +101,7 @@ export const EmailTemplate: FC<PropsWithChildren<EmailTemplateProps>> = ({
                   width="501"
                   height="161"
                   alt="Handwritten César Alberca"
-                  className="mx-auto max-w-full h-auto w-full sm:w-[501px]"
+                  className="mx-auto max-w-full h-auto w-[400px] sm:w-[501px]"
                 />
                 <Text className="text-muted-foreground text-xs text-center m-0 leading-relaxed">
                   <em>Freelance Frontend Architect</em>

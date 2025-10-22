@@ -39,7 +39,12 @@
     "system": "System",
     "theme": "Theme",
     "toggleNavigation": "Toggle navigation",
-    "toggleTheme": "Toggle theme"
+    "toggleTheme": "Toggle theme",
+    "bookAnnouncementBanner": {
+      "newBookAvailable": "New book available!",
+      "bookTitle": "Software Cafrers: Writing Code That Would Make a Goat Vomit",
+      "discoverMore": "Discover more →"
+    }
   },
   "blog": {
     "title": "Blog",
@@ -544,6 +549,48 @@
       "title": "Blog Posts",
       "description": "Read my latest articles on frontend development and architecture.",
       "aiArchitecture": "AI-Ready Frontend Architecture"
+    }
+  },
+  "softwareCafrers": {
+    "title": "Software Craftless: Writing Code That Would Make a Goat Vomit",
+    "publishedBy": "Published by [Savvily](https://savvily.es/)",
+    "buyButton": "Buy",
+    "synopsis": {
+      "title": "Synopsis",
+      "paragraph1": "This book has reached you for a very specific reason: the code you write is... _Terrible_. _Shameful_. _Offensive_. **And on top of that, it's in JavaScript**. So yes, this book is for you. So that you keep writing code that only _\"works\"_ on your local machine and nobody knows why. **Because if nobody understands your code... You're indispensable**.",
+      "paragraph2": "With this book you'll learn to create **undetectable _bugs_**, **infinite recursive nested loops**, code structures that are **illegal in 42 countries**, abstractions that only **a lizard would understand** and functions that return anxiety.",
+      "paragraph3": "In short, you'll reinforce your mastery in **writing code that would make a goat vomit** to become an authentic development brute: a **\"Software Cafrer\"**. And yes, it's a good gift for that person who does _\"that thing\"_ with computers and you don't like _that_ much."
+    },
+    "biography": {
+      "title": "Biography",
+      "paragraph1": "**César Alberca** is a **Frontend** **Software** **Architect**, based in Spain, with more than **10 years of experience**. Phew, how serious this sounds... _better in first person?_ Since I'm writing it myself, after all. Okay. I'm very interested in **architecture**, **best practices**, **testing** and creating _Frontend_ applications that **survive the terrible pieces of code you make**. Yes, _you_, the one reading this. You know _perfectly_ well that you've been making code that would knock down a wildebeest for years. When are you going to stop?",
+      "paragraph2": "Meanwhile, I continue with my thing, promoting job intrusion by giving technical talks about architecture in the _Frontend_ —also called **architecturras™**—, traveling beyond my means as a **digital nomad**, and accumulating hobbies in the hope of forgetting that, _indeed_, **I still program for a living**.",
+      "paragraph3": "I wish a modal would appear in this book announcing my website. Since that's not the case, I'll leave it here: https://cesalberca.com/"
+    },
+    "testimonials": {
+      "title": "What they say about this book",
+      "reviews": [
+        {
+          "quote": "More than a technical book, technically it's a book.",
+          "source": "Neu York Times"
+        },
+        {
+          "quote": "Ideal for leveling monitors.",
+          "source": "Forves"
+        },
+        {
+          "quote": "We had to read it with gloves.",
+          "source": "The Gaurdian"
+        },
+        {
+          "quote": "A work that redefines the concept of \"publishable\".",
+          "source": "The Washingon Post"
+        },
+        {
+          "quote": "Unpalatable even for ruminants.",
+          "source": "National Geographyc"
+        }
+      ]
     }
   }
 }

@@ -39,7 +39,12 @@
     "system": "Sistema",
     "theme": "Tema",
     "toggleNavigation": "Alternar navegación",
-    "toggleTheme": "Alternar tema"
+    "toggleTheme": "Alternar tema",
+    "bookAnnouncementBanner": {
+      "newBookAvailable": "¡Nuevo libro disponible!",
+      "bookTitle": "Software Cafrers: Haciendo Código que Haría Vomitar a una Cabra",
+      "discoverMore": "Descubre más →"
+    }
   },
   "blog": {
     "title": "Blog",
@@ -487,5 +492,47 @@
   "cookies": {
     "title": "Política de Cookies",
     "fullContent": "Este sitio web utiliza cookies para mejorar tu experiencia de navegación y analizar la efectividad de nuestras campañas publicitarias. Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Algunas cookies son esenciales, mientras que otras requieren tu consentimiento.\n\n## Cookies de Google Ads\n\nSolo utilizamos cookies de Google Ads para fines de marketing y análisis. Estas cookies nos ayudan a entender cómo interactúas con nuestros anuncios y qué páginas visitas después de hacer clic en un anuncio. Esto nos permite medir el rendimiento de nuestra publicidad y optimizar nuestras campañas.\n\nEstas cookies **solo se establecen si proporcionas consentimiento explícito** a través del banner de cookies. Nunca se cargan antes de que tomes una decisión.\n\nPuedes obtener más información sobre las cookies de Google Ads visitando la [página de Privacidad y Condiciones de Google](https://policies.google.com/technologies/partner-sites).\n\n## Gestión de tus Preferencias\n\nPuedes aceptar o rechazar las cookies cuando visitas el sitio por primera vez. Si cambias de opinión más tarde, puedes actualizar tus preferencias haciendo clic en el enlace **\"Gestionar Cookies\"** en el pie de página. Esto reabrirá el banner de consentimiento y te permitirá ajustar tu configuración.\n\nTen en cuenta que deshabilitar las cookies puede afectar la funcionalidad y experiencia de nuestro sitio web."
+  },
+  "softwareCafrers": {
+    "title": "Software Cafrers: Haciendo Código que haría Vomitar a una Cabra",
+    "publishedBy": "Publicado por [Savvily](https://savvily.es/)",
+    "buyButton": "Comprar",
+    "synopsis": {
+      "title": "Sinopsis",
+      "paragraph1": "Este libro ha llegado a ti por una razón muy concreta: el código que haces es… _Pésimo_. _Vergonzoso_. _Ofensivo_. **Y encima en JavaScript**. Así que sí, este libro es para ti. Para que sigas escribiendo código que solo _«funciona»_ en tu local y nadie sabe por qué. **Porque si nadie entiende tu código… Eres indispensable**.",
+      "paragraph2": "Con este libro aprenderás a crear **_bugs_ indetectables**, **bucles anidados recursivos infinitos**, estructuras de código que son **ilegales en 42 países**, abstracciones que sólo **entendería un lagarto** y funciones que devuelven ansiedad.",
+      "paragraph3": "En definitiva, reforzarás tu maestría en **escribir código que haría vomitar a una cabra** para convertirte en un auténtico cafre del desarrollo: un **«Software Cafrer»**. Y sí, es un buen regalo para esa persona que se dedica a _«eso»_ de la informática y que no te cae _tan_ bien."
+    },
+    "biography": {
+      "title": "Biografía",
+      "paragraph1": "**César Alberca** es **Arquitecto Frontend** de **Software**, basado en España, con más de **10 años de experiencia**. Ufff, qué serio queda esto… _¿mejor en primera persona?_ Que lo estoy escribiendo yo, al fin y al cabo. Vale. Me interesa mucho la **arquitectura**, las **buenas prácticas**, el **testing** y crear aplicaciones _Frontend_ que **sobrevivan a las semejantes bazofias de código que haces**. Sí, _tú_, el que está leyendo esto. Sabes _perfectamente_ que llevas años haciendo código que haría tumbar a un ñu. ¿Cuándo piensas parar?",
+      "paragraph2": "Mientras tanto, yo sigo a lo mío, promoviendo el intrusismo laboral dando turras técnicas sobre arquitectura en el _Frontend_ —también llamadas **arquitecturras™**—, viajando por encima de mis posibilidades como **nómada digital**, y acumulando hobbies con la esperanza de olvidar que, _efectivamente_, **aún me dedico a programar**.",
+      "paragraph3": "Ojalá ahora apareciera una modal en este libro anunciando mi web. Como no es el caso, te la dejo aquí: https://cesalberca.com/"
+    },
+    "testimonials": {
+      "title": "Lo que dicen de este libro",
+      "reviews": [
+        {
+          "quote": "Más que un libro técnico, técnicamente es un libro.",
+          "source": "New York Times"
+        },
+        {
+          "quote": "Ideal para calzar monitores.",
+          "source": "Revista Forves"
+        },
+        {
+          "quote": "Lo tuvimos que leer con guantes.",
+          "source": "The Gaurdian"
+        },
+        {
+          "quote": "Una obra que redefine el concepto de «publicable».",
+          "source": "The Washingon Post"
+        },
+        {
+          "quote": "Inapetente incluso para rumiantes.",
+          "source": "National Geographyc"
+        }
+      ]
+    }
   }
 }

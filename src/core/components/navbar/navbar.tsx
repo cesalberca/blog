@@ -1,4 +1,6 @@
-import type { FC } from 'react'
+'use client'
+
+import { type FC, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
@@ -11,6 +13,8 @@ import { ChevronDown, Menu } from 'lucide-react'
 import { Link } from '@/core/components/link/link'
 import { CASE_STUDY_URLS } from '@/core/i18n/paths'
 import { RichText } from '@/core/components/rich-text/rich-text'
+import { BookAnnouncementBanner } from '@/core/components/banner/book-announcement-banner'
+import { getLocalStorage } from '@/core/utils/local-storage'
 
 const MainLinks = () => {
   const t = useTranslations()
@@ -96,49 +100,62 @@ export const Navbar: FC<{
 }> = ({ className }) => {
   const t = useTranslations()
   const locale = useLocale() as Locale
+  const bannerDismissed = getLocalStorage('bookAnnouncementBannerDismissed')
+  const [isBannerDismissed, setIsBannerDismissed] = useState<boolean>(!!bannerDismissed)
+  console.log({ bannerDismissed })
+  console.log({ isBannerDismissed })
 
   return (
-    <header
-      className={cn('flex backdrop-blur fixed z-20 h-16 w-full items-center justify-between px-4 md:px-6', className)}
-    >
-      <Link type="invisible" href={'/'} className="flex items-center gap-2">
-        <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
-        <span className="text-lg font-semibold">{t('home.title')}</span>
-      </Link>
-      <nav className="hidden lg:flex items-center justify-end gap-4">
-        <MainLinks />
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant="ghost" className="p-1">
-              <span>{t('common.more')}</span>
-              <ChevronDown className="ml-1 h-4 w-4" />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-40">
-            <div className="flex flex-col gap-2">
-              <MoreLinks />
-            </div>
-          </PopoverContent>
-        </Popover>
-        <LocaleSwitcher locale={locale} />
-      </nav>
-      <div className="flex gap-2 items-center lg:hidden">
-        <LocaleSwitcher locale={locale} />
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant="outline" size="icon">
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">{t('common.toggleNavigation')}</span>
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-56 mr-4">
-            <div className="flex flex-col gap-2">
-              <MainLinks />
-              <MoreLinks />
-            </div>
-          </PopoverContent>
-        </Popover>
-      </div>
-    </header>
+    <div>
+      <BookAnnouncementBanner onClose={() => setIsBannerDismissed(true)} />
+      <header
+        className={cn(
+          'flex backdrop-blur fixed z-20 h-16 w-full items-center justify-between px-4 md:px-6 transition-all duration-300',
+          { 'top-[40px]': !isBannerDismissed },
+          { 'top-0]': isBannerDismissed },
+          className,
+        )}
+      >
+        {isBannerDismissed + 'is'}
+        <Link type="invisible" href={'/'} className="flex items-center gap-2">
+          <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
+          <span className="text-lg font-semibold">{t('home.title')}</span>
+        </Link>
+        <nav className="hidden lg:flex items-center justify-end gap-4">
+          <MainLinks />
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="ghost" className="p-1">
+                <span>{t('common.more')}</span>
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-40">
+              <div className="flex flex-col gap-2">
+                <MoreLinks />
+              </div>
+            </PopoverContent>
+          </Popover>
+          <LocaleSwitcher locale={locale} />
+        </nav>
+        <div className="flex gap-2 items-center lg:hidden">
+          <LocaleSwitcher locale={locale} />
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">{t('common.toggleNavigation')}</span>
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-56 mr-4">
+              <div className="flex flex-col gap-2">
+                <MainLinks />
+                <MoreLinks />
+              </div>
+            </PopoverContent>
+          </Popover>
+        </div>
+      </header>
+    </div>
   )
 }

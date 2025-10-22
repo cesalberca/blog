@@ -95,9 +95,7 @@ export const CookieBanner: FC = () => {
           <div className="text-foreground">$ echo &#34;{t('cookies.message')}&#34;</div>
           <div className="mt-2 text-foreground">{t('cookies.description')}</div>
           <div className="mt-2 text-foreground">
-            <Link href="/cookies" className="text-foreground underline">
-              {t('cookies.learnMore')}
-            </Link>
+            <Link href="/cookies">{t('cookies.learnMore')}</Link>
           </div>
           <div className="mt-2 text-foreground">{t('cookies.prompt')}</div>
           <div className="mt-2 text-foreground flex items-center">

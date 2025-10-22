@@ -10,6 +10,7 @@ export const Markdown: FC<{ value: string; className?: string }> = ({ value, cla
     <div className={cn('prose prose-zinc dark:prose-invert text-current', className)}>
       <ReactMarkdown
         components={{
+          strong: ({ children }) => <strong className="text-foreground">{children}</strong>,
           code({ children, className, ...rest }) {
             const match = /language-(\w+)/.exec(className ?? '')
             return match ? (

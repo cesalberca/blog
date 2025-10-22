@@ -1,6 +1,6 @@
 'use client'
 
-import { type FC, useState } from 'react'
+import { type FC, useState, useEffect } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
@@ -100,10 +100,12 @@ export const Navbar: FC<{
 }> = ({ className }) => {
   const t = useTranslations()
   const locale = useLocale() as Locale
-  const bannerDismissed = getLocalStorage('bookAnnouncementBannerDismissed')
-  const [isBannerDismissed, setIsBannerDismissed] = useState<boolean>(!!bannerDismissed)
-  console.log({ bannerDismissed })
-  console.log({ isBannerDismissed })
+  const [isBannerDismissed, setIsBannerDismissed] = useState<boolean>(true)
+
+  useEffect(() => {
+    const bannerDismissed = getLocalStorage('bookAnnouncementBannerDismissed')
+    setIsBannerDismissed(!!bannerDismissed)
+  }, [])
 
   return (
     <div>
@@ -112,11 +114,10 @@ export const Navbar: FC<{
         className={cn(
           'flex backdrop-blur fixed z-20 h-16 w-full items-center justify-between px-4 md:px-6 transition-all duration-300',
           { 'top-[40px]': !isBannerDismissed },
-          { 'top-0]': isBannerDismissed },
+          { 'top-0': isBannerDismissed },
           className,
         )}
       >
-        {isBannerDismissed + 'is'}
         <Link type="invisible" href={'/'} className="flex items-center gap-2">
           <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
           <span className="text-lg font-semibold">{t('home.title')}</span>

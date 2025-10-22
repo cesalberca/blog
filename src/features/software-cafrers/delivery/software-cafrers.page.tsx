@@ -4,6 +4,8 @@ import { Link } from '@/core/components/link/link'
 import { Section } from '@/core/components/section/section'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { Button } from '@/components/ui/button'
+import Image from 'next/image'
+import { cn } from '@/lib/utils'
 
 export const SoftwareCafrersPage: FC = () => {
   return (
@@ -15,16 +17,12 @@ export const SoftwareCafrersPage: FC = () => {
       </div>
 
       <Section>
-        <div className="wrapper">
+        <div className="bleed-width-section">
           <div className="flex flex-col md:flex-row gap-8">
             <div className="md:w-1/3">
               <div className="sticky top-20 pt-4">
-                <div className="relative aspect-[2/3] w-full bg-gray-200 rounded-lg shadow-lg flex items-center justify-center">
-                  <div className="text-center p-4">
-                    <h3 className="text-xl font-bold mb-2">Software Cafrers</h3>
-                    <p className="text-sm">Haciendo Código que haría Vomitar a una Cabra</p>
-                    <p className="mt-4 text-xs text-gray-500">Imagen de portada próximamente</p>
-                  </div>
+                <div className="relative w-full  rounded-lg shadow-lg flex items-center justify-center">
+                  <Image src={'/assets/images/books/cover.png'} width={720} height={1080} alt="" />
                 </div>
 
                 <div className="mt-6 flex flex-col gap-4">
@@ -36,9 +34,8 @@ export const SoftwareCafrersPage: FC = () => {
                   </p>
 
                   <div className="flex flex-col gap-2">
-                    <p className="text-amber-500 font-bold">¡Próximamente!</p>
                     <Button asChild>
-                      <Link type="invisible" href={'https://savvily.es/'}>
+                      <Link type="invisible" href={'https://tienda.savvily.es/products/software-cafrers'}>
                         Comprar
                       </Link>
                     </Button>
@@ -48,40 +45,59 @@ export const SoftwareCafrersPage: FC = () => {
             </div>
 
             <div className="md:w-2/3">
-              <Section title="Sinopsis" className="mt-0 md:mt-0">
+              <Section className="mt-0 md:mt-0">
+                <h2 className={cn('my-6')}>
+                  <AccentText>Sinopsis</AccentText>
+                </h2>
                 <div className="not-prose max-w-none">
                   <p>
-                    Este libro ha llegado a tus manos por una razón muy concreta: el código que haces es… Pésimo.
-                    Vergonzoso. Ofensivo. Y encima en JavaScript. Así que sí, este libro es para ti. Para que sigas
-                    escribiendo código que solo &#34;funciona&#34; en tu local y nadie sabe por qué. Porque si nadie
-                    entiende tu código... Eres indispensable.
+                    Este libro ha llegado a ti por una razón muy concreta: el código que haces es… <em>Pésimo</em>.
+                    <em>Vergonzoso</em>.<em>Ofensivo</em>. <strong>Y encima en JavaScript</strong>. Así que sí, este
+                    libro es para ti. Para que sigas escribiendo código que solo <em>«funciona»</em> en tu local y nadie
+                    sabe por qué. <strong>Porque si nadie entiende tu código… Eres indispensable</strong>.
                   </p>
                   <p>
-                    Con este libro aprenderás a crear bugs indetectables, bucles anidados recursivos infinitos,
-                    estructuras de código que son ilegales en 42 países, abstracciones que sólo entendería un lagarto y
-                    funciones que devuelven ansiedad. En definitiva, reforzarás tu maestría en escribir código que haría
-                    vomitar a una cabra para convertirte en un auténtico cafre del desarrollo: un Software Cafrer. Y sí,
-                    es un buen regalo para esa persona que se dedica a &#34;eso&#34; de la informática y que no te cae
-                    tan bien.
+                    Con este libro aprenderás a crear{' '}
+                    <strong>
+                      <em>bugs</em> indetectables
+                    </strong>
+                    , <strong>bucles anidados recursivos infinitos</strong>, estructuras de código que son{' '}
+                    <strong>ilegales en 42 países</strong>, abstracciones que sólo{' '}
+                    <strong>entendería un lagarto</strong> y funciones que devuelven ansiedad.
+                  </p>
+                  <p>
+                    En definitiva, reforzarás tu maestría en{' '}
+                    <strong>escribir código que haría vomitar a una cabra</strong> para convertirte en un auténtico
+                    cafre del desarrollo: un <strong>«Software Cafrer»</strong>. Y sí, es un buen regalo para esa
+                    persona que se dedica a <em>«eso»</em> de la informática y que no te cae <em>tan</em> bien.
                   </p>
                 </div>
               </Section>
 
-              <Section title="Biografía">
+              <Section>
+                <h2 className={cn('my-6')}>
+                  <AccentText>Biografía</AccentText>
+                </h2>
                 <div className="not-prose max-w-none">
                   <p>
-                    César Alberca es arquitecto Frontend de software, basado en España y con más de 10 años de
-                    experiencia. Ufff, qué serio queda esto… ¿mejor en primera persona? Que lo estoy escribiendo yo, al
-                    fin y al cabo. Vale. Me interesa mucho las buenas prácticas, el testing y crear aplicaciones
-                    Frontend que sobrevivan las semejantes bazofias de código que tú haces. Sí, tú, el que está leyendo
-                    esto. Sabes perfectamente que llevas años haciendo código que haría tumbar a un ñu. ¿Cuándo piensas
-                    parar?
+                    <strong>César Alberca</strong> es <strong>Arquitecto Frontend</strong> de <strong>Software</strong>,
+                    basado en España, con más de <strong>10 años de experiencia</strong>. Ufff, qué serio queda esto…
+                    <em>¿mejor en primera persona?</em> Que lo estoy escribiendo yo, al fin y al cabo. Vale. Me interesa
+                    mucho la <strong>arquitectura</strong>, las <strong>buenas prácticas</strong>, el{' '}
+                    <strong>testing</strong> y crear aplicaciones <em>Frontend</em> que{' '}
+                    <strong>sobrevivan a las semejantes bazofias de código que haces</strong>. Sí, <em>tú</em>, el que
+                    está leyendo esto. Sabes <em>perfectamente</em> que llevas años haciendo código que haría tumbar a
+                    un ñu. ¿Cuándo piensas parar?
                   </p>
                   <p>
                     Mientras tanto, yo sigo a lo mío, promoviendo el intrusismo laboral dando turras técnicas sobre
-                    arquitectura en el Frontend —también llamadas arquitecturras™—, viajando por encima de mis
-                    posibilidades como nómada digital, y acumulando hobbies con la esperanza de olvidar que,
-                    efectivamente, aún me dedico a programar.
+                    arquitectura en el <em>Frontend</em> —también llamadas <strong>arquitecturras™</strong>—, viajando
+                    por encima de mis posibilidades como <strong>nómada digital</strong>, y acumulando hobbies con la
+                    esperanza de olvidar que, <em>efectivamente</em>, <strong>aún me dedico a programar</strong>.
+                  </p>
+                  <p>
+                    Ojalá ahora apareciera una modal en este libro anunciando mi web. Como no es el caso, te la dejo
+                    aquí: https://cesalberca.com/
                   </p>
                 </div>
               </Section>

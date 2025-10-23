@@ -1,0 +1,157 @@
+'use client'
+
+import { useState } from 'react'
+import { useTranslations } from 'next-intl'
+import { Button } from '@/components/ui/button'
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { X, Menu, ChevronRight, ChevronLeft } from 'lucide-react'
+import { Link } from '@/core/components/link/link'
+import { SecondaryCard } from '@/core/components/secondary-card/secondary-card'
+
+interface MenuItem {
+  label: string
+  href?: string
+  items?: { label: string; href: string }[]
+  secondaryCards?: { title: string; href: string; className?: string }[]
+}
+
+export const MobileMenu = () => {
+  const t = useTranslations()
+  const [isOpen, setIsOpen] = useState(false)
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+
+  const menuItems: MenuItem[] = [
+    {
+      label: t('navbar.workWithMe'),
+      items: [
+        { label: t('home.services.title'), href: '/services' },
+        { label: t('home.testimonials.title'), href: '/#testimonials' },
+        { label: t('experience.title'), href: '/experience' },
+        { label: t('caseStudies.title'), href: '/case-studies' },
+      ],
+      secondaryCards: [
+        { title: t('home.contact.cta'), href: '/#contact' },
+        { title: t('caseStudies.ctaLatest'), href: '/case-studies/halioooo-design-system-architecture-library' },
+      ],
+    },
+    {
+      label: t('navbar.content'),
+      items: [
+        { label: t('blog.title'), href: '/blog' },
+        { label: t('talks.title'), href: '/talks' },
+        { label: t('books.title'), href: '/software-cafrers' },
+        { label: t('newsletter.navbarTitle'), href: '/newsletter' },
+      ],
+      secondaryCards: [
+        { title: t('blog.ctaLatest'), href: '/blog/latest', className: 'flex-1' },
+        { title: t('newsletter.ctaLatest'), href: '/newsletter', className: 'flex-1' },
+      ],
+    },
+    {
+      label: t('navbar.about'),
+      items: [
+        { label: t('photography.title'), href: '/photography' },
+        { label: t('links.title'), href: '/links' },
+      ],
+      secondaryCards: [{ title: t('home.contact.cta'), href: '/#contact' }],
+    },
+  ]
+
+  const handleClose = () => {
+    setIsOpen(false)
+    setActiveSubmenu(null)
+  }
+
+  const handleBack = () => {
+    setActiveSubmenu(null)
+  }
+
+  const handleMenuItemClick = (label: string) => {
+    setActiveSubmenu(label)
+  }
+
+  return (
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>
+        <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open menu">
+          <Menu className="h-5 w-5" />
+        </Button>
+      </DialogTrigger>
+
+      <DialogContent className="h-full max-w-full p-0 border-0 bg-background [&>button]:hidden">
+        <div className="flex h-full flex-col">
+          {/* Header */}
+          <div className="flex items-center justify-between border-b border-border px-4 py-4">
+            {activeSubmenu ? (
+              <Button variant="ghost" size="icon" onClick={handleBack} aria-label="Go back">
+                <ChevronLeft className="h-5 w-5" />
+              </Button>
+            ) : (
+              <span className="text-lg font-semibold">Menu</span>
+            )}
+            <Button variant="ghost" size="icon" onClick={handleClose} aria-label="Close menu">
+              <X className="h-5 w-5" />
+            </Button>
+          </div>
+
+          {/* Content */}
+          <div className="flex-1 overflow-y-auto px-4 py-6">
+            {!activeSubmenu ? (
+              <>
+                {/* Menu Items */}
+                <nav className="space-y-1">
+                  {menuItems.map(item => (
+                    <button
+                      key={item.label}
+                      onClick={() => handleMenuItemClick(item.label)}
+                      className="flex w-full items-center justify-between border-b border-border py-4 text-left text-sm text-foreground transition-colors hover:text-muted-foreground"
+                    >
+                      <span>{item.label}</span>
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
+                  ))}
+                </nav>
+              </>
+            ) : (
+              // Submenu
+              <div className="space-y-6">
+                {/* Menu Links */}
+                <nav className="space-y-1">
+                  {menuItems
+                    .find(item => item.label === activeSubmenu)
+                    ?.items?.map(subItem => (
+                      <div key={subItem.label} className="border-b border-border py-4" onClick={handleClose}>
+                        <Link
+                          href={subItem.href}
+                          type="invisible"
+                          className="block text-sm text-foreground transition-colors hover:text-muted-foreground"
+                        >
+                          {subItem.label}
+                        </Link>
+                      </div>
+                    ))}
+                </nav>
+
+                {/* Secondary Cards */}
+                {menuItems.find(item => item.label === activeSubmenu)?.secondaryCards && (
+                  <div className="flex flex-col gap-2">
+                    {menuItems
+                      .find(item => item.label === activeSubmenu)
+                      ?.secondaryCards?.map((card, index) => (
+                        <SecondaryCard
+                          key={index}
+                          title={card.title}
+                          href={card.href}
+                          className={card.className ?? ''}
+                        />
+                      ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
+}

@@ -9,6 +9,8 @@ import { Locale } from '@/core/i18n/locale'
 import { Link } from '@/core/components/link/link'
 import { BookAnnouncementBanner } from '@/core/components/banner/book-announcement-banner'
 import { getLocalStorage } from '@/core/utils/local-storage'
+import { useIsMobile } from '@/core/hooks/use-mobile'
+import { MobileMenu } from '@/core/components/mobile-menu/mobile-menu'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -30,12 +32,35 @@ export const Navbar: FC<{
 }> = ({ className }) => {
   const t = useTranslations()
   const locale = useLocale() as Locale
+  const isMobile = useIsMobile()
   const [isBannerDismissed, setIsBannerDismissed] = useState<boolean>(true)
 
   useEffect(() => {
     const bannerDismissed = getLocalStorage('bookAnnouncementBannerDismissed')
     setIsBannerDismissed(!!bannerDismissed)
   }, [])
+
+  if (isMobile) {
+    return (
+      <div>
+        <BookAnnouncementBanner onClose={() => setIsBannerDismissed(true)} />
+        <header
+          className={cn(
+            'flex backdrop-blur fixed z-20 h-16 w-full items-center justify-between px-4 transition-all duration-300 border-b border-border',
+            { 'top-[40px]': !isBannerDismissed },
+            { 'top-0': isBannerDismissed },
+            className,
+          )}
+        >
+          <Link type="invisible" href={'/'} className="flex items-center gap-2">
+            <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
+            <span className="text-lg font-semibold">{t('home.title')}</span>
+          </Link>
+          <MobileMenu />
+        </header>
+      </div>
+    )
+  }
 
   return (
     <div>

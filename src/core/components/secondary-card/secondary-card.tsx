@@ -12,7 +12,7 @@ interface Props {
   className?: string
 }
 
-export const SecondaryCard: FC<Props> = ({ title, description, href, image, className }) => {
+export const SecondaryCard: FC<Props> = ({ title, description, href, image, className = '' }) => {
   return (
     <Link href={href} type="invisible" className={className}>
       <Card className={cn('h-full relative overflow-hidden')}>

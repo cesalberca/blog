@@ -87,6 +87,12 @@
       "writing": "Escritura"
     }
   },
+  "books": {
+    "title": "Libros"
+  },
+  "courses": {
+    "title": "Cursos"
+  },
   "home": {
     "title": "César Alberca",
     "meAlt": "Foto de César Alberca",

@@ -3,10 +3,11 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { X, Menu, ChevronRight, ChevronLeft } from 'lucide-react'
 import { Link } from '@/core/components/link/link'
 import { SecondaryCard } from '@/core/components/secondary-card/secondary-card'
+import Image from 'next/image'
 
 interface MenuItem {
   label: string
@@ -43,8 +44,8 @@ export const MobileMenu = () => {
         { label: t('newsletter.navbarTitle'), href: '/newsletter' },
       ],
       secondaryCards: [
-        { title: t('blog.ctaLatest'), href: '/blog/latest', className: 'flex-1' },
-        { title: t('newsletter.ctaLatest'), href: '/newsletter', className: 'flex-1' },
+        { title: t('blog.ctaLatest'), href: '/blog/latest' },
+        { title: t('newsletter.ctaLatest'), href: '/newsletter' },
       ],
     },
     {
@@ -73,23 +74,29 @@ export const MobileMenu = () => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open menu">
+        <Button variant="ghost" size="icon" className="md:hidden" aria-label={t('common.openMenu')}>
           <Menu className="h-5 w-5" />
         </Button>
       </DialogTrigger>
 
       <DialogContent className="h-full max-w-full p-0 border-0 bg-background [&>button]:hidden">
+        <DialogHeader className="sr-only">
+          <DialogTitle>{t('common.toggleNavigation')}</DialogTitle>
+        </DialogHeader>
         <div className="flex h-full flex-col">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-border px-4 py-4">
             {activeSubmenu ? (
-              <Button variant="ghost" size="icon" onClick={handleBack} aria-label="Go back">
+              <Button variant="ghost" size="icon" onClick={handleBack} aria-label={t('common.goBack')}>
                 <ChevronLeft className="h-5 w-5" />
               </Button>
             ) : (
-              <span className="text-lg font-semibold">Menu</span>
+              <div className="flex items-center gap-2">
+                <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
+                <span className="text-lg font-semibold text-foreground">{t('home.title')}</span>
+              </div>
             )}
-            <Button variant="ghost" size="icon" onClick={handleClose} aria-label="Close menu">
+            <Button variant="ghost" size="icon" onClick={handleClose} aria-label={t('common.closeMenu')}>
               <X className="h-5 w-5" />
             </Button>
           </div>
@@ -115,6 +122,17 @@ export const MobileMenu = () => {
             ) : (
               // Submenu
               <div className="space-y-6">
+                {/* Secondary Cards */}
+                {menuItems.find(item => item.label === activeSubmenu)?.secondaryCards && (
+                  <div className="flex w-full min-h-[300px] gap-2">
+                    {menuItems
+                      .find(item => item.label === activeSubmenu)
+                      ?.secondaryCards?.map((card, index) => (
+                        <SecondaryCard key={index} title={card.title} href={card.href} className="flex-1" />
+                      ))}
+                  </div>
+                )}
+
                 {/* Menu Links */}
                 <nav className="space-y-1">
                   {menuItems
@@ -131,22 +149,6 @@ export const MobileMenu = () => {
                       </div>
                     ))}
                 </nav>
-
-                {/* Secondary Cards */}
-                {menuItems.find(item => item.label === activeSubmenu)?.secondaryCards && (
-                  <div className="flex flex-col gap-2">
-                    {menuItems
-                      .find(item => item.label === activeSubmenu)
-                      ?.secondaryCards?.map((card, index) => (
-                        <SecondaryCard
-                          key={index}
-                          title={card.title}
-                          href={card.href}
-                          className={card.className ?? ''}
-                        />
-                      ))}
-                  </div>
-                )}
               </div>
             )}
           </div>

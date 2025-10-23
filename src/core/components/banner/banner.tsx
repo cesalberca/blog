@@ -2,6 +2,7 @@ import type { FC, PropsWithChildren } from 'react'
 import { cn } from '@/lib/utils'
 import { X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useTranslations } from 'next-intl'
 
 interface BannerProps extends PropsWithChildren {
   variant?: 'info' | 'warning' | 'success' | 'announcement'
@@ -19,6 +20,7 @@ export const Banner: FC<BannerProps> = ({
   onDismiss,
   className,
 }) => {
+  const t = useTranslations()
   const baseStyles = 'fixed left-0 w-full z-40 shadow-lg'
 
   const positionStyles = {
@@ -44,7 +46,7 @@ export const Banner: FC<BannerProps> = ({
       <div className="container flex items-center justify-between gap-4">
         <div className="flex-1">{children}</div>
         {dismissible && (
-          <Button onClick={handleDismiss} variant="ghost" aria-label="Close banner">
+          <Button onClick={handleDismiss} variant="ghost" aria-label={t('common.closeBanner')}>
             <X className="w-4 h-4" />
           </Button>
         )}

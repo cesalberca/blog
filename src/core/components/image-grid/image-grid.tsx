@@ -4,6 +4,7 @@ import { useState } from 'react'
 import type { FC } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 interface ImageData {
   src: string
@@ -11,6 +12,7 @@ interface ImageData {
 }
 
 export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
+  const t = useTranslations()
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
@@ -91,14 +93,14 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
                 nextImage()
               }}
               className="absolute right-4 text-foreground p-2"
-              aria-label="Next image"
+              aria-label={t('common.nextImage')}
             >
               <ChevronRight size={24} />
             </button>
             <button
               onClick={closeLightbox}
               className="absolute top-4 right-4 text-foreground p-2"
-              aria-label="Close lightbox"
+              aria-label={t('common.closeLightbox')}
             >
               <X size={24} />
             </button>

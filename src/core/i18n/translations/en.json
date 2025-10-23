@@ -49,6 +49,13 @@
     "theme": "Theme",
     "toggleNavigation": "Toggle navigation",
     "toggleTheme": "Toggle theme",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "goBack": "Go back",
+    "closeBanner": "Close banner",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "closeLightbox": "Close lightbox",
     "bookAnnouncementBanner": {
       "newBookAvailable": "New book available!",
       "bookTitle": "Software Cafrers: Writing Code That Would Make a Goat Vomit",

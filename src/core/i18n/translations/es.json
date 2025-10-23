@@ -49,6 +49,13 @@
     "theme": "Tema",
     "toggleNavigation": "Alternar navegación",
     "toggleTheme": "Alternar tema",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "goBack": "Volver atrás",
+    "closeBanner": "Cerrar banner",
+    "previousImage": "Imagen anterior",
+    "nextImage": "Imagen siguiente",
+    "closeLightbox": "Cerrar lightbox",
     "bookAnnouncementBanner": {
       "newBookAvailable": "¡Nuevo libro disponible!",
       "bookTitle": "Software Cafrers: Haciendo Código que Haría Vomitar a una Cabra",

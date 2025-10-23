@@ -1,5 +1,4 @@
 import type { FC } from 'react'
-import { useLocale, useTranslations } from 'next-intl'
 import { Page } from '@/core/components/page/page'
 import { Hero } from '@/core/components/hero/hero'
 import { AccentList } from '@/core/components/accent-list/accent-list'
@@ -13,18 +12,16 @@ import { Technologies } from '@/features/home/delivery/technologies'
 import { ContactForm } from '@/features/home/delivery/contact'
 import { OpenToWork } from '@/core/components/open-to-work/open-to-work'
 import { Testimonials } from '@/core/components/testimonials/testimonials'
-import { CaseStudyCard } from '@/features/case-studies/delivery/case-study-card'
-import { CASE_STUDY_URLS } from '@/core/i18n/paths'
-import { Locale } from '@/core/i18n/locale'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/core/components/link/link'
 import { PostExcerpt } from '@/features/posts/delivery/post-excerpt'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
 import { NewsletterCard } from '@/core/components/newsletter-card/newsletter-card'
+import { CaseStudies } from '@/features/case-studies/delivery/case-studies'
+import { getTranslations } from 'next-intl/server'
 
-export const HomePage: FC<{ latestPost: PostMetadata | null }> = ({ latestPost }) => {
-  const t = useTranslations()
-  const locale = useLocale() as Locale
+export const HomePage: FC<{ latestPost: PostMetadata | null }> = async ({ latestPost }) => {
+  const t = await getTranslations()
 
   const texts = [
     t('home.labels.architect'),
@@ -90,31 +87,7 @@ export const HomePage: FC<{ latestPost: PostMetadata | null }> = ({ latestPost }
       )}
 
       <Section title={t('caseStudies.title')} id="case-studies">
-        <div className="flex flex-col gap-4">
-          <div className="wrapper">
-            <p className="mb-4">{t('caseStudies.description')}</p>
-          </div>
-          <div className="bleed-width-section grid md:grid-cols-3 gap-2">
-            <CaseStudyCard
-              title={t('caseStudies.tabaiba.title')}
-              descriptionKey={'caseStudies.tabaiba.description'}
-              href={CASE_STUDY_URLS[locale].tabaiba}
-              image="/assets/images/case-studies/tabaiba.jpg"
-            />
-            <CaseStudyCard
-              title={t('caseStudies.halioooo.title')}
-              descriptionKey={'caseStudies.halioooo.description'}
-              href={CASE_STUDY_URLS[locale].halioooo}
-              image="/assets/images/case-studies/halioooo.png"
-            />
-            <CaseStudyCard
-              title={t('caseStudies.lightspace.title')}
-              descriptionKey={'caseStudies.lightspace.description'}
-              href={CASE_STUDY_URLS[locale].lightspace}
-              image="/assets/images/case-studies/lightspace.png"
-            />
-          </div>
-        </div>
+        <CaseStudies />
       </Section>
 
       <Section title={t('home.technologies.title')} id="technologies">

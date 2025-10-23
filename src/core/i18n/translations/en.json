@@ -1,5 +1,14 @@
 {
+  "navbar": {
+    "workWithMe": "Work with me",
+    "content": "Content",
+    "about": "About"
+  },
   "common": {
+    "statusText": {
+      "new": "New",
+      "soon": "Soon"
+    },
     "cookies": {
       "message": "This site uses cookies to enhance your experience.",
       "description": "I use cookies to ensure you get the best experience on my website. Truly.",
@@ -48,6 +57,7 @@
   },
   "blog": {
     "title": "Blog",
+    "ctaLatest": "Read Latest post",
     "articleDuration": "{minutes} minutes",
     "noPosts": "There are no blog posts under this category yet.",
     "backToList": "Back to Blog",
@@ -69,6 +79,12 @@
       "yearly-review": "Yearly Review",
       "writing": "Writing"
     }
+  },
+  "books": {
+    "title": "Books"
+  },
+  "courses": {
+    "title": "Courses"
   },
   "home": {
     "title": "César Alberca",
@@ -164,6 +180,7 @@
     },
     "contact": {
       "title": "Contact",
+      "cta": "Contact me",
       "appointmentDescription": "Would you rather jump on a quick call to discuss your business needs?",
       "appointmentLink": "Book an appointment here.",
       "name": "Name",
@@ -452,6 +469,7 @@
   },
   "caseStudies": {
     "title": "Case Studies",
+    "ctaLatest": "Read latest case study",
     "singleTitle": "Case Study",
     "description": "Explore real-world solutions I've delivered for clients, showcasing how I tackle complex challenges and deliver impactful results through clean architecture and thoughtful design.",
     "tabaiba": {
@@ -470,6 +488,7 @@
   "newsletter": {
     "navbarTitle": "Newsletter",
     "title": "Frontend Architecture Newsletter",
+    "ctaLatest": "Read latest newsletter",
     "subtitle": "Insights on building Scalable, Maintainable Frontend Architectures.",
     "recentNewslettersTitle": "Recent Newsletters",
     "recentNewslettersDescription": "Deep dives into frontend architecture patterns, best practices, and real-world implementations.",

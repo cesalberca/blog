@@ -7,8 +7,6 @@ import Image from 'next/image'
 import LocaleSwitcher from '@/core/components/locale-switcher/locale-switcher'
 import { Locale } from '@/core/i18n/locale'
 import { Link } from '@/core/components/link/link'
-import { CASE_STUDY_URLS } from '@/core/i18n/paths'
-import { RichText } from '@/core/components/rich-text/rich-text'
 import { BookAnnouncementBanner } from '@/core/components/banner/book-announcement-banner'
 import { getLocalStorage } from '@/core/utils/local-storage'
 import {
@@ -19,10 +17,13 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
-import { Card, CardHeader } from '@/components/ui/card'
 import { cva } from 'class-variance-authority'
+import { SecondaryCard } from '@/core/components/secondary-card/secondary-card'
+import { StatusText } from '@/core/components/status-text/status-text'
 
-const navStyle = cva('text-xs text-muted-foreground hover:text-foreground')
+const navStyle = cva('text-xs text-muted-foreground hover:text-foreground inline')
+const navMenuContent = cva('grid grid-cols-5 p-3 md:w-[300px] lg:w-[540px]')
+const navMenuList = cva('flex flex-col gap-2 p-3')
 
 export const Navbar: FC<{
   className?: string
@@ -55,9 +56,9 @@ export const Navbar: FC<{
         <NavigationMenu>
           <NavigationMenuList className="flex-wrap">
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Work with me</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px]">
+              <NavigationMenuTrigger>{t('navbar.workWithMe')}</NavigationMenuTrigger>
+              <NavigationMenuContent className={navMenuContent()}>
+                <ul className={cn(navMenuList(), 'col-span-2')}>
                   <li>
                     <NavigationMenuLink asChild>
                       <Link className={navStyle()} type="invisible" href={'/services'}>
@@ -77,7 +78,7 @@ export const Navbar: FC<{
                   <li>
                     <NavigationMenuLink asChild>
                       <Link className={navStyle()} type="invisible" href="/experience">
-                        Experience
+                        {t('experience.title')}
                       </Link>
                     </NavigationMenuLink>
                   </li>
@@ -85,49 +86,25 @@ export const Navbar: FC<{
                   <li>
                     <NavigationMenuLink asChild>
                       <Link className={navStyle()} type="invisible" href="/case-studies">
-                        Case Studies
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link href={CASE_STUDY_URLS[locale].tabaiba}>
-                        <div className="text-sm font-medium leading-none">{t('caseStudies.tabaiba.title')}</div>
-                        <RichText className="text-xs text-muted-foreground leading-snug">
-                          {tags => t.rich('caseStudies.tabaiba.description', tags)}
-                        </RichText>
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link href={CASE_STUDY_URLS[locale].halioooo}>
-                        <div className="text-sm font-medium leading-none">{t('caseStudies.halioooo.title')}</div>
-                        <RichText className="text-xs text-muted-foreground leading-snug">
-                          {tags => t.rich('caseStudies.halioooo.description', tags)}
-                        </RichText>
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link href={CASE_STUDY_URLS[locale].lightspace}>
-                        <div className="text-sm font-medium leading-none">{t('caseStudies.lightspace.title')}</div>
-                        <RichText className="text-xs text-muted-foreground leading-snug">
-                          {tags => t.rich('caseStudies.lightspace.description', tags)}
-                        </RichText>
+                        {t('caseStudies.title')}
                       </Link>
                     </NavigationMenuLink>
                   </li>
                 </ul>
+                <div className="flex flex-col gap-2 col-span-3">
+                  <SecondaryCard title={t('home.contact.cta')} href="/#contact" />
+                  <SecondaryCard
+                    title={t('caseStudies.ctaLatest')}
+                    href="/case-studies/halioooo-design-system-architecture-library"
+                  />
+                </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Content</NavigationMenuTrigger>
-              <NavigationMenuContent className="flex md:w-[400px] lg:w-[500px] gap-8 p-6">
-                <ul className="flex flex-col gap-3">
+              <NavigationMenuTrigger>{t('navbar.content')}</NavigationMenuTrigger>
+              <NavigationMenuContent className={navMenuContent()}>
+                <ul className={cn(navMenuList(), 'col-span-2')}>
                   <li>
                     <NavigationMenuLink asChild>
                       <Link className={navStyle()} type="invisible" href={'/blog'}>
@@ -137,77 +114,73 @@ export const Navbar: FC<{
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link className={navStyle()} type="invisible" href="/software-cafrers">
-                        Books
+                      <Link className={navStyle()} type="invisible" href="/talks">
+                        {t('talks.title')}
                       </Link>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
                       <Link className={navStyle()} type="invisible" href="/software-cafrers">
-                        Talks
+                        {t('books.title')}
+                        <StatusText type="new"></StatusText>
                       </Link>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link className={navStyle()} type="invisible" href="/software-cafrers">
-                        Courses
+                      <Link className={navStyle()} type="invisible" href="/newsletter">
+                        {t('newsletter.navbarTitle')}
+                        <StatusText type="soon"></StatusText>
                       </Link>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link className={navStyle()} type="invisible" href="/software-cafrers">
-                        Newsletter
-                      </Link>
+                      <p className={navStyle()}>
+                        {t('courses.title')}
+                        <StatusText type="soon"></StatusText>
+                      </p>
                     </NavigationMenuLink>
                   </li>
                 </ul>
-                <div className="flex gap-2">
-                  <Card>
-                    <CardHeader>Read latest blogpost</CardHeader>{' '}
-                  </Card>
-                  <Card>
-                    <CardHeader>Read latest newsletter</CardHeader>{' '}
-                  </Card>
+                <div className="flex gap-2 col-span-3">
+                  <SecondaryCard title={t('blog.ctaLatest')} href="/blog/latest" className="flex-1" />
+                  <SecondaryCard title={t('newsletter.ctaLatest')} href="/newsletter" className="flex-1" />
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger>About</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px]">
+              <NavigationMenuTrigger>{t('navbar.about')}</NavigationMenuTrigger>
+              <NavigationMenuContent className={navMenuContent()}>
+                <ul className={cn(navMenuList(), 'col-span-2')}>
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link className={navStyle()} type="invisible" href={'/talks'}>
-                        Photography
+                      <Link className={navStyle()} type="invisible" href={'/photography'}>
+                        {t('photography.title')}
                       </Link>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link className={navStyle()} type="invisible" href={'/experience'}>
-                        About me
-                      </Link>
+                      <p className={navStyle()}>
+                        {t('about.title')}
+                        <StatusText type="soon"></StatusText>
+                      </p>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link className={navStyle()} type="invisible" href={'/experience'}>
-                        Links
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link className={navStyle()} type="invisible" href={'/newsletter'}>
-                        Contact
+                      <Link className={navStyle()} type="invisible" href={'/links'}>
+                        {t('links.title')}
                       </Link>
                     </NavigationMenuLink>
                   </li>
                 </ul>
+                <div className="col-span-3">
+                  <SecondaryCard title={t('home.contact.cta')} href="/#contact" />
+                </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>

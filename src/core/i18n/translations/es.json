@@ -1,5 +1,14 @@
 {
+  "navbar": {
+    "workWithMe": "Trabaja conmigo",
+    "content": "Contenido",
+    "about": "Acerca de"
+  },
   "common": {
+    "statusText": {
+      "new": "Nuevo",
+      "soon": "Pronto"
+    },
     "cookies": {
       "message": "Este sitio utiliza cookies para mejorar tu experiencia.",
       "description": "Utilizo cookies para garantizar que obtengas la mejor experiencia en este sitio web. De verdad.",
@@ -48,6 +57,7 @@
   },
   "blog": {
     "title": "Blog",
+    "ctaLatest": "Leer el último post",
     "articleDuration": "{minutes} minutos",
     "noPosts": "No hay entradas de blog en esta categoría todavía.",
     "backToList": "Volver al Blog",
@@ -73,6 +83,9 @@
   "home": {
     "title": "César Alberca",
     "meAlt": "Foto de César Alberca",
+    "books": {
+      "title": "Libros"
+    },
     "technologies": {
       "title": "Tecnologías",
       "description": "Con más de **5 años en ReactJS**, **4 en Angular** y **2 en VueJS**, he utilizado consistentemente **TypeScript**, **pruebas** y patrones de arquitectura como **DDD** y **Hexagonal** para mejorar la mantenibilidad de proyectos."
@@ -166,6 +179,7 @@
     },
     "contact": {
       "title": "Contacto",
+      "cta": "Contacta conmigo",
       "appointmentDescription": "¿Prefieres una llamada rápida para hablar de tus necesidades de negocio?",
       "appointmentLink": "Reserva una cita aquí.",
       "name": "Nombre",
@@ -415,6 +429,7 @@
   "caseStudies": {
     "title": "Casos de Estudio",
     "singleTitle": "Caso de Estudio",
+    "ctaLatest": "Leer el último caso de estudio",
     "description": "Explora soluciones reales que he desarrollado para clientes, mostrando cómo abordo desafíos complejos y entrego resultados impactantes a través de una arquitectura limpia y un diseño reflexivo.",
     "tabaiba": {
       "title": "Tabaiba",
@@ -432,6 +447,7 @@
   "newsletter": {
     "navbarTitle": "Newsletter",
     "title": "Newsletter de Arquitectura Frontend",
+    "ctaLatest": "Leer la última newsletter",
     "subtitle": "Perspectivas sobre la construcción de Arquitecturas Frontend Escalables y Mantenibles.",
     "recentNewslettersTitle": "Newsletters Recientes",
     "recentNewslettersDescription": "Análisis profundos sobre patrones de arquitectura frontend, mejores prácticas e implementaciones del mundo real.",

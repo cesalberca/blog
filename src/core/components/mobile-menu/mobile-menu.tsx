@@ -1,13 +1,22 @@
 'use client'
 
 import { useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 import { X, Menu, ChevronRight, ChevronLeft } from 'lucide-react'
 import { Link } from '@/core/components/link/link'
 import { SecondaryCard } from '@/core/components/secondary-card/secondary-card'
 import Image from 'next/image'
+import LocaleSwitcher from '@/core/components/locale-switcher/locale-switcher'
+import { Locale } from '@/core/i18n/locale'
 
 interface MenuItem {
   label: string
@@ -18,6 +27,7 @@ interface MenuItem {
 
 export const MobileMenu = () => {
   const t = useTranslations()
+  const locale = useLocale() as Locale
   const [isOpen, setIsOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
 
@@ -82,6 +92,7 @@ export const MobileMenu = () => {
       <DialogContent className="h-full max-w-full p-0 border-0 bg-background [&>button]:hidden">
         <DialogHeader className="sr-only">
           <DialogTitle>{t('common.toggleNavigation')}</DialogTitle>
+          <DialogDescription>{t('common.toggleNavigation')}</DialogDescription>
         </DialogHeader>
         <div className="flex h-full flex-col">
           {/* Header */}
@@ -102,11 +113,11 @@ export const MobileMenu = () => {
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto px-4 py-6">
+          <div className="flex-1 overflow-y-auto px-4 py-6 flex flex-col">
             {!activeSubmenu ? (
               <>
                 {/* Menu Items */}
-                <nav className="space-y-1">
+                <nav className="space-y-1 flex-1">
                   {menuItems.map(item => (
                     <button
                       key={item.label}
@@ -118,6 +129,14 @@ export const MobileMenu = () => {
                     </button>
                   ))}
                 </nav>
+
+                {/* Language Switcher */}
+                <div className="mt-8 border-t border-border pt-6">
+                  <div className="flex flex-col items-center space-y-4">
+                    <span className="text-sm font-medium text-muted-foreground">{t('common.language')}</span>
+                    <LocaleSwitcher locale={locale} />
+                  </div>
+                </div>
               </>
             ) : (
               // Submenu

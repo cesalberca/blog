@@ -9,6 +9,7 @@ interface Props {
   href: string
   type?: 'navigation' | 'invisible'
   className?: string
+  onClick?: () => void
 }
 
 const linkVariants = cva(
@@ -24,7 +25,7 @@ const linkVariants = cva(
   },
 )
 
-export const Link: FC<PropsWithChildren<Props>> = ({ href, children, className, type }) => {
+export const Link: FC<PropsWithChildren<Props>> = ({ href, children, className, type, onClick }) => {
   const isExternal = href !== undefined && /^http/.test(href.toString())
   const t = useTranslations()
 
@@ -34,6 +35,7 @@ export const Link: FC<PropsWithChildren<Props>> = ({ href, children, className, 
       passHref
       {...(isExternal && { target: '_blank', rel: 'noreferrer' })}
       className={cn(linkVariants({ type }), className)}
+      onClick={onClick}
     >
       {children}
       {isExternal && type !== 'invisible' && type !== 'navigation' ? (

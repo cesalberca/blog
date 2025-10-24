@@ -147,7 +147,13 @@ export const MobileMenu = () => {
                     {menuItems
                       .find(item => item.label === activeSubmenu)
                       ?.secondaryCards?.map((card, index) => (
-                        <SecondaryCard key={index} title={card.title} href={card.href} className="flex-1" />
+                        <SecondaryCard
+                          key={index}
+                          title={card.title}
+                          href={card.href}
+                          className="flex-1"
+                          onClick={handleClose}
+                        />
                       ))}
                   </div>
                 )}
@@ -157,11 +163,12 @@ export const MobileMenu = () => {
                   {menuItems
                     .find(item => item.label === activeSubmenu)
                     ?.items?.map(subItem => (
-                      <div key={subItem.label} className="border-b border-border py-4" onClick={handleClose}>
+                      <div key={subItem.label} className="border-b border-border py-4">
                         <Link
                           href={subItem.href}
                           type="invisible"
                           className="block text-sm text-foreground transition-colors hover:text-muted-foreground"
+                          onClick={handleClose}
                         >
                           {subItem.label}
                         </Link>

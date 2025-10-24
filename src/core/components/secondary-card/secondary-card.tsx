@@ -10,11 +10,12 @@ interface Props {
   href: string
   image?: string
   className?: string
+  onClick?: () => void
 }
 
-export const SecondaryCard: FC<Props> = ({ title, description, href, image, className = '' }) => {
+export const SecondaryCard: FC<Props> = ({ title, description, href, image, className = '', onClick }) => {
   return (
-    <Link href={href} type="invisible" className={className}>
+    <Link href={href} type="invisible" className={className} {...(onClick && { onClick })}>
       <Card className={cn('h-full relative overflow-hidden')}>
         <Background image={image ?? ''}>
           <CardHeader>

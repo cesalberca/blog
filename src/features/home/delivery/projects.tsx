@@ -65,7 +65,7 @@ export const Projects: FC = () => {
                   transform: 'translateZ(100px) translateY(-10px)',
                 }}
               >
-                <Button className="drop-shadow">
+                <Button className="text-black drop-shadow">
                   <Link type="invisible" href={x.code.value}>
                     {t('home.projects.code')}
                   </Link>

@@ -31,6 +31,9 @@ export const routing = defineRouting({
     '/blog/theming': {
       es: '/blog/temas',
     },
+    '/blog/hemingway-bridge': {
+      es: '/blog/puente-hemingway',
+    },
     '/services': {
       es: '/servicios',
     },

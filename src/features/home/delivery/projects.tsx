@@ -65,13 +65,13 @@ export const Projects: FC = () => {
                   transform: 'translateZ(100px) translateY(-10px)',
                 }}
               >
-                <Button className="text-black drop-shadow">
+                <Button className="drop-shadow" asChild>
                   <Link type="invisible" href={x.code.value}>
                     {t('home.projects.code')}
                   </Link>
                 </Button>
                 {x.link?.value && (
-                  <Button className="drop-shadow">
+                  <Button className="drop-shadow" asChild>
                     <Link type="invisible" href={x.link.value}>
                       {t('home.projects.live')}
                     </Link>

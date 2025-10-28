@@ -1,6 +1,7 @@
 import createNextIntlPlugin from 'next-intl/plugin'
 import withMDX from '@next/mdx'
 import type { NextConfig } from 'next'
+import { withBotId } from 'botid/next/config'
 
 const withNextIntl = createNextIntlPlugin('./src/core/i18n/i18n.tsx')
 
@@ -41,4 +42,4 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default withMDX()(withNextIntl(nextConfig))
+export default withBotId(withMDX()(withNextIntl(nextConfig)))

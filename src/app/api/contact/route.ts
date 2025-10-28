@@ -2,6 +2,7 @@ import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
 import type { ReactElement } from 'react'
 import { Datetime } from '@/core/date/datetime'
+import { checkBotId } from 'botid/server'
 
 const resend = new Resend(process.env['RESEND_API_KEY']!)
 
@@ -19,6 +20,12 @@ interface ContactResponse {
 
 export async function POST(request: NextRequest): Promise<NextResponse<ContactResponse>> {
   try {
+    const verification = await checkBotId()
+
+    if (verification.isBot) {
+      return NextResponse.json({ error: 'Access denied. You ' }, { status: 403 })
+    }
+
     const body: ContactRequest = await request.json()
     const { name, email, message } = body
 

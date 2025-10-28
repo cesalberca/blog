@@ -14,9 +14,10 @@ import { Link } from '@/core/components/link/link'
 import { sendGAEvent } from '@next/third-parties/google'
 import { useRouter } from 'next/navigation'
 import { httpClient } from '@/lib/http-client'
+import { toast } from 'sonner'
 
 const formSchema = z.object({
-  email: z.string().email({ message: 'Invalid email address.' }),
+  email: z.email({ message: 'Invalid email address.' }),
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 })
@@ -43,12 +44,7 @@ export const ContactForm: FC = () => {
       sendGAEvent('event', 'conversion', { email: data.email, name: data.name })
       router.push('/thank-you')
     } catch (error: any) {
-      const errorMessage = error.data?.error || error.message || 'Something went wrong'
-
-      form.setError('root.server', {
-        type: 'server',
-        message: errorMessage,
-      })
+      toast(error.data.error)
     }
   }
 

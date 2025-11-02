@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
+import DarkIcon from '../../public/favicon-dark.ico'
+import LightIcon from '../../public/favicon-light.ico'
 
 interface Props {
   children: ReactNode
@@ -10,13 +12,13 @@ export const metadata: Metadata = {
     {
       rel: 'icon',
       type: 'image/x-icon',
-      url: '/favicon-dark.ico',
+      url: DarkIcon.src,
       media: '(prefers-color-scheme: light)',
     },
     {
       rel: 'icon',
       type: 'image/png',
-      url: '/favicon-light.png',
+      url: LightIcon.src,
       media: '(prefers-color-scheme: dark)',
     },
   ],

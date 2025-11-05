@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [{ protocol: 'https', port: '', hostname: 'sxvlta3onkp6zlqr.public.blob.vercel-storage.com' }],
   },
+  outputFileTracingIncludes: {
+    '/': ['src/content/emails/**'],
+  },
   experimental: {
     mdxRs: true,
   },

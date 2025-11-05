@@ -47,55 +47,69 @@ export const NewsletterTemplate: FC<PropsWithChildren<NewsletterEmailProps>> = (
             <Column className="w-1/4 text-center">
               <Link
                 href={`https://x.com/intent/tweet?text=${shareUrl('@cesalberca')}`}
-                className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-flex flex-col items-center text-center"
+                className="m-0 p-0 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline text-center"
               >
-                <Img alt="X" src={emailImageBaseUrl('x.png')} width="16" height="16" className="inline-block"></Img>
-                X/Twitter
+                <span>
+                  <Img
+                    alt="X"
+                    src={emailImageBaseUrl('x.png')}
+                    width="16"
+                    height="16"
+                    className="inline-block mr-1"
+                  ></Img>
+                  X/Twitter
+                </span>
               </Link>
             </Column>
             <Column className="w-1/4 text-center">
               <Link
                 href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}`}
-                className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-flex flex-col items-center text-center"
+                className="m-0 p-0 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline text-center"
               >
-                <Img
-                  alt="LinkedIn"
-                  src={emailImageBaseUrl('linkedin.png')}
-                  width="16"
-                  height="16"
-                  className="inline-block"
-                ></Img>
-                LinkedIn
+                <span>
+                  <Img
+                    alt="LinkedIn"
+                    src={emailImageBaseUrl('linkedin.png')}
+                    width="16"
+                    height="16"
+                    className="inline-block mr-1"
+                  ></Img>
+                  LinkedIn
+                </span>
               </Link>
             </Column>
             <Column className="w-1/4 text-center">
               <Link
-                href={`https://bsky.app/intent/compose?text=${shareUrl('@cesalberca')}`}
-                className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-flex flex-col items-center text-center"
+                href={`https://bsky.app/intent/compose?text=${shareUrl('@cesalberca.com')}`}
+                className="m-0 p-0 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline text-center"
               >
-                <Img
-                  alt="Bluesky"
-                  src={emailImageBaseUrl('bluesky.png')}
-                  width="16"
-                  height="16"
-                  className="inline-block"
-                ></Img>
-                Bluesky
+                <span>
+                  <Img
+                    alt="Bluesky"
+                    src={emailImageBaseUrl('bluesky.png')}
+                    width="16"
+                    height="16"
+                    className="inline-block mr-1"
+                  ></Img>
+                  Bluesky
+                </span>
               </Link>
             </Column>
             <Column className="w-1/4 text-center">
               <Link
                 href={`mailto:?subject=${encodedTitle}&body=Check out this newsletter: ${encodedUrl}`}
-                className="mx-2 py-2 px-3 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline inline-flex flex-col items-center text-center"
+                className="m-0 p-0 text-muted-foreground text-xs rounded hover:bg-muted hover:text-foreground transition-colors no-underline text-center"
               >
-                <Img
-                  alt="Email"
-                  src={emailImageBaseUrl('email.png')}
-                  width="16"
-                  height="16"
-                  className="inline-block"
-                ></Img>
-                Email
+                <span>
+                  <Img
+                    alt="Email"
+                    src={emailImageBaseUrl('email.png')}
+                    width="16"
+                    height="16"
+                    className="inline-block mr-1"
+                  ></Img>
+                  Email
+                </span>
               </Link>
             </Column>
           </Row>

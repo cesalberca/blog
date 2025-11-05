@@ -2,7 +2,6 @@ import { type FC } from 'react'
 import { NewsletterEmailLoader } from '@/features/email/delivery/newsletter-email-loader/newsletter-email-loader'
 
 const FrontendArchitectureNewsletter: FC & { title: string } = () => {
-  console.log('loader')
   return <NewsletterEmailLoader slug={`frontend-architecture-use-case-pattern`} />
 }
 

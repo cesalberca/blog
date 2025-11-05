@@ -22,9 +22,7 @@ function createHeading(level: number) {
 
 export const NewsletterEmailLoader: FC<{ slug: string }> = ({ slug }) => {
   const file = path.join(process.cwd(), 'src', 'content', 'emails', 'newsletter', slug, 'en.mdx')
-  console.log('file', file)
   const code = fs.readFileSync(file, { encoding: 'utf8' })
-  console.log('code', code)
 
   const { default: Content, metadata } = evaluateSync(code, {
     ...(runtime as Readonly<EvaluateOptions>),
@@ -35,6 +33,12 @@ export const NewsletterEmailLoader: FC<{ slug: string }> = ({ slug }) => {
       h4: createHeading(4),
       h5: createHeading(5),
       h6: createHeading(6),
+      ul: props => {
+        return <ul className="text-xl" {...props}></ul>
+      },
+      ol: props => {
+        return <ol className="text-xl" {...props}></ol>
+      },
       strong: props => {
         return <strong className="text-primary">{props.children}</strong>
       },

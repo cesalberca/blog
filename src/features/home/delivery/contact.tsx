@@ -11,10 +11,11 @@ import { Textarea } from '@/components/ui/textarea'
 import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 import { Link } from '@/core/components/link/link'
-import { sendGAEvent } from '@next/third-parties/google'
+import { sendGTMEvent } from '@next/third-parties/google'
 import { useRouter } from 'next/navigation'
 import { httpClient } from '@/lib/http-client'
 import { toast } from 'sonner'
+import { Loader2 } from 'lucide-react'
 
 const formSchema = z.object({
   email: z.email({ message: 'Invalid email address.' }),
@@ -41,7 +42,9 @@ export const ContactForm: FC = () => {
     try {
       await httpClient.post('/api/contact', data)
 
-      sendGAEvent('event', 'conversion', { email: data.email, name: data.name })
+      sendGTMEvent({
+        event: 'contacted',
+      })
       router.push('/thank-you')
     } catch (error: any) {
       toast(error.data.error)
@@ -99,8 +102,14 @@ export const ContactForm: FC = () => {
               </FormItem>
             )}
           />
-          <Button type="submit" disabled={form.formState.isSubmitting}>
-            {form.formState.isSubmitting ? t('home.contact.submitting') : t('home.contact.submit')}
+          <Button
+            type="submit"
+            disabled={form.formState.isSubmitting}
+            aria-disabled={form.formState.isSubmitting}
+            aria-busy={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />}
+            <span>{form.formState.isSubmitting ? t('home.contact.submitting') : t('home.contact.submit')}</span>
           </Button>
         </form>
       </Form>

@@ -62,15 +62,13 @@ export async function POST(request: NextRequest): Promise<NextResponse<Broadcast
       //
       // await resend.broadcasts.send(broadcast.data.id)
 
-      const newVar = await resend.emails.send({
+      await resend.emails.send({
         from: process.env['RESEND_EMAIL_FROM']!,
         to: 'cesar@cesalberca.com',
         subject: title,
         replyTo: 'cesar@cesalberca.com',
         react: NewsletterComponent() as ReactElement,
       })
-
-      console.log({ newVar })
 
       return NextResponse.json(
         {

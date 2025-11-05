@@ -44,6 +44,7 @@ export const ContactForm: FC = () => {
 
       sendGTMEvent({
         event: 'contacted',
+        email: data.email,
       })
       router.push('/thank-you')
     } catch (error: any) {

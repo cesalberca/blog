@@ -1,5 +1,6 @@
 'use client'
 
+import type React from 'react'
 import { type FC, useCallback, useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/core/components/link/link'
@@ -11,6 +12,7 @@ export const CookieBanner: FC = () => {
   const t = useTranslations('common')
   const [isVisible, setIsVisible] = useState(false)
   const [userInput, setUserInput] = useState('')
+  const [isFocused, setIsFocused] = useState(false)
 
   useEffect(() => {
     const cookieChoice = getLocalStorage('cookieChoice')
@@ -41,30 +43,33 @@ export const CookieBanner: FC = () => {
   }, [])
 
   const handleKeyDown = useCallback(
-    (e: globalThis.KeyboardEvent) => {
-      if (!isVisible) return
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      // Only handle keys when the banner itself is focused
+      if (!isVisible || !isFocused) return
 
       const key = e.key.toLowerCase()
       if (key === 'y') {
+        e.preventDefault()
         acceptCookies()
-      } else if (key === 'n') {
+        return
+      }
+      if (key === 'n') {
+        e.preventDefault()
         denyCookies()
-      } else if (key === 'backspace') {
+        return
+      }
+      if (key === 'backspace') {
+        e.preventDefault()
         setUserInput(prev => prev.slice(0, -1))
-      } else if (key.length === 1) {
+        return
+      }
+      if (key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
         // Only add printable characters
         setUserInput(prev => prev + e.key)
       }
     },
-    [isVisible, acceptCookies, denyCookies],
+    [isVisible, isFocused, acceptCookies, denyCookies],
   )
-
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [handleKeyDown])
 
   const closeBanner = useCallback(() => {
     denyCookies()
@@ -76,7 +81,16 @@ export const CookieBanner: FC = () => {
 
   return (
     <div className="fixed bottom-0 right-0 z-50 max-w-md w-full p-4 md:w-80 shadow-lg">
-      <div className="bg-black border border-white rounded-md overflow-hidden">
+      <div
+        className="bg-black border border-white rounded-md overflow-hidden"
+        role="dialog"
+        aria-label={t('cookies.terminalPath')}
+        aria-live="polite"
+        tabIndex={0}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        onKeyDown={handleKeyDown}
+      >
         {/* Terminal header */}
         <div className="bg-black px-4 py-2 flex items-center justify-between border-b border-white">
           <div className="text-foreground font-mono text-sm">{t('cookies.terminalPath')}</div>

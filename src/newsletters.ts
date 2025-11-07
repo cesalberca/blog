@@ -5,13 +5,7 @@ import fs from 'fs'
 import type { NewsletterMetadata } from '@/features/email/domain/newsletter-metadata'
 import { Datetime } from '@/core/date/datetime'
 
-export async function getNewsletter({
-  slug,
-  locale,
-}: {
-  slug: string
-  locale: Locale
-}): Promise<NewsletterMetadata | null> {
+export async function getNewsletter({ slug, locale }: { slug: string; locale: Locale }): Promise<NewsletterMetadata> {
   try {
     const { metadata } = await import(`@/content/emails/newsletter/${slug}/${locale}.mdx`)
     return {
@@ -20,8 +14,8 @@ export async function getNewsletter({
       slug,
     }
   } catch (error) {
-    console.error(`Error getting post ${slug} for locale ${locale}:`, error)
-    return null
+    console.error(`Error getting newsletter ${slug} for locale ${locale}:`, error)
+    throw error
   }
 }
 
@@ -36,9 +30,8 @@ export async function getNewsletters({ locale }: { locale: Locale }): Promise<Ne
       const filePath = path.join(basePath, name, `${locale}.mdx`)
 
       if (fs.existsSync(filePath)) {
-        const { metadata } = await import(`@/content/emails/newsletter/${name}/${locale}.mdx`)
-
-        newsletters.push(metadata)
+        const newsletter = await getNewsletter({ slug: name, locale })
+        newsletters.push(newsletter)
       }
     }
 

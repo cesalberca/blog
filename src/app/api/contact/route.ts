@@ -23,7 +23,13 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactRe
     const verification = await checkBotId()
 
     if (verification.isBot) {
-      return NextResponse.json({ error: 'Access denied. You ' }, { status: 403 })
+      return NextResponse.json(
+        {
+          error:
+            'Access denied. You look like a bot. If the error persists and you are not a bot, please contact me through my email cesar at cesalberca dot com',
+        },
+        { status: 403 },
+      )
     }
 
     const body: ContactRequest = await request.json()

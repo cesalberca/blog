@@ -1,8 +1,20 @@
 import { type FC } from 'react'
 import { useTranslations } from 'next-intl'
+import { cva } from 'class-variance-authority'
+import { cn } from '@/lib/utils'
 
-export const StatusText: FC<{ type: 'soon' | 'new' }> = ({ type }) => {
+type Type = 'soon' | 'new'
+
+export const StatusText: FC<{ type: Type }> = ({ type }) => {
   const t = useTranslations('common.statusText')
+  const statusVariants = cva('ml-1 text-muted-foreground/90 align-super text-[8px]', {
+    variants: {
+      type: {
+        soon: 'text-yellow-500',
+        new: 'text-green-500',
+      },
+    },
+  })
 
-  return <span className="ml-1 text-muted-foreground/90 align-super text-[8px]">{t(type)}</span>
+  return <span className={cn(statusVariants({ type }))}>{t(type)}</span>
 }

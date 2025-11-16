@@ -15,7 +15,6 @@ export const CodeBlock: FC<PropsWithChildren<{ className?: string; code: string;
           <EmailCodeBlock
             className={cn('text-xs', className)}
             language={language}
-            lineNumbers
             code={code}
             theme={synthwave84}
           ></EmailCodeBlock>

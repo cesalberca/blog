@@ -43,7 +43,11 @@ export const NewsletterEmailLoader: FC<{ slug: string }> = ({ slug }) => {
         return <strong className="text-primary">{props.children}</strong>
       },
       a: props => {
-        return <Link {...props}></Link>
+        let href = props.href
+        if (props.href.startsWith('/')) {
+          href = process.env['NEXT_PUBLIC_URL'] + props.href
+        }
+        return <Link {...props} href={href}></Link>
       },
       blockquote: props => {
         return (

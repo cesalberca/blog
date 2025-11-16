@@ -1,10 +1,15 @@
 export const metadata = {
   title: 'Why You Should Use The Repository Pattern to Interact with Data',
   slug: 'why-you-should-use-the-repository-pattern-to-interact-with-data',
-  description: `If I had to choose only one pattern to implement as a Frontend Architect it would be the **use case pattern**. I've implemented this pattern countless times in projects **ranging from Startups** to **Multi Million and international companies**. I've perfected over a _decade_ how I implement this pattern and in this newsletter I want to show _you_.`
+  date: '2025-10-20T00:00:00.000Z',
+  description: `The repository pattern is a great way of abstracting how you interact with data, making it a very useful design pattern to learn. Let me show you!`
 }
 
-In [the previous issue of this Newsletter](https://cesalberca.com/newsletter/2025-10-13_the-use-case-pattern) we talked about Use Cases. In the example that I used you could see what it looked like a class being used:
+In [the previous issue of this Newsletter](/newsletter/frontend-architecture-use-case-pattern) we talked about Use Cases, which is a **pattern that abstracts how you execute business logic**.
+
+> Use cases are in charge of orchestrating business logic.
+
+Here is an example of a Use Case:
 
 ```typescript
 export class GetDestinationsQry implements UseCase<void, Destination[]> {
@@ -14,18 +19,121 @@ export class GetDestinationsQry implements UseCase<void, Destination[]> {
   ) {}
 
   async handle(): Promise<Destination[]> {
-    return this.destinationOrderer.order(await this.destinationRepository.findAll())
+    return this.destinationOrderer.order(
+      await this.destinationRepository.findAll()
+    )
   }
 }
 ```
 
-Well, it's not a class! Let me explain why.
+The **use case doesn't have business logic of its own**, but rather _knows_ what pieces of code it needs to call to achieve the end result. In this example, it calls a `DestinationOrderer` which it seems it orders the results and a `DestinationRepository`, which seems to get some data. Let's go deeper!
 
-## The Repository Pattern
+## What is a repository?
 
-Have you ever interacted with data? Perhaps getting data from a database, making an API call using fetch or maybe writing data in-memory. Well, that's a Repository!
+**Have you _ever_ interacted with data?** Perhaps getting data from a **database**, using fetch to get data from an **API REST** or maybe writing data **in-memory**. Well, that's a Repository!
 
-> A Repository represents a piece of code that interacts with data
+> A Repository represents a piece of code that interacts with data.
 
-In some places you might have seen it called `Services`. However, for me, service is a tad too generic, everything could be a service! I prefer being more specific about the intention behind the pieces of code that I use.
+In some places you might have seen it called `Services`. However, for me, service is a tad too generic, _everything_ could be a service! I prefer being more specific about the intention behind the pieces of code that I use by calling it a Repository.
+
+Let's check `DestinationRepository`:
+
+```typescript
+export interface DestinationRepository {
+  findAll(): Promise<Destination[]>
+}
+```
+
+Wait, it's an interface! Yes, it is! It helps us make our code more robust, given that **when we deal with abstractions rather than concretions, our code tends to be more flexible**.
+
+So this means, that there's a place where we need to implement this interface, right? Let me show you where.
+
+## Repository implementation
+
+I usually **define repository interfaces in the domain layer and their implementation in the infrastructure layer**. It's ok if you haven't worked with layers before, I'll explain them more in detail in a future issue, but basically I make this separation since I think that I'm able to create destinations in my app that is probably not going to change, however, how I create destinations is something that seems to rely on external systems or code that is more fragile. That's why I make the definition (`DestinationRepository`) and the implementation (`DestinationApiRepository`) in different layers.
+
+Let's check the code:
+
+```typescript
+export class DestinationApiRepository implements DestinationRepository {
+  async findAll(): Promise<Destination[]> {
+    const response = await fetch('/api/destinations')
+    if (!response.ok) {
+      throw new GetDestinationsError()
+    }
+    const data = (await response.json()) as Destination[]
+    return data
+  }
+}
+```
+
+As you can see here is where we actually call the API Rest. But... What's the point of this? Well, there are several advantages.
+
+## Advantages of using the Repository Pattern
+
+First of all, the **concerns of orchestrating business logic and obtaining data are different**, so with this approach we follow the **S** from **S.O.L.I.D**.
+
+We can also have multiple repository implementations which we can swap as needed. Have you ever needed to work with data from an API Rest which was not finished yet? Well, you can implement a `DestinationInMemoryRepository`:
+
+```typescript
+export class DestinationInMemoryRepository implements DestinationRepository {
+  data = [DestinationMother.europe()]
+  async findAll(): Promise<Destination[]> {
+    return this.data
+  }
+
+  async create(createDestination: CreateDestination): Promise<void> {
+    this.data.push({
+      ...createDestination, id: (Math.random() * 1000).toString()
+    })
+  }
+}
+```
+
+> Wonder what is `DestinationMother`? It's a design pattern by Martin Fowler where you handle your fake data using Mothers, giving meaningful names to data you might use in tests. You can [read more about the Mother design pattern in this blogpost](/blog/mother-design-pattern).
+
+Now in the dependency container, it's a matter of swapping the instances:
+
+```typescript
+// Before
+// export const destinationApiRepository = new DestinationApiRepository()
+// After
+export const destinationInMemoryRepository = new DestinationInMemoryRepository()
+export const getDestinationsQry = new GetDestinationsQry(destinationInMemoryRepository, destinationOrderer)
+```
+
+You can also swap the dependencies during runtime.
+
+```typescript
+export const destinationApiRepository = new DestinationApiRepository()
+export const destinationInMemoryRepository = new DestinationInMemoryRepository()
+
+export const getDestinationsQry = new GetDestinationsQry(process.env.NODE_ENV === 'development' ? destinationInMemoryRepository : destinationApiRepository, destinationOrderer)
+```
+
+Which makes this a very powerful pattern for dealing with scenarios where you might need to **dynamically change your source of data**. For example, if you are using a paid API and during development, you don't want to make requests to said API you can just add an if statement.
+
+Another advantage is that you can create reusable interfaces to have an unified way of calling your repositories:
+
+```typescript
+export interface FindableAll<Result> {
+  findAll(): Promise<Result[]>
+}
+
+export interface Creatable<Params, Result = void> {
+  create(params: Params): Promise<Result>
+}
+
+export interface DestinationRepository
+  extends FindableAll<Destination>,
+          Creatable<CreateDestination> {}
+```
+
+With this, you can avoid having disseminated in your codebase `create`, `upsert`, `save` and many more different and inconsistent names for dealing with entity creation!
+
+## Conclusion
+
+The repository pattern is a very useful pattern **to abstract the way you interact with data**, making your code more **robust yet flexible**. It provides advantages like **swapping your repositories during compile and runtime**, it **encapsulates your code** and **provides consistency**.
+
+
 

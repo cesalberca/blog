@@ -50,7 +50,9 @@ export class CreateDestinationCmd implements UseCase<CreateDestination, void> {
 > }
 >
 > const destinationRepository = new DestinationInMemoryRepository()
-> const getDestinationsQry = new GetDestinationsQry(destinationRepository, new DestinationOrderer())
+> const getDestinationsQry = new GetDestinationsQry(
+>    destinationRepository, new DestinationOrderer()
+> )
 >
 > createUseCaseTest(getDestinationsQry)
 >

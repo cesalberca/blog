@@ -14,6 +14,7 @@ export const categoryKeys = [
   'software-architecture',
   'design-patterns',
   'css',
+  'newsletter',
   'personal-development',
   'productivity',
   'yearly-review',

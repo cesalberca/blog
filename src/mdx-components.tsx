@@ -22,6 +22,10 @@ function CustomLink(props: LinkHTMLAttributes<HTMLAnchorElement> & PropsWithChil
   )
 }
 
+function CustomAlert(props: LinkHTMLAttributes<HTMLAnchorElement> & PropsWithChildren) {
+  return <blockquote className={props.className ?? ''}>{props.children}</blockquote>
+}
+
 function Code({ children, ...props }: { children: string; className: string }) {
   const className = props?.className ?? ''
   const match = /language-(\w+)/.exec(className ?? '')
@@ -89,6 +93,7 @@ const customComponents: ComponentProps<any>['components'] = {
   h6: createHeading(6),
   a: CustomLink,
   code: Code,
+  blockquote: CustomAlert,
   pre: ({ children }: { children: ReactNode }) => <pre className="p-0 font-mono">{children}</pre>,
 }
 

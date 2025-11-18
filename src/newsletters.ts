@@ -4,13 +4,15 @@ import path from 'path'
 import fs from 'fs'
 import type { NewsletterMetadata } from '@/features/email/domain/newsletter-metadata'
 import { Datetime } from '@/core/date/datetime'
+import { compareNewsletters } from '@/features/email/domain/sort-newsletters'
 
 export async function getNewsletter({ slug, locale }: { slug: string; locale: Locale }): Promise<NewsletterMetadata> {
   try {
     const { metadata } = await import(`@/content/emails/newsletter/${slug}/${locale}.mdx`)
     return {
       ...metadata,
-      date: Datetime.fromIso(metadata.date),
+      // Convert to Datetime if present; keep undefined as undefined
+      date: metadata.date ? Datetime.fromIso(metadata.date) : undefined,
       slug,
     }
   } catch (error) {
@@ -34,6 +36,9 @@ export async function getNewsletters({ locale }: { locale: Locale }): Promise<Ne
         newsletters.push(newsletter)
       }
     }
+
+    // Sort newsletters so that undefined dates go first, then most recent dates (descending)
+    newsletters.sort(compareNewsletters)
 
     return newsletters
   } catch (error) {

@@ -5,3 +5,125 @@ export const metadata = {
 }
 
 In the two previous issues of this Newsletter, we talked about the [Use Case pattern](/newsletter/frontend-architecture-use-case-pattern) and the [Repository Pattern](/newsletter/why-you-should-use-the-repository-pattern-to-interact-with-data) and in this newsletter, you'll see the true potential unlocked by following said patterns.
+
+When we follow the use case pattern we are actually making use of the [Command Design Pattern](https://refactoring.guru/design-patterns/command), since all use cases are devised to be executed using the same method: `handle()`.
+
+```typescript
+export class GetDestinationsQry implements UseCase<void, Destination[]> {
+  constructor(
+    private readonly destinationRepository: DestinationRepository,
+    private readonly destinationOrderer: DestinationOrderer,
+  ) {}
+
+  async handle(): Promise<Destination[]> {
+    return this.destinationOrderer.order(
+      await this.destinationRepository.findAll()
+    )
+  }
+}
+```
+
+Here is another use case:
+
+```typescript
+
+export class CreateDestinationCmd implements UseCase<CreateDestination, void> {
+  constructor(private readonly destinationRepository: DestinationRepository) {}
+
+  async handle(createDestination: CreateDestination): Promise<void> {
+    return this.destinationRepository.create(createDestination)
+  }
+}
+```
+
+**A use case must implement the `handle()` method to be considered a Use Case**.
+
+> [!TIP]
+> Did you know you can implement interfaces in JavaScript? The approach is, in my opinion, less robust but it's still doable: the answer? With tests. You can create a generic test that checks if an instance of a class has a certain method
+> ```typescript
+> export function createUseCaseTest(useCase) {
+>   describe('UseCase', () => {
+>     it('should have method handle()', async () => {
+>       expect(useCase.handle).not.be.undefined
+>     })
+>   })
+> }
+>
+> const destinationRepository = new DestinationInMemoryRepository()
+> const getDestinationsQry = new GetDestinationsQry(destinationRepository, new DestinationOrderer())
+>
+> createUseCaseTest(getDestinationsQry)
+>
+> ```
+> However, not using TypeScript would mean we would loose compile time checks, type safe autocompletion and safe type based refactors.
+
+## Why?
+
+So, why would we want to execute use cases in the same way? Well, because then we can **add logic before, after or during the execution of use cases** in a simple yet powerful way.
+
+Let me introduce you the `UseCaseService`:
+
+```typescript
+export class UseCaseService {
+  execute<In, Out>(useCase: UseCase<In, Out>, params?: In): Promise<Out> {
+    return useCase.handle(params)
+  }
+}
+```
+
+It's meant to be used like this:
+
+```typescript
+export const destinationInMemoryRepository = new DestinationInMemoryRepository()
+export const createDestinationCmd = new CreateDestinationCmd(destinationInMemoryRepository)
+export const useCaseService = new UseCaseService()
+
+const destinations = await useCaseService.execute(createDestinationCmd, newDestination)
+```
+
+Ok, so what? All of this code just to add another abstraction? What if we needed to implement logging for every use case? Easy.
+
+```typescript
+export class UseCaseService {
+  execute<In, Out>(useCase: UseCase<In, Out>, params?: In): Promise<Out> {
+    console.log('Logging use case:', useCase.constructor.name)
+    console.log('Logging params:', params)
+    return useCase.handle(params)
+  }
+}
+```
+
+Now every use case has logging capabilities. Want also to log the result? We can await the `useCase.handle(params)`:
+
+```typescript
+export class UseCaseService {
+  async execute<In, Out>(useCase: UseCase<In, Out>, params?: In): Promise<Out> {
+    console.log('Logging use case:', useCase.constructor.name)
+    console.log('Logging params:', params)
+    const result = await useCase.handle(params)
+    console.log('Logging result:', result)
+    return result
+  }
+}
+```
+
+What if we need a global error handling system to display the user a friendly error message?
+
+```typescript
+export class UseCaseService {
+  async execute<In, Out>(useCase: UseCase<In, Out>, params?: In): Promise<Out> {
+    try {
+      console.log('Logging use case:', useCase.constructor.name)
+      console.log('Logging params:', params)
+      const result = await useCase.handle(params)
+      console.log('Logging result:', result)
+      return result
+    } catch (e) {
+      alert(e.message)
+      throw e
+    }
+  }
+}
+```
+
+With this approach you don't need to keep adding try catch all over your code, you can handle them in just one place. If you still need to handle a particular error you can still do so, but by default the system is prepared to handle them generally.

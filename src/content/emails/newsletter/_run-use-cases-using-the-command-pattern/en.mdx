@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Use Cases, The Chain Of Responsibility Pattern and Middlewares',
-  slug: 'use-cases-the-chain-of-responsibility-and-middlewares',
+  title: 'Run Use Cases Using The Command Pattern',
+  slug: 'run-use-cases-using-the-command-pattern',
   description: `Let's improve our UseCaseService to encapsulate the logic of our use cases to be have a more solid foundation`
 }
 
@@ -26,7 +26,6 @@ export class GetDestinationsQry implements UseCase<void, Destination[]> {
 Here is another use case:
 
 ```typescript
-
 export class CreateDestinationCmd implements UseCase<CreateDestination, void> {
   constructor(private readonly destinationRepository: DestinationRepository) {}
 
@@ -83,7 +82,10 @@ export const useCaseService = new UseCaseService()
 const destinations = await useCaseService.execute(createDestinationCmd, newDestination)
 ```
 
-Ok, so what? All of this code just to add another abstraction? What if we needed to implement logging for every use case? Easy.
+> [!NOTE]
+> In following issues of the Newsletter we are going to improve this Dependency Injection Container
+
+Ok, so what? All of this code _just_ to add another abstraction? What if we needed to implement logging for every use case? **Easy**.
 
 ```typescript
 export class UseCaseService {
@@ -109,7 +111,7 @@ export class UseCaseService {
 }
 ```
 
-What if we need a global error handling system to display the user a friendly error message?
+What if we need a **global error handling system** to display the user a friendly error message?
 
 ```typescript
 export class UseCaseService {
@@ -128,4 +130,21 @@ export class UseCaseService {
 }
 ```
 
-With this approach you don't need to keep adding try catch all over your code, you can handle them in just one place. If you still need to handle a particular error you can still do so, but by default the system is prepared to handle them generally.
+With this approach, **you don't need to keep adding try catch all over your code, you can handle them in just one place**. If you still need to handle a particular error, you can still do so, but by default, the system is prepared to handle them generally.
+
+## Conclussion
+
+The `UseCaseService` is a wonderful place to handle transversal core features. Over the years I've used it to solve really complex problems in an easy way. Here are some of the use cases of the `UseCaseService` that I've applied:
+
+* Caching
+* Logging
+* Offline capabilities
+* Confirmation message
+* Success messages
+* Retries
+* Timers
+* Roles and permissions handling
+* Loading strategies
+* Many more
+
+How would you use the `UseCaseService`?

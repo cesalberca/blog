@@ -17,6 +17,7 @@ import { cn } from '@/lib/utils'
 import { Link } from '@/core/components/link/link'
 import { Alert } from '@/core/components/alert/alert'
 import { parseAdmonition } from '@/core/components/alert/parse-admonition'
+import { cleanPrefix } from '@/core/components/alert/clean-prefix'
 
 // This file needs to be here
 
@@ -69,37 +70,6 @@ function CustomAlert({ className, children }: HTMLQuoteElement & PropsWithChildr
   const parsed = parseAdmonition(allText)
   if (!parsed) {
     return <blockquote className={className ?? ''}>{children}</blockquote>
-  }
-
-  function stripPrefix(text: string): string {
-    return text.replace(/^\s*\[![A-Za-z]+\]\s*/, '')
-  }
-
-  function cleanPrefix(children: ReactNode): ReactNode {
-    const array = Children.toArray(children) as ReactNode[]
-    let cleanedFirst = false
-
-    const newChildren: ReactNode[] = array.map((node): ReactNode => {
-      if (!cleanedFirst && typeof node === 'string') {
-        cleanedFirst = true
-        return stripPrefix(node)
-      }
-
-      if (isValidElement(node)) {
-        const element = node as ReactElement<{ children?: ReactNode }>
-        const elementChildren = element.props.children
-
-        if (!elementChildren) return element
-
-        return cloneElement(element, {
-          children: cleanPrefix(elementChildren),
-        })
-      }
-
-      return node
-    })
-
-    return newChildren.length === 1 ? newChildren[0] : newChildren
   }
 
   return <Alert type={parsed.type}>{cleanPrefix(children)}</Alert>

@@ -2,6 +2,7 @@ import type { MDXComponents } from 'mdx/types'
 
 import {
   Children,
+  cloneElement,
   type ComponentProps,
   createElement,
   isValidElement,
@@ -15,6 +16,7 @@ import dark from 'react-syntax-highlighter/dist/esm/styles/prism/synthwave84'
 import { cn } from '@/lib/utils'
 import { Link } from '@/core/components/link/link'
 import { Alert } from '@/core/components/alert/alert'
+import { parseAdmonition } from '@/core/components/alert/parse-admonition'
 
 // This file needs to be here
 
@@ -64,12 +66,43 @@ const hasChildren = (element: ReactNode): element is ReactElement<{ children: Re
 function CustomAlert({ className, children }: HTMLQuoteElement & PropsWithChildren) {
   const allText = transformChildrenToString(children).trim()
 
-  console.log({ allText })
-  if (allText.startsWith('[!')) {
-    return <Alert type="tip">{children}</Alert>
+  const parsed = parseAdmonition(allText)
+  if (!parsed) {
+    return <blockquote className={className ?? ''}>{children}</blockquote>
   }
 
-  return <blockquote className={className ?? ''}>{children}</blockquote>
+  function stripPrefix(text: string): string {
+    return text.replace(/^\s*\[![A-Za-z]+\]\s*/, '')
+  }
+
+  function cleanPrefix(children: ReactNode): ReactNode {
+    const array = Children.toArray(children) as ReactNode[]
+    let cleanedFirst = false
+
+    const newChildren: ReactNode[] = array.map((node): ReactNode => {
+      if (!cleanedFirst && typeof node === 'string') {
+        cleanedFirst = true
+        return stripPrefix(node)
+      }
+
+      if (isValidElement(node)) {
+        const element = node as ReactElement<{ children?: ReactNode }>
+        const elementChildren = element.props.children
+
+        if (!elementChildren) return element
+
+        return cloneElement(element, {
+          children: cleanPrefix(elementChildren),
+        })
+      }
+
+      return node
+    })
+
+    return newChildren.length === 1 ? newChildren[0] : newChildren
+  }
+
+  return <Alert type={parsed.type}>{cleanPrefix(children)}</Alert>
 }
 
 function Code({ children, ...props }: { children: string; className: string }) {
@@ -79,6 +112,7 @@ function Code({ children, ...props }: { children: string; className: string }) {
     <SyntaxHighlighter
       {...props}
       language={match[1]}
+      CodeTag="div"
       PreTag="div"
       style={dark}
       codeTagProps={{
@@ -140,7 +174,7 @@ const customComponents: ComponentProps<any>['components'] = {
   a: CustomLink,
   code: Code,
   blockquote: CustomAlert,
-  pre: ({ children }: { children: ReactNode }) => <pre className="p-0 font-mono">{children}</pre>,
+  pre: ({ children }: { children: ReactNode }) => <pre className="p-0 text-sm font-mono not-prose">{children}</pre>,
 }
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {

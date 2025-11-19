@@ -144,7 +144,9 @@ const customComponents: ComponentProps<any>['components'] = {
   a: CustomLink,
   code: Code,
   blockquote: CustomAlert,
-  pre: ({ children }: { children: ReactNode }) => <pre className="p-0 text-sm font-mono not-prose">{children}</pre>,
+  pre: ({ children }: { children: ReactNode }) => (
+    <pre className="p-0 text-sm font-mono not-prose mb-6">{children}</pre>
+  ),
 }
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {

@@ -1,6 +1,6 @@
-import { Info, Lightbulb, AlertCircle, TriangleAlert, OctagonAlert } from 'lucide-react'
+import { AlertCircle, Info, Lightbulb, OctagonAlert, TriangleAlert } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 
 type AlertType = 'note' | 'tip' | 'important' | 'warning' | 'caution'
 
@@ -47,7 +47,7 @@ const alertConfig = {
   },
 }
 
-export const Alert: FC<{ type: AlertType; children: React.ReactNode; className?: string }> = ({
+export const Alert: FC<{ type: AlertType; children: ReactNode; className?: string }> = ({
   type,
   children,
   className,
@@ -56,10 +56,10 @@ export const Alert: FC<{ type: AlertType; children: React.ReactNode; className?:
   const Icon = config.icon
 
   return (
-    <div className={cn('relative pl-8', className)}>
+    <div className={cn('relative', className)}>
       <div
         className={cn(
-          'absolute -left-5 top-3 flex h-10 w-10 items-center justify-center rounded-md border-2 bg-background',
+          'absolute left-0 top-0 -translate-x-[50%] flex h-10 w-10 items-center justify-center rounded-md border-2 bg-background',
           config.iconColor,
           'border-current',
         )}
@@ -69,21 +69,12 @@ export const Alert: FC<{ type: AlertType; children: React.ReactNode; className?:
 
       <div
         className={cn(
-          'absolute left-0 top-8 h-[calc(100%-2rem)] w-0.5',
-          config.iconColor.replace('text-', 'bg-'),
-          'opacity-40',
-        )}
-      />
-
-      <div
-        className={cn(
-          'rounded-lg border-l-4 p-4 pl-6',
+          'rounded-lg border-l-2 p-6',
           config.borderColor.replace('border-l-', 'border-l-'),
           config.bgColor,
         )}
       >
-        <div className={cn('font-semibold text-sm mb-2', config.textColor)}>{config.label}</div>
-        <div className="text-sm leading-relaxed text-foreground/90">{children}</div>
+        <div className="text-base leading-relaxed text-foreground/90 not-prose">{children}</div>
       </div>
     </div>
   )

@@ -130,6 +130,9 @@ export class UseCaseService {
 }
 ```
 
+> ![NOTE]
+> We will improve the `UseCaseService` so we use the [Chain of Responsibility Pattern](https://refactoring.guru/design-patterns/chain-of-responsibility) to improve how we handle cross-cutting concerns in a way that is maintainable.
+
 With this approach, **you don't need to keep adding try catch all over your code, you can handle them in just one place**. If you still need to handle a particular error, you can still do so, but by default, the system is prepared to handle them generally.
 
 ## Conclussion

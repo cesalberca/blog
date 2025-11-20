@@ -2,7 +2,6 @@ import type { MDXComponents } from 'mdx/types'
 
 import {
   Children,
-  cloneElement,
   type ComponentProps,
   createElement,
   isValidElement,
@@ -15,9 +14,9 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import dark from 'react-syntax-highlighter/dist/esm/styles/prism/synthwave84'
 import { cn } from '@/lib/utils'
 import { Link } from '@/core/components/link/link'
-import { Alert } from '@/core/components/alert/alert'
 import { parseAdmonition } from '@/core/components/alert/parse-admonition'
 import { cleanPrefix } from '@/core/components/alert/clean-prefix'
+import { IconAlert } from '@/core/components/alert/icon-alert'
 
 // This file needs to be here
 
@@ -72,7 +71,7 @@ function CustomAlert({ className, children }: HTMLQuoteElement & PropsWithChildr
     return <blockquote className={className ?? ''}>{children}</blockquote>
   }
 
-  return <Alert type={parsed.type}>{cleanPrefix(children)}</Alert>
+  return <IconAlert type={parsed.type}>{cleanPrefix(children)}</IconAlert>
 }
 
 function Code({ children, ...props }: { children: string; className: string }) {

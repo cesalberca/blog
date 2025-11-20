@@ -16,7 +16,7 @@ export const IconAlert: FC<{
   }
 
   return (
-    <Alert icon={<AlertImage />} className={iconColor[type]}>
+    <Alert type={type} icon={<AlertImage />} className={iconColor[type]}>
       {children}
     </Alert>
   )

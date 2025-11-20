@@ -10,5 +10,5 @@ export const ImageAlert: FC<{
 }> = ({ type }) => {
   const alertImage = getAlertImage(type, 'png')
 
-  return <Alert icon={<Image src={alertImage} alt="" width="20" height="20" />} />
+  return <Alert type={type} icon={<Image src={alertImage} alt="" width="20" height="20" />} />
 }

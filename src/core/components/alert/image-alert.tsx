@@ -53,26 +53,36 @@ export const ImageAlert: FC<
     <Section style={{ paddingTop: "20px", paddingBottom: "8px" }}>
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <tbody>
+          {/* Icon row (centered without flex/position) */}
           <tr>
-            <td style={{ paddingLeft: "-10px" }}>
-              <div
-                className={cn(
-                  "w-10 h-10 rounded-md border-2 flex items-center justify-center bg-background -ml-[20px] -mb-[20px]",
-                  config.borderColor,
-                  config.color,
-                )}
+            <td align="center" style={{ padding: 0 }}>
+              <table
+                role="presentation"
+                style={{ borderCollapse: "collapse" }}
               >
-                <Img
-                  src={alertImage}
-                  alt={`${type} icon`}
-                  className="block"
-                  width="20"
-                  height="20"
-                />
-              </div>
+                <tbody>
+                  <tr>
+                    <td
+                      align="center"
+                      valign="middle"
+                      style={{ width: 40, height: 40, padding: 0 }}
+                      className={cn("rounded-md border-2 bg-background", config.borderColor)}
+                    >
+                      <Img
+                        src={alertImage}
+                        alt={`${type} icon`}
+                        width="20"
+                        height="20"
+                        style={{ display: "block" }}
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </td>
           </tr>
 
+          {/* Content row */}
           <tr>
             <td>
               <div
@@ -82,9 +92,7 @@ export const ImageAlert: FC<
                   config.borderColor,
                 )}
               >
-                <div
-                  className="text-base leading-relaxed text-foreground/90 not-prose"
-                >
+                <div className="text-base leading-relaxed text-foreground/90 not-prose">
                   {children}
                 </div>
               </div>

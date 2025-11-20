@@ -8,29 +8,34 @@ export const Alert: FC<PropsWithChildren<{ icon: ReactNode; className?: string; 
   type,
   className,
 }) => {
-  const alertConfig: Record<AlertType, { borderColor: string; bgColor: string; textColor: string }> = {
+  const alertConfig: Record<AlertType, { color: string; borderColor: string; bgColor: string; textColor: string }> = {
     note: {
-      borderColor: 'border-l-blue-500',
+      color: 'text-blue-500',
+      borderColor: 'border-blue-500',
       bgColor: 'bg-blue-500/10',
       textColor: 'text-blue-400',
     },
     tip: {
-      borderColor: 'border-l-emerald-500',
+      color: 'text-emerald-500',
+      borderColor: 'border-emerald-500',
       bgColor: 'bg-emerald-500/10',
       textColor: 'text-emerald-400',
     },
     important: {
-      borderColor: 'border-l-purple-500',
+      color: 'text-purple-500',
+      borderColor: 'border-purple-500',
       bgColor: 'bg-purple-500/10',
       textColor: 'text-purple-400',
     },
     warning: {
-      borderColor: 'border-l-amber-500',
+      color: 'text-amber-500',
+      borderColor: 'border-amber-500',
       bgColor: 'bg-amber-500/10',
       textColor: 'text-amber-400',
     },
     caution: {
-      borderColor: 'border-l-red-500',
+      color: 'text-red-500',
+      borderColor: 'border-red-500',
       bgColor: 'bg-red-500/10',
       textColor: 'text-red-400',
     },
@@ -42,13 +47,14 @@ export const Alert: FC<PropsWithChildren<{ icon: ReactNode; className?: string; 
       <div
         className={cn(
           'absolute left-0 top-0 -translate-x-[50%] flex h-10 w-10 items-center justify-center rounded-md border-2 bg-background',
-          'border-current',
+          config.borderColor,
+          config.color,
         )}
       >
         {icon}
       </div>
 
-      <div className={cn('rounded-lg border-l-2 border-current p-6', config.bgColor, config.borderColor)}>
+      <div className={cn('rounded-lg border-l-2 p-6', config.bgColor, config.borderColor)}>
         <div className="text-base leading-relaxed text-foreground/90 not-prose">{children}</div>
       </div>
     </div>

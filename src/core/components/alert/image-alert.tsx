@@ -1,14 +1,18 @@
-import type { FC, ReactNode } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 import { type AlertType, getAlertImage } from './alert-config'
-import Image from 'next/image'
 import { Alert } from '@/core/components/alert/alert'
+import { Img } from '@react-email/components'
 
-export const ImageAlert: FC<{
-  type: AlertType
-  children: ReactNode
-  className?: string
-}> = ({ type }) => {
+export const ImageAlert: FC<
+  PropsWithChildren<{
+    type: AlertType
+  }>
+> = ({ type, children }) => {
   const alertImage = getAlertImage(type, 'png')
 
-  return <Alert type={type} icon={<Image src={alertImage} alt="" width="20" height="20" />} />
+  return (
+    <Alert type={type} icon={<Img src={alertImage} alt="" width="20" height="20" />}>
+      {children}
+    </Alert>
+  )
 }

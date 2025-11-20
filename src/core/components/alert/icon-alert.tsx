@@ -1,22 +1,16 @@
-import type { FC, ReactNode } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 import { type AlertType, getAlertImage } from './alert-config'
 import { Alert } from '@/core/components/alert/alert'
 
-export const IconAlert: FC<{
-  type: AlertType
-  children: ReactNode
-}> = ({ type, children }) => {
+export const IconAlert: FC<
+  PropsWithChildren<{
+    type: AlertType
+  }>
+> = ({ type, children }) => {
   const AlertImage = getAlertImage(type, 'svg')
-  const iconColor = {
-    note: 'text-blue-500',
-    tip: 'text-emerald-500',
-    important: 'text-purple-500',
-    warning: 'text-amber-500',
-    caution: 'text-red-500',
-  }
 
   return (
-    <Alert type={type} icon={<AlertImage />} className={iconColor[type]}>
+    <Alert type={type} icon={<AlertImage />}>
       {children}
     </Alert>
   )

@@ -1,4 +1,5 @@
 import { AlertCircle, Info, Lightbulb, type LucideIcon, OctagonAlert, TriangleAlert } from 'lucide-react'
+import { emailImageBaseUrl } from '@/lib/email-image-base-url'
 
 export type AlertType = 'note' | 'tip' | 'important' | 'warning' | 'caution'
 export type AlertAssetKind = 'png' | 'svg'
@@ -16,7 +17,8 @@ export function getAlertImage(type: AlertType, assetKind: 'svg'): LucideIcon
 
 export function getAlertImage(type: AlertType, assetKind: AlertAssetKind) {
   if (assetKind === 'png') {
-    return `/assets/emails/${type}.png`
+    console.log(emailImageBaseUrl(`${type}.png`))
+    return emailImageBaseUrl(`${type}.png`)
   }
 
   return alertIcons[type]

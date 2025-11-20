@@ -27,7 +27,6 @@ interface EmailTemplateProps {
 
 const config: TailwindConfig = {
   presets: [pixelBasedPreset],
-  darkMode: 'selector',
   theme: {
     extend: {
       colors: {

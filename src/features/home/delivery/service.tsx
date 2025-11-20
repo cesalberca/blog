@@ -1,4 +1,4 @@
-import React, { type FC, type PropsWithChildren, type ReactNode } from 'react'
+import { type FC, type PropsWithChildren, type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 import { Background } from '@/core/components/background/background'
 

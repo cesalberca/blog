@@ -17,16 +17,16 @@ export function getWebMdxComponents(): MdxComponentsMap {
     code: WebCode,
     blockquote: CustomAlert,
     p: (props: HTMLAttributes<HTMLParagraphElement> & PropsWithChildren) => (
-      <p className="leading-7 [&:not(:first-child)]:mt-6 text-foreground" {...props}></p>
+      <p {...props}></p>
     ),
     ul: (props: HTMLAttributes<HTMLUListElement>) => {
-      return <ul className="my-6 ml-6 list-disc space-y-2" {...props}></ul>
+      return <ul {...props}></ul>
     },
     ol: (props: HTMLAttributes<HTMLOListElement>) => {
-      return <ol className="my-6 ml-6 list-decimal space-y-2" {...props}></ol>
+      return <ol {...props}></ol>
     },
     strong: (props: HTMLAttributes<HTMLElement> & PropsWithChildren) => {
-      return <strong className="font-semibold text-foreground" {...props} />
+      return <strong {...props} />
     },
     pre: ({ children }: { children: ReactNode }) => (
       <pre className="p-0 text-sm font-mono not-prose mb-6">{children}</pre>

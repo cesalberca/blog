@@ -13,7 +13,7 @@ A modern, internationalized personal website and blog built with cutting-edge we
 
 ## 🛠 Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/)
+- **Framework**: [Next.js](https://nextjs.org/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **UI Components**:
@@ -23,9 +23,8 @@ A modern, internationalized personal website and blog built with cutting-edge we
 - **Animation**: [Framer Motion](https://www.framer.com/motion/)
 - **Content**: [MDX](https://mdxjs.com/)
 - **Code Quality**:
-  - [ESLint](https://eslint.org/)
-  - [Prettier](https://prettier.io/)
-  - [Husky](https://typicode.github.io/husky/)
+  - [Biome](https://biomejs.dev/)
+  - [Lefthook](https://lefthook.dev/)
 - **Testing**: [Jest](https://jestjs.io/)
 
 ## 📂 Project Structure

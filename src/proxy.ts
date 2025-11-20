@@ -4,7 +4,7 @@ import { routing } from '@/core/i18n/routing'
 
 const intlMiddleware = createMiddleware(routing)
 
-export default function middleware(req: NextRequest) {
+export default function proxy(req: NextRequest) {
   // Serve index.html for the talks page
   if (req.nextUrl.pathname === '/talks/freelancing-with-ai') {
     return NextResponse.rewrite(new URL('/talks/freelancing-with-ai/index.html', req.url))

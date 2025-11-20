@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from '@/core/components/link/link'
 
 export const tableData = [

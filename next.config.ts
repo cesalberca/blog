@@ -6,15 +6,12 @@ import { withBotId } from 'botid/next/config'
 const withNextIntl = createNextIntlPlugin('./src/core/i18n/i18n.tsx')
 
 const nextConfig: NextConfig = {
-  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  pageExtensions: ['js', 'jsx', 'mdx', 'md', 'ts', 'tsx'],
   images: {
     remotePatterns: [{ protocol: 'https', port: '', hostname: 'sxvlta3onkp6zlqr.public.blob.vercel-storage.com' }],
   },
   outputFileTracingIncludes: {
     '/': ['src/content/emails/**'],
-  },
-  experimental: {
-    mdxRs: true,
   },
   async rewrites() {
     return [

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { type FC, useState } from 'react'
+import { type FC, useState } from 'react'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { motion } from 'framer-motion'
 

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { type FC, type MouseEvent, type PropsWithChildren, useRef } from 'react'
+import { type FC, type MouseEvent, type PropsWithChildren, useRef } from 'react'
 import { motion, useAnimation, useMotionValue, useScroll } from 'framer-motion'
 import { linearInterpolation } from '@/core/3d/linear-interpolation'
 import { getRandomString } from '@/core/utils/get-random-string'

@@ -1,4 +1,4 @@
-import React, { type FC, type ReactNode } from 'react'
+import { type FC, type ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import { CheckCircle, GraduationCap, Signpost, Users } from 'lucide-react'
 import { Markdown } from '@/core/components/markdown/markdown'

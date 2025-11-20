@@ -37,6 +37,5 @@ next-env.d.ts
 
 .idea
 .vscode
-.eslintcache
 
 .npmrc

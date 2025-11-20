@@ -4,8 +4,9 @@ import type { ReactElement } from 'react'
 import { verify } from 'jsonwebtoken'
 import NewsletterWelcomeEmail from '@/emails/transactional/newsletter-welcome-email'
 import { timer } from '@/lib/timer'
+import { env } from '@/env'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = new Resend(env.RESEND_API_KEY)
 
 interface ConfirmationTokenPayload {
   email: string

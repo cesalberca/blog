@@ -1,7 +1,7 @@
 import { ServicesPage } from '../../../features/services/delivery/services.page'
 import type { NextPage } from 'next'
 import { setRequestLocale } from 'next-intl/server'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 
 export const metadata = {
   title: 'Services',

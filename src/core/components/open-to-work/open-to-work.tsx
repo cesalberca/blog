@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import { CircleText } from '@/core/components/open-to-work/circle-text'
 import { useTranslations } from 'next-intl'
 

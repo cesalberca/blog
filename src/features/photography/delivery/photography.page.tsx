@@ -1,6 +1,6 @@
 'use client'
 
-import { type FC } from 'react'
+import type { FC } from 'react'
 import { useTranslations } from 'next-intl'
 import { Page } from '@/core/components/page/page'
 import { AccentText } from '@/core/components/accent-text/accent-text'

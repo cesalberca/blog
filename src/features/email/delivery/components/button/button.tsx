@@ -1,4 +1,4 @@
-import { type FC, type PropsWithChildren } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 import { Button as EmailButton } from '@react-email/button'
 import { cn } from '@/lib/utils'
 

@@ -1,5 +1,5 @@
 import { Resend } from 'resend'
-import { NextRequest, NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import type { ReactElement } from 'react'
 import { Datetime } from '@/core/date/datetime'
 import { checkBotId } from 'botid/server'

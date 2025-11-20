@@ -10,7 +10,7 @@ export default async function Page({ params }: Props) {
   try {
     const Content = (await import(`./${locale}.mdx`)).default
     return <Content />
-  } catch (error) {
+  } catch (_error) {
     notFound()
   }
 }

@@ -1,4 +1,4 @@
-import { type FC, type PropsWithChildren } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { Page } from '@/core/components/page/page'
 import { baseUrl } from '@/app/sitemap'

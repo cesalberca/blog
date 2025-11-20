@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import { SiGithub, SiInstagram, SiLinkedin, SiStackoverflow, SiX, SiYoutube } from '@icons-pack/react-simple-icons'
 import { Link } from '@/core/components/link/link'
 

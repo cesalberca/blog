@@ -1,6 +1,6 @@
 import { TalksPage } from '../../../features/talks/delivery/talks.page'
 import type { NextPage } from 'next'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 
 export const metadata = {
   title: 'Talks',

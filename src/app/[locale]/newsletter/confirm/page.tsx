@@ -49,7 +49,7 @@ const NewsletterConfirmPage: FC = () => {
           setIsAlreadyConfirmed(true)
           setState('subscribed')
         }
-      } catch (error: any) {
+      } catch (_error) {
         setState('error')
         setErrorMessage('An unexpected error occurred')
       }

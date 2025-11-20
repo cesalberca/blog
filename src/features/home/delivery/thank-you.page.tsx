@@ -8,7 +8,7 @@ import { CASE_STUDY_URLS } from '@/core/i18n/paths'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import type { FC } from 'react'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 import { Section } from '@/core/components/section/section'
 import { Testimonials } from '@/core/components/testimonials/testimonials'
 

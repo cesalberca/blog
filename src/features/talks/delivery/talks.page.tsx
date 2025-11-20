@@ -7,7 +7,7 @@ import { Page } from '@/core/components/page/page'
 import { Link } from '@/core/components/link/link'
 import { Masonry } from '@/core/components/masonry/masonry'
 import { Badge } from '@/components/ui/badge'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 
 export const TalksPage: FC<{ locale: Locale }> = async ({ locale }) => {
   const allTalks = await getTalks({ locale })

@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import { useTranslations } from 'next-intl'
 import { Markdown } from '@/core/components/markdown/markdown'
 import { Link } from '@/core/components/link/link'

@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import { useTranslations } from 'next-intl'
 import { cva } from 'class-variance-authority'
 import { cn } from '@/lib/utils'

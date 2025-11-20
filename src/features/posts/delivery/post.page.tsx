@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
 import { KoFiButton } from '@/core/components/ko-fi-button/ko-fi-button'
 import { getTranslatedCategories } from '@/features/posts/domain/categories'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 import { NewsletterCard } from '@/core/components/newsletter-card/newsletter-card'
 
 export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: string; locale: Locale }>> = async ({

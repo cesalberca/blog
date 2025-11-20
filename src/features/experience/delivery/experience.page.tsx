@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import { Experience } from '@/features/home/delivery/experience'
 import { useTranslations } from 'next-intl'
 import { AccentText } from '@/core/components/accent-text/accent-text'

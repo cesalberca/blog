@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { getTranslations } from 'next-intl/server'
 import { Page } from '@/core/components/page/page'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 import { ArrowRight, Award, BarChart, Clock, GraduationCap, Users, Zap } from 'lucide-react'
 import { Markdown } from '@/core/components/markdown/markdown'
 import { AccentText } from '@/core/components/accent-text/accent-text'

@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
+    "includes": ["**", "!node_modules", "!.next", "!dist", "!build", "!public/talks/*"]
   },
   "formatter": {
     "enabled": true,
@@ -15,6 +15,11 @@
     "indentWidth": 2,
     "lineWidth": 120,
     "useEditorconfig": true
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
   },
   "javascript": {
     "formatter": {

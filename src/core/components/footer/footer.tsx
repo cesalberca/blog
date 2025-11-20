@@ -6,7 +6,7 @@ import { Link } from '@/core/components/link/link'
 import { Datetime } from '@/core/date/datetime'
 import { NewsletterCard } from '@/core/components/newsletter-card/newsletter-card'
 import { CASE_STUDY_URLS } from '@/core/i18n/paths'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 import { RichText } from '@/core/components/rich-text/rich-text'
 
 export const Footer: FC = () => {

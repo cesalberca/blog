@@ -1,4 +1,4 @@
-import { type FC, type PropsWithChildren } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 import { CodeBlock as EmailCodeBlock, type PrismLanguage, synthwave84 } from '@react-email/code-block'
 import { cn } from '@/lib/utils'
 import { Column, Row, Section } from '@react-email/components'

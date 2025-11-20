@@ -1,4 +1,4 @@
-import { type FC, type PropsWithChildren } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 import { Link as EmailLink } from '@react-email/link'
 import { cn } from '@/lib/utils'
 

@@ -1,4 +1,4 @@
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 import { getSlugs } from '@/get-slugs'
 import path from 'path'
 

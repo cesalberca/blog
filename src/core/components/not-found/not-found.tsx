@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import { useTranslations } from 'next-intl'
 import { Background } from '@/core/components/background/background'
 import { Button } from '@/components/ui/button'

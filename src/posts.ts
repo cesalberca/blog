@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import type { Category } from '@/features/posts/domain/category'
 import type { PostMetadata } from '@/features/posts/domain/post-metadata'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 import { getSlugs } from '@/get-slugs'
 import { Datetime } from '@/core/date/datetime'
 

@@ -1,6 +1,6 @@
 import { EmailTemplate } from './email-template'
 import { Column, Container, Link, Row, Section, Text, Img } from '@react-email/components'
-import { type FC, type PropsWithChildren } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 import { emailImageBaseUrl } from '@/lib/email-image-base-url'
 
 interface NewsletterEmailProps {

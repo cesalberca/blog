@@ -1,4 +1,4 @@
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 import { getTranslations } from 'next-intl/server'
 
 export const categoryKeys = [

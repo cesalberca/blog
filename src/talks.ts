@@ -1,9 +1,9 @@
 import type { TalkMetadata } from '@/features/talks/domain/talk-metadata'
 import { getSlugs } from '@/get-slugs'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 import { Datetime } from '@/core/date/datetime'
-import path from 'path'
-import fs from 'fs'
+import path from 'node:path'
+import fs from 'node:fs'
 
 export async function getTalk({ slug, locale }: { slug: string; locale: Locale }): Promise<TalkMetadata | null> {
   try {

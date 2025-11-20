@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import { NewsletterTemplate } from '@/features/email/delivery/templates/newsletter-template'
 import type { NewsletterMetadata } from '@/features/email/domain/newsletter-metadata'
 import path from 'path'

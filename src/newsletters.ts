@@ -1,5 +1,5 @@
 import { getSlugs } from '@/get-slugs'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 import path from 'path'
 import fs from 'fs'
 import type { NewsletterMetadata } from '@/features/email/domain/newsletter-metadata'

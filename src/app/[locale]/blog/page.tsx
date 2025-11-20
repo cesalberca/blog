@@ -1,6 +1,6 @@
 import { BlogPostsPage } from '@/features/posts/delivery/posts.page'
 import type { NextPage } from 'next'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 
 const Page: NextPage<{
   params: Promise<{

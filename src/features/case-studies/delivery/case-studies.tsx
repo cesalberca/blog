@@ -1,7 +1,7 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import { CaseStudyCard } from '@/features/case-studies/delivery/case-study-card'
 import { CASE_STUDY_URLS } from '@/core/i18n/paths'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 import { getLocale, getTranslations } from 'next-intl/server'
 
 export const CaseStudies: FC = async () => {

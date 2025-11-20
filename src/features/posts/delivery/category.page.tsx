@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ChevronLeft } from 'lucide-react'
 import { Link } from '@/core/components/link/link'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 

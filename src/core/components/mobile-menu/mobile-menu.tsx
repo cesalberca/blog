@@ -16,7 +16,7 @@ import { Link } from '@/core/components/link/link'
 import { SecondaryCard } from '@/core/components/secondary-card/secondary-card'
 import Image from 'next/image'
 import LocaleSwitcher from '@/core/components/locale-switcher/locale-switcher'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 
 interface MenuItem {
   label: string

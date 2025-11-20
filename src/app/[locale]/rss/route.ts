@@ -1,7 +1,7 @@
 import { baseUrl } from '../../sitemap'
 import { getPosts } from '@/posts'
 import { getLocale } from 'next-intl/server'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 import { Datetime } from '@/core/date/datetime'
 
 export async function GET() {

@@ -4,7 +4,7 @@ import { Page } from '@/core/components/page/page'
 import { getTranslations } from 'next-intl/server'
 import { PostExcerpt } from '@/features/posts/delivery/post-excerpt'
 import { Masonry } from '@/core/components/masonry/masonry'
-import { Locale } from '@/core/i18n/locale'
+import type { Locale } from '@/core/i18n/locale'
 import { CategoryCloud } from '@/features/posts/delivery/category-cloud'
 
 export const BlogPostsPage: FC<{ locale: Locale }> = async ({ locale }) => {

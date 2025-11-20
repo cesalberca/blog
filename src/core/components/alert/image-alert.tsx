@@ -57,29 +57,17 @@ export const ImageAlert: FC<
             <td style={{ paddingLeft: "-10px" }}>
               <div
                 className={cn(
-                  "border-2 bg-background",
+                  "w-10 h-10 rounded-md border-2 flex items-center justify-center bg-background -ml-[20px] -mb-[20px]",
                   config.borderColor,
                   config.color,
                 )}
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  backgroundColor: config.bgColor,
-                  border: `2px solid ${config.borderColor}`,
-                  borderRadius: "6px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "-20px",
-                  marginLeft: "-20px",
-                }}
               >
                 <Img
                   src={alertImage}
                   alt={`${type} icon`}
+                  className="block"
                   width="20"
                   height="20"
-                  style={{ display: "block" }}
                 />
               </div>
             </td>
@@ -88,21 +76,14 @@ export const ImageAlert: FC<
           <tr>
             <td>
               <div
-                className={cn('rounded-lg border-l-2 p-6', config.bgColor, config.borderColor)}
-                style={{
-                  backgroundColor: config.bgColor,
-                  borderLeft: `2px solid ${config.borderColor}`,
-                  borderRadius: "8px",
-                  padding: "24px",
-                }}
+                className={cn(
+                  "rounded-lg border-l-2 p-6",
+                  config.bgColor,
+                  config.borderColor,
+                )}
               >
                 <div
                   className="text-base leading-relaxed text-foreground/90 not-prose"
-                  style={{
-                    fontSize: "16px",
-                    lineHeight: "1.6",
-                    color: "#1f2937",
-                  }}
                 >
                   {children}
                 </div>

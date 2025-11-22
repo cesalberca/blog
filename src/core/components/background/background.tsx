@@ -75,7 +75,7 @@ export const Background: FC<PropsWithChildren<{ className?: string; image?: stri
         onViewportEnter={() => {
           setBackground()
         }}
-        style={{ backgroundImage: `url(${image})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
+        style={{ backgroundImage: `url(${image ?? ''})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
         className={cn(
           'absolute top-0 left-0 h-full w-full font-mono text-xs break-words leading-4 opacity-0',
           styles['mask'],

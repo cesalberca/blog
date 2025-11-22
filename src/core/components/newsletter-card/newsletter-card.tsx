@@ -1,7 +1,6 @@
 'use client'
 
-import type React from 'react'
-import { useState } from 'react'
+import { type FC, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -11,7 +10,7 @@ export interface NewsletterCardProps {
   defaultExpanded?: boolean
 }
 
-export const NewsletterCard: React.FC<NewsletterCardProps> = ({ defaultExpanded = false }) => {
+export const NewsletterCard: FC<NewsletterCardProps> = ({ defaultExpanded = false }) => {
   const t = useTranslations()
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
 

@@ -34,10 +34,6 @@
         "./src/*"
       ]
     },
-    "types": [
-      "vitest",
-      "@testing-library/jest-dom"
-    ],
     "plugins": [
       {
         "name": "next"

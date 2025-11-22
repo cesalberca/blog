@@ -13,19 +13,33 @@ A modern, internationalized personal website and blog built with cutting-edge we
 
 ## 🛠 Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**:
+- Framework: [Next.js](https://nextjs.org/)
+- Language: [TypeScript](https://www.typescriptlang.org/)
+- Styling: [Tailwind CSS v4](https://tailwindcss.com/)
+- UI Components:
   - [Radix UI](https://www.radix-ui.com/)
   - [shadcn/ui](https://ui.shadcn.com/)
-- **Internationalization**: [next-intl](https://next-intl-docs.vercel.app/)
-- **Animation**: [Framer Motion](https://www.framer.com/motion/)
-- **Content**: [MDX](https://mdxjs.com/)
-- **Code Quality**:
+- Internationalization: [next-intl](https://next-intl.dev/)
+- Animation: [Framer Motion](https://www.framer.com/motion/)
+- Content & MDX:
+  - [MDX](https://mdxjs.com/)
+  - [react-markdown](https://github.com/remarkjs/react-markdown)
+- Email (transactional):
+  - [React Email](https://react.email/)
+  - [@react-email/components](https://react.email/docs/components)
+  - [@react-email/tailwind](https://react.email/docs/utilities/tailwind)
+  - [@react-email/render](https://react.email/docs/utilities/render)
+  - [@react-email/preview-server](https://react.email/docs/preview)
+- Forms & Validation: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- Icons: [lucide-react](https://lucide.dev/)
+- Carousels: [Embla Carousel](https://www.embla-carousel.com/)
+- Notifications: [sonner](https://sonner.emilkowal.ski/)
+- Theme: [next-themes](https://github.com/pacocoursey/next-themes)
+- Analytics: [Vercel Analytics](https://vercel.com/analytics) + [Speed Insights](https://vercel.com/speed-insights)
+- Code Quality:
   - [Biome](https://biomejs.dev/)
   - [Lefthook](https://lefthook.dev/)
-- **Testing**: [Jest](https://jestjs.io/)
+- Testing: [Vitest](https://vitest.dev/) + [Playwright](https://playwright.dev/)
 
 ## 📂 Project Structure
 

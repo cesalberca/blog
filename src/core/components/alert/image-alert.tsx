@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from "react";
-import { Img, Section } from "@react-email/components";
+import { Section } from "@react-email/components";
 import { getAlertImage } from "@/core/components/alert/alert-config";
 import { cn } from "@/lib/utils";
 
@@ -51,52 +51,42 @@ export const ImageAlert: FC<
 
   return (
     <Section style={{ paddingTop: "20px", paddingBottom: "8px" }}>
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+      {/*
+        Email-safe layout:
+        - Use a background image on the container TD.
+        - Add top/left padding equal to half the icon size so the icon visually sits
+          half outside the content box at the top-left corner.
+        - No flexbox, positioning, or negative margins used.
+      */}
+      <table style={{ width: "100%", borderCollapse: "collapse" }} role="presentation">
         <tbody>
-          {/* Icon row (centered without flex/position) */}
           <tr>
-            <td align="center" style={{ padding: 0 }}>
-              <table
-                role="presentation"
-                style={{ borderCollapse: "collapse" }}
-              >
-                <tbody>
-                  <tr>
-                    <td
-                      align="center"
-                      valign="middle"
-                      style={{ width: 40, height: 40, padding: 0 }}
-                      className={cn("rounded-md border-2 bg-background", config.borderColor)}
-                    >
-                      <Img
-                        src={alertImage}
-                        alt={`${type} icon`}
-                        width="20"
-                        height="20"
-                        style={{ display: "block" }}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-
-          {/* Content row */}
-          <tr>
-            <td>
-              <div
-                className={cn(
-                  "rounded-lg border-l-2 p-6",
-                  config.bgColor,
-                  config.borderColor,
-                )}
-              >
-                <div className="text-base leading-relaxed text-foreground/90 not-prose">
-                  {children}
-                </div>
-              </div>
-            </td>
+            {/* Configure the background image on this cell */}
+            {(() => {
+              const bgStyles = {
+                padding: 0,
+                backgroundImage: `url(${alertImage})`,
+                backgroundRepeat: "no-repeat" as const,
+                backgroundPosition: "top left" as const,
+                backgroundSize: '40px'
+              };
+              return (
+                <td style={bgStyles}>
+                  {/* Content box */}
+                  <div
+                    className={cn(
+                      "rounded-lg border-l-2 p-6",
+                      config.bgColor,
+                      config.borderColor,
+                    )}
+                  >
+                    <div className="text-base leading-relaxed text-foreground/90 not-prose">
+                      {children}
+                    </div>
+                  </div>
+                </td>
+              );
+            })()}
           </tr>
         </tbody>
       </table>

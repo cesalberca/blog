@@ -11,7 +11,7 @@ export const CodeBlock: FC<PropsWithChildren<{ className?: string; code: string;
   return (
     <Section className="w-full">
       <Row className="w-full">
-        <Column className="whitespace-nowrap flex w-[600px] m-0">
+        <Column className="whitespace-nowrap w-full m-0">
           <EmailCodeBlock
             className={cn('text-xs', className)}
             language={language}

@@ -61,7 +61,7 @@ const inter = Inter({ subsets: ['latin'] })
 const azeret = Azeret_Mono({ subsets: ['latin'], weight: '400', variable: '--font-azeret-mono' })
 
 export function generateStaticParams() {
-  return routing.locales.map(locale => ({ locale }))
+  return routing.locales.map((locale) => ({ locale }))
 }
 
 export default async function Layout({

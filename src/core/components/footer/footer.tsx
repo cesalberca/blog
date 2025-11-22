@@ -22,7 +22,7 @@ export const Footer: FC = () => {
               <Image src="/assets/logo.svg" width={32} height={32} alt={t('common.logo')} className="h-6 w-6" />
               <span className="text-lg font-semibold text-foreground">{t('home.title')}</span>
             </div>
-            <RichText className="text-sm text-muted-foreground">{tags => t.rich('home.heroCaption', tags)}</RichText>
+            <RichText className="text-sm text-muted-foreground">{(tags) => t.rich('home.heroCaption', tags)}</RichText>
             <div className="flex items-center space-x-4 mt-4">
               <SocialMedia />
             </div>

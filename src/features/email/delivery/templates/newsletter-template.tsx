@@ -71,7 +71,7 @@ export const NewsletterTemplate: FC<PropsWithChildren<NewsletterEmailProps>> = (
 
         <Container className="w-full sm:w-2/3">
           <Row>
-            {socialMedia.map(x => {
+            {socialMedia.map((x) => {
               return (
                 <Column key={x.name} className="w-1/4 text-center">
                   <Link

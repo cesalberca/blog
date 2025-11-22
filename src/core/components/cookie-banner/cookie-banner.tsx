@@ -60,12 +60,12 @@ export const CookieBanner: FC = () => {
       }
       if (key === 'backspace') {
         e.preventDefault()
-        setUserInput(prev => prev.slice(0, -1))
+        setUserInput((prev) => prev.slice(0, -1))
         return
       }
       if (key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
         // Only add printable characters
-        setUserInput(prev => prev + e.key)
+        setUserInput((prev) => prev + e.key)
       }
     },
     [isVisible, isFocused, acceptCookies, denyCookies],

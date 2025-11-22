@@ -19,7 +19,7 @@ export const CategoryPage: FC<{ category: Category; locale: Locale }> = async ({
   }
 
   const translatedCategories = await getTranslatedCategories(locale)
-  const translatedCategory = translatedCategories.find(c => c.key === category)?.translation ?? category
+  const translatedCategory = translatedCategories.find((c) => c.key === category)?.translation ?? category
   const t = await getTranslations('blog')
 
   const posts = await getPostsByCategory({ category, locale })
@@ -37,7 +37,7 @@ export const CategoryPage: FC<{ category: Category; locale: Locale }> = async ({
       </div>
       {posts.length > 0 ? (
         <Masonry>
-          {posts.map(x => (
+          {posts.map((x) => (
             <PostExcerpt key={x.slug} post={x} />
           ))}
         </Masonry>

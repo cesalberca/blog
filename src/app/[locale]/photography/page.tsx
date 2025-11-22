@@ -7,7 +7,7 @@ async function getPhotos(): Promise<Photo[]> {
 
   const [_ignoreFolder, ...photos] = response.blobs
 
-  return photos.map(blob => {
+  return photos.map((blob) => {
     const filename = blob.pathname.split('/').pop() ?? ''
     const base = filename.split('.')[0] ?? ''
     const alt = base.replace(/-/g, ' ')

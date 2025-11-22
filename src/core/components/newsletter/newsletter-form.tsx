@@ -66,7 +66,7 @@ export const NewsletterForm: FC<NewsletterFormProps> = ({ className, showTitle =
             id="firstName"
             value={firstName}
             required
-            onChange={e => setFirstName(e.target.value)}
+            onChange={(e) => setFirstName(e.target.value)}
             placeholder={t('newsletter.firstNamePlaceholder')}
           />
         </div>
@@ -79,7 +79,7 @@ export const NewsletterForm: FC<NewsletterFormProps> = ({ className, showTitle =
             id="lastName"
             value={lastName}
             required
-            onChange={e => setLastName(e.target.value)}
+            onChange={(e) => setLastName(e.target.value)}
             placeholder={t('newsletter.lastNamePlaceholder')}
           />
         </div>
@@ -93,7 +93,7 @@ export const NewsletterForm: FC<NewsletterFormProps> = ({ className, showTitle =
           id="email"
           type="email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder={t('newsletter.emailPlaceholder')}
           required
         />

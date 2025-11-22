@@ -28,7 +28,7 @@ export const PostExcerpt: FC<{ post: PostMetadata }> = async ({ post }) => {
       </Link>
       {post.categories.length > 0 && (
         <div className="px-6 pb-6 flex flex-wrap gap-2 mt-2">
-          {post.categories.map(category => (
+          {post.categories.map((category) => (
             <Link
               key={category}
               type="invisible"

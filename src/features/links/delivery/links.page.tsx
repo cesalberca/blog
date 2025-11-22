@@ -72,7 +72,7 @@ export const LinksPage: FC = () => {
     <Page>
       <section className="wrapper flex flex-col gap-6 items-center my-8">
         <div className="flex flex-col gap-6">
-          {links.map(x => (
+          {links.map((x) => (
             <Card key={x.title} className="flex gap-4 py-4 px-8">
               <x.icon />
               <Link type={'invisible'} href={x.url}>

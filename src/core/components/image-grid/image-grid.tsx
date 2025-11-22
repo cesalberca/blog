@@ -30,11 +30,11 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
   }
 
   const nextImage = () => {
-    setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length)
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
   }
 
   const prevImage = () => {
-    setCurrentImageIndex(prevIndex => (prevIndex - 1 + images.length) % images.length)
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length)
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -68,7 +68,7 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
           <div className="relative max-w-4xl w-full h-full flex items-center justify-center">
             <button
               type="button"
-              onClick={e => {
+              onClick={(e) => {
                 e.stopPropagation()
                 prevImage()
               }}
@@ -84,11 +84,11 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
                 fill
                 sizes="100vw"
                 className="object-contain"
-                onClick={e => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
               />
             )}
             <button
-              onClick={e => {
+              onClick={(e) => {
                 e.stopPropagation()
                 nextImage()
               }}

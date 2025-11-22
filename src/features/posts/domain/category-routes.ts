@@ -21,7 +21,7 @@ export const spanishSlugs: Record<string, string> = {
 export function generateCategoryRoutes() {
   const routes: Record<string, { es: string }> = {}
 
-  categoryKeys.forEach(category => {
+  categoryKeys.forEach((category) => {
     const spanishSlug = spanishSlugs[category]
     if (spanishSlug) {
       routes[`/blog/category/${category}`] = {

@@ -18,7 +18,7 @@ export async function GET() {
       return 1
     })
     .map(
-      post =>
+      (post) =>
         `<item>
           <title>${post.title}</title>
           <link>${baseUrl}/blog/${post.slug}</link>

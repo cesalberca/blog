@@ -59,7 +59,7 @@ export async function getPostsByCategory({
 }): Promise<PostMetadata[]> {
   const allPosts = await getPosts({ locale })
 
-  const filteredPosts = allPosts.filter(post => {
+  const filteredPosts = allPosts.filter((post) => {
     const includes = post.categories.includes(category)
     return includes
   })

@@ -14,7 +14,7 @@ export const AccentList: FC<Props> = ({ texts }) => {
 
   const handleComplete = () => {
     setTimeout(() => {
-      setCurrentIndex(prevIndex => {
+      setCurrentIndex((prevIndex) => {
         const newIndex = (prevIndex + 1) % texts.length
         setKey(newIndex)
         return newIndex

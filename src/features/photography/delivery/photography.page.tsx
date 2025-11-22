@@ -26,7 +26,7 @@ export const PhotographyPage: FC<Props> = ({ photos }) => {
 
       {/* Photo Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
-        {photos.map(photo => (
+        {photos.map((photo) => (
           <div
             key={photo.src}
             className="relative aspect-[9/16] overflow-hidden rounded-lg group cursor-pointer"

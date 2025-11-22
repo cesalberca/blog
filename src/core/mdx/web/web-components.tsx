@@ -16,9 +16,7 @@ export function getWebMdxComponents(): MdxComponentsMap {
     a: CustomWebLink,
     code: WebCode,
     blockquote: CustomAlert,
-    p: (props: HTMLAttributes<HTMLParagraphElement> & PropsWithChildren) => (
-      <p {...props}></p>
-    ),
+    p: (props: HTMLAttributes<HTMLParagraphElement> & PropsWithChildren) => <p {...props}></p>,
     ul: (props: HTMLAttributes<HTMLUListElement>) => {
       return <ul {...props}></ul>
     },

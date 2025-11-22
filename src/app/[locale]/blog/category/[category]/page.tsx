@@ -23,12 +23,12 @@ const Page: NextPage<{
 export default Page
 
 export async function generateStaticParams() {
-  const englishParams = categories.map(category => ({
+  const englishParams = categories.map((category) => ({
     category,
     locale: Locale.EN,
   }))
 
-  const spanishParams = categories.map(category => {
+  const spanishParams = categories.map((category) => {
     const spanishSlug = spanishSlugs[category]
     return {
       category: spanishSlug ?? category,

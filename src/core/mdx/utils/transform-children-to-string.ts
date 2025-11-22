@@ -32,7 +32,5 @@ const childToString = (child?: ReactNode): string => {
   return child.toString()
 }
 
-export const hasChildren = (
-  element: ReactNode,
-): element is ReactElement<{ children: ReactNode | ReactNode[] }> =>
+export const hasChildren = (element: ReactNode): element is ReactElement<{ children: ReactNode | ReactNode[] }> =>
   isValidElement<{ children?: ReactNode[] }>(element) && Boolean(element.props.children)

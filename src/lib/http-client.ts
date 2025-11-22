@@ -51,7 +51,7 @@ class HttpClient {
     const append = (key: string, value: any) => {
       if (value == null || value === '') return
       if (Array.isArray(value)) {
-        value.forEach(v => append(key, v))
+        value.forEach((v) => append(key, v))
       } else if (typeof value === 'object') {
         Object.entries(value).forEach(([k, v]) => append(`${key}[${k}]`, v))
       } else {
@@ -142,7 +142,7 @@ class HttpClient {
     } catch (error) {
       // Retry logic for network errors (not HTTP errors)
       if (attempt <= retries && !(error as ApiError).status) {
-        await new Promise(resolve => setTimeout(resolve, retryDelay))
+        await new Promise((resolve) => setTimeout(resolve, retryDelay))
         return this.executeRequest<T>(url, config, attempt + 1)
       }
 

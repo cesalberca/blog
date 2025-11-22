@@ -51,14 +51,14 @@ const allTechnologies: Technology[] = [
 
 export const Technologies: FC<{ technologies?: string[] }> = ({ technologies }) => {
   const renderedTechnologies =
-    technologies?.map(technology => {
-      const matchedTechnology = allTechnologies.find(t => t.label.toLowerCase() === technology.toLowerCase())
+    technologies?.map((technology) => {
+      const matchedTechnology = allTechnologies.find((t) => t.label.toLowerCase() === technology.toLowerCase())
       return matchedTechnology ?? { label: technology }
     }) ?? allTechnologies
 
   return (
     <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 w-full">
-      {renderedTechnologies.map(tech => (
+      {renderedTechnologies.map((tech) => (
         <div key={tech.label} className="flex flex-col items-center">
           {tech.image ? (
             <span className="flex flex-col items-center gap-2">

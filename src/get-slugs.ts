@@ -5,8 +5,8 @@ export function getSlugs(path: string) {
     return []
   }
   return readdirSync(path, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory())
-    .filter(x => {
+    .filter((dirent) => dirent.isDirectory())
+    .filter((x) => {
       if (process.env.NODE_ENV === 'development') {
         return true
       }

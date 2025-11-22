@@ -12,7 +12,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
 export function generateStaticParams() {
   const talks = getSlugs(path.join(process.cwd(), 'src', 'content', 'talks'))
 
-  return talks.map(talk => ({
+  return talks.map((talk) => ({
     slug: talk.name,
   }))
 }

@@ -16,7 +16,7 @@ export const BlogPostsPage: FC<{ locale: Locale }> = async ({ locale }) => {
       <h1 className="wrapper text-center mb-4">{t('blog.title')}</h1>
       <CategoryCloud />
       <Masonry>
-        {allBlogs.map(post => (
+        {allBlogs.map((post) => (
           <PostExcerpt key={post.slug} post={post} />
         ))}
       </Masonry>

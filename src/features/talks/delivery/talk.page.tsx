@@ -39,7 +39,7 @@ export const TalkPage: FC<PropsWithChildren<{ slug: string; metadata: TalkMetada
             <AccentText>{metadata.title}</AccentText>
           </h1>
           <div className="mt-2 flex gap-2">
-            {metadata.categories.map(category => (
+            {metadata.categories.map((category) => (
               <Badge key={category}>{category}</Badge>
             ))}
           </div>

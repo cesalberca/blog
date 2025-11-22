@@ -122,7 +122,7 @@ export const Testimonials: FC<TestimonialsProps> = ({ itemsPerPage = 1 } = { ite
                       <AvatarFallback>
                         {testimonial.name
                           .split(' ')
-                          .map(n => n[0])
+                          .map((n) => n[0])
                           .join('')}
                       </AvatarFallback>
                     </Avatar>

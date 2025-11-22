@@ -38,7 +38,7 @@ export default function LocaleSwitcher({ locale }: { locale: Locale }) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48">
-        {locales.map(loc => (
+        {locales.map((loc) => (
           <DropdownMenuItem
             key={loc}
             disabled={isPending}

@@ -23,7 +23,7 @@ export const CaseStudyCard: FC<CaseStudyCardProps> = async ({ title, description
             <CardTitle className="text-4xl text-center">{title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <RichText className="text-base">{tags => t.rich(descriptionKey as any, tags)}</RichText>
+            <RichText className="text-base">{(tags) => t.rich(descriptionKey as any, tags)}</RichText>
           </CardContent>
         </Background>
       </Card>

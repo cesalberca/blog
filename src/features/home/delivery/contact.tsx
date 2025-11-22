@@ -38,7 +38,7 @@ export const ContactForm: FC = () => {
     },
   })
 
-  const onSubmit: SubmitHandler<FormData> = async data => {
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
       await httpClient.post('/api/contact', data)
 

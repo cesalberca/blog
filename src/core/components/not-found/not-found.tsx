@@ -13,10 +13,10 @@ export const NotFound: FC = () => {
     <Background className="w-screen h-screen">
       <div className="wrapper">
         <h1 className="mb-4">
-          <RichText>{tags => t.rich('common.notFound.title', tags)}</RichText>
+          <RichText>{(tags) => t.rich('common.notFound.title', tags)}</RichText>
         </h1>
         <div className="mb-4">
-          <RichText>{tags => t.rich('common.notFound.caption', tags)}</RichText>
+          <RichText>{(tags) => t.rich('common.notFound.caption', tags)}</RichText>
         </div>
         <Button className="mb-4" asChild>
           <Link type="invisible" href="/">

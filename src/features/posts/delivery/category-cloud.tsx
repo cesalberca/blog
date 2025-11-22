@@ -16,7 +16,7 @@ export const CategoryCloud: FC = () => {
 
   return (
     <div className="wrapper mb-6 flex flex-wrap gap-2 justify-center">
-      {categoryKeys.map(category => (
+      {categoryKeys.map((category) => (
         <Link
           key={category}
           type="invisible"

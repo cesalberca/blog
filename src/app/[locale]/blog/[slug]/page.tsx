@@ -12,7 +12,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
 export function generateStaticParams() {
   const posts = getSlugs(path.join(process.cwd(), 'src', 'content', 'posts'))
 
-  return posts.map(post => ({
+  return posts.map((post) => ({
     slug: post.name,
   }))
 }

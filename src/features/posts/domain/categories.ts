@@ -25,7 +25,7 @@ export const categories = categoryKeys
 
 export async function getTranslatedCategories(locale: Locale) {
   const t = await getTranslations({ locale, namespace: 'blog.categories' })
-  return categoryKeys.map(category => ({
+  return categoryKeys.map((category) => ({
     key: category,
     translation: t(category),
   }))

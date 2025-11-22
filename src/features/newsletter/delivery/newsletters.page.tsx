@@ -41,7 +41,7 @@ export const NewslettersPage: FC<{ locale: Locale }> = async ({ locale }) => {
             <p className="text-muted-foreground">{t('newsletter.recentNewslettersDescription')}</p>
           </div>
 
-          {newsletters.map(newsletter => (
+          {newsletters.map((newsletter) => (
             <Link className="min-w-min" key={newsletter.slug} href={`/newsletter/${newsletter.slug}`}>
               <div className="mb-4">
                 <section className="p-4">

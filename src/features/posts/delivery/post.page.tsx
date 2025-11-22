@@ -62,7 +62,7 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
             <AccentText>{metadata.title}</AccentText>
           </h1>
           <div className="mt-2 flex gap-2">
-            {metadata.categories.map(category => (
+            {metadata.categories.map((category) => (
               <Link
                 key={category}
                 type="invisible"

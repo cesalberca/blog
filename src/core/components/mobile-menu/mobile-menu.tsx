@@ -118,7 +118,7 @@ export const MobileMenu = () => {
               <>
                 {/* Menu Items */}
                 <nav className="space-y-1 flex-1">
-                  {menuItems.map(item => (
+                  {menuItems.map((item) => (
                     <button
                       key={item.label}
                       onClick={() => handleMenuItemClick(item.label)}
@@ -142,10 +142,10 @@ export const MobileMenu = () => {
               // Submenu
               <div className="space-y-6">
                 {/* Secondary Cards */}
-                {menuItems.find(item => item.label === activeSubmenu)?.secondaryCards && (
+                {menuItems.find((item) => item.label === activeSubmenu)?.secondaryCards && (
                   <div className="flex w-full min-h-[300px] gap-2">
                     {menuItems
-                      .find(item => item.label === activeSubmenu)
+                      .find((item) => item.label === activeSubmenu)
                       ?.secondaryCards?.map((card) => (
                         <SecondaryCard
                           key={card.href}
@@ -161,8 +161,8 @@ export const MobileMenu = () => {
                 {/* Menu Links */}
                 <nav className="space-y-1">
                   {menuItems
-                    .find(item => item.label === activeSubmenu)
-                    ?.items?.map(subItem => (
+                    .find((item) => item.label === activeSubmenu)
+                    ?.items?.map((subItem) => (
                       <div key={subItem.label} className="border-b border-border py-4">
                         <Link
                           href={subItem.href}

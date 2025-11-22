@@ -39,7 +39,7 @@ export const HomePage: FC<{ latestPost: PostMetadata | null }> = async ({ latest
           <h1 className="uppercase text-4xls min-h-[6rem] flex items-end">
             <AccentList texts={texts} />
           </h1>
-          <RichText>{tags => t.rich('home.heroCaption', tags)}</RichText>
+          <RichText>{(tags) => t.rich('home.heroCaption', tags)}</RichText>
           <section className="mt-2 text-xs">
             <SocialMedia />
           </section>

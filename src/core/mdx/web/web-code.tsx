@@ -21,10 +21,7 @@ export function WebCode({ children, ...props }: { children: string; className: s
   ) : (
     <code
       {...props}
-      className={cn(
-        className,
-        'bg-muted px-[4px] py-[2px] mx-[2px] rounded not-prose text-foreground font-mono',
-      )}
+      className={cn(className, 'bg-muted px-[4px] py-[2px] mx-[2px] rounded not-prose text-foreground font-mono')}
     >
       {children}
     </code>

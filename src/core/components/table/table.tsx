@@ -21,7 +21,7 @@ export const Table = <T extends Record<string, any>>({ columns, rows, className 
       <table className="w-full border-collapse">
         <thead>
           <tr className="border-b border-border">
-            {columns.map(column => (
+            {columns.map((column) => (
               <th key={column.key.toString()} className="py-3 px-4 text-left font-semibold text-foreground">
                 {column.header}
               </th>
@@ -34,7 +34,7 @@ export const Table = <T extends Record<string, any>>({ columns, rows, className 
               key={rowIndex}
               className={cn('border-b border-border', rowIndex % 2 === 0 ? 'bg-muted/30' : 'bg-background')}
             >
-              {columns.map(column => (
+              {columns.map((column) => (
                 <td key={column.key.toString()} className="py-3 px-4 text-foreground">
                   {column.render ? column.render(row[column.key as keyof T], row) : row[column.key as keyof T]}
                 </td>

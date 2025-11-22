@@ -4,9 +4,9 @@ import { AccentText } from '@/core/components/accent-text/accent-text'
 
 describe('AccentText', () => {
   it('renders the provided text', async () => {
-    const screen = render(<AccentText>Hello world</AccentText>)
+    const screen = await render(<AccentText>Hello world</AccentText>)
 
-    const el = await screen.findByText('Hello world')
+    const el = await screen.getByText('Hello world')
 
     await expect.element(el).toHaveTextContent('Hello world')
   })

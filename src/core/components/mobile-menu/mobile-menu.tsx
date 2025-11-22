@@ -146,9 +146,9 @@ export const MobileMenu = () => {
                   <div className="flex w-full min-h-[300px] gap-2">
                     {menuItems
                       .find(item => item.label === activeSubmenu)
-                      ?.secondaryCards?.map((card, index) => (
+                      ?.secondaryCards?.map((card) => (
                         <SecondaryCard
-                          key={index}
+                          key={card.href}
                           title={card.title}
                           href={card.href}
                           className="flex-1"

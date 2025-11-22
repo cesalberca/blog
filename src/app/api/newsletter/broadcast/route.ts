@@ -1,8 +1,9 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import type { ReactElement } from 'react'
+import { env } from '@/env'
 
-const resend = new Resend(process.env['RESEND_API_KEY']!)
+const resend = new Resend(env.RESEND_API_KEY)
 
 interface BroadcastRequest {
   newsletterSlug: string
@@ -27,7 +28,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<Broadcast
     }
 
     // Validate authentication token
-    const expectedToken = process.env['NEWSLETTER_BROADCAST_TOKEN']
+    const expectedToken = env.NEWSLETTER_BROADCAST_TOKEN
     if (!expectedToken) {
       return NextResponse.json({ error: 'Newsletter broadcast not configured' }, { status: 500 })
     }
@@ -63,7 +64,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<Broadcast
       // await resend.broadcasts.send(broadcast.data.id)
 
       await resend.emails.send({
-        from: process.env['RESEND_EMAIL_FROM']!,
+        from: env.RESEND_EMAIL_FROM,
         to: 'cesar@cesalberca.com',
         subject: title,
         replyTo: 'cesar@cesalberca.com',

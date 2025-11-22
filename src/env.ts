@@ -3,6 +3,7 @@ import { z } from "zod";
 
 export const env = createEnv({
   server: {
+    CI: z.string(),
     NODE_ENV: z.string(),
     BLOB_READ_WRITE_TOKEN: z.string(),
     NPMRC_GITHUB_TOKEN: z.string(),

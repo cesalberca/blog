@@ -3,8 +3,9 @@ import { type NextRequest, NextResponse } from 'next/server'
 import type { ReactElement } from 'react'
 import { Datetime } from '@/core/date/datetime'
 import { checkBotId } from 'botid/server'
+import { env } from '@/env'
 
-const resend = new Resend(process.env['RESEND_API_KEY']!)
+const resend = new Resend(env.RESEND_API_KEY)
 
 interface ContactRequest {
   name: string
@@ -60,7 +61,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactRe
       const { ContactNotificationEmail } = await import('@/emails/transactional/contact-notification-email')
 
       await resend.emails.send({
-        from: process.env['RESEND_EMAIL_FROM']!,
+        from: env.RESEND_EMAIL_FROM,
         to: 'cesar@cesalberca.com',
         subject: `New contact form submission from ${name}`,
         replyTo: email,
@@ -76,7 +77,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactRe
       const { ContactConfirmationEmail } = await import('@/emails/transactional/contact-confirmation-email')
 
       await resend.emails.send({
-        from: process.env['RESEND_EMAIL_FROM']!,
+        from: env.RESEND_EMAIL_FROM,
         to: email,
         subject: "Thanks for reaching out - I'll get back to you soon!",
         replyTo: 'cesar@cesalberca.com',

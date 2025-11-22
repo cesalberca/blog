@@ -33,7 +33,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     }
 
     // Verify the token
-    const jwtSecret = process.env['JWT_SECRET']
+    const jwtSecret = env.JWT_SECRET
     if (!jwtSecret) {
       return NextResponse.json({ error: 'JWT secret not configured' }, { status: 500 })
     }
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     let payload: ConfirmationTokenPayload
     try {
       payload = verify(token, jwtSecret) as ConfirmationTokenPayload
-    } catch (error) {
+    } catch (_error) {
       return NextResponse.json({ error: 'Invalid or expired confirmation token' }, { status: 400 })
     }
 
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     }
 
     // Check if contact already exists using Resend API
-    const audienceId = process.env['RESEND_AUDIENCE_ID']
+    const audienceId = env.RESEND_AUDIENCE_ID
     if (!audienceId) {
       return NextResponse.json({ error: 'Audience ID is not set' }, { status: 500 })
     }
@@ -111,7 +111,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     timer(async () => {
       try {
         await resend.emails.send({
-          from: process.env['RESEND_EMAIL_FROM']!,
+          from: env.RESEND_EMAIL_FROM,
           to: email,
           subject: 'Welcome to the Frontend Architecture Newsletter!',
           replyTo: 'cesar@cesalberca.com',

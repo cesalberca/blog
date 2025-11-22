@@ -47,7 +47,7 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
     <div>
       <div className="h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {images.map((image, index) => (
-          <div key={index} className="relative aspect-video cursor-pointer" onClick={() => openLightbox(index)}>
+          <div key={image.src} className="relative aspect-video cursor-pointer" onClick={() => openLightbox(index)}>
             <Image
               src={image.src}
               alt={image.alt}
@@ -64,10 +64,10 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
           className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
           onClick={closeLightbox}
           onKeyDown={handleKeyDown}
-          tabIndex={0}
         >
           <div className="relative max-w-4xl w-full h-full flex items-center justify-center">
             <button
+              type="button"
               onClick={e => {
                 e.stopPropagation()
                 prevImage()

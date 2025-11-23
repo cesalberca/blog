@@ -19,43 +19,60 @@ interface ConfirmRequest {
   email: string
 }
 
-export async function POST(request: NextRequest): Promise<NextResponse> {
+export interface ConfirmResponseOk {
+  success: true
+  message: string
+  alreadyConfirmed?: boolean
+  alreadySubscribed?: boolean
+}
+
+export interface ConfirmResponseKo {
+  error: string
+  success: false
+}
+
+export type ConfirmResponse = ConfirmResponseOk | ConfirmResponseKo
+
+export async function POST(request: NextRequest): Promise<NextResponse<ConfirmResponse>> {
   try {
     const body: ConfirmRequest = await request.json()
     const { token, email: emailParam } = body
 
     if (!token) {
-      return NextResponse.json({ error: 'Missing confirmation token' }, { status: 400 })
+      return NextResponse.json({ success: false, error: 'Missing confirmation token' }, { status: 400 })
     }
 
     if (!emailParam) {
-      return NextResponse.json({ error: 'Missing email parameter' }, { status: 400 })
+      return NextResponse.json({ success: false, error: 'Missing email parameter' }, { status: 400 })
     }
 
     // Verify the token
     const jwtSecret = env.JWT_SECRET
     if (!jwtSecret) {
-      return NextResponse.json({ error: 'JWT secret not configured' }, { status: 500 })
+      return NextResponse.json({ success: false, error: 'JWT secret not configured' }, { status: 500 })
     }
 
     let payload: ConfirmationTokenPayload
     try {
       payload = verify(token, jwtSecret) as ConfirmationTokenPayload
     } catch (_error) {
-      return NextResponse.json({ error: 'Invalid or expired confirmation token' }, { status: 400 })
+      return NextResponse.json({ success: false, error: 'Invalid or expired confirmation token' }, { status: 400 })
     }
 
     const { email, firstName, lastName } = payload
 
     // Verify that the email in the token matches the email in the URL
     if (email !== emailParam) {
-      return NextResponse.json({ error: 'Email mismatch between token and URL parameter' }, { status: 400 })
+      return NextResponse.json(
+        { success: false, error: 'Email mismatch between token and URL parameter' },
+        { status: 400 },
+      )
     }
 
     // Check if contact already exists using Resend API
     const audienceId = env.RESEND_AUDIENCE_ID
     if (!audienceId) {
-      return NextResponse.json({ error: 'Audience ID is not set' }, { status: 500 })
+      return NextResponse.json({ success: false, error: 'Audience ID is not set' }, { status: 500 })
     }
 
     // Check if the contact already exists
@@ -105,7 +122,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         )
       }
       // For other errors, return error
-      return NextResponse.json({ error: contactResult.error.message }, { status: 500 })
+      return NextResponse.json({ success: false, error: contactResult.error.message }, { status: 500 })
     }
 
     timer(async () => {
@@ -126,6 +143,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ success: true, message: 'Subscription confirmed successfully' }, { status: 200 })
   } catch (error) {
     console.error('Newsletter confirmation error:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ success: false,   error: 'Internal server error' }, { status: 500 })
   }
 }

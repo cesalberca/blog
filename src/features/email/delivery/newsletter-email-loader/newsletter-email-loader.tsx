@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { NewsletterTemplate } from '@/features/email/delivery/templates/newsletter-template'
 import type { NewsletterMetadata } from '@/features/email/domain/newsletter-metadata'
-import path from 'path'
+import path from 'node:path'
 import * as runtime from 'react/jsx-runtime'
 import { type EvaluateOptions, evaluateSync } from '@mdx-js/mdx'
 import fs from 'node:fs'

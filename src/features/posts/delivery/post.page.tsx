@@ -12,6 +12,7 @@ import { KoFiButton } from '@/core/components/ko-fi-button/ko-fi-button'
 import { getTranslatedCategories } from '@/features/posts/domain/categories'
 import type { Locale } from '@/core/i18n/locale'
 import { NewsletterCard } from '@/core/components/newsletter-card/newsletter-card'
+import { jsonLd } from '@/core/jsonld/json-ld'
 
 export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: string; locale: Locale }>> = async ({
   metadata,
@@ -31,26 +32,23 @@ export const PostPage: FC<PropsWithChildren<{ metadata: PostMetadata; slug: stri
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
-            headline: metadata.title,
-            datePublished: metadata.date,
-            dateModified: metadata.date,
-            description: metadata.summary,
-            image: metadata.image ? `${baseUrl}${metadata.image}` : `/og?title=${encodeURIComponent(metadata.title)}`,
-            url: `${baseUrl}/blog/${slug}`,
-            author: {
-              '@type': 'César Alberca',
-              name: 'César Alberca | Blog',
-            },
-          }),
-        }}
-      />
+      <script type="application/ld+json" suppressHydrationWarning>
+        {jsonLd({
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: metadata.title,
+          datePublished: metadata.date,
+          dateModified: metadata.date,
+          description: metadata.summary,
+          image: metadata.image ? `${baseUrl}${metadata.image}` : `/og?title=${encodeURIComponent(metadata.title)}`,
+          url: `${baseUrl}/blog/${slug}`,
+          author: {
+            '@type': 'Person',
+            givenName: 'César',
+            familyName: 'Alberca',
+          },
+        })}
+      </script>
       <Background className="w-full h-[60vh]" image={`/assets/images/posts/${metadata.image}`}>
         <div className="p-12">
           <header className="flex gap-2">

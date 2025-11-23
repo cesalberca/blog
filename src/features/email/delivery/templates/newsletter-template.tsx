@@ -2,6 +2,7 @@ import { EmailTemplate } from './email-template'
 import { Column, Container, Link, Row, Section, Text, Img } from '@react-email/components'
 import type { FC, PropsWithChildren } from 'react'
 import { emailImageBaseUrl } from '@/lib/email-image-base-url'
+import { env } from '@/env'
 
 interface NewsletterEmailProps {
   title: string
@@ -15,11 +16,11 @@ export const NewsletterTemplate: FC<PropsWithChildren<NewsletterEmailProps>> = (
   children,
   browserUrl,
 }) => {
-  const urlToShare = process.env['NEXT_PUBLIC_URL'] + '/newsletter/' + browserUrl
+  const urlToShare = `${env.NEXT_PUBLIC_URL}/newsletter/${browserUrl}`
   const encodedTitle = encodeURIComponent(title)
   const encodedUrl = encodeURIComponent(urlToShare)
 
-  const shareUrl = (by: string) => encodedTitle + ' ' + encodedUrl + ' by ' + by
+  const shareUrl = (by: string) => `${encodedTitle} ${encodedUrl} by ${by}`
 
   const socialMedia: { href: string; icon: string; name: string }[] = [
     {

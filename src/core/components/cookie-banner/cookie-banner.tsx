@@ -1,18 +1,17 @@
 'use client'
 
-import type React from 'react'
 import { type FC, useCallback, useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/core/components/link/link'
 import { X } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { getLocalStorage, setLocalStorage } from '@/core/utils/local-storage'
+import { Button } from '@/components/ui/button'
 
 export const CookieBanner: FC = () => {
   const t = useTranslations('common')
   const [isVisible, setIsVisible] = useState(false)
   const [userInput, setUserInput] = useState('')
-  const [isFocused, setIsFocused] = useState(false)
 
   useEffect(() => {
     const cookieChoice = getLocalStorage('cookieChoice')
@@ -43,9 +42,8 @@ export const CookieBanner: FC = () => {
   }, [])
 
   const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent<HTMLDivElement>) => {
-      // Only handle keys when the banner itself is focused
-      if (!isVisible || !isFocused) return
+    (e: KeyboardEvent) => {
+      if (!isVisible) return
 
       const key = e.key.toLowerCase()
       if (key === 'y') {
@@ -68,8 +66,15 @@ export const CookieBanner: FC = () => {
         setUserInput((prev) => prev + e.key)
       }
     },
-    [isVisible, isFocused, acceptCookies, denyCookies],
+    [isVisible, acceptCookies, denyCookies],
   )
+
+  useEffect(() => {
+    if (!isVisible) return
+    const listener = (e: KeyboardEvent) => handleKeyDown(e)
+    window.addEventListener('keydown', listener)
+    return () => window.removeEventListener('keydown', listener)
+  }, [isVisible, handleKeyDown])
 
   const closeBanner = useCallback(() => {
     denyCookies()
@@ -86,22 +91,21 @@ export const CookieBanner: FC = () => {
         role="dialog"
         aria-label={t('cookies.terminalPath')}
         aria-live="polite"
-        tabIndex={0}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        onKeyDown={handleKeyDown}
       >
         {/* Terminal header */}
         <div className="bg-black px-4 py-2 flex items-center justify-between border-b border-white">
           <div className="text-foreground font-mono text-sm">{t('cookies.terminalPath')}</div>
           <div className="flex space-x-2">
-            <button
+            <Button
+              type="button"
+              variant="invisible"
+              size="icon"
               onClick={closeBanner}
-              className="w-3 h-3 rounded-full bg-white flex items-center justify-center"
+              className="rounded-full flex items-center justify-center"
               aria-label={t('cookies.close')}
             >
-              <X className="w-2 h-2 text-black" />
-            </button>
+              <X  size={12} className="text-white" />
+            </Button>
           </div>
         </div>
 
@@ -128,22 +132,26 @@ export const CookieBanner: FC = () => {
           </div>
           <div className="mt-2 text-foreground">
             <span className="mr-4">
-              <button
+              <Button
+                type="button"
+                variant="invisible"
                 onClick={acceptCookies}
-                className="text-foreground hover:text-green-400 transition-colors focus:outline-none font-mono"
+                className="text-foreground hover:text-green-400 transition-colors focus:outline-none font-mono p-0"
                 aria-label={t('cookies.acceptAriaLabel')}
               >
                 {t('cookies.accept')}
-              </button>
+              </Button>
             </span>
             <span>
-              <button
+              <Button
+                type="button"
+                variant="invisible"
                 onClick={denyCookies}
-                className="text-foreground hover:text-red-400 transition-colors focus:outline-none font-mono"
+                className="text-foreground hover:text-red-400 transition-colors focus:outline-none font-mono p-0"
                 aria-label={t('cookies.denyAriaLabel')}
               >
                 {t('cookies.deny')}
-              </button>
+              </Button>
             </span>
           </div>
         </div>

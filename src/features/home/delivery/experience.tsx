@@ -57,8 +57,8 @@ export const Experience: FC = () => {
     <div className="p-6 sm:p-10">
       <div className="max-w-3xl mx-auto">
         <div className="relative pl-6 after:absolute after:inset-y-0 after:w-px after:bg-muted-foreground/20 after:left-0 grid gap-10">
-          {experiences.map((x, i) => (
-            <div key={i} className="grid gap-1 text-sm relative">
+          {experiences.map((x) => (
+            <div key={`${x.title}-${x.dates}`} className="grid gap-1 text-sm relative">
               <div className="aspect-square w-3 bg-primary rounded-full absolute left-0 translate-x-[-29.5px] z-10 top-1" />
               <h4 className="font-medium font-body">{x.title}</h4>
               <div className="text-muted-foreground">

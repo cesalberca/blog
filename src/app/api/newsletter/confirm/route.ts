@@ -143,6 +143,6 @@ export async function POST(request: NextRequest): Promise<NextResponse<ConfirmRe
     return NextResponse.json({ success: true, message: 'Subscription confirmed successfully' }, { status: 200 })
   } catch (error) {
     console.error('Newsletter confirmation error:', error)
-    return NextResponse.json({ success: false,   error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 })
   }
 }

@@ -1,6 +1,6 @@
 import type { Locale } from '@/core/i18n/locale'
 import { getSlugs } from '@/get-slugs'
-import path from 'path'
+import path from 'node:path'
 
 export default async function Page({ params }: { params: Promise<{ slug: string; locale: Locale }> }) {
   const { slug, locale } = await params

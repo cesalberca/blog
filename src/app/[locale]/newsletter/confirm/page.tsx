@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { Page } from '@/core/components/page/page'
 import { AccentText } from '@/core/components/accent-text/accent-text'
 import { httpClient } from '@/lib/http-client'
+import type { ConfirmResponse } from '@/app/api/newsletter/confirm/route'
 
 type ConfirmationState = 'loading' | 'success' | 'error' | 'subscribed'
 
@@ -38,14 +39,14 @@ const NewsletterConfirmPage: FC = () => {
       }
 
       try {
-        const response = await httpClient.post(`/api/newsletter/confirm`, {
+        const response = await httpClient.post<ConfirmResponse>(`/api/newsletter/confirm`, {
           token,
           email,
         })
 
         setState('success')
         // Check if this was already confirmed or already subscribed
-        if (response.data.alreadyConfirmed || response.data.alreadySubscribed) {
+        if (response.data.success && (response.data.alreadyConfirmed || response.data.alreadySubscribed)) {
           setIsAlreadyConfirmed(true)
           setState('subscribed')
         }

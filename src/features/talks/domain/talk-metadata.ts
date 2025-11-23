@@ -6,10 +6,12 @@ export interface TalkMetadata {
   language: string
   categories: string[]
   image: string
+  notes: string
   abstract: string
   events: {
     name: string
     date: string
+    code: string
     slides: string
     video: string
   }[]

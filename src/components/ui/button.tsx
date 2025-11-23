@@ -16,7 +16,7 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent text-foreground hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         invisible:
-          'bg-transparent text-inherit hover:bg-transparent hover:text-inherit border-0 shadow-none focus-visible:ring-0 focus-visible:outline-none',
+          'bg-transparent text-inherit hover:bg-transparent hover:text-inherit cursor-pointer border-0 shadow-none focus-visible:ring-0 focus-visible:outline-none',
       },
       size: {
         default: 'h-10 px-4 py-2',

@@ -104,7 +104,7 @@ export const CookieBanner: FC = () => {
               className="rounded-full flex items-center justify-center"
               aria-label={t('cookies.close')}
             >
-              <X  size={12} className="text-white" />
+              <X size={12} className="text-white" />
             </Button>
           </div>
         </div>

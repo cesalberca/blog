@@ -4,9 +4,10 @@ import { Page } from '@/core/components/page/page'
 import { baseUrl } from '@/app/sitemap'
 import { Background } from '@/core/components/background/background'
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import type { TalkMetadata } from '@/features/talks/domain/talk-metadata'
 import { getTranslations } from 'next-intl/server'
+import { jsonLd } from '@/core/jsonld/json-ld'
 
 export const TalkPage: FC<PropsWithChildren<{ slug: string; metadata: TalkMetadata }>> = async ({
   slug,
@@ -16,23 +17,20 @@ export const TalkPage: FC<PropsWithChildren<{ slug: string; metadata: TalkMetada
   const t = await getTranslations('talks')
   return (
     <Page top>
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Talk',
-            headline: metadata.title,
-            image: metadata.image ? `${baseUrl}${metadata.image}` : `/og?title=${encodeURIComponent(metadata.title)}`,
-            url: `${baseUrl}/blog/${slug}`,
-            author: {
-              '@type': 'César Alberca',
-              name: 'Talk',
-            },
-          }),
-        }}
-      />
+      <script type="application/ld+json" suppressHydrationWarning>
+        {jsonLd({
+          '@context': 'https://schema.org',
+          '@type': 'Event',
+          headline: metadata.title,
+          image: metadata.image ? `${baseUrl}${metadata.image}` : `/og?title=${encodeURIComponent(metadata.title)}`,
+          url: `${baseUrl}/blog/${slug}`,
+          author: {
+            '@type': 'Person',
+            givenName: 'César',
+            lastName: 'Alberca'
+          },
+        })}
+      </script>
       <Background className="w-full h-[60vh]" image={`/assets/images/talks/${metadata.image}`}>
         <div className="p-12">
           <h1>
@@ -80,8 +78,8 @@ export const TalkPage: FC<PropsWithChildren<{ slug: string; metadata: TalkMetada
                 <div>
                   <h3 className="text-lg font-semibold">{t('event')}</h3>
                   <div className="mt-2 space-y-4">
-                    {metadata.events.map((event, index) => (
-                      <div key={index} className="border-b pb-2 last:border-b-0">
+                    {metadata.events.map((event) => (
+                      <div key={`${event.name}-${event.date}`} className="border-b pb-2 last:border-b-0">
                         <div className="font-medium">{event.name}</div>
                         <div className="text-sm text-muted-foreground">{event.date}</div>
                         <div className="mt-2 flex gap-2">
@@ -105,9 +103,9 @@ export const TalkPage: FC<PropsWithChildren<{ slug: string; metadata: TalkMetada
                               {t('talkVideo')}
                             </a>
                           )}
-                          {(event as any).code && (
+                          {event.code && (
                             <a
-                              href={(event as any).code}
+                              href={event.code}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-sm text-blue-500 hover:underline"
@@ -122,11 +120,11 @@ export const TalkPage: FC<PropsWithChildren<{ slug: string; metadata: TalkMetada
                 </div>
               )}
 
-              {'notes' in metadata && (
+              {!metadata.notes && (
                 <div>
                   <h3 className="text-lg font-semibold">Notes</h3>
                   <div className="mt-2 text-sm">
-                    <p className="whitespace-pre-wrap">{(metadata as any).notes}</p>
+                    <p className="whitespace-pre-wrap">{metadata.notes}</p>
                   </div>
                 </div>
               )}

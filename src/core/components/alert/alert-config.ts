@@ -17,7 +17,6 @@ export function getAlertImage(type: AlertType, assetKind: 'svg'): LucideIcon
 
 export function getAlertImage(type: AlertType, assetKind: AlertAssetKind) {
   if (assetKind === 'png') {
-    console.log(emailImageBaseUrl(`${type}.png`))
     return emailImageBaseUrl(`${type}.png`)
   }
 

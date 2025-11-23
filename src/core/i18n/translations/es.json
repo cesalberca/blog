@@ -5,6 +5,11 @@
     "about": "Acerca de"
   },
   "common": {
+    "carousel": {
+      "title": "Carrusel",
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
     "statusText": {
       "new": "Nuevo",
       "soon": "Pronto"

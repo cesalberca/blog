@@ -5,6 +5,11 @@
     "about": "About"
   },
   "common": {
+    "carousel": {
+      "title": "Carousel",
+      "previous": "Previous slide",
+      "next": "Next slide"
+    },
     "statusText": {
       "new": "New",
       "soon": "Soon"

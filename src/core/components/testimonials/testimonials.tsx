@@ -109,8 +109,8 @@ export const Testimonials: FC<TestimonialsProps> = ({ itemsPerPage = 1 } = { ite
         className="w-full max-w-sm mx-auto md:max-w-4xl"
       >
         <CarouselContent className="-ml-2 md:-ml-4">
-          {testimonials.map((testimonial, index) => (
-            <CarouselItem key={index} className={`pl-2 md:pl-4 ${itemBasisClass}`}>
+          {testimonials.map((testimonial) => (
+            <CarouselItem key={`${testimonial.name}-${testimonial.role}`} className={`pl-2 md:pl-4 ${itemBasisClass}`}>
               <Card>
                 <CardContent className="p-6 flex flex-col justify-between h-full">
                   <blockquote className="text-lg text-muted-foreground mb-4">

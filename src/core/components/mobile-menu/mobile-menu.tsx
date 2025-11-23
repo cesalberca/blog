@@ -84,7 +84,7 @@ export const MobileMenu = () => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="md:hidden" aria-label={t('common.openMenu')}>
+        <Button type="button" variant="ghost" size="icon" className="md:hidden" aria-label={t('common.openMenu')}>
           <Menu className="h-5 w-5" />
         </Button>
       </DialogTrigger>
@@ -98,7 +98,7 @@ export const MobileMenu = () => {
           {/* Header */}
           <div className="flex items-center justify-between border-b border-border px-4 py-4">
             {activeSubmenu ? (
-              <Button variant="ghost" size="icon" onClick={handleBack} aria-label={t('common.goBack')}>
+              <Button type="button" variant="ghost" size="icon" onClick={handleBack} aria-label={t('common.goBack')}>
                 <ChevronLeft className="h-5 w-5" />
               </Button>
             ) : (
@@ -107,7 +107,7 @@ export const MobileMenu = () => {
                 <span className="text-lg font-semibold text-foreground">{t('home.title')}</span>
               </div>
             )}
-            <Button variant="ghost" size="icon" onClick={handleClose} aria-label={t('common.closeMenu')}>
+            <Button type="button" variant="ghost" size="icon" onClick={handleClose} aria-label={t('common.closeMenu')}>
               <X className="h-5 w-5" />
             </Button>
           </div>
@@ -119,14 +119,16 @@ export const MobileMenu = () => {
                 {/* Menu Items */}
                 <nav className="space-y-1 flex-1">
                   {menuItems.map((item) => (
-                    <button
+                    <Button
                       key={item.label}
+                      type="button"
+                      variant="invisible"
                       onClick={() => handleMenuItemClick(item.label)}
                       className="flex w-full items-center justify-between border-b border-border py-4 text-left text-sm text-foreground transition-colors hover:text-muted-foreground"
                     >
                       <span>{item.label}</span>
                       <ChevronRight className="h-4 w-4" />
-                    </button>
+                    </Button>
                   ))}
                 </nav>
 

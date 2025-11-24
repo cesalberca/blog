@@ -14,7 +14,7 @@ import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 
 export const CategoryPage: FC<{ category: Category; locale: Locale }> = async ({ category, locale }) => {
-  if (categories.indexOf(category) == -1) {
+  if (categories.indexOf(category) === -1) {
     notFound()
   }
 

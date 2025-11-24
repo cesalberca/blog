@@ -13,10 +13,7 @@ export const Testimonials: FC = () => {
       </h2>
       <div className="grid gap-6">
         {t.raw('reviews').map((review: { quote: string; source: string }) => (
-          <blockquote
-            key={review.source}
-            className="border-l-4 border-accent pl-6 py-2 italic text-lg"
-          >
+          <blockquote key={review.source} className="border-l-4 border-accent pl-6 py-2 italic text-lg">
             <p className="mb-3 text-muted-foreground">&#34;{review.quote}&#34;</p>
             <footer className="text-sm font-semibold not-italic">— {review.source}</footer>
           </blockquote>

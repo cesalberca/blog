@@ -27,7 +27,7 @@ export const TalkPage: FC<PropsWithChildren<{ slug: string; metadata: TalkMetada
           author: {
             '@type': 'Person',
             givenName: 'César',
-            lastName: 'Alberca'
+            lastName: 'Alberca',
           },
         })}
       </script>

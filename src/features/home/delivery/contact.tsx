@@ -13,9 +13,11 @@ import type { FC } from 'react'
 import { Link } from '@/core/components/link/link'
 import { sendGTMEvent } from '@next/third-parties/google'
 import { useRouter } from 'next/navigation'
-import { httpClient } from '@/lib/http-client'
+import { httpClient } from '@/core/http-client/http-client'
 import { toast } from 'sonner'
 import { Loader2 } from 'lucide-react'
+import { isContactResponseKo } from '@/features/home/delivery/contact-guards'
+import { isApiError } from '@/core/http-client/is-api-error'
 
 const formSchema = z.object({
   email: z.email({ message: 'Invalid email address.' }),
@@ -47,8 +49,15 @@ export const ContactForm: FC = () => {
         email: data.email,
       })
       router.push('/thank-you')
-    } catch (error: any) {
-      toast(error.data.error)
+    } catch (error: unknown) {
+      if (isApiError(error)) {
+        if (isContactResponseKo(error.data)) {
+          toast(error.data.error)
+          return
+        }
+      }
+
+      throw error
     }
   }
 

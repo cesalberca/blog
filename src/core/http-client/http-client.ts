@@ -2,6 +2,9 @@
  * HTTP Client
  * Based on fetch wrapper best practices with automatic parameter encoding
  */
+import type { ApiError } from '@/core/http-client/api-error'
+import type { InternalRequestConfig } from '@/core/http-client/internal-request-config'
+import type { ApiResponse } from '@/core/http-client/api-response'
 
 interface RequestConfig extends Omit<RequestInit, 'body'> {
   params?: Record<string, string | number | boolean | null | undefined>
@@ -11,29 +14,9 @@ interface RequestConfig extends Omit<RequestInit, 'body'> {
   body?: unknown
 }
 
-interface ApiResponse<T = unknown> {
-  data: T
-  status: number
-  statusText: string
-  headers: Headers
-}
-
-interface ApiError extends Error {
-  status?: number
-  statusText?: string
-  response?: Response
-  data?: unknown
-}
-
-type InternalRequestConfig = RequestInit & {
-  timeout?: number
-  retries?: number
-  retryDelay?: number
-}
-
 class HttpClient {
-  private baseUrl: string
-  private defaultConfig: RequestConfig
+  private readonly baseUrl: string
+  private readonly defaultConfig: RequestConfig
 
   constructor(baseUrl: string = '', defaultConfig: RequestConfig = {}) {
     this.baseUrl = baseUrl
@@ -245,8 +228,4 @@ class HttpClient {
 // Create a default instance
 export const httpClient = new HttpClient()
 
-// Export the class for custom instances
 export { HttpClient }
-
-// Export types for use in other modules
-export type { RequestConfig, ApiResponse, ApiError }

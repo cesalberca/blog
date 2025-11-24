@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label'
 import { Send } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { toast } from 'sonner'
-import { httpClient } from '@/lib/http-client'
+import { httpClient } from '@/core/http-client/http-client'
 
 export interface NewsletterFormProps {
   className?: string

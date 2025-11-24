@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Page } from '@/core/components/page/page'
 import { AccentText } from '@/core/components/accent-text/accent-text'
-import { httpClient } from '@/lib/http-client'
+import { httpClient } from '@/core/http-client/http-client'
 import type { ConfirmResponse } from '@/app/api/newsletter/confirm/route'
 
 type ConfirmationState = 'loading' | 'success' | 'error' | 'subscribed'

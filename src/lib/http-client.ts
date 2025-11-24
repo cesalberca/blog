@@ -8,10 +8,10 @@ interface RequestConfig extends Omit<RequestInit, 'body'> {
   timeout?: number
   retries?: number
   retryDelay?: number
-  body?: any
+  body?: unknown
 }
 
-interface ApiResponse<T = any> {
+interface ApiResponse<T = unknown> {
   data: T
   status: number
   statusText: string
@@ -22,7 +22,13 @@ interface ApiError extends Error {
   status?: number
   statusText?: string
   response?: Response
-  data?: any
+  data?: unknown
+}
+
+type InternalRequestConfig = RequestInit & {
+  timeout?: number
+  retries?: number
+  retryDelay?: number
 }
 
 class HttpClient {
@@ -45,21 +51,27 @@ class HttpClient {
   /**
    * Encodes parameters as URL search params
    */
-  private encodeParams(params: Record<string, any>): string {
+  private encodeParams(params: Record<string, unknown>): string {
     const search = new URLSearchParams()
 
-    const append = (key: string, value: any) => {
-      if (value == null || value === '') return
+    const append = (key: string, value: unknown) => {
+      if (value === null || value === undefined || value === '') return
       if (Array.isArray(value)) {
-        value.forEach((v) => append(key, v))
+        value.forEach((v) => {
+          append(key, v)
+        })
       } else if (typeof value === 'object') {
-        Object.entries(value).forEach(([k, v]) => append(`${key}[${k}]`, v))
+        Object.entries(value).forEach(([k, v]) => {
+          append(`${key}[${k}]`, v)
+        })
       } else {
         search.append(key, String(value))
       }
     }
 
-    Object.entries(params).forEach(([k, v]) => append(k, v))
+    Object.entries(params).forEach(([k, v]) => {
+      append(k, v)
+    })
 
     return search.toString()
   }
@@ -67,7 +79,7 @@ class HttpClient {
   /**
    * Builds the complete URL with encoded parameters
    */
-  private buildUrl(endpoint: string, params?: Record<string, any>): string {
+  private buildUrl(endpoint: string, params?: Record<string, unknown>): string {
     const url = new URL(endpoint, this.baseUrl || window.location.origin)
 
     if (params && Object.keys(params).length > 0) {
@@ -127,14 +139,18 @@ class HttpClient {
   /**
    * Executes the HTTP request with retry logic
    */
-  private async executeRequest<T>(url: string, config: RequestConfig, attempt: number = 1): Promise<ApiResponse<T>> {
-    const { retries = 0, retryDelay = 1000, timeout = 10000, ...requestConfig } = config
+  private async executeRequest<T>(
+    url: string,
+    config: InternalRequestConfig,
+    attempt: number = 1,
+  ): Promise<ApiResponse<T>> {
+    const { retries = 0, retryDelay = 1000, timeout = 10000, ...requestInit } = config
 
     try {
       const controller = this.createTimeoutController(timeout)
 
       const response = await fetch(url, {
-        ...requestConfig,
+        ...requestInit,
         signal: controller.signal,
       })
 
@@ -153,27 +169,24 @@ class HttpClient {
   /**
    * Generic request method
    */
-  async request<T = any>(endpoint: string, config: RequestConfig = {}): Promise<ApiResponse<T>> {
+  async request<T = unknown>(endpoint: string, config: RequestConfig = {}): Promise<ApiResponse<T>> {
     const mergedConfig = { ...this.defaultConfig, ...config }
     const { params, body, ...requestConfig } = mergedConfig
 
     const url = this.buildUrl(endpoint, params)
 
     // Handle body serialization
-    const finalConfig: RequestInit = { ...requestConfig }
+    const finalConfig: InternalRequestConfig = { ...requestConfig }
     if (body && typeof body === 'object' && !(body instanceof FormData) && !(body instanceof URLSearchParams)) {
       finalConfig.body = JSON.stringify(body)
-    } else if (body) {
-      finalConfig.body = body
+    } else if (body !== undefined && body !== null) {
+      finalConfig.body = body as BodyInit
     }
 
     return this.executeRequest<T>(url, finalConfig)
   }
 
-  /**
-   * GET request
-   */
-  async get<T = any>(endpoint: string, config?: Omit<RequestConfig, 'method' | 'body'>): Promise<ApiResponse<T>> {
+  async get<T = unknown>(endpoint: string, config?: Omit<RequestConfig, 'method' | 'body'>): Promise<ApiResponse<T>> {
     const requestConfig: RequestConfig = {
       ...config,
       method: 'GET',
@@ -182,12 +195,9 @@ class HttpClient {
     return this.request<T>(endpoint, requestConfig)
   }
 
-  /**
-   * POST request
-   */
-  async post<T = any>(
+  async post<T = unknown>(
     endpoint: string,
-    body?: any,
+    body?: unknown,
     config?: Omit<RequestConfig, 'method' | 'body'>,
   ): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, {
@@ -197,12 +207,9 @@ class HttpClient {
     })
   }
 
-  /**
-   * PUT request
-   */
-  async put<T = any>(
+  async put<T = unknown>(
     endpoint: string,
-    body?: any,
+    body?: unknown,
     config?: Omit<RequestConfig, 'method' | 'body'>,
   ): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, {
@@ -212,12 +219,9 @@ class HttpClient {
     })
   }
 
-  /**
-   * PATCH request
-   */
-  async patch<T = any>(
+  async patch<T = unknown>(
     endpoint: string,
-    body?: any,
+    body?: unknown,
     config?: Omit<RequestConfig, 'method' | 'body'>,
   ): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, {
@@ -227,10 +231,10 @@ class HttpClient {
     })
   }
 
-  /**
-   * DELETE request
-   */
-  async delete<T = any>(endpoint: string, config?: Omit<RequestConfig, 'method' | 'body'>): Promise<ApiResponse<T>> {
+  async delete<T = unknown>(
+    endpoint: string,
+    config?: Omit<RequestConfig, 'method' | 'body'>,
+  ): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, {
       ...config,
       method: 'DELETE',

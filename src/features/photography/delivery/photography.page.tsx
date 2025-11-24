@@ -9,6 +9,7 @@ import Image from 'next/image'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { DialogTitle } from '@radix-ui/react-dialog'
 import type { Photo } from '@/features/photography/domain/photo'
+import { Button } from '@/components/ui/button'
 
 interface Props {
   photos: Photo[]
@@ -27,10 +28,13 @@ export const PhotographyPage: FC<Props> = ({ photos }) => {
       {/* Photo Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
         {photos.map((photo) => (
-          <div
+          <Button
+            variant="invisible"
             key={photo.src}
-            className="relative aspect-[9/16] overflow-hidden rounded-lg group cursor-pointer"
+            type="button"
+            className="w-full h-full relative aspect-[9/16] overflow-hidden rounded-lg group cursor-pointer"
             onClick={() => setSelectedPhoto(photo)}
+            aria-label={photo.alt}
           >
             <Image
               src={photo.src}
@@ -43,7 +47,7 @@ export const PhotographyPage: FC<Props> = ({ photos }) => {
             <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <p className="text-foreground text-sm">{photo.alt}</p>
             </div>
-          </div>
+          </Button>
         ))}
       </div>
 

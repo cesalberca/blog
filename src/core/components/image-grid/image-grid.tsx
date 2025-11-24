@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import type { FC } from 'react'
 import { useEffect, useState } from 'react'
@@ -16,25 +16,25 @@ import {
 import { useCarouselThumbs } from '@/core/components/image-grid/use-carousel-thumbs'
 
 interface ImageData {
-  src: string;
-  alt: string;
+  src: string
+  alt: string
 }
 
 export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null)
   const { selectedIndex, onThumbClick } = useCarouselThumbs(carouselApi ?? undefined)
 
   const openLightbox = (index: number) => {
-    setCurrentImageIndex(index);
-    setLightboxOpen(true);
-  };
+    setCurrentImageIndex(index)
+    setLightboxOpen(true)
+  }
 
   useEffect(() => {
-    if (!lightboxOpen || !carouselApi) return;
-    carouselApi.scrollTo(currentImageIndex, true);
-  }, [lightboxOpen, carouselApi, currentImageIndex]);
+    if (!lightboxOpen || !carouselApi) return
+    carouselApi.scrollTo(currentImageIndex, true)
+  }, [lightboxOpen, carouselApi, currentImageIndex])
 
   return (
     <div className="not-prose">
@@ -65,19 +65,11 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
             <DialogTitle>{images?.[currentImageIndex]?.alt}</DialogTitle>
           </DialogHeader>
 
-          <Carousel
-            opts={{ loop: true, align: "center" }}
-            setApi={(api) => setCarouselApi(api)}
-          >
+          <Carousel opts={{ loop: true, align: 'center' }} setApi={(api) => setCarouselApi(api)}>
             <CarouselContent className="w-full h-full">
               {images.map((img) => (
                 <CarouselItem key={img.src} className="relative">
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-contain"
-                  />
+                  <Image src={img.src} alt={img.alt} fill className="object-contain" />
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -95,20 +87,12 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
                   type="button"
                   onClick={() => onThumbClick(idx)}
                   className={
-                    "relative w-20 h-14 ring-offset-2 focus:outline-none focus-visible:ring-2 " +
-                    (idx === selectedIndex
-                      ? "ring-2 ring-primary"
-                      : "ring-0")
+                    'relative w-20 h-14 ring-offset-2 focus:outline-none focus-visible:ring-2 ' +
+                    (idx === selectedIndex ? 'ring-2 ring-primary' : 'ring-0')
                   }
                   aria-label={img.alt}
                 >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                    sizes="80px"
-                  />
+                  <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="80px" />
                 </Button>
               ))}
             </div>
@@ -116,5 +100,5 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
         </DialogContent>
       </Dialog>
     </div>
-  );
-};
+  )
+}

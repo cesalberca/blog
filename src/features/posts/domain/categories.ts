@@ -8,6 +8,7 @@ export const categoryKeys = [
   'testing',
   'branding',
   'design',
+  'general',
   'software-development',
   'javascript',
   'typescript',

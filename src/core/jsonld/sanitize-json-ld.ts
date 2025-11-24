@@ -1,3 +1,3 @@
-export function sanitizeJsonLd(jsonLd: Record<string | number, unknown>) {
+export function sanitizeJsonLd(jsonLd: unknown) {
   return JSON.stringify(jsonLd).replace(/</g, '\\u003c')
 }

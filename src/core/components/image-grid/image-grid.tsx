@@ -64,12 +64,12 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
           </DialogHeader>
 
           <Carousel
-            opts={{ loop: true, align: "start" }}
+            opts={{ loop: true, align: "center" }}
             setApi={(api) => setCarouselApi(api)}
           >
             <CarouselContent className="w-full h-full">
               {images.map((img) => (
-                <CarouselItem key={img.src} className="w-full h-full relative">
+                <CarouselItem key={img.src} className="relative">
                   <Image
                     src={img.src}
                     alt={img.alt}

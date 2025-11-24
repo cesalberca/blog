@@ -13,10 +13,16 @@ interface ContactRequest {
   message: string
 }
 
-interface ContactResponse {
-  success?: boolean
-  message?: string
-  error?: string
+export type ContactResponse = ContactResponseOk | ContactResponseKo
+
+export interface ContactResponseOk {
+  success: true
+  message: string
+}
+
+export interface ContactResponseKo {
+  success: false
+  error: string
 }
 
 export async function POST(request: NextRequest): Promise<NextResponse<ContactResponse>> {
@@ -26,6 +32,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactRe
     if (verification.isBot) {
       return NextResponse.json(
         {
+          success: false,
           error:
             'Access denied. You look like a bot. If the error persists and you are not a bot, please contact me through my email cesar at cesalberca dot com',
         },
@@ -38,13 +45,13 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactRe
 
     // Validate required fields
     if (!name || !email || !message) {
-      return NextResponse.json({ error: 'All fields are required' }, { status: 400 })
+      return NextResponse.json({ success: false, error: 'All fields are required' }, { status: 400 })
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) {
-      return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
+      return NextResponse.json({ success: false, error: 'Invalid email address' }, { status: 400 })
     }
 
     const currentDate = Datetime.fromNow().toLocaleString('en-US', {
@@ -69,7 +76,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactRe
       })
     } catch (error) {
       console.error('Contact notification email error:', error)
-      return NextResponse.json({ error: 'Failed to send notification email' }, { status: 500 })
+      return NextResponse.json({ success: false, error: 'Failed to send notification email' }, { status: 500 })
     }
 
     // Send auto-reply confirmation email to the person who contacted me
@@ -97,6 +104,6 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactRe
     )
   } catch (error) {
     console.error('Contact form error:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 })
   }
 }

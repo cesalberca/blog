@@ -13,6 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
+import { useCarouselThumbs } from '@/core/components/image-grid/use-carousel-thumbs'
 
 interface ImageData {
   src: string;
@@ -23,6 +24,7 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
+  const { selectedIndex, onThumbClick } = useCarouselThumbs(carouselApi ?? undefined)
 
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index);
@@ -91,13 +93,10 @@ export const ImageGrid: FC<{ images: ImageData[] }> = ({ images }) => {
                   variant="invisible"
                   key={`thumb-${img.src}`}
                   type="button"
-                  onClick={() => {
-                    setCurrentImageIndex(idx);
-                    carouselApi?.scrollTo(idx);
-                  }}
+                  onClick={() => onThumbClick(idx)}
                   className={
                     "relative w-20 h-14 ring-offset-2 focus:outline-none focus-visible:ring-2 " +
-                    (idx === currentImageIndex
+                    (idx === selectedIndex
                       ? "ring-2 ring-primary"
                       : "ring-0")
                   }

@@ -1,5 +1,4 @@
 import { defineConfig, devices } from '@playwright/test'
-import 'dotenv/config'
 import { env } from '@/env'
 
 export default defineConfig({

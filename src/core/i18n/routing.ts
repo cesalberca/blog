@@ -34,6 +34,9 @@ export const routing = defineRouting({
     '/blog/hemingway-bridge': {
       es: '/blog/puente-hemingway',
     },
+    '/blog/why-am-i-close-sourcing-my-website': {
+      es: '/blog/por-que-mi-blog-no-es-open-source',
+    },
     '/services': {
       es: '/servicios',
     },

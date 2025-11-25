@@ -1,0 +1,52 @@
+export const metadata = {
+  slug: 'why-am-i-close-sourcing-my-website',
+  title: 'Why Am I Close-Sourcing My Website?',
+  date: '2025-11-23',
+  categories: ['general'],
+  readTime: 8,
+  image: 'why-am-i-close-sourcing-my-website/close-source.jpg',
+  summary:
+    "Why I decided to keep this site's source code private for now — lowering friction, avoiding copycats, and reducing risk — and what I'm doing instead to share knowledge.",
+}
+
+I've been gradually turning this site into a **reliable**, **long-term resource**. To do that well, I need a setup that **keeps me focused on writing and shipping**. For _now_, that means keeping the codebase **[closed-source](https://simple.wikipedia.org/wiki/Closed_source)**.
+
+This post explains why I made that call, what tradeoffs I considered, and how **I still plan to share as much as possible with _you_.**
+
+## Source control and drafts
+
+This blog uses [MDX](https://mdxjs.com/). Posts (including drafts) live in the repository. At any point, I have several unfinished posts with half-baked notes and code. If the repo were public, those drafts would be visible, and **I'd lose control over when ideas are ready to be shared**.
+
+I could split content into a separate repo or submodule, but that adds complexity to the publishing flow. **Complexity reduces velocity**.
+
+## Full-site forks
+
+Open-sourcing the entire codebase makes it trivial to fork, swap a logo, and ship a near-identical site. That's not what I want to incentivize.
+
+I'm much happier if people **borrow a specific idea and adapt it thoughtfully, rather than cloning wholesale**.
+
+## Security and cost surface
+
+The site includes dynamic features and server endpoints. **Open-sourcing every safeguard can make probing for weaknesses easier**. I also pay per invocation for some services; careless traffic or targeted abuse can get expensive quickly. It already started happening where I would get random contact emails. I fixed it by adding countermeasures, but they are exposed and can be used to bypass the safeguards.
+
+**Keeping the implementation details private reduces the attack surface and helps keep operating costs predictable.**
+
+## So what's the plan? Share the _How_, not the _Whole_
+
+**Closed source doesn't mean closed knowledge**. Instead of publishing the entire repo, I'll be sharing deep-dive posts that explain specific techniques, with tradeoffs and mindful context.
+
+Planned write-ups include topics like Frontend Architecture, MDX authoring, Creating a Newsletter with React Email and Resend, and many more! If there's something specific you'd like me to cover, just tell me, I really appreciate it.
+
+In the meantime, a few ways to explore and learn from this site:
+
+- [Read the blog](/blog)
+- [Checkout my talks](/talks)
+- [Ask me questions directly](/#contact); your question could become a future post
+
+## Final thoughts
+
+I get why open-source is the default for many. I've benefited massively from the OSS ecosystem, and I contribute back in other ways (articles, examples, ideas). **For this project, privacy helps me ship more, teach better, and manage risk.**
+
+If you're curious about how a specific part works, or you want pointers for your own project, reach out on
+[X](https://x.com/cesalberca)
+[Bluesky](https://bsky.app/profile/cesalberca.com), or by [email](mailto:cesar@cesalberca.com). **I'm happy to help — and your question could shape what I publish next.**

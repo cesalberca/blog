@@ -25,7 +25,7 @@ export const NewsletterCard: FC<NewsletterCardProps> = ({ defaultExpanded = fals
         <Button
           type="button"
           variant="invisible"
-          className="w-full px-8 py-12 flex items-center justify-between hover:bg-muted/50 text-left"
+          className="w-full px-8 py-6 flex items-center justify-between hover:bg-muted/50 text-left text-wrap gap-2"
           onClick={() => setIsExpanded(!isExpanded)}
           aria-expanded={isExpanded}
           aria-controls="newsletter-card-panel"

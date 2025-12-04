@@ -29,4 +29,4 @@ You can still learn from and explore the site through:
 
 # Closing
 
-Open source has shaped this career, and contributions continue through articles, examples, talks, and shared ideas. For this specific project, privacy enables better writing, safer operations, and more sustainable maintenance. If you're curious about a particular implementation, reach out on [X](https://x.com/cesalberca), [Bluesky](https://bsky.app/profile/cesalberca.com), or by email.
+Open source has shaped this career, and contributions continue through articles, examples, talks, and shared ideas. For this specific project, privacy enables better writing, safer operations, and more sustainable maintenance. If you're curious about a particular implementation, reach out on [X](https://x.com/cesalberca), [Bluesky](https://bsky.app/profile/cesalberca.com), or by email: cesar at cesalberca dot com.
